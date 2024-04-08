@@ -1,0 +1,47 @@
+---
+title: "James E. Pustejovsky"
+image: avatar.jpg
+about:
+  template: trestles
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: Email
+      href: 'mailto:pustejovsky@wisc.edu'
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/jepusto
+    - icon: github
+      text: Github
+      href: https://github.com/jepusto
+    - icon: "{{< fa brands bluesky >}}"
+      text: "BlueSky"
+      href: https://bsky.app/profile/jepusto.bsky.social
+    - icon: "{{< ai google-scholar >}}"
+      text: "Google Scholar"
+      href: https://scholar.google.com/citations?user=vrPDTgsAAAAJ
+    - icon: "{{< ai orcid >}}"
+      text: "ORCiD"
+      href: https://orcid.org/0000-0003-0591-9465
+---
+
+
+I am a statistician and associate professor in the [School of Education](https://education.wisc.edu/) at the [University of Wisconsin-Madison](https://www.wisc.edu/), where I teach in the [Educational Psychology Department](https://edpsych.education.wisc.edu/) and the [graduate program in Quantitative Methods](https://edpsych.education.wisc.edu/academics/quantitative-methods/). My research involves developing statistical methods for problems in education, psychology, and other areas of social science research, with a focus on methods related to research synthesis and meta-analysis. 
+
+## Education
+
+**Northwestern University** | Evanston, IL
+  
+PhD in Statistics | 2013
+
+**Boston College** | Chestnut Hill, MA
+
+BA in Economics | 2003
+
+## Interests
+
+- Meta-analysis
+- Causal inference
+- Robust statistical methods
+- Education statistics
+- Single case experimental designs
