@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-08-10">
+
+<title>James E. Pustejovsky - Imputing covariance matrices for meta-analysis of correlated effects</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">James E. Pustejovsky</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Imputing covariance matrices for meta-analysis of correlated effects</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">meta-analysis</div>
+                <div class="quarto-category">sandwiches</div>
+                <div class="quarto-category">robust variance estimation</div>
+                <div class="quarto-category">Rstats</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>admin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 10, 2017</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>In many systematic reviews, it is common for eligible studies to contribute effect size estimates from not just one, but <em>multiple</em> relevant outcome measures, for a common sample of participants. If those outcomes are correlated, then <a href="../..\Correlations-between-SMDs">so too will be the effect size estimates</a>. To estimate the degree of correlation, you would need the sample correlation among the outcomes—information that is woefully uncommon for primary studies to report (and best of luck to you if you try to follow up with author queries). Thus, the meta-analyst is often left in a situation where the sampling <em>variances</em> of the effect size estimates can be reasonably well approximated, but the sampling <em>covariances</em> are unknown for some or all studies.</p>
+<p>Several solutions to this conundrum have been proposed in the meta-analysis methodology literature. One possible strategy is to just impute a correlation based on subject-matter knowledge (or at least feigned expertise), and assume that this correlation is constant across studies. This analysis could be supplemented with sensitivity analyses to examine the extent to which the parameter estimates and inferences are sensitive to alternative assumptions about the inter-correlation of effects within studies. A related strategy, described by <a href="https://dx.doi.org/10.1002/sim.5679">Wei and Higgins (2013)</a>, is to meta-analyze any available correlation estimates and then use the results to impute correlations for any studies with missing correlations.</p>
+<p>Both of these approaches require the meta-analyst to calculate block-diagonal sampling covariance matrices for the effect size estimates, which can be a bit unwieldy. I often use the impute-the-correlation strategy in my meta-analysis work and have written a helper function to compute covariance matrices, given known sampling variances and imputed correlations for each study. In the interest of not repeating myself, I’ve added the function to the latest version of my clubSandwich package. In this post, I’ll explain the function and demonstrate how to use it for conducting meta-analysis of correlated effect size estimates.</p>
+<section id="an-r-function-for-block-diagonal-covariance-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="an-r-function-for-block-diagonal-covariance-matrices">An R function for block-diagonal covariance matrices</h2>
+<p>Here is the function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'clubSandwich':
+  method    from    
+  bread.mlm sandwich</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>impute_covariance_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (vi, cluster, r, ti, ar1, smooth_vi = FALSE, subgroup = NULL, 
+    return_list = identical(as.factor(cluster), sort(as.factor(cluster))), 
+    check_PD = TRUE) 
+{
+    cluster &lt;- droplevels(as.factor(cluster))
+    vi_list &lt;- split(vi, cluster)
+    if (smooth_vi) 
+        vi_list &lt;- lapply(vi_list, function(x) rep(mean(x, na.rm = TRUE), 
+            length(x)))
+    if (missing(r) &amp; missing(ar1)) 
+        stop("You must specify a value for r or for ar1.")
+    if (!missing(r)) {
+        r_list &lt;- rep_len(r, length(vi_list))
+        if (missing(ar1)) {
+            vcov_list &lt;- Map(function(V, rho) (rho + diag(1 - 
+                rho, nrow = length(V))) * tcrossprod(sqrt(V)), 
+                V = vi_list, rho = r_list)
+        }
+    }
+    if (!missing(ar1)) {
+        if (missing(ti)) 
+            stop("If you specify a value for ar1, you must provide a vector for ti.")
+        ti_list &lt;- split(ti, cluster)
+        ar_list &lt;- rep_len(ar1, length(vi_list))
+        if (missing(r)) {
+            vcov_list &lt;- Map(function(V, time, phi) (phi^as.matrix(stats::dist(time))) * 
+                tcrossprod(sqrt(V)), V = vi_list, time = ti_list, 
+                phi = ar_list)
+        }
+        else {
+            vcov_list &lt;- Map(function(V, rho, time, phi) (rho + 
+                (1 - rho) * phi^as.matrix(stats::dist(time))) * 
+                tcrossprod(sqrt(V)), V = vi_list, rho = r_list, 
+                time = ti_list, phi = ar_list)
+        }
+        vcov_list &lt;- lapply(vcov_list, function(x) {
+            attr(x, "dimnames") &lt;- NULL
+            x
+        })
+    }
+    if (!is.null(subgroup)) {
+        si_list &lt;- split(subgroup, cluster)
+        subgroup_list &lt;- lapply(si_list, function(x) sapply(x, 
+            function(y) y == x))
+        vcov_list &lt;- Map(function(V, S) V * S, V = vcov_list, 
+            S = subgroup_list)
+    }
+    if (check_PD) 
+        check_PD(vcov_list)
+    if (return_list) {
+        return(vcov_list)
+    }
+    else {
+        vcov_mat &lt;- unblock(vcov_list)
+        cluster_index &lt;- order(order(cluster))
+        return(vcov_mat[cluster_index, cluster_index])
+    }
+}
+&lt;bytecode: 0x000001c046dcccd8&gt;
+&lt;environment: namespace:clubSandwich&gt;</code></pre>
+</div>
+</div>
+<p>The function takes three required arguments:</p>
+<ul>
+<li><code>vi</code> is a vector of sampling variances.</li>
+<li><code>cluster</code> is a vector identifying the study from which effect size estimates are drawn. Effects with the same value of <code>cluster</code> will be treated as correlated.</li>
+<li><code>r</code> is the assumed value(s) of the correlation between effect size estimates from each study. Note that <code>r</code> can also be a vector with separate values for each study.</li>
+</ul>
+<p>Here is a simple example to demonstrate how the function works. Say that there are just three studies, contributing 2, 3, and 4 effects, respectively. I’ll just make up some values for the effect sizes and variances:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">yi =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">vi =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  study         yi vi
+1     A -1.3029448  4
+2     A -0.3623436  5
+3     B -1.4290918  6
+4     B -0.7592721  7
+5     B  0.8992482  8
+6     C  0.8224456  9
+7     C  1.0812547 10
+8     C  0.5207703 11
+9     C  0.7078873 12</code></pre>
+</div>
+</div>
+<p>I’ll assume that effect size estimates from a given study are correlated at 0.7:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat<span class="sc">$</span>vi, <span class="at">cluster =</span> dat<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>V_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$A
+         [,1]     [,2]
+[1,] 4.000000 3.130495
+[2,] 3.130495 5.000000
+
+$B
+         [,1]     [,2]     [,3]
+[1,] 6.000000 4.536518 4.849742
+[2,] 4.536518 7.000000 5.238320
+[3,] 4.849742 5.238320 8.000000
+
+$C
+         [,1]      [,2]      [,3]      [,4]
+[1,] 9.000000  6.640783  6.964912  7.274613
+[2,] 6.640783 10.000000  7.341662  7.668116
+[3,] 6.964912  7.341662 11.000000  8.042388
+[4,] 7.274613  7.668116  8.042388 12.000000</code></pre>
+</div>
+</div>
+<p>The result is a list of matrices, where each entry corresponds to the variance-covariance matrix of effects from a given study. To see that the results are correct, let’s examine the correlation matrix implied by these correlation matrices:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]  1.0  0.7
+[2,]  0.7  1.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]  1.0  0.7  0.7
+[2,]  0.7  1.0  0.7
+[3,]  0.7  0.7  1.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]  1.0  0.7  0.7  0.7
+[2,]  0.7  1.0  0.7  0.7
+[3,]  0.7  0.7  1.0  0.7
+[4,]  0.7  0.7  0.7  1.0</code></pre>
+</div>
+</div>
+<p>As requested, effects are assumed to be equi-correlated with r = 0.7.</p>
+<p>If the data are sorted in order of the cluster IDs, then the list of matrices returned by <code>impute_covariance_matrix()</code> can be fed directly into the <code>rma.mv</code> function in metafor (as I demonstrate below). However, if the data are not sorted by <code>cluster</code>, then feeding in the list of matrices will not work correctly. Instead, the full <span class="math inline">\(N \times N\)</span> variance-covariance matrix (where <span class="math inline">\(N\)</span> is the total number of effect size estimates) will need to be calculated so that the rows and columns appear in the correct order. To address this possibility, the function includes an optional argument, <code>return_list</code>, which determines whether to output a list of matrices (one matrix per study/cluster) or a single matrix corresponding to the full variance-covariance matrix across all studies. By default, <code>return_list</code> tests for whether the <code>cluster</code> argument is sorted and returns the appropriate form. The argument can also be set directly by the user.</p>
+<p>Here’s what happens if we feed in the data in a different order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dat_scramble <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat)),]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>dat_scramble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  study         yi vi
+8     C  0.5207703 11
+3     B -1.4290918  6
+4     B -0.7592721  7
+5     B  0.8992482  8
+1     A -1.3029448  4
+2     A -0.3623436  5
+6     C  0.8224456  9
+7     C  1.0812547 10
+9     C  0.7078873 12</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>V_mat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat_scramble<span class="sc">$</span>vi, <span class="at">cluster =</span> dat_scramble<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>), <span class="dv">3</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>V_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        [,1]  [,2]  [,3]  [,4] [,5] [,6]  [,7]   [,8]   [,9]
+ [1,] 11.000 0.000 0.000 0.000 0.00 0.00 6.965  7.342  8.042
+ [2,]  0.000 6.000 4.537 4.850 0.00 0.00 0.000  0.000  0.000
+ [3,]  0.000 4.537 7.000 5.238 0.00 0.00 0.000  0.000  0.000
+ [4,]  0.000 4.850 5.238 8.000 0.00 0.00 0.000  0.000  0.000
+ [5,]  0.000 0.000 0.000 0.000 4.00 3.13 0.000  0.000  0.000
+ [6,]  0.000 0.000 0.000 0.000 3.13 5.00 0.000  0.000  0.000
+ [7,]  6.965 0.000 0.000 0.000 0.00 0.00 9.000  6.641  7.275
+ [8,]  7.342 0.000 0.000 0.000 0.00 0.00 6.641 10.000  7.668
+ [9,]  8.042 0.000 0.000 0.000 0.00 0.00 7.275  7.668 12.000</code></pre>
+</div>
+</div>
+<p>To see that this is correct, check that the diagonal entries of <code>V_mat</code> are the same as <code>vi</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(dat_scramble<span class="sc">$</span>vi, <span class="fu">diag</span>(V_mat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="an-example-with-real-data" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-with-real-data">An example with real data</h2>
+<p><a href="https://dx.doi.org/10.1037/1082-989X.1.3.227">Kalaian and Raudenbush (1996)</a> introduced a multi-variate random effects model, which can be used to perform a joint meta-analysis of studies that contribute effect sizes on distinct, related outcome constructs. They demonstrate the model using data from a synthesis on the effects of SAT coaching, where many studies reported effects on both the math and verbal portions of the SAT. The data are available in the <code>clubSandwich</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts=</span><span class="cn">FALSE</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(SATcoaching)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean of log of coaching hours</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>mean_hrs_ln <span class="ot">&lt;-</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  SATcoaching <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">hrs_ln =</span> <span class="fu">mean</span>(<span class="fu">log</span>(hrs))) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">hrs_ln =</span> <span class="fu">mean</span>(hrs_ln, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># clean variables, sort by study ID</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>SATcoaching <span class="ot">&lt;-</span> </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  SATcoaching <span class="sc">%&gt;%</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">study =</span> <span class="fu">as.factor</span>(study),</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">hrs_ln =</span> <span class="fu">log</span>(hrs) <span class="sc">-</span> mean_hrs_ln<span class="sc">$</span>hrs_ln</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(study, test)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>SATcoaching <span class="sc">%&gt;%</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, year, test, d, V, hrs_ln) <span class="sc">%&gt;%</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   study year   test     d      V      hrs_ln
+1  Alderman &amp; Powers (A) 1980 Verbal  0.22 0.0817 -0.54918009
+2  Alderman &amp; Powers (B) 1980 Verbal  0.09 0.0507 -0.19250515
+3  Alderman &amp; Powers (C) 1980 Verbal  0.14 0.1045 -0.14371499
+4  Alderman &amp; Powers (D) 1980 Verbal  0.14 0.0442 -0.19250515
+5  Alderman &amp; Powers (E) 1980 Verbal -0.01 0.0535 -0.70333077
+6  Alderman &amp; Powers (F) 1980 Verbal  0.14 0.0557 -0.88565233
+7  Alderman &amp; Powers (G) 1980 Verbal  0.18 0.0561 -0.09719497
+8  Alderman &amp; Powers (H) 1980 Verbal  0.01 0.1151  1.31157225
+9              Burke (A) 1986 Verbal  0.50 0.0825  1.41693276
+10             Burke (B) 1986 Verbal  0.74 0.0855  1.41693276
+11                Coffin 1987   Math  0.33 0.2534  0.39528152
+12                Coffin 1987 Verbal -0.23 0.2517  0.39528152
+13            Curran (A) 1988   Math -0.08 0.1065 -0.70333077
+14            Curran (A) 1988 Verbal -0.10 0.1066 -0.70333077
+15            Curran (B) 1988   Math -0.29 0.1015 -0.70333077
+16            Curran (B) 1988 Verbal -0.14 0.1007 -0.70333077
+17            Curran (C) 1988   Math -0.34 0.1104 -0.70333077
+18            Curran (C) 1988 Verbal -0.16 0.1092 -0.70333077
+19            Curran (D) 1988   Math -0.06 0.1089 -0.70333077
+20            Curran (D) 1988 Verbal -0.07 0.1089 -0.70333077</code></pre>
+</div>
+</div>
+<p>The correlation betwen math and verbal test scores are not available, but it seems reasonable to use a correlation of r = 0.66, as reported in the SAT technical information. To synthesize these effects, I’ll first compute the required variance-covariances:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> SATcoaching<span class="sc">$</span>V, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cluster =</span> SATcoaching<span class="sc">$</span>study, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">r =</span> <span class="fl">0.66</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This can then be fed into <code>metafor</code> to estimate a fixed effect or random effects meta-analysis or meta-regression models:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Loading the 'metafor' package (version 4.6-0). For an
+introduction to the package please type: help(metafor)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-analysis</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>MVFE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>MVFE_null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 67; method: REML)
+
+Variance Components: none
+
+Test for Residual Heterogeneity:
+QE(df = 65) = 72.1630, p-val = 0.2532
+
+Test of Moderators (coefficients 1:2):
+QM(df = 2) = 19.8687, p-val &lt; .0001
+
+Model Results:
+
+            estimate      se    zval    pval   ci.lb   ci.ub      
+testMath      0.1316  0.0331  3.9783  &lt;.0001  0.0668  0.1965  *** 
+testVerbal    0.1215  0.0313  3.8783  0.0001  0.0601  0.1829  *** 
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-regression</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>MVFE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 2 rows with NAs omitted from model fitting.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>MVFE_hrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 65; method: REML)
+
+Variance Components: none
+
+Test for Residual Heterogeneity:
+QE(df = 61) = 67.9575, p-val = 0.2523
+
+Test of Moderators (coefficients 1:4):
+QM(df = 4) = 23.7181, p-val &lt; .0001
+
+Model Results:
+
+                   estimate      se    zval    pval    ci.lb   ci.ub     
+testMath             0.0946  0.0402  2.3547  0.0185   0.0159  0.1734   * 
+testVerbal           0.1119  0.0341  3.2762  0.0011   0.0449  0.1788  ** 
+testMath:hrs_ln      0.1034  0.0546  1.8946  0.0581  -0.0036  0.2103   . 
+testVerbal:hrs_ln    0.0601  0.0442  1.3592  0.1741  -0.0266  0.1467     
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-analysis</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>MVRE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>MVRE_null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 67; method: REML)
+
+Variance Components:
+
+outer factor: study (nlvls = 47)
+inner factor: test  (nlvls = 2)
+
+            estim    sqrt  k.lvl  fixed   level 
+tau^2.1    0.0122  0.1102     29     no    Math 
+tau^2.2    0.0026  0.0507     38     no  Verbal 
+
+        rho.Math  rho.Vrbl    Math  Vrbl 
+Math           1                 -    20 
+Verbal   -1.0000         1      no     - 
+
+Test for Residual Heterogeneity:
+QE(df = 65) = 72.1630, p-val = 0.2532
+
+Test of Moderators (coefficients 1:2):
+QM(df = 2) = 18.1285, p-val = 0.0001
+
+Model Results:
+
+            estimate      se    zval    pval   ci.lb   ci.ub      
+testMath      0.1379  0.0434  3.1783  0.0015  0.0528  0.2229   ** 
+testVerbal    0.1168  0.0337  3.4603  0.0005  0.0506  0.1829  *** 
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-regression</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>MVRE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: 2 rows with NAs omitted from model fitting.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>MVRE_hrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 65; method: REML)
+
+Variance Components:
+
+outer factor: study (nlvls = 46)
+inner factor: test  (nlvls = 2)
+
+            estim    sqrt  k.lvl  fixed   level 
+tau^2.1    0.0152  0.1234     28     no    Math 
+tau^2.2    0.0014  0.0373     37     no  Verbal 
+
+        rho.Math  rho.Vrbl    Math  Vrbl 
+Math           1                 -    19 
+Verbal   -1.0000         1      no     - 
+
+Test for Residual Heterogeneity:
+QE(df = 61) = 67.9575, p-val = 0.2523
+
+Test of Moderators (coefficients 1:4):
+QM(df = 4) = 23.6459, p-val &lt; .0001
+
+Model Results:
+
+                   estimate      se    zval    pval    ci.lb   ci.ub     
+testMath             0.0893  0.0507  1.7631  0.0779  -0.0100  0.1887   . 
+testVerbal           0.1062  0.0357  2.9738  0.0029   0.0362  0.1762  ** 
+testMath:hrs_ln      0.1694  0.0725  2.3354  0.0195   0.0272  0.3116   * 
+testVerbal:hrs_ln    0.0490  0.0459  1.0681  0.2855  -0.0409  0.1389     
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The results of fitting this model using restricted maximum likelihood with metafor are actually a bit different from the estimates reported in the original paper, potentially because Kalaian and Raudenbush use a Cholesky decomposition of the sampling covariances, which alters the interpretation of the random effects variance components. The metafor fit is also a bit goofy because the correlation between the random effects for math and verbal scores is very close to -1, although evidently it is not uncommon to obtain such degenerate estimates of the random effects structure.</p>
+</section>
+<section id="robust-variance-estimation." class="level2">
+<h2 class="anchored" data-anchor-id="robust-variance-estimation.">Robust variance estimation.</h2>
+<p>Experienced meta-analysts will no doubt point out that a further, alternative analytic strategy to the one described above would be to use robust variance estimation methods (RVE; <a href="https://dx.doi.org/10.1002/jrsm.5">Hedges, Tipton, &amp; Johnson</a>). However, RVE is not so much an alternative strategy as it is a complementary technique, which can be used in combination with any of the models estimated above. Robust standard errors and hypothesis tests can readily be obtained with the <a href="https://cran.r-project.org/package=clubSandwich">clubSandwich package</a>. Here’s how to do it for the random effects meta-regression model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(MVRE_hrs, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Coef. Estimate     SE t-stat d.f. (Satt) p-val (Satt) Sig.
+          testMath   0.0893 0.0360   2.48       20.75       0.0218    *
+        testVerbal   0.1062 0.0215   4.94       16.45       &lt;0.001  ***
+   testMath:hrs_ln   0.1694 0.1010   1.68        7.90       0.1325     
+ testVerbal:hrs_ln   0.0490 0.0414   1.18        7.57       0.2725     </code></pre>
+</div>
+</div>
+<p>RVE is also available in the <a href="https://CRAN.R-project.org/package=robumeta">robumeta R package</a>, but there are several differences between the implementation there and the method I’ve demonstrated here. From the user’s perspective, an advantage of robumeta is that it does all of the covariance imputation calculations “under the hood,” whereas with metafor the calculations need to be done prior to fitting the model. Beyond this, differences include:</p>
+<ul>
+<li>robumeta uses a specific random effects structure that can’t be controlled by the user, whereas metafor can be used to estimate a variety of different random effects structures;</li>
+<li>robumeta uses a moment estimator for the between-study variance, whereas metafor provides FML or REML estimation;</li>
+<li>robumeta uses semi-efficient, diagonal weights when fitting the meta-regression, whereas metafor uses weights that are fully efficient (exactly inverse-variance) under the working model.</li>
+</ul>
+<p>The advantages and disadvantages of these two approaches involve some subtleties that I’ll get into in a future post.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Imputing covariance matrices for meta-analysis of correlated effects</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> admin</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2017-08-10'</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>In many systematic reviews, it is common for eligible studies to contribute effect size estimates from not just one, but _multiple_ relevant outcome measures, for a common sample of participants. If those outcomes are correlated, then [so too will be the effect size estimates](/Correlations-between-SMDs). To estimate the degree of correlation, you would need the sample correlation among the outcomes---information that is woefully uncommon for primary studies to report (and best of luck to you if you try to follow up with author queries). Thus, the meta-analyst is often left in a situation where the sampling _variances_ of the effect size estimates can be reasonably well approximated, but the sampling _covariances_ are unknown for some or all studies. </span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>Several solutions to this conundrum have been proposed in the meta-analysis methodology literature. One possible strategy is to just impute a correlation based on subject-matter knowledge (or at least feigned expertise), and assume that this correlation is constant across studies. This analysis could be supplemented with sensitivity analyses to examine the extent to which the parameter estimates and inferences are sensitive to alternative assumptions about the inter-correlation of effects within studies. A related strategy, described by <span class="co">[</span><span class="ot">Wei and Higgins (2013)</span><span class="co">](https://dx.doi.org/10.1002/sim.5679)</span>, is to meta-analyze any available correlation estimates and then use the results to impute correlations for any studies with missing correlations. </span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>Both of these approaches require the meta-analyst to calculate block-diagonal sampling covariance matrices for the effect size estimates, which can be a bit unwieldy. I often use the impute-the-correlation strategy in my meta-analysis work and have written a helper function to compute covariance matrices, given known sampling variances and imputed correlations for each study. In the interest of not repeating myself, I've added the function to the latest version of my clubSandwich package. In this post, I'll explain the function and demonstrate how to use it for conducting meta-analysis of correlated effect size estimates. </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## An R function for block-diagonal covariance matrices</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>Here is the function: </span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>impute_covariance_matrix</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>The function takes three required arguments: </span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`vi`</span> is a vector of sampling variances.</span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`cluster`</span> is a vector identifying the study from which effect size estimates are drawn. Effects with the same value of <span class="in">`cluster`</span> will be treated as correlated.</span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="in">`r`</span> is the assumed value(s) of the correlation between effect size estimates from each study. Note that <span class="in">`r`</span> can also be a vector with separate values for each study. </span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>Here is a simple example to demonstrate how the function works. Say that there are just three studies, contributing 2, 3, and 4 effects, respectively. I'll just make up some values for the effect sizes and variances:</span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>), </span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>                  <span class="at">yi =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>), </span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a>                  <span class="at">vi =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a>dat</span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a>I'll assume that effect size estimates from a given study are correlated at 0.7:</span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat<span class="sc">$</span>vi, <span class="at">cluster =</span> dat<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>)</span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a>V_list</span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>The result is a list of matrices, where each entry corresponds to the variance-covariance matrix of effects from a given study. To see that the results are correct, let's examine the correlation matrix implied by these correlation matrices:</span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>A)</span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>B)</span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>C)</span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a>As requested, effects are assumed to be equi-correlated with r = 0.7.</span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a>If the data are sorted in order of the cluster IDs, then the list of matrices returned by <span class="in">`impute_covariance_matrix()`</span> can be fed directly into the <span class="in">`rma.mv`</span> function in metafor (as I demonstrate below). However, if the data are not sorted by <span class="in">`cluster`</span>, then feeding in the list of matrices will not work correctly. Instead, the full $N \times N$ variance-covariance matrix (where $N$ is the total number of effect size estimates) will need to be calculated so that the rows and columns appear in the correct order. To address this possibility, the function includes an optional argument, <span class="in">`return_list`</span>, which determines whether to output a list of matrices (one matrix per study/cluster) or a single matrix corresponding to the full variance-covariance matrix across all studies. By default, <span class="in">`return_list`</span> tests for whether the <span class="in">`cluster`</span> argument is sorted and returns the appropriate form. The argument can also be set directly by the user. </span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a>Here's what happens if we feed in the data in a different order:</span>
+<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-73"><a href="#cb40-73" aria-hidden="true" tabindex="-1"></a>dat_scramble <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat)),]</span>
+<span id="cb40-74"><a href="#cb40-74" aria-hidden="true" tabindex="-1"></a>dat_scramble</span>
+<span id="cb40-75"><a href="#cb40-75" aria-hidden="true" tabindex="-1"></a>V_mat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat_scramble<span class="sc">$</span>vi, <span class="at">cluster =</span> dat_scramble<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>), <span class="dv">3</span>)</span>
+<span id="cb40-76"><a href="#cb40-76" aria-hidden="true" tabindex="-1"></a>V_mat</span>
+<span id="cb40-77"><a href="#cb40-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-78"><a href="#cb40-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-79"><a href="#cb40-79" aria-hidden="true" tabindex="-1"></a>To see that this is correct, check that the diagonal entries of <span class="in">`V_mat`</span> are the same as <span class="in">`vi`</span>:</span>
+<span id="cb40-82"><a href="#cb40-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-83"><a href="#cb40-83" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(dat_scramble<span class="sc">$</span>vi, <span class="fu">diag</span>(V_mat))</span>
+<span id="cb40-84"><a href="#cb40-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-85"><a href="#cb40-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-86"><a href="#cb40-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## An example with real data</span></span>
+<span id="cb40-87"><a href="#cb40-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-88"><a href="#cb40-88" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Kalaian and Raudenbush (1996)</span><span class="co">](https://dx.doi.org/10.1037/1082-989X.1.3.227)</span> introduced a multi-variate random effects model, which can be used to perform a joint meta-analysis of studies that contribute effect sizes on distinct, related outcome constructs. They demonstrate the model using data from a synthesis on the effects of SAT coaching, where many studies reported effects on both the math and verbal portions of the SAT. The data are available in the <span class="in">`clubSandwich`</span> package:</span>
+<span id="cb40-89"><a href="#cb40-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-92"><a href="#cb40-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts=</span><span class="cn">FALSE</span>)</span>
+<span id="cb40-94"><a href="#cb40-94" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(SATcoaching)</span>
+<span id="cb40-95"><a href="#cb40-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-96"><a href="#cb40-96" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean of log of coaching hours</span></span>
+<span id="cb40-97"><a href="#cb40-97" aria-hidden="true" tabindex="-1"></a>mean_hrs_ln <span class="ot">&lt;-</span> </span>
+<span id="cb40-98"><a href="#cb40-98" aria-hidden="true" tabindex="-1"></a>  SATcoaching <span class="sc">%&gt;%</span> </span>
+<span id="cb40-99"><a href="#cb40-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(study) <span class="sc">%&gt;%</span></span>
+<span id="cb40-100"><a href="#cb40-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">hrs_ln =</span> <span class="fu">mean</span>(<span class="fu">log</span>(hrs))) <span class="sc">%&gt;%</span></span>
+<span id="cb40-101"><a href="#cb40-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">hrs_ln =</span> <span class="fu">mean</span>(hrs_ln, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb40-102"><a href="#cb40-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-103"><a href="#cb40-103" aria-hidden="true" tabindex="-1"></a><span class="co"># clean variables, sort by study ID</span></span>
+<span id="cb40-104"><a href="#cb40-104" aria-hidden="true" tabindex="-1"></a>SATcoaching <span class="ot">&lt;-</span> </span>
+<span id="cb40-105"><a href="#cb40-105" aria-hidden="true" tabindex="-1"></a>  SATcoaching <span class="sc">%&gt;%</span></span>
+<span id="cb40-106"><a href="#cb40-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-107"><a href="#cb40-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">study =</span> <span class="fu">as.factor</span>(study),</span>
+<span id="cb40-108"><a href="#cb40-108" aria-hidden="true" tabindex="-1"></a>    <span class="at">hrs_ln =</span> <span class="fu">log</span>(hrs) <span class="sc">-</span> mean_hrs_ln<span class="sc">$</span>hrs_ln</span>
+<span id="cb40-109"><a href="#cb40-109" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb40-110"><a href="#cb40-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(study, test)</span>
+<span id="cb40-111"><a href="#cb40-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-112"><a href="#cb40-112" aria-hidden="true" tabindex="-1"></a>SATcoaching <span class="sc">%&gt;%</span></span>
+<span id="cb40-113"><a href="#cb40-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, year, test, d, V, hrs_ln) <span class="sc">%&gt;%</span></span>
+<span id="cb40-114"><a href="#cb40-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb40-115"><a href="#cb40-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-116"><a href="#cb40-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-117"><a href="#cb40-117" aria-hidden="true" tabindex="-1"></a>The correlation betwen math and verbal test scores are not available, but it seems reasonable to use a correlation of r = 0.66, as reported in the SAT technical information. To synthesize these effects, I'll first compute the required variance-covariances:</span>
+<span id="cb40-120"><a href="#cb40-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-121"><a href="#cb40-121" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> SATcoaching<span class="sc">$</span>V, </span>
+<span id="cb40-122"><a href="#cb40-122" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cluster =</span> SATcoaching<span class="sc">$</span>study, </span>
+<span id="cb40-123"><a href="#cb40-123" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">r =</span> <span class="fl">0.66</span>)</span>
+<span id="cb40-124"><a href="#cb40-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-125"><a href="#cb40-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-126"><a href="#cb40-126" aria-hidden="true" tabindex="-1"></a>This can then be fed into <span class="in">`metafor`</span> to estimate a fixed effect or random effects meta-analysis or meta-regression models:</span>
+<span id="cb40-127"><a href="#cb40-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-130"><a href="#cb40-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-131"><a href="#cb40-131" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-132"><a href="#cb40-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-133"><a href="#cb40-133" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-analysis</span></span>
+<span id="cb40-134"><a href="#cb40-134" aria-hidden="true" tabindex="-1"></a>MVFE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching)</span>
+<span id="cb40-135"><a href="#cb40-135" aria-hidden="true" tabindex="-1"></a>MVFE_null</span>
+<span id="cb40-136"><a href="#cb40-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-137"><a href="#cb40-137" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-regression</span></span>
+<span id="cb40-138"><a href="#cb40-138" aria-hidden="true" tabindex="-1"></a>MVFE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
+<span id="cb40-139"><a href="#cb40-139" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching)</span>
+<span id="cb40-140"><a href="#cb40-140" aria-hidden="true" tabindex="-1"></a>MVFE_hrs</span>
+<span id="cb40-141"><a href="#cb40-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-142"><a href="#cb40-142" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-analysis</span></span>
+<span id="cb40-143"><a href="#cb40-143" aria-hidden="true" tabindex="-1"></a>MVRE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching, </span>
+<span id="cb40-144"><a href="#cb40-144" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span>
+<span id="cb40-145"><a href="#cb40-145" aria-hidden="true" tabindex="-1"></a>MVRE_null</span>
+<span id="cb40-146"><a href="#cb40-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-147"><a href="#cb40-147" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-regression</span></span>
+<span id="cb40-148"><a href="#cb40-148" aria-hidden="true" tabindex="-1"></a>MVRE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
+<span id="cb40-149"><a href="#cb40-149" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching,</span>
+<span id="cb40-150"><a href="#cb40-150" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span>
+<span id="cb40-151"><a href="#cb40-151" aria-hidden="true" tabindex="-1"></a>MVRE_hrs</span>
+<span id="cb40-152"><a href="#cb40-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-153"><a href="#cb40-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-154"><a href="#cb40-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-155"><a href="#cb40-155" aria-hidden="true" tabindex="-1"></a>The results of fitting this model using restricted maximum likelihood with metafor are actually a bit different from the estimates reported in the original paper, potentially because Kalaian and Raudenbush use a Cholesky decomposition of the sampling covariances, which alters the interpretation of the random effects variance components. The metafor fit is also a bit goofy because the correlation between the random effects for math and verbal scores is very close to -1, although evidently it is not uncommon to obtain such degenerate estimates of the random effects structure. </span>
+<span id="cb40-156"><a href="#cb40-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-157"><a href="#cb40-157" aria-hidden="true" tabindex="-1"></a><span class="fu">## Robust variance estimation.</span></span>
+<span id="cb40-158"><a href="#cb40-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-159"><a href="#cb40-159" aria-hidden="true" tabindex="-1"></a>Experienced meta-analysts will no doubt point out that a further, alternative analytic strategy to the one described above would be to use robust variance estimation methods (RVE; <span class="co">[</span><span class="ot">Hedges, Tipton, &amp; Johnson</span><span class="co">](https://dx.doi.org/10.1002/jrsm.5)</span>). However, RVE is not so much an alternative strategy as it is a complementary technique, which can be used in combination with any of the models estimated above. Robust standard errors and hypothesis tests can readily be obtained with the <span class="co">[</span><span class="ot">clubSandwich package</span><span class="co">](https://cran.r-project.org/package=clubSandwich)</span>. Here's how to do it for the random effects meta-regression model:</span>
+<span id="cb40-160"><a href="#cb40-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-163"><a href="#cb40-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb40-164"><a href="#cb40-164" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb40-165"><a href="#cb40-165" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(MVRE_hrs, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
+<span id="cb40-166"><a href="#cb40-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb40-167"><a href="#cb40-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-168"><a href="#cb40-168" aria-hidden="true" tabindex="-1"></a>RVE is also available in the  <span class="co">[</span><span class="ot">robumeta R package</span><span class="co">](https://CRAN.R-project.org/package=robumeta)</span>, but there are several differences between the implementation there and the method I've demonstrated here. From the user's perspective, an advantage of robumeta is that it does all of the covariance imputation calculations "under the hood," whereas with metafor the calculations need to be done prior to fitting the model. Beyond this, differences include:</span>
+<span id="cb40-169"><a href="#cb40-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-170"><a href="#cb40-170" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>robumeta uses a specific random effects structure that can't be controlled by the user, whereas metafor can be used to estimate a variety of different random effects structures;</span>
+<span id="cb40-171"><a href="#cb40-171" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>robumeta uses a moment estimator for the between-study variance, whereas metafor provides FML or REML estimation;</span>
+<span id="cb40-172"><a href="#cb40-172" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>robumeta uses semi-efficient, diagonal weights when fitting the meta-regression, whereas metafor uses weights that are fully efficient (exactly inverse-variance) under the working model. </span>
+<span id="cb40-173"><a href="#cb40-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-174"><a href="#cb40-174" aria-hidden="true" tabindex="-1"></a>The advantages and disadvantages of these two approaches involve some subtleties that I'll get into in a future post. </span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

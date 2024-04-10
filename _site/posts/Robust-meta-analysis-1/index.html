@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2014-04-21">
+
+<title>James E. Pustejovsky - A meta-sandwich</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">James E. Pustejovsky</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">A meta-sandwich</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">meta-analysis</div>
+                <div class="quarto-category">sandwiches</div>
+                <div class="quarto-category">Rstats</div>
+                <div class="quarto-category">robust variance estimation</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>admin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 21, 2014</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>A common problem arising in many areas of meta-analysis is how to synthesize a set of effect sizes when the set includes multiple effect size estimates from the same study. It’s often not possible to obtain all of the information you’d need in order to estimate the sampling covariances between those effect sizes, yet without that information, established approaches to modeling dependent effect sizes become inaccurate. <a href="http://doi.org/10.1002/jrsm.5">Hedges, Tipton, &amp; Johnson</a> (2010, HTJ hereafter) proposed the use of cluster-robust standard errors for multi-variate meta-analysis. (These are also called “sandwich” standard errors, which is up there on the list of great and evocative names for statistical procedures.) The great advantage of the sandwich approach is that it permits valid inferences for average effect sizes and meta-regression coefficients even if you don’t have correct covariance estimates (or variance estimates, for that matter).</p>
+<p>I recently heard from <a href="http://blogs.cuit.columbia.edu/let2119/">Beth Tipton</a> (who’s a graduate-school buddy) that she and her student have written an <a href="http://cran.r-project.org/web/packages/robumeta/index.html">R package</a> implementing the HTJ methods, including moment estimators for the between-study variance components. I want to try out the cluster-robust standard errors for a project I’m working on, but I also need to use REML estimators rather than the moment estimators. It turns out, it’s easy enough to do that by writing a couple of short functions. Here’s how.</p>
+<p>First, the <a href="http://cran.r-project.org/web/packages/metafor/index.html">metafor package</a> contains a very rich suite of meta-analytic methods, including for multi-variate meta-analysis. The only thing it lacks is sandwich standard errors. However, the <a href="http://cran.r-project.org/web/packages/sandwich/index.html">sandwich package</a> provides an efficient, well-structured framework for calculating all sorts of robust standard errors. All that’s needed are a few functions to make the packages talk to each other. Each of the functions described below takes as input a fitted multi-variate meta-analysis model, which is represented in R by an object of class <code>rma.mv</code>.</p>
+<p>First load up the packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, I need a <code>bread</code> method for objects of class <code>rma.mv</code>, which is a function that returns the <span class="math inline">\(p \times p\)</span> matrix <span class="math inline">\(\displaystyle{m \left(\sum_{i=1}^m \mathbf{X}_j' \mathbf{W}_j \mathbf{X}_j\right)^{-1}}\)</span>. The bread function is straight-forward because it is just a multiple of the model-based covariance matrix, which <code>rma.mv</code> objects store in the <code>vb</code> component:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bread.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">*</span> obj<span class="sc">$</span>vb  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I also need an <code>estfun</code> method for objects of class <code>rma.mv</code>, which is a function that returns an <span class="math inline">\(m \times p\)</span> matrix where row <span class="math inline">\(j\)</span> is equal to <span class="math inline">\(\mathbf{e}_j' \mathbf{W}_j \mathbf{X}_j\)</span>, <span class="math inline">\(j = 1,...,m\)</span>. The necessary pieces for the <code>estfun</code> method can also be pulled out of the components of <code>rma.mv</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>estfun.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">as.factor</span>(<span class="fu">findCluster</span>(obj)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(obj)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  WX <span class="ot">&lt;-</span> <span class="fu">chol2inv</span>(<span class="fu">chol</span>(obj<span class="sc">$</span>M)) <span class="sc">%*%</span> obj<span class="sc">$</span>X</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  rval <span class="ot">&lt;-</span> <span class="fu">by</span>(<span class="fu">cbind</span>(res, WX), cluster, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>             <span class="cf">function</span>(x) <span class="fu">colSums</span>(x[,<span class="dv">1</span>] <span class="sc">*</span> x[,<span class="sc">-</span><span class="dv">1</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>]))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  rval <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">unlist</span>(rval), <span class="fu">length</span>(<span class="fu">unique</span>(cluster)), obj<span class="sc">$</span>p, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(rval) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(obj<span class="sc">$</span>X)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  rval</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The remaining question is how to determine which of the components in the model should be used to define independent clusters. This is a little bit tricky because there are several different methods of specifying random effects in the <code>rma.mv</code> function. One way involves providing a list of formulas, each containing a factor associated with a unique random effect, such as <code>random = list( ~ 1 | classroom, ~ 1 | school)</code>. If this method of specifying random effects is used, the <code>rma.mv</code> object will have the component <code>withS</code> set to <code>TRUE</code>, and my approach is to simply take the factor with the smallest number of unique levels. This is perhaps a little bit presumptious, because the <code>withS</code> method could potentially be used to specify arbitrary random effects, where one level is not strictly nested inside another. However, probably the most common use will involve nested factors, so my assumption seems like a good starting point at least.</p>
+<p>Another approach to specifying random effects is to use a formula of the form <code>random = inner | outer</code>, in which case the <code>rma.mv</code> object will have the component <code>withG</code> set to <code>TRUE</code>. Here, it seems reasonable to use the <code>outer</code> factor for defining clusters. If both the <code>withS</code> and <code>withG</code> methods are used together, I’ll assume that the <code>withS</code> factors contain the outermost level.</p>
+<p>Finally, if <code>rma.mv</code> is used to estimate a fixed effects model without any random components, the clustering factor will have to be manually added to the <code>rma.mv</code> object in a component called <code>cluster</code>. For example, if you want to cluster on the variable <code>studyID</code> in the dataframe <code>dat</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rma_fit<span class="sc">$</span>cluster <span class="ot">&lt;-</span> dat<span class="sc">$</span>studyID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s code that implements these assumptions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>findCluster <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(obj<span class="sc">$</span>cluster)) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (obj<span class="sc">$</span>withS) {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      r <span class="ot">&lt;-</span> <span class="fu">which.min</span>(obj<span class="sc">$</span>s.nlevels)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>mf.r[[r]][[obj<span class="sc">$</span>s.names[r]]]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (obj<span class="sc">$</span>withG) {</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>mf.r[[<span class="dv">1</span>]][[obj<span class="sc">$</span>g.names[<span class="dv">2</span>]]]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"No clustering variable specified."</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>cluster</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  cluster</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With these three functions, you can then use <code>metafor</code> to fit a random effects model, <code>sandwich</code> to calculate the standard errors, and functions like <code>coeftest</code> from the package <code>lmtest</code> to run <span class="math inline">\(t\)</span>-tests. As a little bonus, here’s a function for probably the most common case of how you’d use the sandwich standard errors:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RobustResults <span class="ot">&lt;-</span> <span class="cf">function</span>(obj, <span class="at">adjust =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  vcov. <span class="ot">&lt;-</span> <span class="fu">sandwich</span>(obj, <span class="at">adjust =</span> adjust)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  df. <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">-</span> obj<span class="sc">$</span>p</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coeftest</span>(obj, <span class="at">vcov. =</span> vcov., <span class="at">df =</span> df.)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://gist.github.com/jepusto/11144005">See here</a> for a file containing the full code.</p>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p><a href="http://doi.org/10.1002/jrsm.1091">Tanner-Smith &amp; Tipton (2013)</a> provide an application of the cluster-robust method to a fictional dataset with 68 effect sizes nested within 15 studies. They call this a “hierarchical” dependence example because each effect size estimate is drawn from an independent sample, but dependence is induced because the experiments were all done in the same lab. For comparison purposes, here are the results produced by <code>robumeta</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>HTJ <span class="ot">&lt;-</span> <span class="fu">robu</span>(effectsize <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> hierdat, <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">studynum =</span> studyid,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.eff.size =</span> var, <span class="at">small =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>HTJ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RVE: Hierarchical Effects Model  
+
+Model: effectsize ~ 1 
+
+Number of clusters = 15 
+Number of outcomes = 68 (min = 1 , mean = 4.53 , median = 2 , max = 29 )
+Omega.sq = 0.1560802 
+Tau.sq = 0.06835547 
+
+               Estimate StdErr t-value dfs  P(|t|&gt;) 95% CI.L 95% CI.U Sig
+1 X.Intercept.     0.25 0.0598    4.18  14 0.000925    0.122    0.378 ***
+---
+Signif. codes: &lt; .01 *** &lt; .05 ** &lt; .10 *
+---</code></pre>
+</div>
+</div>
+<p>To exactly re-produce the results with <code>metafor</code>, I’ll need to use the weights proposed by HTJ. In their approach, effect size <span class="math inline">\(i\)</span> from study <span class="math inline">\(j\)</span> receives weight equal to <span class="math inline">\(\left(v_{ij} + \hat\omega^2 + \hat\tau^2\right)^{-1}\)</span>, where <span class="math inline">\(v_{ij}\)</span> is the sampling variance of the effect size, <span class="math inline">\(\hat\omega^2\)</span> is an estimate of the between-sample within-study variance, and <span class="math inline">\(\hat\tau^2\)</span> is an estimate of the between-study variance. After calculating these weights, I fit the model in metafor, calculate the sandwich covariance matrix, and replay the results:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hierdat<span class="sc">$</span>var_HTJ <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>var <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq <span class="co"># calculate weights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in hierdat$var + HTJ$mod_info$omega.sq: Recycling array of length 1 in vector-array arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in hierdat$var + HTJ$mod_info$omega.sq + HTJ$mod_info$tau.sq: Recycling array of length 1 in vector-array arithmetic is deprecated.
+  Use c() or as.vector() instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>meta1 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var_HTJ, <span class="at">data =</span> hierdat, <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>meta1<span class="sc">$</span>cluster <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>studyid <span class="co"># add clustering variable to the fitted model</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+        Estimate Std. Error t value  Pr(&gt;|t|)    
+intrcpt 0.249826   0.059762  4.1803 0.0009253 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The HTJ weights are not the only alternative–one could instead use weights that are exactly inverse variance under the posited model. For effect <span class="math inline">\(i\)</span> from study <span class="math inline">\(j\)</span>, these weights would be closer to <span class="math inline">\(\left(v_{ij} + \hat\omega^2 + k_j \hat\tau^2 \right)^{-1}\)</span>. For <span class="math inline">\(\hat\tau^2 &gt; 0\)</span>, the inverse-variance weights put proportionately less weight on studies containing many effects. These weights can be calculated in <code>metafor</code> as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>meta2 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sigma2 =</span> <span class="fu">c</span>(HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq, HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+        Estimate Std. Error t value Pr(&gt;|t|)   
+intrcpt 0.264422   0.086688  3.0503 0.008645 **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Curiously, the robust standard error increases under a weighting scheme that is more efficient if the model is correct.</p>
+<p>Finally, <code>metafor</code> provides ML and REML estimators for the between-sample and between-study random effects (the HTJ moment estimators are not available though). Here are the results based on REML estimators and the corresponding inverse-variance weights:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>meta3 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>meta3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 68; method: REML)
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed   factor 
+sigma^2.1  0.2263  0.4757     68     no     esid 
+sigma^2.2  0.0000  0.0000     15     no  studyid 
+
+Test for Heterogeneity:
+Q(df = 67) = 370.1948, p-val &lt; .0001
+
+Model Results:
+
+estimate      se    zval    pval   ci.lb   ci.ub      
+  0.2501  0.0661  3.7822  0.0002  0.1205  0.3797  *** 
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+        Estimate Std. Error t value  Pr(&gt;|t|)    
+intrcpt 0.250071   0.059796  4.1821 0.0009222 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The between-study variance estimate is tiny, particularly when compared to the between-sample within-study estimate. Despite the difference in variance estimates, the average effect size estimate is nearly identical to the estimate based on the HTJ approach.</p>
+<p><a href="https://gist.github.com/jepusto/11143798">See here</a> for the full code to reproduce this example.</p>
+</section>
+<section id="notes" class="level3">
+<h3 class="anchored" data-anchor-id="notes">Notes</h3>
+<p>It would be straight-forward to add a few more functions that provide robust standard errors for univariate meta-analysis models as well. All that it would take is to write <code>bread</code> and <code>estfun</code> methods for the class <code>rma.uni</code>.</p>
+<p>Also, Beth <a href="https://www.sree.org/conferences/2014s/program/downloads/abstracts/1089.pdf">has recently proposed</a> small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <a href="http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, &amp; Botts (2001)</a>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I’ve done here, by building out the <code>estfun</code> method to provide BRL results. It would take a little more thought, but actually it would be worth doing–and treating the general case–because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> A meta-sandwich</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> admin</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2014-04-21'</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>A common problem arising in many areas of meta-analysis is how to synthesize a set of effect sizes when the set includes multiple effect size estimates from the same study. It's often not possible to obtain all of the information you'd need in order to estimate the sampling covariances between those effect sizes, yet without that information, established approaches to modeling dependent effect sizes become inaccurate. <span class="co">[</span><span class="ot">Hedges, Tipton, &amp; Johnson</span><span class="co">](http://doi.org/10.1002/jrsm.5)</span> (2010, HTJ hereafter) proposed the use of cluster-robust  standard errors for multi-variate meta-analysis. (These are also called "sandwich" standard errors, which is up there on the list of great and evocative names for statistical procedures.) The great advantage of the sandwich approach is that it permits valid inferences for average effect sizes and meta-regression coefficients even if you don't have correct covariance estimates (or variance estimates, for that matter).</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>I recently heard from <span class="co">[</span><span class="ot">Beth Tipton</span><span class="co">](http://blogs.cuit.columbia.edu/let2119/)</span> (who's a graduate-school buddy) that she and her student have written an <span class="co">[</span><span class="ot">R package</span><span class="co">](http://cran.r-project.org/web/packages/robumeta/index.html)</span> implementing the HTJ methods, including moment estimators for the between-study variance components. I want to try out the cluster-robust standard errors for a project I'm working on, but I also need to use REML estimators rather than the moment estimators. It turns out, it's easy enough to do that by writing a couple of short functions. Here's how.</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>First, the <span class="co">[</span><span class="ot">metafor package</span><span class="co">](http://cran.r-project.org/web/packages/metafor/index.html)</span> contains a very rich suite of meta-analytic methods, including for multi-variate meta-analysis. The only thing it lacks is sandwich standard errors. However, the <span class="co">[</span><span class="ot">sandwich package</span><span class="co">](http://cran.r-project.org/web/packages/sandwich/index.html)</span> provides an efficient, well-structured framework for calculating all sorts of robust standard errors. All that's needed are a few functions to make the packages talk to each other. Each of the functions described below takes as input a fitted multi-variate meta-analysis model, which is represented in R by an object of class <span class="in">`rma.mv`</span>.</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>First load up the packages:</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(sandwich)</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="in">library(lmtest)</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>Next, I need a <span class="in">`bread`</span> method for objects of class <span class="in">`rma.mv`</span>, which is a function that returns the $p \times p$ matrix $\displaystyle{m \left(\sum_{i=1}^m \mathbf{X}_j' \mathbf{W}_j \mathbf{X}_j\right)^{-1}}$. The bread function is straight-forward because it is just a multiple of the model-based covariance matrix, which <span class="in">`rma.mv`</span> objects store in the <span class="in">`vb`</span> component:</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>bread.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">*</span> obj<span class="sc">$</span>vb  </span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>I also need an <span class="in">`estfun`</span> method for objects of class <span class="in">`rma.mv`</span>, which is a function that returns an $m \times p$ matrix where row $j$ is equal to $\mathbf{e}_j' \mathbf{W}_j \mathbf{X}_j$, $j = 1,...,m$. The necessary pieces for the <span class="in">`estfun`</span> method can also be pulled out of the components of <span class="in">`rma.mv`</span>:</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>estfun.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">as.factor</span>(<span class="fu">findCluster</span>(obj)))</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(obj)</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>  WX <span class="ot">&lt;-</span> <span class="fu">chol2inv</span>(<span class="fu">chol</span>(obj<span class="sc">$</span>M)) <span class="sc">%*%</span> obj<span class="sc">$</span>X</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>  rval <span class="ot">&lt;-</span> <span class="fu">by</span>(<span class="fu">cbind</span>(res, WX), cluster, </span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>             <span class="cf">function</span>(x) <span class="fu">colSums</span>(x[,<span class="dv">1</span>] <span class="sc">*</span> x[,<span class="sc">-</span><span class="dv">1</span>, <span class="at">drop =</span> <span class="cn">FALSE</span>]))</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  rval <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">unlist</span>(rval), <span class="fu">length</span>(<span class="fu">unique</span>(cluster)), obj<span class="sc">$</span>p, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(rval) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(obj<span class="sc">$</span>X)</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>  rval</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>The remaining question is how to determine which of the components in the model should be used to define independent clusters. This is a little bit tricky because there are several different methods of specifying random effects in the <span class="in">`rma.mv`</span> function. One way involves providing a list of formulas, each containing a factor associated with a unique random effect, such as <span class="in">`random = list( ~ 1 | classroom, ~ 1 | school)`</span>. If this method of specifying random effects is used, the <span class="in">`rma.mv`</span> object will have the component <span class="in">`withS`</span> set to <span class="in">`TRUE`</span>, and my approach is to simply take the factor with the smallest number of unique levels. This is perhaps a little bit presumptious, because the <span class="in">`withS`</span> method could potentially be used to specify arbitrary random effects, where one level is not strictly nested inside another. However, probably the most common use will involve nested factors, so my assumption seems like a good starting point at least.</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>Another approach to specifying random effects is to use a formula of the form <span class="in">`random = inner | outer`</span>, in which case the <span class="in">`rma.mv`</span> object will have the component <span class="in">`withG`</span> set to <span class="in">`TRUE`</span>. Here, it seems reasonable to use the <span class="in">`outer`</span> factor for defining clusters. If both the <span class="in">`withS`</span> and <span class="in">`withG`</span> methods are used together, I'll assume that the <span class="in">`withS`</span> factors contain the outermost level. </span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>Finally, if <span class="in">`rma.mv`</span> is used to estimate a fixed effects model without any random components, the clustering factor will have to be manually added to the <span class="in">`rma.mv`</span> object in a component called <span class="in">`cluster`</span>. For example, if you want to cluster on the variable <span class="in">`studyID`</span> in the dataframe <span class="in">`dat`</span>: </span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a><span class="in">rma_fit$cluster &lt;- dat$studyID</span></span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>Here's code that implements these assumptions:</span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>findCluster <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(obj<span class="sc">$</span>cluster)) {</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (obj<span class="sc">$</span>withS) {</span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a>      r <span class="ot">&lt;-</span> <span class="fu">which.min</span>(obj<span class="sc">$</span>s.nlevels)</span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>      cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>mf.r[[r]][[obj<span class="sc">$</span>s.names[r]]]</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (obj<span class="sc">$</span>withG) {</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>      cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>mf.r[[<span class="dv">1</span>]][[obj<span class="sc">$</span>g.names[<span class="dv">2</span>]]]</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"No clustering variable specified."</span>)</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>    cluster <span class="ot">&lt;-</span> obj<span class="sc">$</span>cluster</span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>  cluster</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a>With these three functions, you can then use <span class="in">`metafor`</span> to fit a random effects model, <span class="in">`sandwich`</span> to calculate the standard errors, and functions like <span class="in">`coeftest`</span> from the package <span class="in">`lmtest`</span> to run $t$-tests. As a little bonus, here's a function for probably the most common case of how you'd use the sandwich standard errors:</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>RobustResults <span class="ot">&lt;-</span> <span class="cf">function</span>(obj, <span class="at">adjust =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)  </span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>  vcov. <span class="ot">&lt;-</span> <span class="fu">sandwich</span>(obj, <span class="at">adjust =</span> adjust)</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>  df. <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">-</span> obj<span class="sc">$</span>p</span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coeftest</span>(obj, <span class="at">vcov. =</span> vcov., <span class="at">df =</span> df.)</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">See here</span><span class="co">](https://gist.github.com/jepusto/11144005)</span> for a file containing the full code.</span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example</span></span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Tanner-Smith &amp; Tipton (2013)</span><span class="co">](http://doi.org/10.1002/jrsm.1091)</span> provide an application of the cluster-robust method to a fictional dataset with 68 effect sizes nested within 15 studies. They call this a "hierarchical" dependence example because each effect size estimate is drawn from an independent sample, but dependence is induced because the experiments were all done in the same lab. For comparison purposes, here are the results produced by <span class="in">`robumeta`</span>:</span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>HTJ <span class="ot">&lt;-</span> <span class="fu">robu</span>(effectsize <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> hierdat, <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a>       <span class="at">studynum =</span> studyid,</span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.eff.size =</span> var, <span class="at">small =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>HTJ</span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a>To exactly re-produce the results with <span class="in">`metafor`</span>, I'll need to use the weights proposed by HTJ. In their approach, effect size $i$ from study $j$ receives weight equal to $\left(v_{ij} + \hat\omega^2 + \hat\tau^2\right)^{-1}$, where $v_{ij}$ is the sampling variance of the effect size, $\hat\omega^2$ is an estimate of the between-sample within-study variance, and $\hat\tau^2$ is an estimate of the between-study variance. After calculating these weights, I fit the model in metafor, calculate the sandwich covariance matrix, and replay the results:</span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a>hierdat<span class="sc">$</span>var_HTJ <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>var <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq <span class="co"># calculate weights</span></span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a>meta1 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var_HTJ, <span class="at">data =</span> hierdat, <span class="at">method =</span> <span class="st">"FE"</span>)</span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a>meta1<span class="sc">$</span>cluster <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>studyid <span class="co"># add clustering variable to the fitted model</span></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta1)</span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a>The HTJ weights are not the only alternative--one could instead use weights that are exactly inverse variance under the posited model. For effect $i$ from study $j$, these weights would be closer to $\left(v_{ij} + \hat\omega^2 + k_j \hat\tau^2 \right)^{-1}$. For $\hat\tau^2 &gt; 0$, the inverse-variance weights put proportionately less weight on studies containing many effects. These weights can be calculated in <span class="in">`metafor`</span> as follows:</span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a>meta2 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sigma2 =</span> <span class="fu">c</span>(HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq, HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq),</span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat)</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta2)</span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a>Curiously, the robust standard error increases under a weighting scheme that is more efficient if the model is correct. </span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a>Finally, <span class="in">`metafor`</span> provides ML and REML estimators for the between-sample and between-study random effects (the HTJ moment estimators are not available though). Here are the results based on REML estimators and the corresponding inverse-variance weights:</span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a>meta3 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat,</span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a>meta3</span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta3)</span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a>The between-study variance estimate is tiny, particularly when compared to the between-sample within-study estimate. Despite the difference in variance estimates, the average effect size estimate is nearly identical to the estimate based on the HTJ approach.</span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">See here</span><span class="co">](https://gist.github.com/jepusto/11143798)</span> for the full code to reproduce this example.</span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Notes</span></span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a>It would be straight-forward to add a few more functions that provide robust standard errors for univariate meta-analysis models as well. All that it would take is to write <span class="in">`bread`</span> and <span class="in">`estfun`</span> methods for the class <span class="in">`rma.uni`</span>. </span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a>Also, Beth <span class="co">[</span><span class="ot">has recently proposed</span><span class="co">](https://www.sree.org/conferences/2014s/program/downloads/abstracts/1089.pdf)</span> </span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a>small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, &amp; Botts (2001)</span><span class="co">](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf)</span>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I've done here, by building out the <span class="in">`estfun`</span> method to provide BRL results. It would take a little more thought, but actually it would be worth doing--and treating the general case--because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -377,7 +377,7 @@ real dpo_lpmf(int X, real mu, real phi) {
     ans = A + X * (phi * (1 + log(mu)) - 1) - lgamma(X + 1) + (1 - phi) * X * log(X);
   return ans;
 }
-vector dpo_cdf(real mu, real phi, int maxval) {
+vector dpo_cdf_vec(real mu, real phi, int maxval) {
   real d = exp(phi * (1 + log(mu)) - 1);
   real prob;
   int n = maxval + 1;
@@ -396,7 +396,7 @@ vector dpo_cdf(real mu, real phi, int maxval) {
   return cdf / cdf[n];
 }
 int dpo_quantile(real p, real mu, real phi, int maxval) {
-  vector[maxval + 1] cdf_vec = dpo_cdf(mu, phi, maxval);
+  vector[maxval + 1] cdf_vec = dpo_cdf_vec(mu, phi, maxval);
   int q = 0;
   while (cdf_vec[q + 1] < p) {
       q += 1;

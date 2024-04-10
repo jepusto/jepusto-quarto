@@ -4,11 +4,12 @@ project:
 website:
   title: "James E. Pustejovsky"
   navbar:
-    right:
+    left:
       - posts.qmd
 format:
   html:
     theme: sandstone
+    linkcolor: "#1f67db"
     css: styles.css
 
 

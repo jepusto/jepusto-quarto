@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -80,7 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -102,10 +109,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">James E. Pustejovsky</span>
     </a>
@@ -115,15 +122,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -170,14 +177,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This year, <a href="https://pure.qub.ac.uk/portal/en/persons/laura-dunne(7bf21af1-3fa0-4c1b-aab9-7b5f526cb1c9).html">Dr.&nbsp;Laura Dunne</a> and I are serving as program co-chairs for the AERA special interest group on <a href="http://www.aera.net/SIG176/Systematic-Reviews-and-Meta-Analysis-SIG176">Systematic Reviews and Meta-Analysis</a>, which is a great group of scholars interested in the methodology and application of research synthesis to questions in education and the broader social sciences. We had a strong batch of submissions to the SIG and (since we’re new and still a fairly small group) only a few sessions to fill with them. In assembling this year’s program, Laura and I noted a few common themes that stood out to us. In this post, I’ll highlight a few of them and hopefully whet your appetite to hear more during our sessions at this year’s convention. And if you want to skip the details for now, just take a look at our handy pdf with <a href="../../files/2019_SRMA_Schedule.pdf">the full SIG program</a>.</p>
+
+<p>This year, <a href="https://pure.qub.ac.uk/portal/en/persons/laura-dunne(7bf21af1-3fa0-4c1b-aab9-7b5f526cb1c9).html">Dr.&nbsp;Laura Dunne</a> and I are serving as program co-chairs for the AERA special interest group on <a href="http://www.aera.net/SIG176/Systematic-Reviews-and-Meta-Analysis-SIG176">Systematic Reviews and Meta-Analysis</a>, which is a great group of scholars interested in the methodology and application of research synthesis to questions in education and the broader social sciences. We had a strong batch of submissions to the SIG and (since we’re new and still a fairly small group) only a few sessions to fill with them. In assembling this year’s program, Laura and I noted a few common themes that stood out to us. In this post, I’ll highlight a few of them and hopefully whet your appetite to hear more during our sessions at this year’s convention. And if you want to skip the details for now, just take a look at our handy pdf with <a href="../..\files/2019_SRMA_Schedule.pdf">the full SIG program</a>.</p>
 <section id="sig-highlights" class="level2">
 <h2 class="anchored" data-anchor-id="sig-highlights">SIG highlights</h2>
 <p>First, two of this year’s presentations deal with <strong><em>network meta-analysis</em></strong>, an approach that goes beyond a single intervention-control comparison, to instead synthesize evidence on the comparative effects of multiple alternative interventions (not just red pill vs blue pill, but also red versus green, green versus blue, etc.). Network meta-analysis is increasingly important in clinical medicine (for example, <a href="https://ora.ox.ac.uk/objects/uuid:95a796fa-e842-4e11-bee6-b0b2237a2541">here’s a recent synthesis</a> examining the relative efficacy of 21 different anti-depressant drugs) but it is still relatively rare in education and other social science meta-analyses. Not in this year’s SIG program though! Both our <a href="http://tinyurl.com/ybfxaqq9">Sunday morning paper session</a> and <a href="http://tinyurl.com/y773wb5x">Monday round table</a> feature applications of network meta-analysis: one on <a href="http://tinyurl.com/y7ehtuhf">distance and face-to-face learning</a>, and one on <a href="http://tinyurl.com/y8x5dh7f">interventions for treatment of post-traumatic stress disorder</a>.</p>
 <p>Second, <strong><em>publication bias</em></strong> and other forms of <strong><em>outcome reporting bias</em></strong> remain one of the most vexing challenges for meta-analysis. Our <a href="http://tinyurl.com/ybfxaqq9">Sunday morning paper session</a> includes an innovative methodological study on <a href="http://tinyurl.com/yaze63jr">how to detect selective outcome reporting in multi-level meta-analyses</a>—an important setting where publication bias techniques have yet to be explored. Even with very sophisticated statistical tools, though, the best way to address publication bias is probably to try and prevent it in the first place. To that end, our <a href="http://tinyurl.com/y773wb5x">Monday round table session</a> includes a presentation on <a href="http://tinyurl.com/y6vslf6m">locating unreported outcome data for use in meta-analysis</a>.</p>
 <p>Third, the Systematic Reviews and Meta-Analysis SIG has always included <strong><em>a mix of theory and practice</em></strong>. In this year’s program, we’ve tried to preserve that mix within each of our sessions, so that our Sunday paper session and Monday round table each include both methodological research and substantive applications of meta-analysis. We hope that this will promote interesting and valuable dialogues within our community.</p>
 <p>Finally, I am very excited that <a href="http://tinyurl.com/y45wbgfe">our business meeting</a> will feature an address by <strong><em><a href="https://scholar.gse.upenn.edu/maynard">Dr.&nbsp;Rebecca Maynard</a></em></strong>, who is the University Trustee Chair Professor of Education and Social Policy at the University of Pennsylvania Graduate School of Education, and an influential voice in the use of research synthesis methods to inform education and social policy. She’ll be speaking on <strong><em>Expanded Roles for Meta-Analysis in Supporting Evidence-Based Policy and Practice</em></strong>.</p>
-<p>Be sure to check out <a href="../../files/2019_SRMA_Schedule.pdf">the SIG program</a> for more details and other sessions of interest. I look forward to seeing everyone in Toronto!</p>
+<p>Be sure to check out <a href="../..\files/2019_SRMA_Schedule.pdf">the SIG program</a> for more details and other sessions of interest. I look forward to seeing everyone in Toronto!</p>
 
 
 <!-- -->
@@ -315,10 +323,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -328,8 +353,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -341,7 +375,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -385,6 +542,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -410,6 +568,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -495,6 +679,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Be sure to check out <span class="co">[</span><span class="ot">the SIG program</span><span class="co">](/files/2019_SRMA_Schedule.pdf)</span> for more details and other sessions of interest. I look forward to seeing everyone in Toronto!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

@@ -6,23 +6,21 @@ about:
   image-shape: rounded
   links:
     - icon: envelope
-      text: Email
       href: 'mailto:pustejovsky@wisc.edu'
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/jepusto
     - icon: github
-      text: Github
       href: https://github.com/jepusto
-    - icon: "{{< fa brands bluesky >}}"
-      text: "BlueSky"
-      href: https://bsky.app/profile/jepusto.bsky.social
-    - icon: "{{< ai google-scholar >}}"
-      text: "Google Scholar"
+    - text: "{{< ai google-scholar >}}"
       href: https://scholar.google.com/citations?user=vrPDTgsAAAAJ
-    - icon: "{{< ai orcid >}}"
-      text: "ORCiD"
+    - text: "{{< ai osf >}}"
+      href: https://osf.io/grxrm/
+    - text: "{{< ai orcid >}}"
       href: https://orcid.org/0000-0003-0591-9465
+    - text: "{{< fa brands bluesky >}} BlueSky"
+      href: https://bsky.app/profile/jepusto.bsky.social
+    - text: "{{< fa brands mastodon >}}"
+      href: https://fediscience.org/@jepusto
+    - icon: twitter
+      href: https://twitter.com/jepusto
 ---
 
 

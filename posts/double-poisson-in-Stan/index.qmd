@@ -136,7 +136,7 @@ The function below computes the cumulative distribution function over the range 
 
 ```{r cdf}
 stancode_cdf <- " 
-vector dpo_cdf(real mu, real phi, int maxval) {
+vector dpo_cdf_vec(real mu, real phi, int maxval) {
   real d = exp(phi * (1 + log(mu)) - 1);
   real prob;
   int n = maxval + 1;
@@ -170,7 +170,7 @@ test_cdf <-
   ) %>%
   mutate(
     maxval = 20 * mu / pmin(1, phi),
-    my_cdf = pmap(.l = list(mu = mu, phi = phi, maxval = maxval), .f = dpo_cdf)
+    my_cdf = pmap(.l = list(mu = mu, phi = phi, maxval = maxval), .f = dpo_cdf_vec)
   ) %>%
   unnest(my_cdf) %>%
   filter(!is.nan(my_cdf)) %>%
@@ -204,7 +204,7 @@ The function below calculates quantiles by finding the minimum value of $q \geq 
 
 ```{r quantile}
 stancode_quantile <- " 
-vector dpo_cdf(real mu, real phi, int maxval) {
+vector dpo_cdf_vec(real mu, real phi, int maxval) {
   real d = exp(phi * (1 + log(mu)) - 1);
   real prob;
   int n = maxval + 1;
@@ -226,7 +226,7 @@ array[] int dpo_quantiles(vector p, real mu, real phi, int maxval) {
   int N = rows(p);
   array[N] int qs;
   array[N] int indices = sort_indices_asc(p);
-  vector[maxval + 1] cdf_vec = dpo_cdf(mu, phi, maxval);
+  vector[maxval + 1] cdf_vec = dpo_cdf_vec(mu, phi, maxval);
   int j = 0;
   for (i in indices) {
     while (cdf_vec[j + 1] < p[i]) {
@@ -290,7 +290,7 @@ real dpo_lpmf(int X, real mu, real phi) {
     ans = A + X * (phi * (1 + log(mu)) - 1) - lgamma(X + 1) + (1 - phi) * X * log(X);
   return ans;
 }
-vector dpo_cdf(real mu, real phi, int maxval) {
+vector dpo_cdf_vec(real mu, real phi, int maxval) {
   real d = exp(phi * (1 + log(mu)) - 1);
   real prob;
   int n = maxval + 1;
@@ -312,7 +312,7 @@ array[] int dpo_quantiles(vector p, real mu, real phi, int maxval) {
   int N = rows(p);
   array[N] int qs;
   array[N] int indices = sort_indices_asc(p);
-  vector[maxval + 1] cdf_vec = dpo_cdf(mu, phi, maxval);
+  vector[maxval + 1] cdf_vec = dpo_cdf_vec(mu, phi, maxval);
   int j = 0;
   for (i in indices) {
     while (cdf_vec[j + 1] < p[i]) {
@@ -331,7 +331,7 @@ array[] int dpo_sample_rng(int n, real mu, real phi, int maxval) {
   return x;
 }
 int dpo_quantile(real p, real mu, real phi, int maxval) {
-  vector[maxval + 1] cdf_vec = dpo_cdf(mu, phi, maxval);
+  vector[maxval + 1] cdf_vec = dpo_cdf_vec(mu, phi, maxval);
   int q = 0;
   while (cdf_vec[q + 1] < p) {
       q += 1;

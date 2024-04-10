@@ -119,7 +119,7 @@ meta2 <- rma.mv(yi = effectsize ~ 1, V = var,
                  sigma2 = c(HTJ$mod_info$omega.sq, HTJ$mod_info$tau.sq),
                  data = hierdat)
 RobustResults(meta2)
-````
+```
 
 Curiously, the robust standard error increases under a weighting scheme that is more efficient if the model is correct. 
 
@@ -130,8 +130,9 @@ meta3 <- rma.mv(yi = effectsize ~ 1, V = var,
                  data = hierdat,
                 method = "REML")
 meta3
+
 RobustResults(meta3)
-````
+```
 
 The between-study variance estimate is tiny, particularly when compared to the between-sample within-study estimate. Despite the difference in variance estimates, the average effect size estimate is nearly identical to the estimate based on the HTJ approach.
 

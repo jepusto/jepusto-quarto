@@ -70,7 +70,7 @@ library(tidyr)
 library(dplyr)
 library(ggplot2)
 
-load("../../static/files/PET-PEESE-Simulation-Results.Rdata")
+load("PET-PEESE-Simulation-Results.Rdata")
 
 ```
 
@@ -121,7 +121,10 @@ results <-
     selection_level = factor(p_RR, levels = c(1, 0.2, 0), labels = c("No publication bias", "Intermediate publication bias", "Strong publication bias"))
   ) %>%
   select(-reps, -seed, -studies, -na, -nb, -n_min) %>%
-  unnest() %>%
+  mutate(
+    res = purrr::map(res, ungroup)
+  ) %>%
+  unnest(res) %>%
   mutate(
     RMSE = sqrt((est_M - mean_effect)^2 + est_V)
   )

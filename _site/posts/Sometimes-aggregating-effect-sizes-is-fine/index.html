@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2019-07-02">
+
+<title>James E. Pustejovsky - Sometimes, aggregating effect sizes is fine</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">James E. Pustejovsky</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Sometimes, aggregating effect sizes is fine</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                                <div class="quarto-categories">
+                <div class="quarto-category">effect size</div>
+                <div class="quarto-category">meta-analysis</div>
+                <div class="quarto-category">dependent effect sizes</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>admin </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 2, 2019</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>In meta-analyses of psychology, education, and other social science research, it is very common that some of the included studies report more than one relevant effect size. For example, in a meta-analysis of intervention effects on reading outcomes, some studies may have used multiple measures of reading outcomes (each of which meets inclusion criteria), or may have measured outcomes at multiple follow-up times; some studies might have also investigated more than one version of an intervention, and it might be of interest to include effect sizes comparing each version to the no-intervention control condition; and it’s even possible that some studies may have <em>all</em> of these features, potentially contributing <em>lots</em> of effect size estimates.</p>
+<p>These situations create a technical challenge for conducting a meta-analysis. Because effect size estimates from the same study are correlated, it’s not usually reasonable to use methods that are premised on each effect size estimate being independent (i.e., univariate methods). Instead, the analyst needs to apply methods that take into account the dependencies among estimates coming from the same study. It used to be common to use ad hoc approaches for handling dependence, such as averaging the estimates together or selecting one estimate per study and then using univariate methods <span class="citation" data-cites="Becker2000multivariate">(cf. <a href="#ref-Becker2000multivariate" role="doc-biblioref">Becker, 2000</a>)</span>. More sophisticated, multivariate meta-analysis (MVMA) models that directly account for correlations among the effect size estimates had been developed <span class="citation" data-cites="Kalaian1996multivariate">(<a href="#ref-Kalaian1996multivariate" role="doc-biblioref">Kalaian &amp; Raudenbush, 1996</a>)</span> but were challenging to implement and so rarely used (at least, that’s my impression). More recently, techniques such as multi-level meta-analysis [MLMA; <span class="citation" data-cites="VandenNoortgate2013threelevel">Van den Noortgate et al. (<a href="#ref-VandenNoortgate2013threelevel" role="doc-biblioref">2013</a>)</span>; <span class="citation" data-cites="VandenNoortgate2015metaanalysis">Van den Noortgate et al. (<a href="#ref-VandenNoortgate2015metaanalysis" role="doc-biblioref">2015</a>)</span>] and robust variance estimation [RVE; <span class="citation" data-cites="Hedges2010robust">Hedges et al. (<a href="#ref-Hedges2010robust" role="doc-biblioref">2010</a>)</span>] have emerged, which account for dependencies while using all available effect size estimates and still being feasible to implement. These new techniques of MLMA and RVE are starting to be more widely adopted in practice, and it is not implausible that they will become the standard approach in psychological and educational meta-analysis within a few years.</p>
+<p>Given the extent of interest in MLMA and RVE, one might wonder: are the older ad hoc approaches <em>ever</em> reasonable or appropriate? I think that some are, under certain circumstances. In this post I’ll highlight one such circumstance, where aggregating effect size estimates is not only reasonable but leads to <em>exactly the same results</em> as a multivariate model. This occurs when two conditions are met:</p>
+<ol type="1">
+<li>We are not interested in within-study heterogeneity of effects and</li>
+<li>Any predictors included in the model vary between studies but not within a given study (i.e., effect sizes from the same study all have the same values of the predictors).</li>
+</ol>
+<p>In short, if all we care about is understanding between-study variation in effect sizes, then it is fine to aggregate them up to the study level.</p>
+<section id="a-model-thats-okay-to-average" class="level1">
+<h1>A model that’s okay to average</h1>
+<p>To make this argument precise, let me lay out a model where it applies. For full generality, I’ll consider a meta-regression model for a collection of <span class="math inline">\(K\)</span> studies, where study <span class="math inline">\(k\)</span> contributes <span class="math inline">\(J_k \geq 1\)</span> effect size estimates. Let <span class="math inline">\(T_{jk}\)</span> denote effect size estimate <span class="math inline">\(j\)</span> in study <span class="math inline">\(k\)</span>, with sampling variance <span class="math inline">\(S_{jk}^2\)</span>. Effect size estimates from study <span class="math inline">\(k\)</span> maybe be correlated at the sampling level, with correlation <span class="math inline">\(\rho_{ijk}\)</span> between effect size estimates <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> from study <span class="math inline">\(k\)</span>. I will assume that the correlations are known, although in practice one might need to just take a guess about the degree of correlation, such as by assuming <span class="math inline">\(\rho_{ijk} = 0.7\)</span> for all pairs of estimates from each included study. Let <span class="math inline">\(\mathbf{x}_k\)</span> be a row vector of predictor variables for study <span class="math inline">\(k\)</span>. Note that the predictors do not have a subscript <span class="math inline">\(j\)</span> because I’m assuming here that they are constant within a study.</p>
+<p>A multivariate meta-regression model for these data might be: <span class="math display">\[
+T_{jk} = \mathbf{x}_k \boldsymbol\beta + u_k + e_{jk},
+\]</span> where <span class="math inline">\(u_k\)</span> is a between-study random effect with variance <span class="math inline">\(\tau^2\)</span> and <span class="math inline">\(e_{jk}\)</span> is the sampling error for effect size <span class="math inline">\(j\)</span> from study <span class="math inline">\(k\)</span>, assumed to have known variance <span class="math inline">\(S_{jk}^2\)</span>. Errors from the same study are correlated, so <span class="math inline">\(\text{Cov}(e_{ik}, e_{jk}) = \rho_{ijk} S_{ik} S_{jk}\)</span>. This is a commonly considered model for dependent effect size estimates. In the paper that introduced RVE, <span class="citation" data-cites="Hedges2010robust">Hedges et al. (<a href="#ref-Hedges2010robust" role="doc-biblioref">2010</a>)</span> termed it the “correlated effects” model (implemented in <code>robumeta</code> as <code>model = "CORR"</code>, which is the default). Note that it also satisfies the conditions I outlined above: no within-study random effects, predictors that vary only between study. We can fit it using the <code>rma.mv()</code> function in the <code>metafor</code> package, as I will demonstrate below.</p>
+<p>An alternative to this multivariate model would be to first average the effects within each study, then fit a univariate random effects model. Just how we do the averaging will matter: we’ll need to use inverse-variance weighting. Let <span class="math inline">\(\mathbf{T}_k\)</span> be the <span class="math inline">\(J_k \times 1\)</span> vector of effect size estimates from study <span class="math inline">\(k\)</span>. Let <span class="math inline">\(\mathbf{S}_k\)</span> be the <span class="math inline">\(J_k \times J_k\)</span> sampling covariance matrix for <span class="math inline">\(\mathbf{T}_k\)</span>, and let <span class="math inline">\(\mathbf{1}_k\)</span> be a <span class="math inline">\(J_k \times 1\)</span> vector of 1s. The inverse-variance weighted average of the effects from study k can then be written as <span class="math display">\[
+\bar{T}_k = V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{T}_k,
+\]</span> where <span class="math inline">\(V_k = 1 / (\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k)\)</span>. The quantity <span class="math inline">\(V_k\)</span> is also the sampling variance of <span class="math inline">\(\bar{T}_k\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>A conventional, univariate random effects model for the averaged effect sizes is <span class="math display">\[
+\bar{T}_k = \mathbf{x}_k \boldsymbol\beta + u_k + \bar{e}_k,
+\]</span> where <span class="math inline">\(\text{Var}(u_k) = \tau^2\)</span> and <span class="math inline">\(\text{Var}(\bar{e}_k) = V_k\)</span>. This model can be fit using <code>rma.uni</code> from <code>metafor</code>. In fact, doing so will yield the same estimates of model parameters as fitting the multivariate model—for all intents and purposes, they are equivalent models. There are at several different ways to see that this equivalence holds. I’ll offer three, from most practical to most theoretical. (If you’d rather just take my word that this claim is true, feel free to skip down to the <a href="#so-what">last section</a>, where I comment on implications.)</p>
+</section>
+<section id="computational-equivalence" class="level1">
+<h1>Computational equivalence</h1>
+<p>One good way to check the equivalence of the univariate and multivariate models is to apply both to a dataset. I’ll use the data from a stylized example described in <span class="citation" data-cites="TannerSmith2013robust">Tanner-Smith &amp; Tipton (<a href="#ref-TannerSmith2013robust" role="doc-biblioref">2013</a>)</span>, looking at the effects of alcohol abuse interventions on alcohol consumption among adolescents and young adults. (The data are simulated for teaching purposes, so don’t infer anything about real life from the results below!) The data are included in the <code>robumeta</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corrdat, <span class="at">package =</span> <span class="st">"robumeta"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sort by study</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> <span class="fu">arrange</span>(corrdat, studyid, esid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The data consist of 172 effect sizes from 39 studies. Some studies report effects at multiple follow-up times and/or for multiple programs compared to a common control condition, leading to dependent effect size estimates.The data also include variables encoding a variety of sample and study characteristics, such as whether the study was conducted with a college student sample and the gender composition of the sample:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(corrdat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  esid studyid effectsize        var binge followup males college
+3 4006       1  0.2086383 0.03246468     1 51.42857    67       0
+1 4016       1  0.2244635 0.03244931     1 51.42857    67       0
+2 4026       1  0.3151743 0.03278697     1 51.42857    67       0
+5 3513       2  0.2220929 0.01972874     0 17.14286    81       1
+9 3514       2 -0.1922628 0.02031393     0 17.14286    86       1
+8 3556       2  0.3273109 0.01987042     0 17.14286    81       1</code></pre>
+</div>
+</div>
+<p>Suppose that we are interested in estimating the differences in average effects by type of sample (college versus adolescent), controlling for the proportion of males in the study. For some reason, there is within-study variation in the percentage of males, so I’ll take the study-level average for this covariate:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">males =</span> <span class="fu">mean</span>(males))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then fit this model using a multi-variate meta-regression in metafor.</p>
+<p>In order to estimate the model, we’ll first need to create a variance-covariance matrix for the effect size estimates in each study, which can be accomplished using <code>impute_covariance_matrix</code> from <code>clubSandwich</code> (<a href="../..\imputing-covariance-matrices-for-multi-variate-meta-analysis/">further details here</a>). I’ll assume a correlation of 0.6 between pairs of effect sizes within a given study:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> corrdat<span class="sc">$</span>var, <span class="at">cluster =</span> corrdat<span class="sc">$</span>studyid, <span class="at">r =</span> <span class="fl">0.6</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>MV_fit <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(effectsize <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">V =</span> V_list, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> corrdat, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>MV_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Multivariate Meta-Analysis Model (k = 172; method: REML)
+
+Variance Components:
+
+            estim    sqrt  nlvls  fixed   factor 
+sigma^2    0.0590  0.2429     39     no  studyid 
+
+Test for Residual Heterogeneity:
+QE(df = 169) = 815.2448, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:3):
+QM(df = 2) = 9.9016, p-val = 0.0071
+
+Model Results:
+
+         estimate      se     zval    pval    ci.lb    ci.ub     
+intrcpt    0.6466  0.2693   2.4007  0.0164   0.1187   1.1744   * 
+college    0.3703  0.1317   2.8123  0.0049   0.1122   0.6283  ** 
+males     -0.0076  0.0038  -1.9832  0.0473  -0.0152  -0.0001   * 
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Alternately, we could aggregate the effects up to the study level and then fit a univariate meta-regression using the same moderators. Here is a function to calculate the aggregated effect size estimates and variances:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>agg_effects <span class="ot">&lt;-</span> <span class="cf">function</span>(yi, vi, <span class="at">r =</span> <span class="fl">0.6</span>) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  corr_mat <span class="ot">&lt;-</span> r <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">-</span> r, <span class="at">nrow =</span> <span class="fu">length</span>(vi))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  sd_mat <span class="ot">&lt;-</span> <span class="fu">tcrossprod</span>(<span class="fu">sqrt</span>(vi))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  V_inv_mat <span class="ot">&lt;-</span> <span class="fu">chol2inv</span>(<span class="fu">chol</span>(sd_mat <span class="sc">*</span> corr_mat))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sum</span>(V_inv_mat)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">es =</span> V <span class="sc">*</span> <span class="fu">sum</span>(yi <span class="sc">*</span> V_inv_mat), <span class="at">var =</span> V)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s the data-munging:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>corrdat_agg <span class="ot">&lt;-</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">es =</span> <span class="fu">list</span>(<span class="fu">agg_effects</span>(<span class="at">yi =</span> effectsize, <span class="at">vi =</span> var, <span class="at">r =</span> <span class="fl">0.6</span>)),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">males =</span> <span class="fu">mean</span>(males),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">college =</span> <span class="fu">mean</span>(college)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cols` is now required when using `unnest()`.
+ℹ Please use `cols = c(es)`.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(corrdat_agg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  studyid      es    var males college
+    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1       1  0.249  0.0239  67         0
+2       2 -0.0210 0.0129  81         1
+3       3  0.726  0.0819  76.2       0
+4       4  0.370  0.0431  80         1
+5       5 -0.0911 0.0281  79         0
+6       6 -0.416  0.0111  74         0</code></pre>
+</div>
+</div>
+<p>And here’s the meta-regression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>uni_fit <span class="ot">&lt;-</span> <span class="fu">rma.uni</span>(es <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">vi =</span> var, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat_agg, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>uni_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Mixed-Effects Model (k = 39; tau^2 estimator: REML)
+
+tau^2 (estimated amount of residual heterogeneity):     0.0590 (SE = 0.0242)
+tau (square root of estimated tau^2 value):             0.2429
+I^2 (residual heterogeneity / unaccounted variability): 61.42%
+H^2 (unaccounted variability / sampling variability):   2.59
+R^2 (amount of heterogeneity accounted for):            19.12%
+
+Test for Residual Heterogeneity:
+QE(df = 36) = 96.7794, p-val &lt; .0001
+
+Test of Moderators (coefficients 2:3):
+QM(df = 2) = 9.9016, p-val = 0.0071
+
+Model Results:
+
+         estimate      se     zval    pval    ci.lb    ci.ub     
+intrcpt    0.6466  0.2693   2.4007  0.0164   0.1187   1.1744   * 
+college    0.3703  0.1317   2.8123  0.0049   0.1122   0.6283  ** 
+males     -0.0076  0.0038  -1.9832  0.0473  -0.0152  -0.0001   * 
+
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>The heterogeneity estimates are nearly equal (the difference is due to using numerical optimization):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>MV_fit<span class="sc">$</span>sigma2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0589972</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>uni_fit<span class="sc">$</span>tau2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05899673</code></pre>
+</div>
+</div>
+<p>And the meta-regression coefficient estimates are identical to six decimal places:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(MV_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     intrcpt      college        males 
+ 0.646561371  0.370274721 -0.007633517 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(uni_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     intrcpt      college        males 
+ 0.646561352  0.370274307 -0.007633519 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">coef</span>(MV_fit), <span class="fu">coef</span>(uni_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Mean relative difference: 4.243578e-07"</code></pre>
+</div>
+</div>
+<p>For this example we arrive at the same results using either multivariate meta-analysis or univariate meta-analysis of aggregated effect size estimates.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The main limitation of this illustration is generality—how can we be sure that these results aren’t just a quirk of this particular dataset? Would we get the same results for <em>any</em> dataset?</p>
+</section>
+<section id="from-multivariate-to-univariate-model" class="level1">
+<h1>From multivariate to univariate model</h1>
+<p>Here’s another, somewhat more general perspective on the relationship between the models: the univariate model can be <em>derived</em> directly from the multivariate one. Start with the multivariate model in matrix form: <span class="math display">\[
+\mathbf{T}_k = \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k + u_k \mathbf{1}_k + \mathbf{e}_k,
+\]</span> where <span class="math inline">\(\mathbf{e}_k\)</span> is the vector of sampling errors for study <span class="math inline">\(k\)</span>, with <span class="math inline">\(\text{Var}(\mathbf{e}_k) = \mathbf{S}_k\)</span>. Pre-multiply both sides by <span class="math inline">\(V_k \mathbf{1}_k’ \mathbf{S}_k^{-1}\)</span> to get <span class="math display">\[
+\begin{aligned}
+V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{T}_k &amp;= V_k \left(\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k\right) \mathbf{x}_k \boldsymbol\beta + u_k V_k \left(\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k\right) + V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{e}_k \\
+\bar{T}_k &amp;= \mathbf{x}_k \boldsymbol\beta + u_k + \bar{e}_k,
+\end{aligned}
+\]</span> where <span class="math inline">\(\text{Var}(\bar{e}_k) = V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{S}_k \mathbf{S}_k^{-1} \mathbf{1}_k V_k = V_k\)</span>, just as in the univariate model.</p>
+<p>This demonstrates that the parameters of the two models are the same quantities—that is, both models are estimating the same thing. But that would also hold if we used <em>any</em> weighted average of <span class="math inline">\(\mathbf{T}_k\)</span>—it needn’t be inverse-variance. The only thing that would be different is <span class="math inline">\(\text{Var}(\bar{e}_k)\)</span>. To fully establish the equivalence of the two models, I’ll examine the likelihoods of each model.</p>
+</section>
+<section id="equivalence-of-likelihoods" class="level1">
+<h1>Equivalence of likelihoods</h1>
+<p>Multivariate meta-analysis models are typically estimated by full maximum likelihood (FML) or restricted maximum likelihood methods. FML and RML are also commonly used for univariate meta-analysis. With these methods, estimates are obtained as the parameter values that maximize the log likelihood of the model, given the data (or the restricted likelihood for RML). Therefore, we can establish the exact equivalence of parameter estimates by showing that the log likelihood of the univariate and multivariate models differ by a constant value (so that the location of the maxima are identical).</p>
+<section id="full-likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="full-likelihood">Full likelihood</h2>
+<p>For the univariate model, the log-likelihood contribution of study <span class="math inline">\(k\)</span>: <span class="math display">\[
+l^{U}_k\left(\boldsymbol\beta, \tau^2\right) = -\frac{1}{2} \log\left(\tau^2 + V_k\right) - \frac{1}{2} \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}.
+\]</span> For the multivariate model, the log-likelihood contribution of study <span class="math inline">\(k\)</span> is: <span class="math display">\[
+l^{MV}_k\left(\boldsymbol\beta, \tau^2\right) = -\frac{1}{2} A -\frac{1}{2} B
+\]</span> where <span class="math display">\[
+A = \log\left|\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right|
+\]</span> and <span class="math display">\[
+B = \left(\mathbf{T}_k - \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left(\mathbf{T}_k - \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k\right).
+\]</span> The term <span class="math inline">\(A\)</span> can be rearranged as <span class="math display">\[
+A = \log\left|\left(\tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1} + \mathbf{I}_k\right) \mathbf{S}_k\right|
+\]</span> where <span class="math inline">\(\mathbf{I}_k\)</span> is a <span class="math inline">\(J_k \times J_k\)</span> identity matrix. One of the properties of determinants is that the determinant of a product of two matrices is equal to the product of the determinants. Another is that, for two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>, <span class="math inline">\(\left|\mathbf{I} + \mathbf{u}\mathbf{v}'\right| = 1 + \mathbf{v}'\mathbf{u}\)</span>. Applying both of these properties, it follows that <span class="math display">\[
+\begin{aligned}
+A &amp;= \log\left|\left(\tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1} + \mathbf{I}_k\right) \mathbf{S}_k\right| \\
+&amp;= \log \left( \left|\mathbf{I}_k + \tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1}\right| \left|\mathbf{S}_k\right|\right) \\
+&amp;= \log \left(1 + \frac{\tau^2}{V_k}\right) + \log \left|\mathbf{S}_k\right| \\
+&amp;= \log(\tau^2 + V_k) - \log(V_k) + \log \left|\mathbf{S}_k\right|.
+\end{aligned}
+\]</span> The <span class="math inline">\(B\)</span> term takes a little more work. From <a href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula">the Sherman-Morrison identity</a>, we have that: <span class="math display">\[
+\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} = \mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1},
+(\#eq:Sherman)
+\]</span> by which it follows that <span class="math display">\[
+\mathbf{1}_k'\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1}\mathbf{1}_k = \frac{1}{\tau^2 + V_k}.
+(\#eq:inversevariance)
+\]</span> Now, rearrange the <span class="math inline">\(B\)</span> term to get <span class="math display">\[
+\begin{aligned}
+B &amp;= \left[\mathbf{T}_k - \bar{T}_k \mathbf{1}_k + \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k\right]' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left[\mathbf{T}_k - \bar{T}_k \mathbf{1}_k + \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k\right] \\
+&amp;= B_1 + 2 B_2 + B_3
+\end{aligned}
+\]</span> where <span class="math display">\[
+\begin{aligned}
+B_1 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) \\
+B_2 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \\
+B_3 &amp;= \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)
+\end{aligned}
+\]</span> Applying @ref(eq:Sherman) to <span class="math inline">\(B_1\)</span>, <span class="math display">\[
+\begin{aligned}
+B_1 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left[\mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\right] \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) \\
+&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) - \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) \\
+&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right).
+\end{aligned}
+\]</span> The second term drops out because <span class="math inline">\(\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k = \bar{T}_k / V_k - \bar{T}_k / V_k = 0\)</span>. Along similar lines, <span class="math display">\[
+\begin{aligned}
+B_2 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left[\mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\right] \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \\
+&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) - \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \\
+&amp;= 0.
+\end{aligned}
+\]</span> Finally, the third term simplifies using @ref(eq:inversevariance): <span class="math display">\[
+B_3 = \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}.
+\]</span> Thus, the full <span class="math inline">\(B\)</span> term reduces to <span class="math display">\[
+B = \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) + \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}
+\]</span> and the multivariate log likelihood contribution is <span class="math display">\[
+\begin{aligned}
+l^{MV}_k\left(\boldsymbol\beta, \tau^2\right) &amp;= -\frac{1}{2} \log(\tau^2 + V_k) + \frac{1}{2} \log(V_k) - \frac{1}{2}\log \left|\mathbf{S}_k\right| - \frac{1}{2} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) -\frac{1}{2} \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k} \\
+&amp;= l^U_k\left(\boldsymbol\beta, \tau^2\right) + \frac{1}{2} \log(V_k) - \frac{1}{2}\log \left|\mathbf{S}_k\right| - \frac{1}{2} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right).
+\end{aligned}
+\]</span> The last three terms depend on the data (<span class="math inline">\(\mathbf{T}_k\)</span> and <span class="math inline">\(\mathbf{S}_k\)</span>) but not on the parameters <span class="math inline">\(\boldsymbol\beta\)</span> or <span class="math inline">\(\tau^2\)</span>. Therefore, the univariate and multivariate likelihoods will be maximized at the same parameter values, i.e., the FML estimators are identical.</p>
+</section>
+<section id="restricted-likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="restricted-likelihood">Restricted likelihood</h2>
+<p>In practice, it is more common to use RML estimation rather than FML. The RML estimators maximize a different objective function that includes the full likelihood, plus an additional term. The RML objective function for the univariate model is <span class="math display">\[
+\sum_{k=1}^K l^U_k(\boldsymbol\beta, \tau^2) - \frac{1}{2} R^U(\tau^2)
+\]</span> where <span class="math display">\[
+R^U(\tau^2) = \log \left|\sum_{k=1}^k\frac{\mathbf{x}_k' \mathbf{x}_k}{\tau^2 + V_k} \right|.
+\]</span> For the multivariate model, the RML objective is <span class="math display">\[
+\sum_{k=1}^K l^{MV}_k(\boldsymbol\beta, \tau^2) - \frac{1}{2} R^{MV}(\tau^2).
+\]</span> where <span class="math display">\[
+\begin{aligned}
+R^{MV}(\tau^2) &amp;= \log \left|\sum_{k=1}^k \mathbf{x}_k'\mathbf{1}_k'\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1}\mathbf{1}_k \mathbf{x}_k \right|\\
+&amp;= \log \left|\sum_{k=1}^k\frac{\mathbf{x}_k' \mathbf{x}_k}{\tau^2 + V_k} \right| \\
+&amp;= R^U(\tau^2)
+\end{aligned}
+\]</span> because of @ref(eq:inversevariance). Thus, the univariate and multivariate models also have the same RML estimators.</p>
+</section>
+</section>
+<section id="so-what" class="level1">
+<h1>So what?</h1>
+<p>Beyond being a good excuse to write a bunch of matrix algebra, why does any of this matter? I think there are two main implications. First, it is useful to recognize the equivalence of these models in order to understand when the multivariate model is <em>necessary</em>. If both of the conditions that I’ve described hold, then it is entirely acceptable to use aggregation rather than the more complicated multivariate model.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Using the simpler univariate model might be desirable in practice because it makes the analysis easier to follow, because it makes it easier to run diagnostics or create illustrations of the results, or because of software limitations. Conversely, if either of the conditions does not hold, then there may be differences between the two approaches and the analyst will need to think carefully about which method better addresses their research questions.</p>
+<p>A second implication is computational: because it gives the same results, the univariate model could be used as a short-cut for fitting the multivariate model. Compare the differences in computational time:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">uni =</span> <span class="fu">rma.uni</span>(es <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">vi =</span> var, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> corrdat_agg, <span class="at">method =</span> <span class="st">"REML"</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">multi =</span> <span class="fu">rma.mv</span>(effectsize <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">V =</span> V_list, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> corrdat, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unit: milliseconds
+  expr     min       lq     mean   median       uq      max neval
+   uni  8.4462  8.78945 10.91744  9.03525  9.28150 124.7889   100
+ multi 74.2840 83.19595 86.90714 85.36100 88.82345 206.7068   100</code></pre>
+</div>
+</div>
+<p>If the aggregation is done in advance, it is <em>way</em> quicker to fit the univariate model. The short-cut would be useful if we needed to estimate <em>lots</em> of multi-variate meta-regressions (as long as the equivalence conditions hold). For example, if we needed to bootstrap the multivariate model, we could pre-compute the aggregated effects and then just bootstrap the much simpler, much quicker univariate model.</p>
+<p>I suspect that the results I’ve presented here can be further generalized, but this will need a bit of further investigation. For one, there are also equivalences between variance estimators: using the CR2 cluster-robust variance estimator for the multivariate model is equivalent to using the HC2 heteroskedasticity-robust variance estimator for the univariate model with aggregated effects.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> For another, the same sort of equivalence relationships hold even if there are additional random effects in the model, so long as the random effects are at the study level or higher levels of aggregation (e.g., lab effects, where labs are nested within studies). I’ll leave these generalizations as exercises for a future rainy day.</p>
+</section>
+<section id="references" class="level1">
+
+
+
+<!-- -->
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Becker2000multivariate" class="csl-entry" role="listitem">
+Becker, B. J. (2000). <span class="nocase">Multivariate meta-analysis</span>. In S. D. Brown &amp; H. E. A. Tinsley (Eds.), <em>Handbook of applied multivariate statistics and mathematical modeling</em> (pp. 499–525). Academic Press. <a href="https://doi.org/10.1016/B978-012691360-6/50018-5">https://doi.org/10.1016/B978-012691360-6/50018-5</a>
+</div>
+<div id="ref-borenstein2009introduction" class="csl-entry" role="listitem">
+Borenstein, M., Hedges, L. V., Higgins, J. P. T., &amp; Rothstein, H. R. (2009). <em><span class="nocase">Introduction to Meta-Analysis</span></em>. John Wiley <span>&amp;</span> Sons, Ltd. <a href="https://doi.org/10.1002/9780470743386">https://doi.org/10.1002/9780470743386</a>
+</div>
+<div id="ref-Hedges2010robust" class="csl-entry" role="listitem">
+Hedges, L. V., Tipton, E., &amp; Johnson, M. C. (2010). <span class="nocase">Robust variance estimation in meta-regression with dependent effect size estimates</span>. <em>Research Synthesis Methods</em>, <em>1</em>(1), 39–65. <a href="https://doi.org/10.1002/jrsm.5">https://doi.org/10.1002/jrsm.5</a>
+</div>
+<div id="ref-Kalaian1996multivariate" class="csl-entry" role="listitem">
+Kalaian, H. a., &amp; Raudenbush, S. W. (1996). <span class="nocase">A multivariate mixed linear model for meta-analysis.</span> <em>Psychological Methods</em>, <em>1</em>(3), 227–235. <a href="https://doi.org/10.1037/1082-989X.1.3.227">https://doi.org/10.1037/1082-989X.1.3.227</a>
+</div>
+<div id="ref-TannerSmith2013robust" class="csl-entry" role="listitem">
+Tanner-Smith, E. E., &amp; Tipton, E. (2013). <span class="nocase">Robust variance estimation with dependent effect sizes: Practical considerations including a software tutorial in Stata and SPSS</span>. <em>Research Synthesis Methods</em>, <em>5</em>(1), 1–34. <a href="https://doi.org/10.1002/jrsm.1091">https://doi.org/10.1002/jrsm.1091</a>
+</div>
+<div id="ref-VandenNoortgate2013threelevel" class="csl-entry" role="listitem">
+Van den Noortgate, W., López-López, J. A., Marín-Martínez, F., &amp; Sánchez-Meca, J. (2013). <span class="nocase">Three-level meta-analysis of dependent effect sizes</span>. <em>Behavior Research Methods</em>, <em>45</em>(2), 576–594. <a href="https://doi.org/10.3758/s13428-012-0261-6">https://doi.org/10.3758/s13428-012-0261-6</a>
+</div>
+<div id="ref-VandenNoortgate2015metaanalysis" class="csl-entry" role="listitem">
+Van den Noortgate, W., López-López, J. A., Marín-Martínez, F., &amp; Sánchez-Meca, J. (2015). <span class="nocase">Meta-analysis of multiple outcomes: A multilevel approach</span>. <em>Behavior Research Methods</em>, <em>47</em>(4), 1274–1294. <a href="https://doi.org/10.3758/s13428-014-0527-2">https://doi.org/10.3758/s13428-014-0527-2</a>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>A common special case is that the sampling variances for effect sizes within a given study <span class="math inline">\(k\)</span> are <em>all equal</em>, so that <span class="math inline">\(S_{ik} = s_{jk} = S_k\)</span> for <span class="math inline">\(i,j = 1,...,J_ik\)</span> and <span class="math inline">\(k = 1,...,K\)</span>. We might further posit that there is a constant sampling correlation between every pair of effect sizes within a given study, so that <span class="math inline">\(\rho_{ijk} = \rho_k\)</span> for <span class="math inline">\(i,j = 1,...,J_ik\)</span> and <span class="math inline">\(k = 1,...,K\)</span>. If both of these conditions hold, then the inverse-variance weighted average effect size simplifies to the arithmetic average <span class="math display">\[
+\bar{T}_k = \frac{1}{J_k} \sum_{j=1}^{J_k} T_{jk}
+\]</span> with sampling variance <span class="math display">\[
+V_k = \frac{(J_k - 1)\rho_k + 1}{J} \times S_k^2
+\]</span> <span class="citation" data-cites="borenstein2009introduction">(cf. <a href="#ref-borenstein2009introduction" role="doc-biblioref">Borenstein et al., 2009</a>, Eq. (24.6), p.&nbsp;230)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The same thing holds if we use FML rather than RML estimation—try it for yourself and see!<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>As RVE and MLMA become more wide-spread, I could imagine it happening that a meta-analyst who uses aggregation and a univariate model might get push-back from a reviewer, who uncritically recommends using a “more advanced” method to handle dependence. The results in this post provide a way for the meta-analyst to establish that doing so would be unnecessary.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Here’s verification with the computational example from above:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multivariate CR2</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(MV_fit, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Coef. Estimate      SE t-stat d.f. (Satt) p-val (Satt) Sig.
+ intrcpt  0.64656 0.17647   3.66        11.5      0.00345   **
+ college  0.37027 0.18648   1.99        11.9      0.07053    .
+   males -0.00763 0.00287  -2.66        14.5      0.01826    *</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># univariate HC2</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(uni_fit, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> corrdat_agg<span class="sc">$</span>studyid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Coef. Estimate      SE t-stat d.f. (Satt) p-val (Satt) Sig.
+ intrcpt  0.64656 0.17622   3.67        11.5      0.00342   **
+ college  0.37027 0.18597   1.99        11.9      0.06985    .
+   males -0.00763 0.00287  -2.66        14.5      0.01808    *</code></pre>
+</div>
+</div>
+<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb30" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Sometimes, aggregating effect sizes is fine</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> admin</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2019-07-02'</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> "../meta-references.bib"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> "../apa.csl"</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">- dependent effect sizes</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>In meta-analyses of psychology, education, and other social science research, it is very common that some of the included studies report more than one relevant effect size. </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>For example, in a meta-analysis of intervention effects on reading outcomes, some studies may have used multiple measures of reading outcomes (each of which meets inclusion criteria), or may have measured outcomes at multiple follow-up times; some studies might have also investigated more than one version of an intervention, and it might be of interest to include effect sizes comparing each version to the no-intervention control condition;</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>and it's even possible that some studies may have _all_ of these features, potentially contributing _lots_ of effect size estimates.</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>These situations create a technical challenge for conducting a meta-analysis. </span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>Because effect size estimates from the same study are correlated, it's not usually reasonable to use methods that are premised on each effect size estimate being independent (i.e., univariate methods). </span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>Instead, the analyst needs to apply methods that take into account the dependencies among estimates coming from the same study. </span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>It used to be common to use ad hoc approaches for handling dependence, such as averaging the estimates together or selecting one estimate per study and then using univariate methods <span class="co">[</span><span class="ot">cf. @Becker2000multivariate</span><span class="co">]</span>. </span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>More sophisticated, multivariate meta-analysis (MVMA) models that directly account for correlations among the effect size estimates had been developed <span class="co">[</span><span class="ot">@Kalaian1996multivariate</span><span class="co">]</span> but were challenging to implement and so rarely used (at least, that's my impression). </span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>More recently, techniques such as multi-level meta-analysis <span class="co">[</span><span class="ot">MLMA; @VandenNoortgate2013threelevel; @VandenNoortgate2015metaanalysis</span><span class="co">]</span> and robust variance estimation <span class="co">[</span><span class="ot">RVE; @Hedges2010robust</span><span class="co">]</span> have emerged, which account for dependencies while using all available effect size estimates and still being feasible to implement. </span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>These new techniques of MLMA and RVE are starting to be more widely adopted in practice, and it is not implausible that they will become the standard approach in psychological and educational meta-analysis within a few years. </span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>Given the extent of interest in MLMA and RVE, one might wonder: are the older ad hoc approaches _ever_ reasonable or appropriate? </span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>I think that some are, under certain circumstances. </span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>In this post I'll highlight one such circumstance, where aggregating effect size estimates is not only reasonable but leads to _exactly the same results_ as a multivariate model. This occurs when two conditions are met:</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>We are not interested in within-study heterogeneity of effects and</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Any predictors included in the model vary between studies but not within a given study (i.e., effect sizes from the same study all have the same values of the predictors).</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>In short, if all we care about is understanding between-study variation in effect sizes, then it is fine to aggregate them up to the study level.</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a><span class="fu"># A model that's okay to average</span></span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>To make this argument precise, let me lay out a model where it applies. </span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>For full generality, I'll consider a meta-regression model for a collection of $K$ studies, where study $k$ contributes $J_k \geq 1$ effect size estimates. </span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>Let $T_{jk}$ denote effect size estimate $j$ in study $k$, with sampling variance $S_{jk}^2$. </span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>Effect size estimates from study $k$ maybe be correlated at the sampling level, with correlation $\rho_{ijk}$ between effect size estimates $i$ and $j$ from study $k$. </span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>I will assume that the correlations are known, although in practice one might need to just take a guess about the degree of correlation, such as by assuming $\rho_{ijk} = 0.7$ for all pairs of estimates from each included study. </span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>Let $\mathbf{x}_k$ be a row vector of predictor variables for study $k$. </span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>Note that the predictors do not have a subscript $j$ because I'm assuming here that they are constant within a study. </span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>A multivariate meta-regression model for these data might be:</span>
+<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>T_{jk} = \mathbf{x}_k \boldsymbol\beta + u_k + e_{jk},</span>
+<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>where $u_k$ is a between-study random effect with variance $\tau^2$ and $e_{jk}$ is the sampling error for effect size $j$ from study $k$, assumed to have known variance $S_{jk}^2$. </span>
+<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>Errors from the same study are correlated, so $\text{Cov}(e_{ik}, e_{jk}) = \rho_{ijk} S_{ik} S_{jk}$. </span>
+<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>This is a commonly considered model for dependent effect size estimates. </span>
+<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>In the paper that introduced RVE, @Hedges2010robust termed it the "correlated effects" model (implemented in <span class="in">`robumeta`</span> as <span class="in">`model = "CORR"`</span>, which is the default). </span>
+<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>Note that it also satisfies the conditions I outlined above: no within-study random effects, predictors that vary only between study. </span>
+<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a>We can fit it using the <span class="in">`rma.mv()`</span> function in the <span class="in">`metafor`</span> package, as I will demonstrate below.</span>
+<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>An alternative to this multivariate model would be to first average the effects within each study, then fit a univariate random effects model. </span>
+<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a>Just how we do the averaging will matter: we'll need to use inverse-variance weighting. </span>
+<span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a>Let $\mathbf{T}_k$ be the $J_k \times 1$ vector of effect size estimates from study $k$. Let $\mathbf{S}_k$ be the $J_k \times J_k$ sampling covariance matrix for $\mathbf{T}_k$, and let $\mathbf{1}_k$ be a $J_k \times 1$ vector of 1s. The inverse-variance weighted average of the effects from study k can then be written as</span>
+<span id="cb30-61"><a href="#cb30-61" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a>\bar{T}_k = V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{T}_k, </span>
+<span id="cb30-63"><a href="#cb30-63" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-64"><a href="#cb30-64" aria-hidden="true" tabindex="-1"></a>where $V_k = 1 / (\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k)$. The quantity $V_k$ is also the sampling variance of $\bar{T}_k$.<span class="ot">[^specialcase]</span> </span>
+<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-66"><a href="#cb30-66" aria-hidden="true" tabindex="-1"></a><span class="ot">[^specialcase]: </span>A common special case is that the sampling variances for effect sizes within a given study $k$ are _all equal_, so that $S_{ik} = s_{jk} = S_k$ for $i,j = 1,...,J_ik$ and $k = 1,...,K$. We might further posit that there is a constant sampling correlation between every pair of effect sizes within a given study, so that $\rho_{ijk} = \rho_k$ for $i,j = 1,...,J_ik$ and $k = 1,...,K$. If both of these conditions hold, then the inverse-variance weighted average effect size simplifies to the arithmetic average</span>
+<span id="cb30-67"><a href="#cb30-67" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-68"><a href="#cb30-68" aria-hidden="true" tabindex="-1"></a>\bar{T}_k = \frac{1}{J_k} \sum_{j=1}^{J_k} T_{jk}</span>
+<span id="cb30-69"><a href="#cb30-69" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-70"><a href="#cb30-70" aria-hidden="true" tabindex="-1"></a>with sampling variance </span>
+<span id="cb30-71"><a href="#cb30-71" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-72"><a href="#cb30-72" aria-hidden="true" tabindex="-1"></a>V_k = \frac{(J_k - 1)\rho_k + 1}{J} \times S_k^2</span>
+<span id="cb30-73"><a href="#cb30-73" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-74"><a href="#cb30-74" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">cf. @borenstein2009introduction, Eq. (24.6), p. 230</span><span class="co">]</span>.</span>
+<span id="cb30-75"><a href="#cb30-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-76"><a href="#cb30-76" aria-hidden="true" tabindex="-1"></a>A conventional, univariate random effects model for the averaged effect sizes is</span>
+<span id="cb30-77"><a href="#cb30-77" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-78"><a href="#cb30-78" aria-hidden="true" tabindex="-1"></a>\bar{T}_k = \mathbf{x}_k \boldsymbol\beta + u_k + \bar{e}_k, </span>
+<span id="cb30-79"><a href="#cb30-79" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-80"><a href="#cb30-80" aria-hidden="true" tabindex="-1"></a>where $\text{Var}(u_k) = \tau^2$ and $\text{Var}(\bar{e}_k) = V_k$. </span>
+<span id="cb30-81"><a href="#cb30-81" aria-hidden="true" tabindex="-1"></a>This model can be fit using <span class="in">`rma.uni`</span> from <span class="in">`metafor`</span>. </span>
+<span id="cb30-82"><a href="#cb30-82" aria-hidden="true" tabindex="-1"></a>In fact, doing so will yield the same estimates of model parameters as fitting the multivariate model---for all intents and purposes, they are equivalent models. </span>
+<span id="cb30-83"><a href="#cb30-83" aria-hidden="true" tabindex="-1"></a>There are at several different ways to see that this equivalence holds. </span>
+<span id="cb30-84"><a href="#cb30-84" aria-hidden="true" tabindex="-1"></a>I'll offer three, from most practical to most theoretical.</span>
+<span id="cb30-85"><a href="#cb30-85" aria-hidden="true" tabindex="-1"></a>(If you'd rather just take my word that this claim is true, feel free to skip down to the <span class="co">[</span><span class="ot">last section</span><span class="co">](#so-what)</span>, where I comment on implications.)</span>
+<span id="cb30-86"><a href="#cb30-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-87"><a href="#cb30-87" aria-hidden="true" tabindex="-1"></a><span class="fu"># Computational equivalence</span></span>
+<span id="cb30-88"><a href="#cb30-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-89"><a href="#cb30-89" aria-hidden="true" tabindex="-1"></a>One good way to check the equivalence of the univariate and multivariate models is to apply both to a dataset. I'll use the data from a stylized example described in @TannerSmith2013robust, looking at the effects of alcohol abuse interventions on alcohol consumption among adolescents and young adults. (The data are simulated for teaching purposes, so don't infer anything about real life from the results below!) The data are included in the <span class="in">`robumeta`</span> package:</span>
+<span id="cb30-90"><a href="#cb30-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE}</span></span>
+<span id="cb30-91"><a href="#cb30-91" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb30-92"><a href="#cb30-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-93"><a href="#cb30-93" aria-hidden="true" tabindex="-1"></a><span class="in">data(corrdat, package = "robumeta")</span></span>
+<span id="cb30-94"><a href="#cb30-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-95"><a href="#cb30-95" aria-hidden="true" tabindex="-1"></a><span class="in"># sort by study</span></span>
+<span id="cb30-96"><a href="#cb30-96" aria-hidden="true" tabindex="-1"></a><span class="in">corrdat &lt;- arrange(corrdat, studyid, esid)</span></span>
+<span id="cb30-97"><a href="#cb30-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-98"><a href="#cb30-98" aria-hidden="true" tabindex="-1"></a>The data consist of <span class="in">`{r} nrow(corrdat)`</span> effect sizes from <span class="in">`{r} length(unique(corrdat$studyid))`</span> studies. Some studies report effects at multiple follow-up times and/or for multiple programs compared to a common control condition, leading to dependent effect size estimates.The data also include variables encoding a variety of sample and study characteristics, such as whether the study was conducted with a college student sample and the gender composition of the sample: </span>
+<span id="cb30-101"><a href="#cb30-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-102"><a href="#cb30-102" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(corrdat)</span>
+<span id="cb30-103"><a href="#cb30-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-104"><a href="#cb30-104" aria-hidden="true" tabindex="-1"></a>Suppose that we are interested in estimating the differences in average effects by type of sample (college versus adolescent), controlling for the proportion of males in the study. For some reason, there is within-study variation in the percentage of males, so I'll take the study-level average for this covariate:</span>
+<span id="cb30-107"><a href="#cb30-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-108"><a href="#cb30-108" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span></span>
+<span id="cb30-109"><a href="#cb30-109" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb30-110"><a href="#cb30-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb30-111"><a href="#cb30-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">males =</span> <span class="fu">mean</span>(males))</span>
+<span id="cb30-112"><a href="#cb30-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-113"><a href="#cb30-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-114"><a href="#cb30-114" aria-hidden="true" tabindex="-1"></a>We can then fit this model using a multi-variate meta-regression in metafor. </span>
+<span id="cb30-115"><a href="#cb30-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-116"><a href="#cb30-116" aria-hidden="true" tabindex="-1"></a>In order to estimate the model, we'll first need to create a variance-covariance matrix for the effect size estimates in each study, which can be accomplished using <span class="in">`impute_covariance_matrix`</span> from <span class="in">`clubSandwich`</span> (<span class="co">[</span><span class="ot">further details here</span><span class="co">](/imputing-covariance-matrices-for-multi-variate-meta-analysis/)</span>). I'll assume a correlation of 0.6 between pairs of effect sizes within a given study:</span>
+<span id="cb30-117"><a href="#cb30-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE}</span></span>
+<span id="cb30-118"><a href="#cb30-118" aria-hidden="true" tabindex="-1"></a><span class="in">library(clubSandwich)</span></span>
+<span id="cb30-119"><a href="#cb30-119" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
+<span id="cb30-120"><a href="#cb30-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-121"><a href="#cb30-121" aria-hidden="true" tabindex="-1"></a><span class="in">V_list &lt;- impute_covariance_matrix(vi = corrdat$var, cluster = corrdat$studyid, r = 0.6)</span></span>
+<span id="cb30-122"><a href="#cb30-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-123"><a href="#cb30-123" aria-hidden="true" tabindex="-1"></a><span class="in">MV_fit &lt;- rma.mv(effectsize ~ college + males, V = V_list, </span></span>
+<span id="cb30-124"><a href="#cb30-124" aria-hidden="true" tabindex="-1"></a><span class="in">                 random = ~ 1 | studyid,</span></span>
+<span id="cb30-125"><a href="#cb30-125" aria-hidden="true" tabindex="-1"></a><span class="in">                 data = corrdat, method = "REML")</span></span>
+<span id="cb30-126"><a href="#cb30-126" aria-hidden="true" tabindex="-1"></a><span class="in">MV_fit</span></span>
+<span id="cb30-127"><a href="#cb30-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-128"><a href="#cb30-128" aria-hidden="true" tabindex="-1"></a>Alternately, we could aggregate the effects up to the study level and then fit a univariate meta-regression using the same moderators. Here is a function to calculate the aggregated effect size estimates and variances:</span>
+<span id="cb30-131"><a href="#cb30-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-132"><a href="#cb30-132" aria-hidden="true" tabindex="-1"></a>agg_effects <span class="ot">&lt;-</span> <span class="cf">function</span>(yi, vi, <span class="at">r =</span> <span class="fl">0.6</span>) {</span>
+<span id="cb30-133"><a href="#cb30-133" aria-hidden="true" tabindex="-1"></a>  corr_mat <span class="ot">&lt;-</span> r <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">-</span> r, <span class="at">nrow =</span> <span class="fu">length</span>(vi))</span>
+<span id="cb30-134"><a href="#cb30-134" aria-hidden="true" tabindex="-1"></a>  sd_mat <span class="ot">&lt;-</span> <span class="fu">tcrossprod</span>(<span class="fu">sqrt</span>(vi))</span>
+<span id="cb30-135"><a href="#cb30-135" aria-hidden="true" tabindex="-1"></a>  V_inv_mat <span class="ot">&lt;-</span> <span class="fu">chol2inv</span>(<span class="fu">chol</span>(sd_mat <span class="sc">*</span> corr_mat))</span>
+<span id="cb30-136"><a href="#cb30-136" aria-hidden="true" tabindex="-1"></a>  V <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sum</span>(V_inv_mat)</span>
+<span id="cb30-137"><a href="#cb30-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">es =</span> V <span class="sc">*</span> <span class="fu">sum</span>(yi <span class="sc">*</span> V_inv_mat), <span class="at">var =</span> V)</span>
+<span id="cb30-138"><a href="#cb30-138" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-139"><a href="#cb30-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-140"><a href="#cb30-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-141"><a href="#cb30-141" aria-hidden="true" tabindex="-1"></a>Here's the data-munging:</span>
+<span id="cb30-144"><a href="#cb30-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-145"><a href="#cb30-145" aria-hidden="true" tabindex="-1"></a>corrdat_agg <span class="ot">&lt;-</span></span>
+<span id="cb30-146"><a href="#cb30-146" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb30-147"><a href="#cb30-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb30-148"><a href="#cb30-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-149"><a href="#cb30-149" aria-hidden="true" tabindex="-1"></a>    <span class="at">es =</span> <span class="fu">list</span>(<span class="fu">agg_effects</span>(<span class="at">yi =</span> effectsize, <span class="at">vi =</span> var, <span class="at">r =</span> <span class="fl">0.6</span>)),</span>
+<span id="cb30-150"><a href="#cb30-150" aria-hidden="true" tabindex="-1"></a>    <span class="at">males =</span> <span class="fu">mean</span>(males),</span>
+<span id="cb30-151"><a href="#cb30-151" aria-hidden="true" tabindex="-1"></a>    <span class="at">college =</span> <span class="fu">mean</span>(college)</span>
+<span id="cb30-152"><a href="#cb30-152" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb30-153"><a href="#cb30-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>()</span>
+<span id="cb30-154"><a href="#cb30-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-155"><a href="#cb30-155" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(corrdat_agg)</span>
+<span id="cb30-156"><a href="#cb30-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-157"><a href="#cb30-157" aria-hidden="true" tabindex="-1"></a>And here's the meta-regression:</span>
+<span id="cb30-160"><a href="#cb30-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-161"><a href="#cb30-161" aria-hidden="true" tabindex="-1"></a>uni_fit <span class="ot">&lt;-</span> <span class="fu">rma.uni</span>(es <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">vi =</span> var, </span>
+<span id="cb30-162"><a href="#cb30-162" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat_agg, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb30-163"><a href="#cb30-163" aria-hidden="true" tabindex="-1"></a>uni_fit</span>
+<span id="cb30-164"><a href="#cb30-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-165"><a href="#cb30-165" aria-hidden="true" tabindex="-1"></a>The heterogeneity estimates are nearly equal (the difference is due to using numerical optimization):</span>
+<span id="cb30-168"><a href="#cb30-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-169"><a href="#cb30-169" aria-hidden="true" tabindex="-1"></a>MV_fit<span class="sc">$</span>sigma2</span>
+<span id="cb30-170"><a href="#cb30-170" aria-hidden="true" tabindex="-1"></a>uni_fit<span class="sc">$</span>tau2</span>
+<span id="cb30-171"><a href="#cb30-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-172"><a href="#cb30-172" aria-hidden="true" tabindex="-1"></a>And the meta-regression coefficient estimates are identical to six decimal places:</span>
+<span id="cb30-175"><a href="#cb30-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-176"><a href="#cb30-176" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(MV_fit)</span>
+<span id="cb30-177"><a href="#cb30-177" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(uni_fit)</span>
+<span id="cb30-178"><a href="#cb30-178" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">coef</span>(MV_fit), <span class="fu">coef</span>(uni_fit))</span>
+<span id="cb30-179"><a href="#cb30-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-180"><a href="#cb30-180" aria-hidden="true" tabindex="-1"></a>For this example we arrive at the same results using either multivariate meta-analysis or univariate meta-analysis of aggregated effect size estimates.<span class="ot">[^FML]</span> The main limitation of this illustration is generality---how can we be sure that these results aren't just a quirk of this particular dataset? Would we get the same results for _any_ dataset? </span>
+<span id="cb30-181"><a href="#cb30-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-182"><a href="#cb30-182" aria-hidden="true" tabindex="-1"></a><span class="ot">[^FML]: </span>The same thing holds if we use FML rather than RML estimation---try it for yourself and see!</span>
+<span id="cb30-183"><a href="#cb30-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-184"><a href="#cb30-184" aria-hidden="true" tabindex="-1"></a><span class="fu"># From multivariate to univariate model </span></span>
+<span id="cb30-185"><a href="#cb30-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-186"><a href="#cb30-186" aria-hidden="true" tabindex="-1"></a>Here's another, somewhat more general perspective on the relationship between the models: the univariate model can be _derived_ directly from the multivariate one. Start with the multivariate model in matrix form:</span>
+<span id="cb30-187"><a href="#cb30-187" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-188"><a href="#cb30-188" aria-hidden="true" tabindex="-1"></a>\mathbf{T}_k = \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k + u_k \mathbf{1}_k + \mathbf{e}_k,</span>
+<span id="cb30-189"><a href="#cb30-189" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-190"><a href="#cb30-190" aria-hidden="true" tabindex="-1"></a>where $\mathbf{e}_k$ is the vector of sampling errors for study $k$, with $\text{Var}(\mathbf{e}_k) = \mathbf{S}_k$. Pre-multiply both sides by $V_k \mathbf{1}_k’ \mathbf{S}_k^{-1}$ to get</span>
+<span id="cb30-191"><a href="#cb30-191" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-192"><a href="#cb30-192" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-193"><a href="#cb30-193" aria-hidden="true" tabindex="-1"></a>V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{T}_k &amp;= V_k \left(\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k\right) \mathbf{x}_k \boldsymbol\beta + u_k V_k \left(\mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{1}_k\right) + V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{e}_k <span class="sc">\\</span></span>
+<span id="cb30-194"><a href="#cb30-194" aria-hidden="true" tabindex="-1"></a>\bar{T}_k &amp;= \mathbf{x}_k \boldsymbol\beta + u_k + \bar{e}_k,</span>
+<span id="cb30-195"><a href="#cb30-195" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-196"><a href="#cb30-196" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-197"><a href="#cb30-197" aria-hidden="true" tabindex="-1"></a>where $\text{Var}(\bar{e}_k) = V_k \mathbf{1}_k’ \mathbf{S}_k^{-1} \mathbf{S}_k \mathbf{S}_k^{-1} \mathbf{1}_k V_k = V_k$, just as in the univariate model. </span>
+<span id="cb30-198"><a href="#cb30-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-199"><a href="#cb30-199" aria-hidden="true" tabindex="-1"></a>This demonstrates that the parameters of the two models are the same quantities—that is, both models are estimating the same thing. But that would also hold if we used _any_ weighted average of $\mathbf{T}_k$---it needn't be inverse-variance. The only thing that would be different is $\text{Var}(\bar{e}_k)$. To fully establish the equivalence of the two models, I'll examine the likelihoods of each model.</span>
+<span id="cb30-200"><a href="#cb30-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-201"><a href="#cb30-201" aria-hidden="true" tabindex="-1"></a><span class="fu"># Equivalence of likelihoods </span></span>
+<span id="cb30-202"><a href="#cb30-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-203"><a href="#cb30-203" aria-hidden="true" tabindex="-1"></a>Multivariate meta-analysis models are typically estimated by full maximum likelihood (FML) or restricted maximum likelihood methods. FML and RML are also commonly used for univariate meta-analysis. With these methods, estimates are obtained as the parameter values that maximize the log likelihood of the model, given the data (or the restricted likelihood for RML). Therefore, we can establish the exact equivalence of parameter estimates by showing that the log likelihood of the univariate and multivariate models differ by a constant value (so that the location of the maxima are identical). </span>
+<span id="cb30-204"><a href="#cb30-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-205"><a href="#cb30-205" aria-hidden="true" tabindex="-1"></a><span class="fu">## Full likelihood </span></span>
+<span id="cb30-206"><a href="#cb30-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-207"><a href="#cb30-207" aria-hidden="true" tabindex="-1"></a>For the univariate model, the log-likelihood contribution of study $k$:</span>
+<span id="cb30-208"><a href="#cb30-208" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-209"><a href="#cb30-209" aria-hidden="true" tabindex="-1"></a>l^{U}_k\left(\boldsymbol\beta, \tau^2\right) = -\frac{1}{2} \log\left(\tau^2 + V_k\right) - \frac{1}{2} \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}.</span>
+<span id="cb30-210"><a href="#cb30-210" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-211"><a href="#cb30-211" aria-hidden="true" tabindex="-1"></a>For the multivariate model, the log-likelihood contribution of study $k$ is:</span>
+<span id="cb30-212"><a href="#cb30-212" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-213"><a href="#cb30-213" aria-hidden="true" tabindex="-1"></a>l^{MV}_k\left(\boldsymbol\beta, \tau^2\right) = -\frac{1}{2} A -\frac{1}{2} B</span>
+<span id="cb30-214"><a href="#cb30-214" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-215"><a href="#cb30-215" aria-hidden="true" tabindex="-1"></a>where </span>
+<span id="cb30-216"><a href="#cb30-216" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-217"><a href="#cb30-217" aria-hidden="true" tabindex="-1"></a>A = \log\left|\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right| </span>
+<span id="cb30-218"><a href="#cb30-218" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-219"><a href="#cb30-219" aria-hidden="true" tabindex="-1"></a>and </span>
+<span id="cb30-220"><a href="#cb30-220" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-221"><a href="#cb30-221" aria-hidden="true" tabindex="-1"></a>B = \left(\mathbf{T}_k - \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left(\mathbf{T}_k - \mathbf{x}_k \boldsymbol\beta \mathbf{1}_k\right).</span>
+<span id="cb30-222"><a href="#cb30-222" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-223"><a href="#cb30-223" aria-hidden="true" tabindex="-1"></a>The term $A$ can be rearranged as</span>
+<span id="cb30-224"><a href="#cb30-224" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-225"><a href="#cb30-225" aria-hidden="true" tabindex="-1"></a>A = \log\left|\left(\tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1} + \mathbf{I}_k\right) \mathbf{S}_k\right|</span>
+<span id="cb30-226"><a href="#cb30-226" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-227"><a href="#cb30-227" aria-hidden="true" tabindex="-1"></a>where $\mathbf{I}_k$ is a $J_k \times J_k$ identity matrix. One of the properties of determinants is that the determinant of a product of two matrices is equal to the product of the determinants. Another is that, for two vectors $\mathbf{u}$ and $\mathbf{v}$, $\left|\mathbf{I} + \mathbf{u}\mathbf{v}'\right| = 1 + \mathbf{v}'\mathbf{u}$. Applying both of these properties, it follows that </span>
+<span id="cb30-228"><a href="#cb30-228" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-229"><a href="#cb30-229" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-230"><a href="#cb30-230" aria-hidden="true" tabindex="-1"></a>A &amp;= \log\left|\left(\tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1} + \mathbf{I}_k\right) \mathbf{S}_k\right| <span class="sc">\\</span></span>
+<span id="cb30-231"><a href="#cb30-231" aria-hidden="true" tabindex="-1"></a>&amp;= \log \left( \left|\mathbf{I}_k + \tau^2\mathbf{1}_k\mathbf{1}_k'\mathbf{S}_k^{-1}\right| \left|\mathbf{S}_k\right|\right) <span class="sc">\\</span></span>
+<span id="cb30-232"><a href="#cb30-232" aria-hidden="true" tabindex="-1"></a>&amp;= \log \left(1 + \frac{\tau^2}{V_k}\right) + \log \left|\mathbf{S}_k\right| <span class="sc">\\</span></span>
+<span id="cb30-233"><a href="#cb30-233" aria-hidden="true" tabindex="-1"></a>&amp;= \log(\tau^2 + V_k) - \log(V_k) + \log \left|\mathbf{S}_k\right|.</span>
+<span id="cb30-234"><a href="#cb30-234" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-235"><a href="#cb30-235" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-236"><a href="#cb30-236" aria-hidden="true" tabindex="-1"></a>The $B$ term takes a little more work. </span>
+<span id="cb30-237"><a href="#cb30-237" aria-hidden="true" tabindex="-1"></a>From <span class="co">[</span><span class="ot">the Sherman-Morrison identity</span><span class="co">](https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula)</span>, we have that: </span>
+<span id="cb30-238"><a href="#cb30-238" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-239"><a href="#cb30-239" aria-hidden="true" tabindex="-1"></a>\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} = \mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1},</span>
+<span id="cb30-240"><a href="#cb30-240" aria-hidden="true" tabindex="-1"></a>(<span class="sc">\#</span>eq:Sherman)</span>
+<span id="cb30-241"><a href="#cb30-241" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-242"><a href="#cb30-242" aria-hidden="true" tabindex="-1"></a>by which it follows that</span>
+<span id="cb30-243"><a href="#cb30-243" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-244"><a href="#cb30-244" aria-hidden="true" tabindex="-1"></a>\mathbf{1}_k'\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1}\mathbf{1}_k = \frac{1}{\tau^2 + V_k}.</span>
+<span id="cb30-245"><a href="#cb30-245" aria-hidden="true" tabindex="-1"></a>(<span class="sc">\#</span>eq:inversevariance)</span>
+<span id="cb30-246"><a href="#cb30-246" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-247"><a href="#cb30-247" aria-hidden="true" tabindex="-1"></a>Now, rearrange the $B$ term to get</span>
+<span id="cb30-248"><a href="#cb30-248" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-249"><a href="#cb30-249" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-250"><a href="#cb30-250" aria-hidden="true" tabindex="-1"></a>B &amp;= \left<span class="co">[</span><span class="ot">\mathbf{T}_k - \bar{T}_k \mathbf{1}_k + \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k\right</span><span class="co">]</span>' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left<span class="co">[</span><span class="ot">\mathbf{T}_k - \bar{T}_k \mathbf{1}_k + \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k\right</span><span class="co">]</span> <span class="sc">\\</span></span>
+<span id="cb30-251"><a href="#cb30-251" aria-hidden="true" tabindex="-1"></a>&amp;= B_1 + 2 B_2 + B_3</span>
+<span id="cb30-252"><a href="#cb30-252" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-253"><a href="#cb30-253" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-254"><a href="#cb30-254" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb30-255"><a href="#cb30-255" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-256"><a href="#cb30-256" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-257"><a href="#cb30-257" aria-hidden="true" tabindex="-1"></a>B_1 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) <span class="sc">\\</span></span>
+<span id="cb30-258"><a href="#cb30-258" aria-hidden="true" tabindex="-1"></a>B_2 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) <span class="sc">\\</span></span>
+<span id="cb30-259"><a href="#cb30-259" aria-hidden="true" tabindex="-1"></a>B_3 &amp;= \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)</span>
+<span id="cb30-260"><a href="#cb30-260" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-261"><a href="#cb30-261" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-262"><a href="#cb30-262" aria-hidden="true" tabindex="-1"></a>Applying \@ref(eq:Sherman) to $B_1$,</span>
+<span id="cb30-263"><a href="#cb30-263" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-264"><a href="#cb30-264" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-265"><a href="#cb30-265" aria-hidden="true" tabindex="-1"></a>B_1 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left<span class="co">[</span><span class="ot">\mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\right</span><span class="co">]</span> \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) <span class="sc">\\</span> </span>
+<span id="cb30-266"><a href="#cb30-266" aria-hidden="true" tabindex="-1"></a>&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) - \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) <span class="sc">\\</span></span>
+<span id="cb30-267"><a href="#cb30-267" aria-hidden="true" tabindex="-1"></a>&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right).</span>
+<span id="cb30-268"><a href="#cb30-268" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-269"><a href="#cb30-269" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-270"><a href="#cb30-270" aria-hidden="true" tabindex="-1"></a>The second term drops out because $\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k = \bar{T}_k / V_k - \bar{T}_k / V_k = 0$. Along similar lines,</span>
+<span id="cb30-271"><a href="#cb30-271" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-272"><a href="#cb30-272" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-273"><a href="#cb30-273" aria-hidden="true" tabindex="-1"></a>B_2 &amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left<span class="co">[</span><span class="ot">\mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\right</span><span class="co">]</span> \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) <span class="sc">\\</span> </span>
+<span id="cb30-274"><a href="#cb30-274" aria-hidden="true" tabindex="-1"></a>&amp;= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) - \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) <span class="sc">\\</span></span>
+<span id="cb30-275"><a href="#cb30-275" aria-hidden="true" tabindex="-1"></a>&amp;= 0.</span>
+<span id="cb30-276"><a href="#cb30-276" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-277"><a href="#cb30-277" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-278"><a href="#cb30-278" aria-hidden="true" tabindex="-1"></a>Finally, the third term simplifies using \@ref(eq:inversevariance):</span>
+<span id="cb30-279"><a href="#cb30-279" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-280"><a href="#cb30-280" aria-hidden="true" tabindex="-1"></a>B_3 = \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}.</span>
+<span id="cb30-281"><a href="#cb30-281" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-282"><a href="#cb30-282" aria-hidden="true" tabindex="-1"></a>Thus, the full $B$ term reduces to</span>
+<span id="cb30-283"><a href="#cb30-283" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-284"><a href="#cb30-284" aria-hidden="true" tabindex="-1"></a>B = \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) + \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}</span>
+<span id="cb30-285"><a href="#cb30-285" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-286"><a href="#cb30-286" aria-hidden="true" tabindex="-1"></a>and the multivariate log likelihood contribution is</span>
+<span id="cb30-287"><a href="#cb30-287" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-288"><a href="#cb30-288" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-289"><a href="#cb30-289" aria-hidden="true" tabindex="-1"></a>l^{MV}_k\left(\boldsymbol\beta, \tau^2\right) &amp;= -\frac{1}{2} \log(\tau^2 + V_k) + \frac{1}{2} \log(V_k) - \frac{1}{2}\log \left|\mathbf{S}_k\right| - \frac{1}{2} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) -\frac{1}{2} \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k} <span class="sc">\\</span></span>
+<span id="cb30-290"><a href="#cb30-290" aria-hidden="true" tabindex="-1"></a>&amp;= l^U_k\left(\boldsymbol\beta, \tau^2\right) + \frac{1}{2} \log(V_k) - \frac{1}{2}\log \left|\mathbf{S}_k\right| - \frac{1}{2} \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \mathbf{S}_k^{-1}\left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right).</span>
+<span id="cb30-291"><a href="#cb30-291" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-292"><a href="#cb30-292" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-293"><a href="#cb30-293" aria-hidden="true" tabindex="-1"></a>The last three terms depend on the data ($\mathbf{T}_k$ and $\mathbf{S}_k$) but not on the parameters $\boldsymbol\beta$ or $\tau^2$. Therefore, the univariate and multivariate likelihoods will be maximized at the same parameter values, i.e., the FML estimators are identical.</span>
+<span id="cb30-294"><a href="#cb30-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-295"><a href="#cb30-295" aria-hidden="true" tabindex="-1"></a><span class="fu">## Restricted likelihood </span></span>
+<span id="cb30-296"><a href="#cb30-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-297"><a href="#cb30-297" aria-hidden="true" tabindex="-1"></a>In practice, it is more common to use RML estimation rather than FML.</span>
+<span id="cb30-298"><a href="#cb30-298" aria-hidden="true" tabindex="-1"></a>The RML estimators maximize a different objective function that includes the full likelihood, plus an additional term. The RML objective function for the univariate model is</span>
+<span id="cb30-299"><a href="#cb30-299" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-300"><a href="#cb30-300" aria-hidden="true" tabindex="-1"></a>\sum_{k=1}^K l^U_k(\boldsymbol\beta, \tau^2) - \frac{1}{2} R^U(\tau^2)</span>
+<span id="cb30-301"><a href="#cb30-301" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-302"><a href="#cb30-302" aria-hidden="true" tabindex="-1"></a>where </span>
+<span id="cb30-303"><a href="#cb30-303" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-304"><a href="#cb30-304" aria-hidden="true" tabindex="-1"></a>R^U(\tau^2) = \log \left|\sum_{k=1}^k\frac{\mathbf{x}_k' \mathbf{x}_k}{\tau^2 + V_k} \right|.</span>
+<span id="cb30-305"><a href="#cb30-305" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-306"><a href="#cb30-306" aria-hidden="true" tabindex="-1"></a>For the multivariate model, the RML objective is</span>
+<span id="cb30-307"><a href="#cb30-307" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-308"><a href="#cb30-308" aria-hidden="true" tabindex="-1"></a>\sum_{k=1}^K l^{MV}_k(\boldsymbol\beta, \tau^2) - \frac{1}{2} R^{MV}(\tau^2).</span>
+<span id="cb30-309"><a href="#cb30-309" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-310"><a href="#cb30-310" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb30-311"><a href="#cb30-311" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-312"><a href="#cb30-312" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb30-313"><a href="#cb30-313" aria-hidden="true" tabindex="-1"></a>R^{MV}(\tau^2) &amp;= \log \left|\sum_{k=1}^k \mathbf{x}_k'\mathbf{1}_k'\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1}\mathbf{1}_k \mathbf{x}_k \right|<span class="sc">\\</span></span>
+<span id="cb30-314"><a href="#cb30-314" aria-hidden="true" tabindex="-1"></a>&amp;= \log \left|\sum_{k=1}^k\frac{\mathbf{x}_k' \mathbf{x}_k}{\tau^2 + V_k} \right| <span class="sc">\\</span></span>
+<span id="cb30-315"><a href="#cb30-315" aria-hidden="true" tabindex="-1"></a>&amp;= R^U(\tau^2)</span>
+<span id="cb30-316"><a href="#cb30-316" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb30-317"><a href="#cb30-317" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb30-318"><a href="#cb30-318" aria-hidden="true" tabindex="-1"></a>because of \@ref(eq:inversevariance). Thus, the univariate and multivariate models also have the same RML estimators.</span>
+<span id="cb30-319"><a href="#cb30-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-320"><a href="#cb30-320" aria-hidden="true" tabindex="-1"></a><span class="fu"># So what?</span></span>
+<span id="cb30-321"><a href="#cb30-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-322"><a href="#cb30-322" aria-hidden="true" tabindex="-1"></a>Beyond being a good excuse to write a bunch of matrix algebra, why does any of this matter? I think there are two main implications. First, it is useful to recognize the equivalence of these models in order to understand when the multivariate model is _necessary_. If both of the conditions that I've described hold, then it is entirely acceptable to use aggregation rather than the more complicated multivariate model.<span class="ot">[^reviewer2]</span> Using the simpler univariate model might be desirable in practice because it makes the analysis easier to follow, because it makes it easier to run diagnostics or create illustrations of the results, or because of software limitations. Conversely, if either of the conditions does not hold, then there may be differences between the two approaches and the analyst will need to think carefully about which method better addresses their research questions.</span>
+<span id="cb30-323"><a href="#cb30-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-324"><a href="#cb30-324" aria-hidden="true" tabindex="-1"></a><span class="ot">[^reviewer2]: </span>As RVE and MLMA become more wide-spread, I could imagine it happening that a meta-analyst who uses aggregation and a univariate model might get push-back from a reviewer, who uncritically recommends using a "more advanced" method to handle dependence. The results in this post provide a way for the meta-analyst to establish that doing so would be unnecessary. </span>
+<span id="cb30-325"><a href="#cb30-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-326"><a href="#cb30-326" aria-hidden="true" tabindex="-1"></a>A second implication is computational: because it gives the same results, the univariate model could be used as a short-cut for fitting the multivariate model. Compare the differences in computational time:</span>
+<span id="cb30-329"><a href="#cb30-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-330"><a href="#cb30-330" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb30-331"><a href="#cb30-331" aria-hidden="true" tabindex="-1"></a><span class="fu">microbenchmark</span>(</span>
+<span id="cb30-332"><a href="#cb30-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">uni =</span> <span class="fu">rma.uni</span>(es <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">vi =</span> var, </span>
+<span id="cb30-333"><a href="#cb30-333" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> corrdat_agg, <span class="at">method =</span> <span class="st">"REML"</span>),</span>
+<span id="cb30-334"><a href="#cb30-334" aria-hidden="true" tabindex="-1"></a>  <span class="at">multi =</span> <span class="fu">rma.mv</span>(effectsize <span class="sc">~</span> college <span class="sc">+</span> males, <span class="at">V =</span> V_list, </span>
+<span id="cb30-335"><a href="#cb30-335" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid,</span>
+<span id="cb30-336"><a href="#cb30-336" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> corrdat, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb30-337"><a href="#cb30-337" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-338"><a href="#cb30-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-339"><a href="#cb30-339" aria-hidden="true" tabindex="-1"></a>If the aggregation is done in advance, it is _way_ quicker to fit the univariate model. The short-cut would be useful if we needed to estimate _lots_ of multi-variate meta-regressions (as long as the equivalence conditions hold). For example, if we needed to bootstrap the multivariate model, we could pre-compute the aggregated effects and then just bootstrap the much simpler, much quicker univariate model. </span>
+<span id="cb30-340"><a href="#cb30-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-341"><a href="#cb30-341" aria-hidden="true" tabindex="-1"></a>I suspect that the results I've presented here can be further generalized, but this will need a bit of further investigation. For one, there are also equivalences between variance estimators: using the CR2 cluster-robust variance estimator for the multivariate model is equivalent to using the HC2 heteroskedasticity-robust variance estimator for the univariate model with aggregated effects.<span class="ot">[^RVE]</span></span>
+<span id="cb30-342"><a href="#cb30-342" aria-hidden="true" tabindex="-1"></a>For another, the same sort of equivalence relationships hold even if there are additional random effects in the model, so long as the random effects are at the study level or higher levels of aggregation (e.g., lab effects, where labs are nested within studies).</span>
+<span id="cb30-343"><a href="#cb30-343" aria-hidden="true" tabindex="-1"></a>I'll leave these generalizations as exercises for a future rainy day.</span>
+<span id="cb30-344"><a href="#cb30-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-345"><a href="#cb30-345" aria-hidden="true" tabindex="-1"></a><span class="ot">[^RVE]: </span>Here's verification with the computational example from above:</span>
+<span id="cb30-346"><a href="#cb30-346" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r}</span></span>
+<span id="cb30-347"><a href="#cb30-347" aria-hidden="true" tabindex="-1"></a><span class="in">    # multivariate CR2</span></span>
+<span id="cb30-348"><a href="#cb30-348" aria-hidden="true" tabindex="-1"></a><span class="in">    coef_test(MV_fit, vcov = "CR2")</span></span>
+<span id="cb30-349"><a href="#cb30-349" aria-hidden="true" tabindex="-1"></a><span class="in">    # univariate HC2</span></span>
+<span id="cb30-350"><a href="#cb30-350" aria-hidden="true" tabindex="-1"></a><span class="in">    coef_test(uni_fit, vcov = "CR2", cluster = corrdat_agg$studyid)</span></span>
+<span id="cb30-351"><a href="#cb30-351" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
+<span id="cb30-352"><a href="#cb30-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-353"><a href="#cb30-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-354"><a href="#cb30-354" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
