@@ -1,0 +1,49 @@
+---
+title: Gleb Furman
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:gleb.furman@gmail.com
+  - icon: twitter
+    href: https://twitter.com/gleb_fu
+org_name: Gibson Consulting Group
+org_url: https://gibsonconsult.com/who-we-are/
+role: Senior Quantitative Research Scientist
+people-group: Alumni
+
+---
+
+:::::{#about}
+
+Gleb did his doctoral work on causal inference at UT Austin. He is currently a senior quantitative research scientist at [Gibson Consulting Group](https://gibsonconsult.com/).
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2023 <br> [University of Texas at Austin]{style='color:gray;'}
+- MEd in Quantitative Methods | 2015 <br> [University of Texas at Austin]{style='color:gray;'}
+- BA in Psychology | 2010 <br> [Baruch College]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Research Design
+- Evaluation
+- Generalizability
+
+:::
+
+::::
+
+:::::

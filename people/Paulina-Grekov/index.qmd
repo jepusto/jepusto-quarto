@@ -1,0 +1,46 @@
+---
+title: Paulina Grekov
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:grekov.paulina@gmail.com
+org_name: University of Wisconsin-Madison
+org_url: ''
+role: Graduate student
+people-group: Current Advisees
+
+---
+
+:::::{#about}
+
+Paulina Grekov is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests include meta-analysis, single-case experimental designs, hierarchical linear modeling, and research synthesis. She is currently working as a research assistant with Dr. Pustejovsky. 
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2026 (expected) <br> [University of Wisconsin-Madison]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Meta-analysis
+- Single-case experimental designs
+- Hierarchical linear modeling
+- Research synthesis
+
+:::
+
+::::
+
+:::::

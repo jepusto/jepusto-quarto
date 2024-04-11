@@ -1,7 +1,9 @@
 ---
 title: "James E. Pustejovsky"
 image: avatar.jpg
+page-layout: full
 about:
+  id: about
   template: trestles
   image-shape: rounded
   links:
@@ -21,20 +23,35 @@ about:
       href: https://fediscience.org/@jepusto
     - icon: twitter
       href: https://twitter.com/jepusto
+listing:
+  id: recent-posts
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  max-items: 5
+  image-height: 100pt
 ---
 
+:::::{#about}
 
 I am a statistician and associate professor in the [School of Education](https://education.wisc.edu/) at the [University of Wisconsin-Madison](https://www.wisc.edu/), where I teach in the [Educational Psychology Department](https://edpsych.education.wisc.edu/) and the [graduate program in Quantitative Methods](https://edpsych.education.wisc.edu/academics/quantitative-methods/). My research involves developing statistical methods for problems in education, psychology, and other areas of social science research, with a focus on methods related to research synthesis and meta-analysis. 
 
+::::{.grid}
+
+::: {.g-col-6}
+
 ## Education
 
-**Northwestern University** | Evanston, IL
-  
-PhD in Statistics | 2013
+- PhD in Statistics | 2013 <br> [Northwestern University]{style='color:gray;'}
 
-**Boston College** | Chestnut Hill, MA
+- BA in Economics | 2003 <br> [Boston College]{style='color:gray;'}
 
-BA in Economics | 2003
+:::
+
+::: {.g-col-6}
 
 ## Interests
 
@@ -43,3 +60,14 @@ BA in Economics | 2003
 - Robust statistical methods
 - Education statistics
 - Single case experimental designs
+
+:::
+
+::::
+
+:::::
+
+# Recent posts
+
+:::::{#recent-posts}
+:::::

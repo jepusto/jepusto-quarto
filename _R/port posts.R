@@ -31,7 +31,7 @@ yaml_vars %>%
     bibliography = map_chr(post, \(x) get_yaml_vars(x, just_names = FALSE)$bibliography)
   )
 
-fyaml_vars %>%
+yaml_vars %>%
   summarize(across(-post, ~ sum(!is.na(.x)))) %>%
   pivot_longer(everything())
 

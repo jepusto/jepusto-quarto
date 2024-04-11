@@ -1,0 +1,54 @@
+---
+title: Christopher Runyon
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:CRunyon@nbme.org
+  - icon: twitter
+    href: https://twitter.com/Runyon_CR
+  - text: '{{< ai google-scholar >}}'
+    href: https://scholar.google.com/citations?user=JaemqrAAAAAJ&hl=en
+org_name: National Board of Medical Examiners
+org_url: https://www.nbme.org/
+role: Measurement Scientist
+people-group: Alumni
+
+---
+
+:::::{#about}
+
+Chris did his doctoral work on causal inference at UT Austin. He is currently a measurement scientist in the Center for Advanced Assessment at the [National Board of Medical Examiners](https://www.nbme.org), where his research focuses on developing automated scoring systems for constructed item responses. 
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2020 <br> [University of Texas at Austin]{style='color:gray;'}
+- MA in Experimental Psychology | 2012 <br> [James Madison University]{style='color:gray;'}
+- BS in Psychology | 2008 <br> [Virginia Commonwealth University]{style='color:gray;'}
+- BA in Philosophy | 2008 <br> [Virginia Commonwealth University]{style='color:gray;'}
+- BA in Religious Studies (Buddhism) | 2003 <br> [University of Virginia]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Causal Inference
+- R
+- Natural Language Processing
+- Machine Learning
+
+:::
+
+::::
+
+:::::

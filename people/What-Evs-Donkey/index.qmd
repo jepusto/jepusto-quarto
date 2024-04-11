@@ -1,0 +1,48 @@
+---
+title: Whatev's Donkey
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:What-evs@donkey.com
+  - icon: twitter
+    href: https://twitter.com/DonkeySanctuary
+  - text: '{{< ai google-scholar >}}'
+    href: https://scholar.google.com/scholar?q=donkey
+org_name: National Organic Standards Board
+org_url: ''
+role: Lab mascot
+people-group: Mascot
+
+---
+
+:::::{#about}
+
+W. E. is our lab mascot. His name is also his philosophy in life: "Whatev's, Donkey!"
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods (anticipated) | 202? <br> [University of Texas at Austin]{style='color:gray;'}
+- BA in Psychology | 2012 <br> [Barnyard College]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Robust statistical methods
+
+:::
+
+::::
+
+:::::

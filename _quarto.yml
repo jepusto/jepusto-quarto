@@ -6,6 +6,8 @@ website:
   navbar:
     left:
       - posts.qmd
+      - people.qmd
+
 format:
   html:
     theme: sandstone

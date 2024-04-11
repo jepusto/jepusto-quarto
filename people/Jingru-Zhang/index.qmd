@@ -1,0 +1,49 @@
+---
+title: Jingru Zhang
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: jzhang2637@wisc.edu
+  - icon: twitter
+    href: https://twitter.com/JrrrZhang
+org_name: University of Wisconsin-Madison
+org_url: ''
+role: Graduate student
+people-group: Current Advisees
+
+---
+
+:::::{#about}
+
+Jingru Zhang is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests involves methodological development and their applications from design and modeling perspectives, with a focus on causal inference, meta-analysis, mediation analysis, and generalizable and transportable inference.
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2027 (expected) <br> [University of Wisconsin-Madison]{style='color:gray;'}
+- EdM in Measurement, Evaluation, and Statistics | 2022 <br> [Teachers College, Columbia University]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Causal inference
+- Meta-analysis
+- Mediation analysis
+- Generalizable and transportable inference
+
+:::
+
+::::
+
+:::::

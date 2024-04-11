@@ -1,0 +1,12 @@
+---
+title: "People"
+listing:
+  id: alumni
+  contents: people
+  type: grid
+  sort-ui: false
+  filter-ui: false
+title-block-banner: false
+---
+
+
