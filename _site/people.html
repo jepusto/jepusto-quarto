@@ -71,6 +71,34 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-students .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-students'] = new List('listing-students', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
     const listingTargetEl = window.document.querySelector('#listing-alumni .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
@@ -190,79 +218,11 @@ window.Quarto = {
 </header>
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-alumni">
+<section id="current-students" class="level2">
+<h2 class="anchored" data-anchor-id="current-students">Current Students</h2>
+<div id="listing-students" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1712844107433" data-listing-reading-time-sort="1" data-listing-word-count-sort="106">
-<a href="./people/Christopher-Runyon/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Christopher-Runyon/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Christopher Runyon
-</h5>
-<div class="card-text listing-description">
-Chris did his doctoral work on causal inference at UT Austin. He is currently a measurement scientist in the Center for Advanced Assessment at the National Board of Medical…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1712844107453" data-listing-reading-time-sort="1" data-listing-word-count-sort="175">
-<a href="./people/Daniel-M.-Swan/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Daniel-M.-Swan/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Daniel M. Swan
-</h5>
-<div class="card-text listing-description">
-Danny is currently a research associate working at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1712844107465" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
-<a href="./people/Gleb-Furman/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Gleb-Furman/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Gleb Furman
-</h5>
-<div class="card-text listing-description">
-Gleb did his doctoral work on causal inference at UT Austin. He is currently a senior quantitative research scientist at Gibson Consulting Group.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1712844107467" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714236595722" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
 <a href="./people/Jingru-Zhang/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -284,7 +244,7 @@ Jingru Zhang is a doctoral student in the Quantitative Methods area in the Educa
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1712844107476" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1714236595728" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
 <a href="./people/Man-Chen/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -306,29 +266,7 @@ Man Chen is a doctoral student in the Quantitative Methods area in the Education
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1712844107492" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
-<a href="./people/Megha-Joshi/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Megha-Joshi/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Megha Joshi
-</h5>
-<div class="card-text listing-description">
-Megha completed her PhD in the Quantitative Methods program at The University of Texas at Austin. Her dissertation work examined cluster wild bootstrapping to handle…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1712844107500" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1714236595738" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
 <a href="./people/Paulina-Grekov/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -350,18 +288,28 @@ Paulina Grekov is a doctoral student in the Quantitative Methods area in the Edu
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1712844107507" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
-<a href="./people/What-Evs-Donkey/index.html" class="quarto-grid-link">
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+</section>
+<section id="alumni" class="level2">
+<h2 class="anchored" data-anchor-id="alumni">Alumni</h2>
+<div id="listing-alumni" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714236595706" data-listing-reading-time-sort="1" data-listing-word-count-sort="106">
+<a href="./people/Christopher-Runyon/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./people/What-Evs-Donkey/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img src="./people/Christopher-Runyon/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-Whatev’s Donkey
+Christopher Runyon
 </h5>
 <div class="card-text listing-description">
-W. E. is our lab mascot. His name is also his philosophy in life: “Whatev’s, Donkey!”
+Chris did his doctoral work on causal inference at UT Austin. He is currently a measurement scientist in the Center for Advanced Assessment at the National Board of Medical…
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
@@ -372,7 +320,73 @@ W. E. is our lab mascot. His name is also his philosophy in life: “Whatev’s,
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1712844107523" data-listing-reading-time-sort="1" data-listing-word-count-sort="96">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1714236595706" data-listing-reading-time-sort="1" data-listing-word-count-sort="175">
+<a href="./people/Daniel-M.-Swan/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./people/Daniel-M.-Swan/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Daniel M. Swan
+</h5>
+<div class="card-text listing-description">
+Danny is currently a research associate working at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1714236595713" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
+<a href="./people/Gleb-Furman/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./people/Gleb-Furman/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Gleb Furman
+</h5>
+<div class="card-text listing-description">
+Gleb did his doctoral work on causal inference at UT Austin. He is currently a senior quantitative research scientist at Gibson Consulting Group.
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1714236595730" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
+<a href="./people/Megha-Joshi/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./people/Megha-Joshi/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Megha Joshi
+</h5>
+<div class="card-text listing-description">
+Megha completed her PhD in the Quantitative Methods program at The University of Texas at Austin. Her dissertation work examined cluster wild bootstrapping to handle…
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1714236595747" data-listing-reading-time-sort="1" data-listing-word-count-sort="96">
 <a href="./people/Young-Ri-Lee/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -398,7 +412,13 @@ Young Ri completed her PhD in the Quantitative Methods program at The University
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

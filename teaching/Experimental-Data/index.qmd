@@ -1,0 +1,10 @@
+---
+title: Statistical Analysis of Experimental Data
+place: UT Austin
+---
+
+This course covers the principles and procedures involved in analyzing data from experimental designs. Approaches for analyzing simple (one-way) designs, factorial designs, and repeated measures designs are presented using the analysis of variance (ANOVA) framework. Lectures focus on developing conceptual understanding of the experimental designs and corresponding analytical models and on interpreting the results of analysis procedures. Laboratory sections focus on using statistical software for data analysis.
+
+* [2016 (Spring) Syllabus](/teaching/Experimental-Data/EDP380C-6-Statistical-Analysis-of-Experimental-Data-2016S.pdf)
+* [2015 (Fall) Syllabus](/teaching/Experimental-Data/EDP380C-6-Statistical-Analysis-of-Experimental-Data-2015F.pdf)
+

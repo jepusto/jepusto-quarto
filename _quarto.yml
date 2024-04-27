@@ -7,12 +7,10 @@ website:
     left:
       - posts.qmd
       - people.qmd
+      - teaching.qmd
 
 format:
   html:
     theme: sandstone
     linkcolor: "#1f67db"
     css: styles.css
-
-
-

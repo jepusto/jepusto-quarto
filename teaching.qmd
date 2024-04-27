@@ -1,0 +1,18 @@
+---
+title: "Teaching"
+listing:
+    contents: teaching
+    sort: 
+      - "place desc" 
+      - "title"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: [place]
+    max-items: 50
+    image-height: 100pt
+    fields: [place, title]
+    field-display-names:
+      title: "Course Title"
+      place: "Institution"
+---

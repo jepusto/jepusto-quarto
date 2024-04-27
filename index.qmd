@@ -24,15 +24,15 @@ about:
     - icon: twitter
       href: https://twitter.com/jepusto
 listing:
-  id: recent-posts
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-  max-items: 5
-  image-height: 100pt
+  - id: recent-posts
+    contents: posts
+    sort: "date desc"
+    type: default
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 5
+    image-height: 100pt
 ---
 
 :::::{#about}

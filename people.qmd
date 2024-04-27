@@ -1,12 +1,30 @@
 ---
 title: "People"
 listing:
-  id: alumni
-  contents: people
-  type: grid
-  sort-ui: false
-  filter-ui: false
+  - id: students
+    contents: people
+    type: grid
+    sort-ui: false
+    filter-ui: false
+    include: 
+      people-group: "Current Advisees"
+  - id: alumni
+    contents: people
+    type: grid
+    sort-ui: false
+    filter-ui: false
+    include: 
+      people-group: "Alumni"
 title-block-banner: false
 ---
 
+## Current Students
+
+:::{#students}
+:::
+
+## Alumni
+
+:::{#alumni}
+:::
 

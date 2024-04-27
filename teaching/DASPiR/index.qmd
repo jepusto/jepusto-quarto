@@ -1,0 +1,19 @@
+---
+title: Data Analysis, Simulation, and Programming in R
+place: UT Austin
+---
+
+This course provides training in using the open-source statistical programming environment called R to accomplish 1) real-world, reproducible data analysis and 2) design and implementation of statistical simulations, which are an important tool for evaluating the performance of statistical estimation and inference procedures. Topics covered include:
+
+* the logic of R’s primary data structures and how to work with functions
+* tools and best practices for accessing, cleaning, and manipulating data
+* reproducibility as a fundamental tenet of high-quality data analysis
+* data visualization techniques 
+* selected statistical models and methods that are useful for data-analysis, including linear regression models and generalized linear models. 
+
+Content relevant to designing and implementing Monte Carlo simulation studies is interwoven throughout the course.
+
+* [2019 (Spring) Syllabus](/teaching/DASPiR/EDP380C-20-10745-Data-Analysis-Simulation-and-Programming-in-R-2019S.pdf)
+* [2017 (Spring) Syllabus](/teaching/DASPiR/EDP384-10875-Data-Analysis-Simulation-and-Programming-in-R-2017S.pdf)
+* [2015 (Spring) Syllabus](/teaching/DASPiR/EDP384-10585-Data-Analysis-Simulation-and-Programming-in-R-2015S.pdf)
+

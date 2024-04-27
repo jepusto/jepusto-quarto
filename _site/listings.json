@@ -86,14 +86,13 @@
   {
     "listing": "/people.html",
     "items": [
+      "/people/Jingru-Zhang/index.html",
+      "/people/Man-Chen/index.html",
+      "/people/Paulina-Grekov/index.html",
       "/people/Christopher-Runyon/index.html",
       "/people/Daniel-M.-Swan/index.html",
       "/people/Gleb-Furman/index.html",
-      "/people/Jingru-Zhang/index.html",
-      "/people/Man-Chen/index.html",
       "/people/Megha-Joshi/index.html",
-      "/people/Paulina-Grekov/index.html",
-      "/people/What-Evs-Donkey/index.html",
       "/people/Young-Ri-Lee/index.html"
     ]
   },
@@ -179,6 +178,18 @@
       "/posts/Shogren-reliability-analysis/index.html",
       "/posts/Another-project-idea/index.html",
       "/posts/Current-Projects/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching.html",
+    "items": [
+      "/teaching/Quasi-Experimental/index.html",
+      "/teaching/Field-Experiments/index.html",
+      "/teaching/Meta-analysis/index.html",
+      "/teaching/Causal-Inference/index.html",
+      "/teaching/DASPiR/index.html",
+      "/teaching/Research-design/index.html",
+      "/teaching/Experimental-Data/index.html"
     ]
   }
 ]
