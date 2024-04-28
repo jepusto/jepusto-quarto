@@ -66,6 +66,7 @@ convert_post <- function(unit, source_dir, destination_dir) {
   yaml_vars$title <- str_remove_all(yaml_vars$title, "\n")
   
   new_links <- list()
+  files_to_move <- list()
   
   if (!is.null(yaml_vars$url_pdf) && str_length(yaml_vars$url_pdf) > 0) {
     new_links[[length(new_links) + 1L]] <- list(
@@ -138,6 +139,7 @@ convert_post <- function(unit, source_dir, destination_dir) {
   unit_name <- str_replace(unit, ".md$", ".qmd")
   new_post_name <- paste(destination_dir, unit_name, sep = "/")
   write_lines(post_text_new, file = new_post_name)
+  
 }
 
 
