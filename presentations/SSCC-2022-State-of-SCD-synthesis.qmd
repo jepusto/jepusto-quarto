@@ -1,0 +1,19 @@
+---
+title: 'The state of single case synthesis: Premises, tools, and possibilities'
+authors: admin
+date: 2022-05-19T13:00:00
+publish_date: 2022-05-19T13:00:00
+event: Spencer Single Case Conference
+event_short: SSCC
+event_url: ''
+location: Vanderbilt University, Nashville, TN
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/SSCC-2022-State-of-SCD-synthesis.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

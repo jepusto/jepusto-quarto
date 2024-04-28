@@ -6,7 +6,9 @@ website:
   navbar:
     left:
       - posts.qmd
+      - presentations.qmd
       - people.qmd
+      - software.qmd
       - teaching.qmd
 
 format:

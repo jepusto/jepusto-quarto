@@ -1,0 +1,19 @@
+---
+title: Randomization inference for single-case experimental designs
+authors:
+- admin
+date: 2018-01-10T08:15:00
+publish_date: 2018-01-10T08:15:00
+event: Institute of Education Sciences 2018 Principal Investigators Meeting
+event_short: IES 2018 PI Meeting
+location: Washington, DC
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Randomization-inference-for-SCED-2018-01-10.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

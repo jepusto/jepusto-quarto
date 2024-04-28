@@ -1,0 +1,20 @@
+---
+title: 'A matter of emphasis: Comparison of working models for meta-analysis of dependent
+  effect sizes'
+authors:
+- admin
+date: 2022-07-20T14:50:00
+publish_date: 2022-07-19T12:00:00
+event: Society for Research Synthesis Methodology annual meeting
+event_short: SRSM 2022
+location: Portland, OR (and online)
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/SRSM-2022-Working-Models.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

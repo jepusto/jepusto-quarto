@@ -1,0 +1,33 @@
+```{r}
+#| echo: false
+#| results: 'asis'
+
+library(tinytable)
+
+event <- rmarkdown::metadata$event
+location <- rmarkdown::metadata$location
+event_url <- rmarkdown::metadata$event_url
+links <- rmarkdown::metadata$links
+
+if (!is.null(event_url)) {
+  event <- paste0("[",event, "](", event_url, ")")
+}
+
+cat(paste(event, location, sep = ", "))
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+style_icon <- function(x) {
+  paste("[{{<", x$icon, ">}}", x$text, "](", x$url, ")")
+}
+
+sapply(links, style_icon) |>
+  paste0(
+    "{.btn .btn-outline-primary}", 
+    collapse = " "
+  ) |> 
+  cat()
+```

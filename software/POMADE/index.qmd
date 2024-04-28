@@ -1,0 +1,32 @@
+---
+title: POMADE
+subtitle: Power for Meta-Analysis of Dependent Effects
+image: featured.png
+header_image: MDES-MADE.png
+header_caption: Minimum detectable effect sizes based on the correlated-and-hierarchical
+  effects working model with robust variance estimation.
+authors:
+- Mikkel H. Vembye
+- admin
+date: '2022-12-02T00:00:00Z'
+categories:
+- meta-analysis
+- dependent effect sizes
+- robust variance estimation
+- Rstats
+- power
+page-layout: full
+about:
+  template: trestles
+  links:
+  - text: CRAN
+    url: https://cran.r-project.org/package=POMADE
+  - text: Website
+    url: https://mikkelvembye.github.io/POMADE/
+  - icon: github
+    url: https://github.com/MikkelVembye/POMADE/
+
+---
+
+An R package for computing power levels, minimum detectable effect sizes, and minimum required sample sizes for the test of the overall average effect size in meta-analysis of dependent effect sizes. The package also includes functions for creating plots of power analysis results.
+

@@ -1,0 +1,18 @@
+---
+title: 'Determining the Timing of Phase Changes: Some Statistical Perspective'
+authors: admin
+date: 2023-05-18T09:00:00
+publish_date: 2023-05-18T09:00:00
+event: Wing Institute Single Case Conference 2023
+event_short: WISCC2023
+location: Nashville, TN
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/WISCC-2023.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

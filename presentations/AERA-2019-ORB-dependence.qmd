@@ -1,0 +1,20 @@
+---
+title: Evaluating meta-analytic methods to detect outcome reporting bias in the presence
+  of dependent effect sizes
+authors:
+- admin
+date: 2019-04-08T00:00:00
+publish_date: 2019-04-08T16:01:00
+event: American Educational Research Association annual convention
+event_short: AERA 2019
+location: Toronto, Ontario
+links:
+- icon: fa file
+  text: PDF
+  url: /files/AERA-2019-poster-ORB-dependence.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

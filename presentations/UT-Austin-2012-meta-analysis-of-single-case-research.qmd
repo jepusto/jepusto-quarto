@@ -1,0 +1,21 @@
+---
+title: Some implications of behavioral observation procedures for meta-analysis of
+  single-case research
+authors:
+- admin
+date: 2012-11-14T00:00:00
+publish_date: 2018-04-15T08:15:00
+event: Presentation at the Department of Educational Psychology, College of Education,
+  University of Texas at Austin
+event_short: UT Austin
+location: Austin, TX
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Effect-sizes-for-behavioral-observation-data.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

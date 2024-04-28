@@ -1,0 +1,20 @@
+---
+title: Four methods of analyzing partial interval recording data, with application
+  to single-case research
+authors:
+- admin
+date: 2014-04-04T00:00:00
+publish_date: 2018-04-15T08:15:00
+event: American Educational Research Association annual convention
+event_short: AERA 2014
+location: Philadelphia, PA
+links:
+- icon: fa file
+  text: PDF
+  url: /files/AERA-2014-poster-4-methods-for-PIR.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

@@ -1,0 +1,13 @@
+---
+title: "Software"
+listing:
+    contents: software
+    sort: 
+      - "title"
+    type: grid
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 10
+    image-height: 100pt
+---

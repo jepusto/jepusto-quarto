@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>James E. Pustejovsky - Presentations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-event_short','listing-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">James E. Pustejovsky</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./posts.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./presentations.html" aria-current="page"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./people.html"> 
+<span class="menu-text">People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Presentations</h1>
+<p class="subtitle lead">Conference presentations, posters, and invited talks</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Event
+</th>
+<th>
+Location
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1696023000000" data-listing-file-modified-sort="1714332837283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Discussion of Stabilizing measures to reconcile accuracy and equity in performance measurement" data-listing-filename-sort="SREE-2023-Stabilizing-performance-measures-discussion.qmd">
+<td>
+<span class="listing-date">Sep 29, 2023</span>
+</td>
+<td>
+<a href="./presentations/SREE-2023-Stabilizing-performance-measures-discussion.html" class="title listing-title">Discussion of Stabilizing measures to reconcile accuracy and equity in performance measurement</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2023</span>
+</td>
+<td>
+<span class="listing-location">Arlington, VA</span>
+</td>
+</tr>
+<tr data-index="1" data-listing-date-sort="1695849300000" data-listing-file-modified-sort="1714332837276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="987" data-listing-title-sort="Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations" data-listing-filename-sort="SREE-2023-Equity-related-moderator-analysis.qmd">
+<td>
+<span class="listing-date">Sep 27, 2023</span>
+</td>
+<td>
+<a href="./presentations/SREE-2023-Equity-related-moderator-analysis.html" class="title listing-title">Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2023</span>
+</td>
+<td>
+<span class="listing-location">Arlington, VA</span>
+</td>
+</tr>
+<tr data-index="2" data-listing-date-sort="1684418400000" data-listing-file-modified-sort="1714332838024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Determining the Timing of Phase Changes: Some Statistical Perspective" data-listing-filename-sort="WISCC-2023.qmd">
+<td>
+<span class="listing-date">May 18, 2023</span>
+</td>
+<td>
+<a href="./presentations/WISCC-2023.html" class="title listing-title">Determining the Timing of Phase Changes: Some Statistical Perspective</a>
+</td>
+<td>
+<span class="listing-event_short">WISCC2023</span>
+</td>
+<td>
+<span class="listing-location">Nashville, TN</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1682524800000" data-listing-file-modified-sort="1714332837214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="275" data-listing-title-sort="Calculating Effect Sizes for Single-Case Research: An Introduction to the SingleCaseES and scdhlm Web Applications and R Packages" data-listing-filename-sort="Small-is-Beautiful-2023-workshop.qmd">
+<td>
+<span class="listing-date">Apr 26, 2023</span>
+</td>
+<td>
+<a href="./presentations/Small-is-Beautiful-2023-workshop.html" class="title listing-title">Calculating Effect Sizes for Single-Case Research: An Introduction to the SingleCaseES and scdhlm Web Applications and R Packages</a>
+</td>
+<td>
+<span class="listing-event_short">SmallisBeautiful2023</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="4" data-listing-date-sort="1682427600000" data-listing-file-modified-sort="1714332837204" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193" data-listing-title-sort="Effect size measures for single-case research: Conceptual, practical, and statistical considerations" data-listing-filename-sort="Small-is-Beautiful-2023-keynote.qmd">
+<td>
+<span class="listing-date">Apr 25, 2023</span>
+</td>
+<td>
+<a href="./presentations/Small-is-Beautiful-2023-keynote.html" class="title listing-title">Effect size measures for single-case research: Conceptual, practical, and statistical considerations</a>
+</td>
+<td>
+<span class="listing-event_short">SmallisBeautiful2023</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="5" data-listing-date-sort="1681663200000" data-listing-file-modified-sort="1714332835356" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122" data-listing-title-sort="Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions." data-listing-filename-sort="AERA-2023-BCSMD-benchmarks.qmd">
+<td>
+<span class="listing-date">Apr 16, 2023</span>
+</td>
+<td>
+<a href="./presentations/AERA-2023-BCSMD-benchmarks.html" class="title listing-title">Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions.</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2023</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="6" data-listing-date-sort="1681588200000" data-listing-file-modified-sort="1714332835366" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic Replication of Results.’" data-listing-filename-sort="AERA-2023-replication-discussion.qmd">
+<td>
+<span class="listing-date">Apr 15, 2023</span>
+</td>
+<td>
+<a href="./presentations/AERA-2023-replication-discussion.html" class="title listing-title">Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic Replication of Results.’</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2023</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="7" data-listing-date-sort="1680181200000" data-listing-file-modified-sort="1714332836256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="199" data-listing-title-sort="Clustered bootstrapping for selective reporting models in meta-analysis with dependent effects" data-listing-filename-sort="ESMARConf2023-clustered-bootstrap-selection-model.qmd">
+<td>
+<span class="listing-date">Mar 30, 2023</span>
+</td>
+<td>
+<a href="./presentations/ESMARConf2023-clustered-bootstrap-selection-model.html" class="title listing-title">Clustered bootstrapping for selective reporting models in meta-analysis with dependent effects</a>
+</td>
+<td>
+<span class="listing-event_short">ESMARConf2023</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="8" data-listing-date-sort="1658346600000" data-listing-file-modified-sort="1714332837326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="A matter of emphasis: Comparison of working models for meta-analysis of dependent effect sizes" data-listing-filename-sort="SRSM-2022-matter-of-emphasis.qmd">
+<td>
+<span class="listing-date">Jul 20, 2022</span>
+</td>
+<td>
+<a href="./presentations/SRSM-2022-matter-of-emphasis.html" class="title listing-title">A matter of emphasis: Comparison of working models for meta-analysis of dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-event_short">SRSM 2022</span>
+</td>
+<td>
+<span class="listing-location">Portland, OR (and online)</span>
+</td>
+</tr>
+<tr data-index="9" data-listing-date-sort="1652983200000" data-listing-file-modified-sort="1714332837981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="The state of single case synthesis: Premises, tools, and possibilities" data-listing-filename-sort="SSCC-2022-State-of-SCD-synthesis.qmd">
+<td>
+<span class="listing-date">May 19, 2022</span>
+</td>
+<td>
+<a href="./presentations/SSCC-2022-State-of-SCD-synthesis.html" class="title listing-title">The state of single case synthesis: Premises, tools, and possibilities</a>
+</td>
+<td>
+<span class="listing-event_short">SSCC</span>
+</td>
+<td>
+<span class="listing-location">Vanderbilt University, Nashville, TN</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1644364800000" data-listing-file-modified-sort="1714332837993" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="262" data-listing-title-sort="Selective reporting in meta-analysis of dependent effect size estimates" data-listing-filename-sort="Stanford-QSU-2022-selective-reporting.qmd">
+<td>
+<span class="listing-date">Feb 8, 2022</span>
+</td>
+<td>
+<a href="./presentations/Stanford-QSU-2022-selective-reporting.html" class="title listing-title">Selective reporting in meta-analysis of dependent effect size estimates</a>
+</td>
+<td>
+<span class="listing-event_short">Stanford QSU</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="11" data-listing-date-sort="1643904000000" data-listing-file-modified-sort="1714332837176" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184" data-listing-title-sort="Easy, cluster-robust standard errors with the clubSandwich package" data-listing-filename-sort="OsloRUG-2022-clubSandwich.qmd">
+<td>
+<span class="listing-date">Feb 3, 2022</span>
+</td>
+<td>
+<a href="./presentations/OsloRUG-2022-clubSandwich.html" class="title listing-title">Easy, cluster-robust standard errors with the clubSandwich package</a>
+</td>
+<td>
+<span class="listing-event_short">OsloRUG</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="12" data-listing-date-sort="1632754800000" data-listing-file-modified-sort="1714332836235" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="126" data-listing-title-sort="Four things every quantitative social scientist should know about meta-analysis" data-listing-filename-sort="EdPsych-Colloquium-2021-Four-Things.qmd">
+<td>
+<span class="listing-date">Sep 27, 2021</span>
+</td>
+<td>
+<a href="./presentations/EdPsych-Colloquium-2021-Four-Things.html" class="title listing-title">Four things every quantitative social scientist should know about meta-analysis</a>
+</td>
+<td>
+<span class="listing-event_short">EdPsych PIE</span>
+</td>
+<td>
+<span class="listing-location">Educational Sciences 259</span>
+</td>
+</tr>
+<tr data-index="13" data-listing-date-sort="1630594800000" data-listing-file-modified-sort="1714332837159" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80" data-listing-title-sort="Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich" data-listing-filename-sort="OsloRUG-2021-RVE-with-metafor-and-clubSandwich.qmd">
+<td>
+<span class="listing-date">Sep 2, 2021</span>
+</td>
+<td>
+<a href="./presentations/OsloRUG-2021-RVE-with-metafor-and-clubSandwich.html" class="title listing-title">Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich</a>
+</td>
+<td>
+<span class="listing-event_short">OsloRUG</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="14" data-listing-date-sort="1624469400000" data-listing-file-modified-sort="1714332837194" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="176" data-listing-title-sort="Statistical frontiers for selective reporting and publication bias" data-listing-filename-sort="SIPS-2021-statistical-frontiers-for-selective-reporting.qmd">
+<td>
+<span class="listing-date">Jun 23, 2021</span>
+</td>
+<td>
+<a href="./presentations/SIPS-2021-statistical-frontiers-for-selective-reporting.html" class="title listing-title">Statistical frontiers for selective reporting and publication bias</a>
+</td>
+<td>
+<span class="listing-event_short">SIPS 2021</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="15" data-listing-date-sort="1611241200000" data-listing-file-modified-sort="1714332836245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="120" data-listing-title-sort="Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich" data-listing-filename-sort="ESMARConf2021-RVE-with-metafor-and-clubSandwich.qmd">
+<td>
+<span class="listing-date">Jan 21, 2021</span>
+</td>
+<td>
+<a href="./presentations/ESMARConf2021-RVE-with-metafor-and-clubSandwich.html" class="title listing-title">Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</a>
+</td>
+<td>
+<span class="listing-event_short">ESMARConf2021</span>
+</td>
+<td>
+<span class="listing-location">online</span>
+</td>
+</tr>
+<tr data-index="16" data-listing-date-sort="1563820200000" data-listing-file-modified-sort="1714332837314" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="A generalized excess significance test for selective outcome reporting with dependent effect sizes" data-listing-filename-sort="SRSM-2019-generalized-excess-significance-test.qmd">
+<td>
+<span class="listing-date">Jul 22, 2019</span>
+</td>
+<td>
+<a href="./presentations/SRSM-2019-generalized-excess-significance-test.html" class="title listing-title">A generalized excess significance test for selective outcome reporting with dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-event_short">SRSM 2019</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="17" data-listing-date-sort="1558908000000" data-listing-file-modified-sort="1714332835172" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Log response ratio effect sizes: Rationale and methods for single case designs with behavioral outcomes" data-listing-filename-sort="ABAI-2019-log-response-ratios.qmd">
+<td>
+<span class="listing-date">May 26, 2019</span>
+</td>
+<td>
+<a href="./presentations/ABAI-2019-log-response-ratios.html" class="title listing-title">Log response ratio effect sizes: Rationale and methods for single case designs with behavioral outcomes</a>
+</td>
+<td>
+<span class="listing-event_short">ABAI 2019</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="18" data-listing-date-sort="1554699600000" data-listing-file-modified-sort="1714332835326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Evaluating meta-analytic methods to detect outcome reporting bias in the presence of dependent effect sizes" data-listing-filename-sort="AERA-2019-ORB-dependence.qmd">
+<td>
+<span class="listing-date">Apr 8, 2019</span>
+</td>
+<td>
+<a href="./presentations/AERA-2019-ORB-dependence.html" class="title listing-title">Evaluating meta-analytic methods to detect outcome reporting bias in the presence of dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2019</span>
+</td>
+<td>
+<span class="listing-location">Toronto, Ontario</span>
+</td>
+</tr>
+<tr data-index="19" data-listing-date-sort="1554613200000" data-listing-file-modified-sort="1714332835335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="An examination of measurement procedures and baseline behavioral outcomes in single-case research" data-listing-filename-sort="AERA-2019-outcome-measurement-procedures.qmd">
+<td>
+<span class="listing-date">Apr 7, 2019</span>
+</td>
+<td>
+<a href="./presentations/AERA-2019-outcome-measurement-procedures.html" class="title listing-title">An examination of measurement procedures and baseline behavioral outcomes in single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2019</span>
+</td>
+<td>
+<span class="listing-location">Toronto, Ontario</span>
+</td>
+</tr>
+<tr data-index="20" data-listing-date-sort="1554613200000" data-listing-file-modified-sort="1714332835346" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="The impact of response-guided designs on count outcomes in single-case design baselines" data-listing-filename-sort="AERA-2019-response-guided-algorithms.qmd">
+<td>
+<span class="listing-date">Apr 7, 2019</span>
+</td>
+<td>
+<a href="./presentations/AERA-2019-response-guided-algorithms.html" class="title listing-title">The impact of response-guided designs on count outcomes in single-case design baselines</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2019</span>
+</td>
+<td>
+<span class="listing-location">Toronto, Ontario</span>
+</td>
+</tr>
+<tr data-index="21" data-listing-date-sort="1552024800000" data-listing-file-modified-sort="1714332837258" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small-sample cluster-robust variance estimators for two-stage least squares models" data-listing-filename-sort="SREE-2019-2SLS-CRVE.qmd">
+<td>
+<span class="listing-date">Mar 8, 2019</span>
+</td>
+<td>
+<a href="./presentations/SREE-2019-2SLS-CRVE.html" class="title listing-title">Small-sample cluster-robust variance estimators for two-stage least squares models</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2019</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="22" data-listing-date-sort="1538413200000" data-listing-file-modified-sort="1714332838020" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Combining robust variance estimation with models for dependent effect sizes" data-listing-filename-sort="UTAustin-2018-combining-RVE-with-models.qmd">
+<td>
+<span class="listing-date">Oct 1, 2018</span>
+</td>
+<td>
+<a href="./presentations/UTAustin-2018-combining-RVE-with-models.html" class="title listing-title">Combining robust variance estimation with models for dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-event_short">UT Psych</span>
+</td>
+<td>
+<span class="listing-location">Austin, TX</span>
+</td>
+</tr>
+<tr data-index="23" data-listing-date-sort="1531922400000" data-listing-file-modified-sort="1714332837304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Combining robust variance estimation with models for dependent effect sizes" data-listing-filename-sort="SRSM-2018-combining-RVE-with-models.qmd">
+<td>
+<span class="listing-date">Jul 18, 2018</span>
+</td>
+<td>
+<a href="./presentations/SRSM-2018-combining-RVE-with-models.html" class="title listing-title">Combining robust variance estimation with models for dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-event_short">SRSM 2018</span>
+</td>
+<td>
+<span class="listing-location">Bristol, UK</span>
+</td>
+</tr>
+<tr data-index="24" data-listing-date-sort="1523798100000" data-listing-file-modified-sort="1714332835288" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Meta-analysis of dependent effects: A review and consolidation of methods" data-listing-filename-sort="AERA-2018-dependent-effects.qmd">
+<td>
+<span class="listing-date">Apr 15, 2018</span>
+</td>
+<td>
+<a href="./presentations/AERA-2018-dependent-effects.html" class="title listing-title">Meta-analysis of dependent effects: A review and consolidation of methods</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2018</span>
+</td>
+<td>
+<span class="listing-location">New York, NY</span>
+</td>
+</tr>
+<tr data-index="25" data-listing-date-sort="1523798100000" data-listing-file-modified-sort="1714332835299" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Meta-analysis of single-case research: A brief and breezy tour" data-listing-filename-sort="AERA-2018-meta-analysis-of-single-case-research.qmd">
+<td>
+<span class="listing-date">Apr 15, 2018</span>
+</td>
+<td>
+<a href="./presentations/AERA-2018-meta-analysis-of-single-case-research.html" class="title listing-title">Meta-analysis of single-case research: A brief and breezy tour</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2018</span>
+</td>
+<td>
+<span class="listing-location">New York, NY</span>
+</td>
+</tr>
+<tr data-index="26" data-listing-date-sort="1515593700000" data-listing-file-modified-sort="1714332836310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="A gradual effects model for single case designs" data-listing-filename-sort="IES-2018-gradual-effects-model.qmd">
+<td>
+<span class="listing-date">Jan 10, 2018</span>
+</td>
+<td>
+<a href="./presentations/IES-2018-gradual-effects-model.html" class="title listing-title">A gradual effects model for single case designs</a>
+</td>
+<td>
+<span class="listing-event_short">IES 2018 PI Meeting</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="27" data-listing-date-sort="1515593700000" data-listing-file-modified-sort="1714332836325" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Randomization inference for single-case experimental designs" data-listing-filename-sort="IES-2018-randomization-inference.qmd">
+<td>
+<span class="listing-date">Jan 10, 2018</span>
+</td>
+<td>
+<a href="./presentations/IES-2018-randomization-inference.html" class="title listing-title">Randomization inference for single-case experimental designs</a>
+</td>
+<td>
+<span class="listing-event_short">IES 2018 PI Meeting</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="28" data-listing-date-sort="1493528400000" data-listing-file-modified-sort="1714332835255" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Heteroskedasticity-robust tests in linear regression: A review and evaluation of small-sample corrections" data-listing-filename-sort="AERA-2017-HC-t-tests.qmd">
+<td>
+<span class="listing-date">Apr 30, 2017</span>
+</td>
+<td>
+<a href="./presentations/AERA-2017-HC-t-tests.html" class="title listing-title">Heteroskedasticity-robust tests in linear regression: A review and evaluation of small-sample corrections</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2017</span>
+</td>
+<td>
+<span class="listing-location">San Antonio, TX</span>
+</td>
+</tr>
+<tr data-index="29" data-listing-date-sort="1493355600000" data-listing-file-modified-sort="1714332835260" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="A nonlinear intervention analysis model for treatment reversal single-case designs" data-listing-filename-sort="AERA-2017-intervention-analysis.qmd">
+<td>
+<span class="listing-date">Apr 28, 2017</span>
+</td>
+<td>
+<a href="./presentations/AERA-2017-intervention-analysis.html" class="title listing-title">A nonlinear intervention analysis model for treatment reversal single-case designs</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2017</span>
+</td>
+<td>
+<span class="listing-location">San Antonio, TX</span>
+</td>
+</tr>
+<tr data-index="30" data-listing-date-sort="1493355600000" data-listing-file-modified-sort="1714332835279" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Using response ratios for meta-analyzing single-case designs with behavioral outcomes" data-listing-filename-sort="AERA-2017-response-ratios.qmd">
+<td>
+<span class="listing-date">Apr 28, 2017</span>
+</td>
+<td>
+<a href="./presentations/AERA-2017-response-ratios.html" class="title listing-title">Using response ratios for meta-analyzing single-case designs with behavioral outcomes</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2017</span>
+</td>
+<td>
+<span class="listing-location">San Antonio, TX</span>
+</td>
+</tr>
+<tr data-index="31" data-listing-date-sort="1488434400000" data-listing-file-modified-sort="1714332837253" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small sample corrections for use of cluster-robust standard errors in the analysis of school-based experiments" data-listing-filename-sort="SREE-2017-small-sample-corrections.qmd">
+<td>
+<span class="listing-date">Mar 2, 2017</span>
+</td>
+<td>
+<a href="./presentations/SREE-2017-small-sample-corrections.html" class="title listing-title">Small sample corrections for use of cluster-robust standard errors in the analysis of school-based experiments</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2017</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="32" data-listing-date-sort="1482127200000" data-listing-file-modified-sort="1714332836261" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Effect sizes for single-case research" data-listing-filename-sort="IES-2016-single-case-effect-sizes.qmd">
+<td>
+<span class="listing-date">Dec 19, 2016</span>
+</td>
+<td>
+<a href="./presentations/IES-2016-single-case-effect-sizes.html" class="title listing-title">Effect sizes for single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">IES 2016</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="33" data-listing-date-sort="1469941200000" data-listing-file-modified-sort="1714332836345" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small-sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models" data-listing-filename-sort="JSM-2016-small-sample-CRVE.qmd">
+<td>
+<span class="listing-date">Jul 31, 2016</span>
+</td>
+<td>
+<a href="./presentations/JSM-2016-small-sample-CRVE.html" class="title listing-title">Small-sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</a>
+</td>
+<td>
+<span class="listing-event_short">JSM 2016</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="34" data-listing-date-sort="1468818000000" data-listing-file-modified-sort="1714332836225" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="When large samples act small: The importance of small-sample adjustments for cluster-robust inference in impact evaluations" data-listing-filename-sort="AIR-2016-when-large-samples-act-small.qmd">
+<td>
+<span class="listing-date">Jul 18, 2016</span>
+</td>
+<td>
+<a href="./presentations/AIR-2016-when-large-samples-act-small.html" class="title listing-title">When large samples act small: The importance of small-sample adjustments for cluster-robust inference in impact evaluations</a>
+</td>
+<td>
+<span class="listing-event_short">AIR working group lecture series</span>
+</td>
+<td>
+<span class="listing-location">Austin, TX</span>
+</td>
+</tr>
+<tr data-index="35" data-listing-date-sort="1455861600000" data-listing-file-modified-sort="1714332837185" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="When large samples act small: Cluster-robust variance estimation and hypothesis testing with few clusters" data-listing-filename-sort="PRC-2016-when-large-samples-act-small.qmd">
+<td>
+<span class="listing-date">Feb 19, 2016</span>
+</td>
+<td>
+<a href="./presentations/PRC-2016-when-large-samples-act-small.html" class="title listing-title">When large samples act small: Cluster-robust variance estimation and hypothesis testing with few clusters</a>
+</td>
+<td>
+<span class="listing-event_short">PRC colloquium</span>
+</td>
+<td>
+<span class="listing-location">Austin, TX</span>
+</td>
+</tr>
+<tr data-index="36" data-listing-date-sort="1436331600000" data-listing-file-modified-sort="1714332837296" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small-sample adjustments for multiple-contrast hypothesis tests of meta-regressions using robust variance estimation" data-listing-filename-sort="SRSM-2015-small-sample-adjustments.qmd">
+<td>
+<span class="listing-date">Jul 8, 2015</span>
+</td>
+<td>
+<a href="./presentations/SRSM-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for multiple-contrast hypothesis tests of meta-regressions using robust variance estimation</a>
+</td>
+<td>
+<span class="listing-event_short">SRSM 2015</span>
+</td>
+<td>
+<span class="listing-location">Nashville, TN</span>
+</td>
+</tr>
+<tr data-index="37" data-listing-date-sort="1429419600000" data-listing-file-modified-sort="1714332835229" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Operational sensitivities of non-overlap effect sizes for single-case experimental designs" data-listing-filename-sort="AERA-2015-operational-sensitivities.qmd">
+<td>
+<span class="listing-date">Apr 19, 2015</span>
+</td>
+<td>
+<a href="./presentations/AERA-2015-operational-sensitivities.html" class="title listing-title">Operational sensitivities of non-overlap effect sizes for single-case experimental designs</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2015</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="38" data-listing-date-sort="1429333200000" data-listing-file-modified-sort="1714332835241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small-sample adjustments for F-tests using robust variance estimation in meta-regression" data-listing-filename-sort="AERA-2015-small-sample-adjustments.qmd">
+<td>
+<span class="listing-date">Apr 18, 2015</span>
+</td>
+<td>
+<a href="./presentations/AERA-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for F-tests using robust variance estimation in meta-regression</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2015</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="39" data-listing-date-sort="1429160400000" data-listing-file-modified-sort="1714332835211" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Observation procedures and Markov Chain models for estimating the prevalence and incidence of a state behavior" data-listing-filename-sort="AERA-2015-observation-procedures.qmd">
+<td>
+<span class="listing-date">Apr 16, 2015</span>
+</td>
+<td>
+<a href="./presentations/AERA-2015-observation-procedures.html" class="title listing-title">Observation procedures and Markov Chain models for estimating the prevalence and incidence of a state behavior</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2015</span>
+</td>
+<td>
+<span class="listing-location">Chicago, IL</span>
+</td>
+</tr>
+<tr data-index="40" data-listing-date-sort="1425621600000" data-listing-file-modified-sort="1714332837244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression" data-listing-filename-sort="SREE-2015-small-sample-adjustments.qmd">
+<td>
+<span class="listing-date">Mar 6, 2015</span>
+</td>
+<td>
+<a href="./presentations/SREE-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2015</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="41" data-listing-date-sort="1396587600000" data-listing-file-modified-sort="1714332835202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Four methods of analyzing partial interval recording data, with application to single-case research" data-listing-filename-sort="AERA-2014-four-methods-for-PIR.qmd">
+<td>
+<span class="listing-date">Apr 4, 2014</span>
+</td>
+<td>
+<a href="./presentations/AERA-2014-four-methods-for-PIR.html" class="title listing-title">Four methods of analyzing partial interval recording data, with application to single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2014</span>
+</td>
+<td>
+<span class="listing-location">Philadelphia, PA</span>
+</td>
+</tr>
+<tr data-index="42" data-listing-date-sort="1395378000000" data-listing-file-modified-sort="1714332837994" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Addressing construct invalidity in partial interval recording data" data-listing-filename-sort="TUESAP-2014-construct-invalidity-of-PIR.qmd">
+<td>
+<span class="listing-date">Mar 21, 2014</span>
+</td>
+<td>
+<a href="./presentations/TUESAP-2014-construct-invalidity-of-PIR.html" class="title listing-title">Addressing construct invalidity in partial interval recording data</a>
+</td>
+<td>
+<span class="listing-event_short">TUESAP 2014</span>
+</td>
+<td>
+<span class="listing-location">Texas A&amp;M University, College Station, TX</span>
+</td>
+</tr>
+<tr data-index="43" data-listing-date-sort="1394085600000" data-listing-file-modified-sort="1714332837235" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="On internal validity in multiple baseline designs" data-listing-filename-sort="SREE-2014-internal-validity-of-MBD.qmd">
+<td>
+<span class="listing-date">Mar 6, 2014</span>
+</td>
+<td>
+<a href="./presentations/SREE-2014-internal-validity-of-MBD.html" class="title listing-title">On internal validity in multiple baseline designs</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2014</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="44" data-listing-date-sort="1369803600000" data-listing-file-modified-sort="1714332836355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Some Markov models for direct observation of behavior" data-listing-filename-sort="NU-stats-2013-markov-models-for-direct-observation.qmd">
+<td>
+<span class="listing-date">May 29, 2013</span>
+</td>
+<td>
+<a href="./presentations/NU-stats-2013-markov-models-for-direct-observation.html" class="title listing-title">Some Markov models for direct observation of behavior</a>
+</td>
+<td>
+<span class="listing-event_short">NU Statistics</span>
+</td>
+<td>
+<span class="listing-location">Evanston, IL</span>
+</td>
+</tr>
+<tr data-index="45" data-listing-date-sort="1369717200000" data-listing-file-modified-sort="1714332835158" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Effect sizes and measurement comparability for meta-analysis of single-case research" data-listing-filename-sort="ABAI-2013-effect-sizes.qmd">
+<td>
+<span class="listing-date">May 28, 2013</span>
+</td>
+<td>
+<a href="./presentations/ABAI-2013-effect-sizes.html" class="title listing-title">Effect sizes and measurement comparability for meta-analysis of single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">ABAI 2013</span>
+</td>
+<td>
+<span class="listing-location">Minneapolis, MN</span>
+</td>
+</tr>
+<tr data-index="46" data-listing-date-sort="1367298000000" data-listing-file-modified-sort="1714332835192" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Observation procedures and Markov chain models for estimating the prevalence and incidence of a behavior" data-listing-filename-sort="AERA-2013-observation-procedures.qmd">
+<td>
+<span class="listing-date">Apr 30, 2013</span>
+</td>
+<td>
+<a href="./presentations/AERA-2013-observation-procedures.html" class="title listing-title">Observation procedures and Markov chain models for estimating the prevalence and incidence of a behavior</a>
+</td>
+<td>
+<span class="listing-event_short">AERA 2013</span>
+</td>
+<td>
+<span class="listing-location">San Francisco, CA</span>
+</td>
+</tr>
+<tr data-index="47" data-listing-date-sort="1362636000000" data-listing-file-modified-sort="1714332837223" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Operationally comparable effect sizes for meta-analysis of single-case research" data-listing-filename-sort="SREE-2013-operationally-comparable-effect-sizes.qmd">
+<td>
+<span class="listing-date">Mar 7, 2013</span>
+</td>
+<td>
+<a href="./presentations/SREE-2013-operationally-comparable-effect-sizes.html" class="title listing-title">Operationally comparable effect sizes for meta-analysis of single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">SREE 2013</span>
+</td>
+<td>
+<span class="listing-location">Washington, DC</span>
+</td>
+</tr>
+<tr data-index="48" data-listing-date-sort="1352872800000" data-listing-file-modified-sort="1714332838011" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Some implications of behavioral observation procedures for meta-analysis of single-case research" data-listing-filename-sort="UT-Austin-2012-meta-analysis-of-single-case-research.qmd">
+<td>
+<span class="listing-date">Nov 14, 2012</span>
+</td>
+<td>
+<a href="./presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html" class="title listing-title">Some implications of behavioral observation procedures for meta-analysis of single-case research</a>
+</td>
+<td>
+<span class="listing-event_short">UT Austin</span>
+</td>
+<td>
+<span class="listing-location">Austin, TX</span>
+</td>
+</tr>
+<tr data-index="49" data-listing-date-sort="1201068000000" data-listing-file-modified-sort="1714332836335" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Question-order effects in social network name generators" data-listing-filename-sort="ISSNA-2008-question-order-effects.qmd">
+<td>
+<span class="listing-date">Jan 23, 2008</span>
+</td>
+<td>
+<a href="./presentations/ISSNA-2008-question-order-effects.html" class="title listing-title">Question-order effects in social network name generators</a>
+</td>
+<td>
+<span class="listing-event_short">ISSNA 2008</span>
+</td>
+<td>
+<span class="listing-location">St.&nbsp;Petersburg Beach, FL</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

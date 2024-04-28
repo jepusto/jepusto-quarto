@@ -1,0 +1,20 @@
+---
+title: Discussion of Stabilizing measures to reconcile accuracy and equity in performance
+  measurement
+authors: admin
+date: 2023-09-29T16:30:00
+publish_date: 2023-09-29T18:00:00
+event: Society for Research on Educational Effectiveness Conference
+event_short: SREE 2023
+event_url: https://www.sree.org/2023-conference
+location: Arlington, VA
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/SREE-2023-Stabilizing-performance-measures.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

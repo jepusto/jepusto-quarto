@@ -1,0 +1,23 @@
+---
+title: Observation procedures and Markov Chain models for estimating the prevalence
+  and incidence of a state behavior
+authors:
+- admin
+date: 2015-04-16T00:00:00
+publish_date: 2018-04-15T08:15:00
+event: American Educational Research Association annual convention
+event_short: AERA 2015
+location: Chicago, IL
+links:
+- icon: fa file
+  text: PDF
+  url: /files/PIR-APP-AERA-2015.pdf
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Pustejovsky-AERA-2015-estimating-prevalence-and-incidence.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

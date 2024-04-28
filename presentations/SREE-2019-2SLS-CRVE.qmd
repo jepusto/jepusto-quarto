@@ -1,0 +1,20 @@
+---
+title: Small-sample cluster-robust variance estimators for two-stage least squares
+  models
+authors:
+- admin
+date: 2019-03-08T00:00:00
+publish_date: 2019-03-08T16:15:00
+event: Society for Research on Educational Effectiveness Conference
+event_short: SREE 2019
+location: Washington, DC
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/SREE-2019-2SLS-CRVE.html
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

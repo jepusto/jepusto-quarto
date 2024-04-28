@@ -1,0 +1,19 @@
+---
+title: 'Meta-analysis of dependent effects: A review and consolidation of methods'
+authors:
+- admin
+date: 2018-04-15T08:15:00
+publish_date: 2018-04-15T08:15:00
+event: American Educational Research Association annual convention
+event_short: AERA 2018
+location: New York, NY
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Dependent-effects-AERA-2018.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

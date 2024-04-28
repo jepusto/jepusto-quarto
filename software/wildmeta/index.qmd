@@ -1,0 +1,34 @@
+---
+title: wildmeta
+subtitle: Cluster-wild bootstrap for meta-regression
+image: featured.jpg
+header_image: bootstrap-F.png
+header_caption: Bootstrap distribution of Naive F statistics under the null hypothesis.
+authors:
+- Megha Joshi
+- admin
+- Sangdon Lim
+- Pierce Cappelli
+date: '2016-04-27T00:00:00Z'
+categories:
+- meta-analysis
+- meta-regression
+- bootstrap
+- dependent effect sizes
+- robust variance estimation
+- Rstats
+page-layout: full
+about:
+  template: trestles
+  links:
+  - text: CRAN
+    url: https://cran.r-project.org/package=wildmeta
+  - text: Website
+    url: https://meghapsimatrix.github.io/wildmeta/
+  - icon: github
+    url: https://github.com/meghapsimatrix/wildmeta/
+
+---
+
+An R package for conducting hypothesis tests of meta-regression models using cluster wild bootstrapping, based on methods examined in [Joshi, Pustejovsky, and Beretvas (2021)](/publication/cluster-wild-bootstrap-for-meta-analysis/).
+

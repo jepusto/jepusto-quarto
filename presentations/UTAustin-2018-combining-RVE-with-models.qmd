@@ -1,0 +1,22 @@
+---
+title: Combining robust variance estimation with models for dependent effect sizes
+authors:
+- admin
+date: 2018-10-01T12:00:00
+publish_date: 2018-07-18T09:00:00
+event: UT Austin, Developmental & Clinical Psychology Brownbag
+event_short: UT Psych
+location: Austin, TX
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Combining-RVE-with-models-UTAustin-2018.pdf
+- icon: fa code
+  text: Code
+  url: /files/Lehtonen-analysis.R
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

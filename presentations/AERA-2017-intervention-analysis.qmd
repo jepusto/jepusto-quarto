@@ -1,0 +1,20 @@
+---
+title: A nonlinear intervention analysis model for treatment reversal single-case
+  designs
+authors:
+- admin
+date: 2017-04-28T00:00:00
+publish_date: 2018-04-15T08:15:00
+event: American Educational Research Association annual convention
+event_short: AERA 2017
+location: San Antonio, TX
+links:
+- icon: fa file
+  text: PDF
+  url: /files/AERA-2017-poster-intervention-analysis-model.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

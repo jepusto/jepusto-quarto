@@ -1,0 +1,27 @@
+---
+title: 'Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich'
+authors:
+- admin
+date: 2021-09-02T10:00:00
+publish_date: 2021-09-02T12:00:00
+event: Oslo R User Group Meetup
+event_short: OsloRUG
+event_url: https://www.meetup.com/Oslo-useR-Group/events/280005225/
+location: online
+links:
+- icon: fa file
+  text: PDF
+  url: https://osf.io/preprints/metaarxiv/vyfcj/
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Oslo-RUG-RVE-with-clubSandwich.pdf
+- icon: fa youtube
+  text: Video
+  url: https://youtu.be/sJUc39vneWk
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+Large meta-analyses often involve dependent effect sizes, but where the exact form of the dependence is unknown. Meta-analysis with robust variance estimation handles this problem through specification of a working model for the dependence, which need not be correct. However, the two currently available working models are limited to each describing a single type of dependence. James will demonstrate a workflow for implementing an expanded set of working models by combining the metafor and clubSandwich R packages.
+

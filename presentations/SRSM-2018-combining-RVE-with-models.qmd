@@ -1,0 +1,19 @@
+---
+title: Combining robust variance estimation with models for dependent effect sizes
+authors:
+- admin
+date: 2018-07-18T09:00:00
+publish_date: 2018-07-18T09:00:00
+event: Society for Research Synthesis Methodology annual meeting
+event_short: SRSM 2018
+location: Bristol, UK
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/Combining-RVE-with-models-SRSM-2018.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

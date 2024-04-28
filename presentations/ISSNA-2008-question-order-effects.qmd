@@ -1,0 +1,19 @@
+---
+title: Question-order effects in social network name generators
+authors:
+- admin
+date: 2008-01-23T00:00:00
+publish_date: 2018-04-15T08:15:00
+event: International Sunbelt Social Network Conference
+event_short: ISSNA 2008
+location: St. Petersburg Beach, FL
+links:
+- icon: fa file
+  text: PDF
+  url: /files/question-order-effects-poster.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

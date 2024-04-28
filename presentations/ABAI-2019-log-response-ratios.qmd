@@ -1,0 +1,20 @@
+---
+title: 'Log response ratio effect sizes: Rationale and methods for single case designs
+  with behavioral outcomes'
+authors:
+- admin
+date: 2019-05-26T17:00:00
+publish_date: 2019-05-26T17:00:00
+event: Association for Behavior Analysis International Annual Convention
+event_short: ABAI 2019
+location: Chicago, IL
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/ABAI-2019-Log-response-ratios.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

@@ -1,0 +1,20 @@
+---
+title: A generalized excess significance test for selective outcome reporting with
+  dependent effect sizes
+authors:
+- admin
+date: 2019-07-22T13:30:00
+publish_date: 2019-07-22T12:00:00
+event: Society for Research Synthesis Methodology annual meeting
+event_short: SRSM 2019
+location: Chicago, IL
+links:
+- icon: fa person-chalkboard
+  text: Slides
+  url: /files/SRSM 2019-GEST.pdf
+
+---
+{{< include _presentation_header.qmd >}}
+
+
+

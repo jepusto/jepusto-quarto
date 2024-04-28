@@ -1,0 +1,28 @@
+---
+title: "Presentations"
+subtitle: "Conference presentations, posters, and invited talks"
+format:
+  html:
+    grid:
+      sidebar-width: 250px
+      body-width: 1000px
+      margin-width: 50px
+      gutter-width: 1.5em
+listing:
+    contents: presentations
+    sort: 
+      - "date desc"
+      - "title"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: true
+    max-items: 50
+    fields: [date, title, event_short, location]
+    field-display-names:
+      date: "Date"
+      title: "Title"
+      event_short: "Event"
+      location: "Location"
+
+---
