@@ -6,7 +6,6 @@ date: 2021-09-27T10:00:00
 publish_date: 2021-09-27T16:00:00
 event: Educational Psychology PIE Colloquium
 event_short: EdPsych PIE
-event_url: ''
 location: Educational Sciences 259
 links:
 - icon: fa person-chalkboard
