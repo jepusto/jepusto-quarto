@@ -1,0 +1,18 @@
+
+```{r}
+#| echo: false
+#| results: 'asis'
+
+links <- rmarkdown::metadata$links
+
+style_icon <- function(x) {
+  paste("[{{<", x$icon, ">}}", x$text, "](", x$url, ")")
+}
+
+sapply(links, style_icon) |>
+  paste0(
+    "{.btn .btn-outline-primary}", 
+    collapse = " "
+  ) |> 
+  cat()
+```

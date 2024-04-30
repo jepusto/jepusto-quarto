@@ -1,5 +1,30 @@
 [
   {
+    "listing": "/teaching.html",
+    "items": [
+      "/teaching/Quasi-Experimental/index.html",
+      "/teaching/Field-Experiments/index.html",
+      "/teaching/Meta-analysis/index.html",
+      "/teaching/Causal-Inference/index.html",
+      "/teaching/DASPiR/index.html",
+      "/teaching/Research-design/index.html",
+      "/teaching/Experimental-Data/index.html"
+    ]
+  },
+  {
+    "listing": "/software.html",
+    "items": [
+      "/software/ARPobservation/index.html",
+      "/software/POMADE/index.html",
+      "/software/SingleCaseES/index.html",
+      "/software/clubSandwich/index.html",
+      "/software/lmeInfo/index.html",
+      "/software/scdhlm/index.html",
+      "/software/simhelpers/index.html",
+      "/software/wildmeta/index.html"
+    ]
+  },
+  {
     "listing": "/posts.html",
     "items": [
       "/posts/Distribution-of-signficant-effects/index.html",
@@ -178,31 +203,6 @@
       "/posts/Shogren-reliability-analysis/index.html",
       "/posts/Another-project-idea/index.html",
       "/posts/Current-Projects/index.html"
-    ]
-  },
-  {
-    "listing": "/teaching.html",
-    "items": [
-      "/teaching/Quasi-Experimental/index.html",
-      "/teaching/Field-Experiments/index.html",
-      "/teaching/Meta-analysis/index.html",
-      "/teaching/Causal-Inference/index.html",
-      "/teaching/DASPiR/index.html",
-      "/teaching/Research-design/index.html",
-      "/teaching/Experimental-Data/index.html"
-    ]
-  },
-  {
-    "listing": "/software.html",
-    "items": [
-      "/software/ARPobservation/index.html",
-      "/software/POMADE/index.html",
-      "/software/SingleCaseES/index.html",
-      "/software/clubSandwich/index.html",
-      "/software/lmeInfo/index.html",
-      "/software/scdhlm/index.html",
-      "/software/simhelpers/index.html",
-      "/software/wildmeta/index.html"
     ]
   },
   {
