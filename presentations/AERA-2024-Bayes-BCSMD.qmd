@@ -1,0 +1,19 @@
+---
+title: "Bayesian estimation of between-case standardized mean differences: A simulation study"
+authors: 
+  - admin
+  - Man Chen
+  - David Klingbeil
+  - Ethan van Norman
+date: 2024-04-12T15:30:00
+publish_date: 2024-04-12T15:30:00
+event: American Educational Research Association annual convention
+event_short: AERA 2024
+event_url: https://www.aera.net/Events-Meetings/Annual-Meeting/2024-Annual-Meeting
+location: Philadelphia, PA
+links:
+- icon: fa file
+  text: PDF
+  url: /files/AERA-2024-poster-Bayes-BC-SMD.pdf
+---
+{{< include _presentation_header.qmd >}}
