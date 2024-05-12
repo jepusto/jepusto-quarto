@@ -5,6 +5,8 @@ website:
   title: "James E. Pustejovsky"
   navbar:
     left:
+      - text: CV
+        url: /files/Pustejovsky-CV.pdf
       - posts.qmd
       - presentations.qmd
       - people.qmd
