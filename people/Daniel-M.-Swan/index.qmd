@@ -21,7 +21,26 @@ org_name: Prevention Science Institute, University of Oregon
 org_url: https://psi.uoregon.edu/
 role: Research Associate
 people-group: Alumni
-
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, authors, title, publication]
+    field-display-names:
+      date: "Date"
+      authors: "Authors"
+      title: "Title"
+    include: 
+      authors: 'Daniel M. Swan'
 ---
 
 :::::{#about}
@@ -56,4 +75,7 @@ His personal research interests center on analysis and meta-analysis of single-c
 
 ::::
 
+:::::
+
+:::::{#publications}
 :::::

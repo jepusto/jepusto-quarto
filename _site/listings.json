@@ -260,5 +260,136 @@
       "/presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html",
       "/presentations/ISSNA-2008-question-order-effects.html"
     ]
+  },
+  {
+    "listing": "/publications.html",
+    "items": [
+      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
+      "/publication/Decline-effects/index.html",
+      "/publication/Conducting-POMADE/index.html",
+      "/publication/Efficacy-of-combining-cognitive-training-and-NIBS/index.html",
+      "/publication/AAC-group-and-SCD/index.html",
+      "/publication/competing-approaches-for-cross-classified-data/index.html",
+      "/publication/Three-level-BC-SMD/index.html",
+      "/publication/Single-case-next-generation-standards/index.html",
+      "/publication/Power-approximations-for-dependent-effects/index.html",
+      "/publication/investigating-narrative-performance/index.html",
+      "/publication/SCED-MLMA-RVE/index.html",
+      "/publication/AAC-communication-outcomes/index.html",
+      "/publication/AAC-instructional-contexts/index.html",
+      "/publication/AAC-participant-characteristics/index.html",
+      "/publication/RVE-Meta-analysis-expanding-the-range/index.html",
+      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
+      "/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
+      "/publication/psychosocial-interventions-for-spiritual-well-being/index.html",
+      "/publication/stay-play-talk-meta-analysis/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
+      "/publication/selective-reporting-with-dependent-effects/index.html",
+      "/publication/response-guided-designs-in-SCED-baselines/index.html",
+      "/publication/psychosocial-interventions-for-positive-affect/index.html",
+      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-1/index.html",
+      "/publication/interventions-to-enhance-self-efficacy-in-cancer-patients/index.html",
+      "/publication/psychosocial-interventions-meaning-and-purpose/index.html",
+      "/publication/procedural-sensitivities-of-SCD-effect-sizes/index.html",
+      "/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html",
+      "/publication/Current-practices-in-meta-regression/index.html",
+      "/publication/History-of-meta-regression/index.html",
+      "/publication/RVE-in-fixed-effects-models/index.html",
+      "/publication/BCSMD-examination-of-two-methods/index.html",
+      "/publication/gradual-effects-model/index.html",
+      "/publication/SCD-synthesis-tools-II/index.html",
+      "/publication/SCD-synthesis-tools-I/index.html",
+      "/publication/using-response-ratios/index.html",
+      "/publication/RASE-special-issue-introduction/index.html",
+      "/publication/school-based-group-contingencies-meta-analysis/index.html",
+      "/publication/TAII-meta-analysis/index.html",
+      "/publication/FABI-meta-analysis/index.html",
+      "/publication/Meta-analysis-of-SCD/index.html",
+      "/publication/BC-SMD-primer-and-tutorial/index.html",
+      "/publication/RVE-for-meta-regression/index.html",
+      "/publication/Measurement-comparable-effect-sizes/index.html",
+      "/publication/Religion-spirituality-mental-health/index.html",
+      "/publication/Religion-spirituality-physical-health/index.html",
+      "/publication/Religion-spirituality-social-health/index.html",
+      "/publication/Four-methods-for-PIR/index.html",
+      "/publication/Design-comparable-effect-sizes/index.html",
+      "/publication/ARP-for-behavioral-observation/index.html",
+      "/publication/analyzing-SCD-hopes-and-fears/index.html",
+      "/publication/BC-SMD-primer-and-applications/index.html",
+      "/publication/converting-from-d-to-r-to-z/index.html",
+      "/publication/SMD-for-MBD/index.html",
+      "/publication/between-groups-d-statistic/index.html",
+      "/publication/Operationally-comparable-effect-sizes/index.html",
+      "/publication/SMD-for-SCD/index.html",
+      "/publication/Question-order-effects/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Christopher-Runyon/index.html",
+    "items": [
+      "/publication/ARP-for-behavioral-observation/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Man-Chen/index.html",
+    "items": [
+      "/presentations/AERA-2024-Bayes-BCSMD.html",
+      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
+      "/publication/AAC-group-and-SCD/index.html",
+      "/presentations/AERA-2023-BCSMD-benchmarks.html",
+      "/publication/Three-level-BC-SMD/index.html",
+      "/publication/SCED-MLMA-RVE/index.html",
+      "/publication/AAC-communication-outcomes/index.html",
+      "/publication/AAC-instructional-contexts/index.html",
+      "/publication/AAC-participant-characteristics/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Daniel-M.-Swan/index.html",
+    "items": [
+      "/publication/response-guided-designs-in-SCED-baselines/index.html",
+      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
+      "/publication/gradual-effects-model/index.html",
+      "/publication/Four-methods-for-PIR/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Gleb-Furman/index.html",
+    "items": []
+  },
+  {
+    "listing": "/people/Jingru-Zhang/index.html",
+    "items": [
+      "/presentations/SREE-2023-Equity-related-moderator-analysis.html"
+    ]
+  },
+  {
+    "listing": "/people/Megha-Joshi/index.html",
+    "items": [
+      "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
+      "/posts/cluster-bootstrap-selection-model/index.html",
+      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-1/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Paulina-Grekov/index.html",
+    "items": []
+  },
+  {
+    "listing": "/people/Young-Ri-Lee/index.html",
+    "items": [
+      "/publication/competing-approaches-for-cross-classified-data/index.html"
+    ]
+  },
+  {
+    "listing": "/working-papers.html",
+    "items": [
+      "/publication/Conducting-POMADE/index.html"
+    ]
   }
 ]

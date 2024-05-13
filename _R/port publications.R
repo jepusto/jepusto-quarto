@@ -60,15 +60,37 @@ yaml_vals <-
 
 View(yaml_vals)
 
-unlist(yaml_vals$links) %>% table()
+link_dat <- lapply(
+  yaml_vals$links, 
+  \(x) bind_rows(lapply(x, \(y) as.data.frame(y)))
+) %>%
+  bind_rows(.id = "paper")
 
 process_links <- function(links) {
-  
+  lapply(links, \(x) {
+    names(x)[names(x)=="name"] <- "text"
+    if (x$text == "Journal") {
+      x$icon <- "fa newspaper"
+    }
+    if (x$text == "R package") {
+      x$icon <- "fa gift"
+    }
+    if (x$text == "Web app") {
+      x$icon <- "fa tablet-screen-button"
+    }
+    if (x$text == "White paper") {
+      x$icon <- "fa newspaper"
+    }
+    if (x$text == "Correction") {
+      x$icon <- "fa file-pen"
+    }
+    x
+  })
 }
 
 convert_post <- function(unit, source_dir, destination_dir) {
   
-  post_text <- readLines(paste(source_dir,unit,  sep = "/"))
+  post_text <- readLines(paste(source_dir,unit,"index.md", sep = "/"))
   yaml_lines <- which(post_text == "---")
   yaml_text <- post_text[(yaml_lines[1] + 1):(yaml_lines[2] - 1)]
   yaml_vars <- yaml::read_yaml(text = yaml_text)
@@ -80,10 +102,10 @@ convert_post <- function(unit, source_dir, destination_dir) {
   }
   
   yaml_vars$publication_types <- case_match(yaml_vars$publication_types, 
-                                            0 = "Report",
-                                            2 = "Journal article",
-                                            3 = "Pre-print",
-                                            6 = "Book chapter")
+                                            "0" ~ "Report",
+                                            "2" ~ "Journal article",
+                                            "3" ~ "Pre-print",
+                                            "6" ~ "Book chapter")
   
   new_links <- process_links(yaml_vars$links)
   
@@ -95,14 +117,13 @@ convert_post <- function(unit, source_dir, destination_dir) {
     )
   }
   
-
   if (!is.null(yaml_vars$url_pdf) && str_length(yaml_vars$url_pdf) > 0) {
-  new_links[[length(new_links) + 1L]] <- list(
-    icon = "fa file",
-    text = "PDF",
-    url = yaml_vars$url_pdf
-  )
-}
+    new_links[[length(new_links) + 1L]] <- list(
+      icon = "fa file",
+      text = "PDF",
+      url = yaml_vars$url_pdf
+    )
+  }
 
   if (!is.null(yaml_vars$url_slides) && str_length(yaml_vars$url_slides) > 0) {
     new_links[[length(new_links) + 1L]] <- list(
@@ -173,28 +194,29 @@ convert_post <- function(unit, source_dir, destination_dir) {
     ""
   )
   
-  unit_name <- str_replace(unit, ".md$", ".qmd")
-  new_post_name <- paste(destination_dir, unit_name, sep = "/")
+  dir_path <- paste(destination_dir, unit, sep = "/")
+  if (!dir.exists(dir_path)) dir.create(dir_path)
+  new_post_name <- paste(destination_dir, unit, "index.qmd", sep = "/")
   write_lines(post_text_new, file = new_post_name)
  
-  image_file <- list.files(paste(source_dir,unit, sep = "/"), pattern = ".(jpg|png)")
+  image_file <- list.files(paste(source_dir, unit, sep = "/"), pattern = ".(jpg|png)")
   file.copy(
     from = paste(source_dir, unit, image_file, sep = "/"), 
-    to = paste(destination_dir,unit, image_file, sep = "/"),
+    to = paste(destination_dir, unit, image_file, sep = "/"),
     overwrite = TRUE
-  ) 
+  )
 }
 
 
 convert_post(
-  "ABAI-2019-log-response-ratios.md", 
-  source_dir = "_talk", 
-  destination_dir = "presentations"
+  "AAC-communication-outcomes", 
+  source_dir = "_publication", 
+  destination_dir = "publication"
 )
 
 walk(
   all_units$unit, 
   convert_post,
-  source_dir = "_talk", 
-  destination_dir = "presentations"
+  source_dir = "_publication", 
+  destination_dir = "publication"
 )

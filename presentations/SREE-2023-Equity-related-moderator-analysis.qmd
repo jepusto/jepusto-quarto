@@ -1,6 +1,5 @@
 ---
-title: 'Equity-related moderator analysis in syntheses of dependent effect sizes:
-  Conceptual and statistical considerations'
+title: 'Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations'
 authors:
 - admin
 - Jingru Zhang

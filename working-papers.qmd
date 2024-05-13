@@ -1,0 +1,21 @@
+---
+title: "Working Papers"
+page-layout: full
+listing:
+  - id: working-papers
+    contents: publication
+    sort: 
+      - "date desc"
+    type: default
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 5
+    include:
+      publication_type: "{Pre-print}*"
+---
+
+:::::{#working-papers}
+:::::
+
+#### [(All publications)](/publications.html)

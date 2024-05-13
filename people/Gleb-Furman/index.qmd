@@ -15,7 +15,26 @@ org_name: Gibson Consulting Group
 org_url: https://gibsonconsult.com/who-we-are/
 role: Senior Quantitative Research Scientist
 people-group: Alumni
-
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, authors, title, publication]
+    field-display-names:
+      date: "Date"
+      authors: "Authors"
+      title: "Title"
+    include: 
+      authors: 'Gleb Furman'
 ---
 
 :::::{#about}
@@ -46,4 +65,7 @@ Gleb did his doctoral work on causal inference at UT Austin. He is currently a s
 
 ::::
 
+:::::
+
+:::::{#publications}
 :::::

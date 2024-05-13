@@ -3,16 +3,24 @@ project:
 
 website:
   title: "James E. Pustejovsky"
+  site-url: https://jepusto.com
+  description: "Education Statistics and Meta-Analysis"
+  twitter-card: true
   navbar:
     left:
+      - people.qmd
       - text: CV
         url: /files/Pustejovsky-CV.pdf
       - posts.qmd
+      - working-papers.qmd
+      - publications.qmd
       - presentations.qmd
-      - people.qmd
       - software.qmd
       - teaching.qmd
-
+      - contact.qmd
+    right:
+      - icon: rss
+        href: index.xml
 format:
   html:
     theme: sandstone

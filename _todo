@@ -1,13 +1,10 @@
-- Add papers
-- Add working papers listing
-- Add publications listing page
-- Style student page 
-- Add contact page
-- Add RSS feed for blog posts
+- Style publications listing page
+- Style student listing page
+- Style website
+
 - Add RSS feed for papers
 
 - Copy-edit posts
 - Check for dead links
 - Create redirects
-- Style website
 - Publish on netlify

@@ -15,6 +15,26 @@ org_name: University of Wisconsin-Madison
 org_url: ''
 role: Graduate student
 people-group: Current Advisees
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, authors, title, publication]
+    field-display-names:
+      date: "Date"
+      authors: "Authors"
+      title: "Title"
+    include: 
+      authors: 'Jingru Zhang'
 
 ---
 
@@ -46,4 +66,7 @@ Jingru Zhang is a doctoral student in the Quantitative Methods area in the Educa
 
 ::::
 
+:::::
+
+:::::{#publications}
 :::::

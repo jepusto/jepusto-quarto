@@ -1,18 +1,12 @@
 ---
 title: "Publications"
-format:
-  html:
-    grid:
-      sidebar-width: 250px
-      body-width: 1000px
-      margin-width: 50px
-      gutter-width: 1.5em
+page-layout: full
 listing:
     contents: publication
     sort: 
       - "date desc"
     type: table
-    categories: true
+    categories: false
     sort-ui: false
     filter-ui: true
     max-items: 100

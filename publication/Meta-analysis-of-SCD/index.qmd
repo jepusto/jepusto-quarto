@@ -1,0 +1,26 @@
+---
+title: Research synthesis and meta-analysis of single-case designs
+authors:
+- admin
+- John Ferron
+date: 2017-01-01T00:00:00
+publish_date: 2017-01-01T00:00:00
+publication_type: Book chapter
+publication: 'In J. M. Kauffman, D. P. Hallahan, & P. C. Pullen (Eds.), _Handbook
+  of Special Education, 2nd Edition_. New York, NY: Routledge'
+categories:
+- design-comparable SMD
+- effect size
+- meta-analysis
+- response ratio
+- single-case design
+links:
+- icon: fa file
+  text: PDF
+  url: /files/Pustejovsky-Ferron-2017-Research-synthesis-and-meta-analysis-of-SCDs.pdf
+
+---
+{{< include '../_publication_header.qmd' >}}
+
+
+

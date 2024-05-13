@@ -17,7 +17,26 @@ org_name: National Board of Medical Examiners
 org_url: https://www.nbme.org/
 role: Measurement Scientist
 people-group: Alumni
-
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, authors, title, publication]
+    field-display-names:
+      date: "Date"
+      authors: "Authors"
+      title: "Title"
+    include: 
+      authors: 'Christopher Runyon'
 ---
 
 :::::{#about}
@@ -51,4 +70,7 @@ Chris did his doctoral work on causal inference at UT Austin. He is currently a 
 
 ::::
 
+:::::
+
+:::::{#publications}
 :::::

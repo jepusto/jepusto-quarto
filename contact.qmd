@@ -1,0 +1,18 @@
+---
+title: "Contact"
+---
+
+{{<fa envelope>}} [pustejovsky@wisc.edu]('mailto:pustejovsky@wisc.edu')
+
+{{<fa phone>}} 608-262-0842
+
+{{<fa location-dot>}} 1082C Education Sciences, 1025 West Johnson St., Madison, WI 53706-1706
+
+```{r}
+#| echo: false
+library(leaflet)
+leaflet() |>
+  addTiles() |>  # Add default OpenStreetMap map tiles
+  addMarkers(lng=43.072120, lat=-89.403424)
+
+```

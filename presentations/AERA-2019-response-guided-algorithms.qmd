@@ -1,6 +1,5 @@
 ---
-title: The impact of response-guided designs on count outcomes in single-case design
-  baselines
+title: The impact of response-guided designs on count outcomes in single-case design baselines
 authors:
 - admin
 date: 2019-04-07T00:00:00

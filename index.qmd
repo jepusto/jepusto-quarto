@@ -67,7 +67,7 @@ I am a statistician and associate professor in the [School of Education](https:/
 
 :::::
 
-# Recent posts
-
+# Recent posts 
 :::::{#recent-posts}
 :::::
+#### [(All blog posts)](/posts.html)

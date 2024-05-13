@@ -1,0 +1,32 @@
+---
+title: 'Conducting power analysis for meta-analysis of dependent effect sizes: Common
+  guidelines and an introduction to the POMADE R package'
+authors:
+- Mikkel H. Vembye
+- admin
+- Terri D. Pigott
+date: 2023-07-21T00:00:00
+publish_date: 2024-02-12T00:00:00
+publication_type: Pre-print
+publication: Pre-print
+categories:
+- power
+- meta-analysis
+- dependent effect sizes
+- robust variance estimation
+links:
+- text: Supplementary materials
+  url: https://osf.io/vpnmb/
+- icon: fa lock-open
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/3x2en
+- icon: fa code
+  text: Code
+  url: https://osf.io/yurzh
+
+---
+{{< include '../_publication_header.qmd' >}}
+
+
+Sample size and statistical power are important factors to consider when planning a research synthesis. Power analysis methods have been developed for fixed effect or random effects models, but until recently these methods were limited to simple data structures with a single, independent effect per study. Recent work has provided power approximation formulas for meta-analyses involving studies with multiple, dependent effect size estimates, which are common in syntheses of social science research. Prior work focused on developing and validating the approximations, but did not address the practice challenges encountered in applying them for purposes of planning a synthesis involving dependent effect sizes. We aim to facilitate application of these recent developments by providing practical guidance on how to conduct power analysis for planning a meta-analysis of dependent effect sizes and by introducing a new R package, POMADE, designed for this purpose. We present a comprehensive overview of resources for finding information about the study design features and model parameters needed to conduct power analysis, along with detailed worked examples using the POMADE package. For presenting power analysis findings, we emphasize graphical tools that can depict power under a range of pausible assumptions and introduce a novel plot, the traffic light power plot, for conveying the degree of certainty in one’s assumptions.
+

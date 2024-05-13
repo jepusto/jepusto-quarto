@@ -15,6 +15,26 @@ org_name: Urban Education Institute at the University of Chicago
 org_url: https://uei.uchicago.edu/
 role: Postdoctoral Scholar
 people-group: Alumni
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, authors, title, publication]
+    field-display-names:
+      date: "Date"
+      authors: "Authors"
+      title: "Title"
+    include: 
+      authors: 'Young Ri Lee'
 
 ---
 
@@ -46,4 +66,7 @@ Young Ri completed her PhD in the Quantitative Methods program at The University
 
 ::::
 
+:::::
+
+:::::{#publications}
 :::::

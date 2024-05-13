@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-listing/list.min.js"></script>
+<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,9 +67,70 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-publications .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-authors','listing-title','listing-publication',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-publications'] = new List('listing-publications', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="James E. Pustejovsky - Man Chen">
+<meta name="twitter:image" content="https://jepusto.com/people/Man-Chen/avatar.jpg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -88,8 +151,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="../../files/Pustejovsky-CV.pdf"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../presentations.html"> 
@@ -106,6 +177,13 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="../../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -167,6 +245,158 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </div>
 </div></div>
+</div>
+
+<div id="listing-publications" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Authors
+</th>
+<th>
+Title
+</th>
+<th>
+publication
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1712953800000" data-listing-file-modified-sort="1715545216897" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Bayesian estimation of between-case standardized mean differences: A simulation study" data-listing-filename-sort="AERA-2024-Bayes-BCSMD.qmd">
+<td>
+<span class="listing-date">Apr 12, 2024</span>
+</td>
+<td>
+<span class="listing-authors">admin, Man Chen, David Klingbeil, Ethan van Norman</span>
+</td>
+<td>
+<a href="../../presentations/AERA-2024-Bayes-BCSMD.html" class="title listing-title">Bayesian estimation of between-case standardized mean differences: A simulation study</a>
+</td>
+<td>
+<span class="listing-publication">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="meta-analysis,meta-regression,dependent effect sizes,robust variance estimation" data-listing-date-sort="1709791200000" data-listing-file-modified-sort="1715549175453" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="121" data-listing-title-sort="Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 7, 2024</span>
+</td>
+<td>
+<span class="listing-authors">admin, Man Chen</span>
+</td>
+<td>
+<a href="../../publication/Equivalences-between-ad-hoc-strategies-and-models/index.html" class="title listing-title">Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes</a>
+</td>
+<td>
+<span class="listing-publication"><em>Journal of Educational and Behavioral Statistics</em>, forthcoming</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1685077200000" data-listing-file-modified-sort="1715549169039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="244" data-listing-title-sort="Systematic review of variables related to instruction in augmentative and alternative communication implementation: Group and single-case design" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 26, 2023</span>
+</td>
+<td>
+<span class="listing-authors">Joe Reichle, admin, Kimberly J. Vannest, Margaret Foster, Lauren M. Pierson, Sanikan Wattanawongwan, Man Chen, Marcus Fuller, April N. Haas, Bethany H. Bhat, Mary R. Sallese, S. D. Smith, Valeria Yllades, Daira Rodriguez, Amara Yoro, Jay B. Ganz</span>
+</td>
+<td>
+<a href="../../publication/AAC-group-and-SCD/index.html" class="title listing-title">Systematic review of variables related to instruction in augmentative and alternative communication implementation: Group and single-case design</a>
+</td>
+<td>
+<span class="listing-publication"><em>American Journal of Speech-Language Pathology, 32</em>(4), 1734-1757</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-date-sort="1681663200000" data-listing-file-modified-sort="1714406022641" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="122" data-listing-title-sort="Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions." data-listing-filename-sort="AERA-2023-BCSMD-benchmarks.qmd">
+<td>
+<span class="listing-date">Apr 16, 2023</span>
+</td>
+<td>
+<span class="listing-authors">admin, Man Chen, David Klingbeil, Ethan van Norman</span>
+</td>
+<td>
+<a href="../../presentations/AERA-2023-BCSMD-benchmarks.html" class="title listing-title">Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions.</a>
+</td>
+<td>
+<span class="listing-publication">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="single-case design,effect size,standardized mean difference,design-comparable SMD,hierarchical models,multivariate" data-listing-date-sort="1678255200000" data-listing-file-modified-sort="1715549181395" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179" data-listing-title-sort="Between-case standardized mean differences: Flexible methods for single-case designs" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 8, 2023</span>
+</td>
+<td>
+<span class="listing-authors">Man Chen, admin, David A. Klingbeil, Ethan R. Van Norman</span>
+</td>
+<td>
+<a href="../../publication/Three-level-BC-SMD/index.html" class="title listing-title">Between-case standardized mean differences: Flexible methods for single-case designs</a>
+</td>
+<td>
+<span class="listing-publication"><em>Journal of School Psychology, 98</em>, 16-38</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="single-case design,meta-analysis,robust variance estimation,response ratio,non-overlap measures,standardized mean difference" data-listing-date-sort="1651208400000" data-listing-file-modified-sort="1715549177207" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245" data-listing-title-sort="Multi-level meta-analysis of single-case experimental designs using robust variance estimation" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 29, 2022</span>
+</td>
+<td>
+<span class="listing-authors">Man Chen, admin</span>
+</td>
+<td>
+<a href="../../publication/SCED-MLMA-RVE/index.html" class="title listing-title">Multi-level meta-analysis of single-case experimental designs using robust variance estimation</a>
+</td>
+<td>
+<span class="listing-publication"><em>Psychological Methods</em>, forthcoming</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1715549169020" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="377" data-listing-title-sort="Augmentative and Alternative Communication intervention targets for school-aged participants with ASD and ID: A single-case systematic review and meta-analysis" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 20, 2022</span>
+</td>
+<td>
+<span class="listing-authors">Jay B. Ganz, admin, Joe Reichle, Kimberly J. Vannest, Margaret Foster, Marcus Fuller, Lauren M. Pierson, Sanikan Wattanawongwan, Amando Bernal, Man Chen, April N. Haas, Rachel Skov, S. D. Smith, Valeria Yllades</span>
+</td>
+<td>
+<a href="../../publication/AAC-communication-outcomes/index.html" class="title listing-title">Augmentative and Alternative Communication intervention targets for school-aged participants with ASD and ID: A single-case systematic review and meta-analysis</a>
+</td>
+<td>
+<span class="listing-publication"><em>Review Journal of Autism and Developmental Disorders</em>, forthcoming</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1715549169047" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123" data-listing-title-sort="Considering instructional contexts in AAC interventions for people with ASD and/or IDD experiencing complex communication needs: A single-case design meta-analysis" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 20, 2022</span>
+</td>
+<td>
+<span class="listing-authors">Jay B. Ganz, admin, Joe Reichle, Kimberly J. Vannest, Margaret Foster, April N. Haas, Lauren M. Pierson, Sanikan Wattanawongwan, Amando Bernal, Man Chen, Rachel Skov, S. D. Smith</span>
+</td>
+<td>
+<a href="../../publication/AAC-instructional-contexts/index.html" class="title listing-title">Considering instructional contexts in AAC interventions for people with ASD and/or IDD experiencing complex communication needs: A single-case design meta-analysis</a>
+</td>
+<td>
+<span class="listing-publication"><em>Review Journal of Autism and Developmental Disorders, 10</em>, 615-629</span>
+</td>
+</tr>
+<tr data-index="8" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1715549169054" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245" data-listing-title-sort="Participant characteristics predicting communication outcomes in AAC implementation for individuals with ASD and IDD: Meta-analysis" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 20, 2022</span>
+</td>
+<td>
+<span class="listing-authors">Jay B. Ganz, admin, Joe Reichle, Kimberly J. Vannest, Margaret Foster, Lauren M. Pierson, Sanikan Wattanawongwan, Amando Bernal, Man Chen, April N. Haas, Mary Rose Sallese, Rachel Skov, S. D. Smith</span>
+</td>
+<td>
+<a href="../../publication/AAC-participant-characteristics/index.html" class="title listing-title">Participant characteristics predicting communication outcomes in AAC implementation for individuals with ASD and IDD: Meta-analysis</a>
+</td>
+<td>
+<span class="listing-publication"><em>Augmentative and Alternative Communication, 39</em>(1), 7-22</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
 </div>
 
 
@@ -248,7 +478,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

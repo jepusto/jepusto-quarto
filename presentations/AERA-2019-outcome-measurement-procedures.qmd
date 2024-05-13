@@ -1,6 +1,5 @@
 ---
-title: An examination of measurement procedures and baseline behavioral outcomes in
-  single-case research
+title: An examination of measurement procedures and baseline behavioral outcomes in single-case research
 authors:
 - admin
 date: 2019-04-07T00:00:00
