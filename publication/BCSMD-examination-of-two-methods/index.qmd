@@ -1,6 +1,5 @@
 ---
-title: 'Between-case standardized effect size analysis of single case design: Examination
-  of the two methods'
+title: 'Between-case standardized effect size analysis of single case design: Examination of the two methods'
 authors:
 - Samuel L. Odom
 - Erin E. Barton

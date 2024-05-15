@@ -1,6 +1,5 @@
 ---
-title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A
-  meta-analysis of randomized controlled trials'
+title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A meta-analysis of randomized controlled trials'
 authors:
 - Tom V. Merluzzi
 - admin
@@ -11,7 +10,10 @@ authors:
 date: 2019-06-06T00:00:00
 publish_date: 2019-06-06T00:00:00
 publication_type: Journal article
-publication: _Psycho-Oncology, 28_(9), 1781-1790
+publication: Psycho-Oncology
+volume: 28
+issue: 9
+pages: 1781-1790
 categories:
 - psycho-social intervention
 - cancer

@@ -1,6 +1,5 @@
 ---
-title: 'Single-case synthesis tools I: Evaluating the quality and rigor of research
-  on antecedent sensory-based interventions'
+title: 'Single-case synthesis tools I: Evaluating the quality and rigor of research on antecedent sensory-based interventions'
 authors:
 - Kathleen N. Zimmerman
 - Jennifer R. Ledford
@@ -11,7 +10,10 @@ authors:
 date: 2018-03-03T00:00:00
 publish_date: 2018-03-03T00:00:00
 publication_type: Journal article
-publication: _Research in Developmental Disabilities, 79_, 19-32
+publication: Research in Developmental Disabilities
+volume: 79
+issue: 
+pages: 19-32
 categories:
 - single-case design
 - systematic review

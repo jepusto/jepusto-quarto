@@ -1,14 +1,15 @@
 ---
-title: 'Comparison of competing approaches to analyzing cross-classified data: Random
-  effects models, ordinary least squares, or fixed effects with cluster robust standard
-  errors'
+title: 'Comparison of competing approaches to analyzing cross-classified data: Random effects models, ordinary least squares, or fixed effects with cluster robust standard errors'
 authors:
 - Young Ri Lee
 - admin
 date: 2023-03-09T00:00:00
 publish_date: 2023-03-09T00:00:00
 publication_type: Journal article
-publication: _Psychological Methods_, advance online publication
+publication: Psychological Methods 
+volume: 
+issue: 
+pages: advance online publication
 categories:
 - simulation
 - random effects

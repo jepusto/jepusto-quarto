@@ -1,6 +1,5 @@
 ---
-title: 'Between-case standardized mean difference effect sizes for single-case designs:
-  A primer and tutorial using the scdhlm web application'
+title: 'Between-case standardized mean difference effect sizes for single-case designs: A primer and tutorial using the scdhlm web application'
 authors:
 - Jeffrey C. Valentine
 - Emily E. Tanner-Smith

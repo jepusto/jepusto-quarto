@@ -1,6 +1,5 @@
 ---
-title: A meta-analytic approach to examine the relationship between religion/spirituality
-  and mental health in cancer
+title: 'A meta-analytic approach to examine the relationship between religion/spirituality and mental health in cancer'
 authors:
 - John A. Salsman
 - admin
@@ -16,7 +15,10 @@ authors:
 date: 2015-08-10T00:00:00
 publish_date: 2015-08-10T00:00:00
 publication_type: Journal article
-publication: _Cancer, 121_(21), 3769-3778
+publication: Cancer
+volume: 121
+issue: 21
+pages: 3769-3778
 categories:
 - cancer
 - correlation

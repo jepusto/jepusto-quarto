@@ -1,6 +1,5 @@
 ---
-title: A systematic review and meta‐analysis of effects of psychosocial interventions
-  on spiritual well‐being in adults with cancer
+title: A systematic review and meta-analysis of effects of psychosocial interventions on spiritual well-being in adults with cancer
 authors:
 - Laurie E. McLouth
 - C. Graham Ford
@@ -12,7 +11,10 @@ authors:
 date: 2021-02-01T00:00:00
 publish_date: 2021-02-01T00:00:00
 publication_type: Journal article
-publication: _Psycho-Oncology, 30_(2), 147-158
+publication: Psycho-Oncology
+volume: 30 
+issue: 2
+pages: 147-158
 categories:
 - cancer
 - meta-analysis

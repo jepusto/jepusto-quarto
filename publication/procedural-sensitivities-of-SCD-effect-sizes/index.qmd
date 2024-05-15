@@ -1,11 +1,13 @@
 ---
-title: Procedural sensitivities of effect sizes for single-case designs with behavioral
-  outcome measures
+title: Procedural sensitivities of effect sizes for single-case designs with behavioral outcome measures
 authors: admin
 date: 2019-04-01T00:00:00
 publish_date: 2019-04-01T00:00:00
 publication_type: Journal article
-publication: '*Psychological Methods, 24*(2), 217-235'
+publication: Psychological Methods
+volume: 24
+issue: 2
+pages: 217-235
 categories:
 - alternating renewal process
 - effect size
@@ -13,9 +15,7 @@ categories:
 - single-case design
 - behavioral observation
 - non-overlap measures
-image: Conditional range distributions of the non-overlap effect size measures for
-  each procedural factor, by percentage change from baseline to treatment. For clarity
-  of illustration, the conditional range distributions for PND are truncated at 40.
+image: Conditional range distributions of the non-overlap effect size measures for each procedural factor, by percentage change from baseline to treatment. For clarity of illustration, the conditional range distributions for PND are truncated at 40.
 links:
 - text: Supplementary materials
   url: https://osf.io/hkzsm/

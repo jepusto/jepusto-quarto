@@ -1,13 +1,15 @@
 ---
-title: Equivalences between ad hoc strategies and meta-analytic models for dependent
-  effect sizes
+title: Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes
 authors:
 - admin
 - Man Chen
 date: 2024-03-07T00:00:00
 publish_date: 2024-03-07T00:00:00
 publication_type: Journal article
-publication: _Journal of Educational and Behavioral Statistics_, forthcoming
+publication: Journal of Educational and Behavioral Statistics
+volume: 
+issue: 
+pages: advance online publication
 categories:
 - meta-analysis
 - meta-regression

@@ -1,14 +1,14 @@
 ---
-title: 'Evaluating the Transition to College Mathematics Course in Texas high schools:
-  Findings from the second year of implementation'
+title: 'Evaluating the Transition to College Mathematics Course in Texas high schools: Findings from the second year of implementation'
 authors:
 - admin
 - Megha Joshi
 date: 2020-12-16T00:00:00
 publish_date: 2020-12-16T00:00:00
 publication_type: Report
-publication: Greater Texas Foundation White Paper. Greater Texas Foundation, Bryan,
-  TX
+publication: Greater Texas Foundation White Paper
+organization: Greater Texas Foundation
+location: Bryan, TX
 categories:
 - causal inference
 - evaluation

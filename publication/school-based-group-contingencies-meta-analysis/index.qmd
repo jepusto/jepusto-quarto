@@ -1,6 +1,5 @@
 ---
-title: 'A meta-analysis of school-based group contingency interventions for students
-  with challenging behavior: An update'
+title: 'A meta-analysis of school-based group contingency interventions for students with challenging behavior: An update'
 authors:
 - Daniel M. Maggin
 - admin
@@ -8,7 +7,10 @@ authors:
 date: 2017-07-01T00:00:00
 publish_date: 2017-07-01T00:00:00
 publication_type: Journal article
-publication: _Remedial and Special Education, 38_(6), 353-370
+publication: Remedial and Special Education
+volume: 38
+issue: 6
+pages: 353-370
 categories:
 - design-comparable SMD
 - meta-analysis

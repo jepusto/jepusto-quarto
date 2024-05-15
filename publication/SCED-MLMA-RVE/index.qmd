@@ -1,13 +1,15 @@
 ---
-title: Multi-level meta-analysis of single-case experimental designs using robust
-  variance estimation
+title: Multi-level meta-analysis of single-case experimental designs using robust variance estimation
 authors:
 - Man Chen
 - admin
 date: 2022-04-29T00:00:00
 publish_date: 2022-04-29T00:00:00
 publication_type: Journal article
-publication: _Psychological Methods_, forthcoming
+publication: Psychological Methods
+volume: 
+issue: 
+pages: forthcoming
 categories:
 - single-case design
 - meta-analysis

@@ -1,6 +1,5 @@
 ---
-title: The impact of response-guided designs on count outcomes in single-case experimental
-  design baselines
+title: The impact of response-guided designs on count outcomes in single-case experimental design baselines
 authors:
 - Daniel M. Swan
 - admin
@@ -8,7 +7,10 @@ authors:
 date: 2020-03-26T00:00:00
 publish_date: 2020-03-26T00:00:00
 publication_type: Journal article
-publication: _Evidence-Based Communication Assessment and Intervention_, forthcoming
+publication: Evidence-Based Communication Assessment and Intervention
+volume: 
+issue: 
+pages: forthcoming
 categories:
 - single-case design
 - response-guided design

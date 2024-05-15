@@ -1,11 +1,13 @@
 ---
-title: Converting from d to r to z when the design uses extreme groups, dichotomization,
-  or experimental control
+title: Converting from d to r to z when the design uses extreme groups, dichotomization, or experimental control
 authors: admin
 date: 2014-03-01T00:00:00
 publish_date: 2014-03-01T00:00:00
 publication_type: Journal article
-publication: _Psychological Methods, 19_(1), 92-112
+publication: Psychological Methods
+volume: 19
+issue: 1
+pages: 92-112
 categories:
 - effect size
 - meta-analysis

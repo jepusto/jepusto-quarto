@@ -1,6 +1,5 @@
 ---
-title: 'Considering instructional contexts in AAC interventions for people with ASD
-  and/or IDD experiencing complex communication needs: A single-case design meta-analysis'
+title: 'Considering instructional contexts in AAC interventions for people with ASD and/or IDD experiencing complex communication needs: A single-case design meta-analysis'
 authors:
 - Jay B. Ganz
 - admin
@@ -17,7 +16,10 @@ authors:
 date: 2022-04-20T00:00:00
 publish_date: 2022-04-20T00:00:00
 publication_type: Journal article
-publication: _Review Journal of Autism and Developmental Disorders, 10_, 615-629
+publication: Review Journal of Autism and Developmental Disorders 
+volume: 10
+issue: 
+pages: 615-629
 categories:
 - single-case design
 - systematic review

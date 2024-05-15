@@ -1,13 +1,15 @@
 ---
-title: Four methods for analyzing partial interval recording data, with application
-  to single-case research
+title: Four methods for analyzing partial interval recording data, with application to single-case research
 authors:
 - admin
 - Daniel M. Swan
 date: 2015-06-19T00:00:00
 publish_date: 2015-06-19T00:00:00
 publication_type: Journal article
-publication: _Multivariate Behavioral Research, 50_(3), 365-380
+publication: Multivariate Behavioral Research
+volume: 50 
+issue: 3
+pages: 365-380
 categories:
 - alternating renewal process
 - effect size

@@ -1,6 +1,5 @@
 ---
-title: 'Psychosocial interventions for cancer survivors: A meta-analysis of effects
-  on positive affect'
+title: 'Psychosocial interventions for cancer survivors: A meta-analysis of effects on positive affect'
 authors:
 - John A. Salsman
 - admin
@@ -12,7 +11,10 @@ authors:
 date: 2019-11-19T00:00:00
 publish_date: 2019-11-19T00:00:00
 publication_type: Journal article
-publication: _Journal of Cancer Survivorship, 13_, 943-955
+publication: Journal of Cancer Survivorship
+volume: 13
+issue: 
+pages: 943-955
 categories:
 - cancer
 - meta-analysis

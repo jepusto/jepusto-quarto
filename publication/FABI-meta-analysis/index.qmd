@@ -1,6 +1,5 @@
 ---
-title: 'Functional assessment-based interventions for students with or at-risk for
-  high incidence disabilities: Field-testing single-case synthesis methods'
+title: 'Functional assessment-based interventions for students with or at-risk for high incidence disabilities: Field-testing single-case synthesis methods'
 authors:
 - Eric A. Common
 - Kathleen L. Lane
@@ -10,7 +9,10 @@ authors:
 date: 2017-03-01T00:00:00
 publish_date: 2017-03-01T00:00:00
 publication_type: Journal article
-publication: _Remedial and Special Education, 38_(6), 331-352
+publication: Remedial and Special Education
+volume: 38 
+issue: 6
+pages: 331-352
 categories:
 - design-comparable SMD
 - effect size

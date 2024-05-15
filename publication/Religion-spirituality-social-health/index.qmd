@@ -1,6 +1,5 @@
 ---
-title: A meta-analytic review of religious or spiritual involvement and social health
-  among cancer patients
+title: A meta-analytic review of religious or spiritual involvement and social health among cancer patients
 authors:
 - Allen C. Sherman
 - Thomas V. Merluzzi
@@ -16,7 +15,10 @@ authors:
 date: 2015-08-10T00:00:00
 publish_date: 2015-08-10T00:00:00
 publication_type: Journal article
-publication: _Cancer, 121_(21), 3779-3788
+publication: Cancer
+volume: 121
+issue: 21
+pages: 3779-3788
 categories:
 - cancer
 - correlation

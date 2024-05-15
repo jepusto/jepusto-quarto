@@ -1,6 +1,5 @@
 ---
-title: 'Examining the effects of social stories on challenging behavior and prosocial
-  skills in young children: A systematic review and meta-analysis'
+title: 'Examining the effects of social stories on challenging behavior and prosocial skills in young children: A systematic review and meta-analysis'
 authors:
 - Charis L. Wahman
 - admin
@@ -9,7 +8,10 @@ authors:
 date: 2022-02-01T00:00:00
 publish_date: 2022-02-01T00:00:00
 publication_type: Journal article
-publication: _Topics in Early Childhood Special Education, 41_(4), 267-279
+publication: Topics in Early Childhood Special Education
+volume: 41
+issue: 4
+pages: 267-279
 categories:
 - single-case design
 - meta-analysis

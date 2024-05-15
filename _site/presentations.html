@@ -79,8 +79,7 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-event_short','listing-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      page: 30,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
@@ -959,14 +958,25 @@ Location
 <span class="listing-location">Austin, TX</span>
 </td>
 </tr>
+<tr data-index="50" data-listing-date-sort="1201068000000" data-listing-file-modified-sort="1714406022652" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Question-order effects in social network name generators" data-listing-filename-sort="ISSNA-2008-question-order-effects.qmd">
+<td>
+<span class="listing-date">Jan 23, 2008</span>
+</td>
+<td>
+<a href="./presentations/ISSNA-2008-question-order-effects.html" class="title listing-title">Question-order effects in social network name generators</a>
+</td>
+<td>
+<span class="listing-event_short">ISSNA 2008</span>
+</td>
+<td>
+<span class="listing-location">St.&nbsp;Petersburg Beach, FL</span>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

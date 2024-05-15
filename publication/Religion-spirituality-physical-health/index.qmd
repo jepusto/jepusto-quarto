@@ -15,7 +15,10 @@ authors:
 date: 2015-08-10T00:00:00
 publish_date: 2015-08-10T00:00:00
 publication_type: Journal article
-publication: _Cancer, 121_(21), 3760-3768
+publication: Cancer 
+volume: 121 
+issue: 21
+pages: 3760-3768
 categories:
 - cancer
 - correlation

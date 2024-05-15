@@ -1,11 +1,13 @@
 ---
-title: Measurement-comparable effect sizes for single-case studies of free-operant
-  behavior
+title: Measurement-comparable effect sizes for single-case studies of free-operant behavior
 authors: admin
 date: 2015-09-01T00:00:00
 publish_date: 2015-09-01T00:00:00
 publication_type: Journal article
-publication: _Psychological Methods, 20_(3), 342-359
+publication: Psychological Methods
+volume: 20
+issue: 3
+pages: 342-359
 categories:
 - alternating renewal process
 - effect size

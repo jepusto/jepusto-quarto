@@ -1,11 +1,13 @@
 ---
-title: Using response ratios for meta-analyzing single-case designs with behavioral
-  outcomes
+title: Using response ratios for meta-analyzing single-case designs with behavioral outcomes
 authors: admin
 date: 2018-02-01T00:00:00
 publish_date: 2018-02-01T00:00:00
 publication_type: Journal article
-publication: _Journal of School Psychology, 16_, 99-112
+publication: Journal of School Psychology
+volume: 16
+issue: 
+pages:  99-112
 categories:
 - effect size
 - meta-analysis

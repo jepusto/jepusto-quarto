@@ -1,21 +1,20 @@
 ---
-title: Evaluating meta-analytic methods to detect selective reporting in the presence
-  of dependent effect sizes
+title: Evaluating meta-analytic methods to detect selective reporting in the presence of dependent effect sizes
 authors:
 - Melissa A. Rodgers
 - admin
 date: 2020-07-12T00:00:00
 publish_date: 2021-04-01T00:00:00
 publication_type: Journal article
-publication: _Psychological Methods, 26_(2), 141-160.
+publication: Psychological Methods
+volume: 26
+issue: 2
+pages: 141-160
 categories:
 - meta-analysis
 - publication bias
 - dependent effect sizes
-image: Power of tests for selective reporting when dependent effects are aggregated
-  or handled using Robust Variance Estimation (RVE) or Multi-Level Meta-Analysis (MLMA),
-  for samples of $k = 80$ studies and between study correlation of $\rho = 0.4$. Gray
-  bands indicate tests with excess Type-I error.
+image: Power of tests for selective reporting when dependent effects are aggregated or handled using Robust Variance Estimation (RVE) or Multi-Level Meta-Analysis (MLMA), for samples of $k = 80$ studies and between study correlation of $\rho = 0.4$. Gray bands indicate tests with excess Type-I error.
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000300

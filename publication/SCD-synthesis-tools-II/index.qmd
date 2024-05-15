@@ -1,6 +1,5 @@
 ---
-title: 'Single-case synthesis tools II: Comparing overlap measures and parametric
-  effect sizes for synthesizing antecedent sensory-based interventions'
+title: 'Single-case synthesis tools II: Comparing overlap measures and parametric effect sizes for synthesizing antecedent sensory-based interventions'
 authors:
 - Kathleen N. Zimmerman
 - admin
@@ -11,7 +10,10 @@ authors:
 date: 2018-03-07T00:00:00
 publish_date: 2018-03-07T00:00:00
 publication_type: Journal article
-publication: _Research in Developmental Disabilities, 79_, 65-76
+publication: Research in Developmental Disabilities
+volume: 79
+issue: 
+pages: 65-76
 categories:
 - non-overlap measures
 - response ratio
