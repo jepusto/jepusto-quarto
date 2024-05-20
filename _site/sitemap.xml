@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/people.html</loc>
-    <lastmod>2024-04-29T15:53:42.620Z</lastmod>
+    <lastmod>2024-05-20T01:20:45.603Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/publications.html</loc>
@@ -315,5 +315,9 @@
   <url>
     <loc>https://jepusto.com/presentations/VIVE-2024-Dependent-Effects.html</loc>
     <lastmod>2024-05-18T07:09:48.263Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/Sometimes-aggregating-effect-sizes-is-fine/index.html</loc>
+    <lastmod>2024-04-10T00:17:59.620Z</lastmod>
   </url>
 </urlset>

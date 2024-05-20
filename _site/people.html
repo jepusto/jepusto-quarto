@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-image','listing-page-layout','listing-about','listing-org_name','listing-org_url','listing-role','listing-people-group','listing-listing','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-image","listing-page-layout","listing-about","listing-org_name","listing-org_url","listing-role","listing-people-group","listing-listing","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -106,9 +106,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-image','listing-page-layout','listing-about','listing-org_name','listing-org_url','listing-role','listing-people-group','listing-listing','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-image","listing-page-layout","listing-about","listing-org_name","listing-org_url","listing-role","listing-people-group","listing-listing","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -257,75 +257,122 @@ window.Quarto = {
 
 <section id="current-students" class="level2">
 <h2 class="anchored" data-anchor-id="current-students">Current Students</h2>
-<div id="listing-students" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1715560735182" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
-<a href="./people/Jingru-Zhang/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Jingru-Zhang/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Jingru Zhang
-</h5>
-<div class="card-text listing-description">
-Jingru Zhang is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests involves methodological…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<div id="listing-students" class="quarto-listing quarto-listing-container-custom">
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1715560742628" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
-<a href="./people/Man-Chen/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Man-Chen/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Man Chen
-</h5>
-<div class="card-text listing-description">
-Man Chen is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests include meta-analysis…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<div class="quarto-listing quarto-listing-container-grid">
+  
+  <div class="list grid quarto-listing-cols-3"> 
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715560626097" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
-<a href="./people/Paulina-Grekov/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Paulina-Grekov/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Paulina Grekov
-</h5>
-<div class="card-text listing-description">
-Paulina Grekov is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests include meta-analysis…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Jingru-Zhang/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Jingru Zhang" src="./people/Jingru-Zhang/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Jingru Zhang<br> 
+              </b>
+            </div>
 
+            <div class="listing-role" style="font-size: 0.8em;">
+              Graduate student<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              University of Wisconsin-Madison<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Man-Chen/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Man Chen" src="./people/Man-Chen/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Man Chen<br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              Graduate student<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              University of Wisconsin-Madison<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Paulina-Grekov/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Paulina Grekov" src="./people/Paulina-Grekov/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Paulina Grekov<br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              Graduate student<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              University of Wisconsin-Madison<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+    
+  
 </div>
 </div>
-</div>
-</div>
-</a>
-</div>
-</div>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -333,119 +380,192 @@ No matching items
 </section>
 <section id="alumni" class="level2">
 <h2 class="anchored" data-anchor-id="alumni">Alumni</h2>
-<div id="listing-alumni" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1715560839528" data-listing-reading-time-sort="1" data-listing-word-count-sort="106">
-<a href="./people/Christopher-Runyon/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Christopher-Runyon/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Christopher Runyon
-</h5>
-<div class="card-text listing-description">
-Chris did his doctoral work on causal inference at UT Austin. He is currently a measurement scientist in the Center for Advanced Assessment at the National Board of Medical…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<div id="listing-alumni" class="quarto-listing quarto-listing-container-custom">
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1715560840622" data-listing-reading-time-sort="1" data-listing-word-count-sort="175">
-<a href="./people/Daniel-M.-Swan/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Daniel-M.-Swan/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Daniel M. Swan
-</h5>
-<div class="card-text listing-description">
-Danny is currently a research associate working at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+<div class="quarto-listing quarto-listing-container-grid">
+  
+  <div class="list grid quarto-listing-cols-3"> 
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1715560748698" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
-<a href="./people/Gleb-Furman/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Gleb-Furman/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Gleb Furman
-</h5>
-<div class="card-text listing-description">
-Gleb did his doctoral work on causal inference at UT Austin. He is currently a senior quantitative research scientist at Gibson Consulting Group.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Christopher-Runyon/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Christopher Runyon" src="./people/Christopher-Runyon/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Christopher Runyon<br> 
+              </b>
+            </div>
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1715560668304" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
-<a href="./people/Megha-Joshi/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Megha-Joshi/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Megha Joshi
-</h5>
-<div class="card-text listing-description">
-Megha completed her PhD in the Quantitative Methods program at The University of Texas at Austin. Her dissertation work examined cluster wild bootstrapping to handle…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+            <div class="listing-role" style="font-size: 0.8em;">
+              Measurement Scientist<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              National Board of Medical Examiners<br>
+            </div>
 
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1715560595466" data-listing-reading-time-sort="1" data-listing-word-count-sort="96">
-<a href="./people/Young-Ri-Lee/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./people/Young-Ri-Lee/avatar.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Young Ri Lee
-</h5>
-<div class="card-text listing-description">
-Young Ri completed her PhD in the Quantitative Methods program at The University of Texas at Austin. She is currently a postdoctoral scholar in Developmental and Learning…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Daniel-M.-Swan/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Daniel M. Swan" src="./people/Daniel-M.-Swan/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Daniel M. Swan<br> 
+              </b>
+            </div>
 
+            <div class="listing-role" style="font-size: 0.8em;">
+              Research Associate<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              Prevention Science Institute, University of Oregon<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Gleb-Furman/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Gleb Furman" src="./people/Gleb-Furman/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Gleb Furman<br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              Senior Quantitative Research Scientist<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              Gibson Consulting Group<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Megha-Joshi/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Megha Joshi" src="./people/Megha-Joshi/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Megha Joshi<br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              Quantitative Researcher<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              American Institutes for Research<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="./people/Young-Ri-Lee/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="Young Ri Lee" src="./people/Young-Ri-Lee/avatar.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              Young Ri Lee<br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              Postdoctoral Scholar<br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              Urban Education Institute at the University of Chicago<br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+    
+  
 </div>
 </div>
-</div>
-</div>
-</a>
-</div>
-</div>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>

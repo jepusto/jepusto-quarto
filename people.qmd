@@ -4,6 +4,7 @@ listing:
   - id: students
     contents: people
     type: grid
+    template: _ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
     include: 
@@ -11,6 +12,7 @@ listing:
   - id: alumni
     contents: people
     type: grid
+    template: _ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
     include: 

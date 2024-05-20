@@ -1,0 +1,47 @@
+```{=html}
+
+<div class="quarto-listing quarto-listing-container-grid">
+  
+  <div class="list grid quarto-listing-cols-3"> 
+
+    <% for (const item of items) { ;%> 
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="<%- item.path %>" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-center borderless">
+          
+          <p class="card-img-top">
+            <img alt="<%= item.title %>" src="<%= item.image %>" class="thumbnail-image card-img listing-box-image" style="height: 200px; border-radius: 5%;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title" style="font-size: 1.2em;">
+              <b>
+              <%= item.title %><br> 
+              </b>
+            </div>
+
+            <div class="listing-role" style="font-size: 0.8em;">
+              <%= item.role %><br> 
+            </div>
+            
+            <div class="listing-box-org" style="font-size: 0.8em;">
+              <%= item.org_name %><br>
+            </div>
+
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+    <% } %>
+  
+</div>
+</div>
+
+```
