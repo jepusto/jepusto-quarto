@@ -18,4 +18,4 @@ listing:
 :::::{#working-papers}
 :::::
 
-#### [(All publications)](/publications.html)
+#### [(All publications)](/publications/)

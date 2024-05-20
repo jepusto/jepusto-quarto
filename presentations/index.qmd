@@ -9,7 +9,6 @@ format:
       margin-width: 50px
       gutter-width: 1.5em
 listing:
-    contents: presentations
     sort: 
       - "date desc"
       - "title"

@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-ltitle","listing-subtitle","listing-image","listing-header_image","listing-header_caption","listing-authors","listing-date","listing-categories","listing-page-layout","listing-about","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -128,11 +128,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="James E. Pustejovsky - Software">
-<meta name="twitter:image" content="https://jepusto.com/software/POMADE/featured.png">
-<meta name="twitter:image-height" content="1500">
-<meta name="twitter:image-width" content="1500">
+<meta name="twitter:image" content="https://jepusto.com/software/clubSandwich/featured.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -143,7 +141,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">James E. Pustejovsky</span>
     </a>
   </div>
@@ -154,45 +152,45 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./people.html"> 
-<span class="menu-text">People</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./files/Pustejovsky-CV.pdf"> 
+    <a class="nav-link" href="../files/Pustejovsky-CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts.html"> 
+    <a class="nav-link" href="../people/index.html"> 
+<span class="menu-text">People</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts/index.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./working-papers.html"> 
+    <a class="nav-link" href="../working-papers.html"> 
 <span class="menu-text">Working Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html"> 
+    <a class="nav-link" href="../publication/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
+    <a class="nav-link" href="../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./software.html" aria-current="page"> 
+    <a class="nav-link active" href="../software/index.html" aria-current="page"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> 
+    <a class="nav-link" href="../teaching/index.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contact.html"> 
+    <a class="nav-link" href="../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -234,209 +232,265 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="behavioral observation,alternating renewal process,simulation,Rstats" data-listing-date-sort="1461715200000" data-listing-file-modified-sort="1714406022689" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
-<a href="./software/ARPobservation/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/ARPobservation/ARP-simulator.png" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ARPobservation
-</h5>
-<div class="card-text listing-description">
-An R package for simulating different methods of recording data based on direct observation of behavior, where behavior is modeled by an alternating renewal process.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 
-</div>
-<div class="listing-date">
-Apr 26, 2016
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="meta-analysis,dependent effect sizes,robust variance estimation,Rstats,power" data-listing-date-sort="1669939200000" data-listing-file-modified-sort="1714406022697" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
-<a href="./software/POMADE/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/POMADE/featured.png" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-POMADE
-</h5>
-<div class="card-text listing-description">
-An R package for computing power levels, minimum detectable effect sizes, and minimum required sample sizes for the test of the overall average effect size in meta-analysis…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+<div class="quarto-listing quarto-listing-container-grid">
+  
+  <div class="list grid quarto-listing-cols-3"> 
 
-</div>
-<div class="listing-date">
-Dec 1, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="effect size,response ratio,non-overlap measures,single-case design,Rstats" data-listing-date-sort="1461715200000" data-listing-file-modified-sort="1714406022700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80">
-<a href="./software/SingleCaseES/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/SingleCaseES/featured.png" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-SingleCaseES
-</h5>
-<div class="card-text listing-description">
-An R package for calculating basic effect size indices for single-case designs, including several non-overlap measures and parametric effect size measures, and for…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/ARPobservation/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="ARPobservation" src="../software/ARPobservation/ARP-simulator.png" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              ARPobservation<br> 
+              </b>
+            </div>
 
-</div>
-<div class="listing-date">
-Apr 26, 2016
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="sandwiches,robust variance estimation,Rstats,Stata" data-listing-date-sort="1461715200000" data-listing-file-modified-sort="1714406022700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="67">
-<a href="./software/clubSandwich/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/clubSandwich/featured.jpg" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-clubSandwich
-</h5>
-<div class="card-text listing-description">
-R and Stata packages for calculating cluster-robust variance estimators (i.e., sandwich estimators) with small-sample corrections, including the bias-reduced linearization…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+            <div class="listing-subtitle">
+              Simulate systematic direct observation data<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/clubSandwich/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="clubSandwich" src="../software/clubSandwich/featured.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              clubSandwich<br> 
+              </b>
+            </div>
 
-</div>
-<div class="listing-date">
-Apr 26, 2016
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="hierarchical models,effect size,Rstats,nlme" data-listing-date-sort="1587686400000" data-listing-file-modified-sort="1714406022714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="129">
-<a href="./software/lmeInfo/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/lmeInfo/featured.jpg" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-lmeInfo
-</h5>
-<div class="card-text listing-description">
-lmeInfo provides analytic derivatives and information matrices for fitted linear mixed effects models and generalized least squares models estimated using <code>nlme::lme()</code> and <code>nlm…</code>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+            <div class="listing-subtitle">
+              Cluster-robust variance estimation<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/lmeInfo/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="lmeInfo" src="../software/lmeInfo/featured.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              lmeInfo<br> 
+              </b>
+            </div>
 
-</div>
-<div class="listing-date">
-Apr 23, 2020
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="design-comparable SMD,effect size,hierarchical models,single-case design,Rstats" data-listing-date-sort="1461715200000" data-listing-file-modified-sort="1714406022714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="64">
-<a href="./software/scdhlm/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/scdhlm/featured.png" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-scdhlm
-</h5>
-<div class="card-text listing-description">
-An R package implementing several methods of estimating a design-comparable standardized mean difference effect size based on data from a single-case design. Methods include…
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+            <div class="listing-subtitle">
+              Information Matrices for 'lmeStruct' and 'glsStruct' Objects<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/POMADE/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="POMADE" src="../software/POMADE/featured.png" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              POMADE<br> 
+              </b>
+            </div>
 
-</div>
-<div class="listing-date">
-Apr 26, 2016
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="simulation,Rstats" data-listing-date-sort="1585612800000" data-listing-file-modified-sort="1714406022722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="103">
-<a href="./software/simhelpers/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/simhelpers/featured.png" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-simhelpers
-</h5>
-<div class="card-text listing-description">
-Monte Carlo simulations are computer experiments designed to study the performance of statistical methods under known data-generating conditions. The goal of simhelpers is…<code></code>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+            <div class="listing-subtitle">
+              Power for Meta-Analysis of Dependent Effects<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/scdhlm/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="scdhlm" src="../software/scdhlm/featured.png" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              scdhlm<br> 
+              </b>
+            </div>
 
-</div>
-<div class="listing-date">
-Mar 30, 2020
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="meta-analysis,meta-regression,bootstrap,dependent effect sizes,robust variance estimation,Rstats" data-listing-date-sort="1461715200000" data-listing-file-modified-sort="1714406022726" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
-<a href="./software/wildmeta/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./software/wildmeta/featured.jpg" class="thumbnail-image card-img" style="height: 100pt;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-wildmeta
-</h5>
-<div class="card-text listing-description">
-An R package for conducting hypothesis tests of meta-regression models using cluster wild bootstrapping, based on methods examined in Joshi, Pustejovsky, and Beretvas (2021).
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
+            <div class="listing-subtitle">
+              Between-case SMD for single-case designs<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/simhelpers/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="simhelpers" src="../software/simhelpers/featured.png" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              simhelpers<br> 
+              </b>
+            </div>
 
+            <div class="listing-subtitle">
+              Helper package to assist in running simulation studies<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/SingleCaseES/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="SingleCaseES" src="../software/SingleCaseES/featured.png" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              SingleCaseES<br> 
+              </b>
+            </div>
+
+            <div class="listing-subtitle">
+              Single-case design effect size calculator<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+     
+    
+    <div class="g-col-1 listing-box">
+      
+      
+      
+      <a href="../software/wildmeta/index.html" role="button" class="quarto-grid-link">
+        <div class="quarto-grid-item card h-100 card-left">
+          
+          <p class="card-img-top">
+            <img alt="wildmeta" src="../software/wildmeta/featured.jpg" class="thumbnail-image card-img listing-box-image" style="height: 200px;">
+          </p>
+          
+          <div class="card-body post-contents">
+            
+            <div class="listing-title">
+              <b>
+              wildmeta<br> 
+              </b>
+            </div>
+
+            <div class="listing-subtitle">
+              Cluster-wild bootstrap for meta-regression<br> 
+            </div>
+            
+          </div>  
+        </div>  
+      </a>
+      
+    </div>
+  
+    
+  
 </div>
-<div class="listing-date">
-Apr 26, 2016
 </div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
+
 <div class="listing-no-matching d-none">
 No matching items
 </div>

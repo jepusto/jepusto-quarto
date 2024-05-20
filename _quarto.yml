@@ -8,15 +8,15 @@ website:
   twitter-card: true
   navbar:
     left:
-      - people.qmd
       - text: CV
-        url: /files/Pustejovsky-CV.pdf
-      - posts.qmd
+        href: /files/Pustejovsky-CV.pdf
+      - href: people/index.qmd
+      - href: posts/index.qmd
       - working-papers.qmd
-      - publications.qmd
-      - presentations.qmd
-      - software.qmd
-      - teaching.qmd
+      - href: publication/index.qmd
+      - href: presentations/index.qmd
+      - href: software/index.qmd
+      - href: teaching/index.qmd
       - contact.qmd
     right:
       - icon: rss

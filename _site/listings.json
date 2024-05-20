@@ -1,127 +1,5 @@
 [
   {
-    "listing": "/teaching.html",
-    "items": [
-      "/teaching/Quasi-Experimental/index.html",
-      "/teaching/Field-Experiments/index.html",
-      "/teaching/Meta-analysis/index.html",
-      "/teaching/Causal-Inference/index.html",
-      "/teaching/DASPiR/index.html",
-      "/teaching/Research-design/index.html",
-      "/teaching/Experimental-Data/index.html"
-    ]
-  },
-  {
-    "listing": "/software.html",
-    "items": [
-      "/software/ARPobservation/index.html",
-      "/software/POMADE/index.html",
-      "/software/SingleCaseES/index.html",
-      "/software/clubSandwich/index.html",
-      "/software/lmeInfo/index.html",
-      "/software/scdhlm/index.html",
-      "/software/simhelpers/index.html",
-      "/software/wildmeta/index.html"
-    ]
-  },
-  {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/Distribution-of-signficant-effects/index.html",
-      "/posts/Approximating-cluster-robust-Wald-tests/index.html",
-      "/posts/generalized-poisson-in-Stan/index.html",
-      "/posts/double-poisson-in-Stan/index.html",
-      "/posts/cluster-bootstrap-selection-model/index.html",
-      "/posts/dizzy-for-d-z/index.html",
-      "/posts/Pusto-Tipton-2018-Theorem-2-redux/index.html",
-      "/posts/Pusto-Tipton-2018-Theorem-2/index.html",
-      "/posts/variance-components-with-misspecified-correlation/index.html",
-      "/posts/mean-variance-relationships-and-SMDs/index.html",
-      "/posts/inverting-partitioned-matrices/index.html",
-      "/posts/SMDs-in-single-group/index.html",
-      "/posts/number-of-significant-effects/index.html",
-      "/posts/Woodbury-identity/index.html",
-      "/posts/ancova-puzzler/index.html",
-      "/posts/from-longhorn-to-badger/index.html",
-      "/posts/what-does-multivariate-mean/index.html",
-      "/posts/weighting-in-multivariate-meta-analysis/index.html",
-      "/posts/code-folding-update/index.html",
-      "/posts/Simulating-correlated-SMDs/index.html",
-      "/posts/Sometimes-aggregating-effect-sizes-is-fine/index.html",
-      "/posts/code-folding-with-blogdown-academic/index.html",
-      "/posts/package-downloads/index.html",
-      "/posts/AERA-2019-SRMA-SIG/index.html",
-      "/posts/handmade-clubSandwich/index.html",
-      "/posts/effective-sample-size-aggregation/index.html",
-      "/posts/Easily-simulate-thousands-of-single-case-designs/index.html",
-      "/posts/gradual-effects-model-paper/index.html",
-      "/posts/clubSandwich-at-RUG/index.html",
-      "/posts/variance-of-r-in-two-level-design/index.html",
-      "/posts/Multivariate-delta-method/index.html",
-      "/posts/using-response-ratios-paper/index.html",
-      "/posts/procedural-sensitivities-paper/index.html",
-      "/posts/Back-from-IES-PI-meeting/index.html",
-      "/posts/delta-method-and-2SLS-SEs/index.html",
-      "/posts/MI-with-clubSandwich/index.html",
-      "/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/index.html",
-      "/posts/Siren-song-of-significance/index.html",
-      "/posts/PET-PEESE-performance/index.html",
-      "/posts/using-log-response-ratios/index.html",
-      "/posts/IES-2016-PI-meeting/index.html",
-      "/posts/scdhlm-tutorial/index.html",
-      "/posts/Bug-in-nlme-with-fixed-sigma/index.html",
-      "/posts/What-is-Tau-U/index.html",
-      "/posts/SCD-effect-size-sensitivities/index.html",
-      "/posts/Simulation-studies-in-R-2016/index.html",
-      "/posts/bug-in-nlme-getVarCov/index.html",
-      "/posts/alternative-formulas-for-the-SMD/index.html",
-      "/posts/assigning-after-dplyr/index.html",
-      "/posts/unlucky-randomization/index.html",
-      "/posts/distribution-of-sample-variances/index.html",
-      "/posts/Tau-U/index.html",
-      "/posts/NAP-SEs-and-CIs/index.html",
-      "/posts/rdd-interactions-again/index.html",
-      "/posts/rdd-interactions/index.html",
-      "/posts/clubSandwich-for-CRVE-FE/index.html",
-      "/posts/SPED-Pro-Sem-again/index.html",
-      "/posts/correlations-between-SMDs/index.html",
-      "/posts/Crashes-in-Austin-and-Travis-Co/index.html",
-      "/posts/clubSandwich-for-RVE-meta-analysis/index.html",
-      "/posts/Four-methods-for-analyzing-PIR-data/index.html",
-      "/posts/getting-started-with-scdhlm/index.html",
-      "/posts/wanted-PIR-data/index.html",
-      "/posts/design-comparable-effect-sizes-in-multiple-baseline-designs/index.html",
-      "/posts/ARPobservation-now-on-CRAN/index.html",
-      "/posts/Robust-meta-analysis-3/index.html",
-      "/posts/Robust-meta-analysis-2/index.html",
-      "/posts/Robust-meta-analysis-1/index.html",
-      "/posts/SPED-Pro-Sem/index.html",
-      "/posts/parallel-R-on-TACC-update/index.html",
-      "/posts/measurement-comparable-effect-sizes/index.html",
-      "/posts/parallel-R-on-TACC/index.html",
-      "/posts/Designing-simulation-studies-using-R/index.html",
-      "/posts/PIR-overestimates-prevalence/index.html",
-      "/posts/ARPobservation-basic-use/index.html",
-      "/posts/Getting-started-with-ARPobservation/index.html",
-      "/posts/Shogren-reliability-analysis/index.html",
-      "/posts/Another-project-idea/index.html",
-      "/posts/Current-Projects/index.html"
-    ]
-  },
-  {
-    "listing": "/people.html",
-    "items": [
-      "/people/Jingru-Zhang/index.html",
-      "/people/Man-Chen/index.html",
-      "/people/Paulina-Grekov/index.html",
-      "/people/Christopher-Runyon/index.html",
-      "/people/Daniel-M.-Swan/index.html",
-      "/people/Gleb-Furman/index.html",
-      "/people/Megha-Joshi/index.html",
-      "/people/Young-Ri-Lee/index.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/posts/Distribution-of-signficant-effects/index.html",
@@ -206,7 +84,97 @@
     ]
   },
   {
-    "listing": "/presentations.html",
+    "listing": "/working-papers.html",
+    "items": [
+      "/publication/Conducting-POMADE/index.html"
+    ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/Distribution-of-signficant-effects/index.html",
+      "/posts/Approximating-cluster-robust-Wald-tests/index.html",
+      "/posts/generalized-poisson-in-Stan/index.html",
+      "/posts/double-poisson-in-Stan/index.html",
+      "/posts/cluster-bootstrap-selection-model/index.html",
+      "/posts/dizzy-for-d-z/index.html",
+      "/posts/Pusto-Tipton-2018-Theorem-2-redux/index.html",
+      "/posts/Pusto-Tipton-2018-Theorem-2/index.html",
+      "/posts/variance-components-with-misspecified-correlation/index.html",
+      "/posts/mean-variance-relationships-and-SMDs/index.html",
+      "/posts/inverting-partitioned-matrices/index.html",
+      "/posts/SMDs-in-single-group/index.html",
+      "/posts/number-of-significant-effects/index.html",
+      "/posts/Woodbury-identity/index.html",
+      "/posts/ancova-puzzler/index.html",
+      "/posts/from-longhorn-to-badger/index.html",
+      "/posts/what-does-multivariate-mean/index.html",
+      "/posts/weighting-in-multivariate-meta-analysis/index.html",
+      "/posts/code-folding-update/index.html",
+      "/posts/Simulating-correlated-SMDs/index.html",
+      "/posts/Sometimes-aggregating-effect-sizes-is-fine/index.html",
+      "/posts/code-folding-with-blogdown-academic/index.html",
+      "/posts/package-downloads/index.html",
+      "/posts/AERA-2019-SRMA-SIG/index.html",
+      "/posts/handmade-clubSandwich/index.html",
+      "/posts/effective-sample-size-aggregation/index.html",
+      "/posts/Easily-simulate-thousands-of-single-case-designs/index.html",
+      "/posts/gradual-effects-model-paper/index.html",
+      "/posts/clubSandwich-at-RUG/index.html",
+      "/posts/variance-of-r-in-two-level-design/index.html",
+      "/posts/Multivariate-delta-method/index.html",
+      "/posts/using-response-ratios-paper/index.html",
+      "/posts/procedural-sensitivities-paper/index.html",
+      "/posts/Back-from-IES-PI-meeting/index.html",
+      "/posts/delta-method-and-2SLS-SEs/index.html",
+      "/posts/MI-with-clubSandwich/index.html",
+      "/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/index.html",
+      "/posts/Siren-song-of-significance/index.html",
+      "/posts/PET-PEESE-performance/index.html",
+      "/posts/using-log-response-ratios/index.html",
+      "/posts/IES-2016-PI-meeting/index.html",
+      "/posts/scdhlm-tutorial/index.html",
+      "/posts/Bug-in-nlme-with-fixed-sigma/index.html",
+      "/posts/What-is-Tau-U/index.html",
+      "/posts/SCD-effect-size-sensitivities/index.html",
+      "/posts/Simulation-studies-in-R-2016/index.html",
+      "/posts/bug-in-nlme-getVarCov/index.html",
+      "/posts/alternative-formulas-for-the-SMD/index.html",
+      "/posts/assigning-after-dplyr/index.html",
+      "/posts/unlucky-randomization/index.html",
+      "/posts/distribution-of-sample-variances/index.html",
+      "/posts/Tau-U/index.html",
+      "/posts/NAP-SEs-and-CIs/index.html",
+      "/posts/rdd-interactions-again/index.html",
+      "/posts/rdd-interactions/index.html",
+      "/posts/clubSandwich-for-CRVE-FE/index.html",
+      "/posts/SPED-Pro-Sem-again/index.html",
+      "/posts/correlations-between-SMDs/index.html",
+      "/posts/Crashes-in-Austin-and-Travis-Co/index.html",
+      "/posts/clubSandwich-for-RVE-meta-analysis/index.html",
+      "/posts/Four-methods-for-analyzing-PIR-data/index.html",
+      "/posts/getting-started-with-scdhlm/index.html",
+      "/posts/wanted-PIR-data/index.html",
+      "/posts/design-comparable-effect-sizes-in-multiple-baseline-designs/index.html",
+      "/posts/ARPobservation-now-on-CRAN/index.html",
+      "/posts/Robust-meta-analysis-3/index.html",
+      "/posts/Robust-meta-analysis-2/index.html",
+      "/posts/Robust-meta-analysis-1/index.html",
+      "/posts/SPED-Pro-Sem/index.html",
+      "/posts/parallel-R-on-TACC-update/index.html",
+      "/posts/measurement-comparable-effect-sizes/index.html",
+      "/posts/parallel-R-on-TACC/index.html",
+      "/posts/Designing-simulation-studies-using-R/index.html",
+      "/posts/PIR-overestimates-prevalence/index.html",
+      "/posts/ARPobservation-basic-use/index.html",
+      "/posts/Getting-started-with-ARPobservation/index.html",
+      "/posts/Shogren-reliability-analysis/index.html",
+      "/posts/Another-project-idea/index.html",
+      "/posts/Current-Projects/index.html"
+    ]
+  },
+  {
+    "listing": "/presentations/index.html",
     "items": [
       "/presentations/VIVE-2024-Dependent-Effects.html",
       "/presentations/AERA-2024-Bayes-BCSMD.html",
@@ -263,7 +231,32 @@
     ]
   },
   {
-    "listing": "/publications.html",
+    "listing": "/software/index.html",
+    "items": [
+      "/software/ARPobservation/index.html",
+      "/software/clubSandwich/index.html",
+      "/software/lmeInfo/index.html",
+      "/software/POMADE/index.html",
+      "/software/scdhlm/index.html",
+      "/software/simhelpers/index.html",
+      "/software/SingleCaseES/index.html",
+      "/software/wildmeta/index.html"
+    ]
+  },
+  {
+    "listing": "/teaching/index.html",
+    "items": [
+      "/teaching/Quasi-Experimental/index.html",
+      "/teaching/Field-Experiments/index.html",
+      "/teaching/Meta-analysis/index.html",
+      "/teaching/Causal-Inference/index.html",
+      "/teaching/DASPiR/index.html",
+      "/teaching/Research-design/index.html",
+      "/teaching/Experimental-Data/index.html"
+    ]
+  },
+  {
+    "listing": "/publication/index.html",
     "items": [
       "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
       "/publication/Decline-effects/index.html",
@@ -328,69 +321,16 @@
     ]
   },
   {
-    "listing": "/people/Christopher-Runyon/index.html",
+    "listing": "/people/index.html",
     "items": [
-      "/publication/ARP-for-behavioral-observation/index.html"
-    ]
-  },
-  {
-    "listing": "/people/Man-Chen/index.html",
-    "items": [
-      "/presentations/AERA-2024-Bayes-BCSMD.html",
-      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
-      "/publication/AAC-group-and-SCD/index.html",
-      "/presentations/AERA-2023-BCSMD-benchmarks.html",
-      "/publication/Three-level-BC-SMD/index.html",
-      "/publication/SCED-MLMA-RVE/index.html",
-      "/publication/AAC-communication-outcomes/index.html",
-      "/publication/AAC-instructional-contexts/index.html",
-      "/publication/AAC-participant-characteristics/index.html"
-    ]
-  },
-  {
-    "listing": "/people/Daniel-M.-Swan/index.html",
-    "items": [
-      "/publication/response-guided-designs-in-SCED-baselines/index.html",
-      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
-      "/publication/gradual-effects-model/index.html",
-      "/publication/Four-methods-for-PIR/index.html"
-    ]
-  },
-  {
-    "listing": "/people/Gleb-Furman/index.html",
-    "items": []
-  },
-  {
-    "listing": "/people/Jingru-Zhang/index.html",
-    "items": [
-      "/presentations/SREE-2023-Equity-related-moderator-analysis.html"
-    ]
-  },
-  {
-    "listing": "/people/Megha-Joshi/index.html",
-    "items": [
-      "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
-      "/posts/cluster-bootstrap-selection-model/index.html",
-      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-1/index.html"
-    ]
-  },
-  {
-    "listing": "/people/Paulina-Grekov/index.html",
-    "items": []
-  },
-  {
-    "listing": "/people/Young-Ri-Lee/index.html",
-    "items": [
-      "/publication/competing-approaches-for-cross-classified-data/index.html"
-    ]
-  },
-  {
-    "listing": "/working-papers.html",
-    "items": [
-      "/publication/Conducting-POMADE/index.html"
+      "/people/Jingru-Zhang/index.html",
+      "/people/Man-Chen/index.html",
+      "/people/Paulina-Grekov/index.html",
+      "/people/Christopher-Runyon/index.html",
+      "/people/Daniel-M.-Swan/index.html",
+      "/people/Gleb-Furman/index.html",
+      "/people/Megha-Joshi/index.html",
+      "/people/Young-Ri-Lee/index.html"
     ]
   }
 ]

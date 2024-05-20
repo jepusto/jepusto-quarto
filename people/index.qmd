@@ -2,17 +2,15 @@
 title: "People"
 listing:
   - id: students
-    contents: people
     type: grid
-    template: _ejs/student-box.ejs
+    template: ../_ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
     include: 
       people-group: "Current Advisees"
   - id: alumni
-    contents: people
     type: grid
-    template: _ejs/student-box.ejs
+    template: ../_ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
     include: 

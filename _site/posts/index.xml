@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>James E. Pustejovsky</title>
-<link>https://jepusto.com/posts.html</link>
-<atom:link href="https://jepusto.com/posts.xml" rel="self" type="application/rss+xml"/>
+<link>https://jepusto.com/posts/</link>
+<atom:link href="https://jepusto.com/posts/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
 <generator>quarto-1.4.552</generator>
 <lastBuildDate>Thu, 28 Mar 2024 05:00:00 GMT</lastBuildDate>

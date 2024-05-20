@@ -1,7 +1,6 @@
 ---
 title: "Teaching"
 listing:
-    contents: teaching
     sort: 
       - "place desc" 
       - "title"
