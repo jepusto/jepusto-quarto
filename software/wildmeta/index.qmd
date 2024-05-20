@@ -1,5 +1,6 @@
 ---
 title: wildmeta
+ltitle: wildmeta
 subtitle: Cluster-wild bootstrap for meta-regression
 image: featured.jpg
 header_image: bootstrap-F.png

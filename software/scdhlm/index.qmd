@@ -1,5 +1,6 @@
 ---
 title: scdhlm
+ltitle: scdhlm
 subtitle: Between-case SMD for single-case designs
 image: featured.png
 header_image: Rodriguez.png

@@ -1,5 +1,6 @@
 ---
 title: SingleCaseES
+ltitle: singlecasees
 subtitle: Single-case design effect size calculator
 image: featured.png
 header_image: Romaniuk-wide.png

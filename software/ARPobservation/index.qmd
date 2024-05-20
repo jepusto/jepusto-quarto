@@ -1,5 +1,6 @@
 ---
 title: ARPobservation
+ltitle: arpobservation
 subtitle: Simulate systematic direct observation data
 image: ARP-simulator.png
 header_image: headers/ABAB-design.png

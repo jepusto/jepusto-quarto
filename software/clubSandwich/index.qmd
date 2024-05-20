@@ -1,5 +1,6 @@
 ---
 title: clubSandwich
+ltitle: clubsandwich
 subtitle: Cluster-robust variance estimation
 image: featured.jpg
 header_image: sandwich-plate.jpg

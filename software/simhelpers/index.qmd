@@ -1,5 +1,6 @@
 ---
 title: simhelpers
+ltitle: simhelpers
 subtitle: Helper package to assist in running simulation studies
 image: featured.png
 header_image: TiptonPusto2015.png

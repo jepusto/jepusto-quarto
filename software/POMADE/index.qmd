@@ -1,5 +1,6 @@
 ---
 title: POMADE
+ltitle: pomade
 subtitle: Power for Meta-Analysis of Dependent Effects
 image: featured.png
 header_image: MDES-MADE.png

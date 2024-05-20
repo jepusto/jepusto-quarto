@@ -1,5 +1,6 @@
 ---
 title: lmeInfo
+ltitle: lmeinfo
 subtitle: Information Matrices for 'lmeStruct' and 'glsStruct' Objects
 image: featured.jpg
 authors:
