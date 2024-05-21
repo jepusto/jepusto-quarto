@@ -1,6 +1,6 @@
 ---
 title: Standard errors and confidence intervals for NAP
-authors: admin
+
 date: '2016-02-28'
 categories:
 - effect size

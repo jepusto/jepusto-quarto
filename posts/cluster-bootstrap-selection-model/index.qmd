@@ -1,7 +1,7 @@
 ---
 title: Cluster-Bootstrapping a meta-analytic selection model
 authors:
-- admin
+- James E. Pustejovsky
 - Megha Joshi
 date: '2023-03-30'
 bibliography: "../selection-references.bib"

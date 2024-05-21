@@ -1,6 +1,6 @@
 ---
 title: Weighting in multivariate meta-analysis
-authors: admin
+
 date: '2020-06-09'
 categories:
 - meta-analysis

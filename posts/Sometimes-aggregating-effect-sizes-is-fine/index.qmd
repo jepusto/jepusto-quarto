@@ -1,6 +1,6 @@
 ---
 title: Sometimes, aggregating effect sizes is fine
-authors: admin
+
 date: '2019-07-02'
 bibliography: "../meta-references.bib"
 csl: "../apa.csl"

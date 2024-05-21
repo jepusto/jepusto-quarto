@@ -1,6 +1,6 @@
 ---
 title: Bug in nlme::getVarCov
-authors: admin
+
 date: '2016-08-10'
 categories:
 - Rstats

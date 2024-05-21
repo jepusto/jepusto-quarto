@@ -1,6 +1,6 @@
 ---
 title: Clustered standard errors and hypothesis tests in fixed effects models
-authors: admin
+
 date: '2016-01-10'
 categories:
 - econometrics

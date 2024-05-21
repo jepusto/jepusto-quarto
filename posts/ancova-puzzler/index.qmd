@@ -1,6 +1,6 @@
 ---
 title: An ANCOVA puzzler
-authors: admin
+
 date: '2020-11-24'
 categories:
 - meta-analysis

@@ -1,6 +1,6 @@
 ---
 title: From Longhorn to Badger
-authors: admin
+
 date: '2020-08-28'
 categories: []
 code-tools: true

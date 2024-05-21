@@ -1,7 +1,7 @@
 ---
 title: 'New working paper: Using log response ratios for meta-analyzing SCDs with
   behavioral outcomes'
-authors: admin
+
 date: '2017-04-26'
 categories:
 - single-case design

@@ -1,6 +1,6 @@
 ---
 title: 'Update: parallel R on the TACC'
-authors: admin
+
 date: '2014-04-08'
 categories:
 - Rstats

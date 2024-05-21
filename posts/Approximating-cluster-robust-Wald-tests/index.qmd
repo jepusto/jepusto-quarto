@@ -1,7 +1,7 @@
 ---
 title: Approximating the distribution of cluster-robust Wald statistics
 authors:
-  - admin
+  - James E. Pustejovsky
 summary: ""
 date: '2024-03-24'
 codefolding_show: 'hide'

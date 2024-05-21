@@ -1,6 +1,6 @@
 ---
 title: 'Wanted: PIR data'
-authors: admin
+
 date: '2014-09-03'
 categories: behavioral observation
 code-tools: true

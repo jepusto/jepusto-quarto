@@ -1,6 +1,6 @@
 ---
 title: A handmade clubSandwich for multi-site trials
-authors: admin
+
 date: '2019-03-09'
 draft: true
 categories:

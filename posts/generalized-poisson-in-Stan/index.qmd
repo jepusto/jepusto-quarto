@@ -1,6 +1,6 @@
 ---
 title: Implementing Consul's generalized Poisson distribution in Stan
-authors: admin
+
 date: '2023-12-06'
 categories:
 - Bayes

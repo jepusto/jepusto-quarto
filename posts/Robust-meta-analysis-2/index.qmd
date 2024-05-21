@@ -1,6 +1,6 @@
 ---
 title: Another meta-sandwich
-authors: admin
+
 date: '2014-04-23'
 categories:
 - meta-analysis

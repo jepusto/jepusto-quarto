@@ -1,7 +1,7 @@
 ---
 title: Corrigendum to Pustejovsky and Tipton (2018)
 subtitle: Theorem 2 is incorrect as stated
-authors: admin
+
 date: '2022-09-28'
 bibliography: "../RVE-references.bib"
 csl: "../apa.csl"

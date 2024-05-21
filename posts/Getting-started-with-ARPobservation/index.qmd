@@ -1,6 +1,6 @@
 ---
 title: Getting started with ARPobservation
-authors: admin
+
 date: '2013-10-24'
 categories:
 - behavioral observation

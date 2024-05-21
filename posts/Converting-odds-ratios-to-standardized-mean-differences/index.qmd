@@ -1,7 +1,7 @@
 ---
 title: 'Converting from odds ratios to standardized mean differences: What to do with
   logistic regression coefficients?'
-authors: admin
+
 date: '2019-05-26'
 categories:
 - meta-analysis

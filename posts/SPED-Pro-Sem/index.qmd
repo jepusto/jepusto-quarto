@@ -1,6 +1,6 @@
 ---
 title: Special Education Pro-Sem
-authors: admin
+
 date: '2014-04-10'
 categories:
 - meta-analysis

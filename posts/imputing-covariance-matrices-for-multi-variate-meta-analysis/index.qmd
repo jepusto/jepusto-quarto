@@ -1,6 +1,6 @@
 ---
 title: Imputing covariance matrices for meta-analysis of correlated effects
-authors: admin
+
 date: '2017-08-10'
 categories:
 - meta-analysis

@@ -1,6 +1,6 @@
 ---
 title: Centering categorical predictors in meta-regression
-authors: admin
+
 date: '2020-11-19'
 categories:
 - meta-analysis

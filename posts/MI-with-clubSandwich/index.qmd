@@ -1,6 +1,6 @@
 ---
 title: Pooling clubSandwich results across multiple imputations
-authors: admin
+
 date: '2017-09-27'
 categories:
 - missing data

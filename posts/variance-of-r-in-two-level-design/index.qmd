@@ -1,6 +1,6 @@
 ---
 title: Sampling variance of Pearson r in a two-level design
-authors: admin
+
 date: '2018-04-19'
 categories:
 - effect size

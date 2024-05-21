@@ -1,6 +1,6 @@
 ---
 title: Regression discontinuities with covariate interactions in the rdd package
-authors: admin
+
 date: '2016-01-25'
 categories:
 - econometrics

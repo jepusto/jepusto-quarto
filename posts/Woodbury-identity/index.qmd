@@ -1,7 +1,7 @@
 ---
 title: The Woodbury identity
 subtitle: A life-hack for analyzing hierarchical models
-authors: admin
+
 date: '2020-12-04'
 categories:
 - hierarchical models

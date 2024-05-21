@@ -1,6 +1,6 @@
 ---
 title: Variance component estimates in meta-analysis with mis-specified sampling correlation
-authors: admin
+
 date: '2021-11-28'
 categories:
 - meta-analysis

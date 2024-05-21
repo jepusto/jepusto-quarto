@@ -1,6 +1,6 @@
 ---
 title: You wanna PEESE of d's?
-authors: admin
+
 date: '2017-04-27'
 categories:
 - meta-analysis

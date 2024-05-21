@@ -1,6 +1,6 @@
 ---
 title: 'New working paper: Procedural sensitivities of SCD effect sizes'
-authors: admin
+
 date: '2016-10-17'
 categories:
 - effect size

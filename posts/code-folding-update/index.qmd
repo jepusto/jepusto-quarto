@@ -1,6 +1,6 @@
 ---
 title: An update on code folding with blogdown + Academic theme
-authors: admin
+
 date: '2020-05-03'
 categories:
 - programming

@@ -1,6 +1,6 @@
 ---
 title: Back from the IES PI meeting
-authors: admin
+
 date: '2018-01-10'
 categories:
 - single-case design

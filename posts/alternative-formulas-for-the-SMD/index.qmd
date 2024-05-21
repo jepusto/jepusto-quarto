@@ -1,6 +1,6 @@
 ---
 title: Alternative formulas for the standardized mean difference
-authors: admin
+
 date: '2016-06-03'
 categories:
 - meta-analysis

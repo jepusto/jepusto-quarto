@@ -1,6 +1,6 @@
 ---
 title: 'New paper: procedural sensitivities of effect size measures for SCDs'
-authors: admin
+
 date: '2018-01-11'
 categories:
 - single-case design

@@ -1,6 +1,6 @@
 ---
 title: Effective sample size aggregation
-authors: admin
+
 date: '2019-01-22'
 categories:
 - econometrics

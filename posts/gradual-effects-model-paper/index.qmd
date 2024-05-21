@@ -1,6 +1,6 @@
 ---
 title: 'New paper: A gradual effects model for single-case designs'
-authors: admin
+
 date: '2018-05-14'
 categories:
 - single-case design

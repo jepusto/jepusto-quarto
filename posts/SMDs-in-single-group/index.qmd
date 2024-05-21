@@ -1,6 +1,6 @@
 ---
 title: Standardized mean differences in single-group, repeated measures designs
-authors: admin
+
 date: '2021-10-06'
 categories:
 - effect size

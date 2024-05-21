@@ -1,6 +1,6 @@
 ---
 title: 2SLS standard errors and the delta-method
-authors: admin
+
 date: '2017-10-07'
 categories:
 - instrumental variables

@@ -1,6 +1,6 @@
 ---
 title: Correlations between standardized mean differences
-authors: admin
+
 date: '2015-09-17'
 categories:
 - meta-analysis

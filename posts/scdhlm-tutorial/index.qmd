@@ -1,6 +1,6 @@
 ---
 title: New tutorial paper on BC-SMD effect sizes
-authors: admin
+
 date: '2016-12-19'
 categories:
 - single-case design

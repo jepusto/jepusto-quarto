@@ -1,6 +1,6 @@
 ---
 title: CRAN downloads of my packages
-authors: admin
+
 date: '2019-04-09'
 categories:
 - programming

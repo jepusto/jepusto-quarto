@@ -1,6 +1,6 @@
 ---
 title: Systematic Reviews and Meta-analysis SIG at AERA 2019
-authors: admin
+
 date: '2019-03-26'
 categories:
 - meta-analysis

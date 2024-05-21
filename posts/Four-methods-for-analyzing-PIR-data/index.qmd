@@ -1,6 +1,6 @@
 ---
 title: 'New article: Four methods for analyzing PIR data'
-authors: admin
+
 date: '2015-02-11'
 categories:
 - behavioral observation

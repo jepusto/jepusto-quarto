@@ -1,6 +1,6 @@
 ---
 title: Assigning after dplyr
-authors: admin
+
 date: '2016-05-13'
 categories:
 - Rstats

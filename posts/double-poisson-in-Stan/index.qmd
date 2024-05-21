@@ -1,6 +1,6 @@
 ---
 title: Implementing Efron's double Poisson distribution in Stan
-authors: admin
+
 date: '2023-09-15'
 categories:
 - Bayes

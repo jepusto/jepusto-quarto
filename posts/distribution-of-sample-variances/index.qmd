@@ -1,6 +1,6 @@
 ---
 title: The sampling distribution of sample variances
-authors: admin
+
 date: '2016-04-25'
 categories: distribution theory
 code-tools: true

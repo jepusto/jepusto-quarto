@@ -1,6 +1,6 @@
 ---
 title: Estimating average effects in regression discontinuities with covariate interactions
-authors: admin
+
 date: '2016-01-27'
 categories:
 - econometrics

@@ -1,6 +1,6 @@
 ---
 title: clubSandwich at the Austin R User Group Meetup
-authors: admin
+
 date: '2018-04-26'
 categories:
 - Rstats

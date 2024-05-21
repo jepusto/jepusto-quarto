@@ -1,6 +1,6 @@
 ---
 title: Bug in nlme::lme with fixed sigma and REML estimation
-authors: admin
+
 date: '2016-11-07'
 categories:
 - Rstats

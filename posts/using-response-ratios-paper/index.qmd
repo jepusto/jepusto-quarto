@@ -1,6 +1,6 @@
 ---
 title: 'New paper: Using response ratios for meta-analyzing SCDs with behavioral outcomes'
-authors: admin
+
 date: '2018-03-16'
 categories:
 - single-case design

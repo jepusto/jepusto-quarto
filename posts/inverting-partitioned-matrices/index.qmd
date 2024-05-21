@@ -1,6 +1,6 @@
 ---
 title: Inverting partitioned matrices
-authors: admin
+
 date: '2021-10-20'
 categories: matrix algebra
 description: There's lots of linear algebra out there that's quite useful for statistics,

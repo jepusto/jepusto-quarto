@@ -1,6 +1,6 @@
 ---
 title: Meta-sandwich with extra mustard
-authors: admin
+
 date: '2014-04-26'
 categories:
 - meta-analysis

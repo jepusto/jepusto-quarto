@@ -1,7 +1,7 @@
 ---
 title: 'New article: Measurement-comparable effect sizes for single-case studies of
   free-operant behavior'
-authors: admin
+
 date: '2014-02-04'
 categories:
 - behavioral observation

@@ -1,6 +1,6 @@
 ---
 title: Presentation at IES 2016 PI meeting
-authors: admin
+
 date: '2016-12-19'
 categories:
 - single-case design

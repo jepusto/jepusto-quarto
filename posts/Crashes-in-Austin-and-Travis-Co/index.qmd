@@ -1,6 +1,6 @@
 ---
 title: Fatal crashes in Austin/Travis County
-authors: admin
+
 date: '2015-08-20'
 categories: transportation
 code-tools: true

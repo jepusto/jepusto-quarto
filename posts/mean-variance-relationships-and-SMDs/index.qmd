@@ -1,6 +1,6 @@
 ---
 title: Implications of mean-variance relationships for standardized mean differences
-authors: admin
+
 date: '2021-11-02'
 categories:
 - standardized mean difference

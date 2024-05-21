@@ -1,7 +1,7 @@
 ---
 title: Corrigendum to Pustejovsky and Tipton (2018), redux
 subtitle: A revised version of Theorem 2
-authors: admin
+
 date: '2022-11-07'
 bibliography: "../RVE-references.bib"
 csl: "../apa.csl"

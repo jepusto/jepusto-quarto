@@ -1,7 +1,7 @@
 ---
 title: Finding the distribution of significant effect sizes
 subtitle: In a study reporting multiple outcomes
-authors: admin
+
 date: '2021-04-27'
 categories:
 - effect size

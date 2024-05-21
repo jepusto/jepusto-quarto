@@ -1,6 +1,6 @@
 ---
 title: Meta-analysis with robust variance estimation and multiply imputed covariates
-authors: admin
+
 date: '2021-12-22'
 draft: true
 categories:

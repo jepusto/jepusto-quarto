@@ -1,6 +1,6 @@
 ---
 title: The siren song of significance
-authors: admin
+
 date: '2017-06-19'
 categories:
 - pre-registration

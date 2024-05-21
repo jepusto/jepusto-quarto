@@ -1,6 +1,6 @@
 ---
 title: ARPobservation now on CRAN
-authors: admin
+
 date: '2014-05-31'
 categories:
 - behavioral observation

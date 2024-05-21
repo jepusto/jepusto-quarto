@@ -1,6 +1,6 @@
 ---
 title: Simulation studies in R (Fall, 2016 version)
-authors: admin
+
 date: '2016-09-28'
 categories:
 - Rstats

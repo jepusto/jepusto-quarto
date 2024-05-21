@@ -1,6 +1,6 @@
 ---
 title: Running R in parallel on the TACC
-authors: admin
+
 date: '2013-12-20'
 categories:
 - Rstats

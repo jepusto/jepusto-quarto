@@ -1,6 +1,6 @@
 ---
 title: Unlucky randomization
-authors: admin
+
 date: '2016-05-11'
 categories: experimental design
 code-tools: true

@@ -1,6 +1,6 @@
 ---
 title: 'Another project idea: Meta-analytic methods for correlational data'
-authors: admin
+
 date: '2013-09-13'
 categories:
 - meta-analysis
