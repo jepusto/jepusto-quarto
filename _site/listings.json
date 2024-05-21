@@ -332,5 +332,65 @@
       "/people/Megha-Joshi/index.html",
       "/people/Young-Ri-Lee/index.html"
     ]
+  },
+  {
+    "listing": "/people/Young-Ri-Lee/index.html",
+    "items": [
+      "/publication/competing-approaches-for-cross-classified-data/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Megha-Joshi/index.html",
+    "items": [
+      "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
+      "/posts/cluster-bootstrap-selection-model/index.html",
+      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-1/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Jingru-Zhang/index.html",
+    "items": [
+      "/presentations/SREE-2023-Equity-related-moderator-analysis.html"
+    ]
+  },
+  {
+    "listing": "/people/Gleb-Furman/index.html",
+    "items": []
+  },
+  {
+    "listing": "/people/Christopher-Runyon/index.html",
+    "items": [
+      "/publication/ARP-for-behavioral-observation/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Daniel-M.-Swan/index.html",
+    "items": [
+      "/publication/response-guided-designs-in-SCED-baselines/index.html",
+      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
+      "/publication/gradual-effects-model/index.html",
+      "/publication/Four-methods-for-PIR/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Man-Chen/index.html",
+    "items": [
+      "/presentations/AERA-2024-Bayes-BCSMD.html",
+      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
+      "/publication/AAC-group-and-SCD/index.html",
+      "/presentations/AERA-2023-BCSMD-benchmarks.html",
+      "/publication/Three-level-BC-SMD/index.html",
+      "/publication/SCED-MLMA-RVE/index.html",
+      "/publication/AAC-communication-outcomes/index.html",
+      "/publication/AAC-instructional-contexts/index.html",
+      "/publication/AAC-participant-characteristics/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Paulina-Grekov/index.html",
+    "items": []
   }
 ]
