@@ -13,6 +13,9 @@ title: "Contact"
 library(leaflet)
 leaflet() |>
   addTiles() |>  # Add default OpenStreetMap map tiles
-  addMarkers(lng=43.072120, lat=-89.403424)
+  addMarkers(
+    lat=43.07212, 
+    lng=-89.40342
+  )
 
 ```
