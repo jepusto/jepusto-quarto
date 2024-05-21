@@ -1,5 +1,11 @@
 /*-- scss:defaults --*/
 
 $primary:                 #3f51b5 !default;
+$navbar-fg:               #fff !default;
 
 /*-- scss:rules --*/
+
+
+a:link, a:visited, a:hover, a:active { 
+  text-decoration: none; 
+} 

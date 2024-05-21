@@ -72,4 +72,4 @@ I am a statistician and associate professor in the [School of Education](https:/
 # Recent posts 
 :::::{#recent-posts}
 :::::
-#### [(All blog posts)](/posts/)
+#### [More blog posts...](/posts/)
