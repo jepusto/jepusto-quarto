@@ -13,6 +13,7 @@
 <lastBuildDate>Thu, 28 Mar 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Distribution of the number of significant effect sizes</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Distribution-of-signficant-effects/</link>
   <description><![CDATA[ 
 
@@ -831,6 +832,7 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 </item>
 <item>
   <title>Approximating the distribution of cluster-robust Wald statistics</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</link>
   <description><![CDATA[ 
 
@@ -860,6 +862,7 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 </item>
 <item>
   <title>Implementing Consul’s generalized Poisson distribution in Stan</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/generalized-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
@@ -4066,6 +4069,7 @@ loaded via a namespace (and not attached):
 </item>
 <item>
   <title>Implementing Efron’s double Poisson distribution in Stan</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/double-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
@@ -6727,6 +6731,7 @@ loaded via a namespace (and not attached):
 </item>
 <item>
   <title>Cluster-Bootstrapping a meta-analytic selection model</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/cluster-bootstrap-selection-model/</link>
   <description><![CDATA[ 
 
@@ -12412,7 +12417,17 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
 <li id="fn1"><p>Technically, these parameters <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%5Clambda_2,%5Clambda_3"> are not absolute probabilities but instead <em>relative</em> risks of being reported, compared to a reference range of <img src="https://latex.codecogs.com/png.latex?p">-values. In the above example, they would be defined relative to the probability of being reported for an effect size estimate with <img src="https://latex.codecogs.com/png.latex?p%20%5Cleq%20.01">.↩︎</p></li>
 <li id="fn2"><p>Compare this to the model-based confidence interval of <img src="https://latex.codecogs.com/png.latex?%5B0.059,%201.037%5D">.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E.},
+  title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
+  date = {2023-03-30},
+  url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2023, March 30). <em>Cluster-Bootstrapping a
+meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
+</div></div></section></div> ]]></description>
   <category>bootstrap</category>
   <category>dependent effect sizes</category>
   <category>meta-analysis</category>
@@ -12424,6 +12439,7 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
 </item>
 <item>
   <title>Cohen’s \(d_z\) makes me dizzy when considering measurement error</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/dizzy-for-d-z/</link>
   <description><![CDATA[ 
 
@@ -13517,6 +13533,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018), redux</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux/</link>
   <description><![CDATA[ 
 
@@ -13557,6 +13574,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018)</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2/</link>
   <description><![CDATA[ 
 
@@ -13992,6 +14010,7 @@ McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">G
 </item>
 <item>
   <title>Variance component estimates in meta-analysis with mis-specified sampling correlation</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/variance-components-with-misspecified-correlation/</link>
   <description><![CDATA[ 
 
@@ -14958,6 +14977,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 </item>
 <item>
   <title>Implications of mean-variance relationships for standardized mean differences</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/</link>
   <description><![CDATA[ 
 
@@ -16215,6 +16235,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>Inverting partitioned matrices</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/inverting-partitioned-matrices/</link>
   <description><![CDATA[ 
 
@@ -16244,6 +16265,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>Standardized mean differences in single-group, repeated measures designs</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/SMDs-in-single-group/</link>
   <description><![CDATA[ 
 
@@ -16280,6 +16302,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>Finding the distribution of significant effect sizes</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/number-of-significant-effects/</link>
   <description><![CDATA[ 
 
@@ -16313,6 +16336,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>The Woodbury identity</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Woodbury-identity/</link>
   <description><![CDATA[ 
 
@@ -16382,6 +16406,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>An ANCOVA puzzler</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/ancova-puzzler/</link>
   <description><![CDATA[ 
 
@@ -16518,6 +16543,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>From Longhorn to Badger</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/from-longhorn-to-badger/</link>
   <description><![CDATA[ 
 
@@ -16540,6 +16566,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>What do meta-analysts mean by ‘multivariate’ meta-analysis?</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/what-does-multivariate-mean/</link>
   <description><![CDATA[ 
 
@@ -16669,6 +16696,7 @@ Riley, Richard D., Jackson, D., Salanti, G., Burke, D. L., Price, M., Kirkham, J
 </item>
 <item>
   <title>Weighting in multivariate meta-analysis</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</link>
   <description><![CDATA[ 
 
@@ -17402,6 +17430,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </item>
 <item>
   <title>An update on code folding with blogdown + Academic theme</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/code-folding-update/</link>
   <description><![CDATA[ 
 
@@ -17556,6 +17585,7 @@ font-style: inherit;">=</span> false</span></code></pre></div>
 </item>
 <item>
   <title>Simulating correlated standardized mean differences for meta-analysis</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Simulating-correlated-SMDs/</link>
   <description><![CDATA[ 
 
