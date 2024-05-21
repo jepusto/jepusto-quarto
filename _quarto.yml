@@ -23,6 +23,8 @@ website:
         href: index.xml
 format:
   html:
-    theme: sandstone
-    linkcolor: "#1f67db"
-    css: styles.css
+    theme: 
+      - sandstone
+      - custom.scss
+    linkcolor: "#3f51b5"
+    fontcolor: "#313131"
