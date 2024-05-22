@@ -1,0 +1,50 @@
+---
+title: Bethany Hamilton Bhat
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:bethanybhat@gmail.com
+  - icon: github
+    href: https://github.com/bethanyhamilton
+  - icon: google scholar
+    href: https://scholar.google.com/citations?user=bWMRiLwAAAAJ
+org_name: University of Texas at Austin
+org_url: ''
+role: Graduate student
+people-group: Current Advisees
+
+---
+
+:::::{#about}
+
+Bethany Hamilton Bhat is a doctoral candidate in the Quantitative Methods area in the Educational Psychology Department at the University of Texas at Austin. Her research interests include meta-analysis, hierarchical linear modeling, and Bayesian inference. 
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2025 (expected) <br> [University of Texas at Austin]{style='color:gray;'}
+- BA in Plan II Honors | 2014 <br> [The University of Texas at Austin]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Meta-analysis
+- Hierarchical linear modeling
+- Bayesian inference
+
+:::
+
+::::
+
+:::::
