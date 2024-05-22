@@ -4,7 +4,7 @@ authors:
 - Anika Poppe
 - Franziska D. E. Ritter
 - Leonie Bais
-- admin
+- James E. Pustejovsky
 - Marie-José van Tol
 - Branislava Ćurčić-Blake
 - Gerdina H.M. Pijnenborg

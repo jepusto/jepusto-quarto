@@ -3,7 +3,7 @@ title: 'Single case design research in Special Education: Next generation standa
 authors:
 - Jennifer R. Ledford
 - Joseph Lambert
-- admin
+- James E. Pustejovsky
 - Kathleen N. Zimmerman
 - Erin E. Barton
 date: 2022-11-22T00:00:00

@@ -2,7 +2,7 @@
 title: Current practices in meta-regression in psychology, education, and medicine
 authors:
 - Elizabeth Tipton
-- admin
+- James E. Pustejovsky
 - Hedyeh Ahmadi
 date: 2019-01-07T00:00:00
 publish_date: 2019-01-07T00:00:00

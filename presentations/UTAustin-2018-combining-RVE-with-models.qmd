@@ -1,7 +1,7 @@
 ---
 title: Combining robust variance estimation with models for dependent effect sizes
 authors:
-- admin
+- James E. Pustejovsky
 date: 2018-10-01T12:00:00
 publish_date: 2018-07-18T09:00:00
 event: UT Austin, Developmental & Clinical Psychology Brownbag

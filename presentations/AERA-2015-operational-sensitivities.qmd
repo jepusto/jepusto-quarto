@@ -2,7 +2,7 @@
 title: Operational sensitivities of non-overlap effect sizes for single-case experimental
   designs
 authors:
-- admin
+- James E. Pustejovsky
 date: 2015-04-19T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: American Educational Research Association annual convention

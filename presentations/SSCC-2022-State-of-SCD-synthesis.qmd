@@ -1,6 +1,7 @@
 ---
 title: 'The state of single case synthesis: Premises, tools, and possibilities'
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2022-05-19T13:00:00
 publish_date: 2022-05-19T13:00:00
 event: Spencer Single Case Conference

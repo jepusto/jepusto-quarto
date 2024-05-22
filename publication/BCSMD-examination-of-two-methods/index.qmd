@@ -5,7 +5,7 @@ authors:
 - Erin E. Barton
 - Brian Reichow
 - Hariharan Swaminathan
-- admin
+- James E. Pustejovsky
 date: 2018-06-02T00:00:00
 publish_date: 2018-06-02T00:00:00
 publication_type: Journal article

@@ -2,7 +2,7 @@
 title: Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies
 authors:
 - Megha Joshi
-- admin
+- James E. Pustejovsky
 - S. Natasha Beretvas
 date: 2022-02-08T00:00:00
 publish_date: 2022-02-25T00:00:00

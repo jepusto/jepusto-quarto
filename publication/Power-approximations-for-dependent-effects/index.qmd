@@ -2,7 +2,7 @@
 title: Power approximations for overall average effects in meta-analysis of dependent effect sizes
 authors:
 - Mikkel H. Vembye
-- admin
+- James E. Pustejovsky
 - Terri D. Pigott
 date: 2022-10-17T00:00:00
 publish_date: 2022-10-17T00:00:00

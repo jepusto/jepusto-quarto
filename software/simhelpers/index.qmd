@@ -6,7 +6,7 @@ image: featured.png
 header_image: TiptonPusto2015.png
 authors:
 - Megha Joshi
-- admin
+- James E. Pustejovsky
 date: '2020-03-31T00:00:00Z'
 categories:
 - simulation

@@ -3,7 +3,7 @@ title: 'Investigating narrative performance in children with developmental langu
 authors:
 - Katherine L. Winters
 - Javier Jasso
-- admin
+- James E. Pustejovsky
 - Courtney Byrd
 date: 2022-09-30T00:00:00
 publish_date: 2022-09-30T00:00:00

@@ -1,7 +1,7 @@
 ---
 title: Operationally comparable effect sizes for meta-analysis of single-case research
 authors:
-- admin
+- James E. Pustejovsky
 date: 2013-03-07T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: Society for Research on Educational Effectiveness Conference

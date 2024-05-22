@@ -1,7 +1,8 @@
 ---
 title: 'Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic
   Replication of Results.’'
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2023-04-15T14:50:00
 publish_date: 2023-04-17T08:00:00
 event: American Educational Research Association annual convention

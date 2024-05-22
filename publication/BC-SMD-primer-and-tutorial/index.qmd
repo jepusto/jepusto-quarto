@@ -3,7 +3,7 @@ title: 'Between-case standardized mean difference effect sizes for single-case d
 authors:
 - Jeffrey C. Valentine
 - Emily E. Tanner-Smith
-- admin
+- James E. Pustejovsky
 - Timothy S. Lau
 date: 2016-12-19T00:00:00
 publish_date: 2016-12-19T00:00:00

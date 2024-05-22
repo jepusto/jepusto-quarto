@@ -1,7 +1,7 @@
 ---
 title: 'Alternating renewal process models for behavioral observation: Simulation methods and validity implications'
 authors:
-- admin
+- James E. Pustejovsky
 - Christopher Runyon
 date: 2014-08-01T00:00:00
 publish_date: 2014-08-01T00:00:00

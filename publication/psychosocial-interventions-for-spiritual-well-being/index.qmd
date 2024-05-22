@@ -3,7 +3,7 @@ title: A systematic review and meta-analysis of effects of psychosocial interven
 authors:
 - Laurie E. McLouth
 - C. Graham Ford
-- admin
+- James E. Pustejovsky
 - Crystal Park
 - Allen C. Sherman
 - Kelly Trevino

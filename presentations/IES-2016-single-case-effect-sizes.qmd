@@ -1,7 +1,7 @@
 ---
 title: Effect sizes for single-case research
 authors:
-- admin
+- James E. Pustejovsky
 date: 2016-12-19T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: Institute of Education Sciences 2016 Principal Investigators Meeting

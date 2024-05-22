@@ -2,7 +2,7 @@
 title: 'Single-case synthesis tools II: Comparing overlap measures and parametric effect sizes for synthesizing antecedent sensory-based interventions'
 authors:
 - Kathleen N. Zimmerman
-- admin
+- James E. Pustejovsky
 - Jennifer R. Ledford
 - Erin E. Barton
 - Katherine E. Severini

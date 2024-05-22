@@ -1,7 +1,7 @@
 ---
 title: Four things every quantitative social scientist should know about meta-analysis
 authors:
-- admin
+- James E. Pustejovsky
 date: 2021-09-27T10:00:00
 publish_date: 2021-09-27T16:00:00
 event: Educational Psychology PIE Colloquium

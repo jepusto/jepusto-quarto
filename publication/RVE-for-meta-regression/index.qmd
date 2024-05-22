@@ -2,7 +2,7 @@
 title: Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression
 authors:
 - Elizabeth Tipton
-- admin
+- James E. Pustejovsky
 date: 2015-12-15T00:00:00
 publish_date: 2015-12-15T00:00:00
 publication_type: Journal article

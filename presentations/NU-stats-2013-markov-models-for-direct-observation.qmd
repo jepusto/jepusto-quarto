@@ -1,7 +1,7 @@
 ---
 title: Some Markov models for direct observation of behavior
 authors:
-- admin
+- James E. Pustejovsky
 date: 2013-05-29T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: Department of Statistics, Northwestern University

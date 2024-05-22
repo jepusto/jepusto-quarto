@@ -2,7 +2,7 @@
 title: A generalized excess significance test for selective outcome reporting with
   dependent effect sizes
 authors:
-- admin
+- James E. Pustejovsky
 date: 2019-07-22T13:30:00
 publish_date: 2019-07-22T12:00:00
 event: Society for Research Synthesis Methodology annual meeting

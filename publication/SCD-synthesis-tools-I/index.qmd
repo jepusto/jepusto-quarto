@@ -4,7 +4,7 @@ authors:
 - Kathleen N. Zimmerman
 - Jennifer R. Ledford
 - Katherine E. Severini
-- admin
+- James E. Pustejovsky
 - Erin E. Barton
 - Blair P. Lloyd
 date: 2018-03-03T00:00:00

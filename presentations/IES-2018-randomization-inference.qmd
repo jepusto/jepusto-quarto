@@ -1,7 +1,7 @@
 ---
 title: Randomization inference for single-case experimental designs
 authors:
-- admin
+- James E. Pustejovsky
 date: 2018-01-10T08:15:00
 publish_date: 2018-01-10T08:15:00
 event: Institute of Education Sciences 2018 Principal Investigators Meeting

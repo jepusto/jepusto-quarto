@@ -1,7 +1,7 @@
 ---
 title: An examination of measurement procedures and characteristics of baseline outcome data in single-case research
 authors:
-- admin
+- James E. Pustejovsky
 - Daniel M. Swan
 - Kyle W. English
 date: 2019-08-02T00:00:00

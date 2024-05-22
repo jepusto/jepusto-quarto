@@ -1,7 +1,7 @@
 ---
 title: Research synthesis and meta-analysis of single-case designs
 authors:
-- admin
+- James E. Pustejovsky
 - John Ferron
 date: 2017-01-01T00:00:00
 publish_date: 2017-01-01T00:00:00

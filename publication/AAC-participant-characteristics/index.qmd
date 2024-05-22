@@ -2,7 +2,7 @@
 title: 'Participant characteristics predicting communication outcomes in AAC implementation for individuals with ASD and IDD: Meta-analysis'
 authors:
 - Jay B. Ganz
-- admin
+- James E. Pustejovsky
 - Joe Reichle
 - Kimberly J. Vannest
 - Margaret Foster

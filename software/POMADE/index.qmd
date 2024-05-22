@@ -8,7 +8,7 @@ header_caption: Minimum detectable effect sizes based on the correlated-and-hier
   effects working model with robust variance estimation.
 authors:
 - Mikkel H. Vembye
-- admin
+- James E. Pustejovsky
 date: '2022-12-02T00:00:00Z'
 categories:
 - meta-analysis

@@ -1,6 +1,7 @@
 ---
 title: Using response ratios for meta-analyzing single-case designs with behavioral outcomes
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2018-02-01T00:00:00
 publish_date: 2018-02-01T00:00:00
 publication_type: Journal article

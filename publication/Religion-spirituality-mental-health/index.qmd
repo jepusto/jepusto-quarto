@@ -2,7 +2,7 @@
 title: 'A meta-analytic approach to examine the relationship between religion/spirituality and mental health in cancer'
 authors:
 - John A. Salsman
-- admin
+- James E. Pustejovsky
 - Heather S. Jim
 - Alexis R. Munoz
 - Thomas V. Merluzzi

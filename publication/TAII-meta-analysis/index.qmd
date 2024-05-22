@@ -2,7 +2,7 @@
 title: A meta-analysis of technology-aided instruction and intervention for students with ASD
 authors:
 - Erin E. Barton
-- admin
+- James E. Pustejovsky
 - Daniel M. Maggin
 - Brian Reichow
 date: 2017-07-01T00:00:00

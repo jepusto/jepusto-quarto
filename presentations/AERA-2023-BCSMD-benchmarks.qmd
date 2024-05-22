@@ -2,7 +2,7 @@
 title: Empirical benchmarks for between-case standardized mean differences from single-case
   multiple baseline designs examining academic interventions.
 authors:
-- admin
+- James E. Pustejovsky
 - Man Chen
 - David Klingbeil
 - Ethan van Norman

@@ -1,7 +1,7 @@
 ---
 title: 'Design-comparable effect sizes in multiple baseline designs: A general modeling framework'
 authors:
-- admin
+- James E. Pustejovsky
 - Larry V. Hedges
 - William R. Shadish
 date: 2014-10-01T00:00:00

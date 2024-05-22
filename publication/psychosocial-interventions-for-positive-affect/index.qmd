@@ -2,7 +2,7 @@
 title: 'Psychosocial interventions for cancer survivors: A meta-analysis of effects on positive affect'
 authors:
 - John A. Salsman
-- admin
+- James E. Pustejovsky
 - Stephen M. Schueller
 - Rosalba Hernandez
 - Mark Berendsen

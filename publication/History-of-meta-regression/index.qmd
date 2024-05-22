@@ -2,7 +2,7 @@
 title: 'A history of meta-regression: Technical, conceptual, and practical developments between 1974 and 2018'
 authors:
 - Elizabeth Tipton
-- admin
+- James E. Pustejovsky
 - Hedyeh Ahmadi
 date: 2018-12-27T00:00:00
 publish_date: 2018-12-27T00:00:00

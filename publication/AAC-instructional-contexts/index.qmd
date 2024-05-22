@@ -2,7 +2,7 @@
 title: 'Considering instructional contexts in AAC interventions for people with ASD and/or IDD experiencing complex communication needs: A single-case design meta-analysis'
 authors:
 - Jay B. Ganz
-- admin
+- James E. Pustejovsky
 - Joe Reichle
 - Kimberly J. Vannest
 - Margaret Foster

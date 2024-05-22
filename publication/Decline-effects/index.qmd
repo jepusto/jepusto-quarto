@@ -14,7 +14,7 @@ authors:
 - Bo MacInnis
 - Michael O'Donnell
 - Hannah Perfecto
-- admin
+- James E. Pustejovsky
 - Scott Roeder
 - Jan Walleczek
 - Jonathan W. Schooler

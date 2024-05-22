@@ -5,7 +5,7 @@ subtitle: Single-case design effect size calculator
 image: featured.png
 header_image: Romaniuk-wide.png
 authors:
-- admin
+- James E. Pustejovsky
 - Daniel M. Swan
 date: '2016-04-27T00:00:00Z'
 categories:

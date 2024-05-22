@@ -3,7 +3,7 @@ title: A d-statistic for single-case designs that is equivalent to the usual bet
 authors:
 - William R. Shadish
 - Larry V. Hedges
-- admin
+- James E. Pustejovsky
 - Jonathan G. Boyajian
 - Kristynn J. Sullivan
 - Alma Andrade

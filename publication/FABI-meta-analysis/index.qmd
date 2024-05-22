@@ -3,7 +3,7 @@ title: 'Functional assessment-based interventions for students with or at-risk f
 authors:
 - Eric A. Common
 - Kathleen L. Lane
-- admin
+- James E. Pustejovsky
 - Austin H. Johnson
 - Liane E. Johl
 date: 2017-03-01T00:00:00

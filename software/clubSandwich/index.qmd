@@ -4,7 +4,8 @@ ltitle: clubsandwich
 subtitle: Cluster-robust variance estimation
 image: featured.jpg
 header_image: sandwich-plate.jpg
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: '2016-04-27T00:00:00Z'
 categories:
 - sandwiches

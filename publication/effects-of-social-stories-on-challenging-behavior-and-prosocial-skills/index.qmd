@@ -2,7 +2,7 @@
 title: 'Examining the effects of social stories on challenging behavior and prosocial skills in young children: A systematic review and meta-analysis'
 authors:
 - Charis L. Wahman
-- admin
+- James E. Pustejovsky
 - Michaelene M. Ostrosky
 - Rosa Milagros Santos
 date: 2022-02-01T00:00:00

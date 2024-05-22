@@ -2,7 +2,7 @@
 title: 'Comparison of competing approaches to analyzing cross-classified data: Random effects models, ordinary least squares, or fixed effects with cluster robust standard errors'
 authors:
 - Young Ri Lee
-- admin
+- James E. Pustejovsky
 date: 2023-03-09T00:00:00
 publish_date: 2023-03-09T00:00:00
 publication_type: Journal article

@@ -1,6 +1,7 @@
 ---
 title: 'Determining the Timing of Phase Changes: Some Statistical Perspective'
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2023-05-18T09:00:00
 publish_date: 2023-05-18T09:00:00
 event: Wing Institute Single Case Conference 2023

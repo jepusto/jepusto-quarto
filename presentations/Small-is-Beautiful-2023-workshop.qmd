@@ -1,7 +1,8 @@
 ---
 title: 'Calculating Effect Sizes for Single-Case Research: An Introduction to the
   SingleCaseES and scdhlm Web Applications and R Packages'
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2023-04-26T11:00:00
 publish_date: 2023-04-26T11:00:00
 event: Small is Beautiful {Once More}

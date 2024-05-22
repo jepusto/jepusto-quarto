@@ -3,7 +3,7 @@ title: 'Analyzing single-case designs: d, G, hierarchical models, Bayesian estim
 authors:
 - William R. Shadish
 - Larry V. Hedges
-- admin
+- James E. Pustejovsky
 - David Rindskopf
 - Jonathan G. Boyajian
 - Kristynn J. Sullivan

@@ -2,7 +2,7 @@
 title: 'Religion, spirituality, and physical health in cancer patients: A meta-analysis'
 authors:
 - Heather S. Jim
-- admin
+- James E. Pustejovsky
 - Crystal L. Park
 - Suzanne C. Danhauer
 - Allen C. Sherman

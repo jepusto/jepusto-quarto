@@ -2,7 +2,7 @@
 title: A standardized mean difference effect size for multiple baseline designs
 authors:
 - Larry V. Hedges
-- admin
+- James E. Pustejovsky
 - William R. Shadish
 date: 2013-08-23T00:00:00
 publish_date: 2013-08-23T00:00:00

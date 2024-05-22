@@ -2,7 +2,7 @@
 title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A meta-analysis of randomized controlled trials'
 authors:
 - Tom V. Merluzzi
-- admin
+- James E. Pustejovsky
 - Errol J. Philip
 - Stephanie J. Sohl
 - Mark Berendsen

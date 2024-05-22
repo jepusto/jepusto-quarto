@@ -1,7 +1,7 @@
 ---
 title: 'Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich'
 authors:
-- admin
+- James E. Pustejovsky
 date: 2021-09-02T10:00:00
 publish_date: 2021-09-02T12:00:00
 event: Oslo R User Group Meetup

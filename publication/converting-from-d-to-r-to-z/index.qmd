@@ -1,6 +1,7 @@
 ---
 title: Converting from d to r to z when the design uses extreme groups, dichotomization, or experimental control
-authors: admin
+authors: 
+ - James E. Pustejovsky
 date: 2014-03-01T00:00:00
 publish_date: 2014-03-01T00:00:00
 publication_type: Journal article
