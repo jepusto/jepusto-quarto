@@ -4,8 +4,10 @@ project:
 website:
   title: "James E. Pustejovsky"
   site-url: https://jepusto.com
+  repo-url: https://github.com/jepusto/jepusto-quarto
   description: "Education Statistics and Meta-Analysis"
   twitter-card: true
+  open-graph: true
   navbar:
     left:
       - text: CV
@@ -28,3 +30,4 @@ format:
       - custom.scss
     linkcolor: "#3f51b5"
     fontcolor: "#313131"
+    smooth-scroll: true
