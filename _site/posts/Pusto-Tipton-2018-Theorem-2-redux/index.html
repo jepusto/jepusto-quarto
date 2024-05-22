@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2022-11-07">
 <meta name="description" content="In my 2018 paper with Beth Tipton, published in the Journal of Business and Economic Statistics, we considered how to do cluster-robust variance estimation in fixed effects models estimated by weighted (or unweighted) least squares. We were recently alerted that Theorem 2 in the paper is incorrect as stated. It turns out, the conditions in the original version of the theorem are too general. A more limited version of the Theorem does actually hold, but only for models estimated using ordinary (unweighted) least squares, under a working model that assumes independent, homoskedastic errors. In this post, I’ll give the revised theorem, following the notation and setup of the previous post (so better read that first, or what follows won’t make much sense!).">
 
@@ -133,7 +134,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="James E. Pustejovsky - Corrigendum to Pustejovsky and Tipton (2018), redux">
+<meta name="twitter:description" content="In my 2018 paper with Beth Tipton, published in the Journal of Business and Economic Statistics, we considered how to do cluster-robust variance estimation in fixed effects models estimated by weighted (or unweighted) least squares. We were recently alerted that Theorem 2 in the paper is incorrect as stated. It turns out, the conditions in the original version of the theorem are too general. A more limited version of the Theorem does actually hold, but only for models estimated using ordinary (unweighted) least squares, under a working model that assumes independent, homoskedastic errors. In this post, I’ll give the revised theorem, following the notation and setup of the previous post (so better read that first, or what follows won’t make much sense!).">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -154,24 +157,47 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
-<span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../../files/Pustejovsky-CV.pdf"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations.html"> 
-<span class="menu-text">Presentations</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../people.html"> 
+    <a class="nav-link" href="../../people/index.html"> 
 <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../software.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../working-papers.html"> 
+<span class="menu-text">Working Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publication/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations/index.html"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software/index.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html"> 
+    <a class="nav-link" href="../../teaching/index.html"> 
 <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -205,7 +231,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -292,7 +318,17 @@ window.Quarto = {
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+  author = {Pustejovsky, James E.},
+  title = {Corrigendum to {Pustejovsky} and {Tipton} (2018), Redux},
+  date = {2022-11-07},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Pustejovsky, J. E. (2022, November 7). <em>Corrigendum to Pustejovsky
+and Tipton (2018), redux</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -425,7 +461,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -756,7 +792,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Corrigendum to Pustejovsky and Tipton (2018), redux</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> A revised version of Theorem 2</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> admin</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2022-11-07'</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> "../RVE-references.bib"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> "../apa.csl"</span></span>

@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2024-03-28">
 
 <title>James E. Pustejovsky - Distribution of the number of significant effect sizes</title>
@@ -101,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script type="ojs-define">
@@ -140,6 +142,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Distribution of the number of significant effect sizes">
+<meta property="og:description" content="In a study reporting multiple outcomes">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Distribution of the number of significant effect sizes">
 <meta name="twitter:description" content="In a study reporting multiple outcomes">
 <meta name="twitter:card" content="summary">
@@ -276,6 +281,8 @@ window.Quarto = {
 \]</span> where <span class="math inline">\(f_{N_A}\left(a | \zeta, \omega, \sigma, \rho \right)\)</span> is a binomial density with size <span class="math inline">\(m\)</span> and probability <span class="math inline">\(\pi = \pi(\zeta, \omega, \sigma, \rho)\)</span> and <span class="math inline">\(f_\zeta(\zeta | \mu, \tau, \sigma, \rho)\)</span> is a normal density with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\tau^2 + \rho \sigma^2\)</span>.</p>
 <p>This distribution is what you might call a binomial-normal convolution or a random-intercept probit model (where the random intercept is <span class="math inline">\(\zeta\)</span>). As far as I know, the distribution cannot be evaluated analytically but instead must be calculated using some sort of numerical integration routine. Here is an interactive graph of the probability mass function (the probability points are calculated using Gaussian quadrature):</p>
 <div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="69" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>math <span class="op">=</span> <span class="pp">require</span>(<span class="st">"mathjs"</span>)</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>norm <span class="op">=</span> <span class="im">import</span>(<span class="st">'https://unpkg.com/norm-dist@3.1.0/index.js?module'</span>)</span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
@@ -302,6 +309,7 @@ window.Quarto = {
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> coef <span class="op">*</span> math<span class="op">.</span><span class="fu">sum</span>(p)<span class="op">;</span></span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -369,6 +377,8 @@ window.Quarto = {
 <div class="grid column-page-inset">
 <div class="g-col-7">
 <div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="101" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
 <span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of significant effect sizes"</span></span>
@@ -384,6 +394,7 @@ window.Quarto = {
 <span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
 <span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>  ]</span>
 <span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -393,6 +404,8 @@ window.Quarto = {
 </div>
 <div class="g-col-5">
 <div class="cell panel-input card bg-light p-2">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="126" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>viewof m <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
 <span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> </span>
 <span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of effect sizes (m):"</span>}</span>
@@ -432,6 +445,7 @@ window.Quarto = {
 <span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">1</span><span class="op">,</span> <span class="dv">30</span>]<span class="op">,</span> </span>
 <span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">21</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Number of quadrature points:"</span>}</span>
 <span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -516,7 +530,17 @@ window.Quarto = {
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
+  author = {Pustejovsky, James E.},
+  title = {Distribution of the Number of Significant Effect Sizes},
+  date = {2024-03-28},
+  url = {https://jepusto.com/posts/Distribution-of-signficant-effects},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Pustejovsky, James E. 2024. <span>“Distribution of the Number of
+Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
+</div></div></section></div></main> <!-- /main -->
 <script type="ojs-module-contents">
 eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im1hdGggPSByZXF1aXJlKFwibWF0aGpzXCIpXG5ub3JtID0gaW1wb3J0KCdodHRwczovL3VucGtnLmNvbS9ub3JtLWRpc3RAMy4xLjAvaW5kZXguanM/bW9kdWxlJylcblxucXVhZF9wb2ludHMgPSBKU09OLnBhcnNlKGFsbF9xdWFkX3BvaW50cykuYXQocXAgLSAxKVxuXG5zaWdtYSA9IDIgLyBtYXRoLnNxcnQoRVNTKVxuXG56ZXRhX3NkID0gbWF0aC5zcXJ0KHRhdSoqMiArIHJobyAqIHNpZ21hKioyKVxuXG5jcml0ID0gbm9ybS5pY2RmKDEgLSBhbHBoYSlcblxuYmlub21pYWxfY29lZnMgPSBBcnJheShtKzEpLmZpbGwobnVsbCkubWFwKCh4LGluZGV4KSA9PiB7XG4gIHJldHVybiBtYXRoLmNvbWJpbmF0aW9ucyhtLCBpbmRleCk7XG59KVxuXG5wcm9icyA9IHF1YWRfcG9pbnRzLm1hcCh6ZXRhID0+IHtcbiAgbGV0IFogPSAoemV0YVswXSAqIHpldGFfc2QgKyBtdSAtIGNyaXQgKiBzaWdtYSkgLyBtYXRoLnNxcnQob21lZ2EqKjIgKyAoMSAtIHJobykgKiBzaWdtYSoqMik7XG4gIHJldHVybiBbbm9ybS5jZGYoWiksIHpldGFbMV1dO1xufSlcblxucF9iaW5vbV9ub3JtID0gYmlub21pYWxfY29lZnMubWFwKChjb2VmLCBhKSA9PiB7XG4gIGxldCBwID0gcHJvYnMubWFwKCh4KSA9PiB7XG4gICAgcmV0dXJuICh4WzBdKiphKSAqICgoMSAtIHhbMF0pKioobSAtIGEpKSAqIHhbMV07XG4gIH0pO1xuICByZXR1cm4gY29lZiAqIG1hdGguc3VtKHApO1xufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlBsb3QucGxvdCh7XG4gIHg6IHtcbiAgICBsYWJlbDogXCJOdW1iZXIgb2Ygc2lnbmlmaWNhbnQgZWZmZWN0IHNpemVzXCJcbiAgfSxcbiAgeToge1xuICAgIGRvbWFpbjogWzAsIDFdLFxuICAgIGxhYmVsOiBcIlByb2JhYmlsaXR5XCJcbiAgfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LnJ1bGVZKDApLFxuICAgIFBsb3QuYmFyWShwX2Jpbm9tX25vcm0sIHtcbiAgICAgIGZpbGw6IFwic3RlZWxibHVlXCJcbiAgICB9KSxcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ilxudmlld29mIG0gPSBJbnB1dHMucmFuZ2UoXG4gIFsxLCAzMF0sIFxuICB7dmFsdWU6IDYsIHN0ZXA6IDEsIGxhYmVsOiBcIk51bWJlciBvZiBlZmZlY3Qgc2l6ZXMgKG0pOlwifVxuKVxuXG52aWV3b2YgRVNTID0gSW5wdXRzLnJhbmdlKFxuICBbNCwgMzAwXSwgXG4gIHt2YWx1ZTogODAsIHN0ZXA6IDEsIGxhYmVsOiBcIkVmZmVjdGl2ZSBzYW1wbGUgc2l6ZTpcIn1cbilcblxudmlld29mIG11ID0gSW5wdXRzLnJhbmdlKFxuICBbLTIsIDJdLCBcbiAge3ZhbHVlOiAwLjMsIHN0ZXA6IDAuMDEsIGxhYmVsOiBcIkF2ZXJhZ2UgZWZmZWN0IHNpemUgKG11KTpcIn1cbilcblxudmlld29mIHRhdSA9IElucHV0cy5yYW5nZShcbiAgWzAsIDFdLCBcbiAge3ZhbHVlOiAwLjEsIHN0ZXA6IDAuMDEsIGxhYmVsOiBcIkJldHdlZW4tc3R1ZHkgU0QgKHRhdSk6XCJ9XG4pXG5cbnZpZXdvZiBvbWVnYSA9IElucHV0cy5yYW5nZShcbiAgWzAsIDFdLCBcbiAge3ZhbHVlOiAwLjEsIHN0ZXA6IDAuMDEsIGxhYmVsOiBcIldpdGhpbi1zdHVkeSBTRCAob21lZ2EpOlwifVxuKVxuXG52aWV3b2YgcmhvID0gSW5wdXRzLnJhbmdlKFxuICBbMCwgMV0sIFxuICB7dmFsdWU6IDAuNiwgc3RlcDogMC4wMSwgbGFiZWw6IFwiU2FtcGxpbmcgZXJyb3IgY29ycmVsYXRpb24gKHJobyk6XCJ9XG4pXG5cbnZpZXdvZiBhbHBoYSA9IElucHV0cy5yYW5nZShcbiAgWzAuMDA1LCAwLjk5NV0sIFxuICB7dmFsdWU6IDAuMDI1LCBzdGVwOiAuMDA1LCBsYWJlbDogXCJPbmUtc2lkZWQgc2lnbmlmaWNhbmNlIHRocmVzaG9sZCAoYWxwaGEpOlwifVxuKVxuXG52aWV3b2YgcXAgPSBJbnB1dHMucmFuZ2UoXG4gIFsxLCAzMF0sIFxuICB7dmFsdWU6IDIxLCBzdGVwOiAxLCBsYWJlbDogXCJOdW1iZXIgb2YgcXVhZHJhdHVyZSBwb2ludHM6XCJ9XG4pXG5cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdFU1MnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbXUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndGF1JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ29tZWdhJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3JobycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhbHBoYScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdxcCcpIn1dfQ==
 </script>
@@ -942,4 +966,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

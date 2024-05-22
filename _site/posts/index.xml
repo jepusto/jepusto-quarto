@@ -824,7 +824,17 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
+  author = {Pustejovsky, James E.},
+  title = {Distribution of the Number of Significant Effect Sizes},
+  date = {2024-03-28},
+  url = {https://jepusto.com/posts/Distribution-of-signficant-effects},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2024. <span>“Distribution of the Number of
+Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
+</div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
   <guid>https://jepusto.com/posts/Distribution-of-signficant-effects/</guid>
@@ -854,7 +864,18 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 
 
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
+  author = {Pustejovsky, James E.},
+  title = {Approximating the Distribution of Cluster-Robust {Wald}
+    Statistics},
+  date = {2024-03-24},
+  url = {https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2024. <span>“Approximating the Distribution of
+Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
+</div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>
   <guid>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</guid>
@@ -4057,7 +4078,18 @@ loaded via a namespace (and not attached):
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E.},
+  title = {Implementing {Consul’s} Generalized {Poisson} Distribution in
+    {Stan}},
+  date = {2023-12-06},
+  url = {https://jepusto.com/posts/generalized-poisson-in-Stan},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2023. <span>“Implementing Consul’s Generalized
+Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://jepusto.com/posts/generalized-poisson-in-Stan">https://jepusto.com/posts/generalized-poisson-in-Stan</a>.
+</div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
   <category>distribution-theory</category>
@@ -6719,7 +6751,18 @@ loaded via a namespace (and not attached):
 <li id="fn4"><p>Rather than exposing and calling the Stan function, one could just re-implement the log likelihood in R. (Probably the easier way in practice, but again I’m trying to learn me some Stan here…)↩︎</p></li>
 <li id="fn5"><p>Of course, I could have saved a bunch of trouble by just using <code>gamlss.dist::rDPO()</code> instead.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E.},
+  title = {Implementing {Efron’s} Double {Poisson} Distribution in
+    {Stan}},
+  date = {2023-09-15},
+  url = {https://jepusto.com/posts/double-poisson-in-Stan},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2023. <span>“Implementing Efron’s Double Poisson
+Distribution in Stan.”</span> September 15, 2023. <a href="https://jepusto.com/posts/double-poisson-in-Stan">https://jepusto.com/posts/double-poisson-in-Stan</a>.
+</div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
   <category>distribution-theory</category>
@@ -13523,7 +13566,18 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <li id="fn4"><p>This version of <img src="https://latex.codecogs.com/png.latex?d"> corresponds to <code>measure = "SMCC"</code>, the “standardized mean change using change score standardization” in <code>metafor::escalc</code>.↩︎</p></li>
 <li id="fn5"><p>And of course, these two models are not the only alternatives—one could look at intermediate scenarios where <img src="https://latex.codecogs.com/png.latex?%5Crho"> and <img src="https://latex.codecogs.com/png.latex?%5Cphi"> are more or less strongly correlated with the true score effect sizes.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E.},
+  title = {Cohen’s \$d\_z\$ Makes Me Dizzy When Considering Measurement
+    Error},
+  date = {2023-02-17},
+  url = {https://jepusto.com/posts/dizzy-for-d-z},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2023. <span>“Cohen’s $d_z$ Makes Me Dizzy When
+Considering Measurement Error.”</span> February 17, 2023. <a href="https://jepusto.com/posts/dizzy-for-d-z">https://jepusto.com/posts/dizzy-for-d-z</a>.
+</div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>design-comparable SMD</category>
@@ -13565,7 +13619,17 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+  author = {Pustejovsky, James E.},
+  title = {Corrigendum to {Pustejovsky} and {Tipton} (2018), Redux},
+  date = {2022-11-07},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2022, November 7). <em>Corrigendum to Pustejovsky
+and Tipton (2018), redux</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
+</div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
@@ -14001,7 +14065,17 @@ Bell, R. M., &amp; McCaffrey, D. F. (2002). <span class="nocase">Bias reduction 
 <div id="ref-McCaffrey2001generalizations" class="csl-entry">
 McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">Generalizations of biased reduced linearization</span>. <em>Proceedings of the Annual Meeting of the American Statistical Association</em>.
 </div>
-</div></section></div> ]]></description>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+  author = {Pustejovsky, James E.},
+  title = {Corrigendum to {Pustejovsky} and {Tipton} (2018)},
+  date = {2022-09-28},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2022, September 28). <em>Corrigendum to Pustejovsky
+and Tipton (2018)</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2</a>
+</div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
@@ -14967,7 +15041,19 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <ol>
 <li id="fn1"><p>Consequently, <img src="https://latex.codecogs.com/png.latex?%5Cphi"> is not identifiable (in the statistical sense) in the completely balanced design.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+  author = {Pustejovsky, James E.},
+  title = {Variance Component Estimates in Meta-Analysis with
+    Mis-Specified Sampling Correlation},
+  date = {2021-11-28},
+  url = {https://jepusto.com/posts/variance-components-with-misspecified-correlation},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2021. <span>“Variance Component Estimates in
+Meta-Analysis with Mis-Specified Sampling Correlation.”</span> November
+28, 2021. <a href="https://jepusto.com/posts/variance-components-with-misspecified-correlation">https://jepusto.com/posts/variance-components-with-misspecified-correlation</a>.
+</div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
   <category>distribution theory</category>
@@ -16225,7 +16311,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li id="fn1"><p>Yes, there are other ways to define the SMD. Yes, usually we use the standard deviation pooled across both groups. I’m going to use the standard deviation in group <img src="https://latex.codecogs.com/png.latex?A"> alone because it simplifies some of the mathy bits. Please feel free to work through the case with a pooled SD for yourself.↩︎</p></li>
 <li id="fn2"><p>One of the vexing things about simulations is that you often end up needing to specify a bunch of assumptions about auxiliary quantities, beyond those of the model you’re actually interested in investigating.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+  author = {Pustejovsky, James E.},
+  title = {Implications of Mean-Variance Relationships for Standardized
+    Mean Differences},
+  date = {2021-11-02},
+  url = {https://jepusto.com/posts/mean-variance-relationships-and-SMDs},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2021. <span>“Implications of Mean-Variance
+Relationships for Standardized Mean Differences.”</span> November 2,
+2021. <a href="https://jepusto.com/posts/mean-variance-relationships-and-SMDs">https://jepusto.com/posts/mean-variance-relationships-and-SMDs</a>.
+</div></div></section></div> ]]></description>
   <category>standardized mean difference</category>
   <category>response ratio</category>
   <category>distribution theory</category>
@@ -16258,7 +16356,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <ol>
 <li id="fn1"><p><a href="https://tminka.github.io/papers/matrix/">Minka’s notes</a> on partitioned matrices treat a more general case, in which <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BA%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BD%7D"> need not be square matrices, nor must they be invertible.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+  author = {Pustejovsky, James E.},
+  title = {Inverting Partitioned Matrices},
+  date = {2021-10-20},
+  url = {https://jepusto.com/posts/inverting-partitioned-matrices},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2021. <span>“Inverting Partitioned
+Matrices.”</span> October 20, 2021. <a href="https://jepusto.com/posts/inverting-partitioned-matrices">https://jepusto.com/posts/inverting-partitioned-matrices</a>.
+</div></div></section></div> ]]></description>
   <category>matrix algebra</category>
   <guid>https://jepusto.com/posts/inverting-partitioned-matrices/</guid>
   <pubDate>Wed, 20 Oct 2021 05:00:00 GMT</pubDate>
@@ -16293,7 +16401,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+  author = {Pustejovsky, James E.},
+  title = {Standardized Mean Differences in Single-Group, Repeated
+    Measures Designs},
+  date = {2021-10-06},
+  url = {https://jepusto.com/posts/SMDs-in-single-group},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2021. <span>“Standardized Mean Differences in
+Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="https://jepusto.com/posts/SMDs-in-single-group">https://jepusto.com/posts/SMDs-in-single-group</a>.
+</div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>distribution theory</category>
@@ -16328,7 +16447,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+  author = {Pustejovsky, James E.},
+  title = {Finding the Distribution of Significant Effect Sizes},
+  date = {2021-04-27},
+  url = {https://jepusto.com/posts/number-of-significant-effects},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2021. <span>“Finding the Distribution of
+Significant Effect Sizes.”</span> April 27, 2021. <a href="https://jepusto.com/posts/number-of-significant-effects">https://jepusto.com/posts/number-of-significant-effects</a>.
+</div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
   <guid>https://jepusto.com/posts/number-of-significant-effects/</guid>
@@ -16398,7 +16527,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li id="fn3"><p>See the <a href="../..\weighting-in-multivariate-meta-analysis/">previous post</a> for the answer.↩︎</p></li>
 <li id="fn4"><p>In the previous post, I expressed the weights in terms of <img src="https://latex.codecogs.com/png.latex?s_%7Bij%7D">, the sum of the entries in row <img src="https://latex.codecogs.com/png.latex?i"> of the <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BS%7D_j"> matrix. In vector form, <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bs%7D_j%20=%20%5Cleft(s_%7B1j%7D%20%5C%20s_%7B2j%7D%20%5C%20%5Ccdots%20%5C%20s_%7Bn_j%20j%7D%5Cright)'%20=%20%5Cmathbf%7BS%7D_j%20%5Cmathbf%7B1%7D_j">.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {The {Woodbury} Identity},
+  date = {2020-12-04},
+  url = {https://jepusto.com/posts/Woodbury-identity},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2020. <span>“The Woodbury Identity.”</span>
+December 4, 2020. <a href="https://jepusto.com/posts/Woodbury-identity">https://jepusto.com/posts/Woodbury-identity</a>.
+</div></div></section></div> ]]></description>
   <category>hierarchical models</category>
   <category>matrix algebra</category>
   <guid>https://jepusto.com/posts/Woodbury-identity/</guid>
@@ -16534,7 +16673,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {An {ANCOVA} Puzzler},
+  date = {2020-11-24},
+  url = {https://jepusto.com/posts/ancova-puzzler},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
+24, 2020. <a href="https://jepusto.com/posts/ancova-puzzler">https://jepusto.com/posts/ancova-puzzler</a>.
+</div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>effect size</category>
   <category>standardized mean difference</category>
@@ -16560,7 +16709,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <!-- -->
 
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {From {Longhorn} to {Badger}},
+  date = {2020-08-28},
+  url = {https://jepusto.com/posts/from-longhorn-to-badger},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2020. <span>“From Longhorn to Badger.”</span>
+August 28, 2020. <a href="https://jepusto.com/posts/from-longhorn-to-badger">https://jepusto.com/posts/from-longhorn-to-badger</a>.
+</div></div></section></div> ]]></description>
   <guid>https://jepusto.com/posts/from-longhorn-to-badger/</guid>
   <pubDate>Fri, 28 Aug 2020 05:00:00 GMT</pubDate>
 </item>
@@ -16687,7 +16846,17 @@ Riley, Richard D., Jackson, D., Salanti, G., Burke, D. L., Price, M., Kirkham, J
 <li id="fn2"><p>And then consider the square roots of these quantities, respectively: population standard deviation, sample standard deviation, and <strong><em>standard error</em></strong>. WTF?↩︎</p></li>
 <li id="fn3"><p>Read this article! It’s essential. And it comes with pages and pages of commentary by other statisticans.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {What Do Meta-Analysts Mean by “Multivariate” Meta-Analysis?},
+  date = {2020-06-27},
+  url = {https://jepusto.com/posts/what-does-multivariate-mean},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2020, June 27). <em>What do meta-analysts mean by
+<span>“multivariate”</span> meta-analysis?</em> <a href="https://jepusto.com/posts/what-does-multivariate-mean">https://jepusto.com/posts/what-does-multivariate-mean</a>
+</div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>multivariate</category>
   <category>dependent effect sizes</category>
@@ -17422,7 +17591,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li id="fn3"><p>Things get even simpler if the model does not include within-study random effects, as I discussed in <a href="../..\sometimes-aggregating-effect-sizes-is-fine/">a previous post</a>.↩︎</p></li>
 <li id="fn4"><p>However, this need not be the case—it’s possible that introducing between-study predictors could <em>increase</em> the estimate of between-study heterogeneity. Yes, that’s totally counter-intuitive. Multi-level models can be weird.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {Weighting in Multivariate Meta-Analysis},
+  date = {2020-06-09},
+  url = {https://jepusto.com/posts/weighting-in-multivariate-meta-analysis},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2020. <span>“Weighting in Multivariate
+Meta-Analysis.”</span> June 9, 2020. <a href="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis">https://jepusto.com/posts/weighting-in-multivariate-meta-analysis</a>.
+</div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>weighting</category>
   <guid>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</guid>
@@ -17577,7 +17756,17 @@ font-style: inherit;">=</span> false</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+  author = {Pustejovsky, James E.},
+  title = {An Update on Code Folding with Blogdown + {Academic} Theme},
+  date = {2020-05-03},
+  url = {https://jepusto.com/posts/code-folding-update},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2020. <span>“An Update on Code Folding with
+Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://jepusto.com/posts/code-folding-update">https://jepusto.com/posts/code-folding-update</a>.
+</div></div></section></div> ]]></description>
   <category>programming</category>
   <category>Rstats</category>
   <guid>https://jepusto.com/posts/code-folding-update/</guid>
@@ -18260,7 +18449,18 @@ font-style: inherit;">39</span>)</span></code></pre></div>
 </section>
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2019,
+  author = {Pustejovsky, James E.},
+  title = {Simulating Correlated Standardized Mean Differences for
+    Meta-Analysis},
+  date = {2019-09-30},
+  url = {https://jepusto.com/posts/Simulating-correlated-SMDs},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2019" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2019, September 30). <em>Simulating correlated
+standardized mean differences for meta-analysis</em>. <a href="https://jepusto.com/posts/Simulating-correlated-SMDs">https://jepusto.com/posts/Simulating-correlated-SMDs</a>
+</div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>meta-analysis</category>

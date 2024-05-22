@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2022-09-28">
 <meta name="description" content="In my 2018 paper with Beth Tipton, published in the Journal of Business and Economic Statistics, we considered how to do cluster-robust variance estimation in fixed effects models estimated by weighted (or unweighted) least squares. A careful reader recently alerted us to a problem with Theorem 2 in the paper, which concerns a computational short cut for a certain cluster-robust variance estimator in models with cluster-specific fixed effects. The theorem is incorrect as stated, and we are currently working on issuing a correction for the published version of the paper. In the interim, this post details the problem with Theorem 2. I’ll first review the CR2 variance estimator, then describe the assertion of the theorem, and then provide a numerical counter-example demonstrating that the assertion is not correct as stated.">
 
@@ -153,7 +154,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="James E. Pustejovsky - Corrigendum to Pustejovsky and Tipton (2018)">
+<meta name="twitter:description" content="In my 2018 paper with Beth Tipton, published in the Journal of Business and Economic Statistics, we considered how to do cluster-robust variance estimation in fixed effects models estimated by weighted (or unweighted) least squares. A careful reader recently alerted us to a problem with Theorem 2 in the paper, which concerns a computational short cut for a certain cluster-robust variance estimator in models with cluster-specific fixed effects. The theorem is incorrect as stated, and we are currently working on issuing a correction for the published version of the paper. In the interim, this post details the problem with Theorem 2. I’ll first review the CR2 variance estimator, then describe the assertion of the theorem, and then provide a numerical counter-example demonstrating that the assertion is not correct as stated.">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -174,24 +177,47 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
-<span class="menu-text">Posts</span></a>
+    <a class="nav-link" href="../../files/Pustejovsky-CV.pdf"> 
+<span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations.html"> 
-<span class="menu-text">Presentations</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../people.html"> 
+    <a class="nav-link" href="../../people/index.html"> 
 <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../software.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../working-papers.html"> 
+<span class="menu-text">Working Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publication/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations/index.html"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software/index.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../teaching.html"> 
+    <a class="nav-link" href="../../teaching/index.html"> 
 <span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -451,7 +477,17 @@ Bell, R. M., &amp; McCaffrey, D. F. (2002). <span class="nocase">Bias reduction 
 <div id="ref-McCaffrey2001generalizations" class="csl-entry" role="listitem">
 McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">Generalizations of biased reduced linearization</span>. <em>Proceedings of the Annual Meeting of the American Statistical Association</em>.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+  author = {Pustejovsky, James E.},
+  title = {Corrigendum to {Pustejovsky} and {Tipton} (2018)},
+  date = {2022-09-28},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Pustejovsky, J. E. (2022, September 28). <em>Corrigendum to Pustejovsky
+and Tipton (2018)</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2</a>
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -584,7 +620,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -915,7 +951,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Corrigendum to Pustejovsky and Tipton (2018)</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> Theorem 2 is incorrect as stated</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span><span class="co"> admin</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2022-09-28'</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> "../RVE-references.bib"</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> "../apa.csl"</span></span>

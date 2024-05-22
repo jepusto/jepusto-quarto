@@ -14,8 +14,8 @@ library(leaflet)
 leaflet() |>
   addTiles() |>  # Add default OpenStreetMap map tiles
   addMarkers(
-    lat=43.07212, 
-    lng=-89.40342
+    lat=43.07187, 
+    lng=-89.40274
   )
 
 ```
