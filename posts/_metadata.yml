@@ -6,6 +6,9 @@ freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+lang: en
+
+## Appendix
 
 # Enable CC licence appendix
 license: "CC BY"
@@ -16,3 +19,10 @@ author:
   - name: 
       given: James E.
       family: Pustejovsky
+
+
+## Code
+code-fold: show
+code-line-numbers: false
+code-overflow: wrap
+code-copy: true
