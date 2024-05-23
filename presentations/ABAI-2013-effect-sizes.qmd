@@ -11,9 +11,7 @@ links:
 - icon: fa person-chalkboard
   text: Slides
   url: /files/abai-2013.pdf
-
 ---
-{{< include _presentation_header.qmd >}}
 
 
 
