@@ -30,6 +30,8 @@
 <p>To get rid of the <img src="https://latex.codecogs.com/png.latex?%5Czeta">, we need to integrate over its distribution, which leads to <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BPr%7D(N_A%20=%20a)%20=%20%5Ctext%7BE%7D%5Cleft%5B%5Ctext%7BPr%7D%5Cleft(N_A%20%7C%20%5Czeta%5Cright)%5Cright%5D%20=%20%5Cint%20f_%7BN_A%7D%5Cleft(a%20%7C%20%5Czeta,%20%5Comega,%20%5Csigma,%20%5Crho,%20m%5Cright)%20%5Ctimes%20f_%5Czeta(%5Czeta%20%7C%20%5Cmu,%20%5Ctau,%20%5Csigma,%20%5Crho)%20%5C%20d%20%5Czeta,%0A"> where <img src="https://latex.codecogs.com/png.latex?f_%7BN_A%7D%5Cleft(a%20%7C%20%5Czeta,%20%5Comega,%20%5Csigma,%20%5Crho%20%5Cright)"> is a binomial density with size <img src="https://latex.codecogs.com/png.latex?m"> and probability <img src="https://latex.codecogs.com/png.latex?%5Cpi%20=%20%5Cpi(%5Czeta,%20%5Comega,%20%5Csigma,%20%5Crho)"> and <img src="https://latex.codecogs.com/png.latex?f_%5Czeta(%5Czeta%20%7C%20%5Cmu,%20%5Ctau,%20%5Csigma,%20%5Crho)"> is a normal density with mean <img src="https://latex.codecogs.com/png.latex?%5Cmu"> and variance <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2%20+%20%5Crho%20%5Csigma%5E2">.</p>
 <p>This distribution is what you might call a binomial-normal convolution or a random-intercept probit model (where the random intercept is <img src="https://latex.codecogs.com/png.latex?%5Czeta">). As far as I know, the distribution cannot be evaluated analytically but instead must be calculated using some sort of numerical integration routine. Here is an interactive graph of the probability mass function (the probability points are calculated using Gaussian quadrature):</p>
 <div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="69" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb1-69">math <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
@@ -268,6 +270,7 @@ font-style: inherit;">sum</span>(p)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-94">})</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -335,6 +338,8 @@ font-style: inherit;">;</span></span>
 <div class="grid column-page-inset">
 <div class="g-col-7">
 <div class="cell">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb2" data-startfrom="101" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb2-101">Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
@@ -416,6 +421,7 @@ background-color: null;
 font-style: inherit;">,</span></span>
 <span id="cb2-114">  ]</span>
 <span id="cb2-115">})</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
 
@@ -425,6 +431,8 @@ font-style: inherit;">,</span></span>
 </div>
 <div class="g-col-5">
 <div class="cell panel-input card bg-light p-2">
+<details class="code-fold hidden">
+<summary>Code</summary>
 <div class="sourceCode cell-code hidden" id="cb3" data-startfrom="126" data-source-offset="-1" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb3-126">viewof m <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
@@ -756,6 +764,7 @@ font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of quadrature points:"</span>}</span>
 <span id="cb3-164">)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">

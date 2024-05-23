@@ -5,9 +5,12 @@
 - Use templates
   - publications
     - check for icon: instead of fa-icon:
+    - fix spacing/layout issues
   - presentations
     - check for icon: instead of fa-icon:
+    - fix spacing/layout issues
   - software
+    - convert icons to fa-icons
 
 - Add RSS feed for papers
 
