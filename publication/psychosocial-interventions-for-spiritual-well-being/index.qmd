@@ -26,7 +26,6 @@ links:
   icon: fa newspaper
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 __Objective__

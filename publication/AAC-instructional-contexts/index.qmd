@@ -28,18 +28,17 @@ links:
 - text: Journal
   url: https://doi.org/10.1007/s40489-022-00314-w
   icon: fa newspaper
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/xhqb3/
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/2j5ay/
-- icon: fa table
+- fa-icon: table
   text: Data
   url: https://osf.io/b5ydr/
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 For children with autism or intellectual and developmental disabilities who also have complex communication needs, communication is a necessary skill set to increase independence and quality of life. Understanding the how, where, and communication style being taught is important for identifying deficits in the field as well as which interventions are most effective. This meta-analysis sought to identify effectiveness among different settings, behavioral strategies, and moderator variables. A systematic search and screening process identified 114 eligible studies with 330 participants; overall outcomes indicate that augmentative and alternative communication interventions were effective with Tau effects ranging from 0.53 to 1.03 and log response ratio effects ranging from 0.21 to 2.90. However, no instructional context variables systematically predicted differences in intervention effectiveness.

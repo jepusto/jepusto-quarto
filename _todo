@@ -4,7 +4,9 @@
 
 - Use templates
   - publications
+    - check for icon: instead of fa-icon:
   - presentations
+    - check for icon: instead of fa-icon:
   - software
 
 - Add RSS feed for papers

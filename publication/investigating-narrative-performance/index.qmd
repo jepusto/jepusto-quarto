@@ -25,18 +25,17 @@ links:
   icon: fa newspaper
 - text: Supplementary materials
   url: https://osf.io/dgz7m/
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/bcky8/
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/ybdx7/
-- icon: fa table
+- fa-icon: table
   text: Data
   url: https://osf.io/ybdx7/
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 __Purpose__: Speech-language pathologists (SLPs) typically examine narrative performance when completing a comprehensive language assessment. However, there is significant variability in the methodologies used to evaluate narration. The primary aims of this systematic review and meta-analysis were to a) investigate how narrative assessment type (e.g., macrostructure, microstructure, internal state language) differentiates typically developing (TD) children from children with developmental language disorder (DLD), or, TD–DLD group differences, b) identify specific narrative assessment measures (e.g., number of different words) that result in greater TD–DLD differences, and, c) evaluate participant and sample characteristics (e.g., DLD inclusionary criteria) that may uniquely influence performance differences.

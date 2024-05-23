@@ -18,21 +18,20 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.3102/10769986241232524
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/9u52e/
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/pw54r/
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/9u52e/
-- icon: fa table
+- fa-icon: table
   text: Data
   url: https://osf.io/9u52e/
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 Meta-analyses of educational research findings frequently involve statistically dependent effect size estimates. Meta-analysts have often addressed dependence issues using ad hoc approaches that involve modifying the data to conform to the assumptions of models for independent effect size estimates, such as aggregating estimates to obtain one summary estimate per study, conducting separate analyses of distinct subgroups of estimates, or combinations thereof. We demonstrate that these ad hoc approaches correspond exactly to certain multivariate models for dependent effect sizes. Specifically, we describe classes of multivariate random effects models that have likelihoods equivalent to those of models for effect sizes that have been averaged by study, classified into subgroups, or both. The equivalence also applies to robust variance estimation methods.

@@ -29,18 +29,17 @@ links:
 - text: Journal
   url: https://doi.org/10.1080/07434618.2022.2116355
   icon: fa newspaper
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/6sgba/
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/gpdb7/
-- icon: fa table
+- fa-icon: table
   text: Data
   url: https://osf.io/b5ydr/
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 This meta-analysis examined social communication outcomes in augmentative and alternative communication (AAC) interventions, or those that involved aided (e.g., speech generating devices, picture point systems) or unaided AAC (e.g., gestures, manual sign language) as a component of intervention, and the extent to which communication outcomes were predicted by participant characteristics. Variables of interest included chronological age, communication mode used prior to intervention, number of words produced and imitation skills of participants prior to intervention. Investigators identified 117 primary studies that implemented AAC interventions with school-aged individuals (up to 22 years) with autism spectrum disorder and/or intellectual disability associated with complex communication needs and assessed social-communication outcomes. All included studies involved single-case experimental designs and met basic study design quality standards. We synthesized findings across studies using two complementary effect size indices, Tau(AB) and the log response ratio, and multi-level meta-analysis with robust variance estimation. With Tau(AB), the overall average effect across 338 participants was 0.72, 95% CI [0.67, 0.76], with a high degree of heterogeneity across studies. With the log response ratio, the overall average effect corresponded to a 538% increase from baseline levels of responding, 95% CI [388%, 733%], with a high degree of heterogeneity across studies and contrasts. Moderator analyses detected few differences in effectiveness when comparing across diagnoses, ages, the number and type of communication modes the participants used prior to intervention, the number of words used by the participants prior to intervention, and imitation use prior to intervention.

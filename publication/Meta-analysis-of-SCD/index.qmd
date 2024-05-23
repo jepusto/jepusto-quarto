@@ -14,12 +14,11 @@ categories:
 - response ratio
 - single-case design
 links:
-- icon: fa file
+- fa-icon: file
   text: PDF
   url: /files/Pustejovsky-Ferron-2017-Research-synthesis-and-meta-analysis-of-SCDs.pdf
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 

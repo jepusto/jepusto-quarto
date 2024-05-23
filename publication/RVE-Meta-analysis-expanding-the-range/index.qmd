@@ -22,24 +22,23 @@ links:
   icon: fa newspaper
 - text: Supplementary materials
   url: https://osf.io/nyv4u/
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/vyfcj/
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/ESMARConf2021-RVE-with-clubSandwich.pdf
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/z27wt/
-- icon: fa table
+- fa-icon: table
   text: Data
   url: https://osf.io/xpmjk/
-- icon: fa youtube
+- fa-icon: youtube
   text: Video
   url: https://youtu.be/Q9Nce5pxebY?t=66
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 In prevention science and related fields, large meta-analyses are common, and these analyses often involve dependent effect size estimates. Robust variance estimation (RVE) methods provide a way to include all dependent effect sizes in a single meta-regression model, even when the nature of the dependence is unknown. RVE uses a working model of the dependence structure, but the two currently available working models are limited to each describing a single type of dependence. Drawing on flexible tools from multivariate meta-analysis, this paper describes an expanded range of working models, along with accompanying estimation methods, which offer benefits in terms of better capturing the types of data structures that occur in practice and improving the efficiency of meta-regression estimates. We describe how the methods can be implemented using existing software (the 'metafor' and 'clubSandwich' packages for R) and illustrate the approach in a meta-analysis of randomized trials examining the effects of brief alcohol interventions for adolescents and young adults.

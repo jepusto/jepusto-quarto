@@ -9,6 +9,7 @@
 <meta name="dcterms.date" content="2018-11-02">
 
 <title>James E. Pustejovsky - Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +70,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -155,44 +157,30 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">robust variance estimation</div>
-    <div class="quarto-category">panel data</div>
-    <div class="quarto-category">fixed effects</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>James E. Pustejovsky </p>
-             <p>Elizabeth Tipton </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 2, 2018</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
+<header id="title-block-header">
+<h1 class="title display-7">Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</h1>
+<p class="date">November 2, 2018</p>
+<div class="quarto-links">
+<a href="http://doi.org/10.1080/07350015.2016.1247004" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label="fa newspaper"></i>
+Journal
+</a>
+<a href="https://doi.org/10.1080/07350015.2023.2174123" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label="fa file-pen"></i>
+Correction
+</a>
+<a href="https://CRAN.R-project.org/package=clubSandwich" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label="fa gift"></i>
+R package
+</a>
+<a href="https://arxiv.org/abs/1601.01981" class="btn btn-outline-primary">
+<i class="fa-solid fa-lock-open" aria-label=""></i>
+Pre-Print
+</a>
+</div>
 </header>
 
 
-<p><a href="http://doi.org/10.1080/07350015.2016.1247004" class="btn btn-outline-primary"><i class="fa-solid fa-newspaper" aria-label="newspaper"></i> Journal</a> <a href="https://doi.org/10.1080/07350015.2023.2174123" class="btn btn-outline-primary"><i class="fa-solid fa-file-pen" aria-label="file-pen"></i> Correction</a> <a href="https://CRAN.R-project.org/package=clubSandwich" class="btn btn-outline-primary"><i class="fa-solid fa-gift" aria-label="gift"></i> R package</a> <a href="https://arxiv.org/abs/1601.01981" class="btn btn-outline-primary"><i class="fa-solid fa-lock-open" aria-label="lock-open"></i> Pre-Print</a></p>
 <p>In panel data models and other regressions with unobserved effects, fixed effects estimation is often paired with cluster-robust variance estimation (CRVE) to account for heteroscedasticity and un-modeled dependence among the errors. Although asymptotically consistent, CRVE can be biased downward when the number of clusters is small, leading to hypothesis tests with rejection rates that are too high. More accurate tests can be constructed using bias-reduced linearization (BRL), which corrects the CRVE based on a working model, in conjunction with a Satterthwaite approximation for t-tests. We propose a generalization of BRL that can be applied in models with arbitrary sets of fixed effects, where the original BRL method is undefined, and describe how to apply the method when the regression is estimated after absorbing the fixed effects. We also propose a small-sample test for multiple-parameter hypotheses, which generalizes the Satterthwaite approximation for t-tests. In simulations covering a wide range of scenarios, we find that the conventional cluster-robust Wald test can severely over-reject while the proposed small-sample test maintains Type I error close to nominal levels. The proposed methods are implemented in an R package called clubSandwich. This article has online supplementary materials.</p>
 
 
@@ -608,7 +596,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

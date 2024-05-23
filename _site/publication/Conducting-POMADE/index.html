@@ -9,6 +9,7 @@
 <meta name="dcterms.date" content="2023-07-21">
 
 <title>James E. Pustejovsky - Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +70,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -155,46 +157,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">power</div>
-    <div class="quarto-category">meta-analysis</div>
-    <div class="quarto-category">dependent effect sizes</div>
-    <div class="quarto-category">robust variance estimation</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mikkel H. Vembye </p>
-             <p>James E. Pustejovsky </p>
-             <p>Terri D. Pigott </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 21, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
+<header id="title-block-header">
+<h1 class="title display-7">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</h1>
+<p class="date">July 21, 2023</p>
+<div class="quarto-links">
+<a href="https://osf.io/vpnmb/" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label=""></i>
+Supplementary materials
+</a>
+<a href="https://osf.io/preprints/metaarxiv/3x2en" class="btn btn-outline-primary">
+<i class="fa-solid fa-lock-open" aria-label=""></i>
+Pre-Print
+</a>
+<a href="https://osf.io/yurzh" class="btn btn-outline-primary">
+<i class="fa-solid fa-code" aria-label=""></i>
+Code
+</a>
+</div>
 </header>
 
 
-<p><a href="https://osf.io/vpnmb/" class="btn btn-outline-primary">Supplementary materials</a> <a href="https://osf.io/preprints/metaarxiv/3x2en" class="btn btn-outline-primary"><i class="fa-solid fa-lock-open" aria-label="lock-open"></i> Pre-Print</a> <a href="https://osf.io/yurzh" class="btn btn-outline-primary"><i class="fa-solid fa-code" aria-label="code"></i> Code</a></p>
 <p>Sample size and statistical power are important factors to consider when planning a research synthesis. Power analysis methods have been developed for fixed effect or random effects models, but until recently these methods were limited to simple data structures with a single, independent effect per study. Recent work has provided power approximation formulas for meta-analyses involving studies with multiple, dependent effect size estimates, which are common in syntheses of social science research. Prior work focused on developing and validating the approximations, but did not address the practice challenges encountered in applying them for purposes of planning a synthesis involving dependent effect sizes. We aim to facilitate application of these recent developments by providing practical guidance on how to conduct power analysis for planning a meta-analysis of dependent effect sizes and by introducing a new R package, POMADE, designed for this purpose. We present a comprehensive overview of resources for finding information about the study design features and model parameters needed to conduct power analysis, along with detailed worked examples using the POMADE package. For presenting power analysis findings, we emphasize graphical tools that can depict power under a range of pausible assumptions and introduce a novel plot, the traffic light power plot, for conveying the degree of certainty in one’s assumptions.</p>
 
 
@@ -610,7 +592,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

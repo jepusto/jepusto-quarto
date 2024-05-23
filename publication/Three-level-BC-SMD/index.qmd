@@ -26,15 +26,14 @@ links:
   icon: fa newspaper
 - text: Supplementary materials
   url: https://osf.io/8eucf/
-- icon: fa lock-open
+- fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/3pk5q/
-- icon: fa code
+- fa-icon: code
   text: Code
   url: https://osf.io/8eucf/
 
 ---
-{{< include '../_publication_header.qmd' >}}
 
 
 Single-case designs (SCDs) are a class of research methods for evaluating the effects of academic and behavioral interventions in educational and clinical settings. Although visual analysis is typically the first and main method for primary analysis of data from SCDs, quantitative methods are useful for synthesizing results and drawing systematic generalizations across bodies of single-case research. Researchers who are interested in synthesizing findings across SCDs and between-group designs might consider using the between-case standardized mean difference (BC-SMD) effect size, which aims to put results from both types of studies into a common metric. Current BC-SMD methods are limited to treatment reversal design and across-participant multiple baseline design, yet more complex designs are used in practice. In this study, we extend available BC-SMD methods to several variations of the multiple baseline design, including the replicated multiple baseline across behaviors or settings, the clustered multiple baseline design, and the multivariate multiple baseline across participants. For each variation, we describe methods for estimating BC-SMD effect sizes and illustrate our proposed approach by re-analyzing data from a published SCD study.

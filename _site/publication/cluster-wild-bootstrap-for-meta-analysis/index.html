@@ -9,6 +9,7 @@
 <meta name="dcterms.date" content="2022-02-08">
 
 <title>James E. Pustejovsky - Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies</title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +70,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -155,45 +157,34 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">meta-analysis</div>
-    <div class="quarto-category">robust variance estimation</div>
-    <div class="quarto-category">bootstrap</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Megha Joshi </p>
-             <p>James E. Pustejovsky </p>
-             <p>S. Natasha Beretvas </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2022</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
+<header id="title-block-header">
+<h1 class="title display-7">Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies</h1>
+<p class="date">February 8, 2022</p>
+<div class="quarto-links">
+<a href="https://doi.org/10.1002/jrsm.1554" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label="fa newspaper"></i>
+Journal
+</a>
+<a href="https://github.com/meghapsimatrix/CWB_analyses" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label=""></i>
+Supplementary materials
+</a>
+<a href="https://meghapsimatrix.github.io/wildmeta/" class="btn btn-outline-primary">
+<i class="fa-solid fa-" aria-label="fa gift"></i>
+R package
+</a>
+<a href="https://osf.io/preprints/metaarxiv/x6uhk" class="btn btn-outline-primary">
+<i class="fa-solid fa-lock-open" aria-label=""></i>
+Pre-Print
+</a>
+<a href="https://www.youtube.com/watch?v=WzT301yAtdE" class="btn btn-outline-primary">
+<i class="fa-solid fa-youtube" aria-label=""></i>
+Video
+</a>
+</div>
 </header>
 
 
-<p><a href="https://doi.org/10.1002/jrsm.1554" class="btn btn-outline-primary"><i class="fa-solid fa-newspaper" aria-label="newspaper"></i> Journal</a> <a href="https://github.com/meghapsimatrix/CWB_analyses" class="btn btn-outline-primary">Supplementary materials</a> <a href="https://meghapsimatrix.github.io/wildmeta/" class="btn btn-outline-primary"><i class="fa-solid fa-gift" aria-label="gift"></i> R package</a> <a href="https://osf.io/preprints/metaarxiv/x6uhk" class="btn btn-outline-primary"><i class="fa-solid fa-lock-open" aria-label="lock-open"></i> Pre-Print</a> <a href="https://www.youtube.com/watch?v=WzT301yAtdE" class="btn btn-outline-primary"><i class="fa-solid fa-youtube" aria-label="youtube"></i> Video</a></p>
 <p>The most common and well-known meta-regression models work under the assumption that there is only one effect size estimate per study and that the estimates are independent. However, meta-analytic reviews of social science research often include multiple effect size estimates per primary study, leading to dependence in the estimates. Some meta-analyses also include multiple studies conducted by the same lab or investigator, creating another potential source of dependence. An increasingly popular method to handle dependence is robust variance estimation (RVE), but this method can result in inflated Type I error rates when the number of studies is small. Small-sample correction methods for RVE have been shown to control Type I error rates adequately but may be overly conservative, especially for tests of multiple-contrast hypotheses. We evaluated an alternative method for handling dependence, cluster wild bootstrapping, which has been examined in the econometrics literature but not in the context of meta-analysis. Results from two simulation studies indicate that cluster wild bootstrapping maintains adequate Type I error rates and provides more power than extant small sample correction methods, particularly for multiple-contrast hypothesis tests. We recommend using cluster wild bootstrapping to conduct hypothesis tests for meta-analyses with a small number of studies. We have also created an R package that implements such tests.</p>
 
 
@@ -609,7 +600,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
