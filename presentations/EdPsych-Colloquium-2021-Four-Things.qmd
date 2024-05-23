@@ -8,12 +8,11 @@ event: Educational Psychology PIE Colloquium
 event_short: EdPsych PIE
 location: Educational Sciences 259
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/EdPsych-Department-Colloquium-Four-Things.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 Meta-analysis is a set of statistical tools for synthesizing results across multiple sources of evidence. Meta-analyses of intervention research are often taken as a gold standard for informing evidence-based practice, yet they are also frequently misinterpreted. In this talk, Pustejovsky will highlight four conceptual issues that arise in conducting and interpreting findings from contemporary meta-analyses: a) the interpretation of heterogeneous effects, b) the challenge of defining inclusion criteria, c) prospects and limitations of moderator analysis, and d) limitations of aggregated data. Understanding these issues will help social scientists both to be more critical consumers of research syntheses and to improve how they design and conduct their own syntheses. On each issue, he will also highlight outstanding methodological challenges in need of further investigation.

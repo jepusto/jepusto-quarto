@@ -8,12 +8,11 @@ event: Society for Research on Educational Effectiveness Conference
 event_short: SREE 2013
 location: Washington, DC
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/sree-2013-presentation.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

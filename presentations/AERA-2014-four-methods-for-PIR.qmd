@@ -9,12 +9,11 @@ event: American Educational Research Association annual convention
 event_short: AERA 2014
 location: Philadelphia, PA
 links:
-- icon: fa file
+- fa-icon: file
   text: PDF
   url: /files/AERA-2014-poster-4-methods-for-PIR.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

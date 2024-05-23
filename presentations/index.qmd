@@ -1,6 +1,7 @@
 ---
 title: "Presentations"
 subtitle: "Conference presentations, posters, and invited talks"
+author: ""
 format:
   html:
     grid:

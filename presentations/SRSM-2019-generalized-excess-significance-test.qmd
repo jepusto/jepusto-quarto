@@ -9,12 +9,11 @@ event: Society for Research Synthesis Methodology annual meeting
 event_short: SRSM 2019
 location: Chicago, IL
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/SRSM 2019-GEST.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

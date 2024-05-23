@@ -10,12 +10,11 @@ event: Presentation at the Department of Educational Psychology, College of Educ
 event_short: UT Austin
 location: Austin, TX
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/Effect-sizes-for-behavioral-observation-data.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

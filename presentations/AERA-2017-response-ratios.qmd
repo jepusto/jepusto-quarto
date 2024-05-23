@@ -9,12 +9,11 @@ event: American Educational Research Association annual convention
 event_short: AERA 2017
 location: San Antonio, TX
 links:
-- icon: fa file
+- fa-icon: file
   text: PDF
   url: /files/AERA-2017-poster-Using-response-ratios.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

@@ -8,7 +8,7 @@ event: Association for Behavior Analysis International annual convention
 event_short: ABAI 2013
 location: Minneapolis, MN
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/abai-2013.pdf
 ---

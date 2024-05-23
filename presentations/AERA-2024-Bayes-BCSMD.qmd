@@ -12,8 +12,7 @@ event_short: AERA 2024
 event_url: https://www.aera.net/Events-Meetings/Annual-Meeting/2024-Annual-Meeting
 location: Philadelphia, PA
 links:
-- icon: fa file
+- fa-icon: file
   text: PDF
   url: /files/AERA-2024-poster-Bayes-BC-SMD.pdf
 ---
-{{< include _presentation_header.qmd >}}

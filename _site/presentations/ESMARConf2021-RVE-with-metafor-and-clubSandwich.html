@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2021-01-21">
 
 <title>James E. Pustejovsky - Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +71,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -155,39 +158,30 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</h1>
+<header id="title-block-header">
+<h1 class="title display-7">Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</h1>
+<p class="author">James E. Pustejovsky</p>
+<p class="event">
+Evidence Synthesis and Meta-Analysis in R Conference, online
+</p>
+<p class="date">January 21, 2021</p>
+<div class="quarto-links">
+<a href="https://osf.io/preprints/metaarxiv/vyfcj/" class="btn btn-outline-primary">
+  <i class="fa-solid fa-file" aria-label=""></i>
+  PDF
+</a>
+<a href="../files/ESMARConf2021-RVE-with-clubSandwich.pdf" class="btn btn-outline-primary">
+  <i class="fa-solid fa-person-chalkboard" aria-label=""></i>
+  Slides
+</a>
+<a href="https://youtu.be/Q9Nce5pxebY?t=66" class="btn btn-outline-primary">
+  <i class="fa-solid fa-youtube" aria-label=""></i>
+  Video
+</a>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James E. Pustejovsky </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 21, 2021</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
 </header>
 
 
-<p><a href="https://www.eshackathon.org/events/2021-01-ESMAR.html">Evidence Synthesis and Meta-Analysis in R Conference</a>, online</p>
-<p><a href="https://osf.io/preprints/metaarxiv/vyfcj/" class="btn btn-outline-primary"><i class="fa-solid fa-file" aria-label="file"></i> PDF</a> <a href="..\files/ESMARConf2021-RVE-with-clubSandwich.pdf" class="btn btn-outline-primary"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Slides</a> <a href="https://youtu.be/Q9Nce5pxebY?t=66" class="btn btn-outline-primary"><i class="fa-solid fa-youtube" aria-label="youtube"></i> Video</a></p>
 <p>Across scientific fields, large meta-analyses often involve dependent effect size estimates. Robust variance estimation (RVE) methods provide a way to include all dependent effect sizes in a single meta-analysis model, even when the nature of the dependence is unknown. RVE uses a working model of the dependence structure, but the two currently available working models (available in the robumeta package) are limited to each describing a single type of dependence. We describe a workflow combining two existing packages, metafor and clubSandwich, that can be used to implement an expanded set of working models, offering benefits in terms of better capturing the types of data structures that occur in practice and improving the efficiency of meta-analytic model estimates.</p>
 
 
@@ -603,7 +597,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

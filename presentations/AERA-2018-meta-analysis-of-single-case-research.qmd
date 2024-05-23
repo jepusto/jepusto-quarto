@@ -8,12 +8,11 @@ event: American Educational Research Association annual convention
 event_short: AERA 2018
 location: New York, NY
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/Single-Case-Meta-Analysis-AERA-2018.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

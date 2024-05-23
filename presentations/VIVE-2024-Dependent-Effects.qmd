@@ -9,7 +9,7 @@ event_short: VIVE
 event_url: ''
 location: Copenhagen, Denmark
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/VIVE-2024-Model-building-considerations.pdf
 ---

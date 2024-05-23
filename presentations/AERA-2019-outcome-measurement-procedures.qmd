@@ -8,12 +8,11 @@ event: American Educational Research Association annual convention
 event_short: AERA 2019
 location: Toronto, Ontario
 links:
-- icon: fa file
+- fa-icon: file
   text: PDF
   url: /files/AERA-2019-poster-outcome-measurement-procedures.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

@@ -8,12 +8,11 @@ event: Department of Statistics, Northwestern University
 event_short: NU Statistics
 location: Evanston, IL
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/behavior-observation-stats-department-presentation.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

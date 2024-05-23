@@ -8,12 +8,11 @@ event: Texas Universities Educational Statistics and Psychometrics Meeting
 event_short: TUESAP 2014
 location: Texas A&M University, College Station, TX
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/TUESAP-talk-2014.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

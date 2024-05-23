@@ -9,12 +9,11 @@ event: Association for Behavior Analysis International Annual Convention
 event_short: ABAI 2019
 location: Chicago, IL
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/ABAI-2019-Log-response-ratios.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

@@ -9,12 +9,11 @@ event: Joint Statistical Meetings
 event_short: JSM 2016
 location: Chicago, IL
 links:
-- icon: fa person-chalkboard
+- fa-icon: person-chalkboard
   text: Slides
   url: /files/CRVE-JSM-20160731.pdf
 
 ---
-{{< include _presentation_header.qmd >}}
 
 
 

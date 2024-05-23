@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2022-02-03">
 
 <title>James E. Pustejovsky - Easy, cluster-robust standard errors with the clubSandwich package</title>
+
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,6 +71,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Easy, cluster-robust standard errors with the clubSandwich package">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -155,39 +158,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Easy, cluster-robust standard errors with the clubSandwich package</h1>
+<header id="title-block-header">
+<h1 class="title display-7">Easy, cluster-robust standard errors with the clubSandwich package</h1>
+<p class="author">James E. Pustejovsky</p>
+<p class="event">
+Oslo R User Group Meetup, online
+</p>
+<p class="date">February 3, 2022</p>
+<div class="quarto-links">
+<a href="../files/clubSandwich-Oslo-RUG-2022-02-03.pdf" class="btn btn-outline-primary">
+  <i class="fa-solid fa-person-chalkboard" aria-label=""></i>
+  Slides
+</a>
+<a href="https://youtu.be/cjBByCn_PK8" class="btn btn-outline-primary">
+  <i class="fa-solid fa-youtube" aria-label=""></i>
+  Video
+</a>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James E. Pustejovsky </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2022</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
 </header>
 
 
-<p><a href="https://www.meetup.com/Oslo-useR-Group/events/283050203/">Oslo R User Group Meetup</a>, online</p>
-<p><a href="..\files/clubSandwich-Oslo-RUG-2022-02-03.pdf" class="btn btn-outline-primary"><i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i> Slides</a> <a href="https://youtu.be/cjBByCn_PK8" class="btn btn-outline-primary"><i class="fa-solid fa-youtube" aria-label="youtube"></i> Video</a></p>
 <p>Cluster-robust variance estimation methods (also known as sandwich estimators, linearization estimators, or simply “clustered” standard errors) are a standard inferential tool in many different areas of applied statistics. They are appealing because they provide a means to do inference for regression models without relying on strong assumptions about the distribution or dependence structure of errors. However, standard cluster-robust variance estimators are based on large-sample approximations and can perform poorly when based on a small number of clusters. In this talk, I will provide an overview of some refinements to cluster-robust variance estimators, as implemented on the clubSandwich package (https://CRAN.R-project.org/package=clubSandwich), that perform well even with a limited number of clusters. I will provide a brief, high-level sketch of the theory behind the refined methods, discuss the practical rationale for using the methods, and demonstrate their application with the clubSandwich package, focusing in particular on linear mixed models. In addition to linear mixed models, the methods are available for a range of regression models and estimation methods, including ordinary least squares, weighted least squares, two-stage least squares, generalized linear models, and meta-regression models.</p>
 
 
@@ -603,7 +593,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
