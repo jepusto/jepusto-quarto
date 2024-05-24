@@ -1,6 +1,6 @@
 ---
 title: Addressing construct invalidity in partial interval recording data
-authors:
+author:
 - James E. Pustejovsky
 date: 2014-03-21T00:00:00
 publish_date: 2018-04-15T08:15:00

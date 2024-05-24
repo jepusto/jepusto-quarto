@@ -1,7 +1,7 @@
 ---
 title: 'When large samples act small: Cluster-robust variance estimation and hypothesis
   testing with few clusters'
-authors:
+author:
 - James E. Pustejovsky
 date: 2016-02-19T00:00:00
 publish_date: 2018-04-15T08:15:00

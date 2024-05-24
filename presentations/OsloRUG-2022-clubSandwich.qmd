@@ -1,6 +1,6 @@
 ---
 title: Easy, cluster-robust standard errors with the clubSandwich package
-authors:
+author:
 - James E. Pustejovsky
 date: 2022-02-03T10:00:00
 publish_date: 2022-02-03T11:00:00

@@ -1,6 +1,6 @@
 ---
 title: 'Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations'
-authors:
+author:
 - James E. Pustejovsky
 - Jingru Zhang
 - Elizabeth Tipton

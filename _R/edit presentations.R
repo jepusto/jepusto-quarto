@@ -40,7 +40,8 @@ icons %>%
 edit_presentation <- function(file) {
   
   x <- readLines(file) |>
-    str_replace(pattern = "^- icon: fa ", replacement = "- fa-icon: ")
+    str_replace(pattern = "^- icon: fa ", replacement = "- fa-icon: ") |>
+    str_replace(pattern = "^authors:", replacement = "author:")
   
   x <- x[x != "{{< include _presentation_header.qmd >}}"]
   
@@ -51,6 +52,5 @@ edit_presentation <- function(file) {
 tibble(
   unit = list.files(source_dir, pattern = "qmd$", full.names = TRUE)
 ) %>%
-  filter(str_detect(unit, "\\/\\_", negate = TRUE)) %>%
   pull(unit) %>%
   walk(edit_presentation)

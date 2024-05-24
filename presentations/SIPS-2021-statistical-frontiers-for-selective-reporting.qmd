@@ -1,6 +1,6 @@
 ---
 title: Statistical frontiers for selective reporting and publication bias
-authors:
+author:
 - Maya B. Mathur
 - James E. Pustejovsky
 date: 2021-06-23T12:30:00

@@ -1,6 +1,6 @@
 ---
 title: "Bayesian estimation of between-case standardized mean differences: A simulation study"
-authors: 
+author: 
   - James E. Pustejovsky
   - Man Chen
   - David Klingbeil

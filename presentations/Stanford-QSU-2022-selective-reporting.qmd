@@ -1,6 +1,6 @@
 ---
 title: Selective reporting in meta-analysis of dependent effect size estimates
-authors: 
+author: 
  - James E. Pustejovsky
 date: 2022-02-08T18:00:00
 publish_date: 2021-06-23T12:30:00

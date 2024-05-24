@@ -1,7 +1,7 @@
 ---
 title: Clustered bootstrapping for selective reporting models in meta-analysis with
   dependent effects
-authors:
+author:
 - Megha Joshi
 - James E. Pustejovsky
 date: 2023-03-30T08:00:00

@@ -1,7 +1,7 @@
 ---
 title: 'A matter of emphasis: Comparison of working models for meta-analysis of dependent
   effect sizes'
-authors:
+author:
 - James E. Pustejovsky
 date: 2022-07-20T14:50:00
 publish_date: 2022-07-19T12:00:00

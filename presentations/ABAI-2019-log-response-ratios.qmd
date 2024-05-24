@@ -1,7 +1,7 @@
 ---
 title: 'Log response ratio effect sizes: Rationale and methods for single case designs
   with behavioral outcomes'
-authors:
+author:
 - James E. Pustejovsky
 date: 2019-05-26T17:00:00
 publish_date: 2019-05-26T17:00:00

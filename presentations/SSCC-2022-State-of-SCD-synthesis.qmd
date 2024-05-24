@@ -1,6 +1,6 @@
 ---
 title: 'The state of single case synthesis: Premises, tools, and possibilities'
-authors: 
+author: 
  - James E. Pustejovsky
 date: 2022-05-19T13:00:00
 publish_date: 2022-05-19T13:00:00

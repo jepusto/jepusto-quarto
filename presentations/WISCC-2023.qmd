@@ -1,6 +1,6 @@
 ---
 title: 'Determining the Timing of Phase Changes: Some Statistical Perspective'
-authors: 
+author: 
  - James E. Pustejovsky
 date: 2023-05-18T09:00:00
 publish_date: 2023-05-18T09:00:00
