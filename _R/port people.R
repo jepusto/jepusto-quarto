@@ -107,5 +107,6 @@ convert_post <- function(person) {
 
 
 convert_post("Bethany-H-Bhat")
+convert_post("Melissa-A-Rodgers")
 
 walk(all_people$person, convert_post)

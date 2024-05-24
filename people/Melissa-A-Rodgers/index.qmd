@@ -1,0 +1,67 @@
+---
+title: Melissa A. Rodgers
+image: avatar.jpg
+page-layout: full
+about:
+  id: about
+  template: trestles
+  image-shape: round
+  links:
+  - icon: envelope
+    href: mailto:mrodgers@air.org
+  - icon: twitter
+    href: https://twitter.com/rodgermethis
+org_name: The University of Texas at Austin
+org_url: ''
+role: Graduate student
+people-group: Current Advisees
+listing:
+  - id: publications
+    contents: 
+      - "../../publication/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, author, title, publication]
+    field-display-names:
+      date: "Date"
+      author: "Authors"
+      title: "Title"
+    include: 
+      author: 'Melissa A. Rodgers'
+---
+
+:::::{#about}
+
+Melissa A. Rodgers is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at The University of Texas at Austin. Her research interests include meta-analysis, selective reporting detection tests and adjustment methods, and handling dependent effects in meta-analysis. She is also a quantitative researcher at the [American Institutes for Research](https://www.air.org/).
+
+::::{.grid}
+
+::: {.g-col-6}
+
+## Education
+
+- PhD in Quantitative Methods | 2024 (expected) <br> [The University of Texas at Austin]{style='color:gray;'}
+- MEd in Quantitative Methods | 2016 <br> [The University of Texas at Austin]{style='color:gray;'}
+
+:::
+
+::: {.g-col-6}
+
+## Interests
+
+- Meta-analysis
+- Selective reporting detection tests and adjustment methods
+- Dependent effect sizes
+
+:::
+
+::::
+
+:::::
