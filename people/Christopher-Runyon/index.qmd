@@ -30,13 +30,13 @@ listing:
     sort-ui: false
     filter-ui: false
     max-items: 50
-    fields: [date, authors, title, publication]
+    fields: [date, author, title, publication]
     field-display-names:
       date: "Date"
-      authors: "Authors"
+      author: "Authors"
       title: "Title"
     include: 
-      authors: 'Christopher Runyon'
+      author: 'Christopher Runyon'
 ---
 
 :::::{#about}

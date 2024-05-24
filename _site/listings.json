@@ -326,6 +326,7 @@
       "/people/Bethany-H-Bhat/index.html",
       "/people/Jingru-Zhang/index.html",
       "/people/Man-Chen/index.html",
+      "/people/Melissa-A-Rodgers/index.html",
       "/people/Paulina-Grekov/index.html",
       "/people/Christopher-Runyon/index.html",
       "/people/Daniel-M.-Swan/index.html",
@@ -344,7 +345,6 @@
     "listing": "/people/Megha-Joshi/index.html",
     "items": [
       "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
-      "/posts/cluster-bootstrap-selection-model/index.html",
       "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
       "/publication/Transition-to-College-Mathematics-Year-3/index.html",
       "/publication/Transition-to-College-Mathematics-Year-2/index.html",
@@ -393,5 +393,18 @@
   {
     "listing": "/people/Paulina-Grekov/index.html",
     "items": []
+  },
+  {
+    "listing": "/people/Melissa-A-Rodgers/index.html",
+    "items": [
+      "/publication/selective-reporting-with-dependent-effects/index.html",
+      "/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html"
+    ]
+  },
+  {
+    "listing": "/people/Bethany-H-Bhat/index.html",
+    "items": [
+      "/publication/AAC-group-and-SCD/index.html"
+    ]
   }
 ]
