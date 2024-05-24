@@ -4982,7 +4982,7 @@ $ vi    &lt;dbl&gt; 0.10267348, 0.06030579, 0.29520322, 0.53354343, 0.02692608, 
 <span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Now we can call <code>boot()</code> with options for parallel processing. The machine we used to compile this post has 12 cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</p>
+<p>Now we can call <code>boot()</code> with options for parallel processing. The machine we used to compile this post has 8 cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -5766,443 +5766,442 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="co">  this technique, we will demonstrate how to bootstrap a Vevea-Hedges selection model.</span></span>
 <span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> show</span></span>
 <span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, warning = FALSE, message = FALSE}</span></span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE)</span></span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="in">library(DT)</span></span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a><span class="in">library(kableExtra)</span></span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo = FALSE}</span></span>
-<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a><span class="in">.greybox {</span></span>
-<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a><span class="in">  display: block;</span></span>
-<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a><span class="in">  margin-left: auto;</span></span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="in">  margin-right: auto;</span></span>
-<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="in">  width: 60%;</span></span>
-<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="in">  padding: 1em;</span></span>
-<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="in">  background: lightgrey;</span></span>
-<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 2px solid darkgrey;</span></span>
-<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="in">  border-radius: 1px;</span></span>
-<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 0.75em;</span></span>
-<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>:::: {.greybox} </span>
-<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>The research reported here was supported, in whole or in part, by the Institute of Education Sciences, U.S. Department of Education, through grant R305D220026 to the American Institutes for Research. The opinions expressed are those of the authors and do not represent the views of the Institute or the U.S. Department of Education.</span>
-<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
-<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>Selective reporting of study results is a big concern for meta-analysts. By selective reporting, we mean the phenomenon where affirmative findings---that is, statistically significant findings in the theoretically expected direction---are more likely to be reported and more likely to be available for a systematic review compared to non-affirmative findings. Selective reporting arises due to biases in the publication process, on the part of journals, editors, and reviewers, as well as strategic decisions on part of the authors <span class="co">[</span><span class="ot">@rothstein2006publication; @sutton2009publication</span><span class="co">]</span>. Research synthesists worry about selective reporting because it can distort the evidence base available for meta-analysis, almost like a fun-house mirror distorts your appearance, leading to inflation of average effect size estimates and biased estimates of heterogeneity.</span>
-<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>If you read the meta-analysis methods literature, you will find scores of tools available to investigate and adjust for the biases created by selective reporting. Well known and widely used methods include:</span>
-<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>graphical representations like funnel plots and contour-enhanced funnel plots <span class="co">[</span><span class="ot">@sterne2001funnel; @Sterne2011recommendations</span><span class="co">]</span>;</span>
-<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>tests for selective reporting (or at least funnel plot asymmetry) like Egger's regression <span class="co">[</span><span class="ot">@egger1997bias</span><span class="co">]</span> or Begg and Mazumdar's rank correlation test <span class="co">[</span><span class="ot">@begg1994operating</span><span class="co">]</span>;</span>
-<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bias-adjustment methods like PET-PEESE <span class="co">[</span><span class="ot">@stanley2008metaregression; @stanley2014metaregression</span><span class="co">]</span>, Trim-and-Fill <span class="co">[</span><span class="ot">@duval2000nonparametric</span><span class="co">]</span>, and selection models <span class="co">[</span><span class="ot">@hedges2005selection</span><span class="co">]</span>; </span>
-<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>p-value diagnostics like p-curve <span class="co">[</span><span class="ot">@simonsohn2014pcurve</span><span class="co">]</span>, p-uniform <span class="co">[</span><span class="ot">@VanAssen2015meta; @vanaert2016conducting</span><span class="co">]</span>, and the test of excess significance <span class="co">[</span><span class="ot">@ioannidis2007exploratory</span><span class="co">]</span>; and</span>
-<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>sensitivity analyses based on various forms of selection models <span class="co">[</span><span class="ot">@vevea2005publication; @Copas2001sensitivity; @mathur2020sensitivity</span><span class="co">]</span>.</span>
-<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>However, nearly all of the statistical methods here have the limitation that they are premised on observing independent effect sizes. That presents a problem for meta-analyses in education, psychology, and other social science fields, where it is very common to have meta-analyses involving *dependent* effect sizes.</span>
-<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a>Dependent effects occur in meta-analyses of group comparisons when primary studies report effects for multiple correlated measures of an outcome, at multiple points in time, or for multiple treatment groups compared to the same control group <span class="co">[</span><span class="ot">@Becker2000multivariate</span><span class="co">]</span>. Dependent effects are also common in meta-analyses of correlational effect sizes, where primary studies report more than one relevant correlation coefficient based on the same sample of participants. Methods such as multi-level meta-analysis <span class="co">[</span><span class="ot">@VandenNoortgate2013threelevel</span><span class="co">]</span> and robust variance estimation <span class="co">[</span><span class="ot">@Hedges2010robust</span><span class="co">]</span> are available to accommodate dependent effects when summarizing findings across studies or investigating moderators of effect size using meta-regression, but these techniques have yet to be extended to methods for testing or correcting bias due to selective reporting. Consequently, it's pretty common to see research synthesis papers that use very sophisticated models for part of the analysis, but then use kludgey, awkward, or hacky approaches when it comes time to investigating selective reporting <span class="co">[</span><span class="ot">@rodgers2020evaluating</span><span class="co">]</span>.</span>
-<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>Along with <span class="co">[</span><span class="ot">a group of our colleagues</span><span class="co">](https://www.air.org/mosaic)</span> from the American Institutes for Research, we are currently working on a project to develop better methods for investigating selective reporting issues in meta-analyses of dependent effect sizes. </span>
-<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>In this post, we will share an early peek under the hood at one little piece of what we're studying, by sketching out what we think is a promising and pragmatic method for examining selective reporting while *also* accounting for effect size dependency. The method is to use a cluster-level bootstrap, which involves re-sampling clusters of observations (i.e., the set of multiple effect size estimates reported within a given primary study) to approximate the sampling distribution of an estimator <span class="co">[</span><span class="ot">@boos2003introduction; @cameron2008bootstrap</span><span class="co">]</span>. To illustrate this technique, we will demonstrate how to bootstrap a Vevea-Hedges selection model.</span>
-<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>Selection models comprise a large class of models that have two parts: a model describing the evidence-generation process and a model describing the process by which evidence is reported <span class="co">[</span><span class="ot">@hedges2005selection</span><span class="co">]</span>. Vevea-Hedges selection models <span class="co">[</span><span class="ot">@hedges1992modeling; @vevea1995general; @Hedges1996estimating</span><span class="co">]</span> involve a random effects meta-regression model for the evidence-generation process and a step function for the reporting process. With a step function, we assume that the probability that an effect size estimate is observed depends on the range in which its p-value falls. For instance, effects with $.01 &lt; p \leq .05$ might have some probability $\lambda_1$ of being reported, effects with $.05 &lt; p \leq .10$ might have some other probability $\lambda_2$, and effects with $.10 &lt; p$ might have some other probability $\lambda_3$.<span class="ot">[^relative]</span> Because the Vevea-Hedges model and other selection models separate the data-generation process into these two distinct stages, their parameters have clear interpretations and they can be used to generate bias-adjusted estimates of the distribution of effect sizes and to test for selective reporting issues. The only problem is that available implementations of selection models do not account for effect size dependency---but that's where cluster bootstrapping could potentially help.</span>
-<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a><span class="ot">[^relative]: </span>Technically, these parameters $\lambda_1,\lambda_2,\lambda_3$ are not absolute probabilities but instead _relative_ risks of being reported, compared to a reference range of $p$-values. In the above example, they would be defined relative to the probability of being reported for an effect size estimate with $p \leq .01$. </span>
-<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Disclaimer</span></span>
-<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>To be clear, this post is based on work in progress. The cluster-bootstrap selection model that we're going to demonstrate is an *experimental* and *exploratory* technique. We're currently studying its properties and performance using Monte Carlo simulations, but we don't have formal results to share yet. In the spirit of open and collaborative science, we wrote this post to demonstrate our approach to coding the method, in case others would like to experiment with the technique. Given that there are so few methods available for investigating selective reporting in meta-analyses with dependent effect sizes, we think this method is worth playing with and investigating further, and we would be happy to have others try it out as well. But, if you do so, please treat the results as tentative until we learn more about when the methods work well enough to trust the results.</span>
-<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## An Example</span></span>
-<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>For demonstrating this method, we will use data from a recent meta-analysis by Lehmann and colleagues <span class="co">[</span><span class="ot">-@lehmann2018metaanalysis</span><span class="co">]</span> that examined the effects of the color red on attractiveness judgments. The data is available via the <span class="co">[</span><span class="ot">`metadat`</span><span class="co">](https://wviechtb.github.io/metadat/reference/dat.lehmann2018.html)</span> package <span class="co">[</span><span class="ot">@metadat</span><span class="co">]</span>. The dataset includes 81 effect sizes from 41 unique studies. You can browse the data for yourself here:</span>
-<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE}</span></span>
-<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a><span class="in">library(metadat)   # for the example dataset</span></span>
-<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) # for tidying</span></span>
-<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a><span class="in">library(janitor)   # for tidying variable names</span></span>
-<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)   # for meta-analysis</span></span>
-<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a><span class="in">library(boot)      # for bootstrapping</span></span>
-<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a><span class="in">library(tictoc)    # for keeping time</span></span>
-<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a><span class="in">lehmann_dat &lt;- </span></span>
-<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a><span class="in">  dat.lehmann2018 %&gt;%</span></span>
-<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="in">  clean_names() %&gt;%</span></span>
-<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(study = str_split_fixed(short_title, pattern = "-", n = 2)[, 1]) %&gt;%</span></span>
-<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a><span class="in">  arrange(study) %&gt;%</span></span>
-<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a><span class="in">  select(study, presentation = stimuli_presentation, yi, vi, everything())</span></span>
-<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE, echo = FALSE}</span></span>
-<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a><span class="in">lehmann_dat %&gt;% </span></span>
-<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="in">  kable(digits=2) %&gt;%</span></span>
-<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a><span class="in">  kable_styling(</span></span>
-<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="in">    bootstrap_options = c("striped", "hover"),</span></span>
-<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a><span class="in">    font_size = 10</span></span>
-<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a><span class="in">  ) %&gt;%</span></span>
-<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a><span class="in">  scroll_box(width = "100%", height = "300px", fixed_thead = TRUE) </span></span>
-<span id="cb35-105"><a href="#cb35-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-106"><a href="#cb35-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-107"><a href="#cb35-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preliminary Analysis</span></span>
-<span id="cb35-108"><a href="#cb35-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-109"><a href="#cb35-109" aria-hidden="true" tabindex="-1"></a>As a little warm-up exercise, here is a basic random effects meta-analysis of these data, fit via the <span class="co">[</span><span class="ot">metafor</span><span class="co">](https://wviechtb.github.io/metafor/)</span> package <span class="co">[</span><span class="ot">@Viechtbauer2010conducting</span><span class="co">]</span>. We use cluster-robust standard errors to account for effect size dependency.</span>
-<span id="cb35-110"><a href="#cb35-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-113"><a href="#cb35-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-114"><a href="#cb35-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate random effects model</span></span>
-<span id="cb35-115"><a href="#cb35-115" aria-hidden="true" tabindex="-1"></a>RE_mod <span class="ot">&lt;-</span> <span class="fu">rma.uni</span>(yi, <span class="at">vi =</span> vi, <span class="at">data =</span> lehmann_dat, <span class="at">method =</span> <span class="st">"ML"</span>)</span>
-<span id="cb35-116"><a href="#cb35-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-117"><a href="#cb35-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cluster-robust standard errors</span></span>
-<span id="cb35-118"><a href="#cb35-118" aria-hidden="true" tabindex="-1"></a>RE_robust <span class="ot">&lt;-</span> <span class="fu">robust</span>(RE_mod, <span class="at">cluster =</span> study, <span class="at">clubSandwich =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-119"><a href="#cb35-119" aria-hidden="true" tabindex="-1"></a>RE_robust</span>
-<span id="cb35-120"><a href="#cb35-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-121"><a href="#cb35-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-122"><a href="#cb35-122" aria-hidden="true" tabindex="-1"></a>The random effects model indicates an average effect size of about <span class="in">`{r} round(RE_mod$beta, 2)`</span> standard deviations and substantial heterogeneity, with $\hat\tau = <span class="in">`{r} round(sqrt(RE_mod$tau2), 2)`</span>$. The cluster-robust standard error is about <span class="in">`{r} round(100 * (RE_robust$se / RE_mod$se - 1))`</span>% bigger than the model-based standard error (not shown) because the latter does not account for dependent effect sizes.</span>
-<span id="cb35-123"><a href="#cb35-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-124"><a href="#cb35-124" aria-hidden="true" tabindex="-1"></a>Here is a contour-enhanced funnel plot of the data:</span>
-<span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 8, fig.height = 5, out.width = "90%", fig.retina = 2}</span></span>
-<span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="in">funnel(RE_mod, refline = 0, level=c(90, 95, 99), shade=c("white", "gray55", "gray75"))</span></span>
-<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-130"><a href="#cb35-130" aria-hidden="true" tabindex="-1"></a>The funnel plot shows some asymmetry, suggesting that there is reason to be concerned about selective reporting bias in these data.</span>
-<span id="cb35-131"><a href="#cb35-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-132"><a href="#cb35-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Selection Model</span></span>
-<span id="cb35-133"><a href="#cb35-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-134"><a href="#cb35-134" aria-hidden="true" tabindex="-1"></a>For starters, we will fit a very simple selection model, with a single step in the probability of reporting at $\alpha = .025$. This is what's come to be called the *three-parameter selection model* <span class="co">[</span><span class="ot">@mcshane2016adjusting</span><span class="co">]</span>. The step is defined in terms of a one-sided p-value, so $\alpha = .025$ corresponds to the point where an effect size estimate in the theoretically expected direction would have a regular, two-sided p-value of .05, right at the mystical threshold of statistical significance. We fit the model using <span class="in">`metafor`</span>'s <span class="co">[</span><span class="ot">`selmodel()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function:</span>
-<span id="cb35-135"><a href="#cb35-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-138"><a href="#cb35-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-139"><a href="#cb35-139" aria-hidden="true" tabindex="-1"></a>RE_sel <span class="ot">&lt;-</span> <span class="fu">selmodel</span>(RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> .<span class="dv">025</span>)</span>
-<span id="cb35-140"><a href="#cb35-140" aria-hidden="true" tabindex="-1"></a>RE_sel</span>
-<span id="cb35-141"><a href="#cb35-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-142"><a href="#cb35-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-143"><a href="#cb35-143" aria-hidden="true" tabindex="-1"></a>The selection parameter represents the probability that an effect size estimate that is not in the theoretically expected direction or not statistically significant at the conventional level would be included in the synthesis, relative to the probability that an affirmative, statistically significant effect size estimate would be included. In this example, the probability of selection is estimated as <span class="in">`{r} round(RE_sel$delta[2], 2)`</span>, meaning only about <span class="in">`{r} round(RE_sel$delta[2] * 100)`</span>% of the non-significant results that we would expect were generated are actually reported. Adjusting for this selection bias, the model estimates an overall average effect size of <span class="in">`{r} round(RE_sel$beta, 2)`</span> SD---smaller than the unadjusted random effects estimate---with heterogeneity of $\hat\tau = <span class="in">`{r} round(sqrt(RE_sel$tau2), 2)`</span>$.</span>
-<span id="cb35-144"><a href="#cb35-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-145"><a href="#cb35-145" aria-hidden="true" tabindex="-1"></a>The problem with this analysis is that the selection model is set up under the assumption that the effect size estimates are all independent. As a result, the reported standard errors are probably smaller than they should be and the confidence intervals are narrower than they should be. We'll use cluster bootstrapping to get standard errors and confidence intervals that should better account for effect size dependency.</span>
-<span id="cb35-146"><a href="#cb35-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-147"><a href="#cb35-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cluster Bootstrapping a Selection Model</span></span>
-<span id="cb35-148"><a href="#cb35-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-149"><a href="#cb35-149" aria-hidden="true" tabindex="-1"></a>In R, the <span class="co">[</span><span class="ot">`boot`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> package provides tools for running a variety of different bootstrap techniques and obtaining confidence intervals based on bootstrap distributions <span class="co">[</span><span class="ot">@boot</span><span class="co">]</span>. It's been around for ages and has some very nice features, but it requires a bit of trickery to use it for cluster bootstrapping. The main challenge is that the package functionality is set up under the assumption that every row of the dataset should be treated as an independent observation. To make it work for cluster bootstrapping, we will need a function to fit the selection model, which takes in a dataset with one row per cluster and returns a vector of parameter estimates. The function also has to have an index argument which is a vector of row indexes used to create the bootstrap sample. Here is a skeleton for such a function:</span>
-<span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
-<span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a><span class="in">fit_selmodel &lt;- function(</span></span>
-<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a><span class="in">    dat,   # dataset with one row per cluster</span></span>
-<span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a><span class="in">    index, # vector of indexes used to create the bootstrap sample</span></span>
-<span id="cb35-155"><a href="#cb35-155" aria-hidden="true" tabindex="-1"></a><span class="in">    ...    # any further arguments</span></span>
-<span id="cb35-156"><a href="#cb35-156" aria-hidden="true" tabindex="-1"></a><span class="in">) { </span></span>
-<span id="cb35-157"><a href="#cb35-157" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-158"><a href="#cb35-158" aria-hidden="true" tabindex="-1"></a><span class="in">  # take subset of data</span></span>
-<span id="cb35-159"><a href="#cb35-159" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat &lt;- dat[index,]</span></span>
-<span id="cb35-160"><a href="#cb35-160" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-161"><a href="#cb35-161" aria-hidden="true" tabindex="-1"></a><span class="in">  # fit selection model</span></span>
-<span id="cb35-162"><a href="#cb35-162" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-163"><a href="#cb35-163" aria-hidden="true" tabindex="-1"></a><span class="in">  # compile parameter estimates into a vector</span></span>
-<span id="cb35-164"><a href="#cb35-164" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-165"><a href="#cb35-165" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb35-166"><a href="#cb35-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-167"><a href="#cb35-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-168"><a href="#cb35-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Clustering and unclustering</span></span>
-<span id="cb35-169"><a href="#cb35-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-170"><a href="#cb35-170" aria-hidden="true" tabindex="-1"></a>The Lehmann dataset has one row per effect size, sometimes with multiple rows per study, so we need to modify the data to have one row per study. There are at least two ways to accomplish this. One option is to create a dataset consisting only of study-level IDs, then merge it back on to the full data to get the effect-size level data:</span>
-<span id="cb35-171"><a href="#cb35-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-174"><a href="#cb35-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-175"><a href="#cb35-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a dataset of study IDs</span></span>
-<span id="cb35-176"><a href="#cb35-176" aria-hidden="true" tabindex="-1"></a>cluster_IDs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">unique</span>(lehmann_dat<span class="sc">$</span>study))</span>
-<span id="cb35-177"><a href="#cb35-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-178"><a href="#cb35-178" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cluster_IDs)</span>
-<span id="cb35-179"><a href="#cb35-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-180"><a href="#cb35-180" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge with full data</span></span>
-<span id="cb35-181"><a href="#cb35-181" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span> <span class="fu">merge</span>(cluster_IDs, lehmann_dat, <span class="at">by =</span> <span class="st">"study"</span>)</span>
-<span id="cb35-182"><a href="#cb35-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-183"><a href="#cb35-183" aria-hidden="true" tabindex="-1"></a>full_dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(study, yi, vi) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
-<span id="cb35-184"><a href="#cb35-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-185"><a href="#cb35-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-186"><a href="#cb35-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-187"><a href="#cb35-187" aria-hidden="true" tabindex="-1"></a>Another option is to use the <span class="co">[</span><span class="ot">`dplyr::nest_by()`</span><span class="co">](https://dplyr.tidyverse.org/reference/nest_by.html)</span> function to nest the data by cluster <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. Then, we can use <span class="co">[</span><span class="ot">`tidyr::unnest()`</span><span class="co">](https://tidyr.tidyverse.org/reference/unnest.html)</span> to recover the effect size level data <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. Like so:</span>
-<span id="cb35-188"><a href="#cb35-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-191"><a href="#cb35-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-192"><a href="#cb35-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Nest the data for each study</span></span>
-<span id="cb35-193"><a href="#cb35-193" aria-hidden="true" tabindex="-1"></a>lehmann_nested <span class="ot">&lt;-</span> <span class="fu">nest_by</span>(lehmann_dat, study, <span class="at">.key =</span> <span class="st">"data"</span>)</span>
-<span id="cb35-194"><a href="#cb35-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-195"><a href="#cb35-195" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lehmann_nested)</span>
-<span id="cb35-196"><a href="#cb35-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-197"><a href="#cb35-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Recover the full dataset</span></span>
-<span id="cb35-198"><a href="#cb35-198" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span></span>
-<span id="cb35-199"><a href="#cb35-199" aria-hidden="true" tabindex="-1"></a>  lehmann_nested <span class="sc">%&gt;%</span></span>
-<span id="cb35-200"><a href="#cb35-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data)</span>
-<span id="cb35-201"><a href="#cb35-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-202"><a href="#cb35-202" aria-hidden="true" tabindex="-1"></a>full_dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(study, yi, vi) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
-<span id="cb35-203"><a href="#cb35-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-204"><a href="#cb35-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-205"><a href="#cb35-205" aria-hidden="true" tabindex="-1"></a>We will follow the latter strategy for the remainder of our example. </span>
-<span id="cb35-206"><a href="#cb35-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-207"><a href="#cb35-207" aria-hidden="true" tabindex="-1"></a>With this nest-and-unnest approach, we can fill in a little bit more of our function skeleton:</span>
-<span id="cb35-208"><a href="#cb35-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-209"><a href="#cb35-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
-<span id="cb35-210"><a href="#cb35-210" aria-hidden="true" tabindex="-1"></a><span class="in">fit_selmodel &lt;- function(</span></span>
-<span id="cb35-211"><a href="#cb35-211" aria-hidden="true" tabindex="-1"></a><span class="in">    dat,   # dataset with one row per cluster</span></span>
-<span id="cb35-212"><a href="#cb35-212" aria-hidden="true" tabindex="-1"></a><span class="in">    index, # vector of indexes used to create the bootstrap sample</span></span>
-<span id="cb35-213"><a href="#cb35-213" aria-hidden="true" tabindex="-1"></a><span class="in">    ...    # any further arguments</span></span>
-<span id="cb35-214"><a href="#cb35-214" aria-hidden="true" tabindex="-1"></a><span class="in">) { </span></span>
-<span id="cb35-215"><a href="#cb35-215" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-216"><a href="#cb35-216" aria-hidden="true" tabindex="-1"></a><span class="in">  # take subset of data</span></span>
-<span id="cb35-217"><a href="#cb35-217" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat_cluster &lt;- dat[index, ]</span></span>
-<span id="cb35-218"><a href="#cb35-218" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-219"><a href="#cb35-219" aria-hidden="true" tabindex="-1"></a><span class="in">  # expand to one row per effect size</span></span>
-<span id="cb35-220"><a href="#cb35-220" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat &lt;- tidyr::unnest(boot_dat_cluster, data)</span></span>
-<span id="cb35-221"><a href="#cb35-221" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-222"><a href="#cb35-222" aria-hidden="true" tabindex="-1"></a><span class="in">  # fit selection model</span></span>
-<span id="cb35-223"><a href="#cb35-223" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-224"><a href="#cb35-224" aria-hidden="true" tabindex="-1"></a><span class="in">  # compile parameter estimates into a vector</span></span>
-<span id="cb35-225"><a href="#cb35-225" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb35-226"><a href="#cb35-226" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb35-227"><a href="#cb35-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-228"><a href="#cb35-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-229"><a href="#cb35-229" aria-hidden="true" tabindex="-1"></a><span class="fu">### Selection model function</span></span>
-<span id="cb35-230"><a href="#cb35-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-231"><a href="#cb35-231" aria-hidden="true" tabindex="-1"></a>Next, we need to complete the function by writing code to fit the selection model. This is a little bit involved because of the way the <span class="in">`metafor`</span> package implements the Vevea-Hedges selection model. We first need to fit a regular random effects model using <span class="co">[</span><span class="ot">`metafor::rma.uni()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/rma.uni.html)</span>, then pass the result to the <span class="co">[</span><span class="ot">`metafor::selmodel()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function to fit a selection model, and then pull out the parameter estimates as a vector. To make the code clearer, we will move this step out into its own function:</span>
-<span id="cb35-232"><a href="#cb35-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-235"><a href="#cb35-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-236"><a href="#cb35-236" aria-hidden="true" tabindex="-1"></a>run_sel_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">steps =</span> .<span class="dv">025</span>) {</span>
-<span id="cb35-237"><a href="#cb35-237" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-238"><a href="#cb35-238" aria-hidden="true" tabindex="-1"></a>  <span class="co"># initial random effects model</span></span>
-<span id="cb35-239"><a href="#cb35-239" aria-hidden="true" tabindex="-1"></a>  RE_mod <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.uni</span>(</span>
-<span id="cb35-240"><a href="#cb35-240" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> dat, <span class="at">method =</span> <span class="st">"ML"</span></span>
-<span id="cb35-241"><a href="#cb35-241" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-242"><a href="#cb35-242" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-243"><a href="#cb35-243" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model</span></span>
-<span id="cb35-244"><a href="#cb35-244" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">selmodel</span>(</span>
-<span id="cb35-245"><a href="#cb35-245" aria-hidden="true" tabindex="-1"></a>    RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> steps,</span>
-<span id="cb35-246"><a href="#cb35-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">skiphes =</span> <span class="cn">TRUE</span>, <span class="co"># turn off SE calculation</span></span>
-<span id="cb35-247"><a href="#cb35-247" aria-hidden="true" tabindex="-1"></a>    <span class="at">skiphet =</span> <span class="cn">TRUE</span> <span class="co"># turn off heterogeneity test</span></span>
-<span id="cb35-248"><a href="#cb35-248" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb35-249"><a href="#cb35-249" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-250"><a href="#cb35-250" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compile parameter estimates into a vector</span></span>
-<span id="cb35-251"><a href="#cb35-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">beta =</span> res<span class="sc">$</span>beta[,<span class="dv">1</span>], <span class="at">tau =</span> <span class="fu">sqrt</span>(res<span class="sc">$</span>tau2), <span class="at">delta =</span> res<span class="sc">$</span>delta[<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb35-252"><a href="#cb35-252" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-253"><a href="#cb35-253" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-254"><a href="#cb35-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-255"><a href="#cb35-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-256"><a href="#cb35-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-257"><a href="#cb35-257" aria-hidden="true" tabindex="-1"></a>Note the use of <span class="in">`skiphes`</span> and <span class="in">`skiphet`</span> arguments in the <span class="in">`selmodel()`</span> call, which skip the calculation of standard errors and skip the calculation of the test for heterogeneity. We don't need the standard errors here because we're going to use bootstrapping instead, and we're not interested in the heterogeneity test. Turning off these calculations saves computational time.</span>
-<span id="cb35-258"><a href="#cb35-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-259"><a href="#cb35-259" aria-hidden="true" tabindex="-1"></a>A further complication with fitting a selection model is that the parameter estimates are obtained by maximum likelihood, using an iterative optimization algorithm that sometimes fails to converge. To handle non-convergence, we will pass our function through <span class="co">[</span><span class="ot">`purrr::possibly()`</span><span class="co">](https://purrr.tidyverse.org/reference/possibly.html)</span> so that errors are suppressed, rather than causing everything to grind to a halt <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. We set the <span class="in">`otherwise`</span> argument so that non-convergent results are returned as <span class="in">`NA`</span> values:</span>
-<span id="cb35-260"><a href="#cb35-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-263"><a href="#cb35-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-264"><a href="#cb35-264" aria-hidden="true" tabindex="-1"></a>run_sel_model <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">possibly</span>(run_sel_model, <span class="at">otherwise =</span> <span class="fu">rep</span>(<span class="cn">NA_real_</span>, <span class="dv">3</span>))</span>
-<span id="cb35-265"><a href="#cb35-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-266"><a href="#cb35-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-267"><a href="#cb35-267" aria-hidden="true" tabindex="-1"></a><span class="fu">### A first bootstrap</span></span>
-<span id="cb35-268"><a href="#cb35-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-269"><a href="#cb35-269" aria-hidden="true" tabindex="-1"></a>Here is the completed fitting function called <span class="in">`fit_selmodel()`</span>:</span>
-<span id="cb35-270"><a href="#cb35-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-273"><a href="#cb35-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-274"><a href="#cb35-274" aria-hidden="true" tabindex="-1"></a>fit_selmodel <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, </span>
-<span id="cb35-275"><a href="#cb35-275" aria-hidden="true" tabindex="-1"></a>                         <span class="at">index =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), </span>
-<span id="cb35-276"><a href="#cb35-276" aria-hidden="true" tabindex="-1"></a>                         <span class="at">steps =</span> <span class="fl">0.025</span>) {</span>
-<span id="cb35-277"><a href="#cb35-277" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-278"><a href="#cb35-278" aria-hidden="true" tabindex="-1"></a>  <span class="co"># take subset of data</span></span>
-<span id="cb35-279"><a href="#cb35-279" aria-hidden="true" tabindex="-1"></a>  boot_dat_cluster <span class="ot">&lt;-</span> dat[index, ]</span>
-<span id="cb35-280"><a href="#cb35-280" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-281"><a href="#cb35-281" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand to one row per effect size</span></span>
-<span id="cb35-282"><a href="#cb35-282" aria-hidden="true" tabindex="-1"></a>  boot_dat <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">unnest</span>(boot_dat_cluster, data)</span>
-<span id="cb35-283"><a href="#cb35-283" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-284"><a href="#cb35-284" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model, return vector</span></span>
-<span id="cb35-285"><a href="#cb35-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_sel_model</span>(boot_dat, <span class="at">steps =</span> steps)</span>
-<span id="cb35-286"><a href="#cb35-286" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-287"><a href="#cb35-287" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-288"><a href="#cb35-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-289"><a href="#cb35-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-290"><a href="#cb35-290" aria-hidden="true" tabindex="-1"></a>First, we take a subset of the data based on the index argument. This generates a bootstrap sample from the original data based on re-sampled clusters. We then use <span class="co">[</span><span class="ot">`tidyr::unnest()`</span><span class="co">](https://tidyr.tidyverse.org/reference/unnest.html)</span> to get the effect size level data for those re-sampled clusters. We then re-fit the model using our <span class="in">`run_sel_model()`</span> function.</span>
-<span id="cb35-291"><a href="#cb35-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-292"><a href="#cb35-292" aria-hidden="true" tabindex="-1"></a>Now let's apply our function to the Lehmann dataset. We will first need to create a nested version of the dataset, with one row per study:</span>
-<span id="cb35-293"><a href="#cb35-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-296"><a href="#cb35-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-297"><a href="#cb35-297" aria-hidden="true" tabindex="-1"></a>lehmann_nested <span class="ot">&lt;-</span> <span class="fu">nest_by</span>(lehmann_dat, study, <span class="at">.key =</span> <span class="st">"data"</span>)</span>
-<span id="cb35-298"><a href="#cb35-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-299"><a href="#cb35-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-300"><a href="#cb35-300" aria-hidden="true" tabindex="-1"></a>Now we can fit the selection model using <span class="in">`fit_sel_model()`</span>:</span>
-<span id="cb35-301"><a href="#cb35-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-304"><a href="#cb35-304" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-305"><a href="#cb35-305" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_selmodel</span>(lehmann_nested)</span>
-<span id="cb35-306"><a href="#cb35-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-307"><a href="#cb35-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-308"><a href="#cb35-308" aria-hidden="true" tabindex="-1"></a>The results reproduce what we saw earlier when we estimated the three parameter selection model.</span>
-<span id="cb35-309"><a href="#cb35-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-310"><a href="#cb35-310" aria-hidden="true" tabindex="-1"></a>Now we can bootstrap using the <span class="co">[</span><span class="ot">`boot::boot()`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> function. The inputs to <span class="in">`boot()`</span> are the nested dataset, the function to fit the selection model, and then any additional arguments passed to <span class="in">`fit_selmodel()`</span>---here we include an argument for <span class="in">`steps`</span>---and finally, the number of bootstrap replications:</span>
-<span id="cb35-311"><a href="#cb35-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-312"><a href="#cb35-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache = TRUE, warning = FALSE}</span></span>
-<span id="cb35-313"><a href="#cb35-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-314"><a href="#cb35-314" aria-hidden="true" tabindex="-1"></a><span class="in"># Generate bootstrap</span></span>
-<span id="cb35-315"><a href="#cb35-315" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(20230321)</span></span>
-<span id="cb35-316"><a href="#cb35-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-317"><a href="#cb35-317" aria-hidden="true" tabindex="-1"></a><span class="in">tic()</span></span>
-<span id="cb35-318"><a href="#cb35-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-319"><a href="#cb35-319" aria-hidden="true" tabindex="-1"></a><span class="in">boots &lt;- boot(</span></span>
-<span id="cb35-320"><a href="#cb35-320" aria-hidden="true" tabindex="-1"></a><span class="in">  data = lehmann_nested,            # nested dataset</span></span>
-<span id="cb35-321"><a href="#cb35-321" aria-hidden="true" tabindex="-1"></a><span class="in">  statistic = fit_selmodel,         # function for fitting selection model</span></span>
-<span id="cb35-322"><a href="#cb35-322" aria-hidden="true" tabindex="-1"></a><span class="in">  steps = .025,                     # further arguments to the fitting function</span></span>
-<span id="cb35-323"><a href="#cb35-323" aria-hidden="true" tabindex="-1"></a><span class="in">  R = 1999                          # number of bootstraps</span></span>
-<span id="cb35-324"><a href="#cb35-324" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb35-325"><a href="#cb35-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-326"><a href="#cb35-326" aria-hidden="true" tabindex="-1"></a><span class="in">time_seq &lt;- toc()</span></span>
-<span id="cb35-327"><a href="#cb35-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-328"><a href="#cb35-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-329"><a href="#cb35-329" aria-hidden="true" tabindex="-1"></a>This code takes a while to run, but we can speed it up with parallel processing.</span>
-<span id="cb35-330"><a href="#cb35-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-331"><a href="#cb35-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parallel processing</span></span>
-<span id="cb35-332"><a href="#cb35-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-333"><a href="#cb35-333" aria-hidden="true" tabindex="-1"></a>The <span class="in">`boot`</span> package has some handy parallel processing features, but they can be a bit finicky to use here because of how R manages environments across multiple processes. With the above code, we can't simply turn on parallel processing because the worker processes won't know where to find the <span class="in">`run_sel_model()`</span> function that gets called inside <span class="in">`fit_selmodel()`</span>. To fix this, we include the <span class="in">`run_sel_model()`</span> function *inside* our fitting function, as follows:</span>
-<span id="cb35-334"><a href="#cb35-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-337"><a href="#cb35-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-338"><a href="#cb35-338" aria-hidden="true" tabindex="-1"></a>fit_selmodel <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, </span>
-<span id="cb35-339"><a href="#cb35-339" aria-hidden="true" tabindex="-1"></a>                         <span class="at">index =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), </span>
-<span id="cb35-340"><a href="#cb35-340" aria-hidden="true" tabindex="-1"></a>                         <span class="at">steps =</span> <span class="fl">0.025</span>) {</span>
-<span id="cb35-341"><a href="#cb35-341" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-342"><a href="#cb35-342" aria-hidden="true" tabindex="-1"></a>  <span class="co"># take subset of data</span></span>
-<span id="cb35-343"><a href="#cb35-343" aria-hidden="true" tabindex="-1"></a>  boot_dat_cluster <span class="ot">&lt;-</span> dat[index, ]</span>
-<span id="cb35-344"><a href="#cb35-344" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-345"><a href="#cb35-345" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand to one row per effect size</span></span>
-<span id="cb35-346"><a href="#cb35-346" aria-hidden="true" tabindex="-1"></a>  boot_dat <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">unnest</span>(boot_dat_cluster, data)</span>
-<span id="cb35-347"><a href="#cb35-347" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-348"><a href="#cb35-348" aria-hidden="true" tabindex="-1"></a>  <span class="co"># build run_selmodel</span></span>
-<span id="cb35-349"><a href="#cb35-349" aria-hidden="true" tabindex="-1"></a>  run_sel_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">steps =</span> .<span class="dv">025</span>) {</span>
-<span id="cb35-350"><a href="#cb35-350" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-351"><a href="#cb35-351" aria-hidden="true" tabindex="-1"></a>    <span class="co"># initial random effects model</span></span>
-<span id="cb35-352"><a href="#cb35-352" aria-hidden="true" tabindex="-1"></a>    RE_mod <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.uni</span>(</span>
-<span id="cb35-353"><a href="#cb35-353" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> dat, <span class="at">method =</span> <span class="st">"ML"</span></span>
-<span id="cb35-354"><a href="#cb35-354" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb35-355"><a href="#cb35-355" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-356"><a href="#cb35-356" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit selection model</span></span>
-<span id="cb35-357"><a href="#cb35-357" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">selmodel</span>(</span>
-<span id="cb35-358"><a href="#cb35-358" aria-hidden="true" tabindex="-1"></a>      RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> steps,</span>
-<span id="cb35-359"><a href="#cb35-359" aria-hidden="true" tabindex="-1"></a>      <span class="at">skiphes =</span> <span class="cn">TRUE</span>, <span class="co"># turn off SE calculation</span></span>
-<span id="cb35-360"><a href="#cb35-360" aria-hidden="true" tabindex="-1"></a>      <span class="at">skiphet =</span> <span class="cn">TRUE</span> <span class="co"># turn off heterogeneity test</span></span>
-<span id="cb35-361"><a href="#cb35-361" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb35-362"><a href="#cb35-362" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-363"><a href="#cb35-363" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compile parameter estimates into a vector</span></span>
-<span id="cb35-364"><a href="#cb35-364" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">beta =</span> res<span class="sc">$</span>beta[,<span class="dv">1</span>], <span class="at">tau =</span> <span class="fu">sqrt</span>(res<span class="sc">$</span>tau2), <span class="at">delta =</span> res<span class="sc">$</span>delta[<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb35-365"><a href="#cb35-365" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb35-366"><a href="#cb35-366" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb35-367"><a href="#cb35-367" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-368"><a href="#cb35-368" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="dv">2</span>L <span class="sc">+</span> <span class="fu">length</span>(steps)  <span class="co"># calculate total number of model parameters</span></span>
-<span id="cb35-369"><a href="#cb35-369" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-370"><a href="#cb35-370" aria-hidden="true" tabindex="-1"></a>  <span class="co"># error handling for run_sel_model</span></span>
-<span id="cb35-371"><a href="#cb35-371" aria-hidden="true" tabindex="-1"></a>  run_sel_model <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">possibly</span>(run_sel_model, <span class="at">otherwise =</span> <span class="fu">rep</span>(<span class="cn">NA_real_</span>, p))</span>
-<span id="cb35-372"><a href="#cb35-372" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-373"><a href="#cb35-373" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model, return vector of parameter estimates</span></span>
-<span id="cb35-374"><a href="#cb35-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_sel_model</span>(boot_dat, <span class="at">steps =</span> steps)</span>
-<span id="cb35-375"><a href="#cb35-375" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb35-376"><a href="#cb35-376" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-377"><a href="#cb35-377" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-378"><a href="#cb35-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-379"><a href="#cb35-379" aria-hidden="true" tabindex="-1"></a>Now we can call <span class="in">`boot()`</span> with options for parallel processing. The machine we used to compile this post has <span class="in">`{r} parallel::detectCores()`</span> cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</span>
-<span id="cb35-380"><a href="#cb35-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-381"><a href="#cb35-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache = TRUE}</span></span>
-<span id="cb35-382"><a href="#cb35-382" aria-hidden="true" tabindex="-1"></a><span class="in">ncpus &lt;- parallel::detectCores() / 2</span></span>
-<span id="cb35-383"><a href="#cb35-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-384"><a href="#cb35-384" aria-hidden="true" tabindex="-1"></a><span class="in"># Generate bootstrap</span></span>
-<span id="cb35-385"><a href="#cb35-385" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(20230321)</span></span>
-<span id="cb35-386"><a href="#cb35-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-387"><a href="#cb35-387" aria-hidden="true" tabindex="-1"></a><span class="in">tic()</span></span>
-<span id="cb35-388"><a href="#cb35-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-389"><a href="#cb35-389" aria-hidden="true" tabindex="-1"></a><span class="in">boots &lt;- boot(</span></span>
-<span id="cb35-390"><a href="#cb35-390" aria-hidden="true" tabindex="-1"></a><span class="in">  data = lehmann_nested,</span></span>
-<span id="cb35-391"><a href="#cb35-391" aria-hidden="true" tabindex="-1"></a><span class="in">  statistic = fit_selmodel, steps = .025,</span></span>
-<span id="cb35-392"><a href="#cb35-392" aria-hidden="true" tabindex="-1"></a><span class="in">  R = 1999,</span></span>
-<span id="cb35-393"><a href="#cb35-393" aria-hidden="true" tabindex="-1"></a><span class="in">  parallel = "snow", ncpus = ncpus # parallel processing options</span></span>
-<span id="cb35-394"><a href="#cb35-394" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb35-395"><a href="#cb35-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-396"><a href="#cb35-396" aria-hidden="true" tabindex="-1"></a><span class="in">time_par &lt;- toc()</span></span>
-<span id="cb35-397"><a href="#cb35-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-398"><a href="#cb35-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-399"><a href="#cb35-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
-<span id="cb35-400"><a href="#cb35-400" aria-hidden="true" tabindex="-1"></a><span class="in">elapsed_seq &lt;- time_seq$toc - time_seq$tic</span></span>
-<span id="cb35-401"><a href="#cb35-401" aria-hidden="true" tabindex="-1"></a><span class="in">elapsed_par &lt;- time_par$toc - time_par$tic</span></span>
-<span id="cb35-402"><a href="#cb35-402" aria-hidden="true" tabindex="-1"></a><span class="in">gain &lt;- elapsed_seq / elapsed_par</span></span>
-<span id="cb35-403"><a href="#cb35-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-404"><a href="#cb35-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-405"><a href="#cb35-405" aria-hidden="true" tabindex="-1"></a>Parallel processing is really helpful here. We get 2000 bootstraps in <span class="in">`{r} round(elapsed_par)`</span> seconds, <span class="in">`{r} round(gain, 1)`</span> times faster than sequential processing.</span>
-<span id="cb35-406"><a href="#cb35-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-407"><a href="#cb35-407" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standard Errors</span></span>
-<span id="cb35-408"><a href="#cb35-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-409"><a href="#cb35-409" aria-hidden="true" tabindex="-1"></a>The standard deviations of the bootstrapped parameter estimates can be interpreted as standard errors for the parameter estimates that take into account the dependence structure of the effect size estimates. Here is a table comparing the cluster-bootstrapped standard errors to the model-based standard errors generated by <span class="in">`selmodel()`</span>:</span>
-<span id="cb35-410"><a href="#cb35-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-413"><a href="#cb35-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-414"><a href="#cb35-414" aria-hidden="true" tabindex="-1"></a>est <span class="ot">&lt;-</span> boots<span class="sc">$</span>t0 <span class="co"># original parameter estimates</span></span>
-<span id="cb35-415"><a href="#cb35-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-416"><a href="#cb35-416" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate bootstrap SEs</span></span>
-<span id="cb35-417"><a href="#cb35-417" aria-hidden="true" tabindex="-1"></a>boot_SE <span class="ot">&lt;-</span> <span class="fu">apply</span>(boots<span class="sc">$</span>t, <span class="dv">2</span>, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span>
-<span id="cb35-418"><a href="#cb35-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-419"><a href="#cb35-419" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate model-based SEs</span></span>
-<span id="cb35-420"><a href="#cb35-420" aria-hidden="true" tabindex="-1"></a>model_SE <span class="ot">&lt;-</span> <span class="fu">with</span>(RE_sel, <span class="fu">c</span>(se, se.tau2 <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sqrt</span>(tau2)), se.delta[<span class="sc">-</span><span class="dv">1</span>]))</span>
-<span id="cb35-421"><a href="#cb35-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-422"><a href="#cb35-422" aria-hidden="true" tabindex="-1"></a><span class="co"># make a table</span></span>
-<span id="cb35-423"><a href="#cb35-423" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb35-424"><a href="#cb35-424" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">names</span>(est),</span>
-<span id="cb35-425"><a href="#cb35-425" aria-hidden="true" tabindex="-1"></a>  <span class="at">Est =</span> est,</span>
-<span id="cb35-426"><a href="#cb35-426" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(bootstrap)</span><span class="st">`</span> <span class="ot">=</span> boot_SE,</span>
-<span id="cb35-427"><a href="#cb35-427" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(model)</span><span class="st">`</span> <span class="ot">=</span> model_SE,</span>
-<span id="cb35-428"><a href="#cb35-428" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(bootstrap) / SE(model)</span><span class="st">`</span> <span class="ot">=</span> boot_SE <span class="sc">/</span> model_SE</span>
-<span id="cb35-429"><a href="#cb35-429" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb35-430"><a href="#cb35-430" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-431"><a href="#cb35-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-432"><a href="#cb35-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
-<span id="cb35-433"><a href="#cb35-433" aria-hidden="true" tabindex="-1"></a><span class="in">res |&gt;</span></span>
-<span id="cb35-434"><a href="#cb35-434" aria-hidden="true" tabindex="-1"></a><span class="in">  kable(digits = 3) |&gt;</span></span>
-<span id="cb35-435"><a href="#cb35-435" aria-hidden="true" tabindex="-1"></a><span class="in">  kable_styling(bootstrap_options = c("striped","condensed"), full_width = FALSE)</span></span>
-<span id="cb35-436"><a href="#cb35-436" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-437"><a href="#cb35-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-438"><a href="#cb35-438" aria-hidden="true" tabindex="-1"></a>The standard errors based on cluster bootstrapping are all substantially larger than the model-based standard errors, which don't account for dependence.</span>
-<span id="cb35-439"><a href="#cb35-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-440"><a href="#cb35-440" aria-hidden="true" tabindex="-1"></a><span class="fu">### Confidence Intervals</span></span>
-<span id="cb35-441"><a href="#cb35-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-442"><a href="#cb35-442" aria-hidden="true" tabindex="-1"></a>For reporting results from this sort of analysis, it is useful to provide confidence intervals along with the model parameter estimates and standard errors. These can be calculated using the <span class="co">[</span><span class="ot">`boot::boot_ci()`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> function. This function provides several different types of confidence intervals; for illustration, we will stick with simple percentile confidence intervals, which are calculated by taking percentiles of the bootstrap distribution of each parameter estimate. To use the function, we'll specify the type of confidence interval and the index of the parameter we want. An index of 1 is for the overall average effect size:</span>
-<span id="cb35-443"><a href="#cb35-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-446"><a href="#cb35-446" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-447"><a href="#cb35-447" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">1</span>) <span class="co"># For overall average ES</span></span>
-<span id="cb35-448"><a href="#cb35-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-449"><a href="#cb35-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-450"><a href="#cb35-450" aria-hidden="true" tabindex="-1"></a>Here is the confidence interval for between-study heterogeneity:</span>
-<span id="cb35-451"><a href="#cb35-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-454"><a href="#cb35-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-455"><a href="#cb35-455" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">2</span>) <span class="co"># For heterogeneity</span></span>
-<span id="cb35-456"><a href="#cb35-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-457"><a href="#cb35-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-458"><a href="#cb35-458" aria-hidden="true" tabindex="-1"></a>And for the selection weight:</span>
-<span id="cb35-459"><a href="#cb35-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-462"><a href="#cb35-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb35-463"><a href="#cb35-463" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">3</span>) <span class="co"># For selection weight</span></span>
-<span id="cb35-464"><a href="#cb35-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-465"><a href="#cb35-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-466"><a href="#cb35-466" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
-<span id="cb35-467"><a href="#cb35-467" aria-hidden="true" tabindex="-1"></a><span class="in">lambda_CI &lt;- boot.ci(boots, type = "perc", index = 3)</span></span>
-<span id="cb35-468"><a href="#cb35-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb35-469"><a href="#cb35-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-470"><a href="#cb35-470" aria-hidden="true" tabindex="-1"></a>Percentile confidence intervals can be asymmetric, and here the confidence interval for the selection weight parameter is notably asymmetric. The end-points of the confidence interval range from <span class="in">`{r} round(lambda_CI$percent[4], 3)`</span> (which represents very strong selective reporting, with only <span class="in">`{r} round(100 * lambda_CI$percent[4])`</span>% of non-significant results reported) to <span class="in">`{r} round(lambda_CI$percent[5], 3)`</span> (which represents very strong selection *against* affirmative results).<span class="ot">[^CI-comparison]</span> So, overall we can't really draw any strong conclusions about the strength of selective reporting.</span>
-<span id="cb35-471"><a href="#cb35-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-472"><a href="#cb35-472" aria-hidden="true" tabindex="-1"></a><span class="ot">[^CI-comparison]: </span>Compare this to the model-based confidence interval of $<span class="co">[</span><span class="ot">`{r} round(RE_sel$ci.lb.delta[2], 3)`, `{r} round(RE_sel$ci.ub.delta[2], 3)`</span><span class="co">]</span>$.</span>
-<span id="cb35-473"><a href="#cb35-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-474"><a href="#cb35-474" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
-<span id="cb35-475"><a href="#cb35-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-476"><a href="#cb35-476" aria-hidden="true" tabindex="-1"></a>In this post, we've demonstrated how to code a cluster-level bootstrap for a three parameter version of the Vevea-Hedges selection model. We think this cluster-bootstrapping technique is interesting and promising because it can be applied with a very broad swath of models and methods to investigate selective reporting. For instance, the code we've demonstrated could be modified by: </span>
-<span id="cb35-477"><a href="#cb35-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-478"><a href="#cb35-478" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a meta-regression model instead of just a summary meta-analysis;</span>
-<span id="cb35-479"><a href="#cb35-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a different form of selection function such as the beta-weight model proposed by Citkowicz and Vevea <span class="co">[</span><span class="ot">-@Citkowicz2017parsimonious</span><span class="co">]</span> or a more elaborate step function with multiple steps; or</span>
-<span id="cb35-480"><a href="#cb35-480" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a step function model applied across subsets of effect sizes, as in @Coburn2015publication.</span>
-<span id="cb35-481"><a href="#cb35-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-482"><a href="#cb35-482" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">metafor</span><span class="co">](https://wviechtb.github.io/metafor/)</span> package implements an expansive set of selection models with the <span class="co">[</span><span class="ot">`selmodel`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function, so one could really just swap specifications in and out. In principle, the cluster-level bootstrap could also be used in combination with other forms of selective reporting analysis such as PET-PEESE <span class="co">[</span><span class="ot">although with such regression adjustments, cluster-robust variance estimation is also an option, see @rodgers2020evaluating</span><span class="co">]</span> or Copas-style sensitivity analyses <span class="co">[</span><span class="ot">@Copas2001sensitivity</span><span class="co">]</span>. </span>
-<span id="cb35-483"><a href="#cb35-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-484"><a href="#cb35-484" aria-hidden="true" tabindex="-1"></a>We are currently studying the performance of bootstrapping a three parameter selection model in some big Monte Carlo simulations. Based on some very preliminary results, it looks like the cluster bootstrapped selection model provides confidence intervals with reasonable coverage levels. We have more to do before we share these results, so again we want to emphasize that what we have demonstrated in this post is *experimental* and *exploratory*.</span>
-<span id="cb35-485"><a href="#cb35-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-486"><a href="#cb35-486" aria-hidden="true" tabindex="-1"></a>Further questions we need to investigate are how things work if we include covariates in the selection model, whether there are better variations of the bootstrap than what we have demonstrated here <span class="co">[</span><span class="ot">e.g., the fractionally weighted bootstrapping, @xu2020applications</span><span class="co">]</span>, and the limits of this method in terms of the number of studies needed for adequate performance. If things pan out, we also plan to turn the workflow we've demonstrated here into some more user-friendly functions, perhaps as part of the <span class="co">[</span><span class="ot">wildmeta</span><span class="co">](https://meghapsimatrix.github.io/wildmeta/index.html)</span> package.</span>
-<span id="cb35-487"><a href="#cb35-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-488"><a href="#cb35-488" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE, warning = FALSE, message = FALSE}</span></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE)</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(DT)</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a><span class="in">library(kableExtra)</span></span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo = FALSE}</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a><span class="in">.greybox {</span></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a><span class="in">  display: block;</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a><span class="in">  margin-left: auto;</span></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a><span class="in">  margin-right: auto;</span></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="in">  width: 60%;</span></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="in">  padding: 1em;</span></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="in">  background: lightgrey;</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 2px solid darkgrey;</span></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a><span class="in">  border-radius: 1px;</span></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 0.75em;</span></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>:::: {.greybox} </span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>The research reported here was supported, in whole or in part, by the Institute of Education Sciences, U.S. Department of Education, through grant R305D220026 to the American Institutes for Research. The opinions expressed are those of the authors and do not represent the views of the Institute or the U.S. Department of Education.</span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>&lt;br&gt;</span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>Selective reporting of study results is a big concern for meta-analysts. By selective reporting, we mean the phenomenon where affirmative findings---that is, statistically significant findings in the theoretically expected direction---are more likely to be reported and more likely to be available for a systematic review compared to non-affirmative findings. Selective reporting arises due to biases in the publication process, on the part of journals, editors, and reviewers, as well as strategic decisions on part of the authors <span class="co">[</span><span class="ot">@rothstein2006publication; @sutton2009publication</span><span class="co">]</span>. Research synthesists worry about selective reporting because it can distort the evidence base available for meta-analysis, almost like a fun-house mirror distorts your appearance, leading to inflation of average effect size estimates and biased estimates of heterogeneity.</span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a>If you read the meta-analysis methods literature, you will find scores of tools available to investigate and adjust for the biases created by selective reporting. Well known and widely used methods include:</span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>graphical representations like funnel plots and contour-enhanced funnel plots <span class="co">[</span><span class="ot">@sterne2001funnel; @Sterne2011recommendations</span><span class="co">]</span>;</span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>tests for selective reporting (or at least funnel plot asymmetry) like Egger's regression <span class="co">[</span><span class="ot">@egger1997bias</span><span class="co">]</span> or Begg and Mazumdar's rank correlation test <span class="co">[</span><span class="ot">@begg1994operating</span><span class="co">]</span>;</span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>bias-adjustment methods like PET-PEESE <span class="co">[</span><span class="ot">@stanley2008metaregression; @stanley2014metaregression</span><span class="co">]</span>, Trim-and-Fill <span class="co">[</span><span class="ot">@duval2000nonparametric</span><span class="co">]</span>, and selection models <span class="co">[</span><span class="ot">@hedges2005selection</span><span class="co">]</span>; </span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>p-value diagnostics like p-curve <span class="co">[</span><span class="ot">@simonsohn2014pcurve</span><span class="co">]</span>, p-uniform <span class="co">[</span><span class="ot">@VanAssen2015meta; @vanaert2016conducting</span><span class="co">]</span>, and the test of excess significance <span class="co">[</span><span class="ot">@ioannidis2007exploratory</span><span class="co">]</span>; and</span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>sensitivity analyses based on various forms of selection models <span class="co">[</span><span class="ot">@vevea2005publication; @Copas2001sensitivity; @mathur2020sensitivity</span><span class="co">]</span>.</span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>However, nearly all of the statistical methods here have the limitation that they are premised on observing independent effect sizes. That presents a problem for meta-analyses in education, psychology, and other social science fields, where it is very common to have meta-analyses involving *dependent* effect sizes.</span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a>Dependent effects occur in meta-analyses of group comparisons when primary studies report effects for multiple correlated measures of an outcome, at multiple points in time, or for multiple treatment groups compared to the same control group <span class="co">[</span><span class="ot">@Becker2000multivariate</span><span class="co">]</span>. Dependent effects are also common in meta-analyses of correlational effect sizes, where primary studies report more than one relevant correlation coefficient based on the same sample of participants. Methods such as multi-level meta-analysis <span class="co">[</span><span class="ot">@VandenNoortgate2013threelevel</span><span class="co">]</span> and robust variance estimation <span class="co">[</span><span class="ot">@Hedges2010robust</span><span class="co">]</span> are available to accommodate dependent effects when summarizing findings across studies or investigating moderators of effect size using meta-regression, but these techniques have yet to be extended to methods for testing or correcting bias due to selective reporting. Consequently, it's pretty common to see research synthesis papers that use very sophisticated models for part of the analysis, but then use kludgey, awkward, or hacky approaches when it comes time to investigating selective reporting <span class="co">[</span><span class="ot">@rodgers2020evaluating</span><span class="co">]</span>.</span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>Along with <span class="co">[</span><span class="ot">a group of our colleagues</span><span class="co">](https://www.air.org/mosaic)</span> from the American Institutes for Research, we are currently working on a project to develop better methods for investigating selective reporting issues in meta-analyses of dependent effect sizes. </span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>In this post, we will share an early peek under the hood at one little piece of what we're studying, by sketching out what we think is a promising and pragmatic method for examining selective reporting while *also* accounting for effect size dependency. The method is to use a cluster-level bootstrap, which involves re-sampling clusters of observations (i.e., the set of multiple effect size estimates reported within a given primary study) to approximate the sampling distribution of an estimator <span class="co">[</span><span class="ot">@boos2003introduction; @cameron2008bootstrap</span><span class="co">]</span>. To illustrate this technique, we will demonstrate how to bootstrap a Vevea-Hedges selection model.</span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>Selection models comprise a large class of models that have two parts: a model describing the evidence-generation process and a model describing the process by which evidence is reported <span class="co">[</span><span class="ot">@hedges2005selection</span><span class="co">]</span>. Vevea-Hedges selection models <span class="co">[</span><span class="ot">@hedges1992modeling; @vevea1995general; @Hedges1996estimating</span><span class="co">]</span> involve a random effects meta-regression model for the evidence-generation process and a step function for the reporting process. With a step function, we assume that the probability that an effect size estimate is observed depends on the range in which its p-value falls. For instance, effects with $.01 &lt; p \leq .05$ might have some probability $\lambda_1$ of being reported, effects with $.05 &lt; p \leq .10$ might have some other probability $\lambda_2$, and effects with $.10 &lt; p$ might have some other probability $\lambda_3$.<span class="ot">[^relative]</span> Because the Vevea-Hedges model and other selection models separate the data-generation process into these two distinct stages, their parameters have clear interpretations and they can be used to generate bias-adjusted estimates of the distribution of effect sizes and to test for selective reporting issues. The only problem is that available implementations of selection models do not account for effect size dependency---but that's where cluster bootstrapping could potentially help.</span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a><span class="ot">[^relative]: </span>Technically, these parameters $\lambda_1,\lambda_2,\lambda_3$ are not absolute probabilities but instead _relative_ risks of being reported, compared to a reference range of $p$-values. In the above example, they would be defined relative to the probability of being reported for an effect size estimate with $p \leq .01$. </span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## Disclaimer</span></span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>To be clear, this post is based on work in progress. The cluster-bootstrap selection model that we're going to demonstrate is an *experimental* and *exploratory* technique. We're currently studying its properties and performance using Monte Carlo simulations, but we don't have formal results to share yet. In the spirit of open and collaborative science, we wrote this post to demonstrate our approach to coding the method, in case others would like to experiment with the technique. Given that there are so few methods available for investigating selective reporting in meta-analyses with dependent effect sizes, we think this method is worth playing with and investigating further, and we would be happy to have others try it out as well. But, if you do so, please treat the results as tentative until we learn more about when the methods work well enough to trust the results.</span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## An Example</span></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a>For demonstrating this method, we will use data from a recent meta-analysis by Lehmann and colleagues <span class="co">[</span><span class="ot">-@lehmann2018metaanalysis</span><span class="co">]</span> that examined the effects of the color red on attractiveness judgments. The data is available via the <span class="co">[</span><span class="ot">`metadat`</span><span class="co">](https://wviechtb.github.io/metadat/reference/dat.lehmann2018.html)</span> package <span class="co">[</span><span class="ot">@metadat</span><span class="co">]</span>. The dataset includes 81 effect sizes from 41 unique studies. You can browse the data for yourself here:</span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE}</span></span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a><span class="in">library(metadat)   # for the example dataset</span></span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) # for tidying</span></span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a><span class="in">library(janitor)   # for tidying variable names</span></span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)   # for meta-analysis</span></span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="in">library(boot)      # for bootstrapping</span></span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a><span class="in">library(tictoc)    # for keeping time</span></span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a><span class="in">lehmann_dat &lt;- </span></span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a><span class="in">  dat.lehmann2018 %&gt;%</span></span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a><span class="in">  clean_names() %&gt;%</span></span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(study = str_split_fixed(short_title, pattern = "-", n = 2)[, 1]) %&gt;%</span></span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a><span class="in">  arrange(study) %&gt;%</span></span>
+<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a><span class="in">  select(study, presentation = stimuli_presentation, yi, vi, everything())</span></span>
+<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning = FALSE, message = FALSE, echo = FALSE}</span></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a><span class="in">lehmann_dat %&gt;% </span></span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a><span class="in">  kable(digits=2) %&gt;%</span></span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="in">  kable_styling(</span></span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a><span class="in">    bootstrap_options = c("striped", "hover"),</span></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="in">    font_size = 10</span></span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a><span class="in">  ) %&gt;%</span></span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a><span class="in">  scroll_box(width = "100%", height = "300px", fixed_thead = TRUE) </span></span>
+<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-105"><a href="#cb35-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-106"><a href="#cb35-106" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preliminary Analysis</span></span>
+<span id="cb35-107"><a href="#cb35-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-108"><a href="#cb35-108" aria-hidden="true" tabindex="-1"></a>As a little warm-up exercise, here is a basic random effects meta-analysis of these data, fit via the <span class="co">[</span><span class="ot">metafor</span><span class="co">](https://wviechtb.github.io/metafor/)</span> package <span class="co">[</span><span class="ot">@Viechtbauer2010conducting</span><span class="co">]</span>. We use cluster-robust standard errors to account for effect size dependency.</span>
+<span id="cb35-109"><a href="#cb35-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-112"><a href="#cb35-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-113"><a href="#cb35-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate random effects model</span></span>
+<span id="cb35-114"><a href="#cb35-114" aria-hidden="true" tabindex="-1"></a>RE_mod <span class="ot">&lt;-</span> <span class="fu">rma.uni</span>(yi, <span class="at">vi =</span> vi, <span class="at">data =</span> lehmann_dat, <span class="at">method =</span> <span class="st">"ML"</span>)</span>
+<span id="cb35-115"><a href="#cb35-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-116"><a href="#cb35-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cluster-robust standard errors</span></span>
+<span id="cb35-117"><a href="#cb35-117" aria-hidden="true" tabindex="-1"></a>RE_robust <span class="ot">&lt;-</span> <span class="fu">robust</span>(RE_mod, <span class="at">cluster =</span> study, <span class="at">clubSandwich =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-118"><a href="#cb35-118" aria-hidden="true" tabindex="-1"></a>RE_robust</span>
+<span id="cb35-119"><a href="#cb35-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-120"><a href="#cb35-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-121"><a href="#cb35-121" aria-hidden="true" tabindex="-1"></a>The random effects model indicates an average effect size of about <span class="in">`{r} round(RE_mod$beta, 2)`</span> standard deviations and substantial heterogeneity, with $\hat\tau = <span class="in">`{r} round(sqrt(RE_mod$tau2), 2)`</span>$. The cluster-robust standard error is about <span class="in">`{r} round(100 * (RE_robust$se / RE_mod$se - 1))`</span>% bigger than the model-based standard error (not shown) because the latter does not account for dependent effect sizes.</span>
+<span id="cb35-122"><a href="#cb35-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-123"><a href="#cb35-123" aria-hidden="true" tabindex="-1"></a>Here is a contour-enhanced funnel plot of the data:</span>
+<span id="cb35-124"><a href="#cb35-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 8, fig.height = 5, out.width = "90%", fig.retina = 2}</span></span>
+<span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a><span class="in">funnel(RE_mod, refline = 0, level=c(90, 95, 99), shade=c("white", "gray55", "gray75"))</span></span>
+<span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a>The funnel plot shows some asymmetry, suggesting that there is reason to be concerned about selective reporting bias in these data.</span>
+<span id="cb35-130"><a href="#cb35-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-131"><a href="#cb35-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### A Selection Model</span></span>
+<span id="cb35-132"><a href="#cb35-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-133"><a href="#cb35-133" aria-hidden="true" tabindex="-1"></a>For starters, we will fit a very simple selection model, with a single step in the probability of reporting at $\alpha = .025$. This is what's come to be called the *three-parameter selection model* <span class="co">[</span><span class="ot">@mcshane2016adjusting</span><span class="co">]</span>. The step is defined in terms of a one-sided p-value, so $\alpha = .025$ corresponds to the point where an effect size estimate in the theoretically expected direction would have a regular, two-sided p-value of .05, right at the mystical threshold of statistical significance. We fit the model using <span class="in">`metafor`</span>'s <span class="co">[</span><span class="ot">`selmodel()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function:</span>
+<span id="cb35-134"><a href="#cb35-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-137"><a href="#cb35-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-138"><a href="#cb35-138" aria-hidden="true" tabindex="-1"></a>RE_sel <span class="ot">&lt;-</span> <span class="fu">selmodel</span>(RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> .<span class="dv">025</span>)</span>
+<span id="cb35-139"><a href="#cb35-139" aria-hidden="true" tabindex="-1"></a>RE_sel</span>
+<span id="cb35-140"><a href="#cb35-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-141"><a href="#cb35-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-142"><a href="#cb35-142" aria-hidden="true" tabindex="-1"></a>The selection parameter represents the probability that an effect size estimate that is not in the theoretically expected direction or not statistically significant at the conventional level would be included in the synthesis, relative to the probability that an affirmative, statistically significant effect size estimate would be included. In this example, the probability of selection is estimated as <span class="in">`{r} round(RE_sel$delta[2], 2)`</span>, meaning only about <span class="in">`{r} round(RE_sel$delta[2] * 100)`</span>% of the non-significant results that we would expect were generated are actually reported. Adjusting for this selection bias, the model estimates an overall average effect size of <span class="in">`{r} round(RE_sel$beta, 2)`</span> SD---smaller than the unadjusted random effects estimate---with heterogeneity of $\hat\tau = <span class="in">`{r} round(sqrt(RE_sel$tau2), 2)`</span>$.</span>
+<span id="cb35-143"><a href="#cb35-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-144"><a href="#cb35-144" aria-hidden="true" tabindex="-1"></a>The problem with this analysis is that the selection model is set up under the assumption that the effect size estimates are all independent. As a result, the reported standard errors are probably smaller than they should be and the confidence intervals are narrower than they should be. We'll use cluster bootstrapping to get standard errors and confidence intervals that should better account for effect size dependency.</span>
+<span id="cb35-145"><a href="#cb35-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-146"><a href="#cb35-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cluster Bootstrapping a Selection Model</span></span>
+<span id="cb35-147"><a href="#cb35-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-148"><a href="#cb35-148" aria-hidden="true" tabindex="-1"></a>In R, the <span class="co">[</span><span class="ot">`boot`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> package provides tools for running a variety of different bootstrap techniques and obtaining confidence intervals based on bootstrap distributions <span class="co">[</span><span class="ot">@boot</span><span class="co">]</span>. It's been around for ages and has some very nice features, but it requires a bit of trickery to use it for cluster bootstrapping. The main challenge is that the package functionality is set up under the assumption that every row of the dataset should be treated as an independent observation. To make it work for cluster bootstrapping, we will need a function to fit the selection model, which takes in a dataset with one row per cluster and returns a vector of parameter estimates. The function also has to have an index argument which is a vector of row indexes used to create the bootstrap sample. Here is a skeleton for such a function:</span>
+<span id="cb35-149"><a href="#cb35-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a><span class="in">fit_selmodel &lt;- function(</span></span>
+<span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a><span class="in">    dat,   # dataset with one row per cluster</span></span>
+<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a><span class="in">    index, # vector of indexes used to create the bootstrap sample</span></span>
+<span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a><span class="in">    ...    # any further arguments</span></span>
+<span id="cb35-155"><a href="#cb35-155" aria-hidden="true" tabindex="-1"></a><span class="in">) { </span></span>
+<span id="cb35-156"><a href="#cb35-156" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-157"><a href="#cb35-157" aria-hidden="true" tabindex="-1"></a><span class="in">  # take subset of data</span></span>
+<span id="cb35-158"><a href="#cb35-158" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat &lt;- dat[index,]</span></span>
+<span id="cb35-159"><a href="#cb35-159" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-160"><a href="#cb35-160" aria-hidden="true" tabindex="-1"></a><span class="in">  # fit selection model</span></span>
+<span id="cb35-161"><a href="#cb35-161" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-162"><a href="#cb35-162" aria-hidden="true" tabindex="-1"></a><span class="in">  # compile parameter estimates into a vector</span></span>
+<span id="cb35-163"><a href="#cb35-163" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-164"><a href="#cb35-164" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb35-165"><a href="#cb35-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-166"><a href="#cb35-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-167"><a href="#cb35-167" aria-hidden="true" tabindex="-1"></a><span class="fu">### Clustering and unclustering</span></span>
+<span id="cb35-168"><a href="#cb35-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-169"><a href="#cb35-169" aria-hidden="true" tabindex="-1"></a>The Lehmann dataset has one row per effect size, sometimes with multiple rows per study, so we need to modify the data to have one row per study. There are at least two ways to accomplish this. One option is to create a dataset consisting only of study-level IDs, then merge it back on to the full data to get the effect-size level data:</span>
+<span id="cb35-170"><a href="#cb35-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-173"><a href="#cb35-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-174"><a href="#cb35-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a dataset of study IDs</span></span>
+<span id="cb35-175"><a href="#cb35-175" aria-hidden="true" tabindex="-1"></a>cluster_IDs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">unique</span>(lehmann_dat<span class="sc">$</span>study))</span>
+<span id="cb35-176"><a href="#cb35-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-177"><a href="#cb35-177" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(cluster_IDs)</span>
+<span id="cb35-178"><a href="#cb35-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-179"><a href="#cb35-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge with full data</span></span>
+<span id="cb35-180"><a href="#cb35-180" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span> <span class="fu">merge</span>(cluster_IDs, lehmann_dat, <span class="at">by =</span> <span class="st">"study"</span>)</span>
+<span id="cb35-181"><a href="#cb35-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-182"><a href="#cb35-182" aria-hidden="true" tabindex="-1"></a>full_dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(study, yi, vi) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
+<span id="cb35-183"><a href="#cb35-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-184"><a href="#cb35-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-185"><a href="#cb35-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-186"><a href="#cb35-186" aria-hidden="true" tabindex="-1"></a>Another option is to use the <span class="co">[</span><span class="ot">`dplyr::nest_by()`</span><span class="co">](https://dplyr.tidyverse.org/reference/nest_by.html)</span> function to nest the data by cluster <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. Then, we can use <span class="co">[</span><span class="ot">`tidyr::unnest()`</span><span class="co">](https://tidyr.tidyverse.org/reference/unnest.html)</span> to recover the effect size level data <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. Like so:</span>
+<span id="cb35-187"><a href="#cb35-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-190"><a href="#cb35-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-191"><a href="#cb35-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Nest the data for each study</span></span>
+<span id="cb35-192"><a href="#cb35-192" aria-hidden="true" tabindex="-1"></a>lehmann_nested <span class="ot">&lt;-</span> <span class="fu">nest_by</span>(lehmann_dat, study, <span class="at">.key =</span> <span class="st">"data"</span>)</span>
+<span id="cb35-193"><a href="#cb35-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-194"><a href="#cb35-194" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lehmann_nested)</span>
+<span id="cb35-195"><a href="#cb35-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-196"><a href="#cb35-196" aria-hidden="true" tabindex="-1"></a><span class="co"># Recover the full dataset</span></span>
+<span id="cb35-197"><a href="#cb35-197" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span></span>
+<span id="cb35-198"><a href="#cb35-198" aria-hidden="true" tabindex="-1"></a>  lehmann_nested <span class="sc">%&gt;%</span></span>
+<span id="cb35-199"><a href="#cb35-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data)</span>
+<span id="cb35-200"><a href="#cb35-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-201"><a href="#cb35-201" aria-hidden="true" tabindex="-1"></a>full_dat <span class="sc">%&gt;%</span> <span class="fu">select</span>(study, yi, vi) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span>
+<span id="cb35-202"><a href="#cb35-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-203"><a href="#cb35-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-204"><a href="#cb35-204" aria-hidden="true" tabindex="-1"></a>We will follow the latter strategy for the remainder of our example. </span>
+<span id="cb35-205"><a href="#cb35-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-206"><a href="#cb35-206" aria-hidden="true" tabindex="-1"></a>With this nest-and-unnest approach, we can fill in a little bit more of our function skeleton:</span>
+<span id="cb35-207"><a href="#cb35-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-208"><a href="#cb35-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb35-209"><a href="#cb35-209" aria-hidden="true" tabindex="-1"></a><span class="in">fit_selmodel &lt;- function(</span></span>
+<span id="cb35-210"><a href="#cb35-210" aria-hidden="true" tabindex="-1"></a><span class="in">    dat,   # dataset with one row per cluster</span></span>
+<span id="cb35-211"><a href="#cb35-211" aria-hidden="true" tabindex="-1"></a><span class="in">    index, # vector of indexes used to create the bootstrap sample</span></span>
+<span id="cb35-212"><a href="#cb35-212" aria-hidden="true" tabindex="-1"></a><span class="in">    ...    # any further arguments</span></span>
+<span id="cb35-213"><a href="#cb35-213" aria-hidden="true" tabindex="-1"></a><span class="in">) { </span></span>
+<span id="cb35-214"><a href="#cb35-214" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-215"><a href="#cb35-215" aria-hidden="true" tabindex="-1"></a><span class="in">  # take subset of data</span></span>
+<span id="cb35-216"><a href="#cb35-216" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat_cluster &lt;- dat[index, ]</span></span>
+<span id="cb35-217"><a href="#cb35-217" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-218"><a href="#cb35-218" aria-hidden="true" tabindex="-1"></a><span class="in">  # expand to one row per effect size</span></span>
+<span id="cb35-219"><a href="#cb35-219" aria-hidden="true" tabindex="-1"></a><span class="in">  boot_dat &lt;- tidyr::unnest(boot_dat_cluster, data)</span></span>
+<span id="cb35-220"><a href="#cb35-220" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-221"><a href="#cb35-221" aria-hidden="true" tabindex="-1"></a><span class="in">  # fit selection model</span></span>
+<span id="cb35-222"><a href="#cb35-222" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-223"><a href="#cb35-223" aria-hidden="true" tabindex="-1"></a><span class="in">  # compile parameter estimates into a vector</span></span>
+<span id="cb35-224"><a href="#cb35-224" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb35-225"><a href="#cb35-225" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb35-226"><a href="#cb35-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-227"><a href="#cb35-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-228"><a href="#cb35-228" aria-hidden="true" tabindex="-1"></a><span class="fu">### Selection model function</span></span>
+<span id="cb35-229"><a href="#cb35-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-230"><a href="#cb35-230" aria-hidden="true" tabindex="-1"></a>Next, we need to complete the function by writing code to fit the selection model. This is a little bit involved because of the way the <span class="in">`metafor`</span> package implements the Vevea-Hedges selection model. We first need to fit a regular random effects model using <span class="co">[</span><span class="ot">`metafor::rma.uni()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/rma.uni.html)</span>, then pass the result to the <span class="co">[</span><span class="ot">`metafor::selmodel()`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function to fit a selection model, and then pull out the parameter estimates as a vector. To make the code clearer, we will move this step out into its own function:</span>
+<span id="cb35-231"><a href="#cb35-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-234"><a href="#cb35-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-235"><a href="#cb35-235" aria-hidden="true" tabindex="-1"></a>run_sel_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">steps =</span> .<span class="dv">025</span>) {</span>
+<span id="cb35-236"><a href="#cb35-236" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-237"><a href="#cb35-237" aria-hidden="true" tabindex="-1"></a>  <span class="co"># initial random effects model</span></span>
+<span id="cb35-238"><a href="#cb35-238" aria-hidden="true" tabindex="-1"></a>  RE_mod <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.uni</span>(</span>
+<span id="cb35-239"><a href="#cb35-239" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> dat, <span class="at">method =</span> <span class="st">"ML"</span></span>
+<span id="cb35-240"><a href="#cb35-240" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-241"><a href="#cb35-241" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-242"><a href="#cb35-242" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model</span></span>
+<span id="cb35-243"><a href="#cb35-243" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">selmodel</span>(</span>
+<span id="cb35-244"><a href="#cb35-244" aria-hidden="true" tabindex="-1"></a>    RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> steps,</span>
+<span id="cb35-245"><a href="#cb35-245" aria-hidden="true" tabindex="-1"></a>    <span class="at">skiphes =</span> <span class="cn">TRUE</span>, <span class="co"># turn off SE calculation</span></span>
+<span id="cb35-246"><a href="#cb35-246" aria-hidden="true" tabindex="-1"></a>    <span class="at">skiphet =</span> <span class="cn">TRUE</span> <span class="co"># turn off heterogeneity test</span></span>
+<span id="cb35-247"><a href="#cb35-247" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb35-248"><a href="#cb35-248" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-249"><a href="#cb35-249" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compile parameter estimates into a vector</span></span>
+<span id="cb35-250"><a href="#cb35-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">beta =</span> res<span class="sc">$</span>beta[,<span class="dv">1</span>], <span class="at">tau =</span> <span class="fu">sqrt</span>(res<span class="sc">$</span>tau2), <span class="at">delta =</span> res<span class="sc">$</span>delta[<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb35-251"><a href="#cb35-251" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-252"><a href="#cb35-252" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-253"><a href="#cb35-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-254"><a href="#cb35-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-255"><a href="#cb35-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-256"><a href="#cb35-256" aria-hidden="true" tabindex="-1"></a>Note the use of <span class="in">`skiphes`</span> and <span class="in">`skiphet`</span> arguments in the <span class="in">`selmodel()`</span> call, which skip the calculation of standard errors and skip the calculation of the test for heterogeneity. We don't need the standard errors here because we're going to use bootstrapping instead, and we're not interested in the heterogeneity test. Turning off these calculations saves computational time.</span>
+<span id="cb35-257"><a href="#cb35-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-258"><a href="#cb35-258" aria-hidden="true" tabindex="-1"></a>A further complication with fitting a selection model is that the parameter estimates are obtained by maximum likelihood, using an iterative optimization algorithm that sometimes fails to converge. To handle non-convergence, we will pass our function through <span class="co">[</span><span class="ot">`purrr::possibly()`</span><span class="co">](https://purrr.tidyverse.org/reference/possibly.html)</span> so that errors are suppressed, rather than causing everything to grind to a halt <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span>. We set the <span class="in">`otherwise`</span> argument so that non-convergent results are returned as <span class="in">`NA`</span> values:</span>
+<span id="cb35-259"><a href="#cb35-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-262"><a href="#cb35-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-263"><a href="#cb35-263" aria-hidden="true" tabindex="-1"></a>run_sel_model <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">possibly</span>(run_sel_model, <span class="at">otherwise =</span> <span class="fu">rep</span>(<span class="cn">NA_real_</span>, <span class="dv">3</span>))</span>
+<span id="cb35-264"><a href="#cb35-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-265"><a href="#cb35-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-266"><a href="#cb35-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### A first bootstrap</span></span>
+<span id="cb35-267"><a href="#cb35-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-268"><a href="#cb35-268" aria-hidden="true" tabindex="-1"></a>Here is the completed fitting function called <span class="in">`fit_selmodel()`</span>:</span>
+<span id="cb35-269"><a href="#cb35-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-272"><a href="#cb35-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-273"><a href="#cb35-273" aria-hidden="true" tabindex="-1"></a>fit_selmodel <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, </span>
+<span id="cb35-274"><a href="#cb35-274" aria-hidden="true" tabindex="-1"></a>                         <span class="at">index =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), </span>
+<span id="cb35-275"><a href="#cb35-275" aria-hidden="true" tabindex="-1"></a>                         <span class="at">steps =</span> <span class="fl">0.025</span>) {</span>
+<span id="cb35-276"><a href="#cb35-276" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-277"><a href="#cb35-277" aria-hidden="true" tabindex="-1"></a>  <span class="co"># take subset of data</span></span>
+<span id="cb35-278"><a href="#cb35-278" aria-hidden="true" tabindex="-1"></a>  boot_dat_cluster <span class="ot">&lt;-</span> dat[index, ]</span>
+<span id="cb35-279"><a href="#cb35-279" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-280"><a href="#cb35-280" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand to one row per effect size</span></span>
+<span id="cb35-281"><a href="#cb35-281" aria-hidden="true" tabindex="-1"></a>  boot_dat <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">unnest</span>(boot_dat_cluster, data)</span>
+<span id="cb35-282"><a href="#cb35-282" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-283"><a href="#cb35-283" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model, return vector</span></span>
+<span id="cb35-284"><a href="#cb35-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_sel_model</span>(boot_dat, <span class="at">steps =</span> steps)</span>
+<span id="cb35-285"><a href="#cb35-285" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-286"><a href="#cb35-286" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-287"><a href="#cb35-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-288"><a href="#cb35-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-289"><a href="#cb35-289" aria-hidden="true" tabindex="-1"></a>First, we take a subset of the data based on the index argument. This generates a bootstrap sample from the original data based on re-sampled clusters. We then use <span class="co">[</span><span class="ot">`tidyr::unnest()`</span><span class="co">](https://tidyr.tidyverse.org/reference/unnest.html)</span> to get the effect size level data for those re-sampled clusters. We then re-fit the model using our <span class="in">`run_sel_model()`</span> function.</span>
+<span id="cb35-290"><a href="#cb35-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-291"><a href="#cb35-291" aria-hidden="true" tabindex="-1"></a>Now let's apply our function to the Lehmann dataset. We will first need to create a nested version of the dataset, with one row per study:</span>
+<span id="cb35-292"><a href="#cb35-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-295"><a href="#cb35-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-296"><a href="#cb35-296" aria-hidden="true" tabindex="-1"></a>lehmann_nested <span class="ot">&lt;-</span> <span class="fu">nest_by</span>(lehmann_dat, study, <span class="at">.key =</span> <span class="st">"data"</span>)</span>
+<span id="cb35-297"><a href="#cb35-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-298"><a href="#cb35-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-299"><a href="#cb35-299" aria-hidden="true" tabindex="-1"></a>Now we can fit the selection model using <span class="in">`fit_sel_model()`</span>:</span>
+<span id="cb35-300"><a href="#cb35-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-303"><a href="#cb35-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-304"><a href="#cb35-304" aria-hidden="true" tabindex="-1"></a><span class="fu">fit_selmodel</span>(lehmann_nested)</span>
+<span id="cb35-305"><a href="#cb35-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-306"><a href="#cb35-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-307"><a href="#cb35-307" aria-hidden="true" tabindex="-1"></a>The results reproduce what we saw earlier when we estimated the three parameter selection model.</span>
+<span id="cb35-308"><a href="#cb35-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-309"><a href="#cb35-309" aria-hidden="true" tabindex="-1"></a>Now we can bootstrap using the <span class="co">[</span><span class="ot">`boot::boot()`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> function. The inputs to <span class="in">`boot()`</span> are the nested dataset, the function to fit the selection model, and then any additional arguments passed to <span class="in">`fit_selmodel()`</span>---here we include an argument for <span class="in">`steps`</span>---and finally, the number of bootstrap replications:</span>
+<span id="cb35-310"><a href="#cb35-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-311"><a href="#cb35-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache = TRUE, warning = FALSE}</span></span>
+<span id="cb35-312"><a href="#cb35-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-313"><a href="#cb35-313" aria-hidden="true" tabindex="-1"></a><span class="in"># Generate bootstrap</span></span>
+<span id="cb35-314"><a href="#cb35-314" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(20230321)</span></span>
+<span id="cb35-315"><a href="#cb35-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-316"><a href="#cb35-316" aria-hidden="true" tabindex="-1"></a><span class="in">tic()</span></span>
+<span id="cb35-317"><a href="#cb35-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-318"><a href="#cb35-318" aria-hidden="true" tabindex="-1"></a><span class="in">boots &lt;- boot(</span></span>
+<span id="cb35-319"><a href="#cb35-319" aria-hidden="true" tabindex="-1"></a><span class="in">  data = lehmann_nested,            # nested dataset</span></span>
+<span id="cb35-320"><a href="#cb35-320" aria-hidden="true" tabindex="-1"></a><span class="in">  statistic = fit_selmodel,         # function for fitting selection model</span></span>
+<span id="cb35-321"><a href="#cb35-321" aria-hidden="true" tabindex="-1"></a><span class="in">  steps = .025,                     # further arguments to the fitting function</span></span>
+<span id="cb35-322"><a href="#cb35-322" aria-hidden="true" tabindex="-1"></a><span class="in">  R = 1999                          # number of bootstraps</span></span>
+<span id="cb35-323"><a href="#cb35-323" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb35-324"><a href="#cb35-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-325"><a href="#cb35-325" aria-hidden="true" tabindex="-1"></a><span class="in">time_seq &lt;- toc()</span></span>
+<span id="cb35-326"><a href="#cb35-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-327"><a href="#cb35-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-328"><a href="#cb35-328" aria-hidden="true" tabindex="-1"></a>This code takes a while to run, but we can speed it up with parallel processing.</span>
+<span id="cb35-329"><a href="#cb35-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-330"><a href="#cb35-330" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parallel processing</span></span>
+<span id="cb35-331"><a href="#cb35-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-332"><a href="#cb35-332" aria-hidden="true" tabindex="-1"></a>The <span class="in">`boot`</span> package has some handy parallel processing features, but they can be a bit finicky to use here because of how R manages environments across multiple processes. With the above code, we can't simply turn on parallel processing because the worker processes won't know where to find the <span class="in">`run_sel_model()`</span> function that gets called inside <span class="in">`fit_selmodel()`</span>. To fix this, we include the <span class="in">`run_sel_model()`</span> function *inside* our fitting function, as follows:</span>
+<span id="cb35-333"><a href="#cb35-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-336"><a href="#cb35-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-337"><a href="#cb35-337" aria-hidden="true" tabindex="-1"></a>fit_selmodel <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, </span>
+<span id="cb35-338"><a href="#cb35-338" aria-hidden="true" tabindex="-1"></a>                         <span class="at">index =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), </span>
+<span id="cb35-339"><a href="#cb35-339" aria-hidden="true" tabindex="-1"></a>                         <span class="at">steps =</span> <span class="fl">0.025</span>) {</span>
+<span id="cb35-340"><a href="#cb35-340" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-341"><a href="#cb35-341" aria-hidden="true" tabindex="-1"></a>  <span class="co"># take subset of data</span></span>
+<span id="cb35-342"><a href="#cb35-342" aria-hidden="true" tabindex="-1"></a>  boot_dat_cluster <span class="ot">&lt;-</span> dat[index, ]</span>
+<span id="cb35-343"><a href="#cb35-343" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-344"><a href="#cb35-344" aria-hidden="true" tabindex="-1"></a>  <span class="co"># expand to one row per effect size</span></span>
+<span id="cb35-345"><a href="#cb35-345" aria-hidden="true" tabindex="-1"></a>  boot_dat <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">unnest</span>(boot_dat_cluster, data)</span>
+<span id="cb35-346"><a href="#cb35-346" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-347"><a href="#cb35-347" aria-hidden="true" tabindex="-1"></a>  <span class="co"># build run_selmodel</span></span>
+<span id="cb35-348"><a href="#cb35-348" aria-hidden="true" tabindex="-1"></a>  run_sel_model <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, <span class="at">steps =</span> .<span class="dv">025</span>) {</span>
+<span id="cb35-349"><a href="#cb35-349" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-350"><a href="#cb35-350" aria-hidden="true" tabindex="-1"></a>    <span class="co"># initial random effects model</span></span>
+<span id="cb35-351"><a href="#cb35-351" aria-hidden="true" tabindex="-1"></a>    RE_mod <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">rma.uni</span>(</span>
+<span id="cb35-352"><a href="#cb35-352" aria-hidden="true" tabindex="-1"></a>      <span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> dat, <span class="at">method =</span> <span class="st">"ML"</span></span>
+<span id="cb35-353"><a href="#cb35-353" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-354"><a href="#cb35-354" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-355"><a href="#cb35-355" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit selection model</span></span>
+<span id="cb35-356"><a href="#cb35-356" aria-hidden="true" tabindex="-1"></a>    res <span class="ot">&lt;-</span> metafor<span class="sc">::</span><span class="fu">selmodel</span>(</span>
+<span id="cb35-357"><a href="#cb35-357" aria-hidden="true" tabindex="-1"></a>      RE_mod, <span class="at">type =</span> <span class="st">"stepfun"</span>, <span class="at">steps =</span> steps,</span>
+<span id="cb35-358"><a href="#cb35-358" aria-hidden="true" tabindex="-1"></a>      <span class="at">skiphes =</span> <span class="cn">TRUE</span>, <span class="co"># turn off SE calculation</span></span>
+<span id="cb35-359"><a href="#cb35-359" aria-hidden="true" tabindex="-1"></a>      <span class="at">skiphet =</span> <span class="cn">TRUE</span> <span class="co"># turn off heterogeneity test</span></span>
+<span id="cb35-360"><a href="#cb35-360" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-361"><a href="#cb35-361" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-362"><a href="#cb35-362" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compile parameter estimates into a vector</span></span>
+<span id="cb35-363"><a href="#cb35-363" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="at">beta =</span> res<span class="sc">$</span>beta[,<span class="dv">1</span>], <span class="at">tau =</span> <span class="fu">sqrt</span>(res<span class="sc">$</span>tau2), <span class="at">delta =</span> res<span class="sc">$</span>delta[<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb35-364"><a href="#cb35-364" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-365"><a href="#cb35-365" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb35-366"><a href="#cb35-366" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-367"><a href="#cb35-367" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="dv">2</span>L <span class="sc">+</span> <span class="fu">length</span>(steps)  <span class="co"># calculate total number of model parameters</span></span>
+<span id="cb35-368"><a href="#cb35-368" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-369"><a href="#cb35-369" aria-hidden="true" tabindex="-1"></a>  <span class="co"># error handling for run_sel_model</span></span>
+<span id="cb35-370"><a href="#cb35-370" aria-hidden="true" tabindex="-1"></a>  run_sel_model <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">possibly</span>(run_sel_model, <span class="at">otherwise =</span> <span class="fu">rep</span>(<span class="cn">NA_real_</span>, p))</span>
+<span id="cb35-371"><a href="#cb35-371" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-372"><a href="#cb35-372" aria-hidden="true" tabindex="-1"></a>  <span class="co"># fit selection model, return vector of parameter estimates</span></span>
+<span id="cb35-373"><a href="#cb35-373" aria-hidden="true" tabindex="-1"></a>  <span class="fu">run_sel_model</span>(boot_dat, <span class="at">steps =</span> steps)</span>
+<span id="cb35-374"><a href="#cb35-374" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-375"><a href="#cb35-375" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-376"><a href="#cb35-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-377"><a href="#cb35-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-378"><a href="#cb35-378" aria-hidden="true" tabindex="-1"></a>Now we can call <span class="in">`boot()`</span> with options for parallel processing. The machine we used to compile this post has <span class="in">`{r} parallel::detectCores()`</span> cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</span>
+<span id="cb35-379"><a href="#cb35-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-380"><a href="#cb35-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache = TRUE}</span></span>
+<span id="cb35-381"><a href="#cb35-381" aria-hidden="true" tabindex="-1"></a><span class="in">ncpus &lt;- parallel::detectCores() / 2</span></span>
+<span id="cb35-382"><a href="#cb35-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-383"><a href="#cb35-383" aria-hidden="true" tabindex="-1"></a><span class="in"># Generate bootstrap</span></span>
+<span id="cb35-384"><a href="#cb35-384" aria-hidden="true" tabindex="-1"></a><span class="in">set.seed(20230321)</span></span>
+<span id="cb35-385"><a href="#cb35-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-386"><a href="#cb35-386" aria-hidden="true" tabindex="-1"></a><span class="in">tic()</span></span>
+<span id="cb35-387"><a href="#cb35-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-388"><a href="#cb35-388" aria-hidden="true" tabindex="-1"></a><span class="in">boots &lt;- boot(</span></span>
+<span id="cb35-389"><a href="#cb35-389" aria-hidden="true" tabindex="-1"></a><span class="in">  data = lehmann_nested,</span></span>
+<span id="cb35-390"><a href="#cb35-390" aria-hidden="true" tabindex="-1"></a><span class="in">  statistic = fit_selmodel, steps = .025,</span></span>
+<span id="cb35-391"><a href="#cb35-391" aria-hidden="true" tabindex="-1"></a><span class="in">  R = 1999,</span></span>
+<span id="cb35-392"><a href="#cb35-392" aria-hidden="true" tabindex="-1"></a><span class="in">  parallel = "snow", ncpus = ncpus # parallel processing options</span></span>
+<span id="cb35-393"><a href="#cb35-393" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb35-394"><a href="#cb35-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-395"><a href="#cb35-395" aria-hidden="true" tabindex="-1"></a><span class="in">time_par &lt;- toc()</span></span>
+<span id="cb35-396"><a href="#cb35-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-397"><a href="#cb35-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-398"><a href="#cb35-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb35-399"><a href="#cb35-399" aria-hidden="true" tabindex="-1"></a><span class="in">elapsed_seq &lt;- time_seq$toc - time_seq$tic</span></span>
+<span id="cb35-400"><a href="#cb35-400" aria-hidden="true" tabindex="-1"></a><span class="in">elapsed_par &lt;- time_par$toc - time_par$tic</span></span>
+<span id="cb35-401"><a href="#cb35-401" aria-hidden="true" tabindex="-1"></a><span class="in">gain &lt;- elapsed_seq / elapsed_par</span></span>
+<span id="cb35-402"><a href="#cb35-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-403"><a href="#cb35-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-404"><a href="#cb35-404" aria-hidden="true" tabindex="-1"></a>Parallel processing is really helpful here. We get 2000 bootstraps in <span class="in">`{r} round(elapsed_par)`</span> seconds, <span class="in">`{r} round(gain, 1)`</span> times faster than sequential processing.</span>
+<span id="cb35-405"><a href="#cb35-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-406"><a href="#cb35-406" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standard Errors</span></span>
+<span id="cb35-407"><a href="#cb35-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-408"><a href="#cb35-408" aria-hidden="true" tabindex="-1"></a>The standard deviations of the bootstrapped parameter estimates can be interpreted as standard errors for the parameter estimates that take into account the dependence structure of the effect size estimates. Here is a table comparing the cluster-bootstrapped standard errors to the model-based standard errors generated by <span class="in">`selmodel()`</span>:</span>
+<span id="cb35-409"><a href="#cb35-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-412"><a href="#cb35-412" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-413"><a href="#cb35-413" aria-hidden="true" tabindex="-1"></a>est <span class="ot">&lt;-</span> boots<span class="sc">$</span>t0 <span class="co"># original parameter estimates</span></span>
+<span id="cb35-414"><a href="#cb35-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-415"><a href="#cb35-415" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate bootstrap SEs</span></span>
+<span id="cb35-416"><a href="#cb35-416" aria-hidden="true" tabindex="-1"></a>boot_SE <span class="ot">&lt;-</span> <span class="fu">apply</span>(boots<span class="sc">$</span>t, <span class="dv">2</span>, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span>
+<span id="cb35-417"><a href="#cb35-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-418"><a href="#cb35-418" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate model-based SEs</span></span>
+<span id="cb35-419"><a href="#cb35-419" aria-hidden="true" tabindex="-1"></a>model_SE <span class="ot">&lt;-</span> <span class="fu">with</span>(RE_sel, <span class="fu">c</span>(se, se.tau2 <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sqrt</span>(tau2)), se.delta[<span class="sc">-</span><span class="dv">1</span>]))</span>
+<span id="cb35-420"><a href="#cb35-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-421"><a href="#cb35-421" aria-hidden="true" tabindex="-1"></a><span class="co"># make a table</span></span>
+<span id="cb35-422"><a href="#cb35-422" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb35-423"><a href="#cb35-423" aria-hidden="true" tabindex="-1"></a>  <span class="at">Parameter =</span> <span class="fu">names</span>(est),</span>
+<span id="cb35-424"><a href="#cb35-424" aria-hidden="true" tabindex="-1"></a>  <span class="at">Est =</span> est,</span>
+<span id="cb35-425"><a href="#cb35-425" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(bootstrap)</span><span class="st">`</span> <span class="ot">=</span> boot_SE,</span>
+<span id="cb35-426"><a href="#cb35-426" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(model)</span><span class="st">`</span> <span class="ot">=</span> model_SE,</span>
+<span id="cb35-427"><a href="#cb35-427" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">SE(bootstrap) / SE(model)</span><span class="st">`</span> <span class="ot">=</span> boot_SE <span class="sc">/</span> model_SE</span>
+<span id="cb35-428"><a href="#cb35-428" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-429"><a href="#cb35-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-430"><a href="#cb35-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-431"><a href="#cb35-431" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb35-432"><a href="#cb35-432" aria-hidden="true" tabindex="-1"></a><span class="in">res |&gt;</span></span>
+<span id="cb35-433"><a href="#cb35-433" aria-hidden="true" tabindex="-1"></a><span class="in">  kable(digits = 3) |&gt;</span></span>
+<span id="cb35-434"><a href="#cb35-434" aria-hidden="true" tabindex="-1"></a><span class="in">  kable_styling(bootstrap_options = c("striped","condensed"), full_width = FALSE)</span></span>
+<span id="cb35-435"><a href="#cb35-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-436"><a href="#cb35-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-437"><a href="#cb35-437" aria-hidden="true" tabindex="-1"></a>The standard errors based on cluster bootstrapping are all substantially larger than the model-based standard errors, which don't account for dependence.</span>
+<span id="cb35-438"><a href="#cb35-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-439"><a href="#cb35-439" aria-hidden="true" tabindex="-1"></a><span class="fu">### Confidence Intervals</span></span>
+<span id="cb35-440"><a href="#cb35-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-441"><a href="#cb35-441" aria-hidden="true" tabindex="-1"></a>For reporting results from this sort of analysis, it is useful to provide confidence intervals along with the model parameter estimates and standard errors. These can be calculated using the <span class="co">[</span><span class="ot">`boot::boot_ci()`</span><span class="co">](https://cran.r-project.org/web/packages/boot/boot.pdf)</span> function. This function provides several different types of confidence intervals; for illustration, we will stick with simple percentile confidence intervals, which are calculated by taking percentiles of the bootstrap distribution of each parameter estimate. To use the function, we'll specify the type of confidence interval and the index of the parameter we want. An index of 1 is for the overall average effect size:</span>
+<span id="cb35-442"><a href="#cb35-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-445"><a href="#cb35-445" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-446"><a href="#cb35-446" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">1</span>) <span class="co"># For overall average ES</span></span>
+<span id="cb35-447"><a href="#cb35-447" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-448"><a href="#cb35-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-449"><a href="#cb35-449" aria-hidden="true" tabindex="-1"></a>Here is the confidence interval for between-study heterogeneity:</span>
+<span id="cb35-450"><a href="#cb35-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-453"><a href="#cb35-453" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-454"><a href="#cb35-454" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">2</span>) <span class="co"># For heterogeneity</span></span>
+<span id="cb35-455"><a href="#cb35-455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-456"><a href="#cb35-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-457"><a href="#cb35-457" aria-hidden="true" tabindex="-1"></a>And for the selection weight:</span>
+<span id="cb35-458"><a href="#cb35-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-461"><a href="#cb35-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-462"><a href="#cb35-462" aria-hidden="true" tabindex="-1"></a><span class="fu">boot.ci</span>(boots, <span class="at">type =</span> <span class="st">"perc"</span>, <span class="at">index =</span> <span class="dv">3</span>) <span class="co"># For selection weight</span></span>
+<span id="cb35-463"><a href="#cb35-463" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-464"><a href="#cb35-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-465"><a href="#cb35-465" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb35-466"><a href="#cb35-466" aria-hidden="true" tabindex="-1"></a><span class="in">lambda_CI &lt;- boot.ci(boots, type = "perc", index = 3)</span></span>
+<span id="cb35-467"><a href="#cb35-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-468"><a href="#cb35-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-469"><a href="#cb35-469" aria-hidden="true" tabindex="-1"></a>Percentile confidence intervals can be asymmetric, and here the confidence interval for the selection weight parameter is notably asymmetric. The end-points of the confidence interval range from <span class="in">`{r} round(lambda_CI$percent[4], 3)`</span> (which represents very strong selective reporting, with only <span class="in">`{r} round(100 * lambda_CI$percent[4])`</span>% of non-significant results reported) to <span class="in">`{r} round(lambda_CI$percent[5], 3)`</span> (which represents very strong selection *against* affirmative results).<span class="ot">[^CI-comparison]</span> So, overall we can't really draw any strong conclusions about the strength of selective reporting.</span>
+<span id="cb35-470"><a href="#cb35-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-471"><a href="#cb35-471" aria-hidden="true" tabindex="-1"></a><span class="ot">[^CI-comparison]: </span>Compare this to the model-based confidence interval of $<span class="co">[</span><span class="ot">`{r} round(RE_sel$ci.lb.delta[2], 3)`, `{r} round(RE_sel$ci.ub.delta[2], 3)`</span><span class="co">]</span>$.</span>
+<span id="cb35-472"><a href="#cb35-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-473"><a href="#cb35-473" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
+<span id="cb35-474"><a href="#cb35-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-475"><a href="#cb35-475" aria-hidden="true" tabindex="-1"></a>In this post, we've demonstrated how to code a cluster-level bootstrap for a three parameter version of the Vevea-Hedges selection model. We think this cluster-bootstrapping technique is interesting and promising because it can be applied with a very broad swath of models and methods to investigate selective reporting. For instance, the code we've demonstrated could be modified by: </span>
+<span id="cb35-476"><a href="#cb35-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-477"><a href="#cb35-477" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a meta-regression model instead of just a summary meta-analysis;</span>
+<span id="cb35-478"><a href="#cb35-478" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a different form of selection function such as the beta-weight model proposed by Citkowicz and Vevea <span class="co">[</span><span class="ot">-@Citkowicz2017parsimonious</span><span class="co">]</span> or a more elaborate step function with multiple steps; or</span>
+<span id="cb35-479"><a href="#cb35-479" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>using a step function model applied across subsets of effect sizes, as in @Coburn2015publication.</span>
+<span id="cb35-480"><a href="#cb35-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-481"><a href="#cb35-481" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">metafor</span><span class="co">](https://wviechtb.github.io/metafor/)</span> package implements an expansive set of selection models with the <span class="co">[</span><span class="ot">`selmodel`</span><span class="co">](https://wviechtb.github.io/metafor/reference/selmodel.html)</span> function, so one could really just swap specifications in and out. In principle, the cluster-level bootstrap could also be used in combination with other forms of selective reporting analysis such as PET-PEESE <span class="co">[</span><span class="ot">although with such regression adjustments, cluster-robust variance estimation is also an option, see @rodgers2020evaluating</span><span class="co">]</span> or Copas-style sensitivity analyses <span class="co">[</span><span class="ot">@Copas2001sensitivity</span><span class="co">]</span>. </span>
+<span id="cb35-482"><a href="#cb35-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-483"><a href="#cb35-483" aria-hidden="true" tabindex="-1"></a>We are currently studying the performance of bootstrapping a three parameter selection model in some big Monte Carlo simulations. Based on some very preliminary results, it looks like the cluster bootstrapped selection model provides confidence intervals with reasonable coverage levels. We have more to do before we share these results, so again we want to emphasize that what we have demonstrated in this post is *experimental* and *exploratory*.</span>
+<span id="cb35-484"><a href="#cb35-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-485"><a href="#cb35-485" aria-hidden="true" tabindex="-1"></a>Further questions we need to investigate are how things work if we include covariates in the selection model, whether there are better variations of the bootstrap than what we have demonstrated here <span class="co">[</span><span class="ot">e.g., the fractionally weighted bootstrapping, @xu2020applications</span><span class="co">]</span>, and the limits of this method in terms of the number of studies needed for adequate performance. If things pan out, we also plan to turn the workflow we've demonstrated here into some more user-friendly functions, perhaps as part of the <span class="co">[</span><span class="ot">wildmeta</span><span class="co">](https://meghapsimatrix.github.io/wildmeta/index.html)</span> package.</span>
+<span id="cb35-486"><a href="#cb35-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-487"><a href="#cb35-487" aria-hidden="true" tabindex="-1"></a><span class="fu">## References</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

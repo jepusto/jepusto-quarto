@@ -6,10 +6,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Man Chen">
+<meta name="author" content="James E. Pustejovsky">
+<meta name="author" content="David A. Klingbeil">
+<meta name="author" content="Ethan R. Van Norman">
 <meta name="dcterms.date" content="2023-03-08">
 
 <title>James E. Pustejovsky - Between-case standardized mean differences: Flexible methods for single-case designs</title>
-
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,10 +72,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Between-case standardized mean differences: Flexible methods for single-case designs">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -87,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -152,35 +155,55 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Between-case standardized mean differences: Flexible methods for single-case designs</h1>
+            <div class="quarto-categories">
+        <div class="quarto-category"><a href="../../posts/index.html#category=single-case design">single-case design</a></div><div class="quarto-category"><a href="../../posts/index.html#category=effect size">effect size</a></div><div class="quarto-category"><a href="../../posts/index.html#category=standardized mean difference">standardized mean difference</a></div><div class="quarto-category"><a href="../../posts/index.html#category=design-comparable SMD">design-comparable SMD</a></div><div class="quarto-category"><a href="../../posts/index.html#category=hierarchical models">hierarchical models</a></div><div class="quarto-category"><a href="../../posts/index.html#category=multivariate">multivariate</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="quarto-title-meta">
+    <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+        <p class="author">Man Chen</p><p class="author">James E. Pustejovsky</p><p class="author">David A. Klingbeil</p><p class="author">Ethan R. Van Norman</p>
+      </div>
+    </div>
+    <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+                <p class="date">March 8, 2023</p>
+              </div>
+    </div>
+          <div class="quarto-links">
+              <a href="https://doi.org/10.1016/j.jsp.2023.02.002" class="btn btn-outline-primary">
+          <i class="fa-solid fa-newspaper" aria-label=""></i>
+          Journal
+        </a>
+              <a href="https://osf.io/8eucf/" class="btn btn-outline-primary">
+          <i class="fa-solid fa-" aria-label=""></i>
+          Supplementary materials
+        </a>
+              <a href="https://psyarxiv.com/3pk5q/" class="btn btn-outline-primary">
+          <i class="fa-solid fa-lock-open" aria-label=""></i>
+          Pre-Print
+        </a>
+              <a href="https://osf.io/8eucf/" class="btn btn-outline-primary">
+          <i class="fa-solid fa-code" aria-label=""></i>
+          Code
+        </a>
+            </div>
+          </div>
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header">
-<h1 class="title display-7">Between-case standardized mean differences: Flexible methods for single-case designs</h1>
-<p class="date">March 8, 2023</p>
-<div class="quarto-links">
-<a href="https://doi.org/10.1016/j.jsp.2023.02.002" class="btn btn-outline-primary">
-<i class="fa-solid fa-" aria-label="fa newspaper"></i>
-Journal
-</a>
-<a href="https://osf.io/8eucf/" class="btn btn-outline-primary">
-<i class="fa-solid fa-" aria-label=""></i>
-Supplementary materials
-</a>
-<a href="https://psyarxiv.com/3pk5q/" class="btn btn-outline-primary">
-<i class="fa-solid fa-lock-open" aria-label=""></i>
-Pre-Print
-</a>
-<a href="https://osf.io/8eucf/" class="btn btn-outline-primary">
-<i class="fa-solid fa-code" aria-label=""></i>
-Code
-</a>
-</div>
-</header>
+
 
 
 <p>Single-case designs (SCDs) are a class of research methods for evaluating the effects of academic and behavioral interventions in educational and clinical settings. Although visual analysis is typically the first and main method for primary analysis of data from SCDs, quantitative methods are useful for synthesizing results and drawing systematic generalizations across bodies of single-case research. Researchers who are interested in synthesizing findings across SCDs and between-group designs might consider using the between-case standardized mean difference (BC-SMD) effect size, which aims to put results from both types of studies into a common metric. Current BC-SMD methods are limited to treatment reversal design and across-participant multiple baseline design, yet more complex designs are used in practice. In this study, we extend available BC-SMD methods to several variations of the multiple baseline design, including the replicated multiple baseline across behaviors or settings, the clustered multiple baseline design, and the multivariate multiple baseline across participants. For each variation, we describe methods for estimating BC-SMD effect sizes and illustrate our proposed approach by re-analyzing data from a published SCD study.</p>
@@ -598,6 +621,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

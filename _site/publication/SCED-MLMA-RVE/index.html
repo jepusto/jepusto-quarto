@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Man Chen">
+<meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2022-04-29">
 
 <title>James E. Pustejovsky - Multi-level meta-analysis of single-case experimental designs using robust variance estimation</title>
-
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,10 +70,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 
 <meta property="og:title" content="James E. Pustejovsky - Multi-level meta-analysis of single-case experimental designs using robust variance estimation">
 <meta property="og:description" content="Education Statistics and Meta-Analysis">
@@ -85,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -150,35 +151,55 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Multi-level meta-analysis of single-case experimental designs using robust variance estimation</h1>
+            <div class="quarto-categories">
+        <div class="quarto-category"><a href="../../posts/index.html#category=single-case design">single-case design</a></div><div class="quarto-category"><a href="../../posts/index.html#category=meta-analysis">meta-analysis</a></div><div class="quarto-category"><a href="../../posts/index.html#category=robust variance estimation">robust variance estimation</a></div><div class="quarto-category"><a href="../../posts/index.html#category=response ratio">response ratio</a></div><div class="quarto-category"><a href="../../posts/index.html#category=non-overlap measures">non-overlap measures</a></div><div class="quarto-category"><a href="../../posts/index.html#category=standardized mean difference">standardized mean difference</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="quarto-title-meta">
+    <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+        <p class="author">Man Chen</p><p class="author">James E. Pustejovsky</p>
+      </div>
+    </div>
+    <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+                <p class="date">April 29, 2022</p>
+              </div>
+    </div>
+          <div class="quarto-links">
+              <a href="https://doi.org/10.1037/met0000510" class="btn btn-outline-primary">
+          <i class="fa-solid fa-newspaper" aria-label=""></i>
+          Journal
+        </a>
+              <a href="https://osf.io/zypsh" class="btn btn-outline-primary">
+          <i class="fa-solid fa-" aria-label=""></i>
+          Supplementary materials
+        </a>
+              <a href="https://psyarxiv.com/59h32/" class="btn btn-outline-primary">
+          <i class="fa-solid fa-lock-open" aria-label=""></i>
+          Pre-Print
+        </a>
+              <a href="https://osf.io/zypsh" class="btn btn-outline-primary">
+          <i class="fa-solid fa-code" aria-label=""></i>
+          Code
+        </a>
+            </div>
+          </div>
+</header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header">
-<h1 class="title display-7">Multi-level meta-analysis of single-case experimental designs using robust variance estimation</h1>
-<p class="date">April 29, 2022</p>
-<div class="quarto-links">
-<a href="https://doi.org/10.1037/met0000510" class="btn btn-outline-primary">
-<i class="fa-solid fa-" aria-label="fa newspaper"></i>
-Journal
-</a>
-<a href="https://osf.io/zypsh" class="btn btn-outline-primary">
-<i class="fa-solid fa-" aria-label=""></i>
-Supplementary materials
-</a>
-<a href="https://psyarxiv.com/59h32/" class="btn btn-outline-primary">
-<i class="fa-solid fa-lock-open" aria-label=""></i>
-Pre-Print
-</a>
-<a href="https://osf.io/zypsh" class="btn btn-outline-primary">
-<i class="fa-solid fa-code" aria-label=""></i>
-Code
-</a>
-</div>
-</header>
+
 
 
 <p>Single-case experimental designs (SCEDs) are used to study the effects of interventions on the behavior of individual cases, by making comparisons between repeated measurements of an outcome under different conditions. In research areas where SCEDs are prevalent, there is a need for methods to synthesize results across multiple studies. One approach to synthesis uses a multi-level meta-analysis (MLMA) model to describe the distribution of effect sizes across studies and across cases within studies. However, MLMA relies on having accurate sampling variances of effect size estimates for each case, which may not be possible due to auto-correlation in the raw data series. One possible solution is to combine MLMA with robust variance estimation (RVE), which provides valid assessments of uncertainty even if the sampling variances of effect size estimates are inaccurate. Another possible solution is to forgo MLMA and use simpler, ordinary least squares (OLS) methods with RVE. This study evaluates the performance of effect size estimators and methods of synthesizing SCEDs in the presence of auto-correlation, for several different effect size metrics, via a Monte Carlo simulation designed to emulate the features of real data series. Results demonstrate that the MLMA model with RVE performs properly in terms of bias, accuracy, and confidence interval coverage for estimating overall average log response ratios. The OLS estimator corrected with RVE performs the best in estimating overall average Tau effect sizes. None of the available methods perform adequately for meta-analysis of within-case standardized mean differences.</p>
@@ -596,6 +617,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

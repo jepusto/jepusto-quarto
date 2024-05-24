@@ -12019,7 +12019,7 @@ font-style: inherit;">steps =</span> steps)</span>
 <span id="cb25-39">}</span></code></pre></div>
 </details>
 </div>
-<p>Now we can call <code>boot()</code> with options for parallel processing. The machine we used to compile this post has 12 cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</p>
+<p>Now we can call <code>boot()</code> with options for parallel processing. The machine we used to compile this post has 8 cores. We will use half of the available cores for parallel processing. The configuration of parallel processing will depend on your operating system (different options are available for Mac), so you may need to adapt this code a bit.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
