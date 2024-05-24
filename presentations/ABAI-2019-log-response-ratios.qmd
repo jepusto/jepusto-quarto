@@ -12,8 +12,4 @@ links:
 - fa-icon: person-chalkboard
   text: Slides
   url: /files/ABAI-2019-Log-response-ratios.pdf
-
 ---
-
-
-

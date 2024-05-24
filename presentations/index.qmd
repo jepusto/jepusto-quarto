@@ -25,5 +25,4 @@ listing:
       title: "Title"
       event_short: "Event"
       location: "Location"
-
 ---
