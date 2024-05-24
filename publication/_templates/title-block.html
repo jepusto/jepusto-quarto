@@ -1,0 +1,47 @@
+<header id="title-block-header" class="quarto-title-block default">
+  <div class="quarto-title column-body">
+    $if(title)$<h1 class="title">$title$</h1>$endif$
+    $if(subtitle)$
+    <p class="subtitle">$subtitle$</p>
+    $endif$
+  </div>
+
+  <div class="quarto-title-meta">
+    $if(author)$
+    <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+        $for(author)$<p class="author">$author$</p>$endfor$
+      </div>
+    </div>
+    $endif$
+    <div>
+    $if(date)$
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        $if(date)$
+        <p class="date">$date$</p>
+        $endif$
+      </div>
+    </div>
+    $endif$
+    $if(links)$
+      <div class="quarto-links">
+        $for(links)$
+        <a href="$links.url$" class="btn btn-outline-primary">
+          <i class="fa-solid fa-$links.fa-icon$" aria-label="$links.icon$"></i>
+          $links.text$
+        </a>
+        $endfor$
+      </div>
+    $endif$
+    $if(abstract)$
+      <div class="abstract">
+      <div class="abstract-title">$abstract-title$</div>
+      $abstract$
+      </div>
+    $endif$
+  </div>
+</header>
+
+

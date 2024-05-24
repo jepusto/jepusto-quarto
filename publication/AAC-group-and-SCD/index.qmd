@@ -1,6 +1,6 @@
 ---
 title: 'Systematic review of variables related to instruction in augmentative and alternative communication implementation: Group and single-case design'
-authors:
+author:
 - Joe Reichle
 - James E. Pustejovsky
 - Kimberly J. Vannest
@@ -31,7 +31,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1044/2023_AJSLP-22-00314
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/nzq4h/

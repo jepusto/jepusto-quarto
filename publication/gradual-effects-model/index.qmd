@@ -1,6 +1,6 @@
 ---
 title: A gradual effects model for single-case designs
-authors:
+author:
 - Daniel M. Swan
 - James E. Pustejovsky
 date: 2018-05-01T00:00:00
@@ -20,13 +20,13 @@ links:
   url: https://osf.io/uzkq6/
 - text: R package
   url: https://CRAN.R-project.org/package=SingleCaseES
-  icon: fa gift
+  fa-icon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/gem-scd/
-  icon: fa tablet-screen-button
+  fa-icon: tablet-screen-button
 - text: Journal
   url: https://doi.org/10.1080/00273171.2018.1466681
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/vh964/

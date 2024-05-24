@@ -1,6 +1,6 @@
 ---
 title: 'Effects of psychosocial interventions on meaning and purpose in adults with cancer: A systematic review and meta-analysis'
-authors:
+author:
 - Crystal L. Park
 - James E. Pustejovsky
 - Kelly Trevino
@@ -24,7 +24,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/cncr.32078
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

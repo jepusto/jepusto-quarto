@@ -1,6 +1,6 @@
 ---
 title: 'A meta-analytic approach to examine the relationship between religion/spirituality and mental health in cancer'
-authors:
+author:
 - John A. Salsman
 - James E. Pustejovsky
 - Heather S. Jim
@@ -29,7 +29,7 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1002/cncr.29350
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

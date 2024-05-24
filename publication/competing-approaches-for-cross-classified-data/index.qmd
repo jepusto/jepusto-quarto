@@ -1,6 +1,6 @@
 ---
 title: 'Comparison of competing approaches to analyzing cross-classified data: Random effects models, ordinary least squares, or fixed effects with cluster robust standard errors'
-authors:
+author:
 - Young Ri Lee
 - James E. Pustejovsky
 date: 2023-03-09T00:00:00
@@ -18,7 +18,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000538
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/s7hr3/
 - fa-icon: lock-open

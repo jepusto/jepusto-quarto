@@ -1,6 +1,6 @@
 ---
 title: 'Participant characteristics predicting communication outcomes in AAC implementation for individuals with ASD and IDD: Meta-analysis'
-authors:
+author:
 - Jay B. Ganz
 - James E. Pustejovsky
 - Joe Reichle
@@ -28,7 +28,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1080/07434618.2022.2116355
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/6sgba/

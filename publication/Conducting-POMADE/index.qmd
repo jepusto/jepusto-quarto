@@ -1,6 +1,6 @@
 ---
 title: 'Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package'
-authors:
+author:
 - Mikkel H. Vembye
 - James E. Pustejovsky
 - Terri D. Pigott

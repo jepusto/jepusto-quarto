@@ -1,6 +1,6 @@
 ---
 title: 'Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis'
-authors:
+author:
 - Katherine L. Winters
 - Javier Jasso
 - James E. Pustejovsky
@@ -22,7 +22,7 @@ image: Forest Plot of TD-DLD Group Differences in Narrative Performance
 links:
 - text: Journal
   url: https://doi.org/10.1044/2022_JSLHR-22-00017
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/dgz7m/
 - fa-icon: lock-open

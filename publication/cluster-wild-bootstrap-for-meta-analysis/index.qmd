@@ -1,6 +1,6 @@
 ---
 title: Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies
-authors:
+author:
 - Megha Joshi
 - James E. Pustejovsky
 - S. Natasha Beretvas
@@ -18,12 +18,12 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/jrsm.1554
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://github.com/meghapsimatrix/CWB_analyses
 - text: R package
   url: https://meghapsimatrix.github.io/wildmeta/
-  icon: fa gift
+  fa-icon: gift
 - fa-icon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/x6uhk

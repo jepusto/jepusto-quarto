@@ -1,6 +1,6 @@
 ---
 title: Four methods for analyzing partial interval recording data, with application to single-case research
-authors:
+author:
 - James E. Pustejovsky
 - Daniel M. Swan
 date: 2015-06-19T00:00:00
@@ -21,7 +21,7 @@ links:
   url: /files/4-PIR-Methods-Appendix.pdf
 - text: Journal
   url: http://doi.org/10.1080/00273171.2015.1014879
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/4-PIR-methods-MBR.pdf

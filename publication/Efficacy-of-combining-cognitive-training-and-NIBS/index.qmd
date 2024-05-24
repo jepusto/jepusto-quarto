@@ -1,6 +1,6 @@
 ---
 title: 'The efficacy of combining cognitive training and non-invasive brain stimulation: A transdiagnostic systematic review and meta-analysis'
-authors:
+author:
 - Anika Poppe
 - Franziska D. E. Ritter
 - Leonie Bais
@@ -24,7 +24,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/bul0000406
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/wqrne/

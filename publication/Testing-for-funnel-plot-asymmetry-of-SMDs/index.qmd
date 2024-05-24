@@ -1,6 +1,6 @@
 ---
 title: Testing for funnel plot asymmetry of standardized mean differences
-authors:
+author:
 - James E. Pustejovsky
 - Melissa A. Rodgers
 date: 2019-03-01T00:00:00
@@ -16,7 +16,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/jrsm.1332
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/ea6kz/

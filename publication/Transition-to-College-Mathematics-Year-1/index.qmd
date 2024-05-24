@@ -1,6 +1,6 @@
 ---
 title: 'Evaluating the Transition to College Mathematics Course in Texas high schools: Findings from the first year of implementation'
-authors:
+author:
 - James E. Pustejovsky
 - Megha Joshi
 date: 2019-06-30T00:00:00
@@ -16,7 +16,7 @@ categories:
 links:
 - text: White paper
   url: https://www.greatertexasfoundation.org/wp-content/uploads/2021/08/Pustejovsky-Final-2019.pdf
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: file
   text: PDF
   url: files/TCMC-Eval-Yr-1.pdf

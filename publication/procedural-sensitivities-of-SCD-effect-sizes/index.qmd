@@ -1,6 +1,6 @@
 ---
 title: Procedural sensitivities of effect sizes for single-case designs with behavioral outcome measures
-authors: 
+author: 
  - James E. Pustejovsky
 date: 2019-04-01T00:00:00
 publish_date: 2019-04-01T00:00:00
@@ -22,7 +22,7 @@ links:
   url: https://osf.io/hkzsm/
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000179
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/vxa86

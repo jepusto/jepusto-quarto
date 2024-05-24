@@ -1,6 +1,6 @@
 ---
 title: Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression
-authors:
+author:
 - Elizabeth Tipton
 - James E. Pustejovsky
 date: 2015-12-15T00:00:00
@@ -18,10 +18,10 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.3102/1076998615606099
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=clubSandwich
-  icon: fa gift
+  fa-icon: gift
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/Tipton-Pustejovsky-F-tests-with-RVE-May-2015.pdf

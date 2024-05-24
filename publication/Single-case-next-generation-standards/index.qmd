@@ -1,6 +1,6 @@
 ---
 title: 'Single case design research in Special Education: Next generation standards and considerations'
-authors:
+author:
 - Jennifer R. Ledford
 - Joseph Lambert
 - James E. Pustejovsky
@@ -20,7 +20,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1177/00144029221137656
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/bt9hf/
 - fa-icon: lock-open

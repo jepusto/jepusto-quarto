@@ -1,6 +1,6 @@
 ---
 title: Power approximations for overall average effects in meta-analysis of dependent effect sizes
-authors:
+author:
 - Mikkel H. Vembye
 - James E. Pustejovsky
 - Terri D. Pigott
@@ -21,12 +21,12 @@ image: Power difference between approximated and true (simulated) power versus a
 links:
 - text: Journal
   url: https://doi.org/10.3102/10769986221127379
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/q84dv/
 - text: R package
   url: https://mikkelvembye.github.io/POMADE/
-  icon: fa gift
+  fa-icon: gift
 - fa-icon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/6tp9y/

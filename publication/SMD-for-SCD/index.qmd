@@ -1,6 +1,6 @@
 ---
 title: A standardized mean difference effect size for single case designs
-authors:
+author:
 - Larry V. Hedges
 - James E. Pustejovsky
 - William R. Shadish
@@ -18,13 +18,13 @@ categories:
 links:
 - text: Journal
   url: https://dx.doi.org/10.1002/jrsm.1052
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
-  icon: fa gift
+  fa-icon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
-  icon: fa tablet-screen-button
+  fa-icon: tablet-screen-button
 
 ---
 

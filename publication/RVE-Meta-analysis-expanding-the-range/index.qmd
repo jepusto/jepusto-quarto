@@ -1,6 +1,6 @@
 ---
 title: 'Meta-Analysis with robust variance estimation: Expanding the range of working models'
-authors:
+author:
 - James E. Pustejovsky
 - Elizabeth Tipton
 date: 2022-04-01T00:00:00
@@ -19,7 +19,7 @@ image: Decision-tree for selecting a working model for use with RVE meta-regress
 links:
 - text: Journal
   url: https://doi.org/10.1007/s11121-021-01246-3
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/nyv4u/
 - fa-icon: lock-open

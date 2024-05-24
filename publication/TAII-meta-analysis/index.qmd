@@ -1,6 +1,6 @@
 ---
 title: A meta-analysis of technology-aided instruction and intervention for students with ASD
-authors:
+author:
 - Erin E. Barton
 - James E. Pustejovsky
 - Daniel M. Maggin
@@ -20,7 +20,7 @@ categories:
 links:
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517729508
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

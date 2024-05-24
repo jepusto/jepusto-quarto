@@ -1,6 +1,6 @@
 ---
 title: Systematic review and meta-analysis of stay-play-talk interventions for improving social behaviors of young children
-authors:
+author:
 - Jennifer R. Ledford
 - James E. Pustejovsky
 date: 2021-01-05T00:00:00
@@ -19,7 +19,7 @@ image: Forest plots of LRRi estimates for peer and focal participants
 links:
 - text: Journal
   url: https://doi.org/10.1177/1098300720983521
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/m263p/
 - fa-icon: lock-open

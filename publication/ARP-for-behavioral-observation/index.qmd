@@ -1,6 +1,6 @@
 ---
 title: 'Alternating renewal process models for behavioral observation: Simulation methods and validity implications'
-authors:
+author:
 - James E. Pustejovsky
 - Christopher Runyon
 date: 2014-08-01T00:00:00
@@ -17,10 +17,10 @@ categories:
 links:
 - text: Journal
   url: https://dx.doi.org/10.1177/019874291303900406
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=ARPobservation
-  icon: fa gift
+  fa-icon: gift
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/Pustejovsky-Runyon-2015.pdf

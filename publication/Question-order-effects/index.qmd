@@ -1,6 +1,6 @@
 ---
 title: Question-order effects in social network name generators
-authors:
+author:
 - James E. Pustejovsky
 - James P. Spillane
 date: 2009-10-01T00:00:00
@@ -16,7 +16,7 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1016/j.socnet.2009.06.001
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/Question-order-effects-in-social-network-name-generators.pdf

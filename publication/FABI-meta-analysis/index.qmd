@@ -1,6 +1,6 @@
 ---
 title: 'Functional assessment-based interventions for students with or at-risk for high incidence disabilities: Field-testing single-case synthesis methods'
-authors:
+author:
 - Eric A. Common
 - Kathleen L. Lane
 - James E. Pustejovsky
@@ -23,7 +23,7 @@ categories:
 links:
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517693320
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

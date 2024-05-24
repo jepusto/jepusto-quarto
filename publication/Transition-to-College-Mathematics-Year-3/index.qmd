@@ -1,6 +1,6 @@
 ---
 title: 'Evaluating the Transition to College Mathematics Course in Texas high schools: Examining heterogeneity across schools and student characteristics'
-authors:
+author:
 - James E. Pustejovsky
 - Megha Joshi
 date: 2021-04-20T00:00:00

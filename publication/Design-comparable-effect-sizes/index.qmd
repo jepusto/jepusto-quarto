@@ -1,6 +1,6 @@
 ---
 title: 'Design-comparable effect sizes in multiple baseline designs: A general modeling framework'
-authors:
+author:
 - James E. Pustejovsky
 - Larry V. Hedges
 - William R. Shadish
@@ -21,13 +21,13 @@ links:
   url: /files/Effect-sizes-in-multiple-baseline-designs-Simulation-results.pdf
 - text: Journal
   url: https://doi.org/10.3102/1076998614547577
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
-  icon: fa gift
+  fa-icon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
-  icon: fa tablet-screen-button
+  fa-icon: tablet-screen-button
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/Effect-sizes-in-multiple-baseline-designs-JEBS.pdf

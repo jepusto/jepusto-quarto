@@ -1,6 +1,6 @@
 ---
 title: The impact of response-guided designs on count outcomes in single-case experimental design baselines
-authors:
+author:
 - Daniel M. Swan
 - James E. Pustejovsky
 - S. Natasha Beretvas
@@ -19,7 +19,7 @@ image: Cumulative percentage of stable baselines at a given number of observatio
 links:
 - text: Journal
   url: https://doi.org/10.1080/17489539.2020.1739048
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: code
   text: Code
   url: https://osf.io/f8bmu/

@@ -1,6 +1,6 @@
 ---
 title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A meta-analysis of randomized controlled trials'
-authors:
+author:
 - Tom V. Merluzzi
 - James E. Pustejovsky
 - Errol J. Philip
@@ -23,7 +23,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/pon.5148
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: table
   text: Data
   url: https://curate.nd.edu/show/jw827943c2d

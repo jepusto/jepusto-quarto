@@ -1,6 +1,6 @@
 ---
 title: Multi-level meta-analysis of single-case experimental designs using robust variance estimation
-authors:
+author:
 - Man Chen
 - James E. Pustejovsky
 date: 2022-04-29T00:00:00
@@ -20,7 +20,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000510
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/zypsh
 - fa-icon: lock-open

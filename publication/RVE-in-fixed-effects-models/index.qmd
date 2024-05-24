@@ -1,6 +1,6 @@
 ---
 title: Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models
-authors:
+author:
 - James E. Pustejovsky
 - Elizabeth Tipton
 date: 2018-11-02T00:00:00
@@ -17,13 +17,13 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1080/07350015.2016.1247004
-  icon: fa newspaper
+  fa-icon: newspaper
 - text: Correction
   url: https://doi.org/10.1080/07350015.2023.2174123
-  icon: fa file-pen
+  fa-icon: file-pen
 - text: R package
   url: https://CRAN.R-project.org/package=clubSandwich
-  icon: fa gift
+  fa-icon: gift
 - fa-icon: lock-open
   text: Pre-Print
   url: https://arxiv.org/abs/1601.01981

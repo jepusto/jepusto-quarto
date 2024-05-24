@@ -1,6 +1,6 @@
 ---
 title: 'Single-case synthesis tools I: Evaluating the quality and rigor of research on antecedent sensory-based interventions'
-authors:
+author:
 - Kathleen N. Zimmerman
 - Jennifer R. Ledford
 - Katherine E. Severini
@@ -20,7 +20,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1016/j.ridd.2018.02.003
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

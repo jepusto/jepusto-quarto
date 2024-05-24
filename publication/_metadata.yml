@@ -1,5 +1,6 @@
 # options specified here will apply to all posts in this folder
 format:
   html:
-    template: ../_templates/publication-template.html
-
+    template-partials: 
+    - _templates/title-block.html
+    include-in-header: _templates/fontawesome-scripts.html

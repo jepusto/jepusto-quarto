@@ -1,6 +1,6 @@
 ---
 title: Measurement-comparable effect sizes for single-case studies of free-operant behavior
-authors: 
+author: 
  - James E. Pustejovsky
 date: 2015-09-01T00:00:00
 publish_date: 2015-09-01T00:00:00
@@ -20,7 +20,7 @@ links:
   url: /files/Measuerment-comparable-ES-Appendix.pdf
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000019
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: /files/Measurement-comparable-ES.pdf

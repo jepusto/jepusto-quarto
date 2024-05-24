@@ -1,5 +1,4 @@
 ---
-title: "Publications"
 page-layout: full
 listing:
     sort: 
@@ -10,10 +9,10 @@ listing:
     filter-ui: true
     max-items: 1000
     page-size: 100
-    fields: [date, authors, title, publication]
+    fields: [date, author, title, publication]
     field-display-names:
       date: "Date"
-      authors: "Authors"
+      author: "Authors"
       title: "Title"
       publication: "Publication"
 ---

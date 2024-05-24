@@ -1,6 +1,6 @@
 ---
 title: 'A meta-analysis of school-based group contingency interventions for students with challenging behavior: An update'
-authors:
+author:
 - Daniel M. Maggin
 - James E. Pustejovsky
 - Austin H. Johnson
@@ -21,7 +21,7 @@ links:
   url: https://osf.io/8ygts/
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517693320
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://osf.io/hvuw5/

@@ -1,6 +1,6 @@
 ---
 title: Introduction to the special issue on single-case systematic reviews and meta-analysis
-authors:
+author:
 - Daniel M. Maggin
 - Kathleen L. Lane
 - James E. Pustejovsky
@@ -18,7 +18,7 @@ categories:
 links:
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517717043
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

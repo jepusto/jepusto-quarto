@@ -1,6 +1,6 @@
 ---
 title: 'Between-case standardized effect size analysis of single case design: Examination of the two methods'
-authors:
+author:
 - Samuel L. Odom
 - Erin E. Barton
 - Brian Reichow
@@ -17,7 +17,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1016/j.ridd.2018.05.009
-  icon: fa newspaper
+  fa-icon: newspaper
 
 ---
 

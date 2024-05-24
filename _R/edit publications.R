@@ -39,7 +39,8 @@ icons %>%
 edit_publication <- function(file) {
   
   x <- readLines(file) |>
-    str_replace(pattern = "^- icon: fa ", replacement = "- fa-icon: ")
+    str_replace(pattern = "authors:", replacement = "author:") |>
+    str_replace(pattern = "icon: fa ", replacement = "fa-icon: ")
   
   x <- x[x != "{{< include '../_publication_header.qmd' >}}"]
   
@@ -50,6 +51,5 @@ edit_publication <- function(file) {
 tibble(
   unit = list.files(source_dir, pattern = "index.qmd$", recursive = TRUE, full.names = TRUE)
 ) %>%
-  filter(str_detect(unit, "\\/\\_", negate = TRUE)) %>%
   pull(unit) %>%
   walk(edit_publication)

@@ -1,6 +1,6 @@
 ---
 title: 'Augmentative and Alternative Communication intervention targets for school-aged participants with ASD and ID: A single-case systematic review and meta-analysis'
-authors:
+author:
 - Jay B. Ganz
 - James E. Pustejovsky
 - Joe Reichle
@@ -29,7 +29,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1007/s40489-022-00326-6
-  icon: fa newspaper
+  fa-icon: newspaper
 - fa-icon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/yx5au/
