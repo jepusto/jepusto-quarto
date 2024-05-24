@@ -3,7 +3,7 @@ title: lmeInfo
 ltitle: lmeinfo
 subtitle: Information Matrices for 'lmeStruct' and 'glsStruct' Objects
 image: featured.jpg
-authors:
+author:
 - James E. Pustejovsky
 - Man Chen
 date: '2020-04-24T00:00:00Z'

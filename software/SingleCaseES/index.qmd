@@ -4,9 +4,11 @@ ltitle: singlecasees
 subtitle: Single-case design effect size calculator
 image: featured.png
 header_image: Romaniuk-wide.png
-authors:
+author:
 - James E. Pustejovsky
+- Man Chen
 - Daniel M. Swan
+- Paulina Grekov
 date: '2016-04-27T00:00:00Z'
 categories:
 - effect size

@@ -1,12 +1,13 @@
+https://meghan.rbind.io/blog/2024-02-11-moving-to-quarto/
+https://github.com/jmgirard/affcomlab/blob/main/ejs/article.ejs
+https://github.com/andrewheiss/ath-quarto/blob/main/html/talks/listing.ejs
+
 - Style publications listing page
 - Style working papers listing page
 - Style software listing page
+- Style talk listing page
 
 - remove 'admin' from posts
-
-- Use templates
-  - software
-    - convert icons to fa-icons
 
 - Add RSS feed for papers
 
@@ -14,3 +15,5 @@
 - Check for dead links
 - Create redirects
 - Publish on netlify
+
+- Create a template for software pages

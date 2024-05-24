@@ -4,7 +4,7 @@ ltitle: simhelpers
 subtitle: Helper package to assist in running simulation studies
 image: featured.png
 header_image: TiptonPusto2015.png
-authors:
+author:
 - Megha Joshi
 - James E. Pustejovsky
 date: '2020-03-31T00:00:00Z'

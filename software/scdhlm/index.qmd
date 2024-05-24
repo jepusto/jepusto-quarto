@@ -4,8 +4,10 @@ ltitle: scdhlm
 subtitle: Between-case SMD for single-case designs
 image: featured.png
 header_image: Rodriguez.png
-authors: 
+author: 
  - James E. Pustejovsky
+ - Man Chen
+ - Bethany H. Bhat
 date: '2016-04-27T00:00:00Z'
 categories:
 - design-comparable SMD

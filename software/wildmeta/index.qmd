@@ -5,10 +5,9 @@ subtitle: Cluster-wild bootstrap for meta-regression
 image: featured.jpg
 header_image: bootstrap-F.png
 header_caption: Bootstrap distribution of Naive F statistics under the null hypothesis.
-authors:
+author:
 - Megha Joshi
 - James E. Pustejovsky
-- Sangdon Lim
 - Pierce Cappelli
 date: '2016-04-27T00:00:00Z'
 categories:
