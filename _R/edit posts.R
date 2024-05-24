@@ -12,7 +12,7 @@ get_yaml_vars <- function(unit, source_dir, just_names = TRUE) {
   }
 }
 
-source_dir <- "publication"
+source_dir <- "posts"
 
 yaml_vals <- 
   tibble(
@@ -21,20 +21,15 @@ yaml_vals <-
   filter(str_detect(unit, "^\\_", negate = TRUE)) %>%
   mutate(
     yamls = lapply(unit, get_yaml_vars, source_dir = source_dir, just_names = FALSE),
-    icons = lapply(yamls, \(x) tibble(icon = lapply(x$links, \(y) y$icon))),
-    n = sapply(icons, nrow)
+    yaml_names = lapply(yamls, \(x) tibble(token = names(x)))
   )
 
-icons <- 
-  yaml_vals %>%
-  filter(n > 0L) %>%
+yaml_vals %>%
   select(-yamls) %>%
-  unnest(icons) %>%
-  unnest(icon)
-
-icons %>%
-  count(icon)
-
+  unnest(yaml_names) %>%
+  mutate(X = "X") %>%
+  pivot_wider(names_from = token, values_from = X) %>%
+  filter(author == "X")
 
 edit_publication <- function(file) {
   

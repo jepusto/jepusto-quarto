@@ -2,12 +2,11 @@ https://meghan.rbind.io/blog/2024-02-11-moving-to-quarto/
 https://github.com/jmgirard/affcomlab/blob/main/ejs/article.ejs
 https://github.com/andrewheiss/ath-quarto/blob/main/html/talks/listing.ejs
 
-- Style publications listing page
-- Style working papers listing page
-- Style software listing page
-- Style talk listing page
-
-- remove 'admin' from posts
+- Style listing pages
+  - publications
+  - working papers
+  - software
+  - presentations
 
 - Add RSS feed for papers
 
