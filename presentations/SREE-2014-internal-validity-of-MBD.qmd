@@ -8,7 +8,7 @@ event: Society for Research on Educational Effectiveness Conference
 event_short: SREE 2014
 location: Washington, DC
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Pustejovsky-SREE-2014.pdf
 

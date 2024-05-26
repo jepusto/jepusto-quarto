@@ -8,7 +8,7 @@ event: Institute of Education Sciences 2016 Principal Investigators Meeting
 event_short: IES 2016
 location: Washington, DC
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Single-case-methods-IES-PI-meeting-2016.pdf
 

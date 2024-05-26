@@ -8,7 +8,7 @@ event: American Educational Research Association annual convention
 event_short: AERA 2019
 location: Toronto, Ontario
 links:
-- fa-icon: file
+- faicon: file
   text: PDF
   url: /files/AERA-2019-poster-response-guided-algorithms.pdf
 ---

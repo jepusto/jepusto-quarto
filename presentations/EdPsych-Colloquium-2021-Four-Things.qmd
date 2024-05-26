@@ -8,7 +8,7 @@ event: Educational Psychology PIE Colloquium
 event_short: EdPsych PIE
 location: Educational Sciences 259
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/EdPsych-Department-Colloquium-Four-Things.pdf
 

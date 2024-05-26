@@ -8,7 +8,7 @@ event: American Educational Research Association annual convention
 event_short: AERA 2018
 location: New York, NY
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Dependent-effects-AERA-2018.pdf
 

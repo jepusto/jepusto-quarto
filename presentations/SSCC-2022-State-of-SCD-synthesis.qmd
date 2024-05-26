@@ -8,7 +8,7 @@ event: Spencer Single Case Conference
 event_short: SSCC
 location: Vanderbilt University, Nashville, TN
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/SSCC-2022-State-of-SCD-synthesis.pdf
 

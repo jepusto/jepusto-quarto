@@ -12,17 +12,11 @@ format:
 listing:
     sort: 
       - "date desc"
-      - "title"
-    type: table
+    type: custom
+    template: ../_ejs/presentation.ejs
     categories: false
     sort-ui: false
     filter-ui: true
     max-items: 1000
     page-size: 100
-    fields: [date, title, event_short, location]
-    field-display-names:
-      date: "Date"
-      title: "Title"
-      event_short: "Event"
-      location: "Location"
 ---

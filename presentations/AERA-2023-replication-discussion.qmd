@@ -10,7 +10,7 @@ event_short: AERA 2023
 event_url: https://www.aera.net/Events-Meetings/Annual-Meeting/2023-Annual-Meeting
 location: Chicago, IL
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/AERA-2023-Replication-discussion.pdf
 

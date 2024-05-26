@@ -10,10 +10,10 @@ event_short: SIPS 2021
 event_url: https://www.improvingpsych.org/SIPS2021/
 location: online
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: https://osf.io/3mp6s/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/nwz3x/
 

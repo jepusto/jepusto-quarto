@@ -8,7 +8,7 @@ event: Stanford Quantitative Sciences Unit Research Methods Seminar
 event_short: Stanford QSU
 location: online
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Stanford-QSU-2022-02-08.pdf
 

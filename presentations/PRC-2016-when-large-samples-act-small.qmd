@@ -9,7 +9,7 @@ event: Population Research Center colloquium
 event_short: PRC colloquium
 location: Austin, TX
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/PRC_talk_20160219.pdf
 

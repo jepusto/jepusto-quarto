@@ -8,7 +8,7 @@ event: Institute of Education Sciences 2018 Principal Investigators Meeting
 event_short: IES 2018 PI Meeting
 location: Washington, DC
 links:
-- fa-icon: file
+- faicon: file
   text: PDF
   url: /files/Gradual-effects-model-poster-IES-2018-01-10.pdf
 

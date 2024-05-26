@@ -9,7 +9,7 @@ event: Small is Beautiful {Once More}
 event_short: SmallisBeautiful2023
 location: online
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Small-is-Beautiful-2023-Calculating-Effect-Sizes-for-Single-Case-Research.pdf
 

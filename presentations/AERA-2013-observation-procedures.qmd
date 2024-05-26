@@ -9,7 +9,7 @@ event: American Educational Research Association annual convention
 event_short: AERA 2013
 location: San Francisco, CA
 links:
-- fa-icon: file
+- faicon: file
   text: PDF
   url: /files/aera-2013-poster-recording-methods-dtmcs.pdf
 

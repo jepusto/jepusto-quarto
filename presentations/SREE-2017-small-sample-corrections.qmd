@@ -9,7 +9,7 @@ event: Society for Research on Educational Effectiveness Conference
 event_short: SREE 2017
 location: Washington, DC
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/CRVE-SREE-20170302.pdf
 

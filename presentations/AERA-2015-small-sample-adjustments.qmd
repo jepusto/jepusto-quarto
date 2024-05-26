@@ -8,10 +8,10 @@ event: American Educational Research Association annual convention
 event_short: AERA 2015
 location: Chicago, IL
 links:
-- fa-icon: file
+- faicon: file
   text: PDF
   url: /files/Tipton-Pustejovsky-In-Review.pdf
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/AERA-2015-RVE-F-tests.html
 

@@ -8,7 +8,7 @@ event: Society for Research Synthesis Methodology annual meeting
 event_short: SRSM 2018
 location: Bristol, UK
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/Combining-RVE-with-models-SRSM-2018.pdf
 

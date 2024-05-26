@@ -9,7 +9,7 @@ event: American Institutes for Research Impact Working Group Lecture Series
 event_short: AIR working group lecture series
 location: Austin, TX
 links:
-- fa-icon: person-chalkboard
+- faicon: person-chalkboard
   text: Slides
   url: /files/CRVE-AIR-20160715.pdf
 
