@@ -20,8 +20,8 @@ links:
   url: /files/Measuerment-comparable-ES-Appendix.pdf
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000019
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: /files/Measurement-comparable-ES.pdf
 

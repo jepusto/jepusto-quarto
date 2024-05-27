@@ -18,10 +18,10 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000538
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/s7hr3/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/f9mr2
 

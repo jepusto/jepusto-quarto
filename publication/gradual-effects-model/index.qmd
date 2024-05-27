@@ -20,14 +20,14 @@ links:
   url: https://osf.io/uzkq6/
 - text: R package
   url: https://CRAN.R-project.org/package=SingleCaseES
-  fa-icon: gift
+  faicon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/gem-scd/
-  fa-icon: tablet-screen-button
+  faicon: tablet-screen-button
 - text: Journal
   url: https://doi.org/10.1080/00273171.2018.1466681
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/vh964/
 

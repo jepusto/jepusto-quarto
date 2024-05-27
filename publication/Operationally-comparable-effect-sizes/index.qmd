@@ -17,7 +17,7 @@ categories:
 links:
 - text: Synopsis
   url: /files/Pustejovsky-2013-synopsis.pdf
-- fa-icon: file
+- faicon: file
   text: PDF
   url: /files/Pustejovsky-2013-Thesis.pdf
 

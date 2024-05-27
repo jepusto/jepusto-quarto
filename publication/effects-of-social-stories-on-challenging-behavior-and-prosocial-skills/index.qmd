@@ -19,14 +19,14 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1177/0271121419855692
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/fch6t/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/m3afs/
-- fa-icon: table
+- faicon: table
   text: Data
   url: https://osf.io/hk7fn/
 

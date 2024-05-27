@@ -1,0 +1,41 @@
+```{=html}
+<div class="publications">
+  <% for (const item of items) { %>
+  <div class="publication-entry">
+    <div class="metadata">          
+      <p class="date"><%= item.date %></p>
+    </div>
+    <div class="body">
+      <p class="title">
+        <a href="<%= item.path %>"><%= item.title %></a>
+      </p>
+      <% if (item.author) { %>
+      <p class="authors"><%= item.author %></p>
+      <% } %>
+      <p class="citation">
+        <% if (item.publication) { %>
+          <em><%= item.publication %>,</em>
+            <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %>
+            <% if (item.pages) { %>
+              <%= item.pages %>.
+            <% } %>
+          <% } %>
+        <% } %>
+      </p>
+      <% if (item.links) { %>
+        <ul class="publication-links">
+          <% for (const link of item.links) { %>
+            <li class="publication-link btn btn-outline-primary">
+              <a href="<%= link.url %>">
+                <i class="fa-solid fa-<%= link.faicon %>" aria-label="<%= link.faicon %>"></i>
+                <%= link.text %>
+              </a>
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
+    </div>
+  </div>
+  <% } %>
+</div>
+```

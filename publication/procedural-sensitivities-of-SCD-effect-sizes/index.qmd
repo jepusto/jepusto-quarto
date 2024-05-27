@@ -22,8 +22,8 @@ links:
   url: https://osf.io/hkzsm/
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000179
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/vxa86
 

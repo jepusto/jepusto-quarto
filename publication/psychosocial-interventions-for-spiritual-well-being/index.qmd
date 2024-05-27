@@ -23,7 +23,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/pon.5562
-  fa-icon: newspaper
+  faicon: newspaper
 
 ---
 

@@ -23,8 +23,8 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/pon.5148
-  fa-icon: newspaper
-- fa-icon: table
+  faicon: newspaper
+- faicon: table
   text: Data
   url: https://curate.nd.edu/show/jw827943c2d
 

@@ -19,10 +19,10 @@ image: Forest plots of LRRi estimates for peer and focal participants
 links:
 - text: Journal
   url: https://doi.org/10.1177/1098300720983521
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/m263p/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://osf.io/u7cph/
 

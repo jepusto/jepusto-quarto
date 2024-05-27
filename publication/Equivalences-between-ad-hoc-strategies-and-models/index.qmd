@@ -7,8 +7,6 @@ date: 2024-03-07T00:00:00
 publish_date: 2024-03-07T00:00:00
 publication_type: Journal article
 publication: Journal of Educational and Behavioral Statistics
-volume: 
-issue: 
 pages: advance online publication
 categories:
 - meta-analysis
@@ -18,16 +16,16 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.3102/10769986241232524
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/9u52e/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/pw54r/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/9u52e/
-- fa-icon: table
+- faicon: table
   text: Data
   url: https://osf.io/9u52e/
 

@@ -18,13 +18,13 @@ categories:
 links:
 - text: Journal
   url: https://dx.doi.org/10.1002/jrsm.1052
-  fa-icon: newspaper
+  faicon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
-  fa-icon: gift
+  faicon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
-  fa-icon: tablet-screen-button
+  faicon: tablet-screen-button
 
 ---
 

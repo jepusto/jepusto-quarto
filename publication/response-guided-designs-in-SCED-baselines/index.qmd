@@ -19,8 +19,8 @@ image: Cumulative percentage of stable baselines at a given number of observatio
 links:
 - text: Journal
   url: https://doi.org/10.1080/17489539.2020.1739048
-  fa-icon: newspaper
-- fa-icon: code
+  faicon: newspaper
+- faicon: code
   text: Code
   url: https://osf.io/f8bmu/
 

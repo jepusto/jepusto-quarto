@@ -53,3 +53,13 @@ tibble(
 ) %>%
   pull(unit) %>%
   walk(edit_publication)
+
+
+edit_icon_yaml <- function(x) {
+  read_lines(x) |>
+    str_replace(pattern = "fa-icon:", replacement = "faicon:") |>
+    write_lines(file = x)
+}
+
+list.files("publication", pattern = "index.qmd$", recursive = TRUE, full.names = TRUE) |>
+  walk(.f = edit_icon_yaml)

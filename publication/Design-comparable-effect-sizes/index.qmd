@@ -21,14 +21,14 @@ links:
   url: /files/Effect-sizes-in-multiple-baseline-designs-Simulation-results.pdf
 - text: Journal
   url: https://doi.org/10.3102/1076998614547577
-  fa-icon: newspaper
+  faicon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
-  fa-icon: gift
+  faicon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
-  fa-icon: tablet-screen-button
-- fa-icon: lock-open
+  faicon: tablet-screen-button
+- faicon: lock-open
   text: Pre-Print
   url: /files/Effect-sizes-in-multiple-baseline-designs-JEBS.pdf
 

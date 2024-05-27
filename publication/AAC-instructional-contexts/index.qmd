@@ -27,14 +27,14 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1007/s40489-022-00314-w
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: https://edarxiv.org/xhqb3/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/2j5ay/
-- fa-icon: table
+- faicon: table
   text: Data
   url: https://osf.io/b5ydr/
 

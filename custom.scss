@@ -34,11 +34,11 @@ a:link, a:visited, a:hover, a:active {
         column-gap: 1em;
 
         .body {
-            flex: 1 0 90%;
+            flex: 1 0 85%;
         }
 
         .metadata {
-            flex: 1 0 10%;
+            flex: 1 0 15%;
         }
 
         .title {
@@ -67,7 +67,64 @@ a:link, a:visited, a:hover, a:active {
             .talk-link {
                 white-space: nowrap;
                 margin: 0;
-                padding: 0.25em 0.25em 0.25em 0.25em;
+                padding: 0.0em .5em 0.0em 0.5em;
+                font-size: 0.6em;
+            }
+        }
+    }
+}
+
+
+.publications {
+    .publication-entry {
+        display: flex;
+        flex-direction: row;
+        font-family: $headings-font-family;
+        line-height: 1.3;
+        margin-bottom: 1.5em;
+        column-gap: 1em;
+
+        .body {
+            flex: 1 0 85%;
+        }
+
+        .metadata {
+            flex: 1 0 15%;
+        }
+
+       .title {
+            font-weight: 500;
+            font-size: 1em;
+            margin-bottom: 0.2em;
+            line-height: 1.2;
+        }
+        
+        .authors {
+            font-weight: 300;
+            font-size: 0.8em;
+            margin-bottom: 0.3em;
+        }
+        
+        .citation {
+            font-weight: 300;
+            font-size: 0.8em;
+            margin-bottom: 0.3em;
+        }
+        
+        .date {
+            font-weight: 300;
+            font-size: 0.8em;
+            text-align: right;
+        }
+
+        ul.publication-links {
+            padding: 0 0.5em;
+            margin-bottom: 0;
+
+            .publication-link {
+                white-space: nowrap;
+                margin: 0;
+                padding: 0.0em .5em 0.0em 0.5em;
                 font-size: 0.6em;
             }
         }

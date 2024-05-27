@@ -23,13 +23,13 @@ image: Clustered multiple baseline design data from Bryant et al. (2018)
 links:
 - text: Journal
   url: https://doi.org/10.1016/j.jsp.2023.02.002
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/8eucf/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/3pk5q/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/8eucf/
 

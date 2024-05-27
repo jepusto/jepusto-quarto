@@ -21,8 +21,8 @@ links:
   url: https://osf.io/8ygts/
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517693320
-  fa-icon: newspaper
-- fa-icon: lock-open
+  faicon: newspaper
+- faicon: lock-open
   text: Pre-Print
   url: https://osf.io/hvuw5/
 

@@ -16,8 +16,8 @@ categories:
 links:
 - text: White paper
   url: https://www.greatertexasfoundation.org/wp-content/uploads/2021/08/Pustejovsky-White-Paper-2020-REVISED.pdf
-  fa-icon: newspaper
-- fa-icon: file
+  faicon: newspaper
+- faicon: file
   text: PDF
   url: files/TCMC-Eval-Yr-2.pdf
 

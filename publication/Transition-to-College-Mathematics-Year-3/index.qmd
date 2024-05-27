@@ -15,7 +15,7 @@ categories:
 - Transition to College Mathematics
 - heterogeneity
 links:
-- fa-icon: file
+- faicon: file
   text: PDF
   url: files/TCMC-Eval-Yr-3.pdf
 

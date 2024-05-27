@@ -22,7 +22,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1016/j.ridd.2018.02.001
-  fa-icon: newspaper
+  faicon: newspaper
 
 ---
 

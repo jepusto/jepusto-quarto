@@ -22,16 +22,16 @@ image: Forest Plot of TD-DLD Group Differences in Narrative Performance
 links:
 - text: Journal
   url: https://doi.org/10.1044/2022_JSLHR-22-00017
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/dgz7m/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://psyarxiv.com/bcky8/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/ybdx7/
-- fa-icon: table
+- faicon: table
   text: Data
   url: https://osf.io/ybdx7/
 

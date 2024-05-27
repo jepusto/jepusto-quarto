@@ -16,10 +16,10 @@ categories:
 links:
 - text: Supplementary materials
   url: https://osf.io/vpnmb/
-- fa-icon: lock-open
+- faicon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/3x2en
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/yurzh
 

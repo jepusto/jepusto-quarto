@@ -16,11 +16,11 @@ categories:
 links:
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
-  fa-icon: gift
+  faicon: gift
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
-  fa-icon: tablet-screen-button
-- fa-icon: file
+  faicon: tablet-screen-button
+- faicon: file
   text: PDF
   url: https://campbellcollaboration.org/library/effect-sizes-single-case-designs-campbell-discussion-paper-1.html
 ---

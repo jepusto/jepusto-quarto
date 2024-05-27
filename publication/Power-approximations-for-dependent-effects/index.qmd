@@ -21,16 +21,16 @@ image: Power difference between approximated and true (simulated) power versus a
 links:
 - text: Journal
   url: https://doi.org/10.3102/10769986221127379
-  fa-icon: newspaper
+  faicon: newspaper
 - text: Supplementary materials
   url: https://osf.io/q84dv/
 - text: R package
   url: https://mikkelvembye.github.io/POMADE/
-  fa-icon: gift
-- fa-icon: lock-open
+  faicon: gift
+- faicon: lock-open
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/6tp9y/
-- fa-icon: code
+- faicon: code
   text: Code
   url: https://osf.io/yhkq4/
 

@@ -29,7 +29,7 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1002/cncr.29353
-  fa-icon: newspaper
+  faicon: newspaper
 
 ---
 
