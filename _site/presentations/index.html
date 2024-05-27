@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-event_short','listing-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-author','listing-title','listing-date','listing-publish_date','listing-event','listing-event_short','listing-location','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-event_url',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-author","listing-title","listing-date","listing-publish_date","listing-event","listing-event_short","listing-location","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-event_url"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -234,761 +234,1244 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 <div class="listing-actions-group">
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Event
-</th>
-<th>
-Location
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1715956200000" data-listing-file-modified-sort="1716557524223" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258" data-listing-title-sort="Model-Building Considerations in Meta-Analysis of Dependent Effect Sizes" data-listing-filename-sort="VIVE-2024-Dependent-Effects.qmd">
-<td>
-<span class="listing-date">May 17, 2024</span>
-</td>
-<td>
-<a href="../presentations/VIVE-2024-Dependent-Effects.html" class="title listing-title">Model-Building Considerations in Meta-Analysis of Dependent Effect Sizes</a>
-</td>
-<td>
-<span class="listing-event_short">VIVE</span>
-</td>
-<td>
-<span class="listing-location">Copenhagen, Denmark</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-date-sort="1712953800000" data-listing-file-modified-sort="1716557522895" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Bayesian estimation of between-case standardized mean differences: A simulation study" data-listing-filename-sort="AERA-2024-Bayes-BCSMD.qmd">
-<td>
-<span class="listing-date">Apr 12, 2024</span>
-</td>
-<td>
-<a href="../presentations/AERA-2024-Bayes-BCSMD.html" class="title listing-title">Bayesian estimation of between-case standardized mean differences: A simulation study</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2024</span>
-</td>
-<td>
-<span class="listing-location">Philadelphia, PA</span>
-</td>
-</tr>
-<tr data-index="2" data-listing-date-sort="1696023000000" data-listing-file-modified-sort="1716557523964" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Discussion of Stabilizing measures to reconcile accuracy and equity in performance measurement" data-listing-filename-sort="SREE-2023-Stabilizing-performance-measures-discussion.qmd">
-<td>
-<span class="listing-date">Sep 29, 2023</span>
-</td>
-<td>
-<a href="../presentations/SREE-2023-Stabilizing-performance-measures-discussion.html" class="title listing-title">Discussion of Stabilizing measures to reconcile accuracy and equity in performance measurement</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2023</span>
-</td>
-<td>
-<span class="listing-location">Arlington, VA</span>
-</td>
-</tr>
-<tr data-index="3" data-listing-date-sort="1695849300000" data-listing-file-modified-sort="1716557523955" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="984" data-listing-title-sort="Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations" data-listing-filename-sort="SREE-2023-Equity-related-moderator-analysis.qmd">
-<td>
-<span class="listing-date">Sep 27, 2023</span>
-</td>
-<td>
-<a href="../presentations/SREE-2023-Equity-related-moderator-analysis.html" class="title listing-title">Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2023</span>
-</td>
-<td>
-<span class="listing-location">Arlington, VA</span>
-</td>
-</tr>
-<tr data-index="4" data-listing-date-sort="1684418400000" data-listing-file-modified-sort="1716557524235" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Determining the Timing of Phase Changes: Some Statistical Perspective" data-listing-filename-sort="WISCC-2023.qmd">
-<td>
-<span class="listing-date">May 18, 2023</span>
-</td>
-<td>
-<a href="../presentations/WISCC-2023.html" class="title listing-title">Determining the Timing of Phase Changes: Some Statistical Perspective</a>
-</td>
-<td>
-<span class="listing-event_short">WISCC2023</span>
-</td>
-<td>
-<span class="listing-location">Nashville, TN</span>
-</td>
-</tr>
-<tr data-index="5" data-listing-date-sort="1682524800000" data-listing-file-modified-sort="1716557523706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="272" data-listing-title-sort="Calculating Effect Sizes for Single-Case Research: An Introduction to the SingleCaseES and scdhlm Web Applications and R Packages" data-listing-filename-sort="Small-is-Beautiful-2023-workshop.qmd">
-<td>
-<span class="listing-date">Apr 26, 2023</span>
-</td>
-<td>
-<a href="../presentations/Small-is-Beautiful-2023-workshop.html" class="title listing-title">Calculating Effect Sizes for Single-Case Research: An Introduction to the SingleCaseES and scdhlm Web Applications and R Packages</a>
-</td>
-<td>
-<span class="listing-event_short">SmallisBeautiful2023</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="6" data-listing-date-sort="1682427600000" data-listing-file-modified-sort="1716557523692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190" data-listing-title-sort="Effect size measures for single-case research: Conceptual, practical, and statistical considerations" data-listing-filename-sort="Small-is-Beautiful-2023-keynote.qmd">
-<td>
-<span class="listing-date">Apr 25, 2023</span>
-</td>
-<td>
-<a href="../presentations/Small-is-Beautiful-2023-keynote.html" class="title listing-title">Effect size measures for single-case research: Conceptual, practical, and statistical considerations</a>
-</td>
-<td>
-<span class="listing-event_short">SmallisBeautiful2023</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="7" data-listing-date-sort="1681663200000" data-listing-file-modified-sort="1716557522832" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="119" data-listing-title-sort="Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions." data-listing-filename-sort="AERA-2023-BCSMD-benchmarks.qmd">
-<td>
-<span class="listing-date">Apr 16, 2023</span>
-</td>
-<td>
-<a href="../presentations/AERA-2023-BCSMD-benchmarks.html" class="title listing-title">Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions.</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2023</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="8" data-listing-date-sort="1681588200000" data-listing-file-modified-sort="1716557522855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic Replication of Results.’" data-listing-filename-sort="AERA-2023-replication-discussion.qmd">
-<td>
-<span class="listing-date">Apr 15, 2023</span>
-</td>
-<td>
-<a href="../presentations/AERA-2023-replication-discussion.html" class="title listing-title">Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic Replication of Results.’</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2023</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="9" data-listing-date-sort="1680181200000" data-listing-file-modified-sort="1716557523080" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196" data-listing-title-sort="Clustered bootstrapping for selective reporting models in meta-analysis with dependent effects" data-listing-filename-sort="ESMARConf2023-clustered-bootstrap-selection-model.qmd">
-<td>
-<span class="listing-date">Mar 30, 2023</span>
-</td>
-<td>
-<a href="../presentations/ESMARConf2023-clustered-bootstrap-selection-model.html" class="title listing-title">Clustered bootstrapping for selective reporting models in meta-analysis with dependent effects</a>
-</td>
-<td>
-<span class="listing-event_short">ESMARConf2023</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="10" data-listing-date-sort="1658346600000" data-listing-file-modified-sort="1716557524022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="A matter of emphasis: Comparison of working models for meta-analysis of dependent effect sizes" data-listing-filename-sort="SRSM-2022-matter-of-emphasis.qmd">
-<td>
-<span class="listing-date">Jul 20, 2022</span>
-</td>
-<td>
-<a href="../presentations/SRSM-2022-matter-of-emphasis.html" class="title listing-title">A matter of emphasis: Comparison of working models for meta-analysis of dependent effect sizes</a>
-</td>
-<td>
-<span class="listing-event_short">SRSM 2022</span>
-</td>
-<td>
-<span class="listing-location">Portland, OR (and online)</span>
-</td>
-</tr>
-<tr data-index="11" data-listing-date-sort="1652983200000" data-listing-file-modified-sort="1716557524039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="The state of single case synthesis: Premises, tools, and possibilities" data-listing-filename-sort="SSCC-2022-State-of-SCD-synthesis.qmd">
-<td>
-<span class="listing-date">May 19, 2022</span>
-</td>
-<td>
-<a href="../presentations/SSCC-2022-State-of-SCD-synthesis.html" class="title listing-title">The state of single case synthesis: Premises, tools, and possibilities</a>
-</td>
-<td>
-<span class="listing-event_short">SSCC</span>
-</td>
-<td>
-<span class="listing-location">Vanderbilt University, Nashville, TN</span>
-</td>
-</tr>
-<tr data-index="12" data-listing-date-sort="1644364800000" data-listing-file-modified-sort="1716557524055" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259" data-listing-title-sort="Selective reporting in meta-analysis of dependent effect size estimates" data-listing-filename-sort="Stanford-QSU-2022-selective-reporting.qmd">
-<td>
-<span class="listing-date">Feb 8, 2022</span>
-</td>
-<td>
-<a href="../presentations/Stanford-QSU-2022-selective-reporting.html" class="title listing-title">Selective reporting in meta-analysis of dependent effect size estimates</a>
-</td>
-<td>
-<span class="listing-event_short">Stanford QSU</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="13" data-listing-date-sort="1643904000000" data-listing-file-modified-sort="1716557523471" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="181" data-listing-title-sort="Easy, cluster-robust standard errors with the clubSandwich package" data-listing-filename-sort="OsloRUG-2022-clubSandwich.qmd">
-<td>
-<span class="listing-date">Feb 3, 2022</span>
-</td>
-<td>
-<a href="../presentations/OsloRUG-2022-clubSandwich.html" class="title listing-title">Easy, cluster-robust standard errors with the clubSandwich package</a>
-</td>
-<td>
-<span class="listing-event_short">OsloRUG</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="14" data-listing-date-sort="1632754800000" data-listing-file-modified-sort="1716557522939" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123" data-listing-title-sort="Four things every quantitative social scientist should know about meta-analysis" data-listing-filename-sort="EdPsych-Colloquium-2021-Four-Things.qmd">
-<td>
-<span class="listing-date">Sep 27, 2021</span>
-</td>
-<td>
-<a href="../presentations/EdPsych-Colloquium-2021-Four-Things.html" class="title listing-title">Four things every quantitative social scientist should know about meta-analysis</a>
-</td>
-<td>
-<span class="listing-event_short">EdPsych PIE</span>
-</td>
-<td>
-<span class="listing-location">Educational Sciences 259</span>
-</td>
-</tr>
-<tr data-index="15" data-listing-date-sort="1630594800000" data-listing-file-modified-sort="1716557523217" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="77" data-listing-title-sort="Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich" data-listing-filename-sort="OsloRUG-2021-RVE-with-metafor-and-clubSandwich.qmd">
-<td>
-<span class="listing-date">Sep 2, 2021</span>
-</td>
-<td>
-<a href="../presentations/OsloRUG-2021-RVE-with-metafor-and-clubSandwich.html" class="title listing-title">Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich</a>
-</td>
-<td>
-<span class="listing-event_short">OsloRUG</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="16" data-listing-date-sort="1624469400000" data-listing-file-modified-sort="1716557523506" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="173" data-listing-title-sort="Statistical frontiers for selective reporting and publication bias" data-listing-filename-sort="SIPS-2021-statistical-frontiers-for-selective-reporting.qmd">
-<td>
-<span class="listing-date">Jun 23, 2021</span>
-</td>
-<td>
-<a href="../presentations/SIPS-2021-statistical-frontiers-for-selective-reporting.html" class="title listing-title">Statistical frontiers for selective reporting and publication bias</a>
-</td>
-<td>
-<span class="listing-event_short">SIPS 2021</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="17" data-listing-date-sort="1611241200000" data-listing-file-modified-sort="1716557522954" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="117" data-listing-title-sort="Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich" data-listing-filename-sort="ESMARConf2021-RVE-with-metafor-and-clubSandwich.qmd">
-<td>
-<span class="listing-date">Jan 21, 2021</span>
-</td>
-<td>
-<a href="../presentations/ESMARConf2021-RVE-with-metafor-and-clubSandwich.html" class="title listing-title">Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</a>
-</td>
-<td>
-<span class="listing-event_short">ESMARConf2021</span>
-</td>
-<td>
-<span class="listing-location">online</span>
-</td>
-</tr>
-<tr data-index="18" data-listing-date-sort="1563820200000" data-listing-file-modified-sort="1716557524009" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="A generalized excess significance test for selective outcome reporting with dependent effect sizes" data-listing-filename-sort="SRSM-2019-generalized-excess-significance-test.qmd">
-<td>
-<span class="listing-date">Jul 22, 2019</span>
-</td>
-<td>
-<a href="../presentations/SRSM-2019-generalized-excess-significance-test.html" class="title listing-title">A generalized excess significance test for selective outcome reporting with dependent effect sizes</a>
-</td>
-<td>
-<span class="listing-event_short">SRSM 2019</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="19" data-listing-date-sort="1558908000000" data-listing-file-modified-sort="1716580286279" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Log response ratio effect sizes: Rationale and methods for single case designs with behavioral outcomes" data-listing-filename-sort="ABAI-2019-log-response-ratios.qmd">
-<td>
-<span class="listing-date">May 26, 2019</span>
-</td>
-<td>
-<a href="../presentations/ABAI-2019-log-response-ratios.html" class="title listing-title">Log response ratio effect sizes: Rationale and methods for single case designs with behavioral outcomes</a>
-</td>
-<td>
-<span class="listing-event_short">ABAI 2019</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="20" data-listing-date-sort="1554699600000" data-listing-file-modified-sort="1716557522566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Evaluating meta-analytic methods to detect outcome reporting bias in the presence of dependent effect sizes" data-listing-filename-sort="AERA-2019-ORB-dependence.qmd">
-<td>
-<span class="listing-date">Apr 8, 2019</span>
-</td>
-<td>
-<a href="../presentations/AERA-2019-ORB-dependence.html" class="title listing-title">Evaluating meta-analytic methods to detect outcome reporting bias in the presence of dependent effect sizes</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2019</span>
-</td>
-<td>
-<span class="listing-location">Toronto, Ontario</span>
-</td>
-</tr>
-<tr data-index="21" data-listing-date-sort="1554613200000" data-listing-file-modified-sort="1716557522566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="An examination of measurement procedures and baseline behavioral outcomes in single-case research" data-listing-filename-sort="AERA-2019-outcome-measurement-procedures.qmd">
-<td>
-<span class="listing-date">Apr 7, 2019</span>
-</td>
-<td>
-<a href="../presentations/AERA-2019-outcome-measurement-procedures.html" class="title listing-title">An examination of measurement procedures and baseline behavioral outcomes in single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2019</span>
-</td>
-<td>
-<span class="listing-location">Toronto, Ontario</span>
-</td>
-</tr>
-<tr data-index="22" data-listing-date-sort="1554613200000" data-listing-file-modified-sort="1716557522582" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="The impact of response-guided designs on count outcomes in single-case design baselines" data-listing-filename-sort="AERA-2019-response-guided-algorithms.qmd">
-<td>
-<span class="listing-date">Apr 7, 2019</span>
-</td>
-<td>
-<a href="../presentations/AERA-2019-response-guided-algorithms.html" class="title listing-title">The impact of response-guided designs on count outcomes in single-case design baselines</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2019</span>
-</td>
-<td>
-<span class="listing-location">Toronto, Ontario</span>
-</td>
-</tr>
-<tr data-index="23" data-listing-date-sort="1552024800000" data-listing-file-modified-sort="1716557523938" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small-sample cluster-robust variance estimators for two-stage least squares models" data-listing-filename-sort="SREE-2019-2SLS-CRVE.qmd">
-<td>
-<span class="listing-date">Mar 8, 2019</span>
-</td>
-<td>
-<a href="../presentations/SREE-2019-2SLS-CRVE.html" class="title listing-title">Small-sample cluster-robust variance estimators for two-stage least squares models</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2019</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="24" data-listing-date-sort="1538413200000" data-listing-file-modified-sort="1716557524209" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Combining robust variance estimation with models for dependent effect sizes" data-listing-filename-sort="UTAustin-2018-combining-RVE-with-models.qmd">
-<td>
-<span class="listing-date">Oct 1, 2018</span>
-</td>
-<td>
-<a href="../presentations/UTAustin-2018-combining-RVE-with-models.html" class="title listing-title">Combining robust variance estimation with models for dependent effect sizes</a>
-</td>
-<td>
-<span class="listing-event_short">UT Psych</span>
-</td>
-<td>
-<span class="listing-location">Austin, TX</span>
-</td>
-</tr>
-<tr data-index="25" data-listing-date-sort="1531922400000" data-listing-file-modified-sort="1716557523997" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Combining robust variance estimation with models for dependent effect sizes" data-listing-filename-sort="SRSM-2018-combining-RVE-with-models.qmd">
-<td>
-<span class="listing-date">Jul 18, 2018</span>
-</td>
-<td>
-<a href="../presentations/SRSM-2018-combining-RVE-with-models.html" class="title listing-title">Combining robust variance estimation with models for dependent effect sizes</a>
-</td>
-<td>
-<span class="listing-event_short">SRSM 2018</span>
-</td>
-<td>
-<span class="listing-location">Bristol, UK</span>
-</td>
-</tr>
-<tr data-index="26" data-listing-date-sort="1523798100000" data-listing-file-modified-sort="1716557522545" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Meta-analysis of dependent effects: A review and consolidation of methods" data-listing-filename-sort="AERA-2018-dependent-effects.qmd">
-<td>
-<span class="listing-date">Apr 15, 2018</span>
-</td>
-<td>
-<a href="../presentations/AERA-2018-dependent-effects.html" class="title listing-title">Meta-analysis of dependent effects: A review and consolidation of methods</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2018</span>
-</td>
-<td>
-<span class="listing-location">New York, NY</span>
-</td>
-</tr>
-<tr data-index="27" data-listing-date-sort="1523798100000" data-listing-file-modified-sort="1716557522555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Meta-analysis of single-case research: A brief and breezy tour" data-listing-filename-sort="AERA-2018-meta-analysis-of-single-case-research.qmd">
-<td>
-<span class="listing-date">Apr 15, 2018</span>
-</td>
-<td>
-<a href="../presentations/AERA-2018-meta-analysis-of-single-case-research.html" class="title listing-title">Meta-analysis of single-case research: A brief and breezy tour</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2018</span>
-</td>
-<td>
-<span class="listing-location">New York, NY</span>
-</td>
-</tr>
-<tr data-index="28" data-listing-date-sort="1515593700000" data-listing-file-modified-sort="1716557523101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="A gradual effects model for single case designs" data-listing-filename-sort="IES-2018-gradual-effects-model.qmd">
-<td>
-<span class="listing-date">Jan 10, 2018</span>
-</td>
-<td>
-<a href="../presentations/IES-2018-gradual-effects-model.html" class="title listing-title">A gradual effects model for single case designs</a>
-</td>
-<td>
-<span class="listing-event_short">IES 2018 PI Meeting</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="29" data-listing-date-sort="1515593700000" data-listing-file-modified-sort="1716557523113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Randomization inference for single-case experimental designs" data-listing-filename-sort="IES-2018-randomization-inference.qmd">
-<td>
-<span class="listing-date">Jan 10, 2018</span>
-</td>
-<td>
-<a href="../presentations/IES-2018-randomization-inference.html" class="title listing-title">Randomization inference for single-case experimental designs</a>
-</td>
-<td>
-<span class="listing-event_short">IES 2018 PI Meeting</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="30" data-listing-date-sort="1493528400000" data-listing-file-modified-sort="1716557522511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Heteroskedasticity-robust tests in linear regression: A review and evaluation of small-sample corrections" data-listing-filename-sort="AERA-2017-HC-t-tests.qmd">
-<td>
-<span class="listing-date">Apr 30, 2017</span>
-</td>
-<td>
-<a href="../presentations/AERA-2017-HC-t-tests.html" class="title listing-title">Heteroskedasticity-robust tests in linear regression: A review and evaluation of small-sample corrections</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2017</span>
-</td>
-<td>
-<span class="listing-location">San Antonio, TX</span>
-</td>
-</tr>
-<tr data-index="31" data-listing-date-sort="1493355600000" data-listing-file-modified-sort="1716557522522" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="A nonlinear intervention analysis model for treatment reversal single-case designs" data-listing-filename-sort="AERA-2017-intervention-analysis.qmd">
-<td>
-<span class="listing-date">Apr 28, 2017</span>
-</td>
-<td>
-<a href="../presentations/AERA-2017-intervention-analysis.html" class="title listing-title">A nonlinear intervention analysis model for treatment reversal single-case designs</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2017</span>
-</td>
-<td>
-<span class="listing-location">San Antonio, TX</span>
-</td>
-</tr>
-<tr data-index="32" data-listing-date-sort="1493355600000" data-listing-file-modified-sort="1716557522532" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Using response ratios for meta-analyzing single-case designs with behavioral outcomes" data-listing-filename-sort="AERA-2017-response-ratios.qmd">
-<td>
-<span class="listing-date">Apr 28, 2017</span>
-</td>
-<td>
-<a href="../presentations/AERA-2017-response-ratios.html" class="title listing-title">Using response ratios for meta-analyzing single-case designs with behavioral outcomes</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2017</span>
-</td>
-<td>
-<span class="listing-location">San Antonio, TX</span>
-</td>
-</tr>
-<tr data-index="33" data-listing-date-sort="1488434400000" data-listing-file-modified-sort="1716557523795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small sample corrections for use of cluster-robust standard errors in the analysis of school-based experiments" data-listing-filename-sort="SREE-2017-small-sample-corrections.qmd">
-<td>
-<span class="listing-date">Mar 2, 2017</span>
-</td>
-<td>
-<a href="../presentations/SREE-2017-small-sample-corrections.html" class="title listing-title">Small sample corrections for use of cluster-robust standard errors in the analysis of school-based experiments</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2017</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="34" data-listing-date-sort="1482127200000" data-listing-file-modified-sort="1716557523091" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Effect sizes for single-case research" data-listing-filename-sort="IES-2016-single-case-effect-sizes.qmd">
-<td>
-<span class="listing-date">Dec 19, 2016</span>
-</td>
-<td>
-<a href="../presentations/IES-2016-single-case-effect-sizes.html" class="title listing-title">Effect sizes for single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">IES 2016</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="35" data-listing-date-sort="1469941200000" data-listing-file-modified-sort="1716557523184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small-sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models" data-listing-filename-sort="JSM-2016-small-sample-CRVE.qmd">
-<td>
-<span class="listing-date">Jul 31, 2016</span>
-</td>
-<td>
-<a href="../presentations/JSM-2016-small-sample-CRVE.html" class="title listing-title">Small-sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</a>
-</td>
-<td>
-<span class="listing-event_short">JSM 2016</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="36" data-listing-date-sort="1468818000000" data-listing-file-modified-sort="1716557522915" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="When large samples act small: The importance of small-sample adjustments for cluster-robust inference in impact evaluations" data-listing-filename-sort="AIR-2016-when-large-samples-act-small.qmd">
-<td>
-<span class="listing-date">Jul 18, 2016</span>
-</td>
-<td>
-<a href="../presentations/AIR-2016-when-large-samples-act-small.html" class="title listing-title">When large samples act small: The importance of small-sample adjustments for cluster-robust inference in impact evaluations</a>
-</td>
-<td>
-<span class="listing-event_short">AIR working group lecture series</span>
-</td>
-<td>
-<span class="listing-location">Austin, TX</span>
-</td>
-</tr>
-<tr data-index="37" data-listing-date-sort="1455861600000" data-listing-file-modified-sort="1716557523484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="When large samples act small: Cluster-robust variance estimation and hypothesis testing with few clusters" data-listing-filename-sort="PRC-2016-when-large-samples-act-small.qmd">
-<td>
-<span class="listing-date">Feb 19, 2016</span>
-</td>
-<td>
-<a href="../presentations/PRC-2016-when-large-samples-act-small.html" class="title listing-title">When large samples act small: Cluster-robust variance estimation and hypothesis testing with few clusters</a>
-</td>
-<td>
-<span class="listing-event_short">PRC colloquium</span>
-</td>
-<td>
-<span class="listing-location">Austin, TX</span>
-</td>
-</tr>
-<tr data-index="38" data-listing-date-sort="1436331600000" data-listing-file-modified-sort="1716557523988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small-sample adjustments for multiple-contrast hypothesis tests of meta-regressions using robust variance estimation" data-listing-filename-sort="SRSM-2015-small-sample-adjustments.qmd">
-<td>
-<span class="listing-date">Jul 8, 2015</span>
-</td>
-<td>
-<a href="../presentations/SRSM-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for multiple-contrast hypothesis tests of meta-regressions using robust variance estimation</a>
-</td>
-<td>
-<span class="listing-event_short">SRSM 2015</span>
-</td>
-<td>
-<span class="listing-location">Nashville, TN</span>
-</td>
-</tr>
-<tr data-index="39" data-listing-date-sort="1429419600000" data-listing-file-modified-sort="1716557522486" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Operational sensitivities of non-overlap effect sizes for single-case experimental designs" data-listing-filename-sort="AERA-2015-operational-sensitivities.qmd">
-<td>
-<span class="listing-date">Apr 19, 2015</span>
-</td>
-<td>
-<a href="../presentations/AERA-2015-operational-sensitivities.html" class="title listing-title">Operational sensitivities of non-overlap effect sizes for single-case experimental designs</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2015</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="40" data-listing-date-sort="1429333200000" data-listing-file-modified-sort="1716557522499" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small-sample adjustments for F-tests using robust variance estimation in meta-regression" data-listing-filename-sort="AERA-2015-small-sample-adjustments.qmd">
-<td>
-<span class="listing-date">Apr 18, 2015</span>
-</td>
-<td>
-<a href="../presentations/AERA-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for F-tests using robust variance estimation in meta-regression</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2015</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="41" data-listing-date-sort="1429160400000" data-listing-file-modified-sort="1716557522474" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Observation procedures and Markov Chain models for estimating the prevalence and incidence of a state behavior" data-listing-filename-sort="AERA-2015-observation-procedures.qmd">
-<td>
-<span class="listing-date">Apr 16, 2015</span>
-</td>
-<td>
-<a href="../presentations/AERA-2015-observation-procedures.html" class="title listing-title">Observation procedures and Markov Chain models for estimating the prevalence and incidence of a state behavior</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2015</span>
-</td>
-<td>
-<span class="listing-location">Chicago, IL</span>
-</td>
-</tr>
-<tr data-index="42" data-listing-date-sort="1425621600000" data-listing-file-modified-sort="1716557523752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression" data-listing-filename-sort="SREE-2015-small-sample-adjustments.qmd">
-<td>
-<span class="listing-date">Mar 6, 2015</span>
-</td>
-<td>
-<a href="../presentations/SREE-2015-small-sample-adjustments.html" class="title listing-title">Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2015</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="43" data-listing-date-sort="1396587600000" data-listing-file-modified-sort="1716557522462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Four methods of analyzing partial interval recording data, with application to single-case research" data-listing-filename-sort="AERA-2014-four-methods-for-PIR.qmd">
-<td>
-<span class="listing-date">Apr 4, 2014</span>
-</td>
-<td>
-<a href="../presentations/AERA-2014-four-methods-for-PIR.html" class="title listing-title">Four methods of analyzing partial interval recording data, with application to single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2014</span>
-</td>
-<td>
-<span class="listing-location">Philadelphia, PA</span>
-</td>
-</tr>
-<tr data-index="44" data-listing-date-sort="1395378000000" data-listing-file-modified-sort="1716557524065" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Addressing construct invalidity in partial interval recording data" data-listing-filename-sort="TUESAP-2014-construct-invalidity-of-PIR.qmd">
-<td>
-<span class="listing-date">Mar 21, 2014</span>
-</td>
-<td>
-<a href="../presentations/TUESAP-2014-construct-invalidity-of-PIR.html" class="title listing-title">Addressing construct invalidity in partial interval recording data</a>
-</td>
-<td>
-<span class="listing-event_short">TUESAP 2014</span>
-</td>
-<td>
-<span class="listing-location">Texas A&amp;M University, College Station, TX</span>
-</td>
-</tr>
-<tr data-index="45" data-listing-date-sort="1394085600000" data-listing-file-modified-sort="1716557523742" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="On internal validity in multiple baseline designs" data-listing-filename-sort="SREE-2014-internal-validity-of-MBD.qmd">
-<td>
-<span class="listing-date">Mar 6, 2014</span>
-</td>
-<td>
-<a href="../presentations/SREE-2014-internal-validity-of-MBD.html" class="title listing-title">On internal validity in multiple baseline designs</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2014</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="46" data-listing-date-sort="1369803600000" data-listing-file-modified-sort="1716557523195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Some Markov models for direct observation of behavior" data-listing-filename-sort="NU-stats-2013-markov-models-for-direct-observation.qmd">
-<td>
-<span class="listing-date">May 29, 2013</span>
-</td>
-<td>
-<a href="../presentations/NU-stats-2013-markov-models-for-direct-observation.html" class="title listing-title">Some Markov models for direct observation of behavior</a>
-</td>
-<td>
-<span class="listing-event_short">NU Statistics</span>
-</td>
-<td>
-<span class="listing-location">Evanston, IL</span>
-</td>
-</tr>
-<tr data-index="47" data-listing-date-sort="1369717200000" data-listing-file-modified-sort="1716557522417" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Effect sizes and measurement comparability for meta-analysis of single-case research" data-listing-filename-sort="ABAI-2013-effect-sizes.qmd">
-<td>
-<span class="listing-date">May 28, 2013</span>
-</td>
-<td>
-<a href="../presentations/ABAI-2013-effect-sizes.html" class="title listing-title">Effect sizes and measurement comparability for meta-analysis of single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">ABAI 2013</span>
-</td>
-<td>
-<span class="listing-location">Minneapolis, MN</span>
-</td>
-</tr>
-<tr data-index="48" data-listing-date-sort="1367298000000" data-listing-file-modified-sort="1716557522451" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Observation procedures and Markov chain models for estimating the prevalence and incidence of a behavior" data-listing-filename-sort="AERA-2013-observation-procedures.qmd">
-<td>
-<span class="listing-date">Apr 30, 2013</span>
-</td>
-<td>
-<a href="../presentations/AERA-2013-observation-procedures.html" class="title listing-title">Observation procedures and Markov chain models for estimating the prevalence and incidence of a behavior</a>
-</td>
-<td>
-<span class="listing-event_short">AERA 2013</span>
-</td>
-<td>
-<span class="listing-location">San Francisco, CA</span>
-</td>
-</tr>
-<tr data-index="49" data-listing-date-sort="1362636000000" data-listing-file-modified-sort="1716557523721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Operationally comparable effect sizes for meta-analysis of single-case research" data-listing-filename-sort="SREE-2013-operationally-comparable-effect-sizes.qmd">
-<td>
-<span class="listing-date">Mar 7, 2013</span>
-</td>
-<td>
-<a href="../presentations/SREE-2013-operationally-comparable-effect-sizes.html" class="title listing-title">Operationally comparable effect sizes for meta-analysis of single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">SREE 2013</span>
-</td>
-<td>
-<span class="listing-location">Washington, DC</span>
-</td>
-</tr>
-<tr data-index="50" data-listing-date-sort="1352872800000" data-listing-file-modified-sort="1716557524079" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Some implications of behavioral observation procedures for meta-analysis of single-case research" data-listing-filename-sort="UT-Austin-2012-meta-analysis-of-single-case-research.qmd">
-<td>
-<span class="listing-date">Nov 14, 2012</span>
-</td>
-<td>
-<a href="../presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html" class="title listing-title">Some implications of behavioral observation procedures for meta-analysis of single-case research</a>
-</td>
-<td>
-<span class="listing-event_short">UT Austin</span>
-</td>
-<td>
-<span class="listing-location">Austin, TX</span>
-</td>
-</tr>
-<tr data-index="51" data-listing-date-sort="1201068000000" data-listing-file-modified-sort="1716557523171" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Question-order effects in social network name generators" data-listing-filename-sort="ISSNA-2008-question-order-effects.qmd">
-<td>
-<span class="listing-date">Jan 23, 2008</span>
-</td>
-<td>
-<a href="../presentations/ISSNA-2008-question-order-effects.html" class="title listing-title">Question-order effects in social network name generators</a>
-</td>
-<td>
-<span class="listing-event_short">ISSNA 2008</span>
-</td>
-<td>
-<span class="listing-location">St.&nbsp;Petersburg Beach, FL</span>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="talks">
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 17, 2024</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/VIVE-2024-Dependent-Effects.html">Model-Building Considerations in Meta-Analysis of Dependent Effect Sizes</a></p>
+      <p class="event-location">VIVE | Copenhagen, Denmark</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/VIVE-2024-Model-building-considerations.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 12, 2024</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2024-Bayes-BCSMD.html">Bayesian estimation of between-case standardized mean differences: A simulation study</a></p>
+      <p class="event-location">AERA 2024 | Philadelphia, PA</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2024-poster-Bayes-BC-SMD.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Sep 29, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2023-Stabilizing-performance-measures-discussion.html">Discussion of Stabilizing measures to reconcile accuracy and equity in performance measurement</a></p>
+      <p class="event-location">SREE 2023 | Arlington, VA</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SREE-2023-Stabilizing-performance-measures.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Sep 27, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2023-Equity-related-moderator-analysis.html">Equity-related moderator analysis in syntheses of dependent effect sizes: Conceptual and statistical considerations</a></p>
+      <p class="event-location">SREE 2023 | Arlington, VA</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SREE-2023-Equity-Related-Moderator-Analysis.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 18, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/WISCC-2023.html">Determining the Timing of Phase Changes: Some Statistical Perspective</a></p>
+      <p class="event-location">WISCC2023 | Nashville, TN</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/WISCC-2023.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 26, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/Small-is-Beautiful-2023-workshop.html">Calculating Effect Sizes for Single-Case Research: An Introduction to the SingleCaseES and scdhlm Web Applications and R Packages</a></p>
+      <p class="event-location">SmallisBeautiful2023 | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Small-is-Beautiful-2023-Calculating-Effect-Sizes-for-Single-Case-Research.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 25, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/Small-is-Beautiful-2023-keynote.html">Effect size measures for single-case research: Conceptual, practical, and statistical considerations</a></p>
+      <p class="event-location">SmallisBeautiful2023 | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Small-is-Beautiful-2023-Pustejovsky-keynote.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 16, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2023-BCSMD-benchmarks.html">Empirical benchmarks for between-case standardized mean differences from single-case multiple baseline designs examining academic interventions.</a></p>
+      <p class="event-location">AERA 2023 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2023-Empirical-benchmarks.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 15, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2023-replication-discussion.html">Discussion of ‘Moving from What Works to What Replicates: Promoting the Systematic Replication of Results.’</a></p>
+      <p class="event-location">AERA 2023 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2023-Replication-discussion.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 30, 2023</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/ESMARConf2023-clustered-bootstrap-selection-model.html">Clustered bootstrapping for selective reporting models in meta-analysis with dependent effects</a></p>
+      <p class="event-location">ESMARConf2023 | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/ESMARConf-2023-clustered-bootstrap-selection-model.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://youtu.be/BPfiQkwjqX8?t=1243">
+                <i class="fa-solid fa-youtube" aria-label="youtube"></i>
+                Video
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../posts/cluster-bootstrap-selection-model/">
+                <i class="fa-solid fa-code" aria-label="code"></i>
+                Code
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 20, 2022</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SRSM-2022-matter-of-emphasis.html">A matter of emphasis: Comparison of working models for meta-analysis of dependent effect sizes</a></p>
+      <p class="event-location">SRSM 2022 | Portland, OR (and online)</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SRSM-2022-Working-Models.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 19, 2022</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SSCC-2022-State-of-SCD-synthesis.html">The state of single case synthesis: Premises, tools, and possibilities</a></p>
+      <p class="event-location">SSCC | Vanderbilt University, Nashville, TN</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SSCC-2022-State-of-SCD-synthesis.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Feb 8, 2022</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/Stanford-QSU-2022-selective-reporting.html">Selective reporting in meta-analysis of dependent effect size estimates</a></p>
+      <p class="event-location">Stanford QSU | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Stanford-QSU-2022-02-08.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Feb 3, 2022</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/OsloRUG-2022-clubSandwich.html">Easy, cluster-robust standard errors with the clubSandwich package</a></p>
+      <p class="event-location">OsloRUG | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/clubSandwich-Oslo-RUG-2022-02-03.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://youtu.be/cjBByCn_PK8">
+                <i class="fa-solid fa-youtube" aria-label="youtube"></i>
+                Video
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Sep 27, 2021</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/EdPsych-Colloquium-2021-Four-Things.html">Four things every quantitative social scientist should know about meta-analysis</a></p>
+      <p class="event-location">EdPsych PIE | Educational Sciences 259</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/EdPsych-Department-Colloquium-Four-Things.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Sep 2, 2021</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/OsloRUG-2021-RVE-with-metafor-and-clubSandwich.html">Synthesis of dependent effect sizes: Robust variance estimation with clubSandwich</a></p>
+      <p class="event-location">OsloRUG | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://osf.io/preprints/metaarxiv/vyfcj/">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Oslo-RUG-RVE-with-clubSandwich.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://youtu.be/sJUc39vneWk">
+                <i class="fa-solid fa-youtube" aria-label="youtube"></i>
+                Video
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jun 23, 2021</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SIPS-2021-statistical-frontiers-for-selective-reporting.html">Statistical frontiers for selective reporting and publication bias</a></p>
+      <p class="event-location">SIPS 2021 | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://osf.io/3mp6s/">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://osf.io/nwz3x/">
+                <i class="fa-solid fa-code" aria-label="code"></i>
+                Code
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jan 21, 2021</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/ESMARConf2021-RVE-with-metafor-and-clubSandwich.html">Synthesis of dependent effect sizes: Versatile models through metafor and clubSandwich</a></p>
+      <p class="event-location">ESMARConf2021 | online</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://osf.io/preprints/metaarxiv/vyfcj/">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/ESMARConf2021-RVE-with-clubSandwich.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="https://youtu.be/Q9Nce5pxebY?t=66">
+                <i class="fa-solid fa-youtube" aria-label="youtube"></i>
+                Video
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 22, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SRSM-2019-generalized-excess-significance-test.html">A generalized excess significance test for selective outcome reporting with dependent effect sizes</a></p>
+      <p class="event-location">SRSM 2019 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SRSM 2019-GEST.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 26, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/ABAI-2019-log-response-ratios.html">Log response ratio effect sizes: Rationale and methods for single case designs with behavioral outcomes</a></p>
+      <p class="event-location">ABAI 2019 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/ABAI-2019-Log-response-ratios.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 8, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2019-ORB-dependence.html">Evaluating meta-analytic methods to detect outcome reporting bias in the presence of dependent effect sizes</a></p>
+      <p class="event-location">AERA 2019 | Toronto, Ontario</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2019-poster-ORB-dependence.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 7, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2019-outcome-measurement-procedures.html">An examination of measurement procedures and baseline behavioral outcomes in single-case research</a></p>
+      <p class="event-location">AERA 2019 | Toronto, Ontario</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2019-poster-outcome-measurement-procedures.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 7, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2019-response-guided-algorithms.html">The impact of response-guided designs on count outcomes in single-case design baselines</a></p>
+      <p class="event-location">AERA 2019 | Toronto, Ontario</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2019-poster-response-guided-algorithms.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 8, 2019</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2019-2SLS-CRVE.html">Small-sample cluster-robust variance estimators for two-stage least squares models</a></p>
+      <p class="event-location">SREE 2019 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SREE-2019-2SLS-CRVE.html">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Oct 1, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/UTAustin-2018-combining-RVE-with-models.html">Combining robust variance estimation with models for dependent effect sizes</a></p>
+      <p class="event-location">UT Psych | Austin, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Combining-RVE-with-models-UTAustin-2018.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Lehtonen-analysis.R">
+                <i class="fa-solid fa-code" aria-label="code"></i>
+                Code
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 18, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SRSM-2018-combining-RVE-with-models.html">Combining robust variance estimation with models for dependent effect sizes</a></p>
+      <p class="event-location">SRSM 2018 | Bristol, UK</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Combining-RVE-with-models-SRSM-2018.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 15, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2018-dependent-effects.html">Meta-analysis of dependent effects: A review and consolidation of methods</a></p>
+      <p class="event-location">AERA 2018 | New York, NY</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Dependent-effects-AERA-2018.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 15, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2018-meta-analysis-of-single-case-research.html">Meta-analysis of single-case research: A brief and breezy tour</a></p>
+      <p class="event-location">AERA 2018 | New York, NY</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Single-Case-Meta-Analysis-AERA-2018.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jan 10, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/IES-2018-gradual-effects-model.html">A gradual effects model for single case designs</a></p>
+      <p class="event-location">IES 2018 PI Meeting | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Gradual-effects-model-poster-IES-2018-01-10.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jan 10, 2018</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/IES-2018-randomization-inference.html">Randomization inference for single-case experimental designs</a></p>
+      <p class="event-location">IES 2018 PI Meeting | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Randomization-inference-for-SCED-2018-01-10.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 30, 2017</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2017-HC-t-tests.html">Heteroskedasticity-robust tests in linear regression: A review and evaluation of small-sample corrections</a></p>
+      <p class="event-location">AERA 2017 | San Antonio, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2017-HC-t-tests.html">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 28, 2017</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2017-intervention-analysis.html">A nonlinear intervention analysis model for treatment reversal single-case designs</a></p>
+      <p class="event-location">AERA 2017 | San Antonio, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2017-poster-intervention-analysis-model.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 28, 2017</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2017-response-ratios.html">Using response ratios for meta-analyzing single-case designs with behavioral outcomes</a></p>
+      <p class="event-location">AERA 2017 | San Antonio, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2017-poster-Using-response-ratios.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 2, 2017</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2017-small-sample-corrections.html">Small sample corrections for use of cluster-robust standard errors in the analysis of school-based experiments</a></p>
+      <p class="event-location">SREE 2017 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/CRVE-SREE-20170302.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Dec 19, 2016</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/IES-2016-single-case-effect-sizes.html">Effect sizes for single-case research</a></p>
+      <p class="event-location">IES 2016 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Single-case-methods-IES-PI-meeting-2016.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 31, 2016</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/JSM-2016-small-sample-CRVE.html">Small-sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models</a></p>
+      <p class="event-location">JSM 2016 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/CRVE-JSM-20160731.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 18, 2016</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AIR-2016-when-large-samples-act-small.html">When large samples act small: The importance of small-sample adjustments for cluster-robust inference in impact evaluations</a></p>
+      <p class="event-location">AIR working group lecture series | Austin, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/CRVE-AIR-20160715.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Feb 19, 2016</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/PRC-2016-when-large-samples-act-small.html">When large samples act small: Cluster-robust variance estimation and hypothesis testing with few clusters</a></p>
+      <p class="event-location">PRC colloquium | Austin, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/PRC_talk_20160219.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jul 8, 2015</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SRSM-2015-small-sample-adjustments.html">Small-sample adjustments for multiple-contrast hypothesis tests of meta-regressions using robust variance estimation</a></p>
+      <p class="event-location">SRSM 2015 | Nashville, TN</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Tipton-Pustejovsky-F-tests-with-RVE-May-2015.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Pustejovsky_SRSM_2015.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 19, 2015</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2015-operational-sensitivities.html">Operational sensitivities of non-overlap effect sizes for single-case experimental designs</a></p>
+      <p class="event-location">AERA 2015 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2015-poster-Non-overlap-measures.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 18, 2015</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2015-small-sample-adjustments.html">Small-sample adjustments for F-tests using robust variance estimation in meta-regression</a></p>
+      <p class="event-location">AERA 2015 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Tipton-Pustejovsky-In-Review.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2015-RVE-F-tests.html">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 16, 2015</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2015-observation-procedures.html">Observation procedures and Markov Chain models for estimating the prevalence and incidence of a state behavior</a></p>
+      <p class="event-location">AERA 2015 | Chicago, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/PIR-APP-AERA-2015.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Pustejovsky-AERA-2015-estimating-prevalence-and-incidence.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 6, 2015</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2015-small-sample-adjustments.html">Small-sample adjustments for tests of moderators and model fit using robust variance estimation in meta-regression</a></p>
+      <p class="event-location">SREE 2015 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/SREE-2015.html">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 4, 2014</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2014-four-methods-for-PIR.html">Four methods of analyzing partial interval recording data, with application to single-case research</a></p>
+      <p class="event-location">AERA 2014 | Philadelphia, PA</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/AERA-2014-poster-4-methods-for-PIR.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 21, 2014</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/TUESAP-2014-construct-invalidity-of-PIR.html">Addressing construct invalidity in partial interval recording data</a></p>
+      <p class="event-location">TUESAP 2014 | Texas A&amp;M University, College Station, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/TUESAP-talk-2014.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 6, 2014</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2014-internal-validity-of-MBD.html">On internal validity in multiple baseline designs</a></p>
+      <p class="event-location">SREE 2014 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Pustejovsky-SREE-2014.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 29, 2013</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/NU-stats-2013-markov-models-for-direct-observation.html">Some Markov models for direct observation of behavior</a></p>
+      <p class="event-location">NU Statistics | Evanston, IL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/behavior-observation-stats-department-presentation.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">May 28, 2013</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/ABAI-2013-effect-sizes.html">Effect sizes and measurement comparability for meta-analysis of single-case research</a></p>
+      <p class="event-location">ABAI 2013 | Minneapolis, MN</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/abai-2013.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Apr 30, 2013</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/AERA-2013-observation-procedures.html">Observation procedures and Markov chain models for estimating the prevalence and incidence of a behavior</a></p>
+      <p class="event-location">AERA 2013 | San Francisco, CA</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/aera-2013-poster-recording-methods-dtmcs.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Mar 7, 2013</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/SREE-2013-operationally-comparable-effect-sizes.html">Operationally comparable effect sizes for meta-analysis of single-case research</a></p>
+      <p class="event-location">SREE 2013 | Washington, DC</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/sree-2013-presentation.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Nov 14, 2012</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html">Some implications of behavioral observation procedures for meta-analysis of single-case research</a></p>
+      <p class="event-location">UT Austin | Austin, TX</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/Effect-sizes-for-behavioral-observation-data.pdf">
+                <i class="fa-solid fa-person-chalkboard" aria-label="person-chalkboard"></i>
+                Slides
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+  <div class="talk-entry">
+    <div class="metadata">          
+      <p class="date">Jan 23, 2008</p>
+    </div>
+    <div class="body">
+      <p class="title"><a href="../presentations/ISSNA-2008-question-order-effects.html">Question-order effects in social network name generators</a></p>
+      <p class="event-location">ISSNA 2008 | St. Petersburg Beach, FL</p>
+      
+        <ul class="talk-links">
+          
+            <li class="talk-link btn btn-outline-primary">
+              <a href="../files/question-order-effects-poster.pdf">
+                <i class="fa-solid fa-file" aria-label="file"></i>
+                PDF
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  
+</div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

@@ -78,13 +78,41 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-working-papers'] = new List('listing-working-papers', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-more-working-papers .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-more-working-papers'] = new List('listing-more-working-papers', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -170,7 +198,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./publication/index.html"> 
-<span class="menu-text">index.html</span></a>
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./presentations/index.html"> 
@@ -231,21 +259,13 @@ window.Quarto = {
 
 <div id="listing-working-papers" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716555355786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
-<div class="thumbnail">
-<p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p><a href="./publication/Conducting-POMADE/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p>
-</div>
+<div class="quarto-post image-left" data-index="0" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716744827232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./publication/Conducting-POMADE/index.html" class="no-external">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./publication/Conducting-POMADE/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external">Sample size and statistical power are important factors to consider when planning a research synthesis. Power analysis methods have been developed for fixed effect or random…</a>
 </div>
 </div>
 <div class="metadata">
@@ -265,7 +285,39 @@ No matching items
 </div>
 </div>
 <section id="more-publications" class="level4">
-<h4 class="anchored" data-anchor-id="more-publications"><a href=".\publications/">More publications…</a></h4>
+<h4 class="anchored"><a href=".\publications/">More publications…</a></h4>
+<div id="listing-more-working-papers" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-left" data-index="0" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716744827232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
+<div class="thumbnail">
+<p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p><a href="./publication/Conducting-POMADE/index.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title" data-anchor-id="more-publications">
+<a href="./publication/Conducting-POMADE/index.html" class="no-external">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./publication/Conducting-POMADE/index.html" class="no-external"></a>
+</div>
+</div>
+<div class="metadata">
+<a href="./publication/Conducting-POMADE/index.html" class="no-external">
+<div class="listing-date">
+Jul 21, 2023
+</div>
+<div class="listing-author">
+Mikkel H. Vembye, James E. Pustejovsky, Terri D. Pigott
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 
 
 

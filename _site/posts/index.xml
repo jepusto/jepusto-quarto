@@ -14,6 +14,7 @@
 <item>
   <title>Distribution of the number of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Distribution-of-signficant-effects/</link>
   <description><![CDATA[ 
 
@@ -834,15 +835,16 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
-  author = {Pustejovsky, James E.},
+  author = {Pustejovsky, James E. and E. Pustejovsky, James},
   title = {Distribution of the Number of Significant Effect Sizes},
   date = {2024-03-28},
   url = {https://jepusto.com/posts/Distribution-of-signficant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
-Pustejovsky, James E. 2024. <span>“Distribution of the Number of
-Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
+Pustejovsky, James E., and James E. Pustejovsky. 2024.
+<span>“Distribution of the Number of Significant Effect Sizes.”</span>
+March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
@@ -851,6 +853,7 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com
 </item>
 <item>
   <title>Approximating the distribution of cluster-robust Wald statistics</title>
+  <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</link>
   <description><![CDATA[ 
@@ -874,7 +877,7 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
-  author = {Pustejovsky, James E.},
+  author = {Pustejovsky, James E. and E. Pustejovsky, James},
   title = {Approximating the Distribution of Cluster-Robust {Wald}
     Statistics},
   date = {2024-03-24},
@@ -882,8 +885,9 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
-Pustejovsky, James E. 2024. <span>“Approximating the Distribution of
-Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
+Pustejovsky, James E., and James E. Pustejovsky. 2024.
+<span>“Approximating the Distribution of Cluster-Robust Wald
+Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>
@@ -6784,6 +6788,8 @@ Distribution in Stan.”</span> September 15, 2023. <a href="https://jepusto.com
 <item>
   <title>Cluster-Bootstrapping a meta-analytic selection model</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>Megha Joshi</dc:creator>
   <link>https://jepusto.com/posts/cluster-bootstrap-selection-model/</link>
   <description><![CDATA[ 
 
@@ -12470,15 +12476,16 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
 <li id="fn2"><p>Compare this to the model-based confidence interval of <img src="https://latex.codecogs.com/png.latex?%5B0.059,%201.037%5D">.↩︎</p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
-  author = {Pustejovsky, James E.},
+  author = {Pustejovsky, James E. and E. Pustejovsky, James and Joshi,
+    Megha},
   title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
   date = {2023-03-30},
   url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
-Pustejovsky, J. E. (2023, March 30). <em>Cluster-Bootstrapping a
-meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
+Pustejovsky, J. E., E. Pustejovsky, J., &amp; Joshi, M. (2023, March
+30). <em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
 </div></div></section></div> ]]></description>
   <category>bootstrap</category>
   <category>dependent effect sizes</category>

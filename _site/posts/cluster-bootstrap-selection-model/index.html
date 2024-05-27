@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="James E. Pustejovsky">
+<meta name="author" content="James E. Pustejovsky">
+<meta name="author" content="Megha Joshi">
 <meta name="dcterms.date" content="2023-03-30">
 <meta name="description" content="In this post, we will sketch out what we think is a promising and pragmatic method for examining selective reporting while also accounting for effect size dependency. The method is to use a cluster-level bootstrap, which involves re-sampling clusters of observations to approximate the sampling distribution of an estimator. To illustrate this technique, we will demonstrate how to bootstrap a Vevea-Hedges selection model.">
 
@@ -5273,15 +5275,16 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
 <li id="fn2"><p>Compare this to the model-based confidence interval of <span class="math inline">\([0.059, 1.037]\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
-  author = {Pustejovsky, James E.},
+  author = {Pustejovsky, James E. and E. Pustejovsky, James and Joshi,
+    Megha},
   title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
   date = {2023-03-30},
   url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Pustejovsky, J. E. (2023, March 30). <em>Cluster-Bootstrapping a
-meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
+Pustejovsky, J. E., E. Pustejovsky, J., &amp; Joshi, M. (2023, March
+30). <em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -5745,7 +5748,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb35" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Cluster-Bootstrapping a meta-analytic selection model</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="an">authors:</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">- James E. Pustejovsky</span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">- Megha Joshi</span></span>
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2023-03-30'</span></span>
