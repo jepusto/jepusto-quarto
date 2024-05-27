@@ -14,7 +14,7 @@ categories:
 - response ratio
 - single-case design
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: /files/Pustejovsky-Ferron-2017-Research-synthesis-and-meta-analysis-of-SCDs.pdf
 

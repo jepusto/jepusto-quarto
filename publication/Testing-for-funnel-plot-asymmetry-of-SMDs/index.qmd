@@ -16,11 +16,11 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/jrsm.1332
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/ea6kz/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/4ntcy/
 

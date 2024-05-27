@@ -9,7 +9,7 @@ event: American Educational Research Association annual convention
 event_short: AERA 2017
 location: San Antonio, TX
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: /files/AERA-2017-poster-intervention-analysis-model.pdf
 

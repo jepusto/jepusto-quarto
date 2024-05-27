@@ -17,11 +17,11 @@ categories:
 links:
 - text: Journal
   url: https://dx.doi.org/10.1177/019874291303900406
-  faicon: newspaper
+  icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=ARPobservation
-  faicon: gift
-- faicon: lock-open
+  icon: box2
+- icon: unlock-fill
   text: Pre-Print
   url: /files/Pustejovsky-Runyon-2015.pdf
 

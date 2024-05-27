@@ -8,7 +8,7 @@ event: Institute of Education Sciences 2018 Principal Investigators Meeting
 event_short: IES 2018 PI Meeting
 location: Washington, DC
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Randomization-inference-for-SCED-2018-01-10.pdf
 

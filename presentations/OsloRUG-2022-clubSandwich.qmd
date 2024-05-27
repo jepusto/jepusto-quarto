@@ -9,10 +9,10 @@ event_short: OsloRUG
 event_url: https://www.meetup.com/Oslo-useR-Group/events/283050203/
 location: online
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/clubSandwich-Oslo-RUG-2022-02-03.pdf
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://youtu.be/cjBByCn_PK8
 

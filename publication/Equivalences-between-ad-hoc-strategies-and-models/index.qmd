@@ -16,16 +16,16 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.3102/10769986241232524
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/9u52e/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/pw54r/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/9u52e/
-- faicon: table
+- icon: table
   text: Data
   url: https://osf.io/9u52e/
 

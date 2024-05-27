@@ -16,11 +16,11 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1016/j.socnet.2009.06.001
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: /files/Question-order-effects-in-social-network-name-generators.pdf
-- faicon: table
+- icon: table
   text: Data
   url: https://www.icpsr.umich.edu/icpsrweb/instructors/series/00255
 

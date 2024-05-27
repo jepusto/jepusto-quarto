@@ -18,10 +18,10 @@ image: Power of tests for selective reporting when dependent effects are aggrega
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000300
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/5f732/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/vqp8u/
 

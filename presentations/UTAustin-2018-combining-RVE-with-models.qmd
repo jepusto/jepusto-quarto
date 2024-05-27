@@ -8,10 +8,10 @@ event: UT Austin, Developmental & Clinical Psychology Brownbag
 event_short: UT Psych
 location: Austin, TX
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Combining-RVE-with-models-UTAustin-2018.pdf
-- faicon: code
+- icon: code-slash
   text: Code
   url: /files/Lehtonen-analysis.R
 

@@ -17,14 +17,14 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.1080/07350015.2016.1247004
-  faicon: newspaper
+  icon: newspaper
 - text: Correction
   url: https://doi.org/10.1080/07350015.2023.2174123
-  faicon: file-pen
+  icon: file-pdf-fill-pen
 - text: R package
   url: https://CRAN.R-project.org/package=clubSandwich
-  faicon: gift
-- faicon: lock-open
+  icon: box2
+- icon: unlock-fill
   text: Pre-Print
   url: https://arxiv.org/abs/1601.01981
 

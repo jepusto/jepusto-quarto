@@ -11,13 +11,13 @@ event_short: ESMARConf2023
 event_url: https://esmarconf.org/events.html#programme
 location: online
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/ESMARConf-2023-clustered-bootstrap-selection-model.pdf
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://youtu.be/BPfiQkwjqX8?t=1243
-- faicon: code
+- icon: code-slash
   text: Code
   url: /posts/cluster-bootstrap-selection-model/
 ---

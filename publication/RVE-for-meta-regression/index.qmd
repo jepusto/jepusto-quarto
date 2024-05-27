@@ -18,11 +18,11 @@ categories:
 links:
 - text: Journal
   url: http://doi.org/10.3102/1076998615606099
-  faicon: newspaper
+  icon: newspaper
 - text: R package
   url: https://CRAN.R-project.org/package=clubSandwich
-  faicon: gift
-- faicon: lock-open
+  icon: box2
+- icon: unlock-fill
   text: Pre-Print
   url: /files/Tipton-Pustejovsky-F-tests-with-RVE-May-2015.pdf
 

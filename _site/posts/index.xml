@@ -14,7 +14,6 @@
 <item>
   <title>Distribution of the number of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Distribution-of-signficant-effects/</link>
   <description><![CDATA[ 
 
@@ -33,22 +32,22 @@
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="69" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 68;"><span id="cb1-69">math <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="67" data-source-offset="-0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 66;"><span id="cb1-67">math <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">require</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"mathjs"</span>)</span>
-<span id="cb1-70">norm <span class="op" style="color: #5E5E5E;
+<span id="cb1-68">norm <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'https://unpkg.com/norm-dist@3.1.0/index.js?module'</span>)</span>
-<span id="cb1-71"></span>
-<span id="cb1-72">quad_points <span class="op" style="color: #5E5E5E;
+<span id="cb1-69"></span>
+<span id="cb1-70">quad_points <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
@@ -65,8 +64,8 @@ background-color: null;
 font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb1-73"></span>
-<span id="cb1-74">sigma <span class="op" style="color: #5E5E5E;
+<span id="cb1-71"></span>
+<span id="cb1-72">sigma <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -77,8 +76,8 @@ background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sqrt</span>(ESS)</span>
-<span id="cb1-75"></span>
-<span id="cb1-76">zeta_sd <span class="op" style="color: #5E5E5E;
+<span id="cb1-73"></span>
+<span id="cb1-74">zeta_sd <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> math<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -97,8 +96,8 @@ background-color: null;
 font-style: inherit;">**</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>)</span>
-<span id="cb1-77"></span>
-<span id="cb1-78">crit <span class="op" style="color: #5E5E5E;
+<span id="cb1-75"></span>
+<span id="cb1-76">crit <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> norm<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -109,8 +108,8 @@ background-color: null;
 font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> alpha)</span>
-<span id="cb1-79"></span>
-<span id="cb1-80">binomial_coefs <span class="op" style="color: #5E5E5E;
+<span id="cb1-77"></span>
+<span id="cb1-78">binomial_coefs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
@@ -133,7 +132,7 @@ background-color: null;
 font-style: inherit;">,</span>index) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb1-81">  <span class="cf" style="color: #003B4F;
+<span id="cb1-79">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> math<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -144,9 +143,9 @@ background-color: null;
 font-style: inherit;">,</span> index)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-82">})</span>
-<span id="cb1-83"></span>
-<span id="cb1-84">probs <span class="op" style="color: #5E5E5E;
+<span id="cb1-80">})</span>
+<span id="cb1-81"></span>
+<span id="cb1-82">probs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> quad_points<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -155,7 +154,7 @@ background-color: null;
 font-style: inherit;">map</span>(zeta <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb1-85">  <span class="kw" style="color: #003B4F;
+<span id="cb1-83">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">let</span> Z <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -194,7 +193,7 @@ background-color: null;
 font-style: inherit;">2</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-86">  <span class="cf" style="color: #003B4F;
+<span id="cb1-84">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> [norm<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -207,9 +206,9 @@ background-color: null;
 font-style: inherit;">1</span>]]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-87">})</span>
-<span id="cb1-88"></span>
-<span id="cb1-89">p_binom_norm <span class="op" style="color: #5E5E5E;
+<span id="cb1-85">})</span>
+<span id="cb1-86"></span>
+<span id="cb1-87">p_binom_norm <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> binomial_coefs<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -220,7 +219,7 @@ background-color: null;
 font-style: inherit;">,</span> a) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb1-90">  <span class="kw" style="color: #003B4F;
+<span id="cb1-88">  <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">let</span> p <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -231,7 +230,7 @@ background-color: null;
 font-style: inherit;">map</span>((x) <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=&gt;</span> {</span>
-<span id="cb1-91">    <span class="cf" style="color: #003B4F;
+<span id="cb1-89">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> (x[<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -256,10 +255,10 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-92">  })<span class="op" style="color: #5E5E5E;
+<span id="cb1-90">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-93">  <span class="cf" style="color: #003B4F;
+<span id="cb1-91">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> coef <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -270,7 +269,7 @@ background-color: null;
 font-style: inherit;">sum</span>(p)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
-<span id="cb1-94">})</span></code></pre></div>
+<span id="cb1-92">})</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -341,32 +340,32 @@ font-style: inherit;">;</span></span>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="101" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 100;"><span id="cb2-101">Plot<span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="99" data-source-offset="0" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 98;"><span id="cb2-99">Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>({</span>
-<span id="cb2-102">  <span class="dt" style="color: #AD0000;
+<span id="cb2-100">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb2-103">    <span class="dt" style="color: #AD0000;
+<span id="cb2-101">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">label</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of significant effect sizes"</span></span>
-<span id="cb2-104">  }<span class="op" style="color: #5E5E5E;
+<span id="cb2-102">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-105">  <span class="dt" style="color: #AD0000;
+<span id="cb2-103">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">y</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> {</span>
-<span id="cb2-106">    <span class="dt" style="color: #AD0000;
+<span id="cb2-104">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">domain</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -379,22 +378,22 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-107">    <span class="dt" style="color: #AD0000;
+<span id="cb2-105">    <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">label</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Probability"</span></span>
-<span id="cb2-108">  }<span class="op" style="color: #5E5E5E;
+<span id="cb2-106">  }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-109">  <span class="dt" style="color: #AD0000;
+<span id="cb2-107">  <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">marks</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> [</span>
-<span id="cb2-110">    Plot<span class="op" style="color: #5E5E5E;
+<span id="cb2-108">    Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -403,25 +402,25 @@ background-color: null;
 font-style: inherit;">0</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-111">    Plot<span class="op" style="color: #5E5E5E;
+<span id="cb2-109">    Plot<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">barY</span>(p_binom_norm<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> {</span>
-<span id="cb2-112">      <span class="dt" style="color: #AD0000;
+<span id="cb2-110">      <span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">fill</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"steelblue"</span></span>
-<span id="cb2-113">    })<span class="op" style="color: #5E5E5E;
+<span id="cb2-111">    })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb2-114">  ]</span>
-<span id="cb2-115">})</span></code></pre></div>
+<span id="cb2-112">  ]</span>
+<span id="cb2-113">})</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
@@ -434,14 +433,14 @@ font-style: inherit;">,</span></span>
 <div class="cell panel-input card bg-light p-2">
 <details class="code-fold hidden">
 <summary>Code</summary>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="126" data-source-offset="-1" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 125;"><span id="cb3-126">viewof m <span class="op" style="color: #5E5E5E;
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="124" data-source-offset="-1" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb3-124">viewof m <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-127">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-125">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -450,7 +449,7 @@ background-color: null;
 font-style: inherit;">30</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-128">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-126">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -473,16 +472,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of effect sizes (m):"</span>}</span>
-<span id="cb3-129">)</span>
-<span id="cb3-130"></span>
-<span id="cb3-131">viewof ESS <span class="op" style="color: #5E5E5E;
+<span id="cb3-127">)</span>
+<span id="cb3-128"></span>
+<span id="cb3-129">viewof ESS <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-132">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-130">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -491,7 +490,7 @@ background-color: null;
 font-style: inherit;">300</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-133">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-131">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -514,16 +513,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Effective sample size:"</span>}</span>
-<span id="cb3-134">)</span>
-<span id="cb3-135"></span>
-<span id="cb3-136">viewof mu <span class="op" style="color: #5E5E5E;
+<span id="cb3-132">)</span>
+<span id="cb3-133"></span>
+<span id="cb3-134">viewof mu <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-137">  [<span class="op" style="color: #5E5E5E;
+<span id="cb3-135">  [<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -534,7 +533,7 @@ background-color: null;
 font-style: inherit;">2</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-138">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-136">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -557,16 +556,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Average effect size (mu):"</span>}</span>
-<span id="cb3-139">)</span>
-<span id="cb3-140"></span>
-<span id="cb3-141">viewof tau <span class="op" style="color: #5E5E5E;
+<span id="cb3-137">)</span>
+<span id="cb3-138"></span>
+<span id="cb3-139">viewof tau <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-142">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-140">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -575,7 +574,7 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-143">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-141">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -598,16 +597,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Between-study SD (tau):"</span>}</span>
-<span id="cb3-144">)</span>
-<span id="cb3-145"></span>
-<span id="cb3-146">viewof omega <span class="op" style="color: #5E5E5E;
+<span id="cb3-142">)</span>
+<span id="cb3-143"></span>
+<span id="cb3-144">viewof omega <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-147">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-145">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -616,7 +615,7 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-148">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-146">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -639,16 +638,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Within-study SD (omega):"</span>}</span>
-<span id="cb3-149">)</span>
-<span id="cb3-150"></span>
-<span id="cb3-151">viewof rho <span class="op" style="color: #5E5E5E;
+<span id="cb3-147">)</span>
+<span id="cb3-148"></span>
+<span id="cb3-149">viewof rho <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-152">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-150">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -657,7 +656,7 @@ background-color: null;
 font-style: inherit;">1</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-153">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-151">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -680,16 +679,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Sampling error correlation (rho):"</span>}</span>
-<span id="cb3-154">)</span>
-<span id="cb3-155"></span>
-<span id="cb3-156">viewof alpha <span class="op" style="color: #5E5E5E;
+<span id="cb3-152">)</span>
+<span id="cb3-153"></span>
+<span id="cb3-154">viewof alpha <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-157">  [<span class="fl" style="color: #AD0000;
+<span id="cb3-155">  [<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.005</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -698,7 +697,7 @@ background-color: null;
 font-style: inherit;">0.995</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-158">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-156">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -723,16 +722,16 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"One-sided significance threshold (alpha):"</span>}</span>
-<span id="cb3-159">)</span>
-<span id="cb3-160"></span>
-<span id="cb3-161">viewof qp <span class="op" style="color: #5E5E5E;
+<span id="cb3-157">)</span>
+<span id="cb3-158"></span>
+<span id="cb3-159">viewof qp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Inputs<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">range</span>(</span>
-<span id="cb3-162">  [<span class="dv" style="color: #AD0000;
+<span id="cb3-160">  [<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -741,7 +740,7 @@ background-color: null;
 font-style: inherit;">30</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> </span>
-<span id="cb3-163">  {<span class="dt" style="color: #AD0000;
+<span id="cb3-161">  {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">value</span><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -764,7 +763,7 @@ background-color: null;
 font-style: inherit;">:</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of quadrature points:"</span>}</span>
-<span id="cb3-164">)</span></code></pre></div>
+<span id="cb3-162">)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -835,16 +834,15 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
-  author = {Pustejovsky, James E. and E. Pustejovsky, James},
+  author = {Pustejovsky, James E.},
   title = {Distribution of the Number of Significant Effect Sizes},
   date = {2024-03-28},
   url = {https://jepusto.com/posts/Distribution-of-signficant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
-Pustejovsky, James E., and James E. Pustejovsky. 2024.
-<span>“Distribution of the Number of Significant Effect Sizes.”</span>
-March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
+Pustejovsky, James E. 2024. <span>“Distribution of the Number of
+Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
@@ -853,7 +851,6 @@ March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-ef
 </item>
 <item>
   <title>Approximating the distribution of cluster-robust Wald statistics</title>
-  <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <link>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</link>
   <description><![CDATA[ 
@@ -877,7 +874,7 @@ March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-ef
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
-  author = {Pustejovsky, James E. and E. Pustejovsky, James},
+  author = {Pustejovsky, James E.},
   title = {Approximating the Distribution of Cluster-Robust {Wald}
     Statistics},
   date = {2024-03-24},
@@ -885,9 +882,8 @@ March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-ef
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
-Pustejovsky, James E., and James E. Pustejovsky. 2024.
-<span>“Approximating the Distribution of Cluster-Robust Wald
-Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
+Pustejovsky, James E. 2024. <span>“Approximating the Distribution of
+Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>

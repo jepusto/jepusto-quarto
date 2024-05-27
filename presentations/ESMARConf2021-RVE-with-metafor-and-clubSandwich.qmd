@@ -10,13 +10,13 @@ event_short: ESMARConf2021
 event_url: https://www.eshackathon.org/events/2021-01-ESMAR.html
 location: online
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: https://osf.io/preprints/metaarxiv/vyfcj/
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/ESMARConf2021-RVE-with-clubSandwich.pdf
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://youtu.be/Q9Nce5pxebY?t=66
 

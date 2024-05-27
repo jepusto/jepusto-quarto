@@ -20,10 +20,10 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1177/00144029221137656
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/bt9hf/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/e98nw/
 

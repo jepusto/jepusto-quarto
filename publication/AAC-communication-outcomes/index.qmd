@@ -29,14 +29,14 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1007/s40489-022-00326-6
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: https://edarxiv.org/yx5au/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/r5tjd/
-- faicon: table
+- icon: table
   text: Data
   url: https://osf.io/b5ydr/
 

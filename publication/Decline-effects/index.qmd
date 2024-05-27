@@ -32,10 +32,10 @@ image: "Effect sizes and 95% CI from 16 new discoveries (yellow marks) in the so
 links:
 - text: Journal
   url: https://doi.org/10.1038/s41562-023-01749-9
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/bnq5j/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/n2a9x/
 

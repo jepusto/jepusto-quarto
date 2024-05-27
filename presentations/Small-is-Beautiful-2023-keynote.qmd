@@ -10,7 +10,7 @@ event_short: SmallisBeautiful2023
 event_url: https://ppw.kuleuven.be/ogp/smallisbeautifuloncemore2023
 location: online
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Small-is-Beautiful-2023-Pustejovsky-keynote.pdf
 

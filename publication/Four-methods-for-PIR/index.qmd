@@ -21,8 +21,8 @@ links:
   url: /files/4-PIR-Methods-Appendix.pdf
 - text: Journal
   url: http://doi.org/10.1080/00273171.2015.1014879
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: /files/4-PIR-methods-MBR.pdf
 

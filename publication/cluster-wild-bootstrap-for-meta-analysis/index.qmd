@@ -18,16 +18,16 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/jrsm.1554
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://github.com/meghapsimatrix/CWB_analyses
 - text: R package
   url: https://meghapsimatrix.github.io/wildmeta/
-  faicon: gift
-- faicon: lock-open
+  icon: box2
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/x6uhk
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://www.youtube.com/watch?v=WzT301yAtdE
 

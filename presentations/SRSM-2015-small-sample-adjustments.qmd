@@ -9,10 +9,10 @@ event: Society for Research Synthesis Methods annual meeting
 event_short: SRSM 2015
 location: Nashville, TN
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: /files/Tipton-Pustejovsky-F-tests-with-RVE-May-2015.pdf
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Pustejovsky_SRSM_2015.pdf
 

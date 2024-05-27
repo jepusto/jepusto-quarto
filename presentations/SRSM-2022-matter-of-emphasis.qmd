@@ -9,7 +9,7 @@ event: Society for Research Synthesis Methodology annual meeting
 event_short: SRSM 2022
 location: Portland, OR (and online)
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/SRSM-2022-Working-Models.pdf
 

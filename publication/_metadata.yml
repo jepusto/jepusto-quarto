@@ -3,4 +3,3 @@ format:
   html:
     template-partials: 
     - _templates/title-block.html
-    include-in-header: _templates/fontawesome-scripts.html

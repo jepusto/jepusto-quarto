@@ -24,14 +24,14 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/bul0000406
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/wqrne/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/qfpba/
-- faicon: table
+- icon: table
   text: Data
   url: https://osf.io/h6yta
 

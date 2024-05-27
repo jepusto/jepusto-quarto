@@ -24,7 +24,7 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/cncr.32078
-  faicon: newspaper
+  icon: newspaper
 
 ---
 

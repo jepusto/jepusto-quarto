@@ -19,14 +19,14 @@ image: Distributions with means of 2, 5, and 9. The binomial distribution has si
 links:
 - text: Journal
   url: https://doi.org/10.1177/0145445519864264
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/dv9jg/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/3avsw/
-- faicon: table
+- icon: table
   text: Data
   url: https://osf.io/b7a3u/
 

@@ -19,22 +19,22 @@ image: Decision-tree for selecting a working model for use with RVE meta-regress
 links:
 - text: Journal
   url: https://doi.org/10.1007/s11121-021-01246-3
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/nyv4u/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/vyfcj/
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/ESMARConf2021-RVE-with-clubSandwich.pdf
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/z27wt/
-- faicon: table
+- icon: table
   text: Data
   url: https://osf.io/xpmjk/
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://youtu.be/Q9Nce5pxebY?t=66
 

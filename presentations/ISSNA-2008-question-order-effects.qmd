@@ -8,7 +8,7 @@ event: International Sunbelt Social Network Conference
 event_short: ISSNA 2008
 location: St. Petersburg Beach, FL
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: /files/question-order-effects-poster.pdf
 

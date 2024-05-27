@@ -1,27 +1,13 @@
 ---
 title: "Working Papers"
-page-layout: full
+page-layout: article
 listing:
   - id: working-papers
     contents: publication
     sort: 
       - "date desc"
-    type: default
-    image-align: left
-    fields: [date, title, author]
-    categories: false
-    sort-ui: false
-    filter-ui: false
-    max-items: 5
-    include:
-      publication_type: "{Pre-print}*"
-  - id: more-working-papers
-    contents: publication
-    sort: 
-      - "date desc"
-    type: default
-    image-align: left
-    fields: [image, date, title, author]
+    type: custom
+    template: _ejs/working-paper.ejs
     categories: false
     sort-ui: false
     filter-ui: false
@@ -34,6 +20,3 @@ listing:
 :::::
 
 #### [More publications...](/publications/)
-
-:::::{#more-working-papers}
-:::::

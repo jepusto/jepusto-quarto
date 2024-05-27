@@ -20,13 +20,13 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1037/met0000510
-  faicon: newspaper
+  icon: newspaper
 - text: Supplementary materials
   url: https://osf.io/zypsh
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/59h32/
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/zypsh
 

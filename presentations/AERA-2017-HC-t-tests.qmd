@@ -9,7 +9,7 @@ event: American Educational Research Association annual convention
 event_short: AERA 2017
 location: San Antonio, TX
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/AERA-2017-HC-t-tests.html
 

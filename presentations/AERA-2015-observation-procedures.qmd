@@ -9,10 +9,10 @@ event: American Educational Research Association annual convention
 event_short: AERA 2015
 location: Chicago, IL
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: /files/PIR-APP-AERA-2015.pdf
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Pustejovsky-AERA-2015-estimating-prevalence-and-incidence.pdf
 

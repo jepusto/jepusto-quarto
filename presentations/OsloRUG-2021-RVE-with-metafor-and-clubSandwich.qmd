@@ -9,13 +9,13 @@ event_short: OsloRUG
 event_url: https://www.meetup.com/Oslo-useR-Group/events/280005225/
 location: online
 links:
-- faicon: file
+- icon: file-pdf-fill
   text: PDF
   url: https://osf.io/preprints/metaarxiv/vyfcj/
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/Oslo-RUG-RVE-with-clubSandwich.pdf
-- faicon: youtube
+- icon: youtube
   text: Video
   url: https://youtu.be/sJUc39vneWk
 

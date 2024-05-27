@@ -17,8 +17,8 @@ categories:
 links:
 - text: Journal
   url: https://doi.org/10.1002/jrsm.1338
-  faicon: newspaper
-- faicon: lock-open
+  icon: newspaper
+- icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/dvb6r
 

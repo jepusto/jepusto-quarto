@@ -10,7 +10,7 @@ event_short: SREE 2023
 event_url: https://www.sree.org/2023-conference
 location: Arlington, VA
 links:
-- faicon: person-chalkboard
+- icon: file-easel
   text: Slides
   url: /files/SREE-2023-Stabilizing-performance-measures.pdf
 

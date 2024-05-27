@@ -1,7 +1,5 @@
 ---
 title: Approximating the distribution of cluster-robust Wald statistics
-author:
-  - James E. Pustejovsky
 date: '2024-03-24'
 slug: cluster-robust-Wald-statistics
 categories: [robust variance estimation, distribution theory]

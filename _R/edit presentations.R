@@ -26,7 +26,7 @@ yaml_vals <-
 icons <- 
   yaml_vals %>%
   mutate(
-    icons = lapply(yamls, \(x) tibble(icon = sapply(x$links, \(y) y$icon))),
+    icons = lapply(yamls, \(x) tibble(icon = sapply(x$links, \(y) y$faicon))),
     n = sapply(icons, nrow)
   ) %>%
   filter(n > 0L) %>%
@@ -58,6 +58,25 @@ tibble(
 edit_icon_yaml <- function(x) {
   read_lines(x) |>
     str_replace(pattern = "fa-icon:", replacement = "faicon:") |>
+    write_lines(file = x)
+}
+
+list.files(source_dir, pattern = "qmd$", full.names = TRUE) |>
+  walk(.f = edit_icon_yaml)
+
+
+edit_icon_yaml <- function(x) {
+  read_lines(x) |>
+    str_replace(pattern = "faicon: code", replacement = "icon: code-slash") |>
+    str_replace(pattern = "faicon: file", replacement = "icon: file-pdf-fill") |>
+    str_replace(pattern = "faicon: file-pen", replacement = "icon: pencil-square") |>
+    str_replace(pattern = "faicon: gift", replacement = "icon: box2") |>
+    str_replace(pattern = "faicon: lock-open", replacement = "icon: unlock-fill") |>
+    str_replace(pattern = "faicon: person-chalkboard", replacement = "icon: file-easel") |>
+    str_replace(pattern = "faicon: tablet-screen-button", replacement = "icon: tablet") |>
+    str_replace(pattern = "faicon: newspaper", replacement = "icon: newspaper") |>
+    str_replace(pattern = "faicon: table", replacement = "icon: table") |>
+    str_replace(pattern = "faicon: youtube", replacement = "icon: youtube") |>
     write_lines(file = x)
 }
 

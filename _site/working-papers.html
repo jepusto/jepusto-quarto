@@ -78,41 +78,13 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-author','listing-date','listing-publish_date','listing-publication_type','listing-image','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-author","listing-date","listing-publish_date","listing-publication_type","listing-image","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
     window['quarto-listings']['listing-working-papers'] = new List('listing-working-papers', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-more-working-papers .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-more-working-papers'] = new List('listing-more-working-papers', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -158,12 +130,18 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="James E. Pustejovsky - Working Papers">
+<meta property="og:image" content="https://jepusto.com/software/POMADE/featured.png">
 <meta property="og:site_name" content="James E. Pustejovsky">
+<meta property="og:image:height" content="1500">
+<meta property="og:image:width" content="1500">
 <meta name="twitter:title" content="James E. Pustejovsky - Working Papers">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jepusto.com/software/POMADE/featured.png">
+<meta name="twitter:image-height" content="1500">
+<meta name="twitter:image-width" content="1500">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -231,12 +209,12 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -245,7 +223,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -257,67 +235,64 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-working-papers" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716744827232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external">
-<div class="listing-date">
-Jul 21, 2023
-</div>
-<div class="listing-author">
-Mikkel H. Vembye, James E. Pustejovsky, Terri D. Pigott
-</div>
-</a>
-</div>
-</div>
+<div id="listing-working-papers" class="quarto-listing quarto-listing-container-custom">
+<div class="working-papers publications">
+  
+  <div class="paper">
+    <div class="quarto-post image-left">
+      
+        <div class="thumbnail">
+          <a href="./publication/Conducting-POMADE/index.html"><p><img src="./software/POMADE/featured.png" class="thumbnail-image"></p></a>
+        </div>
+      
+    <div class="body">
+      <p class="title">
+        <a href="./publication/Conducting-POMADE/index.html">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</a>
+      </p>
+      
+      <p class="authors">Mikkel H. Vembye, James E. Pustejovsky, Terri D. Pigott</p>
+      
+      
+      <p class="date">Jul 21, 2023</p>
+      
+      
+        <ul class="publication-links">
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/vpnmb/">
+                <i class="bi bi-" aria-label=""></i>
+                Supplementary materials
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/preprints/metaarxiv/3x2en">
+                <i class="bi bi-unlock-fill" aria-label="unlock-fill"></i>
+                Pre-Print
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/yurzh">
+                <i class="bi bi-code-slash" aria-label="code-slash"></i>
+                Code
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </div>
+  </div>
+
+  
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
 </div>
 <section id="more-publications" class="level4">
-<h4 class="anchored"><a href=".\publications/">More publications…</a></h4>
-<div id="listing-more-working-papers" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716744827232" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
-<div class="thumbnail">
-<p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p><a href="./publication/Conducting-POMADE/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./publication/Conducting-POMADE/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title" data-anchor-id="more-publications">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external">Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./publication/Conducting-POMADE/index.html" class="no-external">
-<div class="listing-date">
-Jul 21, 2023
-</div>
-<div class="listing-author">
-Mikkel H. Vembye, James E. Pustejovsky, Terri D. Pigott
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
+<h4 class="anchored" data-anchor-id="more-publications"><a href=".\publications/">More publications…</a></h4>
 
 
 

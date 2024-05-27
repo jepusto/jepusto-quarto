@@ -7,7 +7,7 @@ author:
 date: 2023-07-21T00:00:00
 publish_date: 2024-02-12T00:00:00
 publication_type: Pre-print
-publication: Pre-print
+image: ../../software/POMADE/featured.png
 categories:
 - power
 - meta-analysis
@@ -16,10 +16,10 @@ categories:
 links:
 - text: Supplementary materials
   url: https://osf.io/vpnmb/
-- faicon: lock-open
+- icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/3x2en
-- faicon: code
+- icon: code-slash
   text: Code
   url: https://osf.io/yurzh
 

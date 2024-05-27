@@ -1,7 +1,7 @@
 ```{=html}
-<div class="software publications">
+<div class="working-papers publications">
   <% for (const item of items) { %>
-  <div class="package">
+  <div class="paper">
     <div class="quarto-post image-left">
       <% if (item.image) { %>
         <div class="thumbnail">
@@ -9,20 +9,18 @@
         </div>
       <% } %>
     <div class="body">
-      <div class="title">
-          <a href="<%= item.path %>"><%= item.title %></a>
-      </div>
-      <% if (item.subtitle) { %>
-      <div class="subtitle">
-          <%= item.subtitle %><br> 
-      </div>
-      <% } %>
+      <p class="title">
+        <a href="<%= item.path %>"><%= item.title %></a>
+      </p>
       <% if (item.author) { %>
       <p class="authors"><%= item.author %></p>
       <% } %>
-      <% if (item.about.links) { %>
+      <% if (item.date) { %>
+      <p class="date"><%= item.date %></p>
+      <% } %>
+      <% if (item.links) { %>
         <ul class="publication-links">
-          <% for (const link of item.about.links) { %>
+          <% for (const link of item.links) { %>
             <li class="publication-link btn btn-outline-primary">
               <a href="<%= link.url %>">
                 <i class="bi bi-<%= link.icon %>" aria-label="<%= link.icon %>"></i>
@@ -35,6 +33,7 @@
     </div>
   </div>
   </div>
+
   <% } %>
 </div>
 ```
