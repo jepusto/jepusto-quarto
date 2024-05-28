@@ -1,0 +1,61 @@
+```{=html}
+<div class="posts list quarto-listing-default">
+<% for (const item of items) { %>
+
+<%
+// Writes a metadata value
+const outputMetadata = (item, field) => {
+
+const readField = (item, field) => {
+let value = item[field];
+if (field.includes(".") && !field.endsWith(".") && !field.startsWith(".")) {
+const fields = field.split(".");
+value = item;
+for (const deref of fields) {
+value = value[deref];
+}
+}
+return value;
+}
+
+let value = readField(item, field);
+if (value !== undefined) {
+print(`<div class="metadata-value listing-${field}">${listing.utilities.outputLink(item, field, value)}</div>`);  
+ }
+}
+%>
+
+<div class="post image-right">
+  <div class="metadata">          
+    <p class="date"><%= item.date %></p>
+    <% if (item.author) { %>
+      <p class="authors"><%= item.author %></p>
+    <% } %>
+  </div>
+  <% if (item.image) { %>
+    <div class="thumbnail">
+      <a href="<%= item.path %>"><p><img src="<%= item.image %>" class="thumbnail-image"></p></a>
+    </div>
+  <% } %>
+  <div class="body">
+    <div class="title"><a href="<%= item.path %>"><%= item.title %></a></div>
+    <% if (item.subtitle) { %>
+      <div class="subtitle">
+          <%= item.subtitle %><br> 
+      </div>
+    <% } %>
+    <% if (item.categories) { %> 
+      <div class="listing-categories">
+        <% for (const category of item.categories) { %>
+        <div class="listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;"><%= category %></div>
+        <% } %>
+      </div>
+    <% } %> 
+    <% if (item.description) { %>
+      <div class="description"><%= item.description %></div>
+    <% } %>
+  </div>
+</div>
+<% } %>
+</div>
+```

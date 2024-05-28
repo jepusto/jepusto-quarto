@@ -2,13 +2,14 @@
 title: "Publications and Pre-Prints"
 page-layout: article
 listing:
-    sort: 
-      - "date desc"
-    type: custom
-    template: ../_ejs/publication.ejs
-    categories: false
-    sort-ui: false
-    filter-ui: true
-    max-items: 1000
-    page-size: 100
+  sort: 
+    - "date desc"
+  type: custom
+  template: ../_ejs/publication.ejs
+  categories: false
+  sort-ui: false
+  filter-ui: true
+  feed: true
+  max-items: 1000
+  page-size: 100
 ---

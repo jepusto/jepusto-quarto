@@ -1,14 +1,20 @@
 ---
 title: "Posts"
+author: ""
 listing:
   sort: "date desc"
-  type: default
+  type: custom
+  template: ../_ejs/post.ejs
   categories: true
   sort-ui: false
   filter-ui: false
   feed: true
 page-layout: full
 title-block-banner: true
+
+citation: false
+license: ""
+
 ---
 
 

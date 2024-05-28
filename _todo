@@ -1,15 +1,8 @@
-https://meghan.rbind.io/blog/2024-02-11-moving-to-quarto/
-https://github.com/jmgirard/affcomlab/blob/main/ejs/article.ejs
-https://github.com/andrewheiss/ath-quarto/blob/main/html/talks/listing.ejs
-https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/projects/website/listing/item-default.ejs.md
-
 - Style listing pages
-  - blog posts
   - set up filtering with custom listing templates
+  - ensure categories work for blog posts
 
 - Create a template for software pages
-
-- Add RSS feed for papers
 
 - Copy-edit posts
 - Check for dead links

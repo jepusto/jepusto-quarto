@@ -16,9 +16,7 @@ license: "CC BY"
 # Default fields for citation
 citation: true
 author:
-  - name: 
-      given: James E.
-      family: Pustejovsky
+  - name: James E. Pustejovsky
 
 
 ## Code
