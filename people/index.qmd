@@ -2,14 +2,14 @@
 title: "People"
 listing:
   - id: students
-    type: grid
+    type: custom
     template: ../_ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
     include: 
       people-group: "Current Advisees"
   - id: alumni
-    type: grid
+    type: custom
     template: ../_ejs/student-box.ejs
     sort-ui: false
     filter-ui: false
@@ -19,6 +19,9 @@ title-block-banner: false
 ---
 
 ## Current Students
+
+:::{#students-temp}
+:::
 
 :::{#students}
 :::
