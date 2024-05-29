@@ -1,17 +1,44 @@
 ---
 title: "Teaching"
 listing:
+  - id: UW
     sort: 
       - "place desc" 
       - "title"
     type: table
     categories: false
     sort-ui: false
-    filter-ui: [place]
+    filter-ui: false
     max-items: 50
     image-height: 100pt
-    fields: [place, title]
+    include:
+      place: "{UW Madison}"
+    fields: [title]
     field-display-names:
       title: "Course Title"
-      place: "Institution"
+  - id: UT
+    sort: 
+      - "place desc" 
+      - "title"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    image-height: 100pt
+    include:
+      place: "{UT Austin}"
+    fields: [title]
+    field-display-names:
+      title: "Course Title"
 ---
+
+### At UW Madison
+
+:::::{#UW}
+:::::
+
+### At UT Austin
+
+:::::{#UT}
+:::::
