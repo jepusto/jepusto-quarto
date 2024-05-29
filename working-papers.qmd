@@ -19,4 +19,4 @@ listing:
 :::::{#working-papers}
 :::::
 
-#### [More publications...](/publications/)
+#### [More publications...](/publication/)
