@@ -1,20 +1,21 @@
 ```{=html}
 <div class="publications">
+  <ul class="list">
   <% for (const item of items) { %>
-  <div class="paper">
+  <li class="paper" <%= metadataAttrs(item) %>>
     <div class="metadata">          
-      <p class="date"><%= item.date %></p>
+      <p class="listing-date"><%= item.date %></p>
     </div>
     <div class="body">
-      <p class="title">
+      <p class="listing-title">
         <a href="<%= item.path %>"><%= item.title %></a>
       </p>
       <% if (item.author) { %>
-      <p class="authors"><%= item.author %></p>
+      <p class="listing-author"><%= item.author %></p>
       <% } %>
       <p class="citation">
         <% if (item.publication) { %>
-          <em><%= item.publication %>,</em>
+          <em class="listing-publication"><%= item.publication %>,</em>
             <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %>
             <% if (item.pages) { %>
               <%= item.pages %>.
@@ -35,7 +36,8 @@
         </ul>
       <% } %>
     </div>
-  </div>
+  </li>
   <% } %>
+  </ul>
 </div>
 ```

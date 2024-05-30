@@ -41,20 +41,20 @@ a:link, a:visited, a:hover, a:active {
             flex: 1 0 15%;
         }
 
-        .title {
+        .listing-title {
             font-weight: 500;
             font-size: 1em;
             margin-bottom: 0.2em;
             line-height: 1.2;
         }
 
-        .event-location {
+        .listing-event_short {
             font-weight: 300;
             font-size: 0.8em;
             margin-bottom: 0.3em;
         }
 
-        .date {
+        .listing-date {
             font-weight: 300;
             font-size: 0.8em;
             text-align: right;
@@ -92,14 +92,14 @@ a:link, a:visited, a:hover, a:active {
             flex: 1 0 15%;
         }
 
-       .title {
+       .listing-title {
             font-weight: 500;
             font-size: 1em;
             margin-bottom: 0.2em;
             line-height: 1.2;
         }
         
-        .authors {
+        .listing-author {
             font-weight: 300;
             font-size: 0.8em;
             margin-bottom: 0.3em;
@@ -111,7 +111,7 @@ a:link, a:visited, a:hover, a:active {
             margin-bottom: 0.3em;
         }
         
-        .date {
+        .listing-date {
             font-weight: 300;
             font-size: 0.8em;
             text-align: right;
