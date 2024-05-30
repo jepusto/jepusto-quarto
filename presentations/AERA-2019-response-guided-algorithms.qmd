@@ -1,7 +1,9 @@
 ---
 title: The impact of response-guided designs on count outcomes in single-case design baselines
 author:
+- Daniel M. Swan
 - James E. Pustejovsky
+- S. Natasha Beretvas
 date: 2019-04-07T00:00:00
 publish_date: 2019-04-07T16:01:00
 event: American Educational Research Association annual convention

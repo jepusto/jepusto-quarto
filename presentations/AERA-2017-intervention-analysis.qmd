@@ -1,7 +1,7 @@
 ---
-title: A nonlinear intervention analysis model for treatment reversal single-case
-  designs
+title: A nonlinear intervention analysis model for treatment reversal single-case designs
 author:
+- Daniel M. Swan
 - James E. Pustejovsky
 date: 2017-04-28T00:00:00
 publish_date: 2018-04-15T08:15:00

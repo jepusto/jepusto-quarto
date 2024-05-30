@@ -3,6 +3,7 @@ title: Four methods of analyzing partial interval recording data, with applicati
   to single-case research
 author:
 - James E. Pustejovsky
+- Daniel M. Swan
 date: 2014-04-04T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: American Educational Research Association annual convention

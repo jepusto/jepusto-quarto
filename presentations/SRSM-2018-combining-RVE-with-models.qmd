@@ -2,6 +2,8 @@
 title: Combining robust variance estimation with models for dependent effect sizes
 author:
 - James E. Pustejovsky
+- Elizabeth Tipton
+- Ariel Aloe
 date: 2018-07-18T09:00:00
 publish_date: 2018-07-18T09:00:00
 event: Society for Research Synthesis Methodology annual meeting

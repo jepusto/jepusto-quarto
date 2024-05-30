@@ -3,6 +3,7 @@ title: Small sample corrections for use of cluster-robust standard errors in the
   of school-based experiments
 author:
 - James E. Pustejovsky
+- Elizabeth Tipton
 date: 2017-03-02T00:00:00
 publish_date: 2018-04-15T08:15:00
 event: Society for Research on Educational Effectiveness Conference
