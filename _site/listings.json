@@ -188,6 +188,7 @@
       "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
       "/presentations/SRSM-2022-matter-of-emphasis.html",
       "/presentations/SSCC-2022-State-of-SCD-synthesis.html",
+      "/presentations/AERA-2022-synthesis-of-NAP.html",
       "/presentations/Stanford-QSU-2022-selective-reporting.html",
       "/presentations/OsloRUG-2022-clubSandwich.html",
       "/presentations/EdPsych-Colloquium-2021-Four-Things.html",
@@ -258,6 +259,7 @@
   {
     "listing": "/publication/index.html",
     "items": [
+      "/publication/More-is-not-necessarily-better/index.html",
       "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
       "/publication/Decline-effects/index.html",
       "/publication/Conducting-POMADE/index.html",
@@ -265,6 +267,8 @@
       "/publication/AAC-group-and-SCD/index.html",
       "/publication/competing-approaches-for-cross-classified-data/index.html",
       "/publication/Three-level-BC-SMD/index.html",
+      "/publication/AAC-increased-rigor/index.html",
+      "/publication/AAC-social-validity/index.html",
       "/publication/Single-case-next-generation-standards/index.html",
       "/publication/Power-approximations-for-dependent-effects/index.html",
       "/publication/investigating-narrative-performance/index.html",
@@ -275,6 +279,7 @@
       "/publication/RVE-Meta-analysis-expanding-the-range/index.html",
       "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
       "/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/index.html",
+      "/publication/integrating-word-reading-and-word-meaning/index.html",
       "/publication/Transition-to-College-Mathematics-Year-3/index.html",
       "/publication/psychosocial-interventions-for-spiritual-well-being/index.html",
       "/publication/stay-play-talk-meta-analysis/index.html",
@@ -320,6 +325,7 @@
       "/publication/Organizing-for-instruction/index.html",
       "/publication/Understanding-teacher-leadership/index.html",
       "/publication/Question-order-effects/index.html",
+      "/publication/Taking-a-distributed-perspective-study-operations/index.html",
       "/publication/Taking-a-distributed-perspective/index.html"
     ]
   },

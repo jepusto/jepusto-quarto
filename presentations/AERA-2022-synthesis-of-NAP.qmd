@@ -1,0 +1,35 @@
+---
+title: Synthesis of non-overlap of all pairs using logistic transformation or binomial generalized linear mixed model
+author:
+- James E. Pustejovsky
+- Man Chen
+date: 2022-04-21T11:40:00
+publish_date: 2022-04-21T08:00:00
+event: American Educational Research Association annual convention
+event_short: AERA 2022
+event_url: https://www.aera.net/Events-Meetings/Annual-Meeting/Previous-Annual-Meetings/2022-Annual-Meeting
+location: San Diego, CA
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/AERA-2022-synthesis-of-NAP.pdf
+- icon: file-pdf-fill
+  text: PDF
+  url: /files/NAP-GLMM-AERA-2022.pdf
+---
+
+Available methods for meta-analysis of findings from single-case designs include one-stage
+methods involving modeling of raw data from across multiple studies and two-stage
+methods involving calculation of effect sizes and subsequent meta-analysis. The two-stage
+approach works well for some effect size measures, such as log response ratios, but performs
+inadequately for the non-overlap of all pairs index. NAP is an effect size in the family of
+non-overlap measures, which quantify effect magnitude in terms of pairwise rank
+comparisons of outcomes under different treatment conditions, and is thus a useful metric
+for outcomes that are not normally distributed and not on a ratio metric. We examine two
+alternative approaches to meta-analysis of NAP, based on either transforming the effect
+size estimates or on a binomial generalized linear mixed model. We demonstrate the
+approaches by re-analyzing data from a meta-analysis of SCEDs examining augmentative
+and alternative communication interventions and evaluate the performance of the
+approaches using an extensive simulation study. We find that neither approach performs
+adequately for synthesis of single-case data series with limited numbers of observations in
+the baseline and intervention phases.

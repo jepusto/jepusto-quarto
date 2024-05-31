@@ -10,7 +10,66 @@
 <atom:link href="https://jepusto.com/publication/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
 <generator>quarto-1.4.552</generator>
-<lastBuildDate>Thu, 07 Mar 2024 06:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 24 Jun 2024 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Determining associations between intervention amount and outcomes for young autistic children: A systematic review and meta-analysis</title>
+  <dc:creator>Micheal Sandbank</dc:creator>
+  <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>Kristen Bottema-Beutel</dc:creator>
+  <dc:creator>Nicolette Caldwell</dc:creator>
+  <dc:creator>Jacob I. Feldman</dc:creator>
+  <dc:creator>Shannon Crowley LaPoint</dc:creator>
+  <dc:creator>Tiffany Woynaroski</dc:creator>
+  <link>https://jepusto.com/publication/More-is-not-necessarily-better/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<section id="importance" class="level3">
+<h3 class="anchored" data-anchor-id="importance">Importance</h3>
+<p>Health professionals routinely recommend “intensive interventions” (i.e., 20-40 hours per week) for autistic children. However, primary research backing this recommendation is sparse and plagued by methodological flaws.</p>
+</section>
+<section id="objective" class="level3">
+<h3 class="anchored" data-anchor-id="objective">Objective</h3>
+<p>We examined whether different metrics of intervention amount are associated with intervention effects on any developmental domain for young autistic children.</p>
+</section>
+<section id="data-sources" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
+<p>We used a large corpus of studies <img src="https://latex.codecogs.com/png.latex?(n%20=%20144)"> taken from a recent meta-analysis (with a search date of November 2021) of early interventions for autistic children.</p>
+</section>
+<section id="study-selection" class="level3">
+<h3 class="anchored" data-anchor-id="study-selection">Study Selection</h3>
+<p>Studies were eligible if they reported a quasi-experimental or randomized controlled trial testing the effects of a nonpharmacological intervention on any outcome in participant samples comprising &gt;50% autistic children age 8 or younger.</p>
+</section>
+<section id="data-extraction-and-synthesis" class="level3">
+<h3 class="anchored" data-anchor-id="data-extraction-and-synthesis">Data Extraction and Synthesis</h3>
+<p>Data were independently extracted by multiple coders. We constructed meta-regression models to determine whether each index of intervention amount was associated with effect sizes for each intervention type, while controlling for outcome domain, outcome proximity, age of participants, study design, and risk of detection bias.</p>
+</section>
+<section id="main-outcomes-and-measures" class="level3">
+<h3 class="anchored" data-anchor-id="main-outcomes-and-measures">Main Outcomes and Measures</h3>
+<p>The primary predictor of interest was intervention amount, quantified using three different metrics (daily intensity, duration, and cumulative intensity). The primary outcomes of interest were gains in any developmental domain, quantified by Hedges <img src="https://latex.codecogs.com/png.latex?g"> effect sizes.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>None of the meta-regression models evidenced a significant, positive association between any index of intervention amount and intervention effect size when considered within intervention type.</p>
+</section>
+<section id="conclusions-and-relevance" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions-and-relevance">Conclusions and Relevance</h3>
+<p>Our findings do not support the assertion that intervention effects increase with increasing amounts of intervention. Health professionals recommending supports should be advised that there is little robust evidence supporting the provision of “intensive” intervention. Our prior meta-analyses suggest that some interventions have the potential to improve some outcomes for autistic children during early childhood. The present results, however, suggest that providing more of such interventions will not necessarily result in larger effects on outcomes of interest. There is a pressing need for future primary research to be designed and conducted in a manner that allows us to determine the most supportive amounts of interventions by child characteristics, intervention type, and the outcomes targeted by the intervention.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>systematic review</category>
+  <category>autism</category>
+  <category>meta-analysis</category>
+  <guid>https://jepusto.com/publication/More-is-not-necessarily-better/</guid>
+  <pubDate>Mon, 24 Jun 2024 05:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
@@ -218,6 +277,78 @@
   <guid>https://jepusto.com/publication/Three-level-BC-SMD/</guid>
   <pubDate>Wed, 08 Mar 2023 06:00:00 GMT</pubDate>
   <media:content url="https://jepusto.com/publication/Three-level-BC-SMD/Clustered multiple baseline design data from Bryant et al. (2018)" medium="image"/>
+</item>
+<item>
+  <title>A case for increased rigor in AAC research: A methodological quality review</title>
+  <dc:creator>Jay B. Ganz</dc:creator>
+  <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>Joe Reichle</dc:creator>
+  <dc:creator>Kimberly J. Vannest</dc:creator>
+  <dc:creator>Lauren M. Pierson</dc:creator>
+  <dc:creator>Sanikan Wattanawongwan</dc:creator>
+  <dc:creator>Margaret Foster</dc:creator>
+  <dc:creator>Marcus Fuller</dc:creator>
+  <dc:creator>April N. Haas</dc:creator>
+  <dc:creator>Mary Rose Sallese</dc:creator>
+  <dc:creator>S. D. Smith</dc:creator>
+  <dc:creator>Valeria Yllades</dc:creator>
+  <link>https://jepusto.com/publication/AAC-increased-rigor/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p>This comprehensive review reports on methodological quality of 162 single-case studies on augmentative and alternative communication interventions for communication and challenging behavior in individuals diagnosed with autism or intellectual disabilities and with complex communication needs. Following review for inclusion criteria, documents were excluded if they failed to meet basic methodological standards. Each remaining study was evaluated for 10 detailed quality criteria. No studies met all standards without reservations. Only three of the included studies met all of the standards with reservations and the remainder met some but not all standards, with or without reservations. The included studies reported adequate detail for half of the quality indicators, but insufficient details for participant, setting, maintenance, generalization, and social validity descriptions. An increased quantity and quality of research were found in over four decades. More recent studies have adequately reported half of the criteria investigated, including describing the materials, defining the outcome variables, describing baseline and intervention procedures, and evaluating procedural integrity. After identifying quality features, the authors report in more detail on low-rated quality indicators particularly relevant to studies addressing social-communication interventions. The literature infrequently reported race, ethnicity, or home language. Future research should report characteristics of participants to ensure that research becomes representative of the population.</p>
+
+
+
+ ]]></description>
+  <category>single-case design</category>
+  <category>systematic review</category>
+  <category>Augmentative and alternative communication</category>
+  <guid>https://jepusto.com/publication/AAC-increased-rigor/</guid>
+  <pubDate>Fri, 20 Jan 2023 06:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Social validity, cost, acceptability, and feasibility of Augmentative and Alternative Communication devices used for individuals with autism spectrum disorder and intellectual disability: A systematic review</title>
+  <dc:creator>Lauren M. Pierson</dc:creator>
+  <dc:creator>Jay B. Ganz</dc:creator>
+  <dc:creator>James E. Pustejovsky</dc:creator>
+  <dc:creator>Joe Reichle</dc:creator>
+  <dc:creator>Kimberly J. Vannest</dc:creator>
+  <dc:creator>Sanikan Wattanawongwan</dc:creator>
+  <dc:creator>Margaret Foster</dc:creator>
+  <dc:creator>Marcus C. Fuller</dc:creator>
+  <dc:creator>April N. Haas</dc:creator>
+  <dc:creator>Mary Rose Sallese</dc:creator>
+  <dc:creator>S. D. Smith</dc:creator>
+  <dc:creator>Valeria Yllades</dc:creator>
+  <dc:creator>Emily Kenny</dc:creator>
+  <dc:creator>Peyton Morgan</dc:creator>
+  <dc:creator>Scout Paterson</dc:creator>
+  <link>https://jepusto.com/publication/AAC-social-validity/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<p><strong>Purpose</strong>: The authors conducted a systematic review of single-case experimental designs that included individuals with autism spectrum disorder and/or intellectual disability who used speech-generating devices (SGDs) for communication. The purpose of this study was to review subjective and normative pre- and post-intervention social validity data, in addition to the cost, acceptability, and feasibility of the SGDs used in the studies. The authors also studied trends in the reporting of pre- and post-intervention data over time.</p>
+<p><strong>Method</strong>: A systematic review of 7,327 articles resulted in 86 articles that met design quality criteria and included participants who used SGDs. A group of raters completed interrater reliability for all stages of the review.</p>
+<p><strong>Results</strong>: Researchers reported more subjective than normative data. Few studies reported on the price of the SGD or the person who purchased the SGD. More researchers reported using an SGD with more than one use, but few solicited feedback about the SGD used during the intervention. Few researchers reported information about the portability of the device or the operation effort.</p>
+<p><strong>Conclusions</strong>: Reporting on social validity represents a substantial limitation in experimental studies. Future work incorporating less biased/more objective measures is important for the creation of socially valid interventions.</p>
+
+
+
+ ]]></description>
+  <category>single-case design</category>
+  <category>systematic review</category>
+  <category>Augmentative and alternative communication</category>
+  <guid>https://jepusto.com/publication/AAC-social-validity/</guid>
+  <pubDate>Wed, 14 Dec 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Single case design research in Special Education: Next generation standards and considerations</title>
@@ -500,84 +631,6 @@
   <category>systematic review</category>
   <guid>https://jepusto.com/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/</guid>
   <pubDate>Tue, 01 Feb 2022 06:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Evaluating the Transition to College Mathematics Course in Texas high schools: Examining heterogeneity across schools and student characteristics</title>
-  <dc:creator>James E. Pustejovsky</dc:creator>
-  <dc:creator>Megha Joshi</dc:creator>
-  <link>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-3/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Texas House Bill 5 introduced requirements that school districts partner with institutions of higher education to provide college preparatory courses in mathematics and English language arts for high school seniors who are not yet college ready. In response to House Bill 5 requirements, the Charles A. Dana Center developed a model college preparatory mathematics course, Transition to College Mathematics Course (TCMC), which has been adopted by dozens of school districts across Texas over the past several school years. In prior work, we examined the effects of TCMC on students’ progress into post-secondary education by comparing two student cohorts who participated in TCMC to observationally similar students from the same cohort but who did not enroll in the course. In this report, we investigate the extent of heterogeneity in the effects of participating in TCMC. We find little evidence that the program was differentially effective for students from different socio-economic backgrounds, nor do we find evidence that program effects varied by the number of years that it had been offered. However, for key outcomes such as rates of passing a college-level math course, the effects of participating in TCMC may have varied across the schools that offered the course. Just as in prior work, these findings must be interpreted cautiously because we were unable to fully assess and account for students’ college-readiness status at the start of their senior year.</p>
-
-
-
- ]]></description>
-  <category>causal inference</category>
-  <category>evaluation</category>
-  <category>Transition to College Mathematics</category>
-  <category>heterogeneity</category>
-  <guid>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-3/</guid>
-  <pubDate>Tue, 20 Apr 2021 05:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>A systematic review and meta-analysis of effects of psychosocial interventions on spiritual well-being in adults with cancer</title>
-  <dc:creator>Laurie E. McLouth</dc:creator>
-  <dc:creator>C. Graham Ford</dc:creator>
-  <dc:creator>James E. Pustejovsky</dc:creator>
-  <dc:creator>Crystal Park</dc:creator>
-  <dc:creator>Allen C. Sherman</dc:creator>
-  <dc:creator>Kelly Trevino</dc:creator>
-  <dc:creator>John A. Salsman</dc:creator>
-  <link>https://jepusto.com/publication/psychosocial-interventions-for-spiritual-well-being/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p><strong>Objective</strong> Spiritual well‐being (SpWb) is an important dimension of health‐related quality of life for many cancer patients. Accordingly, an increasing number of psychosocial intervention studies have included SpWb as a study endpoint, and may improve SpWb even if not designed explicitly to do so. This meta‐analysis of randomized controlled trials (RCTs) evaluated effects of psychosocial interventions on SpWb in adults with cancer and tested potential moderators of intervention effects. <strong>Methods</strong> Six literature databases were systematically searched to identify RCTs of psychosocial interventions in which SpWb was an outcome. Doctoral‐level rater pairs extracted data using Covidence following Preferred Reporting Items for Systematic reviews and Meta‐Analyses guidelines. Standard meta‐analytic techniques were applied, including meta‐regression with robust variance estimation and risk‐of‐bias sensitivity analysis. <strong>Results</strong> Forty‐one RCTs were identified, encompassing 88 treatment effects among 3883 survivors. Interventions were associated with significant improvements in SpWb (<img src="https://latex.codecogs.com/png.latex?g%20=%200.22">, 95% CI [0.14, 0.29], <img src="https://latex.codecogs.com/png.latex?p%20%3C%200.0001">). Studies assessing the FACIT‐Sp demonstrated larger effect sizes than did those using other measures of SpWb (<img src="https://latex.codecogs.com/png.latex?g%20=%200.25">, 95% CI [0.17, 0.34], vs.&nbsp;<img src="https://latex.codecogs.com/png.latex?g%20=%200.10">, 95% CI [−0.02, 0.23], <img src="https://latex.codecogs.com/png.latex?p%20=%200.03">). No other intervention, clinical, or demographic characteristics significantly moderated effect size. <strong>Conclusions</strong> Psychosocial interventions are associated with small‐to‐medium‐sized effects on SpWb among cancer survivors. Future research should focus on conceptually coherent interventions explicitly targeting SpWb and evaluate interventions in samples that are diverse with respect to race and ethnicity, sex and cancer type.</p>
-
-
-
- ]]></description>
-  <category>cancer</category>
-  <category>meta-analysis</category>
-  <category>psycho-social intervention</category>
-  <category>systematic review</category>
-  <guid>https://jepusto.com/publication/psychosocial-interventions-for-spiritual-well-being/</guid>
-  <pubDate>Mon, 01 Feb 2021 06:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Systematic review and meta-analysis of stay-play-talk interventions for improving social behaviors of young children</title>
-  <dc:creator>Jennifer R. Ledford</dc:creator>
-  <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/publication/stay-play-talk-meta-analysis/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>Stay-play-talk (SPT) is a peer-mediated intervention which involves training peer implementers to stay in proximity to, play with, and talk to a focal child who has disabilities or lower social competence. This systematic review and meta-analysis investigated the contexts in which SPT interventions have been conducted, the methodological adequacy of the research assessing its effects, and the outcomes for both peer implementers and focal children. Studies have primarily occurred in inclusive preschool settings during free play activities, with researchers serving as facilitators. Average effects were positive for both peer implementers and focal children, although considerable heterogeneity across studies was observed. Additional research is needed to determine what peer implementer and focal child characteristics moderate intervention success, what modifications are needed for children who have complex communication needs, and optimal procedural variations (e.g., group size, training time).</p>
-
-
-
- ]]></description>
-  <category>meta-analysis</category>
-  <category>response ratio</category>
-  <category>single-case design</category>
-  <category>systematic review</category>
-  <guid>https://jepusto.com/publication/stay-play-talk-meta-analysis/</guid>
-  <pubDate>Tue, 05 Jan 2021 06:00:00 GMT</pubDate>
-  <media:content url="https://jepusto.com/publication/stay-play-talk-meta-analysis/Forest plots of LRRi estimates for peer and focal participants" medium="image"/>
 </item>
 </channel>
 </rss>

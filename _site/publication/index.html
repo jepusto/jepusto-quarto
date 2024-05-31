@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-author','listing-date','listing-publish_date','listing-publication_type','listing-publication','listing-volume','listing-issue','listing-pages','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-image','listing-organization','listing-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-title','listing-author','listing-date','listing-publish_date','listing-publication_type','listing-publication','listing-volume','listing-issue','listing-pages','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-image','listing-publication_editor','listing-publisher','listing-organization','listing-location',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-author","listing-date","listing-publish_date","listing-publication_type","listing-publication","listing-volume","listing-issue","listing-pages","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-image","listing-organization","listing-location"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-title","listing-author","listing-date","listing-publish_date","listing-publication_type","listing-publication","listing-volume","listing-issue","listing-pages","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-image","listing-publication_editor","listing-publisher","listing-organization","listing-location"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -237,7 +237,53 @@ window.Quarto = {
 <div class="publications">
   <ul class="list">
   
-  <li class="paper" data-index="0" data-categories="meta-analysis,meta-regression,dependent effect sizes,robust variance estimation" data-listing-date-sort="1709791200000" data-listing-file-modified-sort="1716846012230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+  <li class="paper" data-index="0" data-categories="systematic review,autism,meta-analysis" data-listing-date-sort="1719205200000" data-listing-file-modified-sort="1717122935683" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="348">
+    <div class="metadata">          
+      <p class="listing-date">Jun 24, 2024</p>
+    </div>
+    <div class="body">
+      <p class="listing-title">
+        <a href="../publication/More-is-not-necessarily-better/index.html">Determining associations between intervention amount and outcomes for young autistic children: A systematic review and meta-analysis</a>
+      </p>
+      
+      <p class="listing-author">Micheal Sandbank, James E. Pustejovsky, Kristen Bottema-Beutel, Nicolette Caldwell, Jacob I. Feldman, Shannon Crowley LaPoint, Tiffany Woynaroski</p>
+      
+      <p class="citation">
+        
+          <em class="listing-publication">JAMA Pediatrics,</em>
+            
+        
+      </p>
+      
+        <ul class="publication-links">
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://doi.org/10.1001/jamapediatrics.2024.1832">
+                <i class="bi bi-newspaper" aria-label="newspaper"></i>
+                Journal
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/f4r5v/">
+                <i class="bi bi-code-slash" aria-label="code-slash"></i>
+                Code
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="osf.io/kr2cd/">
+                <i class="bi bi-table" aria-label="table"></i>
+                Data
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </li>
+  
+  <li class="paper" data-index="1" data-categories="meta-analysis,meta-regression,dependent effect sizes,robust variance estimation" data-listing-date-sort="1709791200000" data-listing-file-modified-sort="1716846012230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
     <div class="metadata">          
       <p class="listing-date">Mar 7, 2024</p>
     </div>
@@ -297,7 +343,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="1" data-categories="replication,meta-analysis" data-listing-date-sort="1699509600000" data-listing-file-modified-sort="1716846011965" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="154">
+  <li class="paper" data-index="2" data-categories="replication,meta-analysis" data-listing-date-sort="1699509600000" data-listing-file-modified-sort="1716846011965" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="154">
     <div class="metadata">          
       <p class="listing-date">Nov 9, 2023</p>
     </div>
@@ -343,7 +389,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="2" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716846011731" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
+  <li class="paper" data-index="3" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716846011731" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
     <div class="metadata">          
       <p class="listing-date">Jul 21, 2023</p>
     </div>
@@ -386,7 +432,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="3" data-categories="meta-analysis,systematic review,cognitive remediation,non-invasive brain stimulation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716846012208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="250">
+  <li class="paper" data-index="4" data-categories="meta-analysis,systematic review,cognitive remediation,non-invasive brain stimulation" data-listing-date-sort="1689915600000" data-listing-file-modified-sort="1716846012208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="250">
     <div class="metadata">          
       <p class="listing-date">Jul 21, 2023</p>
     </div>
@@ -439,7 +485,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="4" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1685077200000" data-listing-file-modified-sort="1716846011181" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="241">
+  <li class="paper" data-index="5" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1685077200000" data-listing-file-modified-sort="1716846011181" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="241">
     <div class="metadata">          
       <p class="listing-date">May 26, 2023</p>
     </div>
@@ -496,7 +542,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="5" data-categories="simulation,random effects,robust variance estimation,fixed effects" data-listing-date-sort="1678341600000" data-listing-file-modified-sort="1716846011700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177">
+  <li class="paper" data-index="6" data-categories="simulation,random effects,robust variance estimation,fixed effects" data-listing-date-sort="1678341600000" data-listing-file-modified-sort="1716846011700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177">
     <div class="metadata">          
       <p class="listing-date">Mar 9, 2023</p>
     </div>
@@ -542,7 +588,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="6" data-categories="single-case design,effect size,standardized mean difference,design-comparable SMD,hierarchical models,multivariate" data-listing-date-sort="1678255200000" data-listing-file-modified-sort="1716846014349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="176">
+  <li class="paper" data-index="7" data-categories="single-case design,effect size,standardized mean difference,design-comparable SMD,hierarchical models,multivariate" data-listing-date-sort="1678255200000" data-listing-file-modified-sort="1716846014349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="176">
     <div class="metadata">          
       <p class="listing-date">Mar 8, 2023</p>
     </div>
@@ -599,7 +645,100 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="7" data-categories="single-case design,meta-analysis,effect size" data-listing-date-sort="1669096800000" data-listing-file-modified-sort="1716846013890" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
+  <li class="paper" data-index="8" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1674194400000" data-listing-file-modified-sort="1717122100622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="205">
+    <div class="metadata">          
+      <p class="listing-date">Jan 20, 2023</p>
+    </div>
+    <div class="body">
+      <p class="listing-title">
+        <a href="../publication/AAC-increased-rigor/index.html">A case for increased rigor in AAC research: A methodological quality review</a>
+      </p>
+      
+      <p class="listing-author">Jay B. Ganz, James E. Pustejovsky, Joe Reichle, Kimberly J. Vannest, Lauren M. Pierson, Sanikan Wattanawongwan, Margaret Foster, Marcus Fuller, April N. Haas, Mary Rose Sallese, S. D. Smith, Valeria Yllades</p>
+      
+      <p class="citation">
+        
+          <em class="listing-publication">Education and Training in Autism and Developmental Disabilities,</em>
+            <em>58</em>(1),
+            
+              3-21.
+            
+          
+        
+      </p>
+      
+        <ul class="publication-links">
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://edarxiv.org/9qnfp/">
+                <i class="bi bi-unlock-fill" aria-label="unlock-fill"></i>
+                Pre-Print
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/x4m7a/">
+                <i class="bi bi-code-slash" aria-label="code-slash"></i>
+                Code
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/b5ydr/">
+                <i class="bi bi-table" aria-label="table"></i>
+                Data
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </li>
+  
+  <li class="paper" data-index="9" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1670997600000" data-listing-file-modified-sort="1717121510140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="195">
+    <div class="metadata">          
+      <p class="listing-date">Dec 14, 2022</p>
+    </div>
+    <div class="body">
+      <p class="listing-title">
+        <a href="../publication/AAC-social-validity/index.html">Social validity, cost, acceptability, and feasibility of Augmentative and Alternative Communication devices used for individuals with autism spectrum disorder and intellectual disability: A systematic review</a>
+      </p>
+      
+      <p class="listing-author">Lauren M. Pierson, Jay B. Ganz, James E. Pustejovsky, Joe Reichle, Kimberly J. Vannest, Sanikan Wattanawongwan, Margaret Foster, Marcus C. Fuller, April N. Haas, Mary Rose Sallese, S. D. Smith, Valeria Yllades, Emily Kenny, Peyton Morgan, Scout Paterson</p>
+      
+      <p class="citation">
+        
+          <em class="listing-publication">Perspectives of the ASHA Special Interest Groups,</em>
+            <em>7</em>(6),
+            
+              1917-1940.
+            
+          
+        
+      </p>
+      
+        <ul class="publication-links">
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://doi.org/10.1044/2022_PERSP-22-00034">
+                <i class="bi bi-newspaper" aria-label="newspaper"></i>
+                Journal
+              </a>
+            </li>
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://osf.io/b5ydr/">
+                <i class="bi bi-table" aria-label="table"></i>
+                Data
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </li>
+  
+  <li class="paper" data-index="10" data-categories="single-case design,meta-analysis,effect size" data-listing-date-sort="1669096800000" data-listing-file-modified-sort="1716846013890" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
     <div class="metadata">          
       <p class="listing-date">Nov 22, 2022</p>
     </div>
@@ -645,7 +784,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="8" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1665982800000" data-listing-file-modified-sort="1716846012804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+  <li class="paper" data-index="11" data-categories="power,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1665982800000" data-listing-file-modified-sort="1716846012804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
     <div class="metadata">          
       <p class="listing-date">Oct 17, 2022</p>
     </div>
@@ -709,7 +848,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="9" data-categories="narrative assessment,developmental language disorder,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1664514000000" data-listing-file-modified-sort="1716846012569" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="362">
+  <li class="paper" data-index="12" data-categories="narrative assessment,developmental language disorder,meta-analysis,dependent effect sizes,robust variance estimation" data-listing-date-sort="1664514000000" data-listing-file-modified-sort="1716846012569" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="362">
     <div class="metadata">          
       <p class="listing-date">Sep 30, 2022</p>
     </div>
@@ -773,7 +912,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="10" data-categories="single-case design,meta-analysis,robust variance estimation,response ratio,non-overlap measures,standardized mean difference" data-listing-date-sort="1651208400000" data-listing-file-modified-sort="1716846013809" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+  <li class="paper" data-index="13" data-categories="single-case design,meta-analysis,robust variance estimation,response ratio,non-overlap measures,standardized mean difference" data-listing-date-sort="1651208400000" data-listing-file-modified-sort="1716846013809" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
     <div class="metadata">          
       <p class="listing-date">Apr 29, 2022</p>
     </div>
@@ -826,7 +965,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="11" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="374">
+  <li class="paper" data-index="14" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011143" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="374">
     <div class="metadata">          
       <p class="listing-date">Apr 20, 2022</p>
     </div>
@@ -879,7 +1018,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="12" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="120">
+  <li class="paper" data-index="15" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="120">
     <div class="metadata">          
       <p class="listing-date">Apr 20, 2022</p>
     </div>
@@ -936,7 +1075,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="13" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+  <li class="paper" data-index="16" data-categories="single-case design,systematic review,Augmentative and alternative communication" data-listing-date-sort="1650430800000" data-listing-file-modified-sort="1716846011263" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
     <div class="metadata">          
       <p class="listing-date">Apr 20, 2022</p>
     </div>
@@ -993,7 +1132,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="14" data-categories="meta-analysis,meta-regression,dependent effect sizes,robust variance estimation" data-listing-date-sort="1648789200000" data-listing-file-modified-sort="1716846013622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
+  <li class="paper" data-index="17" data-categories="meta-analysis,meta-regression,dependent effect sizes,robust variance estimation" data-listing-date-sort="1648789200000" data-listing-file-modified-sort="1716846013622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
     <div class="metadata">          
       <p class="listing-date">Apr 1, 2022</p>
     </div>
@@ -1071,7 +1210,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="15" data-categories="meta-analysis,robust variance estimation,bootstrap" data-listing-date-sort="1644300000000" data-listing-file-modified-sort="1716846011672" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="210">
+  <li class="paper" data-index="18" data-categories="meta-analysis,robust variance estimation,bootstrap" data-listing-date-sort="1644300000000" data-listing-file-modified-sort="1716846011672" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="210">
     <div class="metadata">          
       <p class="listing-date">Feb 8, 2022</p>
     </div>
@@ -1135,7 +1274,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="16" data-categories="single-case design,meta-analysis,systematic review" data-listing-date-sort="1643695200000" data-listing-file-modified-sort="1716846012039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
+  <li class="paper" data-index="19" data-categories="single-case design,meta-analysis,systematic review" data-listing-date-sort="1643695200000" data-listing-file-modified-sort="1716846012039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
     <div class="metadata">          
       <p class="listing-date">Feb 1, 2022</p>
     </div>
@@ -1192,7 +1331,43 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="17" data-categories="causal inference,evaluation,Transition to College Mathematics,heterogeneity" data-listing-date-sort="1618894800000" data-listing-file-modified-sort="1716846014439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="229">
+  <li class="paper" data-index="20" data-categories="reading instruction,within-subjects experiment" data-listing-date-sort="1625634000000" data-listing-file-modified-sort="1717121155331" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="171">
+    <div class="metadata">          
+      <p class="listing-date">Jul 7, 2021</p>
+    </div>
+    <div class="body">
+      <p class="listing-title">
+        <a href="../publication/integrating-word-reading-and-word-meaning/index.html">The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia</a>
+      </p>
+      
+      <p class="listing-author">Christy R. Austin, Sharon Vaughn, Nathan H. Clemens, James E. Pustejovsky, Alexis N. Boucher</p>
+      
+      <p class="citation">
+        
+          <em class="listing-publication">Scientific Studies of Reading,</em>
+            <em>26</em>(3),
+            
+              204-222.
+            
+          
+        
+      </p>
+      
+        <ul class="publication-links">
+          
+            <li class="publication-link btn btn-outline-primary">
+              <a href="https://doi.org/10.1080/10888438.2021.1947294">
+                <i class="bi bi-newspaper" aria-label="newspaper"></i>
+                Journal
+              </a>
+            </li>
+          
+        </ul>
+      
+    </div>
+  </li>
+  
+  <li class="paper" data-index="21" data-categories="causal inference,evaluation,Transition to College Mathematics,heterogeneity" data-listing-date-sort="1618894800000" data-listing-file-modified-sort="1716846014439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="229">
     <div class="metadata">          
       <p class="listing-date">Apr 20, 2021</p>
     </div>
@@ -1224,7 +1399,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="18" data-categories="cancer,meta-analysis,psycho-social intervention,systematic review" data-listing-date-sort="1612159200000" data-listing-file-modified-sort="1716846013015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
+  <li class="paper" data-index="22" data-categories="cancer,meta-analysis,psycho-social intervention,systematic review" data-listing-date-sort="1612159200000" data-listing-file-modified-sort="1716846013015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
     <div class="metadata">          
       <p class="listing-date">Feb 1, 2021</p>
     </div>
@@ -1260,7 +1435,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="19" data-categories="meta-analysis,response ratio,single-case design,systematic review" data-listing-date-sort="1609826400000" data-listing-file-modified-sort="1716846013964" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
+  <li class="paper" data-index="23" data-categories="meta-analysis,response ratio,single-case design,systematic review" data-listing-date-sort="1609826400000" data-listing-file-modified-sort="1716846013964" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
     <div class="metadata">          
       <p class="listing-date">Jan 5, 2021</p>
     </div>
@@ -1306,7 +1481,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="20" data-categories="causal inference,evaluation,Transition to College Mathematics" data-listing-date-sort="1608098400000" data-listing-file-modified-sort="1716846014418" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259">
+  <li class="paper" data-index="24" data-categories="causal inference,evaluation,Transition to College Mathematics" data-listing-date-sort="1608098400000" data-listing-file-modified-sort="1716846014418" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259">
     <div class="metadata">          
       <p class="listing-date">Dec 16, 2020</p>
     </div>
@@ -1345,7 +1520,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="21" data-categories="meta-analysis,publication bias,dependent effect sizes" data-listing-date-sort="1594530000000" data-listing-file-modified-sort="1716846013862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="232">
+  <li class="paper" data-index="25" data-categories="meta-analysis,publication bias,dependent effect sizes" data-listing-date-sort="1594530000000" data-listing-file-modified-sort="1716846013862" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="232">
     <div class="metadata">          
       <p class="listing-date">Jul 12, 2020</p>
     </div>
@@ -1395,7 +1570,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="22" data-categories="single-case design,response-guided design" data-listing-date-sort="1585198800000" data-listing-file-modified-sort="1716846013456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="191">
+  <li class="paper" data-index="26" data-categories="single-case design,response-guided design" data-listing-date-sort="1585198800000" data-listing-file-modified-sort="1716846013456" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="191">
     <div class="metadata">          
       <p class="listing-date">Mar 26, 2020</p>
     </div>
@@ -1434,7 +1609,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="23" data-categories="cancer,meta-analysis,positive affect,psycho-social intervention,systematic review" data-listing-date-sort="1574143200000" data-listing-file-modified-sort="1716846012860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="257">
+  <li class="paper" data-index="27" data-categories="cancer,meta-analysis,positive affect,psycho-social intervention,systematic review" data-listing-date-sort="1574143200000" data-listing-file-modified-sort="1716846012860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="257">
     <div class="metadata">          
       <p class="listing-date">Nov 19, 2019</p>
     </div>
@@ -1470,7 +1645,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="24" data-categories="single-case design,behavioral observation,systematic review" data-listing-date-sort="1564722000000" data-listing-file-modified-sort="1716846012723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
+  <li class="paper" data-index="28" data-categories="single-case design,behavioral observation,systematic review" data-listing-date-sort="1564722000000" data-listing-file-modified-sort="1716846012723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
     <div class="metadata">          
       <p class="listing-date">Aug 2, 2019</p>
     </div>
@@ -1527,7 +1702,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="25" data-categories="causal inference,evaluation,Transition to College Mathematics" data-listing-date-sort="1561870800000" data-listing-file-modified-sort="1716846014378" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="278">
+  <li class="paper" data-index="29" data-categories="causal inference,evaluation,Transition to College Mathematics" data-listing-date-sort="1561870800000" data-listing-file-modified-sort="1716846014378" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="278">
     <div class="metadata">          
       <p class="listing-date">Jun 30, 2019</p>
     </div>
@@ -1566,7 +1741,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="26" data-categories="psycho-social intervention,cancer,meta-analysis,self-efficacy,systematic review" data-listing-date-sort="1559797200000" data-listing-file-modified-sort="1716846012534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="250">
+  <li class="paper" data-index="30" data-categories="psycho-social intervention,cancer,meta-analysis,self-efficacy,systematic review" data-listing-date-sort="1559797200000" data-listing-file-modified-sort="1716846012534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="250">
     <div class="metadata">          
       <p class="listing-date">Jun 6, 2019</p>
     </div>
@@ -1609,7 +1784,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="27" data-categories="cancer,meaning and purpose,meta-analysis,psycho-social intervention,systematic review" data-listing-date-sort="1556514000000" data-listing-file-modified-sort="1716846013041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="274">
+  <li class="paper" data-index="31" data-categories="cancer,meaning and purpose,meta-analysis,psycho-social intervention,systematic review" data-listing-date-sort="1556514000000" data-listing-file-modified-sort="1716846013041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="274">
     <div class="metadata">          
       <p class="listing-date">Apr 29, 2019</p>
     </div>
@@ -1645,7 +1820,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="28" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation,non-overlap measures" data-listing-date-sort="1554094800000" data-listing-file-modified-sort="1716846012828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
+  <li class="paper" data-index="32" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation,non-overlap measures" data-listing-date-sort="1554094800000" data-listing-file-modified-sort="1716846012828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
     <div class="metadata">          
       <p class="listing-date">Apr 1, 2019</p>
     </div>
@@ -1695,7 +1870,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="29" data-categories="meta-analysis,publication bias" data-listing-date-sort="1551420000000" data-listing-file-modified-sort="1716846014019" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="201">
+  <li class="paper" data-index="33" data-categories="meta-analysis,publication bias" data-listing-date-sort="1551420000000" data-listing-file-modified-sort="1716846014019" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="201">
     <div class="metadata">          
       <p class="listing-date">Mar 1, 2019</p>
     </div>
@@ -1745,7 +1920,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="30" data-categories="meta-analysis,meta-regression,systematic review" data-listing-date-sort="1546840800000" data-listing-file-modified-sort="1716846011887" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="117">
+  <li class="paper" data-index="34" data-categories="meta-analysis,meta-regression,systematic review" data-listing-date-sort="1546840800000" data-listing-file-modified-sort="1716846011887" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="117">
     <div class="metadata">          
       <p class="listing-date">Jan 7, 2019</p>
     </div>
@@ -1795,7 +1970,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="31" data-categories="meta-analysis,meta-regression" data-listing-date-sort="1545890400000" data-listing-file-modified-sort="1716846012480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="121">
+  <li class="paper" data-index="35" data-categories="meta-analysis,meta-regression" data-listing-date-sort="1545890400000" data-listing-file-modified-sort="1716846012480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="121">
     <div class="metadata">          
       <p class="listing-date">Dec 27, 2018</p>
     </div>
@@ -1838,7 +2013,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="32" data-categories="robust variance estimation,panel data,fixed effects" data-listing-date-sort="1541134800000" data-listing-file-modified-sort="1716846013592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="191">
+  <li class="paper" data-index="36" data-categories="robust variance estimation,panel data,fixed effects" data-listing-date-sort="1541134800000" data-listing-file-modified-sort="1716846013592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="191">
     <div class="metadata">          
       <p class="listing-date">Nov 2, 2018</p>
     </div>
@@ -1895,7 +2070,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="33" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1527915600000" data-listing-file-modified-sort="1716846011491" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+  <li class="paper" data-index="37" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1527915600000" data-listing-file-modified-sort="1716846011491" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
     <div class="metadata">          
       <p class="listing-date">Jun 2, 2018</p>
     </div>
@@ -1927,7 +2102,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="34" data-categories="effect size,non-linear model,response ratio,single-case design" data-listing-date-sort="1525150800000" data-listing-file-modified-sort="1716846012445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
+  <li class="paper" data-index="38" data-categories="effect size,non-linear model,response ratio,single-case design" data-listing-date-sort="1525150800000" data-listing-file-modified-sort="1716846012445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="193">
     <div class="metadata">          
       <p class="listing-date">May 1, 2018</p>
     </div>
@@ -1991,7 +2166,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="35" data-categories="non-overlap measures,response ratio,single-case design,systematic review" data-listing-date-sort="1520402400000" data-listing-file-modified-sort="1716846013677" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164">
+  <li class="paper" data-index="39" data-categories="non-overlap measures,response ratio,single-case design,systematic review" data-listing-date-sort="1520402400000" data-listing-file-modified-sort="1716846013677" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164">
     <div class="metadata">          
       <p class="listing-date">Mar 7, 2018</p>
     </div>
@@ -2027,7 +2202,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="36" data-categories="single-case design,systematic review" data-listing-date-sort="1520056800000" data-listing-file-modified-sort="1716846013649" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
+  <li class="paper" data-index="40" data-categories="single-case design,systematic review" data-listing-date-sort="1520056800000" data-listing-file-modified-sort="1716846013649" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
     <div class="metadata">          
       <p class="listing-date">Mar 3, 2018</p>
     </div>
@@ -2063,7 +2238,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="37" data-categories="effect size,meta-analysis,response ratio,robust variance estimation,single-case design" data-listing-date-sort="1517464800000" data-listing-file-modified-sort="1716846014470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
+  <li class="paper" data-index="41" data-categories="effect size,meta-analysis,response ratio,robust variance estimation,single-case design" data-listing-date-sort="1517464800000" data-listing-file-modified-sort="1716846014470" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="196">
     <div class="metadata">          
       <p class="listing-date">Feb 1, 2018</p>
     </div>
@@ -2113,7 +2288,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="38" data-categories="effect size,meta-analysis,single-case design" data-listing-date-sort="1509512400000" data-listing-file-modified-sort="1716846013093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97">
+  <li class="paper" data-index="42" data-categories="effect size,meta-analysis,single-case design" data-listing-date-sort="1509512400000" data-listing-file-modified-sort="1716846013093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97">
     <div class="metadata">          
       <p class="listing-date">Nov 1, 2017</p>
     </div>
@@ -2149,7 +2324,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="39" data-categories="design-comparable SMD,meta-analysis,single-case design,systematic review" data-listing-date-sort="1498885200000" data-listing-file-modified-sort="1716846013839" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="142">
+  <li class="paper" data-index="43" data-categories="design-comparable SMD,meta-analysis,single-case design,systematic review" data-listing-date-sort="1498885200000" data-listing-file-modified-sort="1716846013839" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="142">
     <div class="metadata">          
       <p class="listing-date">Jul 1, 2017</p>
     </div>
@@ -2199,7 +2374,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="40" data-categories="design-comparable SMD,meta-analysis,single-case design,systematic review" data-listing-date-sort="1498885200000" data-listing-file-modified-sort="1716846013991" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
+  <li class="paper" data-index="44" data-categories="design-comparable SMD,meta-analysis,single-case design,systematic review" data-listing-date-sort="1498885200000" data-listing-file-modified-sort="1716846013991" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
     <div class="metadata">          
       <p class="listing-date">Jul 1, 2017</p>
     </div>
@@ -2235,7 +2410,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="41" data-categories="design-comparable SMD,effect size,meta-analysis,response ratio,single-case design,systematic review" data-listing-date-sort="1488348000000" data-listing-file-modified-sort="1716846012270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
+  <li class="paper" data-index="45" data-categories="design-comparable SMD,effect size,meta-analysis,response ratio,single-case design,systematic review" data-listing-date-sort="1488348000000" data-listing-file-modified-sort="1716846012270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="151">
     <div class="metadata">          
       <p class="listing-date">Mar 1, 2017</p>
     </div>
@@ -2271,7 +2446,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="42" data-categories="design-comparable SMD,effect size,meta-analysis,response ratio,single-case design" data-listing-date-sort="1483250400000" data-listing-file-modified-sort="1716846012752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+  <li class="paper" data-index="46" data-categories="design-comparable SMD,effect size,meta-analysis,response ratio,single-case design" data-listing-date-sort="1483250400000" data-listing-file-modified-sort="1716846012752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
     <div class="metadata">          
       <p class="listing-date">Jan 1, 2017</p>
     </div>
@@ -2303,7 +2478,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="43" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1482127200000" data-listing-file-modified-sort="1716846011463" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
+  <li class="paper" data-index="47" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1482127200000" data-listing-file-modified-sort="1716846011463" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
     <div class="metadata">          
       <p class="listing-date">Dec 19, 2016</p>
     </div>
@@ -2349,7 +2524,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="44" data-categories="meta-analysis,meta-regression,robust variance estimation,small-sample" data-listing-date-sort="1450159200000" data-listing-file-modified-sort="1716846013563" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="150">
+  <li class="paper" data-index="48" data-categories="meta-analysis,meta-regression,robust variance estimation,small-sample" data-listing-date-sort="1450159200000" data-listing-file-modified-sort="1716846013563" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="150">
     <div class="metadata">          
       <p class="listing-date">Dec 15, 2015</p>
     </div>
@@ -2399,7 +2574,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="45" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation" data-listing-date-sort="1441083600000" data-listing-file-modified-sort="1716846012692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
+  <li class="paper" data-index="49" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation" data-listing-date-sort="1441083600000" data-listing-file-modified-sort="1716846012692" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="184">
     <div class="metadata">          
       <p class="listing-date">Sep 1, 2015</p>
     </div>
@@ -2449,7 +2624,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="46" data-categories="cancer,correlation,mental health,meta-analysis,religion/spirituality,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="254">
+  <li class="paper" data-index="50" data-categories="cancer,correlation,mental health,meta-analysis,religion/spirituality,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="254">
     <div class="metadata">          
       <p class="listing-date">Aug 10, 2015</p>
     </div>
@@ -2485,7 +2660,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="47" data-categories="cancer,correlation,meta-analysis,physical health,religion/spirituality,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258">
+  <li class="paper" data-index="51" data-categories="cancer,correlation,meta-analysis,physical health,religion/spirituality,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="258">
     <div class="metadata">          
       <p class="listing-date">Aug 10, 2015</p>
     </div>
@@ -2521,7 +2696,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="48" data-categories="cancer,correlation,meta-analysis,religion/spirituality,social health,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259">
+  <li class="paper" data-index="52" data-categories="cancer,correlation,meta-analysis,religion/spirituality,social health,systematic review" data-listing-date-sort="1439182800000" data-listing-file-modified-sort="1716846013426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="259">
     <div class="metadata">          
       <p class="listing-date">Aug 10, 2015</p>
     </div>
@@ -2557,7 +2732,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="49" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation" data-listing-date-sort="1434690000000" data-listing-file-modified-sort="1716846012304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="143">
+  <li class="paper" data-index="53" data-categories="alternating renewal process,effect size,response ratio,single-case design,behavioral observation" data-listing-date-sort="1434690000000" data-listing-file-modified-sort="1716846012304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="143">
     <div class="metadata">          
       <p class="listing-date">Jun 19, 2015</p>
     </div>
@@ -2607,7 +2782,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="50" data-categories="single-case design,design-comparable SMD,effect size,hierarchical models" data-listing-date-sort="1412139600000" data-listing-file-modified-sort="1716846012016" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="131">
+  <li class="paper" data-index="54" data-categories="single-case design,design-comparable SMD,effect size,hierarchical models" data-listing-date-sort="1412139600000" data-listing-file-modified-sort="1716846012016" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="131">
     <div class="metadata">          
       <p class="listing-date">Oct 1, 2014</p>
     </div>
@@ -2671,7 +2846,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="51" data-categories="single-case design,behavioral observation,alternating renewal process" data-listing-date-sort="1406869200000" data-listing-file-modified-sort="1716846011413" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
+  <li class="paper" data-index="55" data-categories="single-case design,behavioral observation,alternating renewal process" data-listing-date-sort="1406869200000" data-listing-file-modified-sort="1716846011413" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
     <div class="metadata">          
       <p class="listing-date">Aug 1, 2014</p>
     </div>
@@ -2721,7 +2896,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="52" data-categories="single-case design,design-comparable SMD,effect size,hierarchical models" data-listing-date-sort="1405659600000" data-listing-file-modified-sort="1716846011391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="163">
+  <li class="paper" data-index="56" data-categories="single-case design,design-comparable SMD,effect size,hierarchical models" data-listing-date-sort="1405659600000" data-listing-file-modified-sort="1716846011391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="163">
     <div class="metadata">          
       <p class="listing-date">Jul 18, 2014</p>
     </div>
@@ -2746,7 +2921,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="53" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1396328400000" data-listing-file-modified-sort="1716846011435" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
+  <li class="paper" data-index="57" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1396328400000" data-listing-file-modified-sort="1716846011435" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
     <div class="metadata">          
       <p class="listing-date">Apr 1, 2014</p>
     </div>
@@ -2782,7 +2957,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="54" data-categories="effect size,meta-analysis,correlation" data-listing-date-sort="1393653600000" data-listing-file-modified-sort="1716846011759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="140">
+  <li class="paper" data-index="58" data-categories="effect size,meta-analysis,correlation" data-listing-date-sort="1393653600000" data-listing-file-modified-sort="1716846011759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="140">
     <div class="metadata">          
       <p class="listing-date">Mar 1, 2014</p>
     </div>
@@ -2839,7 +3014,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="55" data-categories="design-comparable SMD,effect size,single-case design" data-listing-date-sort="1377234000000" data-listing-file-modified-sort="1716846013913" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164">
+  <li class="paper" data-index="59" data-categories="design-comparable SMD,effect size,single-case design" data-listing-date-sort="1377234000000" data-listing-file-modified-sort="1716846013913" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164">
     <div class="metadata">          
       <p class="listing-date">Aug 23, 2013</p>
     </div>
@@ -2889,7 +3064,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="56" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1374123600000" data-listing-file-modified-sort="1716846011518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
+  <li class="paper" data-index="60" data-categories="single-case design,design-comparable SMD,effect size" data-listing-date-sort="1374123600000" data-listing-file-modified-sort="1716846011518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
     <div class="metadata">          
       <p class="listing-date">Jul 18, 2013</p>
     </div>
@@ -2925,7 +3100,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="57" data-categories="alternating renewal process,design-comparable SMD,effect size,hierarchical models,response ratio,single-case design,behavioral observation" data-listing-date-sort="1370062800000" data-listing-file-modified-sort="1716846012777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
+  <li class="paper" data-index="61" data-categories="alternating renewal process,design-comparable SMD,effect size,hierarchical models,response ratio,single-case design,behavioral observation" data-listing-date-sort="1370062800000" data-listing-file-modified-sort="1716846012777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
     <div class="metadata">          
       <p class="listing-date">Jun 1, 2013</p>
     </div>
@@ -2964,7 +3139,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="58" data-categories="design-comparable SMD,effect size,single-case design" data-listing-date-sort="1344920400000" data-listing-file-modified-sort="1716846013935" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
+  <li class="paper" data-index="62" data-categories="design-comparable SMD,effect size,single-case design" data-listing-date-sort="1344920400000" data-listing-file-modified-sort="1716846013935" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="145">
     <div class="metadata">          
       <p class="listing-date">Aug 14, 2012</p>
     </div>
@@ -3014,7 +3189,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="59" data-categories="distributed leadership,experience sampling,social networks" data-listing-date-sort="1285909200000" data-listing-file-modified-sort="1717120525277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="178">
+  <li class="paper" data-index="63" data-categories="distributed leadership,experience sampling,social networks" data-listing-date-sort="1285909200000" data-listing-file-modified-sort="1717120525277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="178">
     <div class="metadata">          
       <p class="listing-date">Oct 1, 2010</p>
     </div>
@@ -3050,7 +3225,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="60" data-categories="distributed leadership,social networks" data-listing-date-sort="1257051600000" data-listing-file-modified-sort="1717120251961" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="87">
+  <li class="paper" data-index="64" data-categories="distributed leadership,social networks" data-listing-date-sort="1257051600000" data-listing-file-modified-sort="1717120251961" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="87">
     <div class="metadata">          
       <p class="listing-date">Nov 1, 2009</p>
     </div>
@@ -3086,7 +3261,7 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="61" data-categories="question-order,social networks" data-listing-date-sort="1254373200000" data-listing-file-modified-sort="1716846013069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
+  <li class="paper" data-index="65" data-categories="question-order,social networks" data-listing-date-sort="1254373200000" data-listing-file-modified-sort="1716846013069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136">
     <div class="metadata">          
       <p class="listing-date">Oct 1, 2009</p>
     </div>
@@ -3136,7 +3311,28 @@ window.Quarto = {
     </div>
   </li>
   
-  <li class="paper" data-index="62" data-categories="distributed leadership,experience sampling,social networks" data-listing-date-sort="1206075600000" data-listing-file-modified-sort="1717119981408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="272">
+  <li class="paper" data-index="66" data-categories="distributed leadership" data-listing-date-sort="1237611600000" data-listing-file-modified-sort="1717123262666" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+    <div class="metadata">          
+      <p class="listing-date">Mar 21, 2009</p>
+    </div>
+    <div class="body">
+      <p class="listing-title">
+        <a href="../publication/Taking-a-distributed-perspective-study-operations/index.html">Taking a distributed perspective in studying school leadership and management: The challenge of study operations</a>
+      </p>
+      
+      <p class="listing-author">James P. Spillane, Eric M. Camburn, James E. Pustejovsky, Amber Stitziel-Pareja, Geoff Lewis</p>
+      
+      <p class="citation">
+        
+          <em class="listing-publication">Distributed Leadership: Different Perspectives,</em>
+            
+        
+      </p>
+      
+    </div>
+  </li>
+  
+  <li class="paper" data-index="67" data-categories="distributed leadership,experience sampling,social networks" data-listing-date-sort="1206075600000" data-listing-file-modified-sort="1717119981408" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="272">
     <div class="metadata">          
       <p class="listing-date">Mar 21, 2008</p>
     </div>
