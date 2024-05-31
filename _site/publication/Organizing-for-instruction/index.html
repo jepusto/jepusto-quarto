@@ -6,12 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Lisa Dorner">
+<meta name="author" content="James P. Spillane">
 <meta name="author" content="James E. Pustejovsky">
-<meta name="author" content="Elizabeth Tipton">
-<meta name="author" content="Ariel Aloe">
-<meta name="dcterms.date" content="2018-04-15">
+<meta name="dcterms.date" content="2010-10-01">
 
-<title>James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods</title>
+<title>James E. Pustejovsky - Organizing for instruction: A comparative study of public, charter, &amp; Catholic schools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -27,22 +27,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,10 +72,41 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="James E. Pustejovsky - Organizing for instruction: A comparative study of public, charter, &amp; Catholic schools">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
 <meta property="og:site_name" content="James E. Pustejovsky">
-<meta name="twitter:title" content="James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods">
+<meta name="twitter:title" content="James E. Pustejovsky - Organizing for instruction: A comparative study of public, charter, &amp; Catholic schools">
+<meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -86,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">James E. Pustejovsky</span>
     </a>
   </div>
@@ -97,45 +128,45 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../files/Pustejovsky-CV.pdf"> 
+    <a class="nav-link" href="../../files/Pustejovsky-CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../people/index.html"> 
+    <a class="nav-link" href="../../people/index.html"> 
 <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../working-papers.html"> 
+    <a class="nav-link" href="../../working-papers.html"> 
 <span class="menu-text">Working Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publication/index.html"> 
+    <a class="nav-link" href="../../publication/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../presentations/index.html"> 
+    <a class="nav-link" href="../../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../software/index.html"> 
+    <a class="nav-link" href="../../software/index.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching/index.html"> 
+    <a class="nav-link" href="../../teaching/index.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
+    <a class="nav-link" href="../../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -156,38 +187,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title column-body">
-    <h1 class="title">Meta-analysis of dependent effects: A review and consolidation of methods</h1>
+    <h1 class="title">Organizing for instruction: A comparative study of public, charter, &amp; Catholic schools</h1>
       </div>
 
   <div class="quarto-title-meta">
         <div>
       <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
-        <p class="author">James E. Pustejovsky</p><p class="author">Elizabeth Tipton</p><p class="author">Ariel Aloe</p>
+        <p class="author">Lisa Dorner</p><p class="author">James P. Spillane</p><p class="author">James E. Pustejovsky</p>
       </div>
     </div>
         <div>
-          <div class="quarto-title-meta-heading">Date</div>
+          <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-                <p class="date">April 15, 2018</p>
+                <p class="date">October 1, 2010</p>
               </div>
     </div>
-            <div>
-      <div class="quarto-title-meta-heading">Event</div>
-      <div class="quarto-title-meta-contents">
-        <p class="event">American Educational Research Association annual convention</p>
-      </div>
-    </div>
-            <div>
-      <div class="quarto-title-meta-heading">Location</div>
-      <div class="quarto-title-meta-contents">
-        <p class="location">New York, NY</p>
-      </div>
-    </div>
               <div class="quarto-links">
-                <a href="../files/Dependent-effects-AERA-2018.pdf" class="btn btn-outline-primary">
-          <i class="bi bi-file-easel" aria-label="file-easel"></i>
-          Slides
+                <a href="https://doi.org/10.1007/s10833-010-9147-5" class="btn btn-outline-primary">
+          <i class="bi bi-newspaper" aria-label="newspaper"></i>
+          Journal
         </a>
               </div>
           </div>
@@ -196,6 +215,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Guided by theories of institutions, organizations, and sense-making, this manuscript examines how public, charter, and Catholic school staff in a large urban area organize for instruction and respond to educational change. To build theory about institutional processes of “organizing” from participants’ perspectives, data included a survey regarding staff networks <span class="math inline">\((N = 271)\)</span> and semi-structured, qualitative interviews <span class="math inline">\((n = 49)\)</span>. Findings demonstrate that all 11 schools in this study reflected the current reform environment with its focus on managing instruction. However, staff from different kinds of schools organized in distinct ways. Most charter and Catholic school staff described obtaining information about instruction through “organic” relationships using the metaphor of family to define their work situations. Alternatively, public schools tended to be “mechanistic,” with staff viewing themselves as professionals who were focused on standards and testing. One charter school, however, combined organic and mechanistic characteristics demonstrating the contagion that occurs among organizations in the same institutional sector and the reach that institutional policy scripts, such as <em>No Child Left Behind</em>, have in changing instructional practice at all kinds of schools.</p>
 
 
 
@@ -614,5 +634,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

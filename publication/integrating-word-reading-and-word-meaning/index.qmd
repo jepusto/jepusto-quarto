@@ -1,0 +1,25 @@
+---
+title: The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia
+author:
+- Christy R. Austin
+- Sharon Vaughn
+- Nathan H. Clemens
+- James E. Pustejovsky
+- Alexis N. Boucher
+date: 2021-07-07T00:00:00
+publish_date: 2021-07-07T00:00:00
+publication_type: Journal article
+publication: Scientific Studies of Reading
+volume: 26
+issue: 3
+pages: 204-222
+categories:
+- reading instruction
+- within-subjects experiment
+links:
+- text: Journal
+  url: https://doi.org/10.1080/10888438.2021.1947294
+  icon: newspaper
+---
+
+This within-subjects experimental study investigated the relative effects of word reading and word meaning instruction (WR+WM) compared to word-reading instruction alone (WR) on the accuracy, fluency, and word meaning knowledge of 4th-5th graders with dyslexia. We matched word lists on syllables, phonemes, frequency, number of definitions, and concreteness. We assigned half the words to WR and half to WR+WM. Word reading accuracy, word reading fluency, and word meaning knowledge were measured at pretest, immediately following each intervention session, and at posttest, administered immediately following the 12, 45-minute, daily instructional sessions. Compared to WR instruction alone, WR+WM significantly improved accuracy $(d = 0.65)$, fluency $(d = 0.43)$, and word meaning knowledge $(d = 1.92)$ immediately following intervention, and significantly improved accuracy $(d = 0.74)$, fluency $(d = 0.84)$, and word meaning knowledge $(d = 1.03)$ at posttest. Findings support the premise that word meaning knowledge facilitates accurate and fluent word reading, and that instruction explicitly integrating word reading and word meaning may be an effective support for upper elementary students with dyslexia.

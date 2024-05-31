@@ -1,0 +1,45 @@
+---
+title: 'Social validity, cost, acceptability, and feasibility of Augmentative and Alternative Communication devices used for individuals with autism spectrum disorder and intellectual disability: A systematic review'
+author:
+- Lauren M. Pierson
+- Jay B. Ganz
+- James E. Pustejovsky
+- Joe Reichle
+- Kimberly J. Vannest
+- Sanikan Wattanawongwan
+- Margaret Foster
+- Marcus C. Fuller
+- April N. Haas
+- Mary Rose Sallese
+- S. D. Smith
+- Valeria Yllades
+- Emily Kenny
+- Peyton Morgan
+- Scout Paterson
+date: 2022-12-14T00:00:00
+publish_date: 2022-12-14T00:00:00
+publication_type: Journal article
+publication: Perspectives of the ASHA Special Interest Groups
+volume: 7
+issue: 6
+pages: 1917-1940
+categories:
+- single-case design
+- systematic review
+- Augmentative and alternative communication
+links:
+- text: Journal
+  url: https://doi.org/10.1044/2022_PERSP-22-00034 
+  icon: newspaper
+- icon: table
+  text: Data
+  url: https://osf.io/b5ydr/
+---
+
+__Purpose__: The authors conducted a systematic review of single-case experimental designs that included individuals with autism spectrum disorder and/or intellectual disability who used speech-generating devices (SGDs) for communication. The purpose of this study was to review subjective and normative pre- and post-intervention social validity data, in addition to the cost, acceptability, and feasibility of the SGDs used in the studies. The authors also studied trends in the reporting of pre- and post-intervention data over time.
+
+__Method__: A systematic review of 7,327 articles resulted in 86 articles that met design quality criteria and included participants who used SGDs. A group of raters completed interrater reliability for all stages of the review.
+
+__Results__: Researchers reported more subjective than normative data. Few studies reported on the price of the SGD or the person who purchased the SGD. More researchers reported using an SGD with more than one use, but few solicited feedback about the SGD used during the intervention. Few researchers reported information about the portability of the device or the operation effort.
+
+__Conclusions__: Reporting on social validity represents a substantial limitation in experimental studies. Future work incorporating less biased/more objective measures is important for the creation of socially valid interventions.

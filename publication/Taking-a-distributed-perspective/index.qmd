@@ -1,0 +1,44 @@
+---
+title: "Taking a distributed perspective: epistemological and methodological tradeoffs in operationalizing the leader-plus aspect"
+author:
+- James P. Spillane
+- Eric M. Camburn
+- James E. Pustejovsky
+- Amber Stitziel-Pareja
+- Geoff Lewis
+date: 2008-03-21T00:00:00
+publish_date: 2008-03-21T00:00:00
+publication_type: Journal article
+publication: Journal of Educational Administration
+volume: 46
+issue: 2
+pages: 189-213
+categories:
+- distributed leadership
+- experience sampling
+- social networks
+links:
+- text: Journal
+  url: https://doi.org/10.1108/09578230810863262
+  icon: newspaper
+---
+
+### Purpose
+
+This paper is concerned with the epistemological and methodological challenges involved in studying the distribution of leadership across people within the school-–-the leader-plus aspect of a distributed perspective, which it aims to investigate.
+
+### Design/methodology/approach
+
+The paper examines the entailments of the distributed perspective for collecting and analyzing data on school leadership and management. It considers four different operationalizations of the leader-plus aspect of the distributed perspective and examines the results obtained from these different operationalizations. The research reported in this paper is part of a larger study, an efficacy trial of a professional development program intended to prepare principals to improve their practice. The study involved a mixed method design. For the purpose of this paper a combination of qualitative and quantitative data, including an experience sampling method (ESM) principal log, a principal questionnaire (PQ), and a school staff questionnaire (SSQ) was used.
+
+### Findings
+
+While acknowledging broad similarities among the various approaches, the different approaches also surfaced some divergence that has implications for thinking about the epistemological and methodological challenges in measuring leadership from a distributed perspective. Approaches that focus on the lived organization as distinct from the designed organization, for example, unearth the role of individuals with no formal leadership designations in leading and managing the school.
+
+### Research limitations/implications
+
+Limited by the data set, the paper focuses on only four operationalizations of the leader-plus aspect of the distributed perspective rather than taking a more comprehensive look at how the leader-plus aspect might be operationalized.
+
+### Originality/value
+
+The primary value of this paper is that it will prompt scholars to think about the entailments of different ways of operationalizing the leader-plus aspect when using a distributed perspective.

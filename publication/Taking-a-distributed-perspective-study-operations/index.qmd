@@ -1,0 +1,19 @@
+---
+title: "Taking a distributed perspective in studying school leadership and management: The challenge of study operations"
+author:
+- James P. Spillane
+- Eric M. Camburn
+- James E. Pustejovsky
+- Amber Stitziel-Pareja
+- Geoff Lewis
+date: 2009-03-21T00:00:00
+publish_date: 2009-03-21T00:00:00
+publication_type: Book chapter
+publication: "Distributed Leadership: Different Perspectives"
+publication_editor: A. Harris (ed.)
+publisher: Springer
+pages: 47-80
+categories:
+- distributed leadership
+links:
+---

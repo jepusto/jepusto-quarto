@@ -6,12 +6,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Christy R. Austin">
+<meta name="author" content="Sharon Vaughn">
+<meta name="author" content="Nathan H. Clemens">
 <meta name="author" content="James E. Pustejovsky">
-<meta name="author" content="Elizabeth Tipton">
-<meta name="author" content="Ariel Aloe">
-<meta name="dcterms.date" content="2018-04-15">
+<meta name="author" content="Alexis N. Boucher">
+<meta name="dcterms.date" content="2021-07-07">
 
-<title>James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods</title>
+<title>James E. Pustejovsky - The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -27,22 +29,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,10 +74,41 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="James E. Pustejovsky - The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
 <meta property="og:site_name" content="James E. Pustejovsky">
-<meta name="twitter:title" content="James E. Pustejovsky - Meta-analysis of dependent effects: A review and consolidation of methods">
+<meta name="twitter:title" content="James E. Pustejovsky - The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia">
+<meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -86,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">James E. Pustejovsky</span>
     </a>
   </div>
@@ -97,45 +130,45 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../files/Pustejovsky-CV.pdf"> 
+    <a class="nav-link" href="../../files/Pustejovsky-CV.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../people/index.html"> 
+    <a class="nav-link" href="../../people/index.html"> 
 <span class="menu-text">People</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../posts/index.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../working-papers.html"> 
+    <a class="nav-link" href="../../working-papers.html"> 
 <span class="menu-text">Working Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publication/index.html"> 
+    <a class="nav-link" href="../../publication/index.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../presentations/index.html"> 
+    <a class="nav-link" href="../../presentations/index.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../software/index.html"> 
+    <a class="nav-link" href="../../software/index.html"> 
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching/index.html"> 
+    <a class="nav-link" href="../../teaching/index.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
+    <a class="nav-link" href="../../contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -156,38 +189,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title column-body">
-    <h1 class="title">Meta-analysis of dependent effects: A review and consolidation of methods</h1>
+    <h1 class="title">The relative effects of integrating word reading and word meaning instruction to word reading instruction alone on the accuracy, fluency, and word meaning knowledge of 4th-5th grade students with dyslexia</h1>
       </div>
 
   <div class="quarto-title-meta">
         <div>
       <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
-        <p class="author">James E. Pustejovsky</p><p class="author">Elizabeth Tipton</p><p class="author">Ariel Aloe</p>
+        <p class="author">Christy R. Austin</p><p class="author">Sharon Vaughn</p><p class="author">Nathan H. Clemens</p><p class="author">James E. Pustejovsky</p><p class="author">Alexis N. Boucher</p>
       </div>
     </div>
         <div>
-          <div class="quarto-title-meta-heading">Date</div>
+          <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-                <p class="date">April 15, 2018</p>
+                <p class="date">July 7, 2021</p>
               </div>
     </div>
-            <div>
-      <div class="quarto-title-meta-heading">Event</div>
-      <div class="quarto-title-meta-contents">
-        <p class="event">American Educational Research Association annual convention</p>
-      </div>
-    </div>
-            <div>
-      <div class="quarto-title-meta-heading">Location</div>
-      <div class="quarto-title-meta-contents">
-        <p class="location">New York, NY</p>
-      </div>
-    </div>
               <div class="quarto-links">
-                <a href="../files/Dependent-effects-AERA-2018.pdf" class="btn btn-outline-primary">
-          <i class="bi bi-file-easel" aria-label="file-easel"></i>
-          Slides
+                <a href="https://doi.org/10.1080/10888438.2021.1947294" class="btn btn-outline-primary">
+          <i class="bi bi-newspaper" aria-label="newspaper"></i>
+          Journal
         </a>
               </div>
           </div>
@@ -196,6 +217,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>This within-subjects experimental study investigated the relative effects of word reading and word meaning instruction (WR+WM) compared to word-reading instruction alone (WR) on the accuracy, fluency, and word meaning knowledge of 4th-5th graders with dyslexia. We matched word lists on syllables, phonemes, frequency, number of definitions, and concreteness. We assigned half the words to WR and half to WR+WM. Word reading accuracy, word reading fluency, and word meaning knowledge were measured at pretest, immediately following each intervention session, and at posttest, administered immediately following the 12, 45-minute, daily instructional sessions. Compared to WR instruction alone, WR+WM significantly improved accuracy <span class="math inline">\((d = 0.65)\)</span>, fluency <span class="math inline">\((d = 0.43)\)</span>, and word meaning knowledge <span class="math inline">\((d = 1.92)\)</span> immediately following intervention, and significantly improved accuracy <span class="math inline">\((d = 0.74)\)</span>, fluency <span class="math inline">\((d = 0.84)\)</span>, and word meaning knowledge <span class="math inline">\((d = 1.03)\)</span> at posttest. Findings support the premise that word meaning knowledge facilitates accurate and fluent word reading, and that instruction explicitly integrating word reading and word meaning may be an effective support for upper elementary students with dyslexia.</p>
 
 
 
@@ -614,5 +636,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
