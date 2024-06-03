@@ -22,9 +22,9 @@ date: 2023-11-09T00:00:00
 publish_date: 2023-11-09T00:00:00
 publication_type: Journal article
 publication: Nature Human Behavior 
-volume: 
+volume: 8
 issue: 
-pages: advance online publication
+pages: 311-319
 categories:
 - replication
 - meta-analysis

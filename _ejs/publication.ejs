@@ -16,10 +16,9 @@
       <p class="citation">
         <% if (item.publication) { %>
           <em class="listing-publication"><%= item.publication %>,</em>
-            <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %>
-            <% if (item.pages) { %>
-              <%= item.pages %>.
-            <% } %>
+          <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %><% } %>
+          <% if (item.pages) { %>
+            <%= item.pages %>.
           <% } %>
         <% } %>
       </p>

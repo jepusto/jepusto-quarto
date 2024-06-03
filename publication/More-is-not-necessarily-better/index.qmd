@@ -12,8 +12,6 @@ date: 2024-06-24T00:00:00
 publish_date: 2024-06-24T00:00:00
 publication_type: Journal article
 publication: JAMA Pediatrics
-volume: 
-issue: 
 pages: forthcoming
 categories:
 - systematic review
@@ -28,7 +26,7 @@ links:
   url: https://osf.io/f4r5v/
 - icon: table
   text: Data
-  url: osf.io/kr2cd/
+  url: https://osf.io/kr2cd/
 ---
 
 ### Importance
