@@ -5,13 +5,14 @@ author:
 - Joseph Lambert
 - James E. Pustejovsky
 - Kathleen N. Zimmerman
+- Nicole Hollins
 - Erin E. Barton
 date: 2022-11-22T00:00:00
 publish_date: 2022-11-22T00:00:00
 publication_type: Journal article
 publication: Exceptional Children
-volume: 
-issue: 
+volume: 89
+issue: 4
 pages: 379-396
 categories:
 - single-case design
