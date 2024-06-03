@@ -1,0 +1,17 @@
+---
+title: On the multivariate distribution of effect size estimates from single-case experimental designs
+author:
+- James E. Pustejovsky
+date: 2021-04-12T11:40:00
+publish_date: 2021-04-12T08:00:00
+event: American Educational Research Association annual convention
+event_short: AERA 2021
+event_url: https://www.aera.net/Events-Meetings/Annual-Meeting/Previous-Annual-Meetings/2021-Annual-Meeting
+location: Online
+links:
+- icon: file-pdf-fill
+  text: PDF
+  url: /files/AERA-2021-Covariances-of-within-case-effect-sizes.pdf
+---
+
+Many different effect size metrics have been proposed for use with single-case experimental designs (SCEDs). Metrics that have known sampling variances and are suitable for meta-analysis include the within-case standardized mean difference (SMD), the log response ratio (LRR), and the non-overlap of all pairs (NAP). These within-case effect size metrics can be used to make comparisons between pairs of phases within an SCED for a single outcome. However, in practice, many SCEDs include multiple outcomes, multiple phases, or both multiple outcomes and multiple phases. In such studies, it may be useful to estimate multiple effect sizes for inclusion in a meta-analysis. This requires calculation not only of effect size estimates and their sampling variances, but also the covariances between effect size estimates. Formulas for the covariances between effect size estimates are available but scattered around the methodological literature. This paper reviews and consolidates available formulas and demonstrates their relevance in the context of meta-analysis of SCEDs. I describe methods for estimating multiple effect sizes, along with corresponding sampling variances and covariances, for the within-case SMD, LRR, and NAP indices. An empirical example is included to illustrate the calculations.
