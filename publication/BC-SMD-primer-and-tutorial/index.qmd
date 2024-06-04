@@ -7,22 +7,25 @@ author:
 - Timothy S. Lau
 date: 2016-12-19T00:00:00
 publish_date: 2016-12-19T00:00:00
-publication_type: Report
-publication: 'Oslo, Norway: The Campbell Collaboration'
+publication_type: Journal article
+publication: Campbell Systematic Reviews
+volume: 12
+issue: 1
+pages: 1-31
 categories:
 - single-case design
 - design-comparable SMD
 - effect size
 links:
+- text: Journal
+  icon: newspaper
+  url: https://doi.org/10.4073/cmdp.2016.1
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
   icon: box2
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
   icon: tablet
-- icon: file-pdf-fill
-  text: PDF
-  url: https://campbellcollaboration.org/library/effect-sizes-single-case-designs-campbell-discussion-paper-1.html
 ---
 
 We describe a standardised mean difference statistic (d) for single-case designs that is equivalent to the usual d in between-groups experiments. We show how it can be used to summarise treatment effects over cases within a study, to do power analyses in planning new studies and grant proposals, and to meta-analyse effects across studies of the same question. We discuss limitations of this d-statistic, and possible remedies to them. Even so, this d-statistic is better founded statistically than other effect size measures for single-case design, and unlike many general linear model approaches such as multilevel modelling or generalised additive models, it produces a standardised effect size that can be integrated over studies with different outcome measures. SPSS macros for both effect size computation and power analysis are available.

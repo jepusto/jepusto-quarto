@@ -19,8 +19,7 @@ links:
   icon: newspaper
 - icon: file-pdf-fill
   text: PDF
-  url: files/TCMC-Eval-Yr-1.pdf
-
+  url: /files/TCMC-Eval-Yr-1.pdf
 ---
 
 

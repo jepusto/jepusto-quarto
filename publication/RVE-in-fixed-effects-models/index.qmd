@@ -21,13 +21,12 @@ links:
 - text: Correction
   url: https://doi.org/10.1080/07350015.2023.2174123
   icon: file-pdf-fill-pen
-- text: R package
-  url: https://CRAN.R-project.org/package=clubSandwich
-  icon: box2
 - icon: unlock-fill
   text: Pre-Print
   url: https://arxiv.org/abs/1601.01981
-
+- text: R package
+  url: https://CRAN.R-project.org/package=clubSandwich
+  icon: box2
 ---
 
 

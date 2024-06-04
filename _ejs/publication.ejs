@@ -14,13 +14,19 @@
       <p class="listing-author"><%= item.author %></p>
       <% } %>
       <p class="citation">
+      <% if (item.publication_type) { %>
         <% if (item.publication) { %>
-          <em class="listing-publication"><%= item.publication %>,</em>
+        <em class="listing-publication"><%= item.publication %>,</em>
+        <% if (item.publication_type == "Journal article") { %>
           <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %><% } %>
           <% if (item.pages) { %>
             <%= item.pages %>.
           <% } %>
+        <% } else if (item.publication_type == "Report") {%>
+          <% if (item.organization) { %><%= item.organization %><% if (item.location) { %>, <%= item.location %><% } %>.<% } %>
         <% } %>
+      <% } %>
+      <% } %>
       </p>
       <% if (item.links) { %>
         <ul class="publication-links">
