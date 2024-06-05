@@ -1,13 +1,11 @@
 ---
 title: Getting started with ARPobservation
-
 date: '2013-10-24'
 categories:
 - behavioral observation
 - simulation
 - Rstats
 code-tools: true
-
 ---
 
 **UPDATED 5/29/2014 after posting the package to CRAN**
@@ -20,10 +18,10 @@ Here are step-by-step instructions on how to download and install ARPobservation
 
 3. Open R or RStudio and type the following sequence of commands in the console:
 
-  ```{r eval = FALSE}
-  install.packages("ARPobservation")
-  library(ARPobservation)
-  ```
+```{r eval = FALSE}
+install.packages("ARPobservation")
+library(ARPobservation)
+```
 
 You'll only need to do the above once. Once you've got the package installed, type the following in order to access the package within an R session: `library(ARPobservation)`. 
 

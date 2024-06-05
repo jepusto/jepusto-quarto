@@ -10,7 +10,7 @@ code-tools: true
 
 ---
 
-Version 1.0 of the [ARPobservation package](https://cran.r-project.org/web/packages/ARPobservation/) is now available on the Comprehensive R Archive Network. This makes it [even easier to install](/getting-started-with-ARPobservation). Here's the package description:
+Version 1.0 of the [ARPobservation package](https://cran.r-project.org/web/packages/ARPobservation/) is now available on the Comprehensive R Archive Network. This makes it [even easier to install](/posts/getting-started-with-ARPobservation). Here's the package description:
 
 __ARPobservation: Tools for simulating different methods of observing behavior based on alternating renewal processes__
 

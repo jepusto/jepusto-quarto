@@ -1,6 +1,5 @@
 ---
 title: Meta-sandwich with extra mustard
-
 date: '2014-04-26'
 categories:
 - meta-analysis
@@ -8,10 +7,9 @@ categories:
 - Rstats
 - robust variance estimation
 code-tools: true
-
 ---
 
-In an earlier post about sandwich standard errors for multi-variate meta-analysis, I [mentioned](/Robust-meta-analysis-1/) that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of [McCaffrey, Bell, and Botts (2001)](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf). 
+In an earlier post about sandwich standard errors for multi-variate meta-analysis, I [mentioned](/posts/Robust-meta-analysis-1/) that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of [McCaffrey, Bell, and Botts (2001)](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf). 
 You can find her forthcoming paper on the adjustments [here](http://dx.doi.org/10.1037/met0000011). 
 My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). 
 Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches. 
@@ -29,10 +27,14 @@ library(grid)
 library(robumeta)
 data(hierdat)
 
-robu_hier <- robu(effectsize ~ males + binge,
-            data = hierdat, modelweights = "HIER",
-            studynum = studyid,
-            var.eff.size = var, small = TRUE)
+robu_hier <- robu(
+  effectsize ~ males + binge,
+  data = hierdat,
+  modelweights = "HIER",
+  studynum = studyid,
+  var.eff.size = var,
+  small = TRUE
+)
 robu_hier
 ```
 
@@ -43,9 +45,12 @@ devtools::source_gist(id = "11302318", filename = "metafor-BRL.R")
 
 hierdat$var_HTJ <- hierdat$var + as.numeric(robu_hier$mod_info$omega.sq) + as.numeric(robu_hier$mod_info$tau.sq)
 
-meta_hier <- rma.mv(yi = effectsize ~ males + binge, 
-                V = var_HTJ, 
-                data = hierdat, method = "FE")
+meta_hier <- rma.mv(
+  yi = effectsize ~ males + binge,
+  V = var_HTJ,
+  data = hierdat,
+  method = "FE"
+)
 meta_hier$cluster <- hierdat$studyid
 
 RobustResults(meta_hier)
@@ -65,10 +70,13 @@ It can also be verified that the p-values based on the Satterthwaite degrees of 
 Of course, the point of writing functions that work with `rma.mv` objects is not to replicate `robumeta` results, but to take advantage of `metafor`'s flexibility. Rather than estimate the model with `robumeta`, typically one would estimate the variance components in `metafor` and then calculate the sandwich covariance estimates and small-sample corrections. For instance:
 
 ```{r}
-meta_REML <- rma.mv(yi = effectsize ~ males + binge, 
-                V = var, random = list(~ 1 | esid, ~ 1 | studyid), 
-                data = hierdat,
-                method = "REML")
+meta_REML <- rma.mv(
+  yi = effectsize ~ males + binge,
+  V = var,
+  random = list( ~ 1 | esid, ~ 1 | studyid),
+  data = hierdat,
+  method = "REML"
+)
 meta_REML
 RobustResults(meta_REML)
 ```

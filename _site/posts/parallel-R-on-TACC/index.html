@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>UPDATE (4/8/2014): I have learned from <a href="https://www.tacc.utexas.edu/staff/yaakoub-el-khamra">Mr.&nbsp;Yaakoub El Khamra</a> that he and the good folks at TACC have made some modifications to TACC’s custom MPI implementation and R build in order to correct bugs in Rmpi and snow that were causing crashes. This post <a href="../..\parallel-R-on-TACC-update">has been updated</a> to reflect the modifications.</p>
+<p>UPDATE (4/8/2014): I have learned from <a href="https://www.tacc.utexas.edu/staff/yaakoub-el-khamra">Mr.&nbsp;Yaakoub El Khamra</a> that he and the good folks at TACC have made some modifications to TACC’s custom MPI implementation and R build in order to correct bugs in Rmpi and snow that were causing crashes. This post <a href="../..\posts/parallel-R-on-TACC-update">has been updated</a> to reflect the modifications.</p>
 <p>I’ve started to use the Texas Advanced Computing Cluster to run statistical simulations in R. It takes a little bit of time to get up and running, but once you do it is an amazing tool. To get started, you’ll need</p>
 <ol type="1">
 <li>An account on the <a href="https://www.tacc.utexas.edu/">TACC</a> and an allocation of computing time.</li>
@@ -237,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-r-script" class="level3">
 <h3 class="anchored" data-anchor-id="the-r-script">The R script</h3>
 <p>I’ve been running my simulations using a combination of several packages that provide very high-level functionality for parallel computing, namely <code>foreach</code>, <code>doSNOW</code>, and the <code>maply</code> function in <code>plyr</code>. All of this runs on top of an <code>Rmpi</code> implementation developed by the folks at TACC (<a href="https://portal.tacc.utexas.edu/documents/13601/901835/Parallel_R_Final.pdf/">more details here</a>).</p>
-<p>In <a href="../..\Designing-simulation-studies-using-R/">an earlier post</a>, I shared code for running a very simple simulation of the Behrens-Fisher problem. Here’s <a href="https://gist.github.com/jepusto/8059893">adapted code</a> for running the same simulation on Stampede. The main difference is that there are a few extra lines of code to set up a cluster, seed a random number generator, and pass necessary objects (saved in <code>source_func</code>) to the nodes of the cluster:</p>
+<p>In <a href="../..\posts/Designing-simulation-studies-using-R/">an earlier post</a>, I shared code for running a very simple simulation of the Behrens-Fisher problem. Here’s <a href="https://gist.github.com/jepusto/8059893">adapted code</a> for running the same simulation on Stampede. The main difference is that there are a few extra lines of code to set up a cluster, seed a random number generator, and pass necessary objects (saved in <code>source_func</code>) to the nodes of the cluster:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -837,148 +837,146 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Running R in parallel on the TACC</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2013-12-20'</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">- TACC</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2013-12-20'</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">- TACC</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>UPDATE (4/8/2014): I have learned from <span class="co">[</span><span class="ot">Mr. Yaakoub El Khamra</span><span class="co">](https://www.tacc.utexas.edu/staff/yaakoub-el-khamra)</span> that he and the good folks at TACC have made some modifications to TACC's custom MPI implementation and R build in order to correct bugs in Rmpi and snow that were causing crashes. This post <span class="co">[</span><span class="ot">has been updated</span><span class="co">](/posts/parallel-R-on-TACC-update)</span> to reflect the modifications.</span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>UPDATE (4/8/2014): I have learned from <span class="co">[</span><span class="ot">Mr. Yaakoub El Khamra</span><span class="co">](https://www.tacc.utexas.edu/staff/yaakoub-el-khamra)</span> that he and the good folks at TACC have made some modifications to TACC's custom MPI implementation and R build in order to correct bugs in Rmpi and snow that were causing crashes. This post <span class="co">[</span><span class="ot">has been updated</span><span class="co">](/parallel-R-on-TACC-update)</span> to reflect the modifications.</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>I've started to use the Texas Advanced Computing Cluster to run statistical simulations in R. It takes a little bit of time to get up and running, but once you do it is an amazing tool. To get started, you'll need</span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>I've started to use the Texas Advanced Computing Cluster to run statistical simulations in R. It takes a little bit of time to get up and running, but once you do it is an amazing tool. To get started, you'll need</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>An account on the <span class="co">[</span><span class="ot">TACC</span><span class="co">](https://www.tacc.utexas.edu/)</span> and an allocation of computing time.</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>An ssh client like <span class="co">[</span><span class="ot">PUTTY</span><span class="co">](http://www.chiark.greenend.org.uk/~sgtatham/putty/)</span>.</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Some R code that can be adapted to run in parallel. </span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>A SLURM script that tells the server (called Stampede) how to run the R.</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>An account on the <span class="co">[</span><span class="ot">TACC</span><span class="co">](https://www.tacc.utexas.edu/)</span> and an allocation of computing time.</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>An ssh client like <span class="co">[</span><span class="ot">PUTTY</span><span class="co">](http://www.chiark.greenend.org.uk/~sgtatham/putty/)</span>.</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Some R code that can be adapted to run in parallel. </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>A SLURM script that tells the server (called Stampede) how to run the R.</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### The R script</span></span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### The R script</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>I've been running my simulations using a combination of several packages that provide very high-level functionality for parallel computing, namely <span class="in">`foreach`</span>, <span class="in">`doSNOW`</span>, and the <span class="in">`maply`</span> function in <span class="in">`plyr`</span>. All of this runs on top of an <span class="in">`Rmpi`</span> implementation developed by the folks at TACC (<span class="co">[</span><span class="ot">more details here</span><span class="co">](https://portal.tacc.utexas.edu/documents/13601/901835/Parallel_R_Final.pdf/)</span>). </span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>I've been running my simulations using a combination of several packages that provide very high-level functionality for parallel computing, namely <span class="in">`foreach`</span>, <span class="in">`doSNOW`</span>, and the <span class="in">`maply`</span> function in <span class="in">`plyr`</span>. All of this runs on top of an <span class="in">`Rmpi`</span> implementation developed by the folks at TACC (<span class="co">[</span><span class="ot">more details here</span><span class="co">](https://portal.tacc.utexas.edu/documents/13601/901835/Parallel_R_Final.pdf/)</span>). </span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">an earlier post</span><span class="co">](/posts/Designing-simulation-studies-using-R/)</span>, I shared code for running a very simple simulation of the Behrens-Fisher problem. Here's <span class="co">[</span><span class="ot">adapted code</span><span class="co">](https://gist.github.com/jepusto/8059893)</span> for running the same simulation on Stampede. The main difference is that there are a few extra lines of code to set up a cluster, seed a random number generator, and pass necessary objects (saved in <span class="in">`source_func`</span>) to the nodes of the cluster:</span>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">an earlier post</span><span class="co">](/Designing-simulation-studies-using-R/)</span>, I shared code for running a very simple simulation of the Behrens-Fisher problem. Here's <span class="co">[</span><span class="ot">adapted code</span><span class="co">](https://gist.github.com/jepusto/8059893)</span> for running the same simulation on Stampede. The main difference is that there are a few extra lines of code to set up a cluster, seed a random number generator, and pass necessary objects (saved in <span class="in">`source_func`</span>) to the nodes of the cluster:</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">library(Rmpi)</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="in">library(snow)</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="in">library(foreach)</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="in">library(iterators)</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="in">library(doSNOW)</span></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="in">library(plyr)</span></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="in"># set up parallel processing</span></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="in">cluster &lt;- getMPIcluster()</span></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="in">registerDoSNOW(cluster)</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="in"># export source functions</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="in">clusterExport(cluster, source_func)</span></span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="in">library(Rmpi)</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="in">library(snow)</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">library(foreach)</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="in">library(iterators)</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="in">library(doSNOW)</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="in">library(plyr)</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="in"># set up parallel processing</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="in">cluster &lt;- getMPIcluster()</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="in">registerDoSNOW(cluster)</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="in"># export source functions</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="in">clusterExport(cluster, source_func)</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>Once it is all set up, running the code is just a matter of turning on the parallel option in <span class="in">`mdply`</span>:</span>
 <span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>Once it is all set up, running the code is just a matter of turning on the parallel option in <span class="in">`mdply`</span>:</span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="in">BFresults &lt;- mdply(parms, .fun = run_sim, .drop=FALSE, .parallel=TRUE)</span></span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="in">BFresults &lt;- mdply(parms, .fun = run_sim, .drop=FALSE, .parallel=TRUE)</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>I fully admit that my method of passing source functions is rather kludgy. One alternative would be to save all of the source functions in a separate file (say, <span class="in">`source_functions.R`</span>), then <span class="in">`source`</span> the file at the beginning of the simulation script:</span>
 <span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>I fully admit that my method of passing source functions is rather kludgy. One alternative would be to save all of the source functions in a separate file (say, <span class="in">`source_functions.R`</span>), then <span class="in">`source`</span> the file at the beginning of the simulation script:</span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="in">rm(list=ls())</span></span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="in">source("source_functions.R")</span></span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="in">print(source_func &lt;- ls())</span></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="in">rm(list=ls())</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="in">source("source_functions.R")</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="in">print(source_func &lt;- ls())</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>Another, more elegant alternative would be to put all of your source functions in a little package (say, <span class="in">`BehrensFisher`</span>), install the package, and then pass the package in the <span class="in">`maply`</span> call:</span>
 <span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>Another, more elegant alternative would be to put all of your source functions in a little package (say, <span class="in">`BehrensFisher`</span>), install the package, and then pass the package in the <span class="in">`maply`</span> call:</span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="in">BFresults &lt;- mdply(parms, .fun = run_sim, .drop=FALSE, .parallel=TRUE, .paropts = list(.packages="BehrensFisher"))</span></span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="in">BFresults &lt;- mdply(parms, .fun = run_sim, .drop=FALSE, .parallel=TRUE, .paropts = list(.packages="BehrensFisher"))</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>Of course, developing a package involves a bit more work on the front end. </span>
 <span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>Of course, developing a package involves a bit more work on the front end. </span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### The SLURM script</span></span>
 <span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### The SLURM script</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>Suppose that you've got your R code saved in a file called <span class="in">`Behrens_Fisher.R`</span>. Here's an example of a SLURM script that runs the R script after configuring an Rmpi cluster:</span>
 <span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>Suppose that you've got your R code saved in a file called <span class="in">`Behrens_Fisher.R`</span>. Here's an example of a SLURM script that runs the R script after configuring an Rmpi cluster:</span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">#!/bin/bash</span></span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -J Behrens          # Job name</span></span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -o Behrens.o%j      # Name of stdout output file (%j expands to jobId)</span></span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -e Behrens.o%j      # Name of stderr output file(%j expands to jobId)</span></span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -n 32               # Total number of mpi tasks requested</span></span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -p normal           # Submit to the 'normal' or 'development' queue</span></span>
-<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -t 0:20:00          # Run time (hh:mm:ss)</span></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -A A-yourproject    # Allocation name to charge job against</span></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-user=you@email.address # specify email address for notifications</span></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-type=begin   # email when job begins</span></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-type=end     # email when job ends</span></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="in"># load R module</span></span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">module load Rstats           </span></span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in"># call R code from RMPISNOW</span></span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="in">ibrun RMPISNOW &lt; Behrens_Fisher.R </span></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="in">#!/bin/bash</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -J Behrens          # Job name</span></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -o Behrens.o%j      # Name of stdout output file (%j expands to jobId)</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -e Behrens.o%j      # Name of stderr output file(%j expands to jobId)</span></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -n 32               # Total number of mpi tasks requested</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -p normal           # Submit to the 'normal' or 'development' queue</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -t 0:20:00          # Run time (hh:mm:ss)</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH -A A-yourproject    # Allocation name to charge job against</span></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-user=you@email.address # specify email address for notifications</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-type=begin   # email when job begins</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="in">#SBATCH --mail-type=end     # email when job ends</span></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="in"># load R module</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="in">module load Rstats           </span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in"># call R code from RMPISNOW</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="in">ibrun RMPISNOW &lt; Behrens_Fisher.R </span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>The file should be saved in a plain text file called something like <span class="in">`run_BF.slurm`</span>. The file has to use ANSI encoding and Unix-type end-of-line encoding; <span class="co">[</span><span class="ot">Notepad++</span><span class="co">](http://notepad-plus-plus.org/)</span> is a text editor that can create files in this format. </span>
 <span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>The file should be saved in a plain text file called something like <span class="in">`run_BF.slurm`</span>. The file has to use ANSI encoding and Unix-type end-of-line encoding; <span class="co">[</span><span class="ot">Notepad++</span><span class="co">](http://notepad-plus-plus.org/)</span> is a text editor that can create files in this format. </span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>Note that for full efficiency, the <span class="in">`-n`</span> option should be a multiple of 16 because their are 16 cores per compute node. Further details about SBATCH options can be found <span class="co">[</span><span class="ot">here</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol)</span>.</span>
 <span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>Note that for full efficiency, the <span class="in">`-n`</span> option should be a multiple of 16 because their are 16 cores per compute node. Further details about SBATCH options can be found <span class="co">[</span><span class="ot">here</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol)</span>.</span>
-<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running on Stampede</span></span>
 <span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="fu">### Running on Stampede</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Follow these directions</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#access)</span> to log in to the Stampede server. Here's the <span class="co">[</span><span class="ot">User Guide</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede)</span> for Stampede. The first thing you'll need to do is ensure that you've got the proper version of MVAPICH loaded. To do that, type </span>
 <span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Follow these directions</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#access)</span> to log in to the Stampede server. Here's the <span class="co">[</span><span class="ot">User Guide</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede)</span> for Stampede. The first thing you'll need to do is ensure that you've got the proper version of MVAPICH loaded. To do that, type </span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="in">module swap intel intel/14.0.1.106</span></span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="in">module setdefault</span></span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">module swap intel intel/14.0.1.106</span></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">module setdefault</span></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>The second line sets this as the default, so you won't need to do this step again.</span>
 <span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>The second line sets this as the default, so you won't need to do this step again.</span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>Second, you'll need to install whatever R packages you'll need to run your code. To do that, type the following at the <span class="in">`login4$`</span> prompt:</span>
 <span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>Second, you'll need to install whatever R packages you'll need to run your code. To do that, type the following at the <span class="in">`login4$`</span> prompt:</span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="in">login4$module load Rstats</span></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="in">login4$R</span></span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="in">login4$module load Rstats</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">login4$R</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>This will start an interactive R session. From the R prompt, use <span class="in">`install.packages`</span> to download and install, e.g.</span>
 <span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>This will start an interactive R session. From the R prompt, use <span class="in">`install.packages`</span> to download and install, e.g.</span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("plyr","reshape","doSNOW","foreach","iterators")</span></span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("plyr","reshape","doSNOW","foreach","iterators")</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>The packages will be installed in a local library. Now type <span class="in">`q()`</span> to quit R.</span>
 <span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>The packages will be installed in a local library. Now type <span class="in">`q()`</span> to quit R.</span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>Next, make a new directory for your project:</span>
 <span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>Next, make a new directory for your project:</span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">login4$mkdir project_name</span></span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="in">login4$cd project_name</span></span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="in">login4$mkdir project_name</span></span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">login4$cd project_name</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>Upload your files to the directory (using <span class="co">[</span><span class="ot">psftp</span><span class="co">](http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter6.html)</span>, for instance). Check that your R script is properly configured by viewing it in Vim. </span>
 <span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>Upload your files to the directory (using <span class="co">[</span><span class="ot">psftp</span><span class="co">](http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter6.html)</span>, for instance). Check that your R script is properly configured by viewing it in Vim. </span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>Finally, submit your job by typing </span>
 <span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>Finally, submit your job by typing </span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="in">login4$sbatch run_BF.slurm</span></span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, engine="bash", eval = FALSE}</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="in">login4$sbatch run_BF.slurm</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>or whatever your SLURM script is called. To check the status of the submitted job, type <span class="in">`showq -u`</span> followed by your TACC user name (more details <span class="co">[</span><span class="ot">here</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol-squeue)</span>).</span>
 <span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>or whatever your SLURM script is called. To check the status of the submitted job, type <span class="in">`showq -u`</span> followed by your TACC user name (more details <span class="co">[</span><span class="ot">here</span><span class="co">](https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol-squeue)</span>).</span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Further thoughts</span></span>
 <span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="fu">### Further thoughts</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>TACC accounts come with a limited number of computing hours, so you should be careful to write efficient code. Before you even start worrying about running on TACC, you should profile your code and try to find ways to speed up the computations. (Some simple improvements in my Behrens-Fisher code would make it run MUCH faster.) Once you've done what you can in terms of efficiency, you should do some small test runs on Stampede. For example, you could try running only a few iterations for each combination of factors, and/or running only some of the combinations rather than the full factorial design. Based on the run-time for these jobs, you'll then be able to estimate how long the full code would take. If it's acceptable (and within your allocation), then go ahead and <span class="in">`sbatch`</span> the full job. If it's not, you might reconsider the number of factor levels in your design or the number of iterations you need. I might have more comments about those some other time.</span>
 <span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>TACC accounts come with a limited number of computing hours, so you should be careful to write efficient code. Before you even start worrying about running on TACC, you should profile your code and try to find ways to speed up the computations. (Some simple improvements in my Behrens-Fisher code would make it run MUCH faster.) Once you've done what you can in terms of efficiency, you should do some small test runs on Stampede. For example, you could try running only a few iterations for each combination of factors, and/or running only some of the combinations rather than the full factorial design. Based on the run-time for these jobs, you'll then be able to estimate how long the full code would take. If it's acceptable (and within your allocation), then go ahead and <span class="in">`sbatch`</span> the full job. If it's not, you might reconsider the number of factor levels in your design or the number of iterations you need. I might have more comments about those some other time.</span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>Comments? Suggestions? Corrections? Drop a comment.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>Comments? Suggestions? Corrections? Drop a comment.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

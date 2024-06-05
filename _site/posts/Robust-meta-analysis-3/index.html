@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <a href="../..\Robust-meta-analysis-1/">mentioned</a> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <a href="http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, and Botts (2001)</a>. You can find her forthcoming paper on the adjustments <a href="http://dx.doi.org/10.1037/met0000011">here</a>. My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches.</p>
+<p>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <a href="../..\posts/Robust-meta-analysis-1/">mentioned</a> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <a href="http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, and Botts (2001)</a>. You can find her forthcoming paper on the adjustments <a href="http://dx.doi.org/10.1037/met0000011">here</a>. My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches.</p>
 <p>I wanted to try out these small-sample corrected sandwich estimators for a meta-analyses project that I’m working on. Beth and one of her students have written an R package called <a href="http://cran.r-project.org/web/packages/robumeta/index.html">robumeta</a> that implements the sandwich covariance estimator and small-sample corrections as described in her paper. However, for my project I want to use the <a href="http://www.metafor-project.org/">metafor package</a>, which doesn’t provide these methods. I’ve therefore created a set of functions that implement the sandwich covariance estimators and small-sample corrections for models estimated using the <code>rma.mv</code> function in <code>metafor</code>. Here is <a href="https://gist.github.com/jepusto/11302318">the complete code</a>. Sorry, there’s no further documentation at the moment (beyond the rest of this post).</p>
 <section id="consistency-with-robumeta" class="level3">
 <h3 class="anchored" data-anchor-id="consistency-with-robumeta">Consistency with robumeta</h3>
@@ -238,11 +238,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>robu_hier <span class="ot">&lt;-</span> <span class="fu">robu</span>(effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> hierdat, <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">studynum =</span> studyid,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">var.eff.size =</span> var, <span class="at">small =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>robu_hier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>robu_hier <span class="ot">&lt;-</span> <span class="fu">robu</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hierdat,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">studynum =</span> studyid,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">var.eff.size =</span> var,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">small =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>robu_hier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>RVE: Hierarchical Effects Model with Small-Sample Corrections 
@@ -272,12 +276,15 @@ Note: If df &lt; 4, do not trust the results</code></pre>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>hierdat<span class="sc">$</span>var_HTJ <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>var <span class="sc">+</span> <span class="fu">as.numeric</span>(robu_hier<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq) <span class="sc">+</span> <span class="fu">as.numeric</span>(robu_hier<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>meta_hier <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">V =</span> var_HTJ, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> hierdat, <span class="at">method =</span> <span class="st">"FE"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>meta_hier<span class="sc">$</span>cluster <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>studyid</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta_hier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>meta_hier <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">V =</span> var_HTJ,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hierdat,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"FE"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>meta_hier<span class="sc">$</span>cluster <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>studyid</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta_hier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Estimate  Std. Error    t value       df    Pr(&gt;|t|)
@@ -306,11 +313,14 @@ binge    0.679929801 0.121556887  5.5935111 4.182783 0.004385654</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>meta_REML <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge, </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">V =</span> var, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> hierdat,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"REML"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>meta_REML</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>meta_REML <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">V =</span> var,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">random =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hierdat,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"REML"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>meta_REML</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -855,98 +865,106 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Meta-sandwich with extra mustard</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2014-04-26'</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2014-04-26'</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <span class="co">[</span><span class="ot">mentioned</span><span class="co">](/Robust-meta-analysis-1/)</span> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, and Botts (2001)</span><span class="co">](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf)</span>. </span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>You can find her forthcoming paper on the adjustments <span class="co">[</span><span class="ot">here</span><span class="co">](http://dx.doi.org/10.1037/met0000011)</span>. </span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches. </span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>I wanted to try out these small-sample corrected sandwich estimators for a meta-analyses project that I'm working on. Beth and one of her students have written an R package called <span class="co">[</span><span class="ot">robumeta</span><span class="co">](http://cran.r-project.org/web/packages/robumeta/index.html)</span> that implements the sandwich covariance estimator and small-sample corrections as described in her paper. </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>However, for my project I want to use the <span class="co">[</span><span class="ot">metafor package</span><span class="co">](http://www.metafor-project.org/)</span>, which doesn't provide these methods. </span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>I've therefore created a set of functions that implement the sandwich covariance estimators and small-sample corrections for models estimated using the <span class="in">`rma.mv`</span> function in <span class="in">`metafor`</span>. </span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>Here is <span class="co">[</span><span class="ot">the complete code</span><span class="co">](https://gist.github.com/jepusto/11302318)</span>. Sorry, there's no further documentation at the moment (beyond the rest of this post).</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <span class="co">[</span><span class="ot">mentioned</span><span class="co">](/posts/Robust-meta-analysis-1/)</span> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, and Botts (2001)</span><span class="co">](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf)</span>. </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>You can find her forthcoming paper on the adjustments <span class="co">[</span><span class="ot">here</span><span class="co">](http://dx.doi.org/10.1037/met0000011)</span>. </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches. </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>I wanted to try out these small-sample corrected sandwich estimators for a meta-analyses project that I'm working on. Beth and one of her students have written an R package called <span class="co">[</span><span class="ot">robumeta</span><span class="co">](http://cran.r-project.org/web/packages/robumeta/index.html)</span> that implements the sandwich covariance estimator and small-sample corrections as described in her paper. </span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>However, for my project I want to use the <span class="co">[</span><span class="ot">metafor package</span><span class="co">](http://www.metafor-project.org/)</span>, which doesn't provide these methods. </span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>I've therefore created a set of functions that implement the sandwich covariance estimators and small-sample corrections for models estimated using the <span class="in">`rma.mv`</span> function in <span class="in">`metafor`</span>. </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>Here is <span class="co">[</span><span class="ot">the complete code</span><span class="co">](https://gist.github.com/jepusto/11302318)</span>. Sorry, there's no further documentation at the moment (beyond the rest of this post).</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consistency with robumeta</span></span>
 <span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consistency with robumeta</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>In order to check that the functions are correct, I compared the results generated by <span class="in">`robumeta`</span> with the results from <span class="in">`metafor`</span> plus my functions. Here's one example (I looked at a few others as well). First, the robumeta results:</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>robu_hier <span class="ot">&lt;-</span> <span class="fu">robu</span>(effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> hierdat, <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">studynum =</span> studyid,</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">var.eff.size =</span> var, <span class="at">small =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>robu_hier</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>To maintain consistency, I first need to calculate the approximate weights used in <span class="in">`robumeta`</span> and then fit the model in <span class="in">`metafor`</span> using these fixed weights. </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>In order to check that the functions are correct, I compared the results generated by <span class="in">`robumeta`</span> with the results from <span class="in">`metafor`</span> plus my functions. Here's one example (I looked at a few others as well). First, the robumeta results:</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>robu_hier <span class="ot">&lt;-</span> <span class="fu">robu</span>(</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>  effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hierdat,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">modelweights =</span> <span class="st">"HIER"</span>,</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">studynum =</span> studyid,</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">var.eff.size =</span> var,</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">small =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>robu_hier</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="in">devtools::source_gist(id = "11302318", filename = "metafor-BRL.R")</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="in">hierdat$var_HTJ &lt;- hierdat$var + as.numeric(robu_hier$mod_info$omega.sq) + as.numeric(robu_hier$mod_info$tau.sq)</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>To maintain consistency, I first need to calculate the approximate weights used in <span class="in">`robumeta`</span> and then fit the model in <span class="in">`metafor`</span> using these fixed weights. </span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="in">devtools::source_gist(id = "11302318", filename = "metafor-BRL.R")</span></span>
 <span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="in">meta_hier &lt;- rma.mv(yi = effectsize ~ males + binge, </span></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="in">                V = var_HTJ, </span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="in">                data = hierdat, method = "FE")</span></span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="in">meta_hier$cluster &lt;- hierdat$studyid</span></span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="in">RobustResults(meta_hier)</span></span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>The estimated covariance matrices match:</span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">sandwich</span>(meta_hier, <span class="at">meat.=</span>meatBRL), </span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>          robu_hier<span class="sc">$</span>VR.r, </span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>          <span class="at">check.attributes=</span><span class="cn">FALSE</span>)</span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>It can also be verified that the p-values based on the Satterthwaite degrees of freedom agree.</span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Use with metafor</span></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>Of course, the point of writing functions that work with <span class="in">`rma.mv`</span> objects is not to replicate <span class="in">`robumeta`</span> results, but to take advantage of <span class="in">`metafor`</span>'s flexibility. Rather than estimate the model with <span class="in">`robumeta`</span>, typically one would estimate the variance components in <span class="in">`metafor`</span> and then calculate the sandwich covariance estimates and small-sample corrections. For instance:</span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>meta_REML <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge, </span>
-<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a>                <span class="at">V =</span> var, <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> hierdat,</span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"REML"</span>)</span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>meta_REML</span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta_REML)</span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a>One advantage here is that it's possible to compare the model-based standard errors to the robust ones. In this instance, the two are fairly similar. However, the degrees of freedom estimated in the robust results indicate that the model-based standard errors (based on normal approximations) may be much too narrow.</span>
-<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Differences between robumeta and my implementation</span></span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>There are two important differences between the approach implemented in <span class="in">`robumeta`</span> and the approach based on <span class="in">`metafor`</span> and the code that I've provided. The first is that <span class="in">`robumeta`</span> uses moment estimators for the variance components, whereas <span class="in">`metafor`</span> uses restricted- or full maximum likelihood. The estimated between-study heterogeneity (and for the hierarchical effects model, the within-study heterogeneity as well) will therefore differ to some degree. </span>
-<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a>The second, and perhaps more crucial, distinction has to do with the choice of weights. Weights are used for two purposes: to estimate the fixed effects and to calculate the small-sample correction. The <span class="in">`robumeta`</span> package uses diagonal weights for both purposes. Using diagonal weights in calculating the fixed effects means that the resulting point estimates will be equivalent to those from a weighted ordinary least squares regression: </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="in">hierdat$var_HTJ &lt;- hierdat$var + as.numeric(robu_hier$mod_info$omega.sq) + as.numeric(robu_hier$mod_info$tau.sq)</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="in">meta_hier &lt;- rma.mv(</span></span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="in">  yi = effectsize ~ males + binge,</span></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a><span class="in">  V = var_HTJ,</span></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="in">  data = hierdat,</span></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="in">  method = "FE"</span></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="in">meta_hier$cluster &lt;- hierdat$studyid</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="in">RobustResults(meta_hier)</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>The estimated covariance matrices match:</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">sandwich</span>(meta_hier, <span class="at">meat.=</span>meatBRL), </span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>          robu_hier<span class="sc">$</span>VR.r, </span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>          <span class="at">check.attributes=</span><span class="cn">FALSE</span>)</span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>It can also be verified that the p-values based on the Satterthwaite degrees of freedom agree.</span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Use with metafor</span></span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>Of course, the point of writing functions that work with <span class="in">`rma.mv`</span> objects is not to replicate <span class="in">`robumeta`</span> results, but to take advantage of <span class="in">`metafor`</span>'s flexibility. Rather than estimate the model with <span class="in">`robumeta`</span>, typically one would estimate the variance components in <span class="in">`metafor`</span> and then calculate the sandwich covariance estimates and small-sample corrections. For instance:</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a>meta_REML <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(</span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">yi =</span> effectsize <span class="sc">~</span> males <span class="sc">+</span> binge,</span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">V =</span> var,</span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">random =</span> <span class="fu">list</span>( <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid),</span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hierdat,</span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"REML"</span></span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>meta_REML</span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta_REML)</span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a>WOLS <span class="ot">&lt;-</span> <span class="fu">lm</span>(effectsize <span class="sc">~</span> males <span class="sc">+</span> binge, <span class="at">data =</span> hierdat, <span class="at">weights =</span> <span class="dv">1</span> <span class="sc">/</span> var_HTJ)</span>
-<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(WOLS)</span>
-<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">coef</span>(WOLS), <span class="fu">as.numeric</span>(robu_hier<span class="sc">$</span>b.r), <span class="at">check.attributes =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>One advantage here is that it's possible to compare the model-based standard errors to the robust ones. In this instance, the two are fairly similar. However, the degrees of freedom estimated in the robust results indicate that the model-based standard errors (based on normal approximations) may be much too narrow.</span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Differences between robumeta and my implementation</span></span>
+<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a>There are two important differences between the approach implemented in <span class="in">`robumeta`</span> and the approach based on <span class="in">`metafor`</span> and the code that I've provided. The first is that <span class="in">`robumeta`</span> uses moment estimators for the variance components, whereas <span class="in">`metafor`</span> uses restricted- or full maximum likelihood. The estimated between-study heterogeneity (and for the hierarchical effects model, the within-study heterogeneity as well) will therefore differ to some degree. </span>
+<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a>The second, and perhaps more crucial, distinction has to do with the choice of weights. Weights are used for two purposes: to estimate the fixed effects and to calculate the small-sample correction. The <span class="in">`robumeta`</span> package uses diagonal weights for both purposes. Using diagonal weights in calculating the fixed effects means that the resulting point estimates will be equivalent to those from a weighted ordinary least squares regression: </span>
 <span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a>A subtler point is that <span class="in">`robumeta`</span> uses the inverse weights for purposes of calculating the small sample-correction. The small sample correction involves choosing a "working" or "target" covariance matrix towards which to adjust the sandwich estimator. If the working covariance model is correct, then the BRL covariance estimator is exactly unbiased. The working matrix is also used to determine the Satterthwaite degrees of freedom. In <span class="in">`robumeta`</span>, the working covariance matrix is taken to be inverse of the weights, which is also a diagonal matrix. Thus, the BRL correction amounts to assuming independence among all of the effect sizes. This may sound somewhat counter-intuitive, but  some simulation results (reported in Beth's paper, referenced above) suggest that the resulting estimators perform well even when the working independence assumption is not correct.</span>
-<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a>In contrast to the <span class="in">`robumeta`</span> weights, <span class="in">`metafor`</span> calculates the fixed effects based on a weighting matrix that is exactly inverse variance for given estimates of the variance components. Typically, the weighting matrix will be block-diagonal but may have off-diagonal entries corresponding to effect sizes drawn from the same study. Furthermore, my implementation of BRL uses the estimated covariance matrix derived from the posited random effects structure; in other words, the working covariance structure is taken to be the same as the model specified in the <span class="in">`metafor`</span> call. This seems sensible to me, although I do not have any evidence regarding its performance relative to the alternatives. It is possible that any gains in asymptotic efficiency from using exactly inverse variance weights are outweighed by some sort of instability in small samples. It's also possible that the performance of the different approaches to weighting might depend on which variance component estimators are used (i.e., MOM vs. REML). </span>
-<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a>Neither implementation that I've described above is fully general. Following the generalized estimating equation framework, a fully general implementation would allow the user to specify an arbitrary weight matrix in addition to a working covariance structure. The weighting matrix would be used for purposes of estimating the fixed effects. The working covariance model would be estimated (based on MOM or REML or what-not) and then used for purposes of BRL adjustment. Of course, this fully general formulation may well be more complicated than what most analysts would actually need or use (especially for linear mixed models), except perhaps when dealing with complex survey data. </span>
+<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a>WOLS <span class="ot">&lt;-</span> <span class="fu">lm</span>(effectsize <span class="sc">~</span> males <span class="sc">+</span> binge, <span class="at">data =</span> hierdat, <span class="at">weights =</span> <span class="dv">1</span> <span class="sc">/</span> var_HTJ)</span>
+<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(WOLS)</span>
+<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">coef</span>(WOLS), <span class="fu">as.numeric</span>(robu_hier<span class="sc">$</span>b.r), <span class="at">check.attributes =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a>A subtler point is that <span class="in">`robumeta`</span> uses the inverse weights for purposes of calculating the small sample-correction. The small sample correction involves choosing a "working" or "target" covariance matrix towards which to adjust the sandwich estimator. If the working covariance model is correct, then the BRL covariance estimator is exactly unbiased. The working matrix is also used to determine the Satterthwaite degrees of freedom. In <span class="in">`robumeta`</span>, the working covariance matrix is taken to be inverse of the weights, which is also a diagonal matrix. Thus, the BRL correction amounts to assuming independence among all of the effect sizes. This may sound somewhat counter-intuitive, but  some simulation results (reported in Beth's paper, referenced above) suggest that the resulting estimators perform well even when the working independence assumption is not correct.</span>
+<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a>In contrast to the <span class="in">`robumeta`</span> weights, <span class="in">`metafor`</span> calculates the fixed effects based on a weighting matrix that is exactly inverse variance for given estimates of the variance components. Typically, the weighting matrix will be block-diagonal but may have off-diagonal entries corresponding to effect sizes drawn from the same study. Furthermore, my implementation of BRL uses the estimated covariance matrix derived from the posited random effects structure; in other words, the working covariance structure is taken to be the same as the model specified in the <span class="in">`metafor`</span> call. This seems sensible to me, although I do not have any evidence regarding its performance relative to the alternatives. It is possible that any gains in asymptotic efficiency from using exactly inverse variance weights are outweighed by some sort of instability in small samples. It's also possible that the performance of the different approaches to weighting might depend on which variance component estimators are used (i.e., MOM vs. REML). </span>
+<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a>Neither implementation that I've described above is fully general. Following the generalized estimating equation framework, a fully general implementation would allow the user to specify an arbitrary weight matrix in addition to a working covariance structure. The weighting matrix would be used for purposes of estimating the fixed effects. The working covariance model would be estimated (based on MOM or REML or what-not) and then used for purposes of BRL adjustment. Of course, this fully general formulation may well be more complicated than what most analysts would actually need or use (especially for linear mixed models), except perhaps when dealing with complex survey data. </span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

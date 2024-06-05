@@ -1,12 +1,10 @@
 ---
 title: Current projects
-
 date: '2013-08-20'
 categories:
 - behavioral observation
 - single-case design
 code-tools: true
-
 ---
 
 Interested in working with me? See below for descriptions of several potential projects. If you have interest and abilities that line up with one of these, feel free to contact me.

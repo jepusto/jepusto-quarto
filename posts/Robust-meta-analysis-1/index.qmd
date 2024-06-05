@@ -1,6 +1,5 @@
 ---
 title: A meta-sandwich
-
 date: '2014-04-21'
 categories:
 - meta-analysis
@@ -8,7 +7,6 @@ categories:
 - Rstats
 - robust variance estimation
 code-tools: true
-
 ---
 
 A common problem arising in many areas of meta-analysis is how to synthesize a set of effect sizes when the set includes multiple effect size estimates from the same study. It's often not possible to obtain all of the information you'd need in order to estimate the sampling covariances between those effect sizes, yet without that information, established approaches to modeling dependent effect sizes become inaccurate. [Hedges, Tipton, & Johnson](http://doi.org/10.1002/jrsm.5) (2010, HTJ hereafter) proposed the use of cluster-robust  standard errors for multi-variate meta-analysis. (These are also called "sandwich" standard errors, which is up there on the list of great and evocative names for statistical procedures.) The great advantage of the sandwich approach is that it permits valid inferences for average effect sizes and meta-regression coefficients even if you don't have correct covariance estimates (or variance estimates, for that matter).
@@ -105,7 +103,9 @@ HTJ
 To exactly re-produce the results with `metafor`, I'll need to use the weights proposed by HTJ. In their approach, effect size $i$ from study $j$ receives weight equal to $\left(v_{ij} + \hat\omega^2 + \hat\tau^2\right)^{-1}$, where $v_{ij}$ is the sampling variance of the effect size, $\hat\omega^2$ is an estimate of the between-sample within-study variance, and $\hat\tau^2$ is an estimate of the between-study variance. After calculating these weights, I fit the model in metafor, calculate the sandwich covariance matrix, and replay the results:
 
 ```{r}
-hierdat$var_HTJ <- hierdat$var + HTJ$mod_info$omega.sq + HTJ$mod_info$tau.sq # calculate weights
+hierdat$var_HTJ <- hierdat$var + 
+  as.numeric(HTJ$mod_info$omega.sq) + 
+  as.numeric(HTJ$mod_info$tau.sq) # calculate weights
 meta1 <- rma.mv(yi = effectsize ~ 1, V = var_HTJ, data = hierdat, method = "FE")
 meta1$cluster <- hierdat$studyid # add clustering variable to the fitted model
 RobustResults(meta1)
@@ -142,5 +142,5 @@ The between-study variance estimate is tiny, particularly when compared to the b
 
 It would be straight-forward to add a few more functions that provide robust standard errors for univariate meta-analysis models as well. All that it would take is to write `bread` and `estfun` methods for the class `rma.uni`. 
 
-Also, Beth [has recently proposed](https://www.sree.org/conferences/2014s/program/downloads/abstracts/1089.pdf) 
+Also, Beth [has recently proposed](https://www.sree.org/assets/conferences/2014s/program.pdf) 
 small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of [McCaffrey, Bell, & Botts (2001)](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf). It seems to me that these small-sample corrections could also be implemented using an approach similar to what I've done here, by building out the `estfun` method to provide BRL results. It would take a little more thought, but actually it would be worth doing--and treating the general case--because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.
