@@ -16,14 +16,17 @@
       <p class="citation">
       <% if (item.publication_type) { %>
         <% if (item.publication) { %>
-        <em class="listing-publication"><%= item.publication %>,</em>
         <% if (item.publication_type == "Journal article") { %>
+          <em class="listing-publication"><%= item.publication %>,</em>
           <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %><% } %>
           <% if (item.pages) { %>
             <%= item.pages %>.
           <% } %>
         <% } else if (item.publication_type == "Report") {%>
+          <em class="listing-publication"><%= item.publication %>,</em>
           <% if (item.organization) { %><%= item.organization %><% if (item.location) { %>, <%= item.location %><% } %>.<% } %>
+        <% } else if (item.publication_type == "Book chapter") {%>
+          <% if (item.publication_editor) { %>In <%= item.publication_editor %>, <% } %><% if (item.publication) { %><em><%= item.publication %></em><% } %>. <% if (item.location) {%><%= item.location %>: <% } %><% if (item.publisher) {%><%= item.publisher %>.<% } %>
         <% } %>
       <% } %>
       <% } %>

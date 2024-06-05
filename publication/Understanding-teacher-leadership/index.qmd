@@ -17,7 +17,7 @@ categories:
 - social networks
 links:
 - text: Journal
-  url: https://scholarscompass.vcu.edu/jmsce_vamsc/vol11/iss1/5/
+  url: https://doi.org/10.25891/MZVX-A892
   icon: newspaper
 ---
 

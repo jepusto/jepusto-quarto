@@ -12,6 +12,7 @@ publication_type: Book chapter
 publication: "Distributed Leadership: Different Perspectives"
 publication_editor: A. Harris (ed.)
 publisher: Springer
+location: 
 pages: 47-80
 categories:
 - distributed leadership

@@ -17,23 +17,20 @@ categories:
 - effect size
 - hierarchical models
 links:
-- text: Supplementary materials
-  url: /files/Effect-sizes-in-multiple-baseline-designs-Simulation-results.pdf
 - text: Journal
   url: https://doi.org/10.3102/1076998614547577
   icon: newspaper
+- text: Supplementary materials
+  url: /files/Effect-sizes-in-multiple-baseline-designs-Simulation-results.pdf
+- icon: unlock-fill
+  text: Pre-Print
+  url: /files/Effect-sizes-in-multiple-baseline-designs-JEBS.pdf
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
   icon: box2
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
   icon: tablet
-- icon: unlock-fill
-  text: Pre-Print
-  url: /files/Effect-sizes-in-multiple-baseline-designs-JEBS.pdf
-
 ---
 
-
 In single-case research, the multiple baseline design is a widely used approach for evaluating the effects of interventions on individuals. Multiple baseline designs involve repeated measurement of outcomes over time and the controlled introduction of a treatment at different times for different individuals. This article outlines a general framework for defining effect sizes in multiple baseline designs that are directly comparable to the standardized mean difference from a between-subjects randomized experiment. The target, design-comparable effect size parameter can be estimated using restricted maximum likelihood together with a small sample correction analogous to Hedges’s g. The approach is demonstrated using hierarchical linear models that include baseline time trends and treatment-by-time interactions. A simulation compares the performance of the proposed estimator to that of an alternative, and an application illustrates the model-fitting process.
-

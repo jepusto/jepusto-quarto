@@ -6,7 +6,11 @@ author:
 date: 2017-01-01T00:00:00
 publish_date: 2017-01-01T00:00:00
 publication_type: Book chapter
-publication: 'In J. M. Kauffman, D. P. Hallahan, & P. C. Pullen (Eds.), _Handbook of Special Education, 2nd Edition_. New York, NY: Routledge'
+publication: 'Handbook of Special Education, 2nd Edition'
+publication_editor: J. M. Kauffman, D. P. Hallahan, & P. C. Pullen (Eds.)
+publisher: Routledge
+location: New York, NY
+pages:
 categories:
 - design-comparable SMD
 - effect size

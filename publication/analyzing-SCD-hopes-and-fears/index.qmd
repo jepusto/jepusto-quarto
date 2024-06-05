@@ -10,9 +10,11 @@ author:
 date: 2014-07-18T00:00:00
 publish_date: 2014-07-18T00:00:00
 publication_type: Book chapter
-publication: 'In T. R. Kratochwill & J. R. Levin (Eds.), _Single-Case Intervention
-  Research: Methodological and Data-Analysis Advances_. Washington, D.C.: American
-  Psychological Association'
+publication: 'Single-Case Intervention Research: Methodological and Data-Analysis Advances'
+publication_editor: T. R. Kratochwill & J. R. Levin (Eds.)
+publisher: American Psychological Association
+location: Washington, DC
+pages:
 categories:
 - single-case design
 - design-comparable SMD
