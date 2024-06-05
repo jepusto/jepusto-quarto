@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,6 +134,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Imputing covariance matrices for meta-analysis of correlated effects">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Imputing covariance matrices for meta-analysis of correlated effects">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -209,7 +213,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Imputing covariance matrices for meta-analysis of correlated effects</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Imputing covariance matrices for meta-analysis of correlated effects</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">meta-analysis</div>
                 <div class="quarto-category">sandwiches</div>
@@ -258,13 +262,19 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="an-r-function-for-block-diagonal-covariance-matrices">An R function for block-diagonal covariance matrices</h2>
 <p>Here is the function:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'clubSandwich':
   method    from    
   bread.mlm sandwich</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>impute_covariance_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (vi, cluster, r, ti, ar1, smooth_vi = FALSE, subgroup = NULL, 
     return_list = identical(as.factor(cluster), sort(as.factor(cluster))), 
@@ -336,10 +346,13 @@ window.Quarto = {
 </ul>
 <p>Here is a simple example to demonstrate how the function works. Say that there are just three studies, contributing 2, 3, and 4 effects, respectively. I’ll just make up some values for the effect sizes and variances:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">study =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>), </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">yi =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>), </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">vi =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">12</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  study         yi vi
 1     A -1.3029448  4
@@ -355,8 +368,11 @@ window.Quarto = {
 </div>
 <p>I’ll assume that effect size estimates from a given study are correlated at 0.7:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat<span class="sc">$</span>vi, <span class="at">cluster =</span> dat<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>V_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$A
          [,1]     [,2]
@@ -379,20 +395,29 @@ $C
 </div>
 <p>The result is a list of matrices, where each entry corresponds to the variance-covariance matrix of effects from a given study. To see that the results are correct, let’s examine the correlation matrix implied by these correlation matrices:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2]
 [1,]  1.0  0.7
 [2,]  0.7  1.0</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]  1.0  0.7  0.7
 [2,]  0.7  1.0  0.7
 [3,]  0.7  0.7  1.0</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov2cor</span>(V_list<span class="sc">$</span>C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]  1.0  0.7  0.7  0.7
@@ -405,8 +430,11 @@ $C
 <p>If the data are sorted in order of the cluster IDs, then the list of matrices returned by <code>impute_covariance_matrix()</code> can be fed directly into the <code>rma.mv</code> function in metafor (as I demonstrate below). However, if the data are not sorted by <code>cluster</code>, then feeding in the list of matrices will not work correctly. Instead, the full <span class="math inline">\(N \times N\)</span> variance-covariance matrix (where <span class="math inline">\(N\)</span> is the total number of effect size estimates) will need to be calculated so that the rows and columns appear in the correct order. To address this possibility, the function includes an optional argument, <code>return_list</code>, which determines whether to output a list of matrices (one matrix per study/cluster) or a single matrix corresponding to the full variance-covariance matrix across all studies. By default, <code>return_list</code> tests for whether the <code>cluster</code> argument is sorted and returns the appropriate form. The argument can also be set directly by the user.</p>
 <p>Here’s what happens if we feed in the data in a different order:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dat_scramble <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="fu">nrow</span>(dat)),]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>dat_scramble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  study         yi vi
 8     C  0.5207703 11
@@ -419,8 +447,11 @@ $C
 7     C  1.0812547 10
 9     C  0.7078873 12</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>V_mat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> dat_scramble<span class="sc">$</span>vi, <span class="at">cluster =</span> dat_scramble<span class="sc">$</span>study, <span class="at">r =</span> <span class="fl">0.7</span>), <span class="dv">3</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>V_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        [,1]  [,2]  [,3]  [,4] [,5] [,6]  [,7]   [,8]   [,9]
  [1,] 11.000 0.000 0.000 0.000 0.00 0.00 6.965  7.342  8.042
@@ -436,7 +467,10 @@ $C
 </div>
 <p>To see that this is correct, check that the diagonal entries of <code>V_mat</code> are the same as <code>vi</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(dat_scramble<span class="sc">$</span>vi, <span class="fu">diag</span>(V_mat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -446,6 +480,8 @@ $C
 <h2 class="anchored" data-anchor-id="an-example-with-real-data">An example with real data</h2>
 <p><a href="https://dx.doi.org/10.1037/1082-989X.1.3.227">Kalaian and Raudenbush (1996)</a> introduced a multi-variate random effects model, which can be used to perform a joint meta-analysis of studies that contribute effect sizes on distinct, related outcome constructs. They demonstrate the model using data from a synthesis on the effects of SAT coaching, where many studies reported effects on both the math and verbal portions of the SAT. The data are available in the <code>clubSandwich</code> package:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">warn.conflicts=</span><span class="cn">FALSE</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(SATcoaching)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -468,6 +504,7 @@ $C
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>SATcoaching <span class="sc">%&gt;%</span></span>
 <span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study, year, test, d, V, hrs_ln) <span class="sc">%&gt;%</span></span>
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   study year   test     d      V      hrs_ln
 1  Alderman &amp; Powers (A) 1980 Verbal  0.22 0.0817 -0.54918009
@@ -494,21 +531,30 @@ $C
 </div>
 <p>The correlation betwen math and verbal test scores are not available, but it seems reasonable to use a correlation of r = 0.66, as reported in the SAT technical information. To synthesize these effects, I’ll first compute the required variance-covariances:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>V_list <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> SATcoaching<span class="sc">$</span>V, </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cluster =</span> SATcoaching<span class="sc">$</span>study, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">r =</span> <span class="fl">0.66</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>This can then be fed into <code>metafor</code> to estimate a fixed effect or random effects meta-analysis or meta-regression models:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Loading the 'metafor' package (version 4.6-0). For an
 introduction to the package please type: help(metafor)</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-analysis</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>MVFE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>MVFE_null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 67; method: REML)
@@ -530,13 +576,19 @@ testVerbal    0.1215  0.0313  3.8783  0.0001  0.0601  0.1829  ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate fixed effect meta-regression</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>MVFE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: 2 rows with NAs omitted from model fitting.</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>MVFE_hrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 65; method: REML)
@@ -560,10 +612,13 @@ testVerbal:hrs_ln    0.0601  0.0442  1.3592  0.1741  -0.0266  0.1467
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-analysis</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>MVRE_null <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test, <span class="at">V =</span> V_list, <span class="at">data =</span> SATcoaching, </span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>MVRE_null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 67; method: REML)
@@ -596,14 +651,20 @@ testVerbal    0.1168  0.0337  3.4603  0.0005  0.0506  0.1829  ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bivariate random effects meta-regression</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>MVRE_hrs <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(d <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> test <span class="sc">+</span> test<span class="sc">:</span>hrs_ln, <span class="at">V =</span> V_list, </span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> SATcoaching,</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> test <span class="sc">|</span> study, <span class="at">struct =</span> <span class="st">"UN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: 2 rows with NAs omitted from model fitting.</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>MVRE_hrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 65; method: REML)
@@ -645,8 +706,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2 class="anchored" data-anchor-id="robust-variance-estimation.">Robust variance estimation.</h2>
 <p>Experienced meta-analysts will no doubt point out that a further, alternative analytic strategy to the one described above would be to use robust variance estimation methods (RVE; <a href="https://dx.doi.org/10.1002/jrsm.5">Hedges, Tipton, &amp; Johnson</a>). However, RVE is not so much an alternative strategy as it is a complementary technique, which can be used in combination with any of the models estimated above. Robust standard errors and hypothesis tests can readily be obtained with the <a href="https://cran.r-project.org/package=clubSandwich">clubSandwich package</a>. Here’s how to do it for the random effects meta-regression model:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(MVRE_hrs, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Coef. Estimate     SE t-stat d.f. (Satt) p-val (Satt) Sig.
           testMath   0.0893 0.0360   2.48       20.75       0.0218    *
@@ -1301,4 +1365,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

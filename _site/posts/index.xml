@@ -833,15 +833,15 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{e. pustejovsky2024,
-  author = {E. Pustejovsky, James},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
+  author = {Pustejovsky, James E.},
   title = {Distribution of the Number of Significant Effect Sizes},
   date = {2024-03-28},
   url = {https://jepusto.com/posts/Distribution-of-signficant-effects},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-e. pustejovsky2024" class="csl-entry quarto-appendix-citeas">
-E. Pustejovsky, James. 2024. <span>“Distribution of the Number of
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2024. <span>“Distribution of the Number of
 Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/Distribution-of-signficant-effects">https://jepusto.com/posts/Distribution-of-signficant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
@@ -4087,16 +4087,16 @@ loaded via a namespace (and not attached):
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{e. pustejovsky2023,
-  author = {E. Pustejovsky, James},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E.},
   title = {Implementing {Consul’s} Generalized {Poisson} Distribution in
     {Stan}},
   date = {2023-12-06},
   url = {https://jepusto.com/posts/generalized-poisson-in-Stan},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-e. pustejovsky2023" class="csl-entry quarto-appendix-citeas">
-E. Pustejovsky, James. 2023. <span>“Implementing Consul’s Generalized
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, James E. 2023. <span>“Implementing Consul’s Generalized
 Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://jepusto.com/posts/generalized-poisson-in-Stan">https://jepusto.com/posts/generalized-poisson-in-Stan</a>.
 </div></div></section></div> ]]></description>
   <category>Bayes</category>
@@ -12471,16 +12471,16 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
 <li id="fn1"><p>Technically, these parameters <img src="https://latex.codecogs.com/png.latex?%5Clambda_1,%5Clambda_2,%5Clambda_3"> are not absolute probabilities but instead <em>relative</em> risks of being reported, compared to a reference range of <img src="https://latex.codecogs.com/png.latex?p">-values. In the above example, they would be defined relative to the probability of being reported for an effect size estimate with <img src="https://latex.codecogs.com/png.latex?p%20%5Cleq%20.01">.↩︎</p></li>
 <li id="fn2"><p>Compare this to the model-based confidence interval of <img src="https://latex.codecogs.com/png.latex?%5B0.059,%201.037%5D">.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{e. pustejovsky2023,
-  author = {E. Pustejovsky, James and E. Pustejovsky, James and Joshi,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+  author = {Pustejovsky, James E. and E. Pustejovsky, James and Joshi,
     Megha},
   title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
   date = {2023-03-30},
   url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-e. pustejovsky2023" class="csl-entry quarto-appendix-citeas">
-E. Pustejovsky, J., E. Pustejovsky, J., &amp; Joshi, M. (2023, March
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E., E. Pustejovsky, J., &amp; Joshi, M. (2023, March
 30). <em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
 </div></div></section></div> ]]></description>
   <category>bootstrap</category>
@@ -13631,15 +13631,15 @@ Considering Measurement Error.”</span> February 17, 2023. <a href="https://jep
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{e. pustejovsky2022,
-  author = {E. Pustejovsky, James},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+  author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018), Redux},
   date = {2022-11-07},
   url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-e. pustejovsky2022" class="csl-entry quarto-appendix-citeas">
-E. Pustejovsky, J. (2022, November 7). <em>Corrigendum to Pustejovsky
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
+Pustejovsky, J. E. (2022, November 7). <em>Corrigendum to Pustejovsky
 and Tipton (2018), redux</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
@@ -15134,6 +15134,8 @@ Meta-Analysis with Mis-Specified Sampling Correlation.”</span> November
 </ol>
 <p>Here’s a function that generates study-specific parameter values and sample proportions:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">sim_binom_summary <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
@@ -15477,6 +15479,7 @@ font-style: inherit;">40</span>)</span>
 <span id="cb1-61"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">head</span>(dat)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
       pi_Ai     pi_Bi  lambda_i T_i    delta_i n_i        mA       sdA 
@@ -15497,6 +15500,8 @@ font-style: inherit;">head</span>(dat)</span></code></pre></div>
 </div>
 <p>For the specified parameter values, there is only a small amount of true heterogeneity in the log of the response ratios (the blue density). Of course, there is further heterogeneity in the log response ratio estimates (the green density) due to sampling error:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(ggplot2)</span>
@@ -15540,6 +15545,7 @@ font-style: inherit;">+</span> </span>
 <span id="cb3-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -15550,6 +15556,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 <p>A random effects meta-analysis confirms that there is only a modest degree of true heterogeneity in the log response ratios:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(metafor)</span>
@@ -15562,6 +15570,7 @@ background-color: null;
 font-style: inherit;">vi =</span> V_lRR, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> dat)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Random-Effects Model (k = 60; tau^2 estimator: REML)
@@ -15585,6 +15594,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Contrast this with what we get from using the standardized mean difference metric. The distributions of true effect sizes (blue) and of effect size estimates (light purple) have large spread as well as strong left skew:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(ggplot2)</span>
@@ -15626,6 +15637,7 @@ font-style: inherit;">+</span> </span>
 <span id="cb6-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -15636,6 +15648,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 <p>A random effects meta-analysis of the standardized mean differences shows a greater degree of true heterogeneity, both in terms of the estimated <img src="https://latex.codecogs.com/png.latex?%5Ctau"> and in <img src="https://latex.codecogs.com/png.latex?I%5E2">, or the proportion of total variance in the effect size estimates that is attributable to true heterogeneity:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rma</span>(<span class="at" style="color: #657422;
@@ -15645,6 +15659,7 @@ background-color: null;
 font-style: inherit;">vi =</span> V_d, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> dat)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Random-Effects Model (k = 60; tau^2 estimator: REML)
@@ -15672,6 +15687,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>The code above more-or-less implements the workflow I suggested for deciding between the standardized mean difference or response ratio metric (for proportions, we could also add further comparisons with log odds ratios and with raw differences in proportions). But is there further diagnostic information in the data that could provide a better sense of what is going on? I think there are a few things that might be helpful to consider.</p>
 <p>First, the issues I’m concerned with here will arise when there are mean-variance relationships in the outcomes. To get at that, we can simply plot the means and SDs of each group. In the code below, I re-structure the data so that there is one row per group per study. I then plot the SD versus the mean of each group:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
@@ -15782,6 +15799,7 @@ background-color: null;
 font-style: inherit;">0.1</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.9</span>))</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -15792,6 +15810,8 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 </div>
 <p>The plot above does suggest a mean-variance relationship, though it’s a bit messy. We can do better by using the scaled SD, after adjusting for the degree of spread that we would expect given <img src="https://latex.codecogs.com/png.latex?T_i">:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">long_summary_stats <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%&gt;%</span></span>
@@ -15899,6 +15919,7 @@ background-color: null;
 font-style: inherit;">0.1</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.9</span>))</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -15910,6 +15931,8 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 <p>From the above, it does appear that there could be a relationship between the scaled SD and the mean. The black curve indicates the theoretical mean-variance relationship that would be expected under the binomial distribution, and indeed the empirical relationship appears to be quite similar. This suggests that mean-variance relationships might be at play (a correct supposition, since of course we know the true data-generating process here).</p>
 <p>Second, since the outcomes in each group are all proportions, we can simply plot the mean in group <img src="https://latex.codecogs.com/png.latex?B"> versus the mean in group <img src="https://latex.codecogs.com/png.latex?A">:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(dat, <span class="fu" style="color: #4758AB;
@@ -15976,6 +15999,7 @@ font-style: inherit;">+</span> </span>
 <span id="cb11-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -15987,6 +16011,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <p>This plot shows that there is a strong linear relationship between the two means, with a best-fit line that might go through the origin. This suggests that the response ratio might be an appropriate metric (although the difference in proportions might also be appropriate here, since a line with unit slope would probably fit quite well).</p>
 <p>Third (and most speculatively/hand-wavily), I think exploratory moderator analysis can be useful here, but interpreted in a non-typical way. Under the model I’ve sketched, we would expect that the standardized mean difference estimates should be systematically associated with the group-<img src="https://latex.codecogs.com/png.latex?A"> means, as well as with the number of trials used to assess outcomes. The scatter-plots below show that this is indeed the case (the right-hand plot shows <img src="https://latex.codecogs.com/png.latex?d_i"> versus <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7BT_i%7D">).</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(patchwork)</span>
@@ -16098,6 +16124,7 @@ font-style: inherit;">theme_minimal</span>()</span>
 <span id="cb12-17">mA_d_plot <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> Ti_d_plot</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -16108,6 +16135,8 @@ font-style: inherit;">+</span> Ti_d_plot</span></code></pre></div>
 </div>
 <p>This impression is also born out by a meta-regression that includes the group-<img src="https://latex.codecogs.com/png.latex?A"> means and <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7BT_i%7D"> as moderators:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rma</span>(d <span class="sc" style="color: #5E5E5E;
@@ -16121,6 +16150,7 @@ background-color: null;
 font-style: inherit;">vi =</span> V_d, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> dat)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Mixed-Effects Model (k = 60; tau^2 estimator: REML)
@@ -16150,6 +16180,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Here are the same plots as above, but using the log of the response ratio as the effect size metric:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">mA_lRR_plot <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> </span>
@@ -16258,6 +16290,7 @@ font-style: inherit;">theme_minimal</span>()</span>
 <span id="cb15-16">mA_lRR_plot <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> Ti_lRR_plot</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -16268,6 +16301,8 @@ font-style: inherit;">+</span> Ti_lRR_plot</span></code></pre></div>
 </div>
 <p>In the left-hand plot, there does not appear to be any relationship between the effect size estimates and the group-<img src="https://latex.codecogs.com/png.latex?A"> means. In the right-hand plot, there does seem to be a mild relationship between the effect size estimates and <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7BT_i%7D">, which is a bit surprising, although the strength of the relationship is much weaker than what we saw with the standardized mean differences. Meta-regression analysis supports these interpretations:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rma</span>(lRR <span class="sc" style="color: #5E5E5E;
@@ -16281,6 +16316,7 @@ background-color: null;
 font-style: inherit;">vi =</span> V_lRR, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> dat)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Mixed-Effects Model (k = 60; tau^2 estimator: REML)
@@ -16780,6 +16816,8 @@ August 28, 2020. <a href="https://jepusto.com/posts/from-longhorn-to-badger">htt
 <p>Formally, this sort of data structure and model can be described as follows. As previously, say that we have a set of <img src="https://latex.codecogs.com/png.latex?k"> studies, where study <img src="https://latex.codecogs.com/png.latex?j"> has <img src="https://latex.codecogs.com/png.latex?n_j"> effect sizes, <img src="https://latex.codecogs.com/png.latex?T_%7Bij%7D">, and correspoding sampling variances <img src="https://latex.codecogs.com/png.latex?%5Csigma_%7Bij%7D%5E2">, both for <img src="https://latex.codecogs.com/png.latex?i%20=%201,...,n_j"> and <img src="https://latex.codecogs.com/png.latex?j%20=%201,...k">. Effect size <img src="https://latex.codecogs.com/png.latex?i"> from study <img src="https://latex.codecogs.com/png.latex?j"> can be classified into one of <img src="https://latex.codecogs.com/png.latex?C"> dimensions. Let <img src="https://latex.codecogs.com/png.latex?d%5Ec_%7Bij%7D"> be an indicator for whether effect <img src="https://latex.codecogs.com/png.latex?i"> falls into dimension <img src="https://latex.codecogs.com/png.latex?c">, for <img src="https://latex.codecogs.com/png.latex?c%20=%201,...,C">. With a strictly multivariate structure, there is never more than one effect per category, so <img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5E%7Bn_j%7D%20d%5Ec_%7Bij%7D%20%5Cleq%201"> for each <img src="https://latex.codecogs.com/png.latex?c%20=%201,...,C"> and <img src="https://latex.codecogs.com/png.latex?j%20=%201,...,k">. A typical multivariate random effects model would then be <img src="https://latex.codecogs.com/png.latex?%0AT_%7Bij%7D%20=%20%5Csum_%7Bc=1%7D%5EC%20%5Cleft(%5Cmu_c%20+%20v_%7Bcj%7D%5Cright)%20d%5Ec_%7Bij%7D%20+%20e_%7Bij%7D,%0A"> where <img src="https://latex.codecogs.com/png.latex?%5Cmu_c"> is the average effect size for category <img src="https://latex.codecogs.com/png.latex?c">, <img src="https://latex.codecogs.com/png.latex?v_%7Bcj%7D"> is a random effect for category <img src="https://latex.codecogs.com/png.latex?c"> in study <img src="https://latex.codecogs.com/png.latex?j">, and <img src="https://latex.codecogs.com/png.latex?e_%7Bij%7D"> is the sampling error term. The classic assumption about the random effects is that they are dependent within study, so <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BVar%7D(v_%7Bcj%7D)%20=%20%5Ctau%5E2_c%20%5Cqquad%20%5Ctext%7Band%7D%20%5Cqquad%20%5Ctext%7BCov%7D(v_%7Bbj%7D,%20v_%7Bcj%7D)%20=%20%5Ctau_%7Bbc%7D%0A"> for <img src="https://latex.codecogs.com/png.latex?b,c%20=%201,...,C">. Typically, these sorts of models would also rely on assumptions about the correlations between the sampling errors, just as with the second meaning of multivariate. Thus, to complete the model, we would have <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BCov%7D(e_%7Bhj%7D,%20e_%7Bij%7D)%20=%20%5Crho_%7Bhij%7D%5Csigma_%7Bhj%7D%5Csigma_%7Bij%7D"> for known <img src="https://latex.codecogs.com/png.latex?%5Crho_%7Bhij%7D">. In practice, we might want to impose some common structure to the correlations across studies, such as using <img src="https://latex.codecogs.com/png.latex?%5Crho_%7Bhij%7D">’s that depend on the dimensions being correlated but are common across studies. Formally, we would have <img src="https://latex.codecogs.com/png.latex?%0A%5Crho_%7Bhij%7D%20=%20%5Csum_%7Bb=1%7D%5EC%20%5Csum_%7Bc=1%7D%5EC%20d%5Eb_%7Bij%7D%20%5C%20d%5Ec_%7Bij%7D%20%5C%20%5Crho_%7Bbc%7D.%0A"> Of course, even getting this level of detail about correlations between effect sizes might often be pretty challenging.</p>
 <p>In a strictly multivariate meta-regression model, we would also allow the coefficients for each predictor to be specific to each category, so that <img src="https://latex.codecogs.com/png.latex?%0AT_%7Bij%7D%20=%20%5Csum_%7Bc=1%7D%5EC%20%5Cleft(%5Cmathbf%7Bx%7D_%7Bij%7D%5Cboldsymbol%5Cbeta_c%20+%20v_%7Bcj%7D%5Cright)%20d%5Ec_%7Bij%7D%20+%20e_%7Bij%7D,%0A"> In my example of educational intervention impact studies, say that are interested in whether the effects differ between quasi-experimental studies and true randomized control trials, and whether the effects differ based on the proportion of the sample that was economically disadvantaged. The strictly multivariate model would always involve interacting these predictors with the outcome category. In R’s equation notation, the meta-regression specification would be</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">ES <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
@@ -16795,9 +16833,12 @@ background-color: null;
 font-style: inherit;">+</span> Cat<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span>disadvantaged_pct</span></code></pre></div>
+</details>
 </div>
 <p>In contrast, in a generic meta-regression for dependent effect sizes, we might not include all of the interactions, and instead assume that the associations of the predictors were constant across outcome dimensions, as in</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">ES <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> <span class="dv" style="color: #AD0000;
@@ -16809,6 +16850,7 @@ background-color: null;
 font-style: inherit;">+</span> RCT <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> college_pct</span></code></pre></div>
+</details>
 </div>
 <p>In the strict sense of the term, the model without interactions is no longer really a multivariate meta-regression.</p>
 </section>
@@ -16911,6 +16953,8 @@ Pustejovsky, J. E. (2020, June 27). <em>What do meta-analysts mean by
 <h2 data-number="0.4" class="anchored" data-anchor-id="a-computational-example"><span class="header-section-number">0.4</span> A computational example</h2>
 <p>I think it’s useful to verify algebraic results like the ones I’ve given above by checking that you can reproduce them with real data. I’ll use the <code>corrdat</code> dataset from the <code>robumeta</code> package for illustration. The dataset has one duplicated row in it (I have no idea why!), which I’ll remove before analyzing further.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
@@ -16936,6 +16980,7 @@ background-color: null;
 font-style: inherit;">.keep_all =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</details>
 </div>
 <p>This dataset included a total of 171 effect size estimates from 39 unique studies. For each study, between 1 and 18 eligible effect size estimates were reported. Here is a histogram depicting the number of studies by the number of reported effect size estimates:</p>
 <div class="cell">
@@ -16960,6 +17005,8 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <p>For most of the studies, the effect sizes have very similar sampling variances. One exception is study 9, where two of the effect sizes have variances of under 0.20 and the other two effect sizes have variances in excess of 0.35. Another exception is study 30, which has one effect size with much larger variance than the others.</p>
 <p>Just for sake of illustration, I’m going to <em>enforce</em> my assumption that effect sizes have equal variances within each study by recomputing the sampling variances as the <em>average</em> sampling variance within each study. I will then impute a sampling variance-covariance matrix for the effect sizes, assuming a correlation of 0.7 for effects from the same study:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(clubSandwich)</span>
@@ -17007,9 +17054,12 @@ background-color: null;
 font-style: inherit;">r =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.7</span>)</span></code></pre></div>
+</details>
 </div>
 <p>With this variance-covariance matrix, I can then estimate the multivariate meta-analysis model:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(metafor)</span>
@@ -17041,6 +17091,7 @@ font-style: inherit;">data =</span> corrdat)</span>
 <span id="cb3-7"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(MVMA_fit)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -17069,6 +17120,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Based on this model, between-study heterogeneity is estimated as <img src="https://latex.codecogs.com/png.latex?%5Chat%5Ctau%20=%200.216"> and within-study heterogeneity is estimated as <img src="https://latex.codecogs.com/png.latex?%5Chat%5Comega%20=%200.331">, both of which are quite high. The overall average effect size estimate is 0.226, with a standard error of 0.059.</p>
 <p>I’ll first get the weights used in <code>rma.mv</code> to compute the overall average. The weights are represented as an <img src="https://latex.codecogs.com/png.latex?N%20%5Ctimes%20N"> matrix. Taking the row or column sums, then rescaling by the total, gives the weight assigned to each effect size estimate:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">W_mat <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -17089,9 +17142,12 @@ background-color: null;
 font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>(W_mat)</span></code></pre></div>
+</details>
 </div>
 <p>To verify that the formulas above are correct, I’ll use them to directly compute weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">r <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
@@ -17173,9 +17229,12 @@ font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>(w_ij)</span>
 <span id="cb6-15">  )</span></code></pre></div>
+</details>
 </div>
 <p>The weights I computed are perfectly correlated with the weights used <code>rma.mv</code>, as can be seen in the plot below.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(corrdat_weights, <span class="fu" style="color: #4758AB;
@@ -17191,6 +17250,7 @@ font-style: inherit;">+</span> </span>
 <span id="cb7-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -17201,6 +17261,8 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 <p>If we remove the within-study random effect term from the model, the weights will be equivalent to setting <img src="https://latex.codecogs.com/png.latex?%5Comega%5E2"> to zero, but with a different estimate of <img src="https://latex.codecogs.com/png.latex?%5Ctau%5E2">.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">MVMA_no_omega <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -17223,6 +17285,7 @@ font-style: inherit;">|</span> studyid,</span>
 background-color: null;
 font-style: inherit;">data =</span> corrdat)</span>
 <span id="cb8-4">MVMA_no_omega</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -17246,6 +17309,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Re-fitting the model with <code>rma.mv()</code> gives an between-study heterogeneity estimate of <img src="https://latex.codecogs.com/png.latex?%5Chat%5Ctau%20=%200.308"> and an overall average effect size estimate of <img src="https://latex.codecogs.com/png.latex?%5Chat%5Cmu%20=%200">. Using this estimate, I’ll compute the weights based on the formula and then use those weights to determine the overall average effect size estimate.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">tau_sq <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> MVMA_no_omega<span class="sc" style="color: #5E5E5E;
@@ -17298,6 +17363,7 @@ background-color: null;
 font-style: inherit;">weighted.mean</span>(effectsize, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">w =</span> w_ij_no_omega))</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2235231</code></pre>
 </div>
@@ -17343,6 +17409,8 @@ ggplot2 3.3.4.
 <p>Some of the foregoing analysis also applies to models that include predictors. In particular, the formulas I’ve given for the weights will still hold for meta-regression models <strong><em>that include only study-level predictors</em></strong>. In other words, they work for models of the following form: <img src="https://latex.codecogs.com/png.latex?%0AT_%7Bij%7D%20=%20%5Cmathbf%7Bx%7D_j%20%5Cboldsymbol%5Cbeta%20+%20%5Ceta_j%20+%20%5Cnu_%7Bij%7D%20+%20e_%7Bij%7D,%0A"> where <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7Bx%7D_j"> is a row-vector of one or more predictors for study <img src="https://latex.codecogs.com/png.latex?j"> (including a constant intercept). Introducing these predictors will alter the variance component estimates <img src="https://latex.codecogs.com/png.latex?%5Chat%5Ctau%5E2"> and <img src="https://latex.codecogs.com/png.latex?%5Chat%5Comega%5E2">, but the form of the weights will remain the same as above, and the intuitions still hold. This is because, for purposes of estimating <img src="https://latex.codecogs.com/png.latex?%5Cboldsymbol%5Cbeta">, the model is essentially the same as a meta-regression at the study level, using the study-specific average effect size estimates as input: <img src="https://latex.codecogs.com/png.latex?%0A%5Chat%5Ctheta_j%20=%20%5Cmathbf%7Bx%7D_j%20%5Cboldsymbol%5Cbeta%20+%20%5Ceta_j%20+%20%5Ctilde%7Be%7D_j%0A"> where <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BVar%7D(%5Ctilde%7Be%7D_j)%20=%20%5Ctext%7BVar%7D(%5Chat%5Ctheta_j%20%7C%20%5Ctheta_j)">.<sup>3</sup></p>
 <p>Here is an illustration with the <code>corrdat</code> meta-analysis. In these data, the variable <code>college</code> indicates whether the effect size comes from a college-age sample; it varies only at the study level. The variable <code>males</code>, <code>binge</code>, and <code>followup</code> have some within-study variation, which I’ll by taking the average of each of these predictors at the study level:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">corrdat <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> </span>
@@ -17373,9 +17441,12 @@ font-style: inherit;">followup_M =</span> <span class="fu" style="color: #4758AB
 background-color: null;
 font-style: inherit;">mean</span>(followup)</span>
 <span id="cb14-8">  )</span></code></pre></div>
+</details>
 </div>
 <p>Now let’s fit a meta-regression model using all of the study-level predictors:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">MVMR_fit <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -17414,6 +17485,7 @@ font-style: inherit;">data =</span> corrdat)</span>
 <span id="cb15-6"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(MVMR_fit)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -17449,6 +17521,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>As you might expect, between-study heterogeneity is reduced a bit by the inclusion of these predictors.<sup>4</sup></p>
 <p>We can check my claim of computational equivalence by fitting the meta-regression model at the study level. Here I’ll aggregate everything up to the study level and compute the study-level weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">tau_sq_reg <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> MVMR_fit<span class="sc" style="color: #5E5E5E;
@@ -17522,9 +17596,12 @@ font-style: inherit;">/</span> (tau_sq_reg <span class="sc" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">+</span> V_cond)</span>
 <span id="cb17-13">  )</span></code></pre></div>
+</details>
 </div>
 <p>Now I can fit a study-level meta-regression model. I use the <code>weights</code> argument to ensure that the meta-regression is estimated using the <img src="https://latex.codecogs.com/png.latex?w_j"> weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">MR_study_fit <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -17553,6 +17630,7 @@ font-style: inherit;">data =</span> corrdat_studylevel)</span>
 <span id="cb18-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(MR_study_fit)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Mixed-Effects Model (k = 39; tau^2 estimator: REML)
@@ -17647,6 +17725,8 @@ Meta-Analysis.”</span> June 9, 2020. <a href="https://jepusto.com/posts/weight
 <li><p>Add the file <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/header_maincodefolding.html"><code>header_maincodefolding.html</code></a> to the <code>/layouts/partials</code> directory of your site.</p></li>
 <li><p>If you do not already have a file <code>head_custom.html</code> in the <code>/layouts/partials</code> directory, create it. Add the following lines of code to the file:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1">{{ <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">if</span> not site<span class="op" style="color: #5E5E5E;
@@ -17691,9 +17771,12 @@ font-style: inherit;">" | relURL }}"</span> <span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">/&gt;</span></span>
 <span id="cb1-4">{{ end }}</span></code></pre></div>
+</details>
 <p>:::</p></li>
 <li><p>If you do not already have a file <code>site_footer.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following lines of code to it, somewhere towards the bottom (see <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/site_footer.html">my version</a> for example):</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;!--</span> Init code folding <span class="op" style="color: #5E5E5E;
@@ -17704,18 +17787,24 @@ background-color: null;
 font-style: inherit;">"article_footer_js.html"</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span> }}</span></code></pre></div>
+</details>
 <p>:::</p></li>
 <li><p>If you do not already have the file <code>page_header.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following line of code at appropriate points so that your posts will include the “Show/hide code” button:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"> {{ partial <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"header_maincodefolding"</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span> }}</span></code></pre></div>
+</details>
 <p>:::</p>
 <p>Note that you’ll likely need to add it twice due do conditionals in <code>page_header.html</code>. For example, <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/page_header.html">my version of the file</a> includes the partial at lines 62 and 91.</p></li>
 <li><p>Modify your <code>params.toml</code> file (in the directory <code>/config/_default</code>) to include the following lines:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="do" style="color: #5E5E5E;
 background-color: null;
 font-style: italic;">############################</span></span>
@@ -17746,6 +17835,7 @@ font-style: inherit;"># Set to true to exclude the "Show/hide all" button</span>
 <span id="cb4-10">codefolding_nobutton <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> false</span></code></pre></div>
+</details>
 <p>:::</p></li>
 </ol>
 </section>
@@ -17801,6 +17891,8 @@ Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://jepusto.com/p
 <p>The most direct way to simulate this sort of effect size data is to generate outcome data for every artificial participant in every artificial study. Let <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BY%7D_%7Bik%7D%5ET"> be the <img src="https://latex.codecogs.com/png.latex?J_k%20%5Ctimes%201"> vector of outcomes for treatment group participant <img src="https://latex.codecogs.com/png.latex?i"> in study <img src="https://latex.codecogs.com/png.latex?k">, and let <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BY%7D_%7Bik%7D%5EC"> be the <img src="https://latex.codecogs.com/png.latex?J_k%20%5Ctimes%201"> vector outcomes for control group participant <img src="https://latex.codecogs.com/png.latex?i"> in study <img src="https://latex.codecogs.com/png.latex?k">, for <img src="https://latex.codecogs.com/png.latex?i=1,...,N_k%20/%202"> and <img src="https://latex.codecogs.com/png.latex?k%20=%201,...,K">. Assuming multi-variate normality of the outcomes, we can generate these outcome vectors as <img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbf%7BY%7D_%7Bik%7D%5ET%20%5Csim%20N%5Cleft(%5Cboldsymbol%5Cdelta_k,%20%5Cboldsymbol%5CPsi_k%5Cright)%20%5Cqquad%20%5Ctext%7Band%7D%5Cqquad%20%5Cmathbf%7BY%7D_%7Bik%7D%5EC%20%5Csim%20N%5Cleft(%5Cmathbf%7B0%7D,%20%5Cboldsymbol%5CPsi_k%5Cright),%0A"> where <img src="https://latex.codecogs.com/png.latex?%5Cboldsymbol%5CPsi_k"> is the population correlation matrix of the outcomes in study <img src="https://latex.codecogs.com/png.latex?k">. Note that I am setting the mean outcomes of the control group participants to zero and also specifying that the outcomes all have unit variance within each group. After simulating data based on these distributions, the effect size estimates for each outcome can be calculated directly, following standard formulas.</p>
 <p>Here’s what this approach looks like in code. It is helpful to simplify things by focusing on simulating just a single study with multiple, correlated effect sizes. Focusing first on just the input parameters, a function might look like the following:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">r_SMDs_raw <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
@@ -17813,10 +17905,13 @@ font-style: inherit;"># stuff</span></span>
 background-color: null;
 font-style: inherit;">return</span>(ES_data)  </span>
 <span id="cb1-4">}</span></code></pre></div>
+</details>
 </div>
 <p>In the above function skeleton, <code>delta</code> would be the true effect size parameter <img src="https://latex.codecogs.com/png.latex?%5Cboldsymbol%5Cdelta_k">, <code>J</code> would be the number of effect sizes to generate <img src="https://latex.codecogs.com/png.latex?(J_k)">, <code>N</code> is the total number of participants <img src="https://latex.codecogs.com/png.latex?(N_k)">, and <code>Psi</code> is a matrix of correlations between the outcomes <img src="https://latex.codecogs.com/png.latex?(%5CPsi_k)">. From these parameters, we’ll generate raw data, calculate effect size estimates and standard errors, and return the results in a little dataset.</p>
 <p>To make the function a little bit easier to use, I’m going overload the <code>Psi</code> argument so that it can be a single number, indicating a common correlation between the outcomes. Thus, instead of having to feed in a <img src="https://latex.codecogs.com/png.latex?J_k%20%5Ctimes%20J_k"> matrix, you can specify a single correlation <img src="https://latex.codecogs.com/png.latex?r_k">, and the function will assume that all of the outcomes are equicorrelated. In code, the logic is:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
@@ -17836,9 +17931,12 @@ background-color: null;
 font-style: inherit;">-</span> Psi, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">nrow =</span> J)</span></code></pre></div>
+</details>
 </div>
 <p>Here’s the function with the innards:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">r_SMDs_raw <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
@@ -18017,9 +18115,12 @@ background-color: null;
 font-style: inherit;">N =</span> N)</span>
 <span id="cb3-27"></span>
 <span id="cb3-28">}</span></code></pre></div>
+</details>
 </div>
 <p>In action:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">delta <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -18052,6 +18153,7 @@ background-color: null;
 font-style: inherit;">Psi =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.6</span>)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: mvtnorm</code></pre>
 </div>
@@ -18065,6 +18167,8 @@ font-style: inherit;">0.6</span>)</span></code></pre></div>
 </div>
 <p>Or if you’d rather specify the full <img src="https://latex.codecogs.com/png.latex?%5CPsi_k"> matrix yourself:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">Psi_k <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
@@ -18081,6 +18185,7 @@ font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>)</span>
 <span id="cb7-2">Psi_k</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]  1.0  0.6  0.6  0.6
@@ -18088,6 +18193,8 @@ font-style: inherit;">4</span>)</span>
 [3,]  0.6  0.6  1.0  0.6
 [4,]  0.6  0.6  0.6  1.0</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">r_SMDs_raw</span>(<span class="at" style="color: #657422;
@@ -18103,6 +18210,7 @@ background-color: null;
 font-style: inherit;">40</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">Psi =</span> Psi_k)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           ES        SE  N
 1  0.11468537 0.3165013 40
@@ -18147,6 +18255,8 @@ font-style: inherit;">Psi =</span> Psi_k)</span></code></pre></div>
 <p>Let’s consider how to do this for a simple random effects model, where the true effect size parameter is constant within each study (i.e., <img src="https://latex.codecogs.com/png.latex?%5Cboldsymbol%5Cdelta_k%20=%20(%5Cdelta_k%20%5Ccdots%20%5Cdelta_k)'">), and in a model without covariates. We’ll need to generate a true effect for each study, along with a sample size, an outcome dimension, and a correlation between outcomes. For the true effects, I’ll assume that <img src="https://latex.codecogs.com/png.latex?%0A%5Cdelta_k%20%5Csim%20N(%5Cmu,%20%5Ctau%5E2),%0A"> <img src="https://latex.codecogs.com/png.latex?%0AJ_k%20%5Csim%202%20+%20Poisson(3),%0A"> <img src="https://latex.codecogs.com/png.latex?%0AN_k%20%5Csim%2020%20+%202%20%5Ctimes%20Poisson(10),%0A"> and <img src="https://latex.codecogs.com/png.latex?%0Ar_k%20%5Csim%20Beta%5Cleft(%5Crho%20%5Cnu,%20(1%20-%20%5Crho)%5Cnu%5Cright),%0A"> where <img src="https://latex.codecogs.com/png.latex?%5Crho%20=%20%5Ctext%7BE%7D(r_k)"> and <img src="https://latex.codecogs.com/png.latex?%5Cnu%20%3E%200"> controls the variability of <img src="https://latex.codecogs.com/png.latex?r_k"> across studies, with smaller <img src="https://latex.codecogs.com/png.latex?%5Cnu"> corresponding to more variable correlations. Specifically, <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BVar%7D(r_k)%20=%20%5Crho%20(1%20-%20%5Crho)%20/%20(1%20+%20%5Cnu)">. These distributions are just made up, without any particular justification.</p>
 <p>Here’s what these distributional models look like in R code:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">K <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
@@ -18248,6 +18358,7 @@ font-style: inherit;">*</span> nu)</span>
 <span id="cb11-15">  )</span>
 <span id="cb11-16"></span>
 <span id="cb11-17">study_data</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      delta J  N       Psi
 1 0.1894457 7 32 0.7549766
@@ -18260,6 +18371,8 @@ font-style: inherit;">*</span> nu)</span>
 </div>
 <p>Once we have the “menu” of study-level characteristics, it’s just a matter of mapping the parameters to the data-generating function. One way to do this is with <code>pmap_df</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(purrr)</span>
@@ -18273,6 +18386,7 @@ font-style: inherit;">.id =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"study"</span>)</span>
 <span id="cb13-3">meta_data</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   study          ES        SE  N
 1      1  0.47285752 0.3587849 32
@@ -18310,11 +18424,14 @@ font-style: inherit;">"study"</span>)</span>
 33     6  0.77571983 0.2997899 48
 34     6  0.81747976 0.3009936 48</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">table</span>(meta_data<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>study)</span></code></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 1 2 3 4 5 6 
@@ -18323,6 +18440,8 @@ font-style: inherit;">$</span>study)</span></code></pre></div>
 </div>
 <p>Putting it all together into a function, we have</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">r_meta <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
@@ -18404,6 +18523,7 @@ font-style: inherit;">.id =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"study"</span>)</span>
 <span id="cb17-13">}</span></code></pre></div>
+</details>
 </div>
 <section id="exercises-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercises-2">Exercises</h2>
@@ -18412,6 +18532,8 @@ font-style: inherit;">"study"</span>)</span>
 <li><p>Add options to <code>r_meta</code> for <code>Hedges_g</code>, <code>p_val = TRUE</code>, and <code>corr_mat = FALSE</code> and ensure that these get passed along to the <code>r_SMDs</code> function.</p></li>
 <li><p>One way to check that the <code>r_meta</code> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here’s a very large meta-analytic dataset:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">meta_data <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> </span>
@@ -18446,6 +18568,7 @@ background-color: null;
 font-style: inherit;">nu =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">39</span>)</span></code></pre></div>
+</details>
 <p>:::</p>
 <p>Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</p></li>
 <li><p>Modify the <code>r_meta</code> function so that <img src="https://latex.codecogs.com/png.latex?J_k"> and <img src="https://latex.codecogs.com/png.latex?N_k"> are correlated, according to <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AJ_k%20&amp;%5Csim%202%20+%20Poisson(%5Cmu_J%20-%202)%20%5C%5C%0AN_k%20&amp;%5Csim%2020%20+%202%20%5Ctimes%20Poisson%5Cleft(%5Cfrac%7B1%7D%7B2%7D(%5Cmu_N%20-%2020)%20+%20%5Calpha%20(J_k%20-%20%5Cmu_J)%20%5Cright)%0A%5Cend%7Balign%7D%0A"> for user-specified values of <img src="https://latex.codecogs.com/png.latex?%5Cmu_J"> (the average number of outcomes per study), <img src="https://latex.codecogs.com/png.latex?%5Cmu_N"> (the average total sample size per study), and <img src="https://latex.codecogs.com/png.latex?%5Calpha">, which controls the degree of dependence between <img src="https://latex.codecogs.com/png.latex?J_k"> and <img src="https://latex.codecogs.com/png.latex?N_k">.</p></li>

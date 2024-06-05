@@ -102,8 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
+<meta property="og:title" content="James E. Pustejovsky - An update on code folding with blogdown + Academic theme">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - An update on code folding with blogdown + Academic theme">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -244,23 +248,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Add the file <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/header_maincodefolding.html"><code>header_maincodefolding.html</code></a> to the <code>/layouts/partials</code> directory of your site.</p></li>
 <li><p>If you do not already have a file <code>head_custom.html</code> in the <code>/layouts/partials</code> directory, create it. Add the following lines of code to the file:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{{ <span class="cf">if</span> not site<span class="op">.</span><span class="at">Params</span><span class="op">.</span><span class="at">disable_codefolding</span> }}</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>script src<span class="op">=</span><span class="st">"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"</span><span class="op">&gt;&lt;/</span>script<span class="op">&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>link rel<span class="op">=</span><span class="st">"stylesheet"</span> href<span class="op">=</span><span class="st">"{{ "</span>css<span class="op">/</span>codefolding<span class="op">.</span><span class="at">css</span><span class="st">" | relURL }}"</span> <span class="op">/&gt;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>{{ end }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>:::</p></li>
 <li><p>If you do not already have a file <code>site_footer.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following lines of code to it, somewhere towards the bottom (see <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/site_footer.html">my version</a> for example):</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> Init code folding <span class="op">--&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>{{ partial <span class="st">"article_footer_js.html"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>:::</p></li>
 <li><p>If you do not already have the file <code>page_header.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following line of code at appropriate points so that your posts will include the “Show/hide code” button:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> {{ partial <span class="st">"header_maincodefolding"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>:::</p>
 <p>Note that you’ll likely need to add it twice due do conditionals in <code>page_header.html</code>. For example, <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/page_header.html">my version of the file</a> includes the partial at lines 62 and 91.</p></li>
 <li><p>Modify your <code>params.toml</code> file (in the directory <code>/config/_default</code>) to include the following lines:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Code folding</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
@@ -271,6 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>codefolding_show <span class="ot">=</span> <span class="st">"show"</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set to true to exclude the "Show/hide all" button</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>codefolding_nobutton <span class="ot">=</span> false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>:::</p></li>
 </ol>
 </section>
@@ -718,4 +734,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

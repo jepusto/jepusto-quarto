@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,6 +134,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - A meta-sandwich">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - A meta-sandwich">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -209,7 +213,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">A meta-sandwich</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">A meta-sandwich</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">meta-analysis</div>
                 <div class="quarto-category">sandwiches</div>
@@ -256,19 +260,27 @@ window.Quarto = {
 <p>First, the <a href="http://cran.r-project.org/web/packages/metafor/index.html">metafor package</a> contains a very rich suite of meta-analytic methods, including for multi-variate meta-analysis. The only thing it lacks is sandwich standard errors. However, the <a href="http://cran.r-project.org/web/packages/sandwich/index.html">sandwich package</a> provides an efficient, well-structured framework for calculating all sorts of robust standard errors. All that’s needed are a few functions to make the packages talk to each other. Each of the functions described below takes as input a fitted multi-variate meta-analysis model, which is represented in R by an object of class <code>rma.mv</code>.</p>
 <p>First load up the packages:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sandwich)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Next, I need a <code>bread</code> method for objects of class <code>rma.mv</code>, which is a function that returns the <span class="math inline">\(p \times p\)</span> matrix <span class="math inline">\(\displaystyle{m \left(\sum_{i=1}^m \mathbf{X}_j' \mathbf{W}_j \mathbf{X}_j\right)^{-1}}\)</span>. The bread function is straight-forward because it is just a multiple of the model-based covariance matrix, which <code>rma.mv</code> objects store in the <code>vb</code> component:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bread.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">*</span> obj<span class="sc">$</span>vb  </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>I also need an <code>estfun</code> method for objects of class <code>rma.mv</code>, which is a function that returns an <span class="math inline">\(m \times p\)</span> matrix where row <span class="math inline">\(j\)</span> is equal to <span class="math inline">\(\mathbf{e}_j' \mathbf{W}_j \mathbf{X}_j\)</span>, <span class="math inline">\(j = 1,...,m\)</span>. The necessary pieces for the <code>estfun</code> method can also be pulled out of the components of <code>rma.mv</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>estfun.rma.mv <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(<span class="fu">as.factor</span>(<span class="fu">findCluster</span>(obj)))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(obj)</span>
@@ -279,15 +291,21 @@ window.Quarto = {
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(rval) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(obj<span class="sc">$</span>X)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  rval</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The remaining question is how to determine which of the components in the model should be used to define independent clusters. This is a little bit tricky because there are several different methods of specifying random effects in the <code>rma.mv</code> function. One way involves providing a list of formulas, each containing a factor associated with a unique random effect, such as <code>random = list( ~ 1 | classroom, ~ 1 | school)</code>. If this method of specifying random effects is used, the <code>rma.mv</code> object will have the component <code>withS</code> set to <code>TRUE</code>, and my approach is to simply take the factor with the smallest number of unique levels. This is perhaps a little bit presumptious, because the <code>withS</code> method could potentially be used to specify arbitrary random effects, where one level is not strictly nested inside another. However, probably the most common use will involve nested factors, so my assumption seems like a good starting point at least.</p>
 <p>Another approach to specifying random effects is to use a formula of the form <code>random = inner | outer</code>, in which case the <code>rma.mv</code> object will have the component <code>withG</code> set to <code>TRUE</code>. Here, it seems reasonable to use the <code>outer</code> factor for defining clusters. If both the <code>withS</code> and <code>withG</code> methods are used together, I’ll assume that the <code>withS</code> factors contain the outermost level.</p>
 <p>Finally, if <code>rma.mv</code> is used to estimate a fixed effects model without any random components, the clustering factor will have to be manually added to the <code>rma.mv</code> object in a component called <code>cluster</code>. For example, if you want to cluster on the variable <code>studyID</code> in the dataframe <code>dat</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rma_fit<span class="sc">$</span>cluster <span class="ot">&lt;-</span> dat<span class="sc">$</span>studyID</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Here’s code that implements these assumptions:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>findCluster <span class="ot">&lt;-</span> <span class="cf">function</span>(obj) {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(obj<span class="sc">$</span>cluster)) {</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (obj<span class="sc">$</span>withS) {</span>
@@ -303,21 +321,27 @@ window.Quarto = {
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  cluster</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>With these three functions, you can then use <code>metafor</code> to fit a random effects model, <code>sandwich</code> to calculate the standard errors, and functions like <code>coeftest</code> from the package <code>lmtest</code> to run <span class="math inline">\(t\)</span>-tests. As a little bonus, here’s a function for probably the most common case of how you’d use the sandwich standard errors:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RobustResults <span class="ot">&lt;-</span> <span class="cf">function</span>(obj, <span class="at">adjust =</span> <span class="cn">TRUE</span>) {</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  cluster <span class="ot">&lt;-</span> <span class="fu">findCluster</span>(obj)  </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  vcov. <span class="ot">&lt;-</span> <span class="fu">sandwich</span>(obj, <span class="at">adjust =</span> adjust)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  df. <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(cluster)) <span class="sc">-</span> obj<span class="sc">$</span>p</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coeftest</span>(obj, <span class="at">vcov. =</span> vcov., <span class="at">df =</span> df.)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p><a href="https://gist.github.com/jepusto/11144005">See here</a> for a file containing the full code.</p>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p><a href="http://doi.org/10.1002/jrsm.1091">Tanner-Smith &amp; Tipton (2013)</a> provide an application of the cluster-robust method to a fictional dataset with 68 effect sizes nested within 15 studies. They call this a “hierarchical” dependence example because each effect size estimate is drawn from an independent sample, but dependence is induced because the experiments were all done in the same lab. For comparison purposes, here are the results produced by <code>robumeta</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(hierdat)</span>
@@ -327,6 +351,7 @@ window.Quarto = {
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">studynum =</span> studyid,</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">var.eff.size =</span> var, <span class="at">small =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>HTJ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>RVE: Hierarchical Effects Model  
 
@@ -346,7 +371,10 @@ Signif. codes: &lt; .01 *** &lt; .05 ** &lt; .10 *
 </div>
 <p>To exactly re-produce the results with <code>metafor</code>, I’ll need to use the weights proposed by HTJ. In their approach, effect size <span class="math inline">\(i\)</span> from study <span class="math inline">\(j\)</span> receives weight equal to <span class="math inline">\(\left(v_{ij} + \hat\omega^2 + \hat\tau^2\right)^{-1}\)</span>, where <span class="math inline">\(v_{ij}\)</span> is the sampling variance of the effect size, <span class="math inline">\(\hat\omega^2\)</span> is an estimate of the between-sample within-study variance, and <span class="math inline">\(\hat\tau^2\)</span> is an estimate of the between-study variance. After calculating these weights, I fit the model in metafor, calculate the sandwich covariance matrix, and replay the results:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hierdat<span class="sc">$</span>var_HTJ <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>var <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq <span class="sc">+</span> HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq <span class="co"># calculate weights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in hierdat$var + HTJ$mod_info$omega.sq: Recycling array of length 1 in vector-array arithmetic is deprecated.
   Use c() or as.vector() instead.</code></pre>
@@ -355,9 +383,12 @@ Signif. codes: &lt; .01 *** &lt; .05 ** &lt; .10 *
 <pre><code>Warning in hierdat$var + HTJ$mod_info$omega.sq + HTJ$mod_info$tau.sq: Recycling array of length 1 in vector-array arithmetic is deprecated.
   Use c() or as.vector() instead.</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>meta1 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var_HTJ, <span class="at">data =</span> hierdat, <span class="at">method =</span> <span class="st">"FE"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>meta1<span class="sc">$</span>cluster <span class="ot">&lt;-</span> hierdat<span class="sc">$</span>studyid <span class="co"># add clustering variable to the fitted model</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
@@ -370,11 +401,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>The HTJ weights are not the only alternative–one could instead use weights that are exactly inverse variance under the posited model. For effect <span class="math inline">\(i\)</span> from study <span class="math inline">\(j\)</span>, these weights would be closer to <span class="math inline">\(\left(v_{ij} + \hat\omega^2 + k_j \hat\tau^2 \right)^{-1}\)</span>. For <span class="math inline">\(\hat\tau^2 &gt; 0\)</span>, the inverse-variance weights put proportionately less weight on studies containing many effects. These weights can be calculated in <code>metafor</code> as follows:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>meta2 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sigma2 =</span> <span class="fu">c</span>(HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>omega.sq, HTJ<span class="sc">$</span>mod_info<span class="sc">$</span>tau.sq),</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat)</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
@@ -388,11 +422,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Curiously, the robust standard error increases under a weighting scheme that is more efficient if the model is correct.</p>
 <p>Finally, <code>metafor</code> provides ML and REML estimators for the between-sample and between-study random effects (the HTJ moment estimators are not available though). Here are the results based on REML estimators and the corresponding inverse-variance weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>meta3 <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize <span class="sc">~</span> <span class="dv">1</span>, <span class="at">V =</span> var, </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">random =</span> <span class="fu">list</span>(<span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> esid, <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid), </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> hierdat,</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"REML"</span>)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>meta3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 68; method: REML)
@@ -414,7 +451,10 @@ estimate      se    zval    pval   ci.lb   ci.ub
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RobustResults</span>(meta3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 t test of coefficients:
@@ -1062,4 +1102,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

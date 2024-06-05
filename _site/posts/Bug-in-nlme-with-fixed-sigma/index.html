@@ -102,8 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
+<meta property="og:title" content="James E. Pustejovsky - Bug in nlme::lme with fixed sigma and REML estimation">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Bug in nlme::lme with fixed sigma and REML estimation">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -180,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Bug in nlme::lme with fixed sigma and REML estimation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Bug in nlme::lme with fixed sigma and REML estimation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Rstats</div>
                 <div class="quarto-category">programming</div>
@@ -234,6 +238,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="basic-random-effects-model">Basic random effects model</h3>
 <p>This example fits a basic random effects model to the BCG vaccine data, available within <code>metafor</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -287,27 +293,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_example</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        f    logLik        est        se       tau
 1 rma.uni -12.57566 -0.7451778 0.1860279 0.5811816
 2  rma.mv -12.57566 -0.7451778 0.1860280 0.5811818
 3     lme -13.34043 -0.7471979 0.1916902 0.6030524</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_example</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        f    logLik        est        se       tau
 1 rma.uni -12.96495 -0.7716272 0.1977007 0.5911451
 2  rma.mv -12.96495 -0.7716272 0.1977007 0.5911452
 3     lme -15.62846 -0.7716272 0.1899448 0.5571060</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_example</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        f    logLik        est        se       tau
 1 rma.uni -13.07276 -0.7419668 0.1779534 0.5499605
 2  rma.mv -13.07276 -0.7419669 0.1779534 0.5499608
 3     lme -13.07276 -0.7419668 0.1779534 0.5499605</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_example</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>        f     logLik        est        se       tau
 1 rma.uni -13.525084 -0.7716272 0.1899447 0.5571059
@@ -320,6 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="bi-variate-random-effects-model">Bi-variate random effects model</h3>
 <p>This example fits a bi-variate random effects model, also to the BCG vaccine data:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bcg_bivariate <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">method =</span> <span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>) {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data</span>(dat.bcg)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dat_long <span class="ot">&lt;-</span> <span class="fu">to.long</span>(<span class="at">measure=</span><span class="st">"OR"</span>, <span class="at">ai=</span>tpos, <span class="at">bi=</span>tneg, <span class="at">ci=</span>cpos, <span class="at">di=</span>cneg, <span class="at">data=</span>dat.bcg)</span>
@@ -369,24 +387,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_bivariate</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f    logLik     tau1     tau2
 1 rma.mv -31.50167 1.244429 1.617808
 2    lme -32.32612 1.254436 1.631619</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_bivariate</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f    logLik     tau1     tau2
 1 rma.mv -31.09623 1.191679 1.644897
 2    lme -37.06035 1.142260 1.578434</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_bivariate</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f    logLik     tau1     tau2
 1 rma.mv -33.08793 1.196399 1.551558
 2    lme -33.08793 1.196399 1.551558</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bcg_bivariate</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f     logLik    tau1     tau2
 1 rma.mv -32.647023 1.14226 1.578434
@@ -398,6 +426,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="three-level-random-effects-model">Three-level random-effects model</h3>
 <p>This example fits a three-level random-effects model to the data from Konstantopoulos (2011):</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Konstantopoulos <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">method =</span> <span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>) {</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">get</span>(<span class="fu">data</span>(dat.konstantopoulos2011))</span>
@@ -442,24 +472,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="fu">Konstantopoulos</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f     logLik       est         se      tau1      tau2
 1 rma.mv  -7.958724 0.1847132 0.08455592 0.2550724 0.1809324
 2    lme -10.716781 0.1841827 0.08641374 0.2605790 0.1884588</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Konstantopoulos</span>(<span class="st">"REML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f     logLik       est         se      tau1      tau2
 1 rma.mv  -9.724839 0.1724309 0.08052701 0.2401816 0.1878155
 2    lme -16.119274 0.1724309 0.07980479 0.2380275 0.1848778</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Konstantopoulos</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f    logLik       est         se      tau1      tau2
 1 rma.mv -8.394936 0.1844554 0.08048168 0.2402881 0.1812865
 2    lme -8.394936 0.1844554 0.08048168 0.2402881 0.1812865</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Konstantopoulos</span>(<span class="st">"ML"</span>, <span class="at">constant_var =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       f    logLik       est         se      tau1      tau2
 1 rma.mv -10.11095 0.1712365 0.07645094 0.2250687 0.1881229
@@ -1148,4 +1188,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -102,8 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
+<meta property="og:title" content="James E. Pustejovsky - Running R in parallel on the TACC">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Running R in parallel on the TACC">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -180,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Running R in parallel on the TACC</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Running R in parallel on the TACC</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Rstats</div>
                 <div class="quarto-category">programming</div>
@@ -235,6 +239,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I’ve been running my simulations using a combination of several packages that provide very high-level functionality for parallel computing, namely <code>foreach</code>, <code>doSNOW</code>, and the <code>maply</code> function in <code>plyr</code>. All of this runs on top of an <code>Rmpi</code> implementation developed by the folks at TACC (<a href="https://portal.tacc.utexas.edu/documents/13601/901835/Parallel_R_Final.pdf/">more details here</a>).</p>
 <p>In <a href="../..\Designing-simulation-studies-using-R/">an earlier post</a>, I shared code for running a very simple simulation of the Behrens-Fisher problem. Here’s <a href="https://gist.github.com/jepusto/8059893">adapted code</a> for running the same simulation on Stampede. The main difference is that there are a few extra lines of code to set up a cluster, seed a random number generator, and pass necessary objects (saved in <code>source_func</code>) to the nodes of the cluster:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rmpi)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(snow)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreach)</span>
@@ -248,20 +254,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># export source functions</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">clusterExport</span>(cluster, source_func)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Once it is all set up, running the code is just a matter of turning on the parallel option in <code>mdply</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>BFresults <span class="ot">&lt;-</span> <span class="fu">mdply</span>(parms, <span class="at">.fun =</span> run_sim, <span class="at">.drop=</span><span class="cn">FALSE</span>, <span class="at">.parallel=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>I fully admit that my method of passing source functions is rather kludgy. One alternative would be to save all of the source functions in a separate file (say, <code>source_functions.R</code>), then <code>source</code> the file at the beginning of the simulation script:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"source_functions.R"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(source_func <span class="ot">&lt;-</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Another, more elegant alternative would be to put all of your source functions in a little package (say, <code>BehrensFisher</code>), install the package, and then pass the package in the <code>maply</code> call:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>BFresults <span class="ot">&lt;-</span> <span class="fu">mdply</span>(parms, <span class="at">.fun =</span> run_sim, <span class="at">.drop=</span><span class="cn">FALSE</span>, <span class="at">.parallel=</span><span class="cn">TRUE</span>, <span class="at">.paropts =</span> <span class="fu">list</span>(<span class="at">.packages=</span><span class="st">"BehrensFisher"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Of course, developing a package involves a bit more work on the front end.</p>
 </section>
@@ -269,6 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="the-slurm-script">The SLURM script</h3>
 <p>Suppose that you’ve got your R code saved in a file called <code>Behrens_Fisher.R</code>. Here’s an example of a SLURM script that runs the R script after configuring an Rmpi cluster:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -J Behrens          # Job name</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -o Behrens.o%j      # Name of stdout output file (%j expands to jobId)</span></span>
@@ -286,6 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># call R code from RMPISNOW</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ibrun</span> RMPISNOW <span class="op">&lt;</span> Behrens_Fisher.R </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The file should be saved in a plain text file called something like <code>run_BF.slurm</code>. The file has to use ANSI encoding and Unix-type end-of-line encoding; <a href="http://notepad-plus-plus.org/">Notepad++</a> is a text editor that can create files in this format.</p>
 <p>Note that for full efficiency, the <code>-n</code> option should be a multiple of 16 because their are 16 cores per compute node. Further details about SBATCH options can be found <a href="https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol">here</a>.</p>
@@ -294,29 +313,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="running-on-stampede">Running on Stampede</h3>
 <p><a href="https://portal.tacc.utexas.edu/user-guides/stampede#access">Follow these directions</a> to log in to the Stampede server. Here’s the <a href="https://portal.tacc.utexas.edu/user-guides/stampede">User Guide</a> for Stampede. The first thing you’ll need to do is ensure that you’ve got the proper version of MVAPICH loaded. To do that, type</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> swap intel intel/14.0.1.106</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> setdefault</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The second line sets this as the default, so you won’t need to do this step again.</p>
 <p>Second, you’ll need to install whatever R packages you’ll need to run your code. To do that, type the following at the <code>login4$</code> prompt:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">login4</span><span class="va">$module</span> load Rstats</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">login4</span><span class="va">$R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>This will start an interactive R session. From the R prompt, use <code>install.packages</code> to download and install, e.g.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"plyr"</span>,<span class="st">"reshape"</span>,<span class="st">"doSNOW"</span>,<span class="st">"foreach"</span>,<span class="st">"iterators"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The packages will be installed in a local library. Now type <code>q()</code> to quit R.</p>
 <p>Next, make a new directory for your project:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">login4</span><span class="va">$mkdir</span> project_name</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">login4</span><span class="va">$cd</span> project_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Upload your files to the directory (using <a href="http://the.earth.li/~sgtatham/putty/0.63/htmldoc/Chapter6.html">psftp</a>, for instance). Check that your R script is properly configured by viewing it in Vim.</p>
 <p>Finally, submit your job by typing</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">login4</span><span class="va">$sbatch</span> run_BF.slurm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>or whatever your SLURM script is called. To check the status of the submitted job, type <code>showq -u</code> followed by your TACC user name (more details <a href="https://portal.tacc.utexas.edu/user-guides/stampede#running-slurm-jobcontrol-squeue">here</a>).</p>
 </section>
@@ -951,4 +985,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

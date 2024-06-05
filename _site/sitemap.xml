@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jepusto.com/index.html</loc>
-    <lastmod>2024-05-24T20:10:38.137Z</lastmod>
-  </url>
-  <url>
     <loc>https://jepusto.com/working-papers.html</loc>
     <lastmod>2024-05-28T22:51:01.671Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/contact.html</loc>
-    <lastmod>2024-05-22T13:14:16.090Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/index.html</loc>
-    <lastmod>2024-05-28T23:47:09.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/index.html</loc>
-    <lastmod>2024-05-27T21:44:34.102Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/software/index.html</loc>
-    <lastmod>2024-05-22T12:17:53.749Z</lastmod>
+    <loc>https://jepusto.com/teaching/Quasi-Experimental/index.html</loc>
+    <lastmod>2024-04-27T20:05:21.414Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/teaching/index.html</loc>
     <lastmod>2024-05-28T23:42:54.583Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/index.html</loc>
-    <lastmod>2024-05-30T02:25:47.704Z</lastmod>
+    <loc>https://jepusto.com/teaching/Experimental-Data/index.html</loc>
+    <lastmod>2024-04-27T20:09:59.890Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/people/index.html</loc>
-    <lastmod>2024-05-28T03:04:41.556Z</lastmod>
+    <loc>https://jepusto.com/teaching/Causal-Inference/index.html</loc>
+    <lastmod>2024-04-27T20:07:45.743Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/software/SingleCaseES/index.html</loc>
@@ -57,72 +41,88 @@
     <lastmod>2024-06-04T02:24:44.237Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-2/index.html</loc>
-    <lastmod>2024-06-04T01:39:39.465Z</lastmod>
+    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-3/index.html</loc>
+    <lastmod>2024-06-04T01:39:49.871Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Three-level-BC-SMD/index.html</loc>
-    <lastmod>2024-05-27T21:40:14.349Z</lastmod>
+    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-1/index.html</loc>
+    <lastmod>2024-06-04T01:39:25.717Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/TAII-meta-analysis/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.991Z</lastmod>
+    <loc>https://jepusto.com/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html</loc>
+    <lastmod>2024-05-27T21:40:14.019Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/SMD-for-SCD/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.935Z</lastmod>
+    <loc>https://jepusto.com/publication/Taking-a-distributed-perspective/index.html</loc>
+    <lastmod>2024-05-31T01:46:21.408Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Single-case-next-generation-standards/index.html</loc>
-    <lastmod>2024-06-03T12:59:36.212Z</lastmod>
+    <loc>https://jepusto.com/publication/stay-play-talk-meta-analysis/index.html</loc>
+    <lastmod>2024-06-04T01:34:06.057Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/school-based-group-contingencies-meta-analysis/index.html</loc>
-    <lastmod>2024-06-04T02:31:44.194Z</lastmod>
+    <loc>https://jepusto.com/publication/SMD-for-MBD/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.913Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/SCD-synthesis-tools-II/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.677Z</lastmod>
+    <loc>https://jepusto.com/publication/selective-reporting-with-dependent-effects/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.862Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/RVE-Meta-analysis-expanding-the-range/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.622Z</lastmod>
+    <loc>https://jepusto.com/publication/SCED-MLMA-RVE/index.html</loc>
+    <lastmod>2024-06-03T13:05:58.113Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/RVE-for-meta-regression/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.563Z</lastmod>
+    <loc>https://jepusto.com/publication/SCD-synthesis-tools-I/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.649Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Religion-spirituality-social-health/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.426Z</lastmod>
+    <loc>https://jepusto.com/publication/RVE-in-fixed-effects-models/index.html</loc>
+    <lastmod>2024-06-04T02:10:52.137Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Religion-spirituality-mental-health/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.129Z</lastmod>
+    <loc>https://jepusto.com/publication/response-guided-designs-in-SCED-baselines/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.456Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/Question-order-effects/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.069Z</lastmod>
+    <loc>https://jepusto.com/publication/Religion-spirituality-physical-health/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.152Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/psychosocial-interventions-for-spiritual-well-being/index.html</loc>
-    <lastmod>2024-06-04T01:32:46.792Z</lastmod>
+    <loc>https://jepusto.com/publication/RASE-special-issue-introduction/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.093Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/procedural-sensitivities-of-SCD-effect-sizes/index.html</loc>
-    <lastmod>2024-06-04T02:06:27.255Z</lastmod>
+    <loc>https://jepusto.com/publication/psychosocial-interventions-meaning-and-purpose/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/psychosocial-interventions-for-positive-affect/index.html</loc>
+    <lastmod>2024-06-04T01:59:31.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Power-approximations-for-dependent-effects/index.html</loc>
+    <lastmod>2024-06-03T13:01:53.965Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/publication/Operationally-comparable-effect-sizes/index.html</loc>
     <lastmod>2024-05-27T21:40:12.777Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/measurement-procedures-and-baseline-outcomes/index.html</loc>
-    <lastmod>2024-05-27T21:40:12.723Z</lastmod>
+    <loc>https://jepusto.com/publication/Meta-analysis-of-SCD/index.html</loc>
+    <lastmod>2024-06-05T00:37:32.255Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/investigating-narrative-performance/index.html</loc>
-    <lastmod>2024-06-03T13:03:45.680Z</lastmod>
+    <loc>https://jepusto.com/publication/Measurement-comparable-effect-sizes/index.html</loc>
+    <lastmod>2024-06-04T02:43:32.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/interventions-to-enhance-self-efficacy-in-cancer-patients/index.html</loc>
+    <lastmod>2024-06-04T02:03:06.258Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/index.html</loc>
+    <lastmod>2024-05-30T02:25:47.704Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/publication/gradual-effects-model/index.html</loc>
@@ -165,216 +165,128 @@
     <lastmod>2024-06-05T00:38:28.969Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/publication/AAC-instructional-contexts/index.html</loc>
-    <lastmod>2024-05-27T21:40:11.216Z</lastmod>
+    <loc>https://jepusto.com/publication/AAC-participant-characteristics/index.html</loc>
+    <lastmod>2024-05-27T21:40:11.263Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/AAC-increased-rigor/index.html</loc>
+    <lastmod>2024-05-31T02:21:40.622Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/publication/AAC-communication-outcomes/index.html</loc>
     <lastmod>2024-06-04T00:00:34.508Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/SREE-2023-Equity-related-moderator-analysis.html</loc>
-    <lastmod>2024-06-05T00:51:08.989Z</lastmod>
+    <loc>https://jepusto.com/presentations/VIVE-2024-Dependent-Effects.html</loc>
+    <lastmod>2024-05-27T21:44:34.907Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html</loc>
+    <lastmod>2024-05-27T21:44:34.849Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/Stanford-QSU-2022-selective-reporting.html</loc>
+    <lastmod>2024-05-27T21:44:34.787Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SRSM-2022-matter-of-emphasis.html</loc>
+    <lastmod>2024-05-27T21:44:34.732Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SRSM-2018-combining-RVE-with-models.html</loc>
+    <lastmod>2024-05-30T02:55:21.012Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2023-Stabilizing-performance-measures-discussion.html</loc>
+    <lastmod>2024-05-27T21:44:34.600Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2019-2SLS-CRVE.html</loc>
+    <lastmod>2024-06-05T01:38:45.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2015-small-sample-adjustments.html</loc>
+    <lastmod>2024-05-30T02:43:38.828Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2013-operationally-comparable-effect-sizes.html</loc>
+    <lastmod>2024-05-27T21:44:34.377Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/Small-is-Beautiful-2023-keynote.html</loc>
+    <lastmod>2024-05-27T21:44:34.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/PRC-2016-when-large-samples-act-small.html</loc>
+    <lastmod>2024-05-27T21:44:34.289Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/OsloRUG-2021-RVE-with-metafor-and-clubSandwich.html</loc>
+    <lastmod>2024-05-27T21:44:34.248Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/JSM-2016-small-sample-CRVE.html</loc>
+    <lastmod>2024-05-30T02:48:16.202Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/index.html</loc>
+    <lastmod>2024-05-27T21:44:34.102Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/IES-2018-gradual-effects-model.html</loc>
+    <lastmod>2024-05-30T02:52:05.886Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html</loc>
+    <lastmod>2024-05-27T21:44:33.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/EdPsych-Colloquium-2021-Four-Things.html</loc>
+    <lastmod>2024-05-27T21:44:33.810Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2024-Bayes-BCSMD.html</loc>
+    <lastmod>2024-05-27T21:44:33.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2023-BCSMD-benchmarks.html</loc>
+    <lastmod>2024-05-27T21:44:33.738Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2021-multivariate-effect-sizes-SCDs.html</loc>
+    <lastmod>2024-06-03T01:41:00.974Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/presentations/AERA-2019-response-guided-algorithms.html</loc>
     <lastmod>2024-05-30T02:56:58.468Z</lastmod>
   </url>
   <url>
+    <loc>https://jepusto.com/presentations/AERA-2019-ORB-dependence.html</loc>
+    <lastmod>2024-05-30T02:58:50.494Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2018-dependent-effects.html</loc>
+    <lastmod>2024-05-30T02:52:50.014Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2017-intervention-analysis.html</loc>
+    <lastmod>2024-05-30T02:51:08.779Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2015-small-sample-adjustments.html</loc>
+    <lastmod>2024-05-30T02:45:59.338Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2015-observation-procedures.html</loc>
+    <lastmod>2024-05-27T21:44:33.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/AERA-2013-observation-procedures.html</loc>
+    <lastmod>2024-05-27T21:44:33.360Z</lastmod>
+  </url>
+  <url>
     <loc>https://jepusto.com/presentations/ABAI-2013-effect-sizes.html</loc>
     <lastmod>2024-05-27T21:44:33.297Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Young-Ri-Lee/index.html</loc>
-    <lastmod>2024-05-24T15:46:39.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Megha-Joshi/index.html</loc>
-    <lastmod>2024-05-24T15:31:30.655Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Jingru-Zhang/index.html</loc>
-    <lastmod>2024-05-24T15:55:32.910Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Gleb-Furman/index.html</loc>
-    <lastmod>2024-05-24T15:54:17.014Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Christopher-Runyon/index.html</loc>
-    <lastmod>2024-05-24T15:34:09.446Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Daniel-M.-Swan/index.html</loc>
-    <lastmod>2024-05-24T15:34:59.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Man-Chen/index.html</loc>
-    <lastmod>2024-05-24T15:38:22.505Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Paulina-Grekov/index.html</loc>
-    <lastmod>2024-05-24T15:54:38.959Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2019-outcome-measurement-procedures.html</loc>
-    <lastmod>2024-05-30T02:57:52.498Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/VIVE-2024-Dependent-Effects.html</loc>
-    <lastmod>2024-05-27T21:44:34.907Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/AAC-group-and-SCD/index.html</loc>
-    <lastmod>2024-06-03T12:59:52.962Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/AAC-participant-characteristics/index.html</loc>
-    <lastmod>2024-05-27T21:40:11.263Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/ARP-for-behavioral-observation/index.html</loc>
-    <lastmod>2024-06-05T00:21:40.020Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/BC-SMD-primer-and-tutorial/index.html</loc>
-    <lastmod>2024-06-04T02:41:45.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/between-groups-d-statistic/index.html</loc>
-    <lastmod>2024-05-27T21:40:11.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/competing-approaches-for-cross-classified-data/index.html</loc>
-    <lastmod>2024-05-27T21:40:11.700Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/converting-from-d-to-r-to-z/index.html</loc>
-    <lastmod>2024-06-05T00:23:22.272Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Decline-effects/index.html</loc>
-    <lastmod>2024-06-03T02:45:34.833Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/index.html</loc>
-    <lastmod>2024-05-27T21:40:12.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html</loc>
-    <lastmod>2024-05-27T21:40:12.230Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Four-methods-for-PIR/index.html</loc>
-    <lastmod>2024-05-27T21:40:12.304Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/History-of-meta-regression/index.html</loc>
-    <lastmod>2024-05-27T21:40:12.480Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/interventions-to-enhance-self-efficacy-in-cancer-patients/index.html</loc>
-    <lastmod>2024-06-04T02:03:06.258Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Measurement-comparable-effect-sizes/index.html</loc>
-    <lastmod>2024-06-04T02:43:32.089Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Meta-analysis-of-SCD/index.html</loc>
-    <lastmod>2024-06-05T00:37:32.255Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Power-approximations-for-dependent-effects/index.html</loc>
-    <lastmod>2024-06-03T13:01:53.965Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/psychosocial-interventions-for-positive-affect/index.html</loc>
-    <lastmod>2024-06-04T01:59:31.759Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/psychosocial-interventions-meaning-and-purpose/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/RASE-special-issue-introduction/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Religion-spirituality-physical-health/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.152Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/response-guided-designs-in-SCED-baselines/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.456Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/RVE-in-fixed-effects-models/index.html</loc>
-    <lastmod>2024-06-04T02:10:52.137Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/SCD-synthesis-tools-I/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.649Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/SCED-MLMA-RVE/index.html</loc>
-    <lastmod>2024-06-03T13:05:58.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/selective-reporting-with-dependent-effects/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.862Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/SMD-for-MBD/index.html</loc>
-    <lastmod>2024-05-27T21:40:13.913Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/stay-play-talk-meta-analysis/index.html</loc>
-    <lastmod>2024-06-04T01:34:06.057Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html</loc>
-    <lastmod>2024-05-27T21:40:14.019Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-1/index.html</loc>
-    <lastmod>2024-06-04T01:39:25.717Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-3/index.html</loc>
-    <lastmod>2024-06-04T01:39:49.871Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/software/ARPobservation/index.html</loc>
-    <lastmod>2024-05-24T20:02:05.856Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/software/POMADE/index.html</loc>
-    <lastmod>2024-05-24T20:02:56.897Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/software/simhelpers/index.html</loc>
-    <lastmod>2024-05-24T20:01:52.851Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/software/wildmeta/index.html</loc>
-    <lastmod>2024-05-24T20:00:53.982Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/Distribution-of-signficant-effects/index.html</loc>
-    <lastmod>2024-05-27T01:38:38.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/index.html</loc>
-    <lastmod>2024-05-27T01:37:59.302Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/AERA-2019-SRMA-SIG/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.239Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/cluster-bootstrap-selection-model/index.html</loc>
-    <lastmod>2024-05-24T20:33:10.066Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/What-is-Tau-U/index.html</loc>
@@ -457,27 +369,35 @@
     <lastmod>2024-05-22T11:42:52.334Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/IES-2016-PI-meeting/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.253Z</lastmod>
+    <loc>https://jepusto.com/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.334Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/gradual-effects-model-paper/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.333Z</lastmod>
+    <loc>https://jepusto.com/posts/handmade-clubSandwich/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.334Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/Getting-started-with-ARPobservation/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/from-longhorn-to-badger/index.html</loc>
+    <loc>https://jepusto.com/posts/getting-started-with-scdhlm/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/effective-sample-size-aggregation/index.html</loc>
+    <loc>https://jepusto.com/posts/generalized-poisson-in-Stan/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/double-poisson-in-Stan/index.html</loc>
+    <loc>https://jepusto.com/posts/Four-methods-for-analyzing-PIR-data/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/Easily-simulate-thousands-of-single-case-designs/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/dizzy-for-d-z/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/distribution-of-sample-variances/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
@@ -486,7 +406,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/Current-Projects/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.252Z</lastmod>
+    <lastmod>2024-06-05T02:07:11.632Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/correlations-between-SMDs/index.html</loc>
@@ -517,8 +437,76 @@
     <lastmod>2024-05-22T11:42:52.239Z</lastmod>
   </url>
   <url>
+    <loc>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/index.html</loc>
+    <lastmod>2024-05-27T01:37:59.302Z</lastmod>
+  </url>
+  <url>
     <loc>https://jepusto.com/posts/ancova-puzzler/index.html</loc>
     <lastmod>2024-05-22T11:42:52.302Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/AERA-2019-SRMA-SIG/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/What-Evs-Donkey/index.html</loc>
+    <lastmod>2024-04-27T16:49:55.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Melissa-A-Rodgers/index.html</loc>
+    <lastmod>2024-05-24T15:30:51.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Man-Chen/index.html</loc>
+    <lastmod>2024-05-24T15:38:22.505Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/index.html</loc>
+    <lastmod>2024-05-28T03:04:41.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Daniel-M.-Swan/index.html</loc>
+    <lastmod>2024-05-24T15:34:59.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Bethany-H-Bhat/index.html</loc>
+    <lastmod>2024-05-24T15:33:51.898Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/files/ancova-puzzle-solution.html</loc>
+    <lastmod>2020-12-26T02:55:35.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/contact.html</loc>
+    <lastmod>2024-05-22T13:14:16.090Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/index.html</loc>
+    <lastmod>2024-05-24T20:10:38.137Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Christopher-Runyon/index.html</loc>
+    <lastmod>2024-05-24T15:34:09.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Gleb-Furman/index.html</loc>
+    <lastmod>2024-05-24T15:54:17.014Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Jingru-Zhang/index.html</loc>
+    <lastmod>2024-05-24T15:55:32.910Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Megha-Joshi/index.html</loc>
+    <lastmod>2024-05-24T15:31:30.655Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Paulina-Grekov/index.html</loc>
+    <lastmod>2024-05-24T15:54:38.959Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/people/Young-Ri-Lee/index.html</loc>
+    <lastmod>2024-05-24T15:46:39.576Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/alternative-formulas-for-the-SMD/index.html</loc>
@@ -530,7 +518,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/ARPobservation-basic-use/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.239Z</lastmod>
+    <lastmod>2024-06-05T02:22:07.574Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/assigning-after-dplyr/index.html</loc>
@@ -545,6 +533,10 @@
     <lastmod>2024-05-22T11:42:52.302Z</lastmod>
   </url>
   <url>
+    <loc>https://jepusto.com/posts/cluster-bootstrap-selection-model/index.html</loc>
+    <lastmod>2024-05-24T20:33:10.066Z</lastmod>
+  </url>
+  <url>
     <loc>https://jepusto.com/posts/code-folding-update/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
@@ -557,36 +549,40 @@
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/distribution-of-sample-variances/index.html</loc>
+    <loc>https://jepusto.com/posts/Designing-simulation-studies-using-R/index.html</loc>
+    <lastmod>2024-05-24T20:35:00.950Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/Distribution-of-signficant-effects/index.html</loc>
+    <lastmod>2024-05-27T01:38:38.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/double-poisson-in-Stan/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/dizzy-for-d-z/index.html</loc>
+    <loc>https://jepusto.com/posts/effective-sample-size-aggregation/index.html</loc>
     <lastmod>2024-05-22T11:42:52.318Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/Easily-simulate-thousands-of-single-case-designs/index.html</loc>
+    <loc>https://jepusto.com/posts/from-longhorn-to-badger/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/Getting-started-with-ARPobservation/index.html</loc>
+    <lastmod>2024-06-05T02:15:54.876Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/gradual-effects-model-paper/index.html</loc>
+    <lastmod>2024-05-22T11:42:52.333Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/IES-2016-PI-meeting/index.html</loc>
     <lastmod>2024-05-22T11:42:52.253Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/Four-methods-for-analyzing-PIR-data/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/generalized-poisson-in-Stan/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/getting-started-with-scdhlm/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/handmade-clubSandwich/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.334Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.334Z</lastmod>
+    <loc>https://jepusto.com/posts/index.html</loc>
+    <lastmod>2024-06-05T02:02:21.104Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index.html</loc>
@@ -634,7 +630,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/Shogren-reliability-analysis/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.289Z</lastmod>
+    <lastmod>2024-06-05T02:11:06.071Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/Simulation-studies-in-R-2016/index.html</loc>
@@ -673,102 +669,6 @@
     <lastmod>2024-05-22T11:42:52.299Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/WISCC-2023.html</loc>
-    <lastmod>2024-05-27T21:44:34.927Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/UTAustin-2018-combining-RVE-with-models.html</loc>
-    <lastmod>2024-05-27T21:44:34.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/TUESAP-2014-construct-invalidity-of-PIR.html</loc>
-    <lastmod>2024-05-27T21:44:34.808Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SSCC-2022-State-of-SCD-synthesis.html</loc>
-    <lastmod>2024-05-27T21:44:34.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SRSM-2019-generalized-excess-significance-test.html</loc>
-    <lastmod>2024-06-05T01:27:51.292Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SRSM-2015-small-sample-adjustments.html</loc>
-    <lastmod>2024-05-30T02:48:18.090Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2017-small-sample-corrections.html</loc>
-    <lastmod>2024-05-30T02:48:35.646Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2014-internal-validity-of-MBD.html</loc>
-    <lastmod>2024-05-27T21:44:34.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/Small-is-Beautiful-2023-workshop.html</loc>
-    <lastmod>2024-05-27T21:44:34.356Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SIPS-2021-statistical-frontiers-for-selective-reporting.html</loc>
-    <lastmod>2024-05-31T02:45:29.749Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/OsloRUG-2022-clubSandwich.html</loc>
-    <lastmod>2024-06-05T01:51:25.679Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/NU-stats-2013-markov-models-for-direct-observation.html</loc>
-    <lastmod>2024-05-27T21:44:34.196Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/ISSNA-2008-question-order-effects.html</loc>
-    <lastmod>2024-05-27T21:44:34.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/IES-2018-randomization-inference.html</loc>
-    <lastmod>2024-05-27T21:44:34.069Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/IES-2016-single-case-effect-sizes.html</loc>
-    <lastmod>2024-05-27T21:44:33.982Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/ESMARConf2021-RVE-with-metafor-and-clubSandwich.html</loc>
-    <lastmod>2024-05-27T21:44:33.938Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AIR-2016-when-large-samples-act-small.html</loc>
-    <lastmod>2024-05-27T21:44:33.800Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2023-replication-discussion.html</loc>
-    <lastmod>2024-05-27T21:44:33.757Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2019-ORB-dependence.html</loc>
-    <lastmod>2024-05-30T02:58:50.494Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2018-dependent-effects.html</loc>
-    <lastmod>2024-05-30T02:52:50.014Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2017-intervention-analysis.html</loc>
-    <lastmod>2024-05-30T02:51:08.779Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2015-small-sample-adjustments.html</loc>
-    <lastmod>2024-05-30T02:45:59.338Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2015-observation-procedures.html</loc>
-    <lastmod>2024-05-27T21:44:33.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/AERA-2013-observation-procedures.html</loc>
-    <lastmod>2024-05-27T21:44:33.360Z</lastmod>
-  </url>
-  <url>
     <loc>https://jepusto.com/presentations/ABAI-2019-log-response-ratios.html</loc>
     <lastmod>2024-05-27T21:44:33.329Z</lastmod>
   </url>
@@ -793,135 +693,263 @@
     <lastmod>2024-05-27T21:44:33.644Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/AERA-2023-BCSMD-benchmarks.html</loc>
-    <lastmod>2024-05-27T21:44:33.738Z</lastmod>
+    <loc>https://jepusto.com/presentations/AERA-2019-outcome-measurement-procedures.html</loc>
+    <lastmod>2024-05-30T02:57:52.498Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/AERA-2024-Bayes-BCSMD.html</loc>
-    <lastmod>2024-05-27T21:44:33.781Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/EdPsych-Colloquium-2021-Four-Things.html</loc>
-    <lastmod>2024-05-27T21:44:33.810Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html</loc>
-    <lastmod>2024-05-27T21:44:33.963Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/IES-2018-gradual-effects-model.html</loc>
-    <lastmod>2024-05-30T02:52:05.886Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/JSM-2016-small-sample-CRVE.html</loc>
-    <lastmod>2024-05-30T02:48:16.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/OsloRUG-2021-RVE-with-metafor-and-clubSandwich.html</loc>
-    <lastmod>2024-05-27T21:44:34.248Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/PRC-2016-when-large-samples-act-small.html</loc>
-    <lastmod>2024-05-27T21:44:34.289Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/Small-is-Beautiful-2023-keynote.html</loc>
-    <lastmod>2024-05-27T21:44:34.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2013-operationally-comparable-effect-sizes.html</loc>
-    <lastmod>2024-05-27T21:44:34.377Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2015-small-sample-adjustments.html</loc>
-    <lastmod>2024-05-30T02:43:38.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2019-2SLS-CRVE.html</loc>
-    <lastmod>2024-06-05T01:38:45.663Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SREE-2023-Stabilizing-performance-measures-discussion.html</loc>
-    <lastmod>2024-05-27T21:44:34.600Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SRSM-2018-combining-RVE-with-models.html</loc>
-    <lastmod>2024-05-30T02:55:21.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/SRSM-2022-matter-of-emphasis.html</loc>
-    <lastmod>2024-05-27T21:44:34.732Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/Stanford-QSU-2022-selective-reporting.html</loc>
-    <lastmod>2024-05-27T21:44:34.787Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/presentations/UT-Austin-2012-meta-analysis-of-single-case-research.html</loc>
-    <lastmod>2024-05-27T21:44:34.849Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Bethany-H-Bhat/index.html</loc>
-    <lastmod>2024-05-24T15:33:51.898Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/teaching/Quasi-Experimental/index.html</loc>
-    <lastmod>2024-04-27T20:05:21.414Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/people/Melissa-A-Rodgers/index.html</loc>
-    <lastmod>2024-05-24T15:30:51.363Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/Designing-simulation-studies-using-R/index.html</loc>
-    <lastmod>2024-05-24T20:35:00.950Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/temp-posts.html</loc>
-    <lastmod>2024-05-28T02:24:07.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Taking-a-distributed-perspective/index.html</loc>
-    <lastmod>2024-05-31T01:46:21.408Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Understanding-teacher-leadership/index.html</loc>
-    <lastmod>2024-06-05T00:31:17.848Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Organizing-for-instruction/index.html</loc>
-    <lastmod>2024-05-31T01:55:25.277Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/integrating-word-reading-and-word-meaning/index.html</loc>
-    <lastmod>2024-05-31T02:05:55.331Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/AAC-social-validity/index.html</loc>
-    <lastmod>2024-05-31T02:11:50.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/AAC-increased-rigor/index.html</loc>
-    <lastmod>2024-05-31T02:21:40.622Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/More-is-not-necessarily-better/index.html</loc>
-    <lastmod>2024-06-03T02:39:56.211Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/publication/Taking-a-distributed-perspective-study-operations/index.html</loc>
-    <lastmod>2024-06-05T00:37:23.191Z</lastmod>
+    <loc>https://jepusto.com/presentations/AERA-2021-meta-analysis-of-SCDs.html</loc>
+    <lastmod>2024-06-03T02:19:23.921Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/presentations/AERA-2022-synthesis-of-NAP.html</loc>
     <lastmod>2024-05-31T02:52:48.435Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/AERA-2021-multivariate-effect-sizes-SCDs.html</loc>
-    <lastmod>2024-06-03T01:41:00.974Z</lastmod>
+    <loc>https://jepusto.com/presentations/AERA-2023-replication-discussion.html</loc>
+    <lastmod>2024-05-27T21:44:33.757Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/presentations/AERA-2021-meta-analysis-of-SCDs.html</loc>
-    <lastmod>2024-06-03T02:19:23.921Z</lastmod>
+    <loc>https://jepusto.com/presentations/AIR-2016-when-large-samples-act-small.html</loc>
+    <lastmod>2024-05-27T21:44:33.800Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/ESMARConf2021-RVE-with-metafor-and-clubSandwich.html</loc>
+    <lastmod>2024-05-27T21:44:33.938Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/IES-2016-single-case-effect-sizes.html</loc>
+    <lastmod>2024-05-27T21:44:33.982Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/IES-2018-randomization-inference.html</loc>
+    <lastmod>2024-05-27T21:44:34.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/ISSNA-2008-question-order-effects.html</loc>
+    <lastmod>2024-05-27T21:44:34.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/NU-stats-2013-markov-models-for-direct-observation.html</loc>
+    <lastmod>2024-05-27T21:44:34.196Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/OsloRUG-2022-clubSandwich.html</loc>
+    <lastmod>2024-06-05T01:51:25.679Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SIPS-2021-statistical-frontiers-for-selective-reporting.html</loc>
+    <lastmod>2024-05-31T02:45:29.749Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/Small-is-Beautiful-2023-workshop.html</loc>
+    <lastmod>2024-05-27T21:44:34.356Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2014-internal-validity-of-MBD.html</loc>
+    <lastmod>2024-05-27T21:44:34.488Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2017-small-sample-corrections.html</loc>
+    <lastmod>2024-05-30T02:48:35.646Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SREE-2023-Equity-related-moderator-analysis.html</loc>
+    <lastmod>2024-06-05T00:51:08.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SRSM-2015-small-sample-adjustments.html</loc>
+    <lastmod>2024-05-30T02:48:18.090Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SRSM-2019-generalized-excess-significance-test.html</loc>
+    <lastmod>2024-06-05T01:27:51.292Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/SSCC-2022-State-of-SCD-synthesis.html</loc>
+    <lastmod>2024-05-27T21:44:34.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/TUESAP-2014-construct-invalidity-of-PIR.html</loc>
+    <lastmod>2024-05-27T21:44:34.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/UTAustin-2018-combining-RVE-with-models.html</loc>
+    <lastmod>2024-05-27T21:44:34.886Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/presentations/WISCC-2023.html</loc>
+    <lastmod>2024-05-27T21:44:34.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/AAC-group-and-SCD/index.html</loc>
+    <lastmod>2024-06-03T12:59:52.962Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/AAC-instructional-contexts/index.html</loc>
+    <lastmod>2024-05-27T21:40:11.216Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/AAC-social-validity/index.html</loc>
+    <lastmod>2024-05-31T02:11:50.140Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/ARP-for-behavioral-observation/index.html</loc>
+    <lastmod>2024-06-05T00:21:40.020Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/BC-SMD-primer-and-tutorial/index.html</loc>
+    <lastmod>2024-06-04T02:41:45.525Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/between-groups-d-statistic/index.html</loc>
+    <lastmod>2024-05-27T21:40:11.518Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/competing-approaches-for-cross-classified-data/index.html</loc>
+    <lastmod>2024-05-27T21:40:11.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/converting-from-d-to-r-to-z/index.html</loc>
+    <lastmod>2024-06-05T00:23:22.272Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Decline-effects/index.html</loc>
+    <lastmod>2024-06-03T02:45:34.833Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/index.html</loc>
+    <lastmod>2024-05-27T21:40:12.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html</loc>
+    <lastmod>2024-05-27T21:40:12.230Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Four-methods-for-PIR/index.html</loc>
+    <lastmod>2024-05-27T21:40:12.304Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/History-of-meta-regression/index.html</loc>
+    <lastmod>2024-05-27T21:40:12.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/integrating-word-reading-and-word-meaning/index.html</loc>
+    <lastmod>2024-05-31T02:05:55.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/investigating-narrative-performance/index.html</loc>
+    <lastmod>2024-06-03T13:03:45.680Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/measurement-procedures-and-baseline-outcomes/index.html</loc>
+    <lastmod>2024-05-27T21:40:12.723Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/More-is-not-necessarily-better/index.html</loc>
+    <lastmod>2024-06-03T02:39:56.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Organizing-for-instruction/index.html</loc>
+    <lastmod>2024-05-31T01:55:25.277Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/procedural-sensitivities-of-SCD-effect-sizes/index.html</loc>
+    <lastmod>2024-06-04T02:06:27.255Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/psychosocial-interventions-for-spiritual-well-being/index.html</loc>
+    <lastmod>2024-06-04T01:32:46.792Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Question-order-effects/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Religion-spirituality-mental-health/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.129Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Religion-spirituality-social-health/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.426Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/RVE-for-meta-regression/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.563Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/RVE-Meta-analysis-expanding-the-range/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/SCD-synthesis-tools-II/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/school-based-group-contingencies-meta-analysis/index.html</loc>
+    <lastmod>2024-06-04T02:31:44.194Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Single-case-next-generation-standards/index.html</loc>
+    <lastmod>2024-06-03T12:59:36.212Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/SMD-for-SCD/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.935Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/TAII-meta-analysis/index.html</loc>
+    <lastmod>2024-05-27T21:40:13.991Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Taking-a-distributed-perspective-study-operations/index.html</loc>
+    <lastmod>2024-06-05T00:37:23.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Three-level-BC-SMD/index.html</loc>
+    <lastmod>2024-05-27T21:40:14.349Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Transition-to-College-Mathematics-Year-2/index.html</loc>
+    <lastmod>2024-06-04T01:39:39.465Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/Understanding-teacher-leadership/index.html</loc>
+    <lastmod>2024-06-05T00:31:17.848Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/ARPobservation/index.html</loc>
+    <lastmod>2024-05-24T20:02:05.856Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/index.html</loc>
+    <lastmod>2024-05-22T12:17:53.749Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/POMADE/index.html</loc>
+    <lastmod>2024-05-24T20:02:56.897Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/simhelpers/index.html</loc>
+    <lastmod>2024-05-24T20:01:52.851Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/wildmeta/index.html</loc>
+    <lastmod>2024-05-24T20:00:53.982Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/teaching/DASPiR/index.html</loc>
+    <lastmod>2024-04-27T19:50:29.921Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/teaching/Field-Experiments/index.html</loc>
+    <lastmod>2024-04-27T19:51:31.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/teaching/Meta-analysis/index.html</loc>
+    <lastmod>2024-04-27T20:31:26.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/teaching/Research-design/index.html</loc>
+    <lastmod>2024-04-27T20:09:33.894Z</lastmod>
   </url>
 </urlset>

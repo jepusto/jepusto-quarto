@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,6 +134,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Pooling clubSandwich results across multiple imputations">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Pooling clubSandwich results across multiple imputations">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -209,7 +213,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Pooling clubSandwich results across multiple imputations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Pooling clubSandwich results across multiple imputations</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">missing data</div>
                 <div class="quarto-category">sandwiches</div>
@@ -256,6 +260,8 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="setup">Setup</h3>
 <p>To begin, let me create missingness in a dataset containing multiple clusters of observations:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlmRev)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mice)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -281,6 +287,7 @@ window.Quarto = {
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">schoolNR =</span> bdf<span class="sc">$</span>schoolNR)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bdf_missing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    IQ.verb         IQ.perf            sex             ses      
  Min.   : 4.00   Min.   : 5.333   Min.   :1.000   Min.   :10.0  
@@ -302,7 +309,10 @@ window.Quarto = {
 </div>
 <p>Now I’ll use <code>mice</code> to create 10 multiply imputed datasets:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Impute_bdf <span class="ot">&lt;-</span> <span class="fu">mice</span>(bdf_missing, <span class="at">m=</span><span class="dv">10</span>, <span class="at">meth=</span><span class="st">"norm.nob"</span>, <span class="at">seed=</span><span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Am I imputing while ignoring the hierarchical structure of the data? Yes, yes I am. Is this is a good way to do imputation? Probably not. But this is a quick and dirty example, so we’re going to have to live with it.</p>
 </section>
@@ -314,14 +324,20 @@ window.Quarto = {
 \]</span></p>
 <p>where <span class="math inline">\(i\)</span> indexes students and <span class="math inline">\(j\)</span> indexes schools, and where we allow for the possibility that errors from the same cluster are correlated in an unspecified way. With complete data, we could estimate the model by ordinary least squares and then use <code>clubSandwich</code> to get standard errors that are robust to within-cluster dependence and heteroskedasticity. The code for this is as follows:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'clubSandwich':
   method    from    
   bread.mlm sandwich</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses, <span class="at">data =</span> bdf)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Coef. Estimate     SE t-stat d.f. (Satt) p-val (Satt) Sig.
  (Intercept)  -2.1921 1.3484 -1.626        22.9       0.1177     
@@ -333,11 +349,14 @@ window.Quarto = {
 </div>
 <p>If cluster dependence were no concern, we could simply use the model-based standard errors and test statistics. The <code>mice</code> package provides functions that will fit the model to each imputed dataset and then combine them by Rubin’s rules. The code is simply:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>     ) <span class="sc">%&gt;%</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pool</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         term    estimate  std.error statistic       df      p.value
 1 (Intercept) -2.72087690 1.18042535 -2.304997 185.0618 2.227631e-02
@@ -349,9 +368,12 @@ window.Quarto = {
 </div>
 <p>However, this approach ignores the possibility of correlation in the errors of units in the same cluster, which is clearly a concern in this dataset:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio of CRVE to conventional variance estimates</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">vcovCR</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">type =</span> <span class="st">"CR2"</span>)) <span class="sc">/</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(<span class="fu">vcov</span>(lm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)    aritPRET    langPRET         sex         ses 
   1.5296837   1.5493134   0.6938735   1.4567650   2.0053186 </code></pre>
@@ -395,6 +417,8 @@ V_{total} = \bar{V} + \frac{m + 1}{m} B.
 <h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
 <p>Here is how to carry out these calculations using the results of <code>clubSandwich::coef_test</code> and a bit of <code>dplyr</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit results with clubSandwich standard errors</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>models_robust <span class="ot">&lt;-</span> <span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
@@ -443,6 +467,7 @@ V_{total} = \bar{V} + \frac{m + 1}{m} B.
 <span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo95 =</span> beta_bar <span class="sc">-</span> se <span class="sc">*</span> crit,</span>
 <span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi95 =</span> beta_bar <span class="sc">+</span> se <span class="sc">*</span> crit</span>
 <span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: There were 5 warnings in `summarise()`.
 The first warning was:
@@ -452,9 +477,12 @@ Caused by warning in `mean.default()`:
 ! argument is not numeric or logical: returning NA
 ℹ Run `dplyr::last_dplyr_warnings()` to see the 4 remaining warnings.</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, <span class="at">est =</span> beta_bar, se, t, df, p_val, lo95, hi95, gamma) <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(est<span class="sc">:</span>gamma), round, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 9
   coef           est    se     t    df p_val  lo95  hi95 gamma
@@ -468,9 +496,12 @@ Caused by warning in `mean.default()`:
 </div>
 <p>It is instructive to compare the calculated <code>df</code> to <code>eta_bar</code> and <code>df_m</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, df, df_m, eta_bar) <span class="sc">%&gt;%</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(df, df_m, eta_bar), round, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   coef           df  df_m eta_bar
@@ -1202,4 +1233,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

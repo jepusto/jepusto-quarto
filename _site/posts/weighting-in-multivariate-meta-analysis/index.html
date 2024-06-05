@@ -103,6 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -134,6 +135,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Weighting in multivariate meta-analysis">
+<meta property="og:description" content="One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Weighting in multivariate meta-analysis">
 <meta name="twitter:description" content="One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.">
 <meta name="twitter:card" content="summary">
@@ -306,6 +310,8 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <h2 data-number="0.4" class="anchored" data-anchor-id="a-computational-example"><span class="header-section-number">0.4</span> A computational example</h2>
 <p>I think it’s useful to verify algebraic results like the ones I’ve given above by checking that you can reproduce them with real data. I’ll use the <code>corrdat</code> dataset from the <code>robumeta</code> package for illustration. The dataset has one duplicated row in it (I have no idea why!), which I’ll remove before analyzing further.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(corrdat, <span class="at">package =</span> <span class="st">"robumeta"</span>)</span>
@@ -313,6 +319,7 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> </span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(studyid, esid, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>This dataset included a total of 171 effect size estimates from 39 unique studies. For each study, between 1 and 18 eligible effect size estimates were reported. Here is a histogram depicting the number of studies by the number of reported effect size estimates:</p>
 <div class="cell">
@@ -337,6 +344,8 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <p>For most of the studies, the effect sizes have very similar sampling variances. One exception is study 9, where two of the effect sizes have variances of under 0.20 and the other two effect sizes have variances in excess of 0.35. Another exception is study 30, which has one effect size with much larger variance than the others.</p>
 <p>Just for sake of illustration, I’m going to <em>enforce</em> my assumption that effect sizes have equal variances within each study by recomputing the sampling variances as the <em>average</em> sampling variance within each study. I will then impute a sampling variance-covariance matrix for the effect sizes, assuming a correlation of 0.7 for effects from the same study:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> </span>
@@ -348,9 +357,12 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>V_mat <span class="ot">&lt;-</span> <span class="fu">impute_covariance_matrix</span>(<span class="at">vi =</span> corrdat<span class="sc">$</span>V_bar, </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">cluster =</span> corrdat<span class="sc">$</span>studyid,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">r =</span> <span class="fl">0.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>With this variance-covariance matrix, I can then estimate the multivariate meta-analysis model:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>MVMA_fit <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize, <span class="at">V =</span> V_mat, </span>
@@ -358,6 +370,7 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MVMA_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -386,11 +399,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Based on this model, between-study heterogeneity is estimated as <span class="math inline">\(\hat\tau = 0.216\)</span> and within-study heterogeneity is estimated as <span class="math inline">\(\hat\omega = 0.331\)</span>, both of which are quite high. The overall average effect size estimate is 0.226, with a standard error of 0.059.</p>
 <p>I’ll first get the weights used in <code>rma.mv</code> to compute the overall average. The weights are represented as an <span class="math inline">\(N \times N\)</span> matrix. Taking the row or column sums, then rescaling by the total, gives the weight assigned to each effect size estimate:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>W_mat <span class="ot">&lt;-</span> <span class="fu">weights</span>(MVMA_fit, <span class="at">type =</span> <span class="st">"matrix"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>corrdat<span class="sc">$</span>w_ij_metafor <span class="ot">&lt;-</span> <span class="fu">colSums</span>(W_mat) <span class="sc">/</span> <span class="fu">sum</span>(W_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>To verify that the formulas above are correct, I’ll use them to directly compute weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tau_sq <span class="ot">&lt;-</span> MVMA_fit<span class="sc">$</span>sigma2[<span class="dv">1</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>omega_sq <span class="ot">&lt;-</span> MVMA_fit<span class="sc">$</span>sigma2[<span class="dv">2</span>]</span>
@@ -406,12 +424,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">w_ij =</span> w_ij <span class="sc">/</span> <span class="fu">sum</span>(w_ij)</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The weights I computed are perfectly correlated with the weights used <code>rma.mv</code>, as can be seen in the plot below.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(corrdat_weights, <span class="fu">aes</span>(w_ij, w_ij_metafor)) <span class="sc">+</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -422,10 +444,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>If we remove the within-study random effect term from the model, the weights will be equivalent to setting <span class="math inline">\(\omega^2\)</span> to zero, but with a different estimate of <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>MVMA_no_omega <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize, <span class="at">V =</span> V_mat, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> corrdat)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>MVMA_no_omega</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -449,6 +474,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Re-fitting the model with <code>rma.mv()</code> gives an between-study heterogeneity estimate of <span class="math inline">\(\hat\tau = 0.308\)</span> and an overall average effect size estimate of <span class="math inline">\(\hat\mu = 0\)</span>. Using this estimate, I’ll compute the weights based on the formula and then use those weights to determine the overall average effect size estimate.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tau_sq <span class="ot">&lt;-</span> MVMA_no_omega<span class="sc">$</span>sigma2</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>corrdat_weights <span class="ot">&lt;-</span> </span>
@@ -459,6 +486,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(corrdat_weights, <span class="fu">weighted.mean</span>(effectsize, <span class="at">w =</span> w_ij_no_omega))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2235231</code></pre>
 </div>
@@ -522,6 +550,8 @@ T_{ij} = \mathbf{x}_j \boldsymbol\beta + \eta_j + \nu_{ij} + e_{ij},
 \]</span> where <span class="math inline">\(\text{Var}(\tilde{e}_j) = \text{Var}(\hat\theta_j | \theta_j)\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>Here is an illustration with the <code>corrdat</code> meta-analysis. In these data, the variable <code>college</code> indicates whether the effect size comes from a college-age sample; it varies only at the study level. The variable <code>males</code>, <code>binge</code>, and <code>followup</code> have some within-study variation, which I’ll by taking the average of each of these predictors at the study level:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
@@ -530,15 +560,19 @@ T_{ij} = \mathbf{x}_j \boldsymbol\beta + \eta_j + \nu_{ij} + e_{ij},
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">binge_M =</span> <span class="fu">mean</span>(binge),</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">followup_M =</span> <span class="fu">mean</span>(followup)</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now let’s fit a meta-regression model using all of the study-level predictors:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>MVMR_fit <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize, <span class="at">V =</span> V_mat,</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M,  </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid <span class="sc">/</span> esid,</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MVMR_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Multivariate Meta-Analysis Model (k = 171; method: REML)
@@ -574,6 +608,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>As you might expect, between-study heterogeneity is reduced a bit by the inclusion of these predictors.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <p>We can check my claim of computational equivalence by fitting the meta-regression model at the study level. Here I’ll aggregate everything up to the study level and compute the study-level weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tau_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">1</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>omega_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">2</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -587,13 +623,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_cond =</span> (omega_sq_reg <span class="sc">+</span> (n_j <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> r <span class="sc">*</span> V_bar <span class="sc">+</span> V_bar) <span class="sc">/</span> n_j,</span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">w_j =</span> <span class="dv">1</span> <span class="sc">/</span> (tau_sq_reg <span class="sc">+</span> V_cond)</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now I can fit a study-level meta-regression model. I use the <code>weights</code> argument to ensure that the meta-regression is estimated using the <span class="math inline">\(w_j\)</span> weights:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>MR_study_fit <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> effectsize, <span class="at">vi =</span> V_cond, </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">weights =</span> w_j, <span class="at">data =</span> corrdat_studylevel)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MR_study_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Mixed-Effects Model (k = 39; tau^2 estimator: REML)
@@ -1069,4 +1109,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

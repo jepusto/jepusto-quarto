@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,6 +134,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Clustered standard errors and hypothesis tests in fixed effects models">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Clustered standard errors and hypothesis tests in fixed effects models">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -209,7 +213,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Clustered standard errors and hypothesis tests in fixed effects models</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Clustered standard errors and hypothesis tests in fixed effects models</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">econometrics</div>
                 <div class="quarto-category">fixed effects</div>
@@ -277,6 +281,8 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="unweighted-ols">Unweighted OLS</h3>
 <p>The following code does some simple data-munging and the estimates the model by OLS:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get data from Angrist &amp; Pischke's website</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>deaths <span class="ot">&lt;-</span> <span class="fu">read.dta</span>(<span class="st">"http://masteringmetrics.com/wp-content/uploads/2015/01/deaths.dta"</span>, <span class="at">convert.factors=</span><span class="cn">FALSE</span>)</span>
@@ -286,17 +292,24 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># fit by OLS</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>lm_unweighted <span class="ot">&lt;-</span> <span class="fu">lm</span>(mrate <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> legal <span class="sc">+</span> <span class="fu">factor</span>(state) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">data =</span> MVA_deaths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The <code>coef_test</code> function from <code>clubSandwich</code> can then be used to test the hypothesis that changing the minimum legal drinking age has no effect on motor vehicle deaths in this cohort (i.e., <span class="math inline">\(H_0: \gamma = 0\)</span>). The usual way to test this is to cluster the standard errors by state, calculate the robust Wald statistic, and compare that to a standard normal reference distribution. The code and results are as follows:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github("jepusto/clubSandwich") # install the clubSandwich package</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Registered S3 method overwritten by 'clubSandwich':
   method    from    
   bread.mlm sandwich</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_unweighted, <span class="at">vcov =</span> <span class="st">"CR1"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"z"</span>)[<span class="st">"legal"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate   SE t-stat d.f. (z) p-val (z) Sig.
  legal     7.59 2.38   3.19      Inf   0.00143   **</code></pre>
@@ -304,7 +317,10 @@ window.Quarto = {
 </div>
 <p>Our work argues shows that a better approach would be to use the bias-reduced linearization CRVE, together with Satterthwaite degrees of freedom. In the package, the BRL adjustment is called “CR2” because it is directly analogous to the HC2 correction used in heteroskedasticity-robust variance estimation. When applied to an OLS model estimated by <code>lm</code>, the default working model is an identity matrix, which amounts to the “working” assumption that the errors are all uncorrelated and homoskedastic. Here’s how to apply this approach in the example:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_unweighted, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)[<span class="st">"legal"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate   SE t-stat d.f. (Satt) p-val (Satt) Sig.
  legal     7.59 2.43   3.12        25.7      0.00442   **</code></pre>
@@ -316,15 +332,21 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="unweighted-within-estimation">Unweighted “within” estimation</h3>
 <p>The <code>plm</code> package in R provides another way to estimate the same model. It is convenient because it absorbs the state and year fixed effects before estimating the effect of <code>legal</code>. The <code>clubSandwich</code> package works with fitted <code>plm</code> models too:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plm)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plm_unweighted <span class="ot">&lt;-</span> <span class="fu">plm</span>(mrate <span class="sc">~</span> legal, <span class="at">data =</span> MVA_deaths, </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">effect =</span> <span class="st">"twoways"</span>, <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"state"</span>,<span class="st">"year"</span>))</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(plm_unweighted, <span class="at">vcov =</span> <span class="st">"CR1S"</span>, <span class="at">cluster =</span> <span class="st">"individual"</span>, <span class="at">test =</span> <span class="st">"z"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate   SE t-stat d.f. (z) p-val (z) Sig.
  legal     7.59 2.38   3.19      Inf   0.00143   **</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(plm_unweighted, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> <span class="st">"individual"</span>, <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate   SE t-stat d.f. (Satt) p-val (Satt) Sig.
  legal     7.59 2.43   3.12        25.7      0.00442   **</code></pre>
@@ -336,14 +358,20 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="population-weighted-estimation">Population-weighted estimation</h3>
 <p>The difference between the standard method and the new method are not terribly exciting in the above example. However, things change quite a bit if the model is estimated using population weights. As far as I know, <code>plm</code> does not handle weighted least squares, and so I go back to fitting in <code>lm</code> with dummies for all the fixed effects.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lm_weighted <span class="ot">&lt;-</span> <span class="fu">lm</span>(mrate <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> legal <span class="sc">+</span> <span class="fu">factor</span>(state) <span class="sc">+</span> <span class="fu">factor</span>(year), </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">weights =</span> pop, <span class="at">data =</span> MVA_deaths)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_weighted, <span class="at">vcov =</span> <span class="st">"CR1"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"z"</span>)[<span class="st">"legal"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate   SE t-stat d.f. (z) p-val (z) Sig.
  legal      7.5 2.16   3.47      Inf    &lt;0.001  ***</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_weighted, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)[<span class="st">"legal"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate  SE t-stat d.f. (Satt) p-val (Satt) Sig.
  legal      7.5 2.3   3.27        8.65       0.0103    *</code></pre>
@@ -352,9 +380,12 @@ window.Quarto = {
 <p>Using population weights slightly reduces the point estimate of the effect, while also slightly increasing its precision. If you were following the standard approach, you would probably be happy with the weighted estimates and wouldn’t think about it any further. However, our recommended approach—using the CR2 variance estimator and Satterthwaite correction—produces a p-value that is an order of magnitude larger (though still significant at the conventional 5% level). The degrees of freedom are just <code>{r} round(coef_test(lm_weighted, vcov = "CR2", cluster = MVA_deaths$state, test = "Satterthwaite")["legal","df"], 1)</code>—drastically smaller than would be expected based on the number of clusters.</p>
 <p>Even with weights, the <code>coef_test</code> function uses an “independent, homoskedastic” working model as a default for <code>lm</code> objects. In the present example, the outcome is a standardized rate and so a better assumption might be that the error variances are inversely proportional to population size. The following code uses this alternate working model:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_weighted, <span class="at">vcov =</span> <span class="st">"CR2"</span>, </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">target =</span> <span class="dv">1</span> <span class="sc">/</span> MVA_deaths<span class="sc">$</span>pop, </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)[<span class="st">"legal"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> Coef. Estimate  SE t-stat d.f. (Satt) p-val (Satt) Sig.
  legal      7.5 2.2   3.41          13      0.00467   **</code></pre>
@@ -368,8 +399,11 @@ window.Quarto = {
 <p><span class="math display">\[y_{it} = \alpha_i + \beta_t + \gamma_1 r_{it} + \gamma_2 s_{it} + \epsilon_{it},\]</span></p>
 <p>and the estimated effects are as follows:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lm_FE <span class="ot">&lt;-</span> <span class="fu">lm</span>(mrate <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> legal <span class="sc">+</span> beertaxa <span class="sc">+</span> <span class="fu">factor</span>(state) <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">data =</span> MVA_deaths)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_FE, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)[<span class="fu">c</span>(<span class="st">"legal"</span>,<span class="st">"beertaxa"</span>),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Coef. Estimate   SE t-stat d.f. (Satt) p-val (Satt) Sig.
     legal     7.59 2.51  3.019       24.58      0.00583   **
@@ -382,6 +416,8 @@ window.Quarto = {
 <p>which does not include state fixed effects. The parameters <span class="math inline">\(\delta_1,\delta_2\)</span> represent the differences between the random effects and fixed effects estimands of <span class="math inline">\(\gamma_1, \gamma_2\)</span>. If these are both zero, then the random effects estimator is unbiased. Thus, the joint test for <span class="math inline">\(H_0: \delta_1 = \delta_2 = 0\)</span> amounts to a test for non-endogeneity of the unobserved effects.</p>
 <p>For efficiency, we should estimate this using weighted least squares, but OLS will work too:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>MVA_deaths <span class="ot">&lt;-</span> <span class="fu">within</span>(MVA_deaths, {</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  legal_cent <span class="ot">&lt;-</span> legal <span class="sc">-</span> <span class="fu">tapply</span>(legal, state, mean)[<span class="fu">factor</span>(state)]</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  beer_cent <span class="ot">&lt;-</span> beertaxa <span class="sc">-</span> <span class="fu">tapply</span>(beertaxa, state, mean)[<span class="fu">factor</span>(state)]</span>
@@ -389,6 +425,7 @@ window.Quarto = {
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>lm_Hausman <span class="ot">&lt;-</span> <span class="fu">lm</span>(mrate <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> legal <span class="sc">+</span> beertaxa <span class="sc">+</span> legal_cent <span class="sc">+</span> beer_cent <span class="sc">+</span> <span class="fu">factor</span>(year), <span class="at">data =</span> MVA_deaths)</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_Hausman, <span class="at">vcov =</span> <span class="st">"CR2"</span>, <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, <span class="at">test =</span> <span class="st">"Satterthwaite"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Coef. Estimate   SE  t-stat d.f. (Satt) p-val (Satt) Sig.
       legal   -9.180 7.62 -1.2042       24.94       0.2398     
@@ -399,6 +436,8 @@ window.Quarto = {
 </div>
 <p>To conduct a joint test on the centered covariates, we can use the <code>Wald_test</code> function. The usual way to test this hypothesis would be to use the <code>CR1</code> variance estimator to calculate the robust Wald statistic, then use a <span class="math inline">\(\chi^2_2\)</span> reference distribution (or equivalently, compare a re-scaled Wald statistic to an <span class="math inline">\(F(2,\infty)\)</span> distribution). The <code>Wald_test</code> function reports the latter version:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  lm_Hausman, </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="fu">c</span>(<span class="st">"legal_cent"</span>,<span class="st">"beer_cent"</span>)), </span>
@@ -406,6 +445,7 @@ window.Quarto = {
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state, </span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">test =</span> <span class="st">"chi-sq"</span></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   test Fstat df_num df_denom  p_val sig
  chi-sq  2.93      2      Inf 0.0534   .</code></pre>
@@ -413,12 +453,15 @@ window.Quarto = {
 </div>
 <p>The test is just shy of significance at the 5% level. If we instead use the <code>CR2</code> variance estimator and our newly proposed approximate F-test (which is the default in <code>Wald_test</code>), then we get:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  lm_Hausman, </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="fu">c</span>(<span class="st">"legal_cent"</span>,<span class="st">"beer_cent"</span>)), </span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">vcov =</span> <span class="st">"CR2"</span>, </span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster =</span> MVA_deaths<span class="sc">$</span>state</span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> test Fstat df_num df_denom p_val sig
   HTZ  2.57      2     12.4 0.117    </code></pre>
@@ -1095,4 +1138,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

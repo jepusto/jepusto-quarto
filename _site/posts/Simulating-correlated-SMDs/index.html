@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,6 +134,9 @@ window.Quarto = {
 };
 </script>
 
+<meta property="og:title" content="James E. Pustejovsky - Simulating correlated standardized mean differences for meta-analysis">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Simulating correlated standardized mean differences for meta-analysis">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -209,7 +213,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Simulating correlated standardized mean differences for meta-analysis</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Simulating correlated standardized mean differences for meta-analysis</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">effect size</div>
                 <div class="quarto-category">standardized mean difference</div>
@@ -262,18 +266,26 @@ window.Quarto = {
 \]</span> where <span class="math inline">\(\boldsymbol\Psi_k\)</span> is the population correlation matrix of the outcomes in study <span class="math inline">\(k\)</span>. Note that I am setting the mean outcomes of the control group participants to zero and also specifying that the outcomes all have unit variance within each group. After simulating data based on these distributions, the effect size estimates for each outcome can be calculated directly, following standard formulas.</p>
 <p>Here’s what this approach looks like in code. It is helpful to simplify things by focusing on simulating just a single study with multiple, correlated effect sizes. Focusing first on just the input parameters, a function might look like the following:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># stuff</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ES_data)  </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>In the above function skeleton, <code>delta</code> would be the true effect size parameter <span class="math inline">\(\boldsymbol\delta_k\)</span>, <code>J</code> would be the number of effect sizes to generate <span class="math inline">\((J_k)\)</span>, <code>N</code> is the total number of participants <span class="math inline">\((N_k)\)</span>, and <code>Psi</code> is a matrix of correlations between the outcomes <span class="math inline">\((\Psi_k)\)</span>. From these parameters, we’ll generate raw data, calculate effect size estimates and standard errors, and return the results in a little dataset.</p>
 <p>To make the function a little bit easier to use, I’m going overload the <code>Psi</code> argument so that it can be a single number, indicating a common correlation between the outcomes. Thus, instead of having to feed in a <span class="math inline">\(J_k \times J_k\)</span> matrix, you can specify a single correlation <span class="math inline">\(r_k\)</span>, and the function will assume that all of the outcomes are equicorrelated. In code, the logic is:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.matrix</span>(Psi)) Psi <span class="ot">&lt;-</span> Psi <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">-</span> Psi, <span class="at">nrow =</span> J)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Here’s the function with the innards:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(mvtnorm) <span class="co"># for simulating multi-variate normal data</span></span>
@@ -302,11 +314,15 @@ window.Quarto = {
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">ES =</span> ES, <span class="at">SE =</span> SE, <span class="at">N =</span> N)</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>In action:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">4</span>, <span class="at">mean =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: mvtnorm</code></pre>
 </div>
@@ -320,8 +336,11 @@ window.Quarto = {
 </div>
 <p>Or if you’d rather specify the full <span class="math inline">\(\Psi_k\)</span> matrix yourself:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Psi_k <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">+</span> <span class="fu">diag</span>(<span class="fl">0.4</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Psi_k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]  1.0  0.6  0.6  0.6
@@ -329,7 +348,10 @@ window.Quarto = {
 [3,]  0.6  0.6  1.0  0.6
 [4,]  0.6  0.6  0.6  1.0</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> Psi_k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>           ES        SE  N
 1  0.11468537 0.3165013 40
@@ -388,6 +410,8 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 \]</span> where <span class="math inline">\(\rho = \text{E}(r_k)\)</span> and <span class="math inline">\(\nu &gt; 0\)</span> controls the variability of <span class="math inline">\(r_k\)</span> across studies, with smaller <span class="math inline">\(\nu\)</span> corresponding to more variable correlations. Specifically, <span class="math inline">\(\text{Var}(r_k) = \rho (1 - \rho) / (1 + \nu)\)</span>. These distributions are just made up, without any particular justification.</p>
 <p>Here’s what these distributional models look like in R code:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
@@ -405,6 +429,7 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>study_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      delta J  N       Psi
 1 0.1894457 7 32 0.7549766
@@ -417,9 +442,12 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 </div>
 <p>Once we have the “menu” of study-level characteristics, it’s just a matter of mapping the parameters to the data-generating function. One way to do this is with <code>pmap_df</code>:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>meta_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   study          ES        SE  N
 1      1  0.47285752 0.3587849 32
@@ -457,7 +485,10 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 33     6  0.77571983 0.2997899 48
 34     6  0.81747976 0.3009936 48</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(meta_data<span class="sc">$</span>study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 1 2 3 4 5 6 
@@ -466,6 +497,8 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 </div>
 <p>Putting it all together into a function, we have</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r_meta <span class="ot">&lt;-</span> <span class="cf">function</span>(K, mu, tau, J_mean, N_mean, rho, nu) {</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(purrr)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -479,6 +512,7 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <section id="exercises-2" class="level2">
 <h2 class="anchored" data-anchor-id="exercises-2">Exercises</h2>
@@ -487,10 +521,13 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <li><p>Add options to <code>r_meta</code> for <code>Hedges_g</code>, <code>p_val = TRUE</code>, and <code>corr_mat = FALSE</code> and ensure that these get passed along to the <code>r_SMDs</code> function.</p></li>
 <li><p>One way to check that the <code>r_meta</code> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here’s a very large meta-analytic dataset:</p>
 <p>::: {.cell}</p>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">r_meta</span>(<span class="dv">100000</span>, <span class="at">mu =</span> <span class="fl">0.2</span>, <span class="at">tau =</span> <span class="fl">0.05</span>, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">J_mean =</span> <span class="dv">5</span>, <span class="at">N_mean =</span> <span class="dv">40</span>, </span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">rho =</span> <span class="fl">0.6</span>, <span class="at">nu =</span> <span class="dv">39</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <p>:::</p>
 <p>Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</p></li>
 <li><p>Modify the <code>r_meta</code> function so that <span class="math inline">\(J_k\)</span> and <span class="math inline">\(N_k\)</span> are correlated, according to <span class="math display">\[
@@ -1234,4 +1271,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

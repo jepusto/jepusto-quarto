@@ -102,8 +102,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
+<meta property="og:title" content="James E. Pustejovsky - Bug in nlme::getVarCov">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
+<meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Bug in nlme::getVarCov">
 <meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
@@ -180,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <div class="quarto-title-block"><div><h1 class="title">Bug in nlme::getVarCov</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+      <div class="quarto-title-block"><div><h1 class="title">Bug in nlme::getVarCov</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Rstats</div>
                 <div class="quarto-category">programming</div>
@@ -228,6 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>The issue</h1>
 <p>Here’s a simple demonstration of the problem. I’ll first fit a <code>gls</code> model with a heteroskedastic variance function and an AR(1) auto-correlation structure (no need to worry about the substance of the specification—we’re just worried about computation here) and then extract the variances for each of the units.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate the problem with gls model</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
@@ -239,31 +245,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Mares <span class="ot">&lt;-</span> <span class="fu">levels</span>(gls_raw<span class="sc">$</span>groups)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>V_raw <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov</span>(gls_raw, <span class="at">individual =</span> g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Now I’ll repeat the process using the same data, but sorted in a different order</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Ovary_sorted <span class="ot">&lt;-</span> Ovary[<span class="fu">with</span>(Ovary, <span class="fu">order</span>(Mare, Time)),]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gls_sorted <span class="ot">&lt;-</span> <span class="fu">update</span>(gls_raw, <span class="at">data =</span> Ovary_sorted)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>V_sorted <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov</span>(gls_sorted, <span class="at">individual =</span> g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The variance component estimates are essentially equal:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(gls_raw<span class="sc">$</span>modelStruct, gls_sorted<span class="sc">$</span>modelStruct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <p>However, the extracted variance-covariance matrices are not:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(V_raw, V_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <p>Here’s the code of the relevant function:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nlme<span class="sc">:::</span>getVarCov.gls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (obj, individual = 1, ...) 
 {
@@ -292,12 +311,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The issue is in the 4th line of the body. <code>getVarCov.gls</code> assumes that <code>varWeights(obj$modelStruct$varStruct)</code> is sorted in the same order as <code>obj$groups</code>, which is not necessarily true. Instead, <code>varWeights</code> seem to return the weights sorted according to the grouping variable. For this example, that means that the <code>varWeights</code> will not depend on the order in which the groups are sorted.</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(gls_raw<span class="sc">$</span>groups, gls_sorted<span class="sc">$</span>groups)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(<span class="fu">varWeights</span>(gls_raw<span class="sc">$</span>modelStruct<span class="sc">$</span>varStruct), </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">varWeights</span>(gls_sorted<span class="sc">$</span>modelStruct<span class="sc">$</span>varStruct))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -312,6 +337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Here’s a revised function that takes the second approach:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proposed patch for getVarCov.gls</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>getVarCov_revised_gls <span class="ot">&lt;-</span> <span class="cf">function</span> (obj, <span class="at">individual =</span> <span class="dv">1</span>, ...) {</span>
@@ -327,12 +354,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">attr</span>(result, <span class="st">"group.levels"</span>) <span class="ot">&lt;-</span> <span class="fu">names</span>(obj<span class="sc">$</span>groups)</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    result</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Testing that it works correctly:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>V_raw <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov_revised_gls</span>(gls_raw, <span class="at">individual =</span> g))</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>V_sorted <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov_revised_gls</span>(gls_sorted, <span class="at">individual =</span> g))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(V_raw, V_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -342,6 +373,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Fix for <code>nlme:::getVarCov.lme</code></h1>
 <p>The same issue comes up in <code>getVarCov.lme</code>. Here’s the fix and verification:</p>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proposed patch for getVarCov.lme</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>getVarCov_revised_lme <span class="ot">&lt;-</span> <span class="cf">function</span> (obj, individuals, <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"random.effects"</span>, <span class="st">"conditional"</span>, <span class="st">"marginal"</span>), ...) {</span>
@@ -406,20 +439,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>lme_sorted <span class="ot">&lt;-</span> <span class="fu">update</span>(lme_raw, <span class="at">data =</span> Ovary_sorted)</span>
 <span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(lme_raw<span class="sc">$</span>modelStruct, lme_sorted<span class="sc">$</span>modelStruct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># current getVarCov</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>V_raw <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov</span>(lme_raw, <span class="at">individual =</span> g, <span class="at">type =</span> <span class="st">"marginal"</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>V_sorted <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov</span>(lme_sorted, <span class="at">individual =</span> g, <span class="at">type =</span> <span class="st">"marginal"</span>))</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(V_raw, V_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># revised getVarCov </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>V_raw <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov_revised_lme</span>(lme_raw, <span class="at">individual =</span> g, <span class="at">type =</span> <span class="st">"marginal"</span>))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>V_sorted <span class="ot">&lt;-</span> <span class="fu">lapply</span>(Mares, <span class="cf">function</span>(g) <span class="fu">getVarCov_revised_lme</span>(lme_sorted, <span class="at">individual =</span> g, <span class="at">type =</span> <span class="st">"marginal"</span>))</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(V_raw, V_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -428,7 +468,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="session-info" class="level1">
 <h1>Session info</h1>
 <div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.3.1 (2023-06-16 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -1133,4 +1176,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
