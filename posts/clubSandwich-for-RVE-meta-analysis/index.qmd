@@ -1,6 +1,5 @@
 ---
 title: The clubSandwich package for meta-analysis with RVE
-
 date: '2015-07-10'
 categories:
 - meta-analysis
