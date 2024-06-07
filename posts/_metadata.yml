@@ -25,3 +25,5 @@ code-fold: show
 code-line-numbers: false
 code-overflow: wrap
 code-copy: true
+message: false
+warning: false

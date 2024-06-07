@@ -774,76 +774,74 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Correlations between standardized mean differences</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2015-09-17'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">- standardized mean difference</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">- distribution theory</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2015-09-17'</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">- standardized mean difference</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">- distribution theory</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Several students and colleagues have asked me recently about an issue that comes up in multivariate meta-analysis when some of the studies include multiple treatment groups and multiple outcome measures. In this situation, one might want to include effect size estimates for each treatment group and each outcome measure. In order to do so in fully multivariate meta-analysis, estimates of the covariances among all of these efffect sizes are needed. The covariance among effect sizes arises for several reasons: </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Several students and colleagues have asked me recently about an issue that comes up in multivariate meta-analysis when some of the studies include multiple treatment groups and multiple outcome measures. In this situation, one might want to include effect size estimates for each treatment group and each outcome measure. In order to do so in fully multivariate meta-analysis, estimates of the covariances among all of these efffect sizes are needed. The covariance among effect sizes arises for several reasons: </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>For a single outcome measure, effect sizes based on different treatment groups compared to a common control group will be correlated because the same control group data is used to calculate both effect sizes;</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Effect sizes based on a single treatment group and a single control group, but for different outcome measures, will be correlated because the outcomes are measured on the same set of units (in both the treatment group and the control group). </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Effect sizes based on different treatment groups and for different outcome measures will be correlated because the outcomes are measured on the same set of units in the control group (though not in the treatment group). </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>For a single outcome measure, effect sizes based on different treatment groups compared to a common control group will be correlated because the same control group data is used to calculate both effect sizes;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Effect sizes based on a single treatment group and a single control group, but for different outcome measures, will be correlated because the outcomes are measured on the same set of units (in both the treatment group and the control group). </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Effect sizes based on different treatment groups and for different outcome measures will be correlated because the outcomes are measured on the same set of units in the control group (though not in the treatment group). </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>For standardized mean difference (SMD) measures of effect size, formulas for the covariance are readily available for the first two cases (see e.g., Gleser &amp; Olkin, 2009), but not for the third case. Below I review the formulas for the covariance between SMDs in the first two cases and provide a formula for the third case. </span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>For standardized mean difference (SMD) measures of effect size, formulas for the covariance are readily available for the first two cases (see e.g., Gleser &amp; Olkin, 2009), but not for the third case. Below I review the formulas for the covariance between SMDs in the first two cases and provide a formula for the third case. </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Notation and Model</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># Notation and Model</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Suppose that the experiment has a control group that includes $n_0$ units and $T$ treatment groups that include $n_1,...,n_T$ units, respectively. Also suppose that $J$ outcome measures are made on each unit in each group. The formulas below assume that the data follow a one-way MANOVA model. Let $y_{ijt}$ denote the score for unit $i$ on outcome $j$ in group $t$. Then I assume that</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Suppose that the experiment has a control group that includes $n_0$ units and $T$ treatment groups that include $n_1,...,n_T$ units, respectively. Also suppose that $J$ outcome measures are made on each unit in each group. The formulas below assume that the data follow a one-way MANOVA model. Let $y_{ijt}$ denote the score for unit $i$ on outcome $j$ in group $t$. Then I assume that</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>$$y_{ijt} = \mu_{jt} + \epsilon_{ijt},$$</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>$$y_{ijt} = \mu_{jt} + \epsilon_{ijt},$$</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>where the errors are multi-variate normally distributed with mean zero, variance that can differ across outcome but not across treatment group, and correlation that is constant across treatment groups, i.e. $\text{Var}\left(\epsilon_{ijt}\right) = \sigma^2_j$, $\text{Cov}\left(\epsilon_{ijt}, \epsilon_{ikt} \right) = \rho_{jk}$.</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>where the errors are multi-variate normally distributed with mean zero, variance that can differ across outcome but not across treatment group, and correlation that is constant across treatment groups, i.e. $\text{Var}\left(\epsilon_{ijt}\right) = \sigma^2_j$, $\text{Cov}\left(\epsilon_{ijt}, \epsilon_{ikt} \right) = \rho_{jk}$.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>Denote the mean score on outcome $j$ in group $t$ as $\bar{y}_{jt}$ and the standard deviation of the scores on outcome $j$ in group $t$ as $s_{jt}$, both for $j = 1,...,J$ and $t = 0,...,T$ (with $t = 0$ corresponding to the control group). Also required are estimates of the correlations among outcome measures 1 through $J$, after partialling out differences between treatment groups. Let $r_{jk}$ denote the partial correlation between measure $j$ and measure $k$, for $j = 1,...,J - 1$ and $k = j + 1,...,J$.</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Denote the mean score on outcome $j$ in group $t$ as $\bar{y}_{jt}$ and the standard deviation of the scores on outcome $j$ in group $t$ as $s_{jt}$, both for $j = 1,...,J$ and $t = 0,...,T$ (with $t = 0$ corresponding to the control group). Also required are estimates of the correlations among outcome measures 1 through $J$, after partialling out differences between treatment groups. Let $r_{jk}$ denote the partial correlation between measure $j$ and measure $k$, for $j = 1,...,J - 1$ and $k = j + 1,...,J$.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>With multiple treatment groups, one might wonder how best to compute the standard deviation for purposes of scaling the treatment effect estimates. In their discussion of SMDs from multiple treatment studies, Gleser and Olkin (2009) assume (though they don't actually state outright) that the standard deviation will be pooled across all $T + 1$ groups. The pooled standard deviation for outcome $m$ is calculated as the square root of the pooled variance, </span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>With multiple treatment groups, one might wonder how best to compute the standard deviation for purposes of scaling the treatment effect estimates. In their discussion of SMDs from multiple treatment studies, Gleser and Olkin (2009) assume (though they don't actually state outright) that the standard deviation will be pooled across all $T + 1$ groups. The pooled standard deviation for outcome $m$ is calculated as the square root of the pooled variance, </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>$$s_{jP}^2 = \frac{1}{N - T - 1} \sum_{t=0}^T (n_t - 1)s_{jt}^2,$$</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>$$s_{jP}^2 = \frac{1}{N - T - 1} \sum_{t=0}^T (n_t - 1)s_{jt}^2,$$</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>where $N = \sum_{t=0}^T n_t$. The standardized mean difference for treatment $t$ on outcome $j$ is then estimated as </span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>where $N = \sum_{t=0}^T n_t$. The standardized mean difference for treatment $t$ on outcome $j$ is then estimated as </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>$$d_{jt} = \frac{\bar{y}_{jt} - \bar{y}_{j0}}{s_{jP}}$$</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>$$d_{jt} = \frac{\bar{y}_{jt} - \bar{y}_{j0}}{s_{jP}}$$</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>for $j = 1,...,J$ and $t = 1,...,T$. The conventional estimate of the large-sample variance of $d_{jt}$ is </span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>for $j = 1,...,J$ and $t = 1,...,T$. The conventional estimate of the large-sample variance of $d_{jt}$ is </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$\text{Var}(d_{jt}) \approx \frac{1}{n_0} + \frac{1}{n_t} + \frac{d_{jt}^2}{2 (N - T - 1)}.$$</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>$$\text{Var}(d_{jt}) \approx \frac{1}{n_0} + \frac{1}{n_t} + \frac{d_{jt}^2}{2 (N - T - 1)}.$$</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu"># Covariances</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu"># Covariances</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>For SMDs based on a common outcome measure and a common control group, but different treatment groups, the large-sample covariance between the effect size estimates can be estimated as </span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>For SMDs based on a common outcome measure and a common control group, but different treatment groups, the large-sample covariance between the effect size estimates can be estimated as </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ju}) \approx \frac{1}{n_0} + \frac{d_{jt} d_{ju}}{2 (N - T - 1)}.$$</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ju}) \approx \frac{1}{n_0} + \frac{d_{jt} d_{ju}}{2 (N - T - 1)}.$$</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>The above differs slightly from Gleser and Olkin (2009, Formula 19.19) because it uses the degrees of freedom $N - T - 1$ in the denominator of the second term, rather than the total sample size. If the total sample size is larger relative to the number of treatment groups, the discrepancy should be minor.</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>The above differs slightly from Gleser and Olkin (2009, Formula 19.19) because it uses the degrees of freedom $N - T - 1$ in the denominator of the second term, rather than the total sample size. If the total sample size is larger relative to the number of treatment groups, the discrepancy should be minor.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>SMDs based on a single treatment group but for different outcome measures follow a structure that is essentially equivalent to what Gleser and Olkin (2009) call a "multiple-endpoint" study. The large-sample covariance between the effect size estimates can be estimated as </span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>SMDs based on a single treatment group but for different outcome measures follow a structure that is essentially equivalent to what Gleser and Olkin (2009) call a "multiple-endpoint" study. The large-sample covariance between the effect size estimates can be estimated as </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{kt}) \approx r_{jk} \left(\frac{1}{n_0} + \frac{1}{n_t}\right) + \frac{r_{jk}^2 d_{jt} d_{kt}}{2 (N - T - 1)}$$</span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{kt}) \approx r_{jk} \left(\frac{1}{n_0} + \frac{1}{n_t}\right) + \frac{r_{jk}^2 d_{jt} d_{kt}}{2 (N - T - 1)}$$</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>(cf. Gleser <span class="sc">\&amp;</span> Olkin, 2009, Formula 19.19). Note that if the degrees of freedom are large relative to $d_{jt}$ and $d_{kt}$, then the correlation between the effect sizes will be approximately equal to $\text{Cor}(d_{jt},d_{kt}) \approx r_{jk}$.</span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>(cf. Gleser <span class="sc">\&amp;</span> Olkin, 2009, Formula 19.19). Note that if the degrees of freedom are large relative to $d_{jt}$ and $d_{kt}$, then the correlation between the effect sizes will be approximately equal to $\text{Cor}(d_{jt},d_{kt}) \approx r_{jk}$.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>Finally, the large-sample covariance between SMDs based on different treatment groups and different outcome measures can be estimated as </span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>Finally, the large-sample covariance between SMDs based on different treatment groups and different outcome measures can be estimated as </span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ku}) \approx \frac{r_{jk}}{n_0} + \frac{r_{jk}^2 d_{jt} d_{ku}}{2 (N - T - 1)}.$$</span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ku}) \approx \frac{r_{jk}}{n_0} + \frac{r_{jk}^2 d_{jt} d_{ku}}{2 (N - T - 1)}.$$</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>This is similar to the previous formula, but does not include the term corresponding to the covariance between different outcome measures in a common treatment group.</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>This is similar to the previous formula, but does not include the term corresponding to the covariance between different outcome measures in a common treatment group.</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>If $r_{jj} = 1$ is used for the correlation of an outcome measure with itself, all of the above formulas (including the variance of $d_{jt}$) can be expressed compactly as</span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>If $r_{jj} = 1$ is used for the correlation of an outcome measure with itself, all of the above formulas (including the variance of $d_{jt}$) can be expressed compactly as</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ku}) \approx r_{jk} \left(\frac{1}{n_0} + \frac{I(t = u)}{n_t}\right) + \frac{r_{jk}^2 d_{jt} d_{ku}}{2 (N - T - 1)},$$</span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(d_{jt},d_{ku}) \approx r_{jk} \left(\frac{1}{n_0} + \frac{I(t = u)}{n_t}\right) + \frac{r_{jk}^2 d_{jt} d_{ku}}{2 (N - T - 1)},$$</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>where $I(A)$ is equal to one if $A$ is true and equal to zero otherwise.</span>
 <span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>where $I(A)$ is equal to one if $A$ is true and equal to zero otherwise.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
 <span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gleser, L. J., &amp; Olkin, I. (2009). Stochastically dependent effect sizes. In H. Cooper, L. V. Hedges, &amp; J. C. Valentine (Eds.), The Handbook of Research Synthesis and Meta-Analysis (2nd ed., pp. 357-376). New York, NY: Russell Sage Foundation.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Gleser, L. J., &amp; Olkin, I. (2009). Stochastically dependent effect sizes. In H. Cooper, L. V. Hedges, &amp; J. C. Valentine (Eds.), The Handbook of Research Synthesis and Meta-Analysis (2nd ed., pp. 357-376). New York, NY: Russell Sage Foundation.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
