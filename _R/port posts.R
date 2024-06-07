@@ -97,5 +97,7 @@ convert_post <- function(post) {
   write_lines(post_text_new, file = new_post_name)
 }
 
+convert_post("correlated-z-transformed-correlations.Rmd")
+
 walk(all_posts$post, convert_post)
 

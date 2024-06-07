@@ -942,81 +942,80 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> The clubSandwich package for meta-analysis with RVE</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2015-07-10'</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> '2024-04-09'</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>**UPDATED April 09, 2024 to use current syntax for constraints argument in `clubSandwich::Wald_test()`.**</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>I've recently been working on small-sample correction methods for hypothesis tests in linear regression models with cluster-robust variance estimation. My colleague (and grad-schoolmate) Beth Tipton has developed small-sample adjustments for t-tests (of single regression coefficients) in the context of meta-regression models with robust variance estimation, and together we have developed methods for multiple-contrast hypothesis tests. We have an R package (called <span class="in">`clubSandwich`</span>) that implements all this stuff, not only for meta-regression models but also for other models and contexts where cluster-robust variance estimation is often used.</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>The alpha-version of the package is currently <span class="co">[</span><span class="ot">available on Github</span><span class="co">](https://github.com/jepusto/clubSandwich)</span>. See the Github README for instructions on how to install it in R. Below I demonstrate how to use the package to get robust variance estimates, t-tests, and F-tests, all with small-sample corrections. The example uses a dataset of effect sizes from a Campbell Collaboration <span class="co">[</span><span class="ot">systematic review of dropout prevention programs</span><span class="co">](http://www.campbellcollaboration.org/lib/project/158/)</span>, conducted by Sandra Jo Wilson and her colleagues.</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>The original analysis included a meta-regression with covariates that capture methodological, participant, and program characteristics. I'll use a regression specification that is similar to Model III from Wilson et al. (2011), but treat the <span class="in">`evaluator_independence`</span> and <span class="in">`implementation_quality`</span> variables as categorical rather than interval-level; the original analysis clustered at the level of the sample (some studies reported results from multiple samples), whereas I will cluster at the study level. </span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>I fit the model two ways, first using the <span class="in">`robumeta`</span> package and then using <span class="in">`metafor`</span>.</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">#### robumeta model</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width=</span><span class="dv">150</span>)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dropoutPrevention)</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>m3_robu <span class="ot">&lt;-</span> <span class="fu">robu</span>(LOR1 <span class="sc">~</span> study_design <span class="sc">+</span> attrition <span class="sc">+</span> group_equivalence <span class="sc">+</span> adjusted</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> outcome <span class="sc">+</span> evaluator_independence</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> male_pct <span class="sc">+</span> white_pct <span class="sc">+</span> average_age</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> implementation_quality <span class="sc">+</span> program_site <span class="sc">+</span> duration <span class="sc">+</span> service_hrs, </span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dropoutPrevention, <span class="at">studynum =</span> studyID, <span class="at">var.eff.size =</span> varLOR, </span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>                <span class="at">modelweights =</span> <span class="st">"HIER"</span>)</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(m3_robu)</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`robumeta`</span> produces small-sample corrected standard errors and t-tests, and so there is no need to repeat those calculations with <span class="in">`clubSandwich`</span>. The <span class="in">`evaluator_independence`</span> variable has four levels, and it might be of interest to test whether the average program effects differ by the degree of evaluator independence. The null hypothesis in this case is that the 10th, 11th, and 12th regression coefficients are all equal to zero. A small-sample adjusted F-test for this hypothesis can be obtained as follows. </span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>(The <span class="in">`vcov = "CR2"`</span> option means that the standard errors will be corrected using the bias-reduced linearization method proposed by McCaffrey, Bell, and Botts, 2001.)</span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(m3_robu, <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>By default, the <span class="in">`Wald_test`</span> function provides an F-type test with degrees of freedom estimated using the approximate Hotelling's $T^2_Z$ method. The test has less than 17 degrees of freedom, even though there are 152 independent studies in the data, and has a p-value of .07, so not-quite-significant at conventional levels. The low degrees of freedom are a consequence of the fact that one of the levels of <span class="in">`evaluator independence`</span> has only a few effect sizes in it:</span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dropoutPrevention<span class="sc">$</span>evaluator_independence)</span>
-<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="fu">#### metafor model</span></span>
-<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>Our package also works with models fit using the <span class="in">`metafor`</span> package. Here I re-fit the same regression specification, but use REML to estimate the variance components (<span class="in">`robumeta`</span> uses a method-of-moments estimator) and use a somewhat different weighting scheme than that used in <span class="in">`robumeta`</span>. </span>
-<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
-<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
-<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a><span class="in">m3_metafor &lt;- rma.mv(LOR1 ~ study_design + attrition + group_equivalence + adjusted</span></span>
-<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="in">                      + outcome + evaluator_independence</span></span>
-<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="in">                      + male_pct + white_pct + average_age</span></span>
-<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="in">                      + implementation_quality + program_site + duration + service_hrs, </span></span>
-<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="in">                      V = varLOR, random = list(~ 1 | studyID, ~ 1 | studySample),</span></span>
-<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="in">                     data = dropoutPrevention)</span></span>
-<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a><span class="in">summary(m3_metafor)</span></span>
-<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="in">`metafor`</span> produces model-based standard errors, t-tests, and confidence intervals. The <span class="in">`coef_test`</span> function from <span class="in">`clubSandwich`</span> will calculate robust standard errors and robust t-tests for each of the coefficients:</span>
-<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(m3_metafor, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
-<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`coef_test`</span> assumed that it should cluster based on <span class="in">`studyID`</span>, which is the outer-most random effect in the metafor model. This can also be specified explicitly by including the option <span class="in">`cluster = dropoutPrevention$studyID`</span> in the call. </span>
-<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>The F-test for degree of evaluator independence uses the same syntax as before:</span>
-<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(m3_metafor, <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
-<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a>Despite some differences in weighting schemes, the p-value is very close to the result obtained using <span class="in">`robumeta`</span>.</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2015-07-10'</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">- robust variance estimation</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> '2024-04-09'</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>**UPDATED April 09, 2024 to use current syntax for constraints argument in `clubSandwich::Wald_test()`.**</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>I've recently been working on small-sample correction methods for hypothesis tests in linear regression models with cluster-robust variance estimation. My colleague (and grad-schoolmate) Beth Tipton has developed small-sample adjustments for t-tests (of single regression coefficients) in the context of meta-regression models with robust variance estimation, and together we have developed methods for multiple-contrast hypothesis tests. We have an R package (called <span class="in">`clubSandwich`</span>) that implements all this stuff, not only for meta-regression models but also for other models and contexts where cluster-robust variance estimation is often used.</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>The alpha-version of the package is currently <span class="co">[</span><span class="ot">available on Github</span><span class="co">](https://github.com/jepusto/clubSandwich)</span>. See the Github README for instructions on how to install it in R. Below I demonstrate how to use the package to get robust variance estimates, t-tests, and F-tests, all with small-sample corrections. The example uses a dataset of effect sizes from a Campbell Collaboration <span class="co">[</span><span class="ot">systematic review of dropout prevention programs</span><span class="co">](http://www.campbellcollaboration.org/lib/project/158/)</span>, conducted by Sandra Jo Wilson and her colleagues.</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>The original analysis included a meta-regression with covariates that capture methodological, participant, and program characteristics. I'll use a regression specification that is similar to Model III from Wilson et al. (2011), but treat the <span class="in">`evaluator_independence`</span> and <span class="in">`implementation_quality`</span> variables as categorical rather than interval-level; the original analysis clustered at the level of the sample (some studies reported results from multiple samples), whereas I will cluster at the study level. </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>I fit the model two ways, first using the <span class="in">`robumeta`</span> package and then using <span class="in">`metafor`</span>.</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">#### robumeta model</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width=</span><span class="dv">150</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(robumeta)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dropoutPrevention)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>m3_robu <span class="ot">&lt;-</span> <span class="fu">robu</span>(LOR1 <span class="sc">~</span> study_design <span class="sc">+</span> attrition <span class="sc">+</span> group_equivalence <span class="sc">+</span> adjusted</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> outcome <span class="sc">+</span> evaluator_independence</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> male_pct <span class="sc">+</span> white_pct <span class="sc">+</span> average_age</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>                <span class="sc">+</span> implementation_quality <span class="sc">+</span> program_site <span class="sc">+</span> duration <span class="sc">+</span> service_hrs, </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>                <span class="at">data =</span> dropoutPrevention, <span class="at">studynum =</span> studyID, <span class="at">var.eff.size =</span> varLOR, </span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>                <span class="at">modelweights =</span> <span class="st">"HIER"</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(m3_robu)</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`robumeta`</span> produces small-sample corrected standard errors and t-tests, and so there is no need to repeat those calculations with <span class="in">`clubSandwich`</span>. The <span class="in">`evaluator_independence`</span> variable has four levels, and it might be of interest to test whether the average program effects differ by the degree of evaluator independence. The null hypothesis in this case is that the 10th, 11th, and 12th regression coefficients are all equal to zero. A small-sample adjusted F-test for this hypothesis can be obtained as follows. </span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>(The <span class="in">`vcov = "CR2"`</span> option means that the standard errors will be corrected using the bias-reduced linearization method proposed by McCaffrey, Bell, and Botts, 2001.)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(m3_robu, <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>By default, the <span class="in">`Wald_test`</span> function provides an F-type test with degrees of freedom estimated using the approximate Hotelling's $T^2_Z$ method. The test has less than 17 degrees of freedom, even though there are 152 independent studies in the data, and has a p-value of .07, so not-quite-significant at conventional levels. The low degrees of freedom are a consequence of the fact that one of the levels of <span class="in">`evaluator independence`</span> has only a few effect sizes in it:</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dropoutPrevention<span class="sc">$</span>evaluator_independence)</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="fu">#### metafor model</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>Our package also works with models fit using the <span class="in">`metafor`</span> package. Here I re-fit the same regression specification, but use REML to estimate the variance components (<span class="in">`robumeta`</span> uses a method-of-moments estimator) and use a somewhat different weighting scheme than that used in <span class="in">`robumeta`</span>. </span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a><span class="in">m3_metafor &lt;- rma.mv(LOR1 ~ study_design + attrition + group_equivalence + adjusted</span></span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a><span class="in">                      + outcome + evaluator_independence</span></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="in">                      + male_pct + white_pct + average_age</span></span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="in">                      + implementation_quality + program_site + duration + service_hrs, </span></span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="in">                      V = varLOR, random = list(~ 1 | studyID, ~ 1 | studySample),</span></span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="in">                     data = dropoutPrevention)</span></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="in">summary(m3_metafor)</span></span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="in">`metafor`</span> produces model-based standard errors, t-tests, and confidence intervals. The <span class="in">`coef_test`</span> function from <span class="in">`clubSandwich`</span> will calculate robust standard errors and robust t-tests for each of the coefficients:</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(m3_metafor, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`coef_test`</span> assumed that it should cluster based on <span class="in">`studyID`</span>, which is the outer-most random effect in the metafor model. This can also be specified explicitly by including the option <span class="in">`cluster = dropoutPrevention$studyID`</span> in the call. </span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>The F-test for degree of evaluator independence uses the same syntax as before:</span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="fu">Wald_test</span>(m3_metafor, <span class="at">constraints =</span> <span class="fu">constrain_zero</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">12</span>), <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>Despite some differences in weighting schemes, the p-value is very close to the result obtained using <span class="in">`robumeta`</span>.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
