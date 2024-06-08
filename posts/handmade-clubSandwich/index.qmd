@@ -1,6 +1,5 @@
 ---
 title: A handmade clubSandwich for multi-site trials
-
 date: '2019-03-09'
 categories:
 - sandwiches
@@ -8,10 +7,9 @@ categories:
 - econometrics
 - weighting
 code-tools: true
-
 ---
 
-I'm just back from the [Society for Research on Educational Effectiveness](https://sree.org/conferences/2019s) meetings, where I presented work on small-sample corrections for cluster-robust variance estimators in two-stage least squares models, which I've implemented in the [`clubSandwich`](/software/clubSandwich/) R package. [Here's my presentation](/files/SREE-2019-2SLS-CRVE.html). So I had "clubSandwich" estimators on the brain when a colleague asked me about whether the methods were implemented in SAS. 
+I'm just back from the [Society for Research on Educational Effectiveness](https://www.sree.org/assets/conferences/2019s/program.pdf) meetings, where I presented work on small-sample corrections for cluster-robust variance estimators in two-stage least squares models, which I've implemented in the [`clubSandwich`](/software/clubSandwich/) R package. [Here's my presentation](/files/SREE-2019-2SLS-CRVE.pdf). So I had "clubSandwich" estimators on the brain when a colleague asked me about whether the methods were implemented in SAS. 
 
 The short answer is "no." 
 

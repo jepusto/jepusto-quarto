@@ -1,6 +1,5 @@
 ---
 title: CRAN downloads of my packages
-
 date: '2019-04-09'
 categories:
 - programming
@@ -8,7 +7,6 @@ categories:
 - meta-analysis
 code-fold: true
 code-tools: true
-
 ---
 
 At AERA this past weekend, one of the recurring themes was how software availability (and its usability and default features) influences how people conduct meta-analyses. That got me thinking about the R packages that I've developed, how to understand the extent to which people are using them, how they're being used, and so on. I've had badges on my github repos for a while now:

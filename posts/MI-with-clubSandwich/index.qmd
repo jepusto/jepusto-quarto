@@ -1,6 +1,5 @@
 ---
 title: Pooling clubSandwich results across multiple imputations
-
 date: '2017-09-27'
 categories:
 - missing data
@@ -8,7 +7,7 @@ categories:
 - small-sample
 - Rstats
 code-tools: true
-
+date-modified: '2024-06-08'
 ---
 
 A colleague recently asked me about how to apply cluster-robust hypothesis tests and confidence intervals, as calculated with the [clubSandwich package](https://CRAN.R-project.org/package=clubSandwich), when dealing with multiply imputed datasets.
@@ -169,7 +168,7 @@ robust_pooled <-
     B = var(beta),
     beta_bar = mean(beta),
     V_bar = mean(SE^2),
-    eta_bar = mean(df)
+    eta_bar = mean(df_Satt)
   ) %>%
   
   mutate(

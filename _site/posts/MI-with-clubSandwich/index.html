@@ -229,7 +229,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -240,6 +240,12 @@ window.Quarto = {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 8, 2024</p>
+      </div>
+    </div>
       
     </div>
     
@@ -289,22 +295,22 @@ window.Quarto = {
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(bdf_missing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    IQ.verb         IQ.perf            sex             ses      
- Min.   : 4.00   Min.   : 5.333   Min.   :1.000   Min.   :10.0  
- 1st Qu.:10.50   1st Qu.: 9.333   1st Qu.:1.000   1st Qu.:20.0  
- Median :11.50   Median :10.667   Median :1.000   Median :28.0  
- Mean   :11.64   Mean   :10.758   Mean   :1.473   Mean   :28.8  
- 3rd Qu.:13.00   3rd Qu.:12.333   3rd Qu.:2.000   3rd Qu.:38.0  
- Max.   :18.00   Max.   :16.667   Max.   :2.000   Max.   :50.0  
- NA's   :46      NA's   :32       NA's   :39      NA's   :35    
+<pre><code>    IQ.verb         IQ.perf            sex             ses       
+ Min.   : 4.00   Min.   : 5.333   Min.   :1.000   Min.   :10.00  
+ 1st Qu.:10.50   1st Qu.: 9.333   1st Qu.:1.000   1st Qu.:20.00  
+ Median :11.50   Median :10.667   Median :1.000   Median :28.00  
+ Mean   :11.64   Mean   :10.755   Mean   :1.471   Mean   :28.61  
+ 3rd Qu.:13.00   3rd Qu.:12.000   3rd Qu.:2.000   3rd Qu.:37.75  
+ Max.   :18.00   Max.   :16.667   Max.   :2.000   Max.   :50.00  
+ NA's   :34      NA's   :42       NA's   :39      NA's   :37     
     langPRET        aritPRET        aritPOST        schoolNR  
  Min.   :15.00   Min.   : 1.00   Min.   : 2.00   40     : 35  
  1st Qu.:30.00   1st Qu.: 9.00   1st Qu.:12.00   54     : 31  
- Median :34.00   Median :11.00   Median :18.00   55     : 30  
- Mean   :33.89   Mean   :11.63   Mean   :17.74   38     : 28  
+ Median :35.00   Median :11.00   Median :18.00   55     : 30  
+ Mean   :33.92   Mean   :11.61   Mean   :17.63   38     : 28  
  3rd Qu.:39.00   3rd Qu.:14.00   3rd Qu.:23.00   1      : 25  
  Max.   :48.00   Max.   :20.00   Max.   :30.00   18     : 24  
- NA's   :40      NA's   :34      NA's   :39      (Other):354  </code></pre>
+ NA's   :42      NA's   :37      NA's   :45      (Other):354  </code></pre>
 </div>
 </div>
 <p>Now I’ll use <code>mice</code> to create 10 multiply imputed datasets:</p>
@@ -326,17 +332,9 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'clubSandwich':
-  method    from    
-  bread.mlm sandwich</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses, <span class="at">data =</span> bdf)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses, <span class="at">data =</span> bdf)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Coef. Estimate     SE t-stat d.f. (Satt) p-val (Satt) Sig.
@@ -351,28 +349,28 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>     ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pool</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pool</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         term    estimate  std.error statistic       df      p.value
-1 (Intercept) -2.72087690 1.18042535 -2.304997 185.0618 2.227631e-02
-2    aritPRET  0.96811774 0.06791871 14.254065 343.3291 1.548626e-36
-3    langPRET  0.30949123 0.03621462  8.546030 306.6763 6.093470e-16
-4         sex -1.43119901 0.41744953 -3.428436 194.0302 7.413229e-04
-5         ses  0.03042239 0.01969233  1.544885 206.0501 1.239085e-01</code></pre>
+1 (Intercept) -2.27984251 1.13150204 -2.014881 386.8075 4.460853e-02
+2    aritPRET  1.05703235 0.07401375 14.281567 167.9516 8.387771e-31
+3    langPRET  0.25011568 0.03904516  6.405805 168.8792 1.430636e-09
+4         sex -1.01868876 0.39877893 -2.554520 414.6214 1.098984e-02
+5         ses  0.02358248 0.02125143  1.109689 130.2107 2.691782e-01</code></pre>
 </div>
 </div>
 <p>However, this approach ignores the possibility of correlation in the errors of units in the same cluster, which is clearly a concern in this dataset:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio of CRVE to conventional variance estimates</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">vcovCR</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">type =</span> <span class="st">"CR2"</span>)) <span class="sc">/</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(<span class="fu">vcov</span>(lm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio of CRVE to conventional variance estimates</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">vcovCR</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">type =</span> <span class="st">"CR2"</span>)) <span class="sc">/</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(<span class="fu">vcov</span>(lm_full))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)    aritPRET    langPRET         sex         ses 
@@ -419,98 +417,87 @@ V_{total} = \bar{V} + \frac{m + 1}{m} B.
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit results with clubSandwich standard errors</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>models_robust <span class="ot">&lt;-</span> <span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">coef_test</span>(<span class="at">cluster=</span>bdf<span class="sc">$</span>schoolNR, <span class="at">vcov=</span><span class="st">"CR2"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                      ) </span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pool results with clubSandwich standard errors</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="ot">&lt;-</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  models_robust<span class="sc">$</span>analyses <span class="sc">%&gt;%</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add coefficient names as a column</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>coef <span class="ot">&lt;-</span> <span class="fu">row.names</span>(x)</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    x</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize by coefficient</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(coef) <span class="sc">%&gt;%</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">n</span>(),</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="fu">var</span>(beta),</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta_bar =</span> <span class="fu">mean</span>(beta),</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_bar =</span> <span class="fu">mean</span>(SE<span class="sc">^</span><span class="dv">2</span>),</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">eta_bar =</span> <span class="fu">mean</span>(df)</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate intermediate quantities to get df</span></span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_total =</span> V_bar <span class="sc">+</span> B <span class="sc">*</span> (m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m,</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> ((m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m) <span class="sc">*</span> B <span class="sc">/</span> V_total,</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_m =</span> (m <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> gamma<span class="sc">^</span><span class="dv">2</span>,</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_obs =</span> eta_bar <span class="sc">*</span> (eta_bar <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> gamma) <span class="sc">/</span> (eta_bar <span class="sc">+</span> <span class="dv">3</span>),</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">/</span> df_m <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> df_obs),</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate summary quantities for output</span></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(V_total),</span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> beta_bar <span class="sc">/</span> se,</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_val =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">crit =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> df),</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo95 =</span> beta_bar <span class="sc">-</span> se <span class="sc">*</span> crit,</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi95 =</span> beta_bar <span class="sc">+</span> se <span class="sc">*</span> crit</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There were 5 warnings in `summarise()`.
-The first warning was:
-ℹ In argument: `eta_bar = mean(df)`.
-ℹ In group 1: `coef = "(Intercept)"`.
-Caused by warning in `mean.default()`:
-! argument is not numeric or logical: returning NA
-ℹ Run `dplyr::last_dplyr_warnings()` to see the 4 remaining warnings.</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, <span class="at">est =</span> beta_bar, se, t, df, p_val, lo95, hi95, gamma) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(est<span class="sc">:</span>gamma), round, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit results with clubSandwich standard errors</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>models_robust <span class="ot">&lt;-</span> <span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">coef_test</span>(<span class="at">cluster=</span>bdf<span class="sc">$</span>schoolNR, <span class="at">vcov=</span><span class="st">"CR2"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                      ) </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># pool results with clubSandwich standard errors</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="ot">&lt;-</span> </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  models_robust<span class="sc">$</span>analyses <span class="sc">%&gt;%</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add coefficient names as a column</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>coef <span class="ot">&lt;-</span> <span class="fu">row.names</span>(x)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize by coefficient</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(coef) <span class="sc">%&gt;%</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">n</span>(),</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="fu">var</span>(beta),</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta_bar =</span> <span class="fu">mean</span>(beta),</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_bar =</span> <span class="fu">mean</span>(SE<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">eta_bar =</span> <span class="fu">mean</span>(df_Satt)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate intermediate quantities to get df</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_total =</span> V_bar <span class="sc">+</span> B <span class="sc">*</span> (m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> ((m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m) <span class="sc">*</span> B <span class="sc">/</span> V_total,</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_m =</span> (m <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> gamma<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_obs =</span> eta_bar <span class="sc">*</span> (eta_bar <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> gamma) <span class="sc">/</span> (eta_bar <span class="sc">+</span> <span class="dv">3</span>),</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">/</span> df_m <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> df_obs),</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate summary quantities for output</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(V_total),</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> beta_bar <span class="sc">/</span> se,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_val =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">crit =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> df),</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo95 =</span> beta_bar <span class="sc">-</span> se <span class="sc">*</span> crit,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi95 =</span> beta_bar <span class="sc">+</span> se <span class="sc">*</span> crit</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, <span class="at">est =</span> beta_bar, se, t, df, p_val, lo95, hi95, gamma) <span class="sc">%&gt;%</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(est<span class="sc">:</span>gamma), round, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 9
-  coef           est    se     t    df p_val  lo95  hi95 gamma
-  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 (Intercept) -2.72  1.34  -2.03    NA    NA    NA    NA 0.129
-2 aritPRET     0.968 0.088 11.0     NA    NA    NA    NA 0.051
-3 langPRET     0.309 0.032  9.54    NA    NA    NA    NA 0.125
-4 ses          0.03  0.025  1.23    NA    NA    NA    NA 0.096
-5 sex         -1.43  0.518 -2.76    NA    NA    NA    NA 0.104</code></pre>
+  coef           est    se      t    df p_val   lo95   hi95 gamma
+  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 (Intercept) -2.28  1.42  -1.61   20.2 0.124 -5.24   0.679 0.043
+2 aritPRET     1.06  0.086 12.3    17.5 0      0.876  1.24  0.133
+3 langPRET     0.25  0.036  6.99   15.9 0      0.174  0.326 0.214
+4 ses          0.024 0.03   0.777  15.9 0.448 -0.041  0.088 0.106
+5 sex         -1.02  0.441 -2.31   20.7 0.031 -1.94  -0.1   0.047</code></pre>
 </div>
 </div>
 <p>It is instructive to compare the calculated <code>df</code> to <code>eta_bar</code> and <code>df_m</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, df, df_m, eta_bar) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(df, df_m, eta_bar), round, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, df, df_m, eta_bar) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(df, df_m, eta_bar), round, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   coef           df  df_m eta_bar
   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)    NA  539.      NA
-2 aritPRET       NA 3449.      NA
-3 langPRET       NA  574       NA
-4 ses            NA  971.      NA
-5 sex            NA  829.      NA</code></pre>
+1 (Intercept)  20.2 4757     23  
+2 aritPRET     17.5  508.    22.6
+3 langPRET     15.9  197.    23.8
+4 ses          15.9  796.    19.9
+5 sex          20.7 4047.    23.6</code></pre>
 </div>
 </div>
 <p>Here, <code>eta_bar</code> is the average of the complete data degrees of freedom, and it can be seen that the total degrees of freedom are somewhat less than the average complete-data degrees of freedom. This is by construction. Further <code>df_m</code> is the conventional degrees of freedom used in multiple-imputation, which assume that the complete-data estimates are normally distributed, and in this example they are way far off.</p>
@@ -996,236 +983,235 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Pooling clubSandwich results across multiple imputations</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2017-09-27'</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">- missing data</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">- small-sample</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>A colleague recently asked me about how to apply cluster-robust hypothesis tests and confidence intervals, as calculated with the <span class="co">[</span><span class="ot">clubSandwich package</span><span class="co">](https://CRAN.R-project.org/package=clubSandwich)</span>, when dealing with multiply imputed datasets.</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>Standard methods (i.e., Rubin's rules) for pooling estimates from multiple imputed datasets are developed under the assumption that the full-data estimates are approximately normally distributed. However, this might not be reasonable when working with test statistics based on cluster-robust variance estimators, which can be imprecise when the number of clusters is small or the design matrix of predictors is unbalanced in certain ways. <span class="co">[</span><span class="ot">Barnard and Rubin (1999)</span><span class="co">](https://doi.org/10.1093/biomet/86.4.948)</span> proposed a small-sample correction for tests and confidence intervals based on multiple imputed datasets. In this post, I'll show how to implement their technique using the output of <span class="in">`clubSandwich`</span>, with multiple imputations generated using the <span class="co">[</span><span class="ot">`mice` package</span><span class="co">](https://cran.r-project.org/package=mice)</span>. </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setup</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>To begin, let me create missingness in a dataset containing multiple clusters of observations:</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(mlmRev)</span></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(mice)</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="in">data(bdf)</span></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="in">bdf &lt;- bdf %&gt;%</span></span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="in">  select(schoolNR, IQ.verb, IQ.perf, sex, ses, langPRET, aritPRET, aritPOST) %&gt;%</span></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(</span></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="in">    schoolNR = factor(schoolNR),</span></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="in">    sex = as.numeric(sex)</span></span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="in">    ) %&gt;%</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(as.numeric(schoolNR) &lt;= 30) %&gt;%</span></span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="in">  droplevels()</span></span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="in">bdf_missing &lt;- </span></span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="in">  bdf %&gt;% </span></span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="in">  select(-schoolNR) %&gt;%</span></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="in">  ampute(run = TRUE)</span></span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="in">bdf_missing &lt;- </span></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="in">  bdf_missing$amp %&gt;%</span></span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(schoolNR = bdf$schoolNR)</span></span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="in">summary(bdf_missing)</span></span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>Now I'll use <span class="in">`mice`</span> to create 10 multiply imputed datasets:</span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results = "hide"}</span></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a><span class="in">Impute_bdf &lt;- mice(bdf_missing, m=10, meth="norm.nob", seed=24)</span></span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>Am I imputing while ignoring the hierarchical structure of the data? Yes, yes I am. Is this is a good way to do imputation? Probably not. But this is a quick and dirty example, so we're going to have to live with it. </span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Model</span></span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>Suppose that the goal of our analysis is to estimate the coefficients of the following regression model:</span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>\text{aritPOST}_{ij} = \beta_0 + \beta_1 \text{aritPRET}_{ij} + \beta_2 \text{langPRET}_{ij} + \beta_3 \text{sex}_{ij} + \beta_4 \text{SES}_{ij} + e_{ij},</span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>where $i$ indexes students and $j$ indexes schools, and where we allow for the possibility that errors from the same cluster are correlated in an unspecified way. With complete data, we could estimate the model by ordinary least squares and then use <span class="in">`clubSandwich`</span> to get standard errors that are robust to within-cluster dependence and heteroskedasticity. The code for this is as follows:</span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses, <span class="at">data =</span> bdf)</span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>If cluster dependence were no concern, we could simply use the model-based standard errors and test statistics. The <span class="in">`mice`</span> package provides functions that will fit the model to each imputed dataset and then combine them by Rubin's rules. The code is simply:</span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>     <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses)</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>     ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pool</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a>However, this approach ignores the possibility of correlation in the errors of units in the same cluster, which is clearly a concern in this dataset:</span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio of CRVE to conventional variance estimates</span></span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">vcovCR</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">type =</span> <span class="st">"CR2"</span>)) <span class="sc">/</span> </span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(<span class="fu">vcov</span>(lm_full))</span>
-<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a>So we need a way to pool results based on the cluster-robust variance estimators, while also accounting for the relatively small number of clusters in this dataset. </span>
-<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### Barnard &amp; Rubin (1999)</span></span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Barnard and Rubin (1999)</span><span class="co">](https://doi.org/10.1093/biomet/86.4.948)</span> proposed a small-sample correction for tests and confidence intervals based on multiple imputed datasets that seems to work in this context. Rather than using large-sample normal approximations for inference, they derive an approximate degrees-of-freedom that combines uncertainty in the standard errors calculated from each imputed dataset with between-imputation uncertainty. The method is as follows. </span>
-<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>Suppose that we have $m$ imputed datasets. Let $\hat\beta_{(j)}$ be the estimated regression coefficient from imputed dataset $j$, with (in this case cluster-robust) sampling variance estimate $V_{(j)}$. Further, let $\eta_{(j)}$ be the degrees of freedom corresponding to $V_{(j)}$. To combine these estimates, calculate the averages across multiply imputed datasets:</span>
-<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a>\bar\beta = \frac{1}{m}\sum_{j=1}^m \hat\beta_{(j)}, \qquad \bar{V} = \frac{1}{m}\sum_{j=1}^m V_{(j)}, \qquad \bar\eta = \frac{1}{m}\sum_{j=1}^m \eta_{(j)}.</span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a>Also calculate the between-imputation variance </span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a>B = \frac{1}{m - 1} \sum_{j=1}^m \left(\hat\beta_{(j)} - \bar\beta\right)^2</span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a>And then combine the between- and within- variance estimates using Rubin's rules:</span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a>V_{total} = \bar{V} + \frac{m + 1}{m} B.</span>
-<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a>The degrees of freedom associated with $V_{total}$ modify the estimated complete-data degrees of freedom $\bar\eta$ using quantities that depend on the fraction of missing information in a coefficient. The fraction of missing information is given by</span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>\hat\gamma_m = \frac{(m+1)B}{m V_{total}}</span>
-<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>The degrees of freedom are then given by</span>
-<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>\nu_{total} = \left(\frac{1}{\nu_m} + \frac{1}{\nu_{obs}}\right)^{-1},</span>
-<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a>where</span>
-<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a>\nu_m = \frac{(m - 1)}{\hat\gamma_m^2}, \quad \text{and} \quad \nu_{obs} = \frac{\bar\eta (\bar\eta + 1) (1 - \hat\gamma)}{\bar\eta + 3}.</span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a>Hypothesis tests and confidence intervals are based on the approximation</span>
-<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a>\frac{\bar\beta - \beta_0}{\sqrt{V_{total}}} \ \stackrel{\cdot}{\sim} \ t(\nu_{total})</span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a><span class="fu">### Implementation </span></span>
-<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>Here is how to carry out these calculations using the results of <span class="in">`clubSandwich::coef_test`</span> and a bit of <span class="in">`dplyr`</span>:</span>
-<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a><span class="co"># fit results with clubSandwich standard errors</span></span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>models_robust <span class="ot">&lt;-</span> <span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">coef_test</span>(<span class="at">cluster=</span>bdf<span class="sc">$</span>schoolNR, <span class="at">vcov=</span><span class="st">"CR2"</span>)</span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a>                      ) </span>
-<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a><span class="co"># pool results with clubSandwich standard errors</span></span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="ot">&lt;-</span> </span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>  models_robust<span class="sc">$</span>analyses <span class="sc">%&gt;%</span></span>
-<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add coefficient names as a column</span></span>
-<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>coef <span class="ot">&lt;-</span> <span class="fu">row.names</span>(x)</span>
-<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a>    x</span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span></span>
-<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize by coefficient</span></span>
-<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(coef) <span class="sc">%&gt;%</span></span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">n</span>(),</span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="fu">var</span>(beta),</span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta_bar =</span> <span class="fu">mean</span>(beta),</span>
-<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_bar =</span> <span class="fu">mean</span>(SE<span class="sc">^</span><span class="dv">2</span>),</span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>    <span class="at">eta_bar =</span> <span class="fu">mean</span>(df)</span>
-<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate intermediate quantities to get df</span></span>
-<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_total =</span> V_bar <span class="sc">+</span> B <span class="sc">*</span> (m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m,</span>
-<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> ((m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m) <span class="sc">*</span> B <span class="sc">/</span> V_total,</span>
-<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_m =</span> (m <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> gamma<span class="sc">^</span><span class="dv">2</span>,</span>
-<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_obs =</span> eta_bar <span class="sc">*</span> (eta_bar <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> gamma) <span class="sc">/</span> (eta_bar <span class="sc">+</span> <span class="dv">3</span>),</span>
-<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">/</span> df_m <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> df_obs),</span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate summary quantities for output</span></span>
-<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(V_total),</span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> beta_bar <span class="sc">/</span> se,</span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_val =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">crit =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> df),</span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo95 =</span> beta_bar <span class="sc">-</span> se <span class="sc">*</span> crit,</span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi95 =</span> beta_bar <span class="sc">+</span> se <span class="sc">*</span> crit</span>
-<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
-<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, <span class="at">est =</span> beta_bar, se, t, df, p_val, lo95, hi95, gamma) <span class="sc">%&gt;%</span></span>
-<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(est<span class="sc">:</span>gamma), round, <span class="dv">3</span>)</span>
-<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include = FALSE}</span></span>
-<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a><span class="in"># check against internal calculations from pool()</span></span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="in">vcov.robust &lt;- function(object, ...) object$vcov</span></span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a><span class="in">robustify &lt;- function(x) {</span></span>
-<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a><span class="in">  V_mat &lt;- vcovCR(x, cluster = bdf$schoolNR, type = "CR2")</span></span>
-<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a><span class="in">  x$vcov &lt;- V_mat</span></span>
-<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a><span class="in">  class(x) &lt;- c("robust", class(x))</span></span>
-<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a><span class="in">  return(x)</span></span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a><span class="in">with(data = Impute_bdf,</span></span>
-<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a><span class="in">     lm(aritPOST ~ aritPRET + langPRET + sex + ses) %&gt;% </span></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="in">     robustify()</span></span>
-<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a><span class="in">     ) %&gt;%</span></span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a><span class="in">  pool() %&gt;%</span></span>
-<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a><span class="in">  summary()</span></span>
-<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a>It is instructive to compare the calculated <span class="in">`df`</span> to <span class="in">`eta_bar`</span> and <span class="in">`df_m`</span>: </span>
-<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
-<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, df, df_m, eta_bar) <span class="sc">%&gt;%</span></span>
-<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(df, df_m, eta_bar), round, <span class="dv">1</span>)</span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>Here, <span class="in">`eta_bar`</span> is the average of the complete data degrees of freedom, and it can be seen that the total degrees of freedom are somewhat less than the average complete-data degrees of freedom. This is by construction. Further <span class="in">`df_m`</span> is the conventional degrees of freedom used in multiple-imputation, which assume that the complete-data estimates are normally distributed, and in this example they are way far off. </span>
-<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a><span class="fu">### Further thoughts</span></span>
-<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a>How well does this method perform in practice? I'm not entirely sure---I'm just trusting that Barnard and Rubin's approximation is sound and would work in this setting (I mean, they're smart people!). Are there other, better approaches? Totally possible. I have done zero literature review beyond the Barnard and Rubin paper. In any case, exploring the performance of this method (and any other alternatives) seems like it would make for a very nice student project. </span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a>There's also the issue of how to do tests of multi-dimensional constraints (i.e., F-tests). The <span class="in">`clubSandwich`</span> package implements Wald-type tests for multi-dimensional constraints, using a small-sample correction that we developed (<span class="co">[</span><span class="ot">Tipton &amp; Pustejovsky, 2015</span><span class="co">](http://journals.sagepub.com/doi/abs/10.3102/1076998615606099)</span>; <span class="co">[</span><span class="ot">Pustejovsky &amp; Tipton, 2016</span><span class="co">](http://www.tandfonline.com/doi/full/10.1080/07350015.2016.1247004)</span>). But it would take some further thought to figure out how to handle multiply imputed data with this type of test... </span>
+<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Pooling clubSandwich results across multiple imputations</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2017-09-27'</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">- missing data</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">- sandwiches</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">- small-sample</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> '2024-06-08'</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>A colleague recently asked me about how to apply cluster-robust hypothesis tests and confidence intervals, as calculated with the <span class="co">[</span><span class="ot">clubSandwich package</span><span class="co">](https://CRAN.R-project.org/package=clubSandwich)</span>, when dealing with multiply imputed datasets.</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>Standard methods (i.e., Rubin's rules) for pooling estimates from multiple imputed datasets are developed under the assumption that the full-data estimates are approximately normally distributed. However, this might not be reasonable when working with test statistics based on cluster-robust variance estimators, which can be imprecise when the number of clusters is small or the design matrix of predictors is unbalanced in certain ways. <span class="co">[</span><span class="ot">Barnard and Rubin (1999)</span><span class="co">](https://doi.org/10.1093/biomet/86.4.948)</span> proposed a small-sample correction for tests and confidence intervals based on multiple imputed datasets. In this post, I'll show how to implement their technique using the output of <span class="in">`clubSandwich`</span>, with multiple imputations generated using the <span class="co">[</span><span class="ot">`mice` package</span><span class="co">](https://cran.r-project.org/package=mice)</span>. </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setup</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>To begin, let me create missingness in a dataset containing multiple clusters of observations:</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE}</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(mlmRev)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(mice)</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="in">data(bdf)</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="in">bdf &lt;- bdf %&gt;%</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="in">  select(schoolNR, IQ.verb, IQ.perf, sex, ses, langPRET, aritPRET, aritPOST) %&gt;%</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="in">    schoolNR = factor(schoolNR),</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="in">    sex = as.numeric(sex)</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="in">    ) %&gt;%</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="in">  filter(as.numeric(schoolNR) &lt;= 30) %&gt;%</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a><span class="in">  droplevels()</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="in">bdf_missing &lt;- </span></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="in">  bdf %&gt;% </span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="in">  select(-schoolNR) %&gt;%</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="in">  ampute(run = TRUE)</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="in">bdf_missing &lt;- </span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a><span class="in">  bdf_missing$amp %&gt;%</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(schoolNR = bdf$schoolNR)</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="in">summary(bdf_missing)</span></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>Now I'll use <span class="in">`mice`</span> to create 10 multiply imputed datasets:</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results = "hide"}</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="in">Impute_bdf &lt;- mice(bdf_missing, m=10, meth="norm.nob", seed=24)</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>Am I imputing while ignoring the hierarchical structure of the data? Yes, yes I am. Is this is a good way to do imputation? Probably not. But this is a quick and dirty example, so we're going to have to live with it. </span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### Model</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>Suppose that the goal of our analysis is to estimate the coefficients of the following regression model:</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>\text{aritPOST}_{ij} = \beta_0 + \beta_1 \text{aritPRET}_{ij} + \beta_2 \text{langPRET}_{ij} + \beta_3 \text{sex}_{ij} + \beta_4 \text{SES}_{ij} + e_{ij},</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>where $i$ indexes students and $j$ indexes schools, and where we allow for the possibility that errors from the same cluster are correlated in an unspecified way. With complete data, we could estimate the model by ordinary least squares and then use <span class="in">`clubSandwich`</span> to get standard errors that are robust to within-cluster dependence and heteroskedasticity. The code for this is as follows:</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(clubSandwich)</span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses, <span class="at">data =</span> bdf)</span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a><span class="fu">coef_test</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">vcov =</span> <span class="st">"CR2"</span>)</span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>If cluster dependence were no concern, we could simply use the model-based standard errors and test statistics. The <span class="in">`mice`</span> package provides functions that will fit the model to each imputed dataset and then combine them by Rubin's rules. The code is simply:</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>     <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses)</span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>     ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pool</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>However, this approach ignores the possibility of correlation in the errors of units in the same cluster, which is clearly a concern in this dataset:</span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a><span class="co"># ratio of CRVE to conventional variance estimates</span></span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">vcovCR</span>(lm_full, <span class="at">cluster =</span> bdf<span class="sc">$</span>schoolNR, <span class="at">type =</span> <span class="st">"CR2"</span>)) <span class="sc">/</span> </span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(<span class="fu">vcov</span>(lm_full))</span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>So we need a way to pool results based on the cluster-robust variance estimators, while also accounting for the relatively small number of clusters in this dataset. </span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### Barnard &amp; Rubin (1999)</span></span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Barnard and Rubin (1999)</span><span class="co">](https://doi.org/10.1093/biomet/86.4.948)</span> proposed a small-sample correction for tests and confidence intervals based on multiple imputed datasets that seems to work in this context. Rather than using large-sample normal approximations for inference, they derive an approximate degrees-of-freedom that combines uncertainty in the standard errors calculated from each imputed dataset with between-imputation uncertainty. The method is as follows. </span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>Suppose that we have $m$ imputed datasets. Let $\hat\beta_{(j)}$ be the estimated regression coefficient from imputed dataset $j$, with (in this case cluster-robust) sampling variance estimate $V_{(j)}$. Further, let $\eta_{(j)}$ be the degrees of freedom corresponding to $V_{(j)}$. To combine these estimates, calculate the averages across multiply imputed datasets:</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>\bar\beta = \frac{1}{m}\sum_{j=1}^m \hat\beta_{(j)}, \qquad \bar{V} = \frac{1}{m}\sum_{j=1}^m V_{(j)}, \qquad \bar\eta = \frac{1}{m}\sum_{j=1}^m \eta_{(j)}.</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>Also calculate the between-imputation variance </span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>B = \frac{1}{m - 1} \sum_{j=1}^m \left(\hat\beta_{(j)} - \bar\beta\right)^2</span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a>And then combine the between- and within- variance estimates using Rubin's rules:</span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a>V_{total} = \bar{V} + \frac{m + 1}{m} B.</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>The degrees of freedom associated with $V_{total}$ modify the estimated complete-data degrees of freedom $\bar\eta$ using quantities that depend on the fraction of missing information in a coefficient. The fraction of missing information is given by</span>
+<span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a>\hat\gamma_m = \frac{(m+1)B}{m V_{total}}</span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a>The degrees of freedom are then given by</span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>\nu_{total} = \left(\frac{1}{\nu_m} + \frac{1}{\nu_{obs}}\right)^{-1},</span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a>\nu_m = \frac{(m - 1)}{\hat\gamma_m^2}, \quad \text{and} \quad \nu_{obs} = \frac{\bar\eta (\bar\eta + 1) (1 - \hat\gamma)}{\bar\eta + 3}.</span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>Hypothesis tests and confidence intervals are based on the approximation</span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>\frac{\bar\beta - \beta_0}{\sqrt{V_{total}}} \ \stackrel{\cdot}{\sim} \ t(\nu_{total})</span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Implementation </span></span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a>Here is how to carry out these calculations using the results of <span class="in">`clubSandwich::coef_test`</span> and a bit of <span class="in">`dplyr`</span>:</span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="co"># fit results with clubSandwich standard errors</span></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a>models_robust <span class="ot">&lt;-</span> <span class="fu">with</span>(<span class="at">data =</span> Impute_bdf, </span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">lm</span>(aritPOST <span class="sc">~</span> aritPRET <span class="sc">+</span> langPRET <span class="sc">+</span> sex <span class="sc">+</span> ses) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">coef_test</span>(<span class="at">cluster=</span>bdf<span class="sc">$</span>schoolNR, <span class="at">vcov=</span><span class="st">"CR2"</span>)</span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a>                      ) </span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="co"># pool results with clubSandwich standard errors</span></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="ot">&lt;-</span> </span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>  models_robust<span class="sc">$</span>analyses <span class="sc">%&gt;%</span></span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add coefficient names as a column</span></span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lapply</span>(<span class="cf">function</span>(x) {</span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>coef <span class="ot">&lt;-</span> <span class="fu">row.names</span>(x)</span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>    x</span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a>  }) <span class="sc">%&gt;%</span></span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a>  <span class="co"># summarize by coefficient</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(coef) <span class="sc">%&gt;%</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>    <span class="at">m =</span> <span class="fu">n</span>(),</span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>    <span class="at">B =</span> <span class="fu">var</span>(beta),</span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>    <span class="at">beta_bar =</span> <span class="fu">mean</span>(beta),</span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_bar =</span> <span class="fu">mean</span>(SE<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a>    <span class="at">eta_bar =</span> <span class="fu">mean</span>(df_Satt)</span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate intermediate quantities to get df</span></span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_total =</span> V_bar <span class="sc">+</span> B <span class="sc">*</span> (m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m,</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>    <span class="at">gamma =</span> ((m <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> m) <span class="sc">*</span> B <span class="sc">/</span> V_total,</span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_m =</span> (m <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> gamma<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>    <span class="at">df_obs =</span> eta_bar <span class="sc">*</span> (eta_bar <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> gamma) <span class="sc">/</span> (eta_bar <span class="sc">+</span> <span class="dv">3</span>),</span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">df =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">/</span> df_m <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> df_obs),</span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate summary quantities for output</span></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(V_total),</span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a>    <span class="at">t =</span> beta_bar <span class="sc">/</span> se,</span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_val =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a>    <span class="at">crit =</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> df),</span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a>    <span class="at">lo95 =</span> beta_bar <span class="sc">-</span> se <span class="sc">*</span> crit,</span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a>    <span class="at">hi95 =</span> beta_bar <span class="sc">+</span> se <span class="sc">*</span> crit</span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, <span class="at">est =</span> beta_bar, se, t, df, p_val, lo95, hi95, gamma) <span class="sc">%&gt;%</span></span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(est<span class="sc">:</span>gamma), round, <span class="dv">3</span>)</span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include = FALSE}</span></span>
+<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a><span class="in"># check against internal calculations from pool()</span></span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a><span class="in">vcov.robust &lt;- function(object, ...) object$vcov</span></span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a><span class="in">robustify &lt;- function(x) {</span></span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a><span class="in">  V_mat &lt;- vcovCR(x, cluster = bdf$schoolNR, type = "CR2")</span></span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a><span class="in">  x$vcov &lt;- V_mat</span></span>
+<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a><span class="in">  class(x) &lt;- c("robust", class(x))</span></span>
+<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a><span class="in">  return(x)</span></span>
+<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a><span class="in">with(data = Impute_bdf,</span></span>
+<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a><span class="in">     lm(aritPOST ~ aritPRET + langPRET + sex + ses) %&gt;% </span></span>
+<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a><span class="in">     robustify()</span></span>
+<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a><span class="in">     ) %&gt;%</span></span>
+<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a><span class="in">  pool() %&gt;%</span></span>
+<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a><span class="in">  summary()</span></span>
+<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-224"><a href="#cb14-224" aria-hidden="true" tabindex="-1"></a>It is instructive to compare the calculated <span class="in">`df`</span> to <span class="in">`eta_bar`</span> and <span class="in">`df_m`</span>: </span>
+<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a>robust_pooled <span class="sc">%&gt;%</span></span>
+<span id="cb14-229"><a href="#cb14-229" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(coef, df, df_m, eta_bar) <span class="sc">%&gt;%</span></span>
+<span id="cb14-230"><a href="#cb14-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(df, df_m, eta_bar), round, <span class="dv">1</span>)</span>
+<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a>Here, <span class="in">`eta_bar`</span> is the average of the complete data degrees of freedom, and it can be seen that the total degrees of freedom are somewhat less than the average complete-data degrees of freedom. This is by construction. Further <span class="in">`df_m`</span> is the conventional degrees of freedom used in multiple-imputation, which assume that the complete-data estimates are normally distributed, and in this example they are way far off. </span>
+<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### Further thoughts</span></span>
+<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a>How well does this method perform in practice? I'm not entirely sure---I'm just trusting that Barnard and Rubin's approximation is sound and would work in this setting (I mean, they're smart people!). Are there other, better approaches? Totally possible. I have done zero literature review beyond the Barnard and Rubin paper. In any case, exploring the performance of this method (and any other alternatives) seems like it would make for a very nice student project. </span>
+<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a>There's also the issue of how to do tests of multi-dimensional constraints (i.e., F-tests). The <span class="in">`clubSandwich`</span> package implements Wald-type tests for multi-dimensional constraints, using a small-sample correction that we developed (<span class="co">[</span><span class="ot">Tipton &amp; Pustejovsky, 2015</span><span class="co">](http://journals.sagepub.com/doi/abs/10.3102/1076998615606099)</span>; <span class="co">[</span><span class="ot">Pustejovsky &amp; Tipton, 2016</span><span class="co">](http://www.tandfonline.com/doi/full/10.1080/07350015.2016.1247004)</span>). But it would take some further thought to figure out how to handle multiply imputed data with this type of test... </span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
