@@ -1,6 +1,5 @@
 ---
 title: Sometimes, aggregating effect sizes is fine
-
 date: '2019-07-02'
 bibliography: "../meta-references.bib"
 csl: "../apa.csl"
@@ -10,7 +9,8 @@ categories:
 - meta-analysis
 - dependent effect sizes
 code-tools: true
-
+toc: true
+toc-title: Contents
 ---
 
 In meta-analyses of psychology, education, and other social science research, it is very common that some of the included studies report more than one relevant effect size. 
@@ -22,7 +22,7 @@ Because effect size estimates from the same study are correlated, it's not usual
 Instead, the analyst needs to apply methods that take into account the dependencies among estimates coming from the same study. 
 It used to be common to use ad hoc approaches for handling dependence, such as averaging the estimates together or selecting one estimate per study and then using univariate methods [cf. @Becker2000multivariate]. 
 More sophisticated, multivariate meta-analysis (MVMA) models that directly account for correlations among the effect size estimates had been developed [@Kalaian1996multivariate] but were challenging to implement and so rarely used (at least, that's my impression). 
-More recently, techniques such as multi-level meta-analysis [MLMA; @VandenNoortgate2013threelevel; @VandenNoortgate2015metaanalysis] and robust variance estimation [RVE; @Hedges2010robust] have emerged, which account for dependencies while using all available effect size estimates and still being feasible to implement. 
+More recently, techniques such as multi-level meta-analysis [MLMA,  @VandenNoortgate2013threelevel; @VandenNoortgate2015metaanalysis] and robust variance estimation [RVE, @Hedges2010robust] have emerged, which account for dependencies while using all available effect size estimates and still being feasible to implement. 
 These new techniques of MLMA and RVE are starting to be more widely adopted in practice, and it is not implausible that they will become the standard approach in psychological and educational meta-analysis within a few years. 
 
 Given the extent of interest in MLMA and RVE, one might wonder: are the older ad hoc approaches _ever_ reasonable or appropriate? 
@@ -109,7 +109,7 @@ corrdat <-
 
 We can then fit this model using a multi-variate meta-regression in metafor. 
 
-In order to estimate the model, we'll first need to create a variance-covariance matrix for the effect size estimates in each study, which can be accomplished using `impute_covariance_matrix` from `clubSandwich` ([further details here](/imputing-covariance-matrices-for-multi-variate-meta-analysis/)). I'll assume a correlation of 0.6 between pairs of effect sizes within a given study:
+In order to estimate the model, we'll first need to create a variance-covariance matrix for the effect size estimates in each study, which can be accomplished using `impute_covariance_matrix` from `clubSandwich` ([further details here](/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/)). I'll assume a correlation of 0.6 between pairs of effect sizes within a given study:
 ```{r, warning = FALSE, message = FALSE}
 library(clubSandwich)
 library(metafor)
@@ -142,7 +142,7 @@ corrdat_agg <-
     males = mean(males),
     college = mean(college)
   ) %>%
-  unnest()
+  unnest(es)
 
 head(corrdat_agg)
 ```
@@ -223,13 +223,11 @@ The $B$ term takes a little more work.
 From [the Sherman-Morrison identity](https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula), we have that: 
 $$
 \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} = \mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1},
-(\#eq:Sherman)
-$$
+$$ {#eq-Sherman}
 by which it follows that
 $$
 \mathbf{1}_k'\left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1}\mathbf{1}_k = \frac{1}{\tau^2 + V_k}.
-(\#eq:inversevariance)
-$$
+$$ {#eq-inversevariance}
 Now, rearrange the $B$ term to get
 $$
 \begin{aligned}
@@ -245,7 +243,7 @@ B_2 &= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left(\tau^2\mathbf{1
 B_3 &= \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right) \mathbf{1}_k' \left(\tau^2\mathbf{1}_k\mathbf{1}_k' + \mathbf{S}_k\right)^{-1} \mathbf{1}_k \left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)
 \end{aligned}
 $$
-Applying \@ref(eq:Sherman) to $B_1$,
+Applying @eq-Sherman to $B_1$,
 $$
 \begin{aligned}
 B_1 &= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left[\mathbf{S}_k^{-1} - \mathbf{S}_k^{-1} \mathbf{1}_k \left(\frac{1}{\tau^2} + \frac{1}{V_k}\right)^{-1} \mathbf{1}_k'\mathbf{S}_k^{-1}\right] \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right) \\ 
@@ -261,7 +259,7 @@ B_2 &= \left(\mathbf{T}_k - \bar{T}_k \mathbf{1}_k\right)' \left[\mathbf{S}_k^{-
 &= 0.
 \end{aligned}
 $$
-Finally, the third term simplifies using \@ref(eq:inversevariance):
+Finally, the third term simplifies using @eq-inversevariance:
 $$
 B_3 = \frac{\left(\bar{T}_k - \mathbf{x}_k \boldsymbol\beta\right)^2}{\tau^2 + V_k}.
 $$
@@ -301,7 +299,7 @@ R^{MV}(\tau^2) &= \log \left|\sum_{k=1}^k \mathbf{x}_k'\mathbf{1}_k'\left(\tau^2
 &= R^U(\tau^2)
 \end{aligned}
 $$
-because of \@ref(eq:inversevariance). Thus, the univariate and multivariate models also have the same RML estimators.
+because of @eq-inversevariance. Thus, the univariate and multivariate models also have the same RML estimators.
 
 # So what?
 

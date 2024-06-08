@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">June 24, 2024</p>
+      </div>
+    </div>
       
     </div>
     
@@ -224,7 +230,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>{{% alert warning %}} <strong>2020-05-03</strong> This post describes an implementation of code folding for an older version of the Academic Theme. It does not work with Academic 4.+. See <a href="../..\code-folding-update/">my updated instructions</a> to get it working with newer versions of Academic. {{% /alert %}}</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>2024-06-24</strong> I have ported my website to Quarto, which has native support for code folding. I’m leaving this post up despite the fact that the functionality is no longer relevant for this website.</p>
+<p><strong>2020-05-03</strong> This post describes an implementation of code folding for an older version of the Academic Theme. It does not work with Academic 4.+. See <a href="../..\posts/code-folding-update/">my updated instructions</a> to get it working with newer versions of Academic.</p>
+</div>
+</div>
 <p>Rmarkdown documents now have a very nifty <a href="https://bookdown.org/yihui/rmarkdown/html-document.html#code-folding">code folding option</a>, which allows the reader of a compiled html document to toggle whether to view or hide code chunks. However, the feature is <a href="https://github.com/rstudio/blogdown/issues/214">not supported in blogdown</a>, the popular Rmarkdown-based website/blog creation package. I recently ran across an implementation of codefolding for blogdown, developed by <a href="https://statnmap.com/2017-11-13-enable-code-folding-in-bookdown-and-blogdown/">Sébastien Rochette</a>. I have been putzing around, trying to get it to work with my blog, which uses the Hugo <a href="https://sourcethemes.com/academic/">Academic theme</a>—alas, to no avail. To my amazement and good fortune, Sébastien swooped in with <a href="https://github.com/jepusto/jepusto.com/pull/9">a pull request</a> that cleaned up my blundering attempts at implementation. Now all of <a href="../..\package-downloads">my posts</a> have <a href="../..\handmade-clubSandwich">working</a> <a href="../..\effective-sample-size-aggregation">code folding</a>!</p>
 <p><img src="https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif" class="img-fluid"></p>
 <p>In this post, I’ll lay out how to make Sébastien’s code folding feature work with the Academic theme. To be totally clear, all of the hard bits of this were <a href="https://statnmap.com/2017-11-13-enable-code-folding-in-bookdown-and-blogdown/">solved by Sébastien</a>. I don’t know javascript to save my life, and my only contribution is to write down the instructions in what I hope is a coherent fashion, so that you too can soon be doing the happy code folding dance if you so desire.</p>
@@ -232,12 +251,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1" class="anchored" data-anchor-id="code-folding-with-the-academic-theme"><span class="header-section-number">1</span> Code folding with the Academic theme</h2>
 <ol type="1">
 <li><p>You’ll first need to pull in some javascript assets. Create a folder called <code>js</code> under the <code>\static</code> directory of your site. Add the files <code>transition.js</code>, <code>collapse.js</code>, and <code>dropdown.js</code> from <a href="https://github.com/twbs/bootstrap/tree/v3.3.7/js">bootstrap</a>.</p></li>
-<li><p>Also add Sébastien’s codefolding javascript, <a href="https://github.com/jepusto/jepusto.com/blob/master/static/js/codefolding.js"><code>codefolding.js</code></a>.</p></li>
-<li><p>Create a folder called <code>css</code> under the <code>\static</code> directory of your site. Add the file <a href="https://github.com/jepusto/jepusto.com/blob/master/static/css/codefolding.css"><code>codefolding.css</code></a>. This is the css for the buttons that will appear on your posts.</p></li>
-<li><p>Add the file <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/article_footer_js.html"><code>article_footer_js.html</code></a> to the <code>\layouts\partials</code> directory of your site.</p></li>
-<li><p>Add the file <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/header_maincodefolding.html"><code>header_maincodefolding.html</code></a> to the <code>\layouts\partials</code> directory of your site.</p></li>
-<li><p>If you do not already have a file <code>head_custom.html</code> in the <code>\layouts\partials</code> directory, create it.. Add the following lines of code to the file:</p>
-<p>::: {.cell}</p>
+<li><p>Also add Sébastien’s codefolding javascript, <a href="../..\files/_codefolding/codefolding.js"><code>codefolding.js</code></a>.</p></li>
+<li><p>Create a folder called <code>css</code> under the <code>\static</code> directory of your site. Add the file <a href="../..\files/_codefolding/codefolding.css"><code>codefolding.css</code></a>. This is the css for the buttons that will appear on your posts.</p></li>
+<li><p>Add the file <a href="../..\files/_codefolding/article_footer_js.html"><code>article_footer_js.html</code></a> to the <code>\layouts\partials</code> directory of your site.</p></li>
+<li><p>Add the file <a href="../..\files/_codefolding/header_maincodefolding.html"><code>header_maincodefolding.html</code></a> to the <code>\layouts\partials</code> directory of your site.</p></li>
+<li><p>If you do not already have a file <code>head_custom.html</code> in the <code>\layouts\partials</code> directory, create it. Add the following lines of code to the file:</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{{ <span class="cf">if</span> not <span class="op">.</span><span class="at">Site</span><span class="op">.</span><span class="at">Params</span><span class="op">.</span><span class="at">disable_codefolding</span> }}</span>
@@ -246,24 +265,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>script src<span class="op">=</span><span class="st">"{{ "</span>js<span class="op">/</span>transition<span class="op">.</span><span class="at">js</span><span class="st">" | relURL }}"</span><span class="op">&gt;&lt;/</span>script<span class="op">&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>{{ end }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
-<li><p>If you do not already have a file <code>footer.html</code> in the <code>\layouts\partials</code> directory, copy it over from <code>\themes\hugo-academic\layouts\partials</code>. Add the following lines of code to it, somewhere towards the bottom (see <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/partials/footer.html">my version</a> for example):</p>
-<p>::: {.cell}</p>
+</div></li>
+<li><p>If you do not already have a file <code>footer.html</code> in the <code>\layouts\partials</code> directory, copy it over from <code>\themes\hugo-academic\layouts\partials</code>. Add the following lines of code to it, somewhere towards the bottom:</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> Init code folding <span class="op">--&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>{{ partial <span class="st">"article_footer_js.html"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
-<li><p>If you do not already have the file <code>single.html</code> in the directory <code>\layouts\_default</code>, copy it over from <code>\themes\hugo-academic\layouts\_default</code>. Add the following line of code at an appropriate point so that your posts will include the “Show/hide code” button (I put it after the title, before the meta-data; <a href="https://github.com/jepusto/jepusto.com/blob/master/layouts/_default/single.html">see here</a>):</p>
-<p>::: {.cell}</p>
+</div></li>
+<li><p>If you do not already have the file <code>single.html</code> in the directory <code>\layouts\_default</code>, copy it over from <code>\themes\hugo-academic\layouts\_default</code>. Add the following line of code at an appropriate point so that your posts will include the “Show/hide code” button (I put it after the title, before the meta-data):</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> {{ partial <span class="st">"header_maincodefolding"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
+</div></li>
 <li><p>Modify your <code>config.toml</code> file (in the base directory of your site) to include the following lines:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set to true to disable code folding</span></span>
@@ -273,14 +292,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set to true to exclude the "Show/hide all" button</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>codefolding_nobutton <span class="ot">=</span> false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p>
+</div>
 <p>Also edit the <code>custom_css</code> parameter so that the <code>codefolding.css</code> file will get loaded:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>custom_css <span class="ot">=</span> [<span class="st">"codefolding.css"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
+</div></li>
 </ol>
 </section>
 <section id="using-the-codefolding-parameters" class="level2" data-number="2">

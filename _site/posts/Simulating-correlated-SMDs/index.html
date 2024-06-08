@@ -142,7 +142,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -231,7 +231,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -249,7 +249,28 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#simulating-individual-participant-level-data" id="toc-simulating-individual-participant-level-data" class="nav-link active" data-scroll-target="#simulating-individual-participant-level-data">Simulating individual participant-level data</a>
+  <ul class="collapse">
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul></li>
+  <li><a href="#simulating-summary-statistics" id="toc-simulating-summary-statistics" class="nav-link" data-scroll-target="#simulating-summary-statistics">Simulating summary statistics</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
+  </ul></li>
+  <li><a href="#which-approach-is-better" id="toc-which-approach-is-better" class="nav-link" data-scroll-target="#which-approach-is-better">Which approach is better?</a></li>
+  <li><a href="#simulating-full-meta-analyses" id="toc-simulating-full-meta-analyses" class="nav-link" data-scroll-target="#simulating-full-meta-analyses">Simulating full meta-analyses</a>
+  <ul class="collapse">
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2">Exercises</a></li>
+  <li><a href="#a-challenge" id="toc-a-challenge" class="nav-link" data-scroll-target="#a-challenge">A challenge</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -257,7 +278,7 @@ window.Quarto = {
 
 
 
-<p>As I’ve discussed in <a href="../..\Sometimes-aggregating-effect-sizes-is-fine">previous posts</a>, meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. I’m interested in methods for meta-analyzing and meta-regressing effect sizes from data structures like this, and studying this sort of thing often entails conducting Monte Carlo simulations. Monte Carlo simulations involve generating artificial data—in this case, a set of studies, each of which has one or more dependent effect size estimates—that follows a certain distributional model, applying different analytic methods to the artificial data, and then repeating the process a bunch of times. Because we know the true parameters that govern the data-generating process, we can evaluate the performance of the analytic methods in terms of bias, accuracy, hypothesis test calibration and power, confidence interval coverage, and the like.</p>
+<p>As I’ve discussed in <a href="../..\posts/Sometimes-aggregating-effect-sizes-is-fine">previous posts</a>, meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. I’m interested in methods for meta-analyzing and meta-regressing effect sizes from data structures like this, and studying this sort of thing often entails conducting Monte Carlo simulations. Monte Carlo simulations involve generating artificial data—in this case, a set of studies, each of which has one or more dependent effect size estimates—that follows a certain distributional model, applying different analytic methods to the artificial data, and then repeating the process a bunch of times. Because we know the true parameters that govern the data-generating process, we can evaluate the performance of the analytic methods in terms of bias, accuracy, hypothesis test calibration and power, confidence interval coverage, and the like.</p>
 <p>In this post, I’ll discuss two alternative methods to simulate meta-analytic datasets that include studies with multiple, dependent effect size estimates: simulating individual participant-level data or simulating summary statistics. I’ll focus on the case of the standardized mean difference (SMD) because it is so common in meta-analyses of intervention studies. For simplicity, I’ll assume that the effect sizes all come from simple, two-group comparisons (without any covariate adjustment or anything like that) and that the individual observations are multi-variate normally distributed within each group. Our goal will be to simulate a set of <span class="math inline">\(K\)</span> studies, where study <span class="math inline">\(k\)</span> is based on measuring <span class="math inline">\(J_k\)</span> outcomes on a sample of <span class="math inline">\(N_k\)</span> participants, all for <span class="math inline">\(k = 1,...,K\)</span>. Let <span class="math inline">\(\boldsymbol\delta_k = (\delta_{1k} \cdots \delta_{J_k k})'\)</span> be the <span class="math inline">\(J_k \times 1\)</span> vector of true standardized mean differences for study <span class="math inline">\(k\)</span>. I’ll assume that we know these true effect size parameters for all <span class="math inline">\(K\)</span> studies, so that I can avoid committing to any particular form of random effects model.</p>
 <section id="simulating-individual-participant-level-data" class="level1">
 <h1>Simulating individual participant-level data</h1>
@@ -323,23 +344,20 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">4</span>, <span class="at">mean =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: mvtnorm</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         ES        SE  N
-1 0.4013354 0.3195612 40
-2 0.3678654 0.3190307 40
-3 0.3548671 0.3188369 40
-4 0.2310348 0.3173363 40</code></pre>
+<pre><code>          ES        SE  N
+1 0.20636715 0.3171125 40
+2 0.00944881 0.3162296 40
+3 0.05834946 0.3162986 40
+4 0.27005202 0.3177414 40</code></pre>
 </div>
 </div>
 <p>Or if you’d rather specify the full <span class="math inline">\(\Psi_k\)</span> matrix yourself:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Psi_k <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">+</span> <span class="fu">diag</span>(<span class="fl">0.4</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Psi_k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Psi_k <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">+</span> <span class="fu">diag</span>(<span class="fl">0.4</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Psi_k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
@@ -350,14 +368,14 @@ window.Quarto = {
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> Psi_k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> Psi_k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>           ES        SE  N
-1  0.11468537 0.3165013 40
-2 -0.41626629 0.3198124 40
-3 -0.05569958 0.3162923 40
-4 -0.08697579 0.3163851 40</code></pre>
+<pre><code>         ES        SE  N
+1 0.7846964 0.3287886 40
+2 1.0052282 0.3365945 40
+3 1.0160157 0.3370204 40
+4 0.8310726 0.3302846 40</code></pre>
 </div>
 </div>
 <section id="exercises" class="level2">
@@ -366,7 +384,7 @@ window.Quarto = {
 <ol type="1">
 <li><p>Add an argument to the function, <code>Hedges_g = TRUE</code>, which controls where the simulated effect size is Hedges’ <span class="math inline">\(g\)</span> or Cohen’s <span class="math inline">\(d\)</span>. If it is Hedges’ g, make sure that the standard error is corrected too.</p></li>
 <li><p>Add an argument to the function, <code>p_val = TRUE</code>, which allows the user to control whether or not to return <span class="math inline">\(p\)</span>-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the <em>raw</em> mean differences between groups, rather than a test of the effect size <span class="math inline">\(\delta_{jk} = 0\)</span>.</p></li>
-<li><p>Add an argument to the function, <code>corr_mat = FALSE</code>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <a href="../..\correlations-between-SMDs">here</a> for the relevant formulas.</p></li>
+<li><p>Add an argument to the function, <code>corr_mat = FALSE</code>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <a href="../..\posts/correlations-between-SMDs/">here</a> for the relevant formulas.</p></li>
 </ol>
 </section>
 </section>
@@ -377,16 +395,16 @@ window.Quarto = {
 \]</span> and <span class="math display">\[
 \left(\mathbf{\bar{y}}_{Tk} - \mathbf{\bar{y}}_{Ck}\right) \sim N\left(\boldsymbol\delta_k, \frac{4}{N_k} \boldsymbol\Psi_k\right).
 \]</span> This shows how we could directly simulate the numerator of the standardized mean difference.</p>
-<p>A <a href="../..\distribution-of-sample-variances">further bit of distribution theory</a> says that the pooled sample covariance matrix follows a multiple of a <a href="https://en.wikipedia.org/wiki/Wishart_distribution">Wishart distribution</a> with <span class="math inline">\(N_k - 2\)</span> degrees of freedom and scale matrix <span class="math inline">\(\Psi_k\)</span>: <span class="math display">\[
+<p>A <a href="../..\posts/distribution-of-sample-variances/">further bit of distribution theory</a> says that the pooled sample covariance matrix follows a multiple of a <a href="https://en.wikipedia.org/wiki/Wishart_distribution">Wishart distribution</a> with <span class="math inline">\(N_k - 2\)</span> degrees of freedom and scale matrix <span class="math inline">\(\Psi_k\)</span>: <span class="math display">\[
 (N_k - 2) \mathbf{S}_k \sim Wishart\left(N_k - 2, \Psi_k \right).
 \]</span> Thus, to simulate the denominators of the SMD estimates, we can simulate a single Wishart matrix, pull out the diagonal entries, divide by <span class="math inline">\(N_k - 2\)</span>, and take the square root. In all, we draw a single <span class="math inline">\(J_k \times 1\)</span> observation from a multi-variate normal distribution and a single <span class="math inline">\(J_k \times J_k\)</span> observation from a Wishart distribution. In contrast, the raw data approach requires simulating <span class="math inline">\(N_k\)</span> observations from a multi-variate normal distribution, then calculating <span class="math inline">\(4 J_k\)</span> summary statistics (M and SD for each group on each outcome).</p>
 <section id="exercises-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercises-1">Exercises</h2>
 <p>Once again, I’ll leave it to you, dear reader, to do the fun programming bits:</p>
 <ol start="4" type="1">
-<li>Create a modified version of the function <code>r_SMDs_raw</code> that simulates summary statistics instead of raw data (Call it <code>r_SMDs_stats</code>).</li>
-<li>Use the <code>microbenchmark</code> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</li>
-<li>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input.</li>
+<li><p>Create a modified version of the function <code>r_SMDs_raw</code> that simulates summary statistics instead of raw data (Call it <code>r_SMDs_stats</code>).</p></li>
+<li><p>Use the <code>microbenchmark</code> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</p></li>
+<li><p>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input.</p></li>
 </ol>
 </section>
 </section>
@@ -398,7 +416,7 @@ window.Quarto = {
 </section>
 <section id="simulating-full-meta-analyses" class="level1">
 <h1>Simulating full meta-analyses</h1>
-<p>So far we’ve got a data-generating function that simulates a single study’s worth of effect size estimates. To study meta-analytic methods, we’ll need to build out the function to simulate multiple studies. To do so, I think it’s useful to use the technique of <a href="https://r4ds.had.co.nz/iteration.html">mapping</a>, as implemented in the <code>purrr</code> package’s <code>map_*</code> functions. The idea here is to first generate a “menu” of study-specific parameters for each of <span class="math inline">\(K\)</span> studies, then apply the <code>r_SMDs</code> function to each parameter set.</p>
+<p>So far we’ve got a data-generating function that simulates a single study’s worth of effect size estimates. To study meta-analytic methods, we’ll need to build out the function to simulate multiple studies. To do so, I think it’s useful to use the technique of <a href="https://r4ds.hadley.nz/iteration.html">mapping</a>, as implemented in the <code>purrr</code> package’s <code>map_*</code> functions. The idea here is to first generate a “menu” of study-specific parameters for each of <span class="math inline">\(K\)</span> studies, then apply the <code>r_SMDs</code> function to each parameter set.</p>
 <p>Let’s consider how to do this for a simple random effects model, where the true effect size parameter is constant within each study (i.e., <span class="math inline">\(\boldsymbol\delta_k = (\delta_k \cdots \delta_k)'\)</span>), and in a model without covariates. We’ll need to generate a true effect for each study, along with a sample size, an outcome dimension, and a correlation between outcomes. For the true effects, I’ll assume that <span class="math display">\[
 \delta_k \sim N(\mu, \tau^2),
 \]</span> <span class="math display">\[
@@ -412,106 +430,104 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>J_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>N_mean <span class="ot">&lt;-</span> <span class="dv">45</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">&lt;-</span> <span class="dv">39</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>study_data <span class="ot">&lt;-</span> </span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>study_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>J_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>N_mean <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">&lt;-</span> <span class="dv">39</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>study_data <span class="ot">&lt;-</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>study_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      delta J  N       Psi
-1 0.1894457 7 32 0.7549766
-2 0.1964491 4 36 0.6275585
-3 0.2161156 4 48 0.5009596
-4 0.2206781 7 56 0.5841191
-5 0.1831423 5 46 0.7166385
-6 0.2775416 7 48 0.5401121</code></pre>
+1 0.1905403 5 48 0.6049361
+2 0.2134220 6 44 0.5660675
+3 0.2253686 4 30 0.6636925
+4 0.2058220 5 50 0.6208646
+5 0.1491957 3 50 0.5964943
+6 0.1322353 9 38 0.7402750</code></pre>
 </div>
 </div>
 <p>Once we have the “menu” of study-level characteristics, it’s just a matter of mapping the parameters to the data-generating function. One way to do this is with <code>pmap_df</code>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>meta_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>meta_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   study          ES        SE  N
-1      1  0.47285752 0.3587849 32
-2      1  0.65783522 0.3636103 32
-3      1  0.57657128 0.3613040 32
-4      1  0.68218028 0.3643572 32
-5      1  0.46669617 0.3586504 32
-6      1  0.70849614 0.3651933 32
-7      1  0.84616428 0.3700449 32
-8      2 -0.08674375 0.3334993 36
-9      2  0.31344971 0.3354936 36
-10     2  0.04778159 0.3333837 36
-11     2  0.11810127 0.3336409 36
-12     3 -0.17311493 0.2892388 48
-13     3  0.02853218 0.2886905 48
-14     3  0.04031596 0.2887057 48
-15     3 -0.07183585 0.2887723 48
-16     4  0.51047582 0.2717377 56
-17     4  0.58239287 0.2730735 56
-18     4  0.64002355 0.2742653 56
-19     4  0.26974012 0.2685187 56
-20     4  0.39571123 0.2699601 56
-21     4  0.41572636 0.2702385 56
-22     4  0.62513604 0.2739472 56
-23     5  0.05925185 0.2949516 46
-24     5  0.35510948 0.2973037 46
-25     5  0.09237341 0.2950483 46
-26     5  0.17188695 0.2954526 46
-27     5  0.34924860 0.2972248 46
-28     6  0.44744536 0.2924201 48
-29     6  0.49049630 0.2931696 48
-30     6  0.63335706 0.2961310 48
-31     6  0.61458119 0.2957007 48
-32     6  0.75247981 0.2991454 48
-33     6  0.77571983 0.2997899 48
-34     6  0.81747976 0.3009936 48</code></pre>
+1      1  0.06517315 0.2887551 48
+2      1  0.34168631 0.2908648 48
+3      1  0.12496023 0.2889690 48
+4      1 -0.04072462 0.2887064 48
+5      1  0.09419262 0.2888421 48
+6      2 -0.36639431 0.3041500 44
+7      2  0.38766554 0.3044638 44
+8      2 -0.61520751 0.3088929 44
+9      2 -0.19841569 0.3022876 44
+10     2 -0.03526328 0.3015359 44
+11     2 -0.28365479 0.3030956 44
+12     3  0.36311779 0.3683584 30
+13     3  0.34736028 0.3680869 30
+14     3  0.16983695 0.3658530 30
+15     3  0.15218953 0.3657143 30
+16     4 -0.27633892 0.2842454 50
+17     4  0.17355790 0.2833968 50
+18     4  0.07927586 0.2829584 50
+19     4  0.05850698 0.2829057 50
+20     4  0.31610918 0.2846768 50
+21     5  0.50796626 0.2875549 50
+22     5  0.24858625 0.2839783 50
+23     5  0.32865767 0.2848248 50
+24     6  0.15205069 0.3249373 38
+25     6  0.04637057 0.3244889 38
+26     6  0.23761521 0.3256491 38
+27     6  0.32584452 0.3267075 38
+28     6  0.18745682 0.3251941 38
+29     6  0.05995579 0.3245198 38
+30     6  0.42337775 0.3282571 38
+31     6  0.45489411 0.3288422 38
+32     6  0.23466333 0.3256194 38</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(meta_data<span class="sc">$</span>study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(meta_data<span class="sc">$</span>study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 1 2 3 4 5 6 
-7 4 4 7 5 7 </code></pre>
+5 6 4 5 3 9 </code></pre>
 </div>
 </div>
 <p>Putting it all together into a function, we have</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r_meta <span class="ot">&lt;-</span> <span class="cf">function</span>(K, mu, tau, J_mean, N_mean, rho, nu) {</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(purrr)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  study_data <span class="ot">&lt;-</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>r_meta <span class="ot">&lt;-</span> <span class="cf">function</span>(K, mu, tau, J_mean, N_mean, rho, nu) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(purrr)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  study_data <span class="ot">&lt;-</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="exercises-2" class="level2">
@@ -523,10 +539,12 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <p>::: {.cell}</p>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">r_meta</span>(<span class="dv">100000</span>, <span class="at">mu =</span> <span class="fl">0.2</span>, <span class="at">tau =</span> <span class="fl">0.05</span>, </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">J_mean =</span> <span class="dv">5</span>, <span class="at">N_mean =</span> <span class="dv">40</span>, </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">rho =</span> <span class="fl">0.6</span>, <span class="at">nu =</span> <span class="dv">39</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">r_meta</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">100000</span>, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fl">0.2</span>, <span class="at">tau =</span> <span class="fl">0.05</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">J_mean =</span> <span class="dv">5</span>, <span class="at">N_mean =</span> <span class="dv">40</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> <span class="fl">0.6</span>, <span class="at">nu =</span> <span class="dv">39</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <p>:::</p>
 <p>Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</p></li>
@@ -1024,246 +1042,255 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb19" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Simulating correlated standardized mean differences for meta-analysis</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2019-09-30'</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> "../meta-references.bib"</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> "../apa.csl"</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">- standardized mean difference</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">- distribution theory</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>As I've discussed in <span class="co">[</span><span class="ot">previous posts</span><span class="co">](/Sometimes-aggregating-effect-sizes-is-fine)</span>, meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. </span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>I'm interested in methods for meta-analyzing and meta-regressing effect sizes from data structures like this, and studying this sort of thing often entails conducting Monte Carlo simulations.</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>Monte Carlo simulations involve generating artificial data---in this case, a set of studies, each of which has one or more dependent effect size estimates---that follows a certain distributional model, applying different analytic methods to the artificial data, and then repeating the process a bunch of times.</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>Because we know the true parameters that govern the data-generating process, we can evaluate the performance of the analytic methods in terms of bias, accuracy, hypothesis test calibration and power, confidence interval coverage, and the like. </span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>In this post, I'll discuss two alternative methods to simulate meta-analytic datasets that include studies with multiple, dependent effect size estimates: simulating individual participant-level data or simulating summary statistics. I'll focus on the case of the standardized mean difference (SMD) because it is so common in meta-analyses of intervention studies. For simplicity, I'll assume that the effect sizes all come from simple, two-group comparisons (without any covariate adjustment or anything like that) and that the individual observations are multi-variate normally distributed within each group. Our goal will be to simulate a set of $K$ studies, where study $k$ is based on measuring $J_k$ outcomes on a sample of $N_k$ participants, all for $k = 1,...,K$.</span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>Let $\boldsymbol\delta_k = (\delta_{1k} \cdots \delta_{J_k k})'$ be the $J_k \times 1$ vector of true standardized mean differences for study $k$. </span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>I'll assume that we know these true effect size parameters for all $K$ studies, so that I can avoid committing to any particular form of random effects model.</span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating individual participant-level data</span></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>The most direct way to simulate this sort of effect size data is to generate outcome data for every artificial participant in every artificial study. Let $\mathbf{Y}_{ik}^T$ be the $J_k \times 1$ vector of outcomes for treatment group participant $i$ in study $k$, and let $\mathbf{Y}_{ik}^C$ be the $J_k \times 1$ vector outcomes for control group participant $i$ in study $k$, for $i=1,...,N_k / 2$ and $k = 1,...,K$. Assuming multi-variate normality of the outcomes, we can generate these outcome vectors as </span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>\mathbf{Y}_{ik}^T \sim N\left(\boldsymbol\delta_k, \boldsymbol\Psi_k\right) \qquad \text{and}\qquad \mathbf{Y}_{ik}^C \sim N\left(\mathbf{0}, \boldsymbol\Psi_k\right),</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>where $\boldsymbol\Psi_k$ is the population correlation matrix of the outcomes in study $k$. </span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>Note that I am setting the mean outcomes of the control group participants to zero and also specifying that the outcomes all have unit variance within each group.</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>After simulating data based on these distributions, the effect size estimates for each outcome can be calculated directly, following standard formulas.  </span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>Here's what this approach looks like in code. </span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>It is helpful to simplify things by focusing on simulating just a single study with multiple, correlated effect sizes. </span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>Focusing first on just the input parameters, a function might look like the following:</span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># stuff</span></span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ES_data)  </span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>In the above function skeleton, <span class="in">`delta`</span> would be the true effect size parameter $\boldsymbol\delta_k$, <span class="in">`J`</span> would be the number of effect sizes to generate $(J_k)$, <span class="in">`N`</span> is the total number of participants $(N_k)$, and <span class="in">`Psi`</span> is a matrix of correlations between the outcomes $(\Psi_k)$.</span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>From these parameters, we'll generate raw data, calculate effect size estimates and standard errors, and return the results in a little dataset.</span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>To make the function a little bit easier to use, I'm going overload the <span class="in">`Psi`</span> argument so that it can be a single number, indicating a common correlation between the outcomes. Thus, instead of having to feed in a $J_k \times J_k$ matrix, you can specify a single correlation $r_k$, and the function will assume that all of the outcomes are equicorrelated. In code, the logic is:</span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a><span class="in">if (!is.matrix(Psi)) Psi &lt;- Psi + diag(1 - Psi, nrow = J)</span></span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>Here's the function with the innards:</span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
-<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(mvtnorm) <span class="co"># for simulating multi-variate normal data</span></span>
-<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create Psi matrix assuming equicorrelation</span></span>
-<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.matrix</span>(Psi)) Psi <span class="ot">&lt;-</span> Psi <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">-</span> Psi, <span class="at">nrow =</span> J)</span>
-<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate control group summary statistics</span></span>
-<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a>  Y_C <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> N <span class="sc">/</span> <span class="dv">2</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="dv">0</span>, J), <span class="at">sigma =</span> Psi)</span>
-<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a>  ybar_C <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(Y_C)</span>
-<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a>  sd_C <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_C, <span class="dv">2</span>, sd)</span>
-<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate treatment group summary statistics</span></span>
-<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> <span class="fu">rep</span>(delta, <span class="at">length.out =</span> J)</span>
-<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a>  Y_T <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> N <span class="sc">/</span> <span class="dv">2</span>, <span class="at">mean =</span> delta, <span class="at">sigma =</span> Psi)</span>
-<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a>  ybar_T <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(Y_T)</span>
-<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a>  sd_T <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_T, <span class="dv">2</span>, sd)</span>
-<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate Cohen's d</span></span>
-<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a>  sd_pool <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((sd_C<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> sd_T<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a>  ES <span class="ot">&lt;-</span> (ybar_T <span class="sc">-</span> ybar_C) <span class="sc">/</span> sd_pool</span>
-<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate SE of d</span></span>
-<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>  SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">4</span> <span class="sc">/</span> N <span class="sc">+</span> ES<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (N <span class="sc">-</span> <span class="dv">2</span>)))</span>
-<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">ES =</span> ES, <span class="at">SE =</span> SE, <span class="at">N =</span> N)</span>
-<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>In action:</span>
-<span id="cb19-93"><a href="#cb19-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-94"><a href="#cb19-94" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">4</span>, <span class="at">mean =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
-<span id="cb19-95"><a href="#cb19-95" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> <span class="fl">0.6</span>)</span>
-<span id="cb19-96"><a href="#cb19-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-97"><a href="#cb19-97" aria-hidden="true" tabindex="-1"></a>Or if you'd rather specify the full $\Psi_k$ matrix yourself:</span>
-<span id="cb19-100"><a href="#cb19-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-101"><a href="#cb19-101" aria-hidden="true" tabindex="-1"></a>Psi_k <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">+</span> <span class="fu">diag</span>(<span class="fl">0.4</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb19-102"><a href="#cb19-102" aria-hidden="true" tabindex="-1"></a>Psi_k</span>
-<span id="cb19-103"><a href="#cb19-103" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> Psi_k)</span>
-<span id="cb19-104"><a href="#cb19-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-105"><a href="#cb19-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-106"><a href="#cb19-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb19-107"><a href="#cb19-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-108"><a href="#cb19-108" aria-hidden="true" tabindex="-1"></a>The function above is serviceable but quite basic. I can think of several additional features that one might like to have for use in research simulations, but I'm feeling both cheeky and lazy at the moment, so I'll leave them for you, dear reader. Here are some suggested exercises:</span>
-<span id="cb19-109"><a href="#cb19-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-110"><a href="#cb19-110" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Add an argument to the function, <span class="in">`Hedges_g = TRUE`</span>, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.</span>
-<span id="cb19-111"><a href="#cb19-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-112"><a href="#cb19-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Add an argument to the function, <span class="in">`p_val = TRUE`</span>, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.</span>
-<span id="cb19-113"><a href="#cb19-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-114"><a href="#cb19-114" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Add an argument to the function, <span class="in">`corr_mat = FALSE`</span>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <span class="co">[</span><span class="ot">here</span><span class="co">](/correlations-between-SMDs)</span> for the relevant formulas.</span>
-<span id="cb19-115"><a href="#cb19-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-116"><a href="#cb19-116" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating summary statistics</span></span>
-<span id="cb19-117"><a href="#cb19-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-118"><a href="#cb19-118" aria-hidden="true" tabindex="-1"></a>Another approach to simulating SMDs is to sample from the distribution of the _summary statistics_ used in calculating the effect size. This approach should simplify the code, at the cost of having to use a bit of distribution theory. Let $\mathbf{\bar{y}}_{Tk}$ and $\mathbf{\bar{y}}_{Ck}$ be the $J_k \times 1$ vectors of sample means for the treatment and control groups, respectively. Let $\mathbf{S}_k$ be the $J_k \times J_k$ sample covariance matrix of the outcomes, pooled across the treatment and control groups. Again assuming multi-variate normality, and following the same notation as above:</span>
-<span id="cb19-119"><a href="#cb19-119" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-120"><a href="#cb19-120" aria-hidden="true" tabindex="-1"></a>\mathbf{\bar{y}}_{Ck} \sim N\left(\mathbf{0}, \frac{2}{N_k} \boldsymbol\Psi_k\right), \qquad \mathbf{\bar{y}}_{Tk} \sim N\left(\boldsymbol\delta_k, \frac{2}{N_k} \boldsymbol\Psi_k\right),</span>
-<span id="cb19-121"><a href="#cb19-121" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-122"><a href="#cb19-122" aria-hidden="true" tabindex="-1"></a>and</span>
-<span id="cb19-123"><a href="#cb19-123" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-124"><a href="#cb19-124" aria-hidden="true" tabindex="-1"></a>\left(\mathbf{\bar{y}}_{Tk} - \mathbf{\bar{y}}_{Ck}\right) \sim N\left(\boldsymbol\delta_k, \frac{4}{N_k} \boldsymbol\Psi_k\right).</span>
-<span id="cb19-125"><a href="#cb19-125" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-126"><a href="#cb19-126" aria-hidden="true" tabindex="-1"></a>This shows how we could directly simulate the numerator of the standardized mean difference.</span>
-<span id="cb19-127"><a href="#cb19-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-128"><a href="#cb19-128" aria-hidden="true" tabindex="-1"></a>A <span class="co">[</span><span class="ot">further bit of distribution theory</span><span class="co">](/distribution-of-sample-variances)</span> says that the pooled sample covariance matrix follows a multiple of a <span class="co">[</span><span class="ot">Wishart distribution</span><span class="co">](https://en.wikipedia.org/wiki/Wishart_distribution)</span> with $N_k - 2$ degrees of freedom and scale matrix $\Psi_k$:</span>
-<span id="cb19-129"><a href="#cb19-129" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-130"><a href="#cb19-130" aria-hidden="true" tabindex="-1"></a>(N_k - 2) \mathbf{S}_k \sim Wishart\left(N_k - 2, \Psi_k \right).</span>
-<span id="cb19-131"><a href="#cb19-131" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-132"><a href="#cb19-132" aria-hidden="true" tabindex="-1"></a>Thus, to simulate the denominators of the SMD estimates, we can simulate a single Wishart matrix, pull out the diagonal entries, divide by $N_k - 2$, and take the square root. In all, we draw a single $J_k \times 1$ observation from a multi-variate normal distribution and a single $J_k \times J_k$ observation from a Wishart distribution. In contrast, the raw data approach requires simulating $N_k$ observations from a multi-variate normal distribution, then calculating $4 J_k$ summary statistics (M and SD for each group on each outcome). </span>
-<span id="cb19-133"><a href="#cb19-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-134"><a href="#cb19-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb19-135"><a href="#cb19-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-136"><a href="#cb19-136" aria-hidden="true" tabindex="-1"></a>Once again, I'll leave it to you, dear reader, to do the fun programming bits:</span>
-<span id="cb19-137"><a href="#cb19-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-138"><a href="#cb19-138" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Create a modified version of the function <span class="in">`r_SMDs_raw`</span> that simulates summary statistics instead of raw data (Call it <span class="in">`r_SMDs_stats`</span>). </span>
-<span id="cb19-139"><a href="#cb19-139" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Use the <span class="in">`microbenchmark`</span> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</span>
-<span id="cb19-140"><a href="#cb19-140" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. </span>
-<span id="cb19-141"><a href="#cb19-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-142"><a href="#cb19-142" aria-hidden="true" tabindex="-1"></a><span class="fu"># Which approach is better?</span></span>
-<span id="cb19-143"><a href="#cb19-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-144"><a href="#cb19-144" aria-hidden="true" tabindex="-1"></a>Like many things in research, there's no clearly superior method here. The advantage of the summary statistics approach is computational efficiency. It should generally be faster than the raw data approach, and if you need to generate 10,000 meta-analysis each with 80 studies in them, the computational savings might add up. On the other hand, computational efficiency isn't everything. </span>
-<span id="cb19-145"><a href="#cb19-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-146"><a href="#cb19-146" aria-hidden="true" tabindex="-1"></a>I see two potential advantages of the raw data approach. First is interpretability: simulating raw data is likely easier to understand. It feels tangible and familiar, harkening back to those bygone days we spent learning ANOVA, whereas the summary statistics approach requires a bit of distribution theory to follow (bookmark this blog post!). Second is extensibility: it is relatively straightforward to extend the approach to use other distributional models for the raw dat (perhaps you want to look at outcomes that follow a <span class="co">[</span><span class="ot">multi-variate $t$ distribution</span><span class="co">](https://en.wikipedia.org/wiki/Multivariate_t-distribution)</span>?) or more complicated estimators of the SMD (difference-in-differences? covariate-adjusted? cluster-randomized trial?). To use the summary statistics approach in more complicated scenarios, you'd have to work out the sampling distributions for yourself, or locate the right reference.</span>
-<span id="cb19-147"><a href="#cb19-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-148"><a href="#cb19-148" aria-hidden="true" tabindex="-1"></a>Of course, there's also no need to choose between these two approaches. As I'm trying to hint at in Exercise 6, it's actually useful to write both. Then, you can use the (potentially slower) raw data version to verify that the summary statistics version is correct.</span>
-<span id="cb19-149"><a href="#cb19-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-150"><a href="#cb19-150" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating full meta-analyses</span></span>
-<span id="cb19-151"><a href="#cb19-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-152"><a href="#cb19-152" aria-hidden="true" tabindex="-1"></a>So far we've got a data-generating function that simulates a single study's worth of effect size estimates. To study meta-analytic methods, we'll need to build out the function to simulate multiple studies. To do so, I think it's useful to use the technique of <span class="co">[</span><span class="ot">mapping</span><span class="co">](https://r4ds.had.co.nz/iteration.html)</span>, as implemented in the <span class="in">`purrr`</span> package's <span class="in">`map_*`</span> functions. The idea here is to first generate a "menu" of study-specific parameters for each of $K$ studies, then apply the <span class="in">`r_SMDs`</span> function to each parameter set. </span>
-<span id="cb19-153"><a href="#cb19-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-154"><a href="#cb19-154" aria-hidden="true" tabindex="-1"></a>Let's consider how to do this for a simple random effects model, where the true effect size parameter is constant within each study (i.e., $\boldsymbol\delta_k = (\delta_k \cdots \delta_k)'$), and in a model without covariates. We'll need to generate a true effect for each study, along with a sample size, an outcome dimension, and a correlation between outcomes. For the true effects, I'll assume that</span>
-<span id="cb19-155"><a href="#cb19-155" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-156"><a href="#cb19-156" aria-hidden="true" tabindex="-1"></a>\delta_k \sim N(\mu, \tau^2),</span>
-<span id="cb19-157"><a href="#cb19-157" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-158"><a href="#cb19-158" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-159"><a href="#cb19-159" aria-hidden="true" tabindex="-1"></a>J_k \sim 2 + Poisson(3),</span>
-<span id="cb19-160"><a href="#cb19-160" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-161"><a href="#cb19-161" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-162"><a href="#cb19-162" aria-hidden="true" tabindex="-1"></a>N_k \sim 20 + 2 \times Poisson(10),</span>
-<span id="cb19-163"><a href="#cb19-163" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-164"><a href="#cb19-164" aria-hidden="true" tabindex="-1"></a>and</span>
-<span id="cb19-165"><a href="#cb19-165" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-166"><a href="#cb19-166" aria-hidden="true" tabindex="-1"></a>r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),</span>
-<span id="cb19-167"><a href="#cb19-167" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-168"><a href="#cb19-168" aria-hidden="true" tabindex="-1"></a>where $\rho = \text{E}(r_k)$ and $\nu &gt; 0$ controls the variability of $r_k$ across studies, with smaller $\nu$ corresponding to more variable correlations. </span>
-<span id="cb19-169"><a href="#cb19-169" aria-hidden="true" tabindex="-1"></a>Specifically, $\text{Var}(r_k) = \rho (1 - \rho) / (1 + \nu)$. </span>
-<span id="cb19-170"><a href="#cb19-170" aria-hidden="true" tabindex="-1"></a>These distributions are just made up, without any particular justification.</span>
-<span id="cb19-171"><a href="#cb19-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-172"><a href="#cb19-172" aria-hidden="true" tabindex="-1"></a>Here's what these distributional models look like in R code:</span>
-<span id="cb19-175"><a href="#cb19-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-176"><a href="#cb19-176" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb19-177"><a href="#cb19-177" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb19-178"><a href="#cb19-178" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb19-179"><a href="#cb19-179" aria-hidden="true" tabindex="-1"></a>J_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb19-180"><a href="#cb19-180" aria-hidden="true" tabindex="-1"></a>N_mean <span class="ot">&lt;-</span> <span class="dv">45</span></span>
-<span id="cb19-181"><a href="#cb19-181" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb19-182"><a href="#cb19-182" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">&lt;-</span> <span class="dv">39</span></span>
-<span id="cb19-183"><a href="#cb19-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-184"><a href="#cb19-184" aria-hidden="true" tabindex="-1"></a>study_data <span class="ot">&lt;-</span> </span>
-<span id="cb19-185"><a href="#cb19-185" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb19-186"><a href="#cb19-186" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
-<span id="cb19-187"><a href="#cb19-187" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
-<span id="cb19-188"><a href="#cb19-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
-<span id="cb19-189"><a href="#cb19-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
-<span id="cb19-190"><a href="#cb19-190" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb19-191"><a href="#cb19-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-192"><a href="#cb19-192" aria-hidden="true" tabindex="-1"></a>study_data</span>
-<span id="cb19-193"><a href="#cb19-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-194"><a href="#cb19-194" aria-hidden="true" tabindex="-1"></a>Once we have the "menu" of study-level characteristics, it's just a matter of mapping the parameters to the data-generating function. One way to do this is with <span class="in">`pmap_df`</span>:</span>
-<span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb19-199"><a href="#cb19-199" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
-<span id="cb19-200"><a href="#cb19-200" aria-hidden="true" tabindex="-1"></a>meta_data</span>
-<span id="cb19-201"><a href="#cb19-201" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(meta_data<span class="sc">$</span>study)</span>
-<span id="cb19-202"><a href="#cb19-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-203"><a href="#cb19-203" aria-hidden="true" tabindex="-1"></a>Putting it all together into a function, we have</span>
-<span id="cb19-206"><a href="#cb19-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb19-207"><a href="#cb19-207" aria-hidden="true" tabindex="-1"></a>r_meta <span class="ot">&lt;-</span> <span class="cf">function</span>(K, mu, tau, J_mean, N_mean, rho, nu) {</span>
-<span id="cb19-208"><a href="#cb19-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(purrr)</span>
-<span id="cb19-209"><a href="#cb19-209" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-210"><a href="#cb19-210" aria-hidden="true" tabindex="-1"></a>  study_data <span class="ot">&lt;-</span> </span>
-<span id="cb19-211"><a href="#cb19-211" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb19-212"><a href="#cb19-212" aria-hidden="true" tabindex="-1"></a>      <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
-<span id="cb19-213"><a href="#cb19-213" aria-hidden="true" tabindex="-1"></a>      <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
-<span id="cb19-214"><a href="#cb19-214" aria-hidden="true" tabindex="-1"></a>      <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
-<span id="cb19-215"><a href="#cb19-215" aria-hidden="true" tabindex="-1"></a>      <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
-<span id="cb19-216"><a href="#cb19-216" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb19-217"><a href="#cb19-217" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-218"><a href="#cb19-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
-<span id="cb19-219"><a href="#cb19-219" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-220"><a href="#cb19-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-221"><a href="#cb19-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb19-222"><a href="#cb19-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-223"><a href="#cb19-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
-<span id="cb19-224"><a href="#cb19-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-225"><a href="#cb19-225" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Modify <span class="in">`r_meta`</span> so that it uses <span class="in">`r_SMDs_stats`</span>.</span>
-<span id="cb19-226"><a href="#cb19-226" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Add options to <span class="in">`r_meta`</span> for <span class="in">`Hedges_g`</span>, <span class="in">`p_val = TRUE`</span>, and <span class="in">`corr_mat = FALSE`</span> and ensure that these get passed along to the <span class="in">`r_SMDs`</span> function.</span>
-<span id="cb19-227"><a href="#cb19-227" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>One way to check that the <span class="in">`r_meta`</span> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:</span>
-<span id="cb19-228"><a href="#cb19-228" aria-hidden="true" tabindex="-1"></a>    <span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb19-229"><a href="#cb19-229" aria-hidden="true" tabindex="-1"></a><span class="in">    meta_data &lt;- </span></span>
-<span id="cb19-230"><a href="#cb19-230" aria-hidden="true" tabindex="-1"></a><span class="in">      r_meta(100000, mu = 0.2, tau = 0.05, </span></span>
-<span id="cb19-231"><a href="#cb19-231" aria-hidden="true" tabindex="-1"></a><span class="in">             J_mean = 5, N_mean = 40, </span></span>
-<span id="cb19-232"><a href="#cb19-232" aria-hidden="true" tabindex="-1"></a><span class="in">             rho = 0.6, nu = 39)</span></span>
-<span id="cb19-233"><a href="#cb19-233" aria-hidden="true" tabindex="-1"></a><span class="in">    ```</span></span>
-<span id="cb19-234"><a href="#cb19-234" aria-hidden="true" tabindex="-1"></a>    Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</span>
-<span id="cb19-235"><a href="#cb19-235" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Modify the <span class="in">`r_meta`</span> function so that $J_k$ and $N_k$ are correlated, according to</span>
-<span id="cb19-236"><a href="#cb19-236" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-237"><a href="#cb19-237" aria-hidden="true" tabindex="-1"></a>\begin{align}</span>
-<span id="cb19-238"><a href="#cb19-238" aria-hidden="true" tabindex="-1"></a>J_k &amp;\sim 2 + Poisson(\mu_J - 2) <span class="sc">\\</span></span>
-<span id="cb19-239"><a href="#cb19-239" aria-hidden="true" tabindex="-1"></a>N_k &amp;\sim 20 + 2 \times Poisson\left(\frac{1}{2}(\mu_N - 20) + \alpha (J_k - \mu_J) \right)</span>
-<span id="cb19-240"><a href="#cb19-240" aria-hidden="true" tabindex="-1"></a>\end{align}</span>
-<span id="cb19-241"><a href="#cb19-241" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-242"><a href="#cb19-242" aria-hidden="true" tabindex="-1"></a>    for user-specified values of $\mu_J$ (the average number of outcomes per study), $\mu_N$ (the average total sample size per study), and $\alpha$, which controls the degree of dependence between $J_k$ and $N_k$.</span>
-<span id="cb19-243"><a href="#cb19-243" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-244"><a href="#cb19-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## A challenge</span></span>
-<span id="cb19-245"><a href="#cb19-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-246"><a href="#cb19-246" aria-hidden="true" tabindex="-1"></a>The meta-analytic model that we're using here is quite simple---simplistic, even---and for some simulation studies, something more complex might be needed. For example, we might need to generate data from a model that includes within-study random effects, as in:</span>
-<span id="cb19-247"><a href="#cb19-247" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-248"><a href="#cb19-248" aria-hidden="true" tabindex="-1"></a>\delta_{jk} = \mu + u_k + v_{jk}, \quad \text{where}\quad u_k \sim N(0, \tau^2), \quad v_{jk} \sim N(0, \omega^2).</span>
-<span id="cb19-249"><a href="#cb19-249" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-250"><a href="#cb19-250" aria-hidden="true" tabindex="-1"></a>Even more complex would be to simulate from a multi-level meta-regression model</span>
-<span id="cb19-251"><a href="#cb19-251" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-252"><a href="#cb19-252" aria-hidden="true" tabindex="-1"></a>\delta_{jk} = \mathbf{x}_{jk} \boldsymbol\beta + u_k + v_{jk}, \quad \text{where}\quad u_k \sim N(0, \tau^2), \quad v_{jk} \sim N(0, \omega^2),</span>
-<span id="cb19-253"><a href="#cb19-253" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb19-254"><a href="#cb19-254" aria-hidden="true" tabindex="-1"></a>where $\mathbf{x}_{jk}$ is a $1 \times p$ row-vector of covariates describing outcome $j$ in study $k$ and $\boldsymbol\beta$ is a $p \times 1$ vector of meta-regression coefficients. In past work, I've done this by writing a data-generating function that takes a fixed design matrix $\mathbf{X} = \left(\mathbf{x}_{11}' \cdots \mathbf{x}_{J_K K}'\right)'$ as an input argument, along with $\boldsymbol\beta$. The design matrix would also include an identifier for each unique study. There are surely better (simpler, easier to follow) ways to implement the multi-level meta-regression model. I'll once again leave it to you to work out an approach.</span>
+<div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Simulating correlated standardized mean differences for meta-analysis</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2019-09-30'</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> "../meta-references.bib"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> "../apa.csl"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="an">link-citations:</span><span class="co"> true</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">- standardized mean difference</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">- meta-analysis</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">- distribution theory</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="an">toc-title:</span><span class="co"> Contents</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>As I've discussed in <span class="co">[</span><span class="ot">previous posts</span><span class="co">](/posts/Sometimes-aggregating-effect-sizes-is-fine)</span>, meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>I'm interested in methods for meta-analyzing and meta-regressing effect sizes from data structures like this, and studying this sort of thing often entails conducting Monte Carlo simulations.</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>Monte Carlo simulations involve generating artificial data---in this case, a set of studies, each of which has one or more dependent effect size estimates---that follows a certain distributional model, applying different analytic methods to the artificial data, and then repeating the process a bunch of times.</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>Because we know the true parameters that govern the data-generating process, we can evaluate the performance of the analytic methods in terms of bias, accuracy, hypothesis test calibration and power, confidence interval coverage, and the like. </span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>In this post, I'll discuss two alternative methods to simulate meta-analytic datasets that include studies with multiple, dependent effect size estimates: simulating individual participant-level data or simulating summary statistics. I'll focus on the case of the standardized mean difference (SMD) because it is so common in meta-analyses of intervention studies. For simplicity, I'll assume that the effect sizes all come from simple, two-group comparisons (without any covariate adjustment or anything like that) and that the individual observations are multi-variate normally distributed within each group. Our goal will be to simulate a set of $K$ studies, where study $k$ is based on measuring $J_k$ outcomes on a sample of $N_k$ participants, all for $k = 1,...,K$.</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>Let $\boldsymbol\delta_k = (\delta_{1k} \cdots \delta_{J_k k})'$ be the $J_k \times 1$ vector of true standardized mean differences for study $k$. </span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>I'll assume that we know these true effect size parameters for all $K$ studies, so that I can avoid committing to any particular form of random effects model.</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating individual participant-level data</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>The most direct way to simulate this sort of effect size data is to generate outcome data for every artificial participant in every artificial study. Let $\mathbf{Y}_{ik}^T$ be the $J_k \times 1$ vector of outcomes for treatment group participant $i$ in study $k$, and let $\mathbf{Y}_{ik}^C$ be the $J_k \times 1$ vector outcomes for control group participant $i$ in study $k$, for $i=1,...,N_k / 2$ and $k = 1,...,K$. Assuming multi-variate normality of the outcomes, we can generate these outcome vectors as </span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>\mathbf{Y}_{ik}^T \sim N\left(\boldsymbol\delta_k, \boldsymbol\Psi_k\right) \qquad \text{and}\qquad \mathbf{Y}_{ik}^C \sim N\left(\mathbf{0}, \boldsymbol\Psi_k\right),</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>where $\boldsymbol\Psi_k$ is the population correlation matrix of the outcomes in study $k$. </span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>Note that I am setting the mean outcomes of the control group participants to zero and also specifying that the outcomes all have unit variance within each group.</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>After simulating data based on these distributions, the effect size estimates for each outcome can be calculated directly, following standard formulas.  </span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>Here's what this approach looks like in code. </span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>It is helpful to simplify things by focusing on simulating just a single study with multiple, correlated effect sizes. </span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>Focusing first on just the input parameters, a function might look like the following:</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># stuff</span></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ES_data)  </span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>In the above function skeleton, <span class="in">`delta`</span> would be the true effect size parameter $\boldsymbol\delta_k$, <span class="in">`J`</span> would be the number of effect sizes to generate $(J_k)$, <span class="in">`N`</span> is the total number of participants $(N_k)$, and <span class="in">`Psi`</span> is a matrix of correlations between the outcomes $(\Psi_k)$.</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>From these parameters, we'll generate raw data, calculate effect size estimates and standard errors, and return the results in a little dataset.</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>To make the function a little bit easier to use, I'm going overload the <span class="in">`Psi`</span> argument so that it can be a single number, indicating a common correlation between the outcomes. Thus, instead of having to feed in a $J_k \times J_k$ matrix, you can specify a single correlation $r_k$, and the function will assume that all of the outcomes are equicorrelated. In code, the logic is:</span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a><span class="in">if (!is.matrix(Psi)) Psi &lt;- Psi + diag(1 - Psi, nrow = J)</span></span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>Here's the function with the innards:</span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>r_SMDs_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(delta, J, N, Psi) {</span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(mvtnorm) <span class="co"># for simulating multi-variate normal data</span></span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create Psi matrix assuming equicorrelation</span></span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.matrix</span>(Psi)) Psi <span class="ot">&lt;-</span> Psi <span class="sc">+</span> <span class="fu">diag</span>(<span class="dv">1</span> <span class="sc">-</span> Psi, <span class="at">nrow =</span> J)</span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate control group summary statistics</span></span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>  Y_C <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> N <span class="sc">/</span> <span class="dv">2</span>, <span class="at">mean =</span> <span class="fu">rep</span>(<span class="dv">0</span>, J), <span class="at">sigma =</span> Psi)</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  ybar_C <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(Y_C)</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>  sd_C <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_C, <span class="dv">2</span>, sd)</span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generate treatment group summary statistics</span></span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>  delta <span class="ot">&lt;-</span> <span class="fu">rep</span>(delta, <span class="at">length.out =</span> J)</span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>  Y_T <span class="ot">&lt;-</span> <span class="fu">rmvnorm</span>(<span class="at">n =</span> N <span class="sc">/</span> <span class="dv">2</span>, <span class="at">mean =</span> delta, <span class="at">sigma =</span> Psi)</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>  ybar_T <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(Y_T)</span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>  sd_T <span class="ot">&lt;-</span> <span class="fu">apply</span>(Y_T, <span class="dv">2</span>, sd)</span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate Cohen's d</span></span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>  sd_pool <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((sd_C<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> sd_T<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>  ES <span class="ot">&lt;-</span> (ybar_T <span class="sc">-</span> ybar_C) <span class="sc">/</span> sd_pool</span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate SE of d</span></span>
+<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>  SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">4</span> <span class="sc">/</span> N <span class="sc">+</span> ES<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> (N <span class="sc">-</span> <span class="dv">2</span>)))</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">ES =</span> ES, <span class="at">SE =</span> SE, <span class="at">N =</span> N)</span>
+<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a>In action:</span>
+<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">4</span>, <span class="at">mean =</span> <span class="fl">0.2</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
+<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> <span class="fl">0.6</span>)</span>
+<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a>Or if you'd rather specify the full $\Psi_k$ matrix yourself:</span>
+<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>Psi_k <span class="ot">&lt;-</span> <span class="fl">0.6</span> <span class="sc">+</span> <span class="fu">diag</span>(<span class="fl">0.4</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>Psi_k</span>
+<span id="cb18-103"><a href="#cb18-103" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> Psi_k)</span>
+<span id="cb18-104"><a href="#cb18-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a>The function above is serviceable but quite basic. I can think of several additional features that one might like to have for use in research simulations, but I'm feeling both cheeky and lazy at the moment, so I'll leave them for you, dear reader. Here are some suggested exercises:</span>
+<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Add an argument to the function, <span class="in">`Hedges_g = TRUE`</span>, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.</span>
+<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Add an argument to the function, <span class="in">`p_val = TRUE`</span>, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.</span>
+<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Add an argument to the function, <span class="in">`corr_mat = FALSE`</span>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <span class="co">[</span><span class="ot">here</span><span class="co">](/posts/correlations-between-SMDs/)</span> for the relevant formulas.</span>
+<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating summary statistics</span></span>
+<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a>Another approach to simulating SMDs is to sample from the distribution of the _summary statistics_ used in calculating the effect size. This approach should simplify the code, at the cost of having to use a bit of distribution theory. Let $\mathbf{\bar{y}}_{Tk}$ and $\mathbf{\bar{y}}_{Ck}$ be the $J_k \times 1$ vectors of sample means for the treatment and control groups, respectively. Let $\mathbf{S}_k$ be the $J_k \times J_k$ sample covariance matrix of the outcomes, pooled across the treatment and control groups. Again assuming multi-variate normality, and following the same notation as above:</span>
+<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a>\mathbf{\bar{y}}_{Ck} \sim N\left(\mathbf{0}, \frac{2}{N_k} \boldsymbol\Psi_k\right), \qquad \mathbf{\bar{y}}_{Tk} \sim N\left(\boldsymbol\delta_k, \frac{2}{N_k} \boldsymbol\Psi_k\right),</span>
+<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a>and</span>
+<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>\left(\mathbf{\bar{y}}_{Tk} - \mathbf{\bar{y}}_{Ck}\right) \sim N\left(\boldsymbol\delta_k, \frac{4}{N_k} \boldsymbol\Psi_k\right).</span>
+<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a>This shows how we could directly simulate the numerator of the standardized mean difference.</span>
+<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a>A <span class="co">[</span><span class="ot">further bit of distribution theory</span><span class="co">](/posts/distribution-of-sample-variances/)</span> says that the pooled sample covariance matrix follows a multiple of a <span class="co">[</span><span class="ot">Wishart distribution</span><span class="co">](https://en.wikipedia.org/wiki/Wishart_distribution)</span> with $N_k - 2$ degrees of freedom and scale matrix $\Psi_k$:</span>
+<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a>(N_k - 2) \mathbf{S}_k \sim Wishart\left(N_k - 2, \Psi_k \right).</span>
+<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a>Thus, to simulate the denominators of the SMD estimates, we can simulate a single Wishart matrix, pull out the diagonal entries, divide by $N_k - 2$, and take the square root. In all, we draw a single $J_k \times 1$ observation from a multi-variate normal distribution and a single $J_k \times J_k$ observation from a Wishart distribution. In contrast, the raw data approach requires simulating $N_k$ observations from a multi-variate normal distribution, then calculating $4 J_k$ summary statistics (M and SD for each group on each outcome). </span>
+<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>Once again, I'll leave it to you, dear reader, to do the fun programming bits:</span>
+<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Create a modified version of the function <span class="in">`r_SMDs_raw`</span> that simulates summary statistics instead of raw data (Call it <span class="in">`r_SMDs_stats`</span>). </span>
+<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Use the <span class="in">`microbenchmark`</span> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</span>
+<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. </span>
+<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a><span class="fu"># Which approach is better?</span></span>
+<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a>Like many things in research, there's no clearly superior method here. The advantage of the summary statistics approach is computational efficiency. It should generally be faster than the raw data approach, and if you need to generate 10,000 meta-analysis each with 80 studies in them, the computational savings might add up. On the other hand, computational efficiency isn't everything. </span>
+<span id="cb18-147"><a href="#cb18-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-148"><a href="#cb18-148" aria-hidden="true" tabindex="-1"></a>I see two potential advantages of the raw data approach. First is interpretability: simulating raw data is likely easier to understand. It feels tangible and familiar, harkening back to those bygone days we spent learning ANOVA, whereas the summary statistics approach requires a bit of distribution theory to follow (bookmark this blog post!). Second is extensibility: it is relatively straightforward to extend the approach to use other distributional models for the raw dat (perhaps you want to look at outcomes that follow a <span class="co">[</span><span class="ot">multi-variate $t$ distribution</span><span class="co">](https://en.wikipedia.org/wiki/Multivariate_t-distribution)</span>?) or more complicated estimators of the SMD (difference-in-differences? covariate-adjusted? cluster-randomized trial?). To use the summary statistics approach in more complicated scenarios, you'd have to work out the sampling distributions for yourself, or locate the right reference.</span>
+<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>Of course, there's also no need to choose between these two approaches. As I'm trying to hint at in Exercise 6, it's actually useful to write both. Then, you can use the (potentially slower) raw data version to verify that the summary statistics version is correct.</span>
+<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating full meta-analyses</span></span>
+<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>So far we've got a data-generating function that simulates a single study's worth of effect size estimates. To study meta-analytic methods, we'll need to build out the function to simulate multiple studies. To do so, I think it's useful to use the technique of <span class="co">[</span><span class="ot">mapping</span><span class="co">](https://r4ds.hadley.nz/iteration.html)</span>, as implemented in the <span class="in">`purrr`</span> package's <span class="in">`map_*`</span> functions. The idea here is to first generate a "menu" of study-specific parameters for each of $K$ studies, then apply the <span class="in">`r_SMDs`</span> function to each parameter set. </span>
+<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a>Let's consider how to do this for a simple random effects model, where the true effect size parameter is constant within each study (i.e., $\boldsymbol\delta_k = (\delta_k \cdots \delta_k)'$), and in a model without covariates. We'll need to generate a true effect for each study, along with a sample size, an outcome dimension, and a correlation between outcomes. For the true effects, I'll assume that</span>
+<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a>\delta_k \sim N(\mu, \tau^2),</span>
+<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a>J_k \sim 2 + Poisson(3),</span>
+<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-164"><a href="#cb18-164" aria-hidden="true" tabindex="-1"></a>N_k \sim 20 + 2 \times Poisson(10),</span>
+<span id="cb18-165"><a href="#cb18-165" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a>and</span>
+<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),</span>
+<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>where $\rho = \text{E}(r_k)$ and $\nu &gt; 0$ controls the variability of $r_k$ across studies, with smaller $\nu$ corresponding to more variable correlations. </span>
+<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a>Specifically, $\text{Var}(r_k) = \rho (1 - \rho) / (1 + \nu)$. </span>
+<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a>These distributions are just made up, without any particular justification.</span>
+<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>Here's what these distributional models look like in R code:</span>
+<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a>J_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a>N_mean <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb18-183"><a href="#cb18-183" aria-hidden="true" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb18-184"><a href="#cb18-184" aria-hidden="true" tabindex="-1"></a>nu <span class="ot">&lt;-</span> <span class="dv">39</span></span>
+<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a>study_data <span class="ot">&lt;-</span> </span>
+<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a>    <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
+<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
+<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a>    <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
+<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a>study_data</span>
+<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a>Once we have the "menu" of study-level characteristics, it's just a matter of mapping the parameters to the data-generating function. One way to do this is with <span class="in">`pmap_df`</span>:</span>
+<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
+<span id="cb18-202"><a href="#cb18-202" aria-hidden="true" tabindex="-1"></a>meta_data</span>
+<span id="cb18-203"><a href="#cb18-203" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(meta_data<span class="sc">$</span>study)</span>
+<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a>Putting it all together into a function, we have</span>
+<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a>r_meta <span class="ot">&lt;-</span> <span class="cf">function</span>(K, mu, tau, J_mean, N_mean, rho, nu) {</span>
+<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(purrr)</span>
+<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a>  study_data <span class="ot">&lt;-</span> </span>
+<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a>      <span class="at">delta =</span> <span class="fu">rnorm</span>(K, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau),</span>
+<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a>      <span class="at">J =</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rpois</span>(K, J_mean <span class="sc">-</span> <span class="dv">2</span>),</span>
+<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a>      <span class="at">N =</span> <span class="dv">20</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rpois</span>(K, (N_mean <span class="sc">-</span> <span class="dv">20</span>) <span class="sc">/</span> <span class="dv">2</span>),</span>
+<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>      <span class="at">Psi =</span> <span class="fu">rbeta</span>(K, rho <span class="sc">*</span> nu, (<span class="dv">1</span> <span class="sc">-</span> rho) <span class="sc">*</span> nu)</span>
+<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pmap_df</span>(study_data, r_SMDs_raw, <span class="at">.id =</span> <span class="st">"study"</span>)</span>
+<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
+<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Modify <span class="in">`r_meta`</span> so that it uses <span class="in">`r_SMDs_stats`</span>.</span>
+<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Add options to <span class="in">`r_meta`</span> for <span class="in">`Hedges_g`</span>, <span class="in">`p_val = TRUE`</span>, and <span class="in">`corr_mat = FALSE`</span> and ensure that these get passed along to the <span class="in">`r_SMDs`</span> function.</span>
+<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>One way to check that the <span class="in">`r_meta`</span> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:</span>
+<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, indent = "    ", eval = FALSE}</span></span>
+<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a><span class="in">meta_data &lt;- r_meta(</span></span>
+<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a><span class="in">  100000, </span></span>
+<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a><span class="in">  mu = 0.2, tau = 0.05, </span></span>
+<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a><span class="in">  J_mean = 5, N_mean = 40, </span></span>
+<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a><span class="in">  rho = 0.6, nu = 39</span></span>
+<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="in">    Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</span></span>
+<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Modify the <span class="in">`r_meta`</span> function so that $J_k$ and $N_k$ are correlated, according to</span>
+<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a>    \begin{align}</span>
+<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a>    J_k &amp;\sim 2 + Poisson(\mu_J - 2) <span class="sc">\\</span></span>
+<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a>    N_k &amp;\sim 20 + 2 \times Poisson\left(\frac{1}{2}(\mu_N - 20) + \alpha (J_k - \mu_J) \right)</span>
+<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a>    \end{align}</span>
+<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a>    $$</span>
+<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a>    for user-specified values of $\mu_J$ (the average number of outcomes per study), $\mu_N$ (the average total sample size per study), and $\alpha$, which controls the degree of dependence between $J_k$ and $N_k$.</span>
+<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## A challenge</span></span>
+<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a>The meta-analytic model that we're using here is quite simple---simplistic, even---and for some simulation studies, something more complex might be needed. For example, we might need to generate data from a model that includes within-study random effects, as in:</span>
+<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a>\delta_{jk} = \mu + u_k + v_{jk}, \quad \text{where}\quad u_k \sim N(0, \tau^2), \quad v_{jk} \sim N(0, \omega^2).</span>
+<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a>Even more complex would be to simulate from a multi-level meta-regression model</span>
+<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a>\delta_{jk} = \mathbf{x}_{jk} \boldsymbol\beta + u_k + v_{jk}, \quad \text{where}\quad u_k \sim N(0, \tau^2), \quad v_{jk} \sim N(0, \omega^2),</span>
+<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a>where $\mathbf{x}_{jk}$ is a $1 \times p$ row-vector of covariates describing outcome $j$ in study $k$ and $\boldsymbol\beta$ is a $p \times 1$ vector of meta-regression coefficients. In past work, I've done this by writing a data-generating function that takes a fixed design matrix $\mathbf{X} = \left(\mathbf{x}_{11}' \cdots \mathbf{x}_{J_K K}'\right)'$ as an input argument, along with $\boldsymbol\beta$. The design matrix would also include an identifier for each unique study. There are surely better (simpler, easier to follow) ways to implement the multi-level meta-regression model. I'll once again leave it to you to work out an approach.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -245,12 +245,15 @@ Clearly, download counts are only a very rough proxy for package usage. In marke
 Ultimately, I don't know that knowing where my packages stand in terms of download rankings is all that useful. The packages that I've developed are all aimed at fairly academic audiences, which means that citations would probably be a better measure of contribution. The problem is, many people don't know that they should be citing software, or how to do it. As usual, there's an R function for that. Here's how to get the citation for `clubSandwich`:
 
 ```{r citation, eval = FALSE}
+#| code-fold: show
+
 citation(package="clubSandwich") %>%
-  print(style = "textVersion")
+  print(style = "text")
 ```
 
 which returns the following: 
 
-> 
-    ```{r, echo = FALSE, ref.label = "citation", results='asis'}
-    ```
+::: {.blockquote}
+```{r, echo = FALSE, ref.label = "citation", results='asis'}
+```
+:::

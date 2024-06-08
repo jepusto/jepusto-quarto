@@ -1,6 +1,5 @@
 ---
 title: Simulating correlated standardized mean differences for meta-analysis
-
 date: '2019-09-30'
 bibliography: "../meta-references.bib"
 csl: "../apa.csl"
@@ -13,10 +12,11 @@ categories:
 - programming
 - distribution theory
 code-tools: true
-
+toc: true
+toc-title: Contents
 ---
 
-As I've discussed in [previous posts](/Sometimes-aggregating-effect-sizes-is-fine), meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. 
+As I've discussed in [previous posts](/posts/Sometimes-aggregating-effect-sizes-is-fine), meta-analyses in psychology, education, and other areas often include studies that contribute multiple, statistically dependent effect size estimates. 
 I'm interested in methods for meta-analyzing and meta-regressing effect sizes from data structures like this, and studying this sort of thing often entails conducting Monte Carlo simulations.
 Monte Carlo simulations involve generating artificial data---in this case, a set of studies, each of which has one or more dependent effect size estimates---that follows a certain distributional model, applying different analytic methods to the artificial data, and then repeating the process a bunch of times.
 Because we know the true parameters that govern the data-generating process, we can evaluate the performance of the analytic methods in terms of bias, accuracy, hypothesis test calibration and power, confidence interval coverage, and the like. 
@@ -103,7 +103,7 @@ The function above is serviceable but quite basic. I can think of several additi
 
 2. Add an argument to the function, `p_val = TRUE`, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.
 
-3. Add an argument to the function, `corr_mat = FALSE`, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See [here](/correlations-between-SMDs) for the relevant formulas.
+3. Add an argument to the function, `corr_mat = FALSE`, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See [here](/posts/correlations-between-SMDs/) for the relevant formulas.
 
 # Simulating summary statistics
 
@@ -117,7 +117,7 @@ $$
 $$
 This shows how we could directly simulate the numerator of the standardized mean difference.
 
-A [further bit of distribution theory](/distribution-of-sample-variances) says that the pooled sample covariance matrix follows a multiple of a [Wishart distribution](https://en.wikipedia.org/wiki/Wishart_distribution) with $N_k - 2$ degrees of freedom and scale matrix $\Psi_k$:
+A [further bit of distribution theory](/posts/distribution-of-sample-variances/) says that the pooled sample covariance matrix follows a multiple of a [Wishart distribution](https://en.wikipedia.org/wiki/Wishart_distribution) with $N_k - 2$ degrees of freedom and scale matrix $\Psi_k$:
 $$
 (N_k - 2) \mathbf{S}_k \sim Wishart\left(N_k - 2, \Psi_k \right).
 $$
@@ -128,7 +128,9 @@ Thus, to simulate the denominators of the SMD estimates, we can simulate a singl
 Once again, I'll leave it to you, dear reader, to do the fun programming bits:
 
 4. Create a modified version of the function `r_SMDs_raw` that simulates summary statistics instead of raw data (Call it `r_SMDs_stats`). 
+
 5. Use the `microbenchmark` package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.
+
 6. Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. 
 
 # Which approach is better?
@@ -141,7 +143,7 @@ Of course, there's also no need to choose between these two approaches. As I'm t
 
 # Simulating full meta-analyses
 
-So far we've got a data-generating function that simulates a single study's worth of effect size estimates. To study meta-analytic methods, we'll need to build out the function to simulate multiple studies. To do so, I think it's useful to use the technique of [mapping](https://r4ds.had.co.nz/iteration.html), as implemented in the `purrr` package's `map_*` functions. The idea here is to first generate a "menu" of study-specific parameters for each of $K$ studies, then apply the `r_SMDs` function to each parameter set. 
+So far we've got a data-generating function that simulates a single study's worth of effect size estimates. To study meta-analytic methods, we'll need to build out the function to simulate multiple studies. To do so, I think it's useful to use the technique of [mapping](https://r4ds.hadley.nz/iteration.html), as implemented in the `purrr` package's `map_*` functions. The idea here is to first generate a "menu" of study-specific parameters for each of $K$ studies, then apply the `r_SMDs` function to each parameter set. 
 
 Let's consider how to do this for a simple random effects model, where the true effect size parameter is constant within each study (i.e., $\boldsymbol\delta_k = (\delta_k \cdots \delta_k)'$), and in a model without covariates. We'll need to generate a true effect for each study, along with a sample size, an outcome dimension, and a correlation between outcomes. For the true effects, I'll assume that
 $$
@@ -209,22 +211,29 @@ r_meta <- function(K, mu, tau, J_mean, N_mean, rho, nu) {
 ## Exercises
 
 7. Modify `r_meta` so that it uses `r_SMDs_stats`.
+
 8. Add options to `r_meta` for `Hedges_g`, `p_val = TRUE`, and `corr_mat = FALSE` and ensure that these get passed along to the `r_SMDs` function.
+
 9. One way to check that the `r_meta` function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:
-    ```{r, eval=FALSE}
-    meta_data <- 
-      r_meta(100000, mu = 0.2, tau = 0.05, 
-             J_mean = 5, N_mean = 40, 
-             rho = 0.6, nu = 39)
-    ```
+
+```{r, indent = "    ", eval = FALSE}
+meta_data <- r_meta(
+  100000, 
+  mu = 0.2, tau = 0.05, 
+  J_mean = 5, N_mean = 40, 
+  rho = 0.6, nu = 39
+)
+```
+    
     Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.
+
 10. Modify the `r_meta` function so that $J_k$ and $N_k$ are correlated, according to
-$$
-\begin{align}
-J_k &\sim 2 + Poisson(\mu_J - 2) \\
-N_k &\sim 20 + 2 \times Poisson\left(\frac{1}{2}(\mu_N - 20) + \alpha (J_k - \mu_J) \right)
-\end{align}
-$$
+    $$
+    \begin{align}
+    J_k &\sim 2 + Poisson(\mu_J - 2) \\
+    N_k &\sim 20 + 2 \times Poisson\left(\frac{1}{2}(\mu_N - 20) + \alpha (J_k - \mu_J) \right)
+    \end{align}
+    $$
     for user-specified values of $\mu_J$ (the average number of outcomes per study), $\mu_N$ (the average total sample size per study), and $\alpha$, which controls the degree of dependence between $J_k$ and $N_k$.
     
 ## A challenge
