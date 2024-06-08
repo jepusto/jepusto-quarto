@@ -1,6 +1,5 @@
 ---
 title: Estimating average effects in regression discontinuities with covariate interactions
-
 date: '2016-01-27'
 categories:
 - econometrics
@@ -8,14 +7,13 @@ categories:
 - causal inference
 - regression discontinuity
 code-tools: true
-
 ---
 
 Regression discontinuity designs (RDDs) are now a widely used tool for program evaluation in economics and many other fields. RDDs occur in situations where some treatment/program of interest is assigned on the basis of a numerical score (called the running variable), all units scoring above a certain threshold receiving treatment and all units scoring at or below the threshold having treatment withheld (or vice versa, with treatment assigned to units scoring below the threshold). This mechanism provides a way to identify the __marginal average treatment effect__ (MATE): the average effect of treatment assignment for units on the cusp of the threshold. 
 
 RDDs are appealing for a couple of reasons. First and foremost, RDD-like mechanism occurs all over the place, since providing treatment on the basis of a numerical measure of need/eligibility is a natural way to allocate resources. Furthermore, analysis of the designs is straight-forward, as it involves nothing more complicated than a linear regression model, estimated using (weighted or un-weighted) least squares, and which can be represented graphically using a simple scatterplot. Things get a little bit more complicated if you are trying to account for imperfect compliance with treatment assignment---as in the "fuzzy" RDD---but for the moment let me focus on "sharp" RDDs.
 
-The simplest approach to estimating the MATE is to use a local linear regression in the neighborhood of the threshold, with the outcome regressed on the running variable, treatment indicator, and their interaction. However, in practice it is quite common to also include additional covariates in the local linear regression. If the covariates are also interacted with the treatment indicator, there is no longer a single regression coefficient corresponding to the treatment effect. In my [last post](/rdd-interactions), I suggested a "centering trick" for estimating the MATE based on a model that included covariate-by-treatment interactions. In this post, I'll explain the reasoning behind this proposal. 
+The simplest approach to estimating the MATE is to use a local linear regression in the neighborhood of the threshold, with the outcome regressed on the running variable, treatment indicator, and their interaction. However, in practice it is quite common to also include additional covariates in the local linear regression. If the covariates are also interacted with the treatment indicator, there is no longer a single regression coefficient corresponding to the treatment effect. In my [last post](/posts/rdd-interactions), I suggested a "centering trick" for estimating the MATE based on a model that included covariate-by-treatment interactions. In this post, I'll explain the reasoning behind this proposal. 
 
 ### G'day, MATE
 

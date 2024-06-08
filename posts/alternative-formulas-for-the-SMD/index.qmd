@@ -1,6 +1,5 @@
 ---
 title: Alternative formulas for the standardized mean difference
-
 date: '2016-06-03'
 categories:
 - meta-analysis
@@ -8,7 +7,9 @@ categories:
 - distribution theory
 - standardized mean difference
 code-tools: true
-
+toc: true
+toc-depth: 4
+toc-title: Contents
 ---
 
 The standardized mean difference (SMD) is surely one of the best known and most widely used effect size metrics used in meta-analysis. In generic terms, the SMD parameter is defined as the difference in population means between two groups (often this difference represents the effect of some intervention), scaled by the population standard deviation of the outcome metric. Estimates of the SMD can be obtained from a wide variety of experimental designs, ranging from simple, completely randomized designs, to repeated measures designs, to cluster-randomized trials.
@@ -134,7 +135,7 @@ $$
 \frac{se_b}{s_p} = \sqrt{\frac{2(1 - r)}{n}},
 $$
 
-where $r$ is the sample correlation between the pre- and post-tests. The remaining question is what to use for $\nu$. Borenstein (2009) uses $\nu = n - 1$. My previous post [on the sampling covariance of sample variances](/distribution-of-sample-variances/) gave the result that $\text{Var}(s_p^2) = \sigma^4 (1 + \rho^2) / (n - 1)$, which would instead suggest using 
+where $r$ is the sample correlation between the pre- and post-tests. The remaining question is what to use for $\nu$. Borenstein (2009) uses $\nu = n - 1$. My previous post [on the sampling covariance of sample variances](/posts/distribution-of-sample-variances/) gave the result that $\text{Var}(s_p^2) = \sigma^4 (1 + \rho^2) / (n - 1)$, which would instead suggest using 
 
 $$
 \nu = \frac{2 (n - 1)}{1 + r^2}. 

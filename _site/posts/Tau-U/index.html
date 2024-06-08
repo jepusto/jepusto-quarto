@@ -228,7 +228,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -255,7 +255,7 @@ window.Quarto = {
 
 
 <p><a href="http://doi.org/10.1016/j.beth.2010.08.006">Parker, Vannest, Davis, and Sauber (2011)</a> proposed Tau-U as an effect size measure for use in single-case designs that exhibit baseline trend. In their original paper, they actually conceptualize Tau-U as a family of four distinct indices, distinguished by a) whether the index includes an adjustment for the presence of baseline trend and b) whether the index incorporates information about trend during the intervention phase. However, in subsequent presentations the authors seem to have focused exclusively on the index that adjusts for baseline trend but not for intervention phase trend, and so I’ll do the same here. (This version is also the one available in the web-tool at <a href="http://singlecaseresearch.org/calculators">singlecaseresearch.org</a>.)</p>
-<p>Tau-U is an elaboration on their previously proposed effect sizes <a href="../..\NAP-SEs-and-CIs">NAP and Tau</a>, which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has <span class="math inline">\(m\)</span> observations and treatment phase has <span class="math inline">\(n\)</span> observations. Let <span class="math inline">\(y^A_1,...,y^A_m\)</span> denote the baseline phase data and <span class="math inline">\(y^B_1,...,y^B_n\)</span> denote the treatment phase data. Tau-U is then calculated as</p>
+<p>Tau-U is an elaboration on their previously proposed effect sizes <a href="../..\posts/NAP-SEs-and-CIs/">NAP and Tau</a>, which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has <span class="math inline">\(m\)</span> observations and treatment phase has <span class="math inline">\(n\)</span> observations. Let <span class="math inline">\(y^A_1,...,y^A_m\)</span> denote the baseline phase data and <span class="math inline">\(y^B_1,...,y^B_n\)</span> denote the treatment phase data. Tau-U is then calculated as</p>
 <p><span class="math display">\[
 \text{Tau-U} = \frac{S_P - S_B}{mn}
 \]</span></p>
@@ -821,113 +821,111 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Tau-U</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2016-03-23'</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">- single-case design</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">- non-overlap measures</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2016-03-23'</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">- effect size</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">- single-case design</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">- non-overlap measures</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Parker, Vannest, Davis, and Sauber (2011)</span><span class="co">](http://doi.org/10.1016/j.beth.2010.08.006)</span> proposed Tau-U as an effect size measure for use in single-case designs that exhibit baseline trend. In their original paper, they actually conceptualize Tau-U as a family of four distinct indices, distinguished by a) whether the index includes an adjustment for the presence of baseline trend and b) whether the index incorporates information about trend during the intervention phase. However, in subsequent presentations the authors seem to have focused exclusively on the index that adjusts for baseline trend but not for intervention phase trend, and so I'll do the same here. (This version is also the one available in the web-tool at <span class="co">[</span><span class="ot">singlecaseresearch.org</span><span class="co">](http://singlecaseresearch.org/calculators)</span>.)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Parker, Vannest, Davis, and Sauber (2011)</span><span class="co">](http://doi.org/10.1016/j.beth.2010.08.006)</span> proposed Tau-U as an effect size measure for use in single-case designs that exhibit baseline trend. In their original paper, they actually conceptualize Tau-U as a family of four distinct indices, distinguished by a) whether the index includes an adjustment for the presence of baseline trend and b) whether the index incorporates information about trend during the intervention phase. However, in subsequent presentations the authors seem to have focused exclusively on the index that adjusts for baseline trend but not for intervention phase trend, and so I'll do the same here. (This version is also the one available in the web-tool at <span class="co">[</span><span class="ot">singlecaseresearch.org</span><span class="co">](http://singlecaseresearch.org/calculators)</span>.)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>Tau-U is an elaboration on their previously proposed effect sizes <span class="co">[</span><span class="ot">NAP and Tau</span><span class="co">](/posts/NAP-SEs-and-CIs/)</span>, which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has $m$ observations and treatment phase has $n$ observations. Let $y^A_1,...,y^A_m$ denote the baseline phase data and $y^B_1,...,y^B_n$ denote the treatment phase data. Tau-U is then calculated as</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>Tau-U is an elaboration on their previously proposed effect sizes <span class="co">[</span><span class="ot">NAP and Tau</span><span class="co">](/NAP-SEs-and-CIs)</span>, which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has $m$ observations and treatment phase has $n$ observations. Let $y^A_1,...,y^A_m$ denote the baseline phase data and $y^B_1,...,y^B_n$ denote the treatment phase data. Tau-U is then calculated as</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>\text{Tau-U} = \frac{S_P - S_B}{mn}</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>\text{Tau-U} = \frac{S_P - S_B}{mn}</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>where $S_P$ is Kendall's S statistic calculated for the comparison between phases and $S_B$ is Kendall's S statistic calculated on the baseline trend. More precisely,</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>where $S_P$ is Kendall's S statistic calculated for the comparison between phases and $S_B$ is Kendall's S statistic calculated on the baseline trend. More precisely,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>S_P &amp;= \sum_{i=1}^m \sum_{j=1}^n \left<span class="co">[</span><span class="ot">I\left(y^B_j &gt; y^A_i\right) - I\left(y^B_j &lt; y^A_i\right)\right</span><span class="co">]</span> <span class="sc">\\</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>S_B &amp;= \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left<span class="co">[</span><span class="ot">I\left(y^A_j &gt; y^A_i\right) - I\left(y^A_j &lt; y^A_i\right)\right</span><span class="co">]</span>.</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>S_P &amp;= \sum_{i=1}^m \sum_{j=1}^n \left<span class="co">[</span><span class="ot">I\left(y^B_j &gt; y^A_i\right) - I\left(y^B_j &lt; y^A_i\right)\right</span><span class="co">]</span> <span class="sc">\\</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>S_B &amp;= \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left<span class="co">[</span><span class="ot">I\left(y^A_j &gt; y^A_i\right) - I\left(y^A_j &lt; y^A_i\right)\right</span><span class="co">]</span>.</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>Note that the first term in Tau-U is equivalent to $\text{Tau} = S_P / (m n)$, which in turn is a re-scaling of NAP. The second term is related to the rank-correlation between the measurement occasions and outcomes in the baseline phase. Subtracting the second from the first thus adjusts for baseline trend, in the sense that more pronounced baseline trends will lead to smaller values of Tau-U. But looking at the measure a bit more deeply, it has some very odd features. In this post, I'll show that the distribution of Tau-U is sensitive to the number of observations in each phase. </span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>Note that the first term in Tau-U is equivalent to $\text{Tau} = S_P / (m n)$, which in turn is a re-scaling of NAP. The second term is related to the rank-correlation between the measurement occasions and outcomes in the baseline phase. Subtracting the second from the first thus adjusts for baseline trend, in the sense that more pronounced baseline trends will lead to smaller values of Tau-U. But looking at the measure a bit more deeply, it has some very odd features. In this post, I'll show that the distribution of Tau-U is sensitive to the number of observations in each phase. </span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sample size sensitivity</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sample size sensitivity</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>Consider first the logical range of Tau-U. The minimum and maximum possible values of $S_P$ are $-m n$ and $m n$; the minimum and maximum of $S_B$ are $-m (m-1) / 2$ and $m (m - 1) / 2$. Consequently, the logical range of Tau-U is from $-(2n + m - 1) / (2n)$ to $(2n + m - 1) / (2n)$. If the treatment phase is quite long compared to the baseline phase, then this range will be close to <span class="co">[</span><span class="ot">-1, 1</span><span class="co">]</span>. On the other hand, in a study with a baseline that is twice as long as the treatment phase, the range of Tau-U will be closer to <span class="co">[</span><span class="ot">-2, 2</span><span class="co">]</span>. That's a very odd property.</span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>Consider first the logical range of Tau-U. The minimum and maximum possible values of $S_P$ are $-m n$ and $m n$; the minimum and maximum of $S_B$ are $-m (m-1) / 2$ and $m (m - 1) / 2$. Consequently, the logical range of Tau-U is from $-(2n + m - 1) / (2n)$ to $(2n + m - 1) / (2n)$. If the treatment phase is quite long compared to the baseline phase, then this range will be close to <span class="co">[</span><span class="ot">-1, 1</span><span class="co">]</span>. On the other hand, in a study with a baseline that is twice as long as the treatment phase, the range of Tau-U will be closer to <span class="co">[</span><span class="ot">-2, 2</span><span class="co">]</span>. That's a very odd property.</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>The average magnitude of Tau-U is similarly influenced by the lengths of each phase. To see this, it's helpful to think first about its target parameter--the quantity that is estimated when calculating Tau-U based on a sample of data. Since Tau-U is not defined in parametric terms, I will assume that the Tau-U statistic is an unbiased estimator of its target parameter $\tau_U = \text{E}\left(\text{Tau-U}\right)$. It follows that</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>The average magnitude of Tau-U is similarly influenced by the lengths of each phase. To see this, it's helpful to think first about its target parameter--the quantity that is estimated when calculating Tau-U based on a sample of data. Since Tau-U is not defined in parametric terms, I will assume that the Tau-U statistic is an unbiased estimator of its target parameter $\tau_U = \text{E}\left(\text{Tau-U}\right)$. It follows that</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>\tau_U = \tau_P - \frac{m - 1}{2n} \tau_B,</span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>\tau_U = \tau_P - \frac{m - 1}{2n} \tau_B,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>where $\tau_P$ is Kendall's rank correlation between the outcomes and an indicator for the treatment phase and $\tau_B$ is Kendall's rank correlation between the measurement occasions and outcomes during baseline:</span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>where $\tau_P$ is Kendall's rank correlation between the outcomes and an indicator for the treatment phase and $\tau_B$ is Kendall's rank correlation between the measurement occasions and outcomes during baseline:</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>\tau_P &amp;= \frac{1}{mn}\sum_{i=1}^m \sum_{j=1}^n \left<span class="co">[</span><span class="ot">\text{Pr}\left(Y^B_j &gt; Y^A_i\right) - \text{Pr}\left(Y^B_j &lt; Y^A_i\right)\right</span><span class="co">]</span> <span class="sc">\\</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>\tau_B &amp;= \frac{2}{m(m-1)} \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left<span class="co">[</span><span class="ot">\text{Pr}\left(Y^A_j &gt; Y^A_i\right) - \text{Pr}\left(Y^A_j &lt; Y^A_i\right)\right</span><span class="co">]</span>.</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>\tau_P &amp;= \frac{1}{mn}\sum_{i=1}^m \sum_{j=1}^n \left<span class="co">[</span><span class="ot">\text{Pr}\left(Y^B_j &gt; Y^A_i\right) - \text{Pr}\left(Y^B_j &lt; Y^A_i\right)\right</span><span class="co">]</span> <span class="sc">\\</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>\tau_B &amp;= \frac{2}{m(m-1)} \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left<span class="co">[</span><span class="ot">\text{Pr}\left(Y^A_j &gt; Y^A_i\right) - \text{Pr}\left(Y^A_j &lt; Y^A_i\right)\right</span><span class="co">]</span>.</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>Now consider a positive a baseline trend, so that $\tau_B &gt; 0$, and assume that $\tau_P$ is constant. A longer baseline phase will then lead to smaller values of Tau-U (on average), while a longer treatment phase will lead to larger values of Tau-U (on average). Again, that's really weird. This is not a good feature for an effect size measure because it means that Tau-U values from different cases are only on the same scale if the cases have identical baseline and treatment phase lengths. In a multiple baseline study, each case is necessarily observed for a different number of occasions in baseline (otherwise it wouldn't be a multiple baseline). Thus, it seems inadvisable to use Tau-U to quantify the magnitude of treatment effects in a multiple baseline study.</span>
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>Now consider a positive a baseline trend, so that $\tau_B &gt; 0$, and assume that $\tau_P$ is constant. A longer baseline phase will then lead to smaller values of Tau-U (on average), while a longer treatment phase will lead to larger values of Tau-U (on average). Again, that's really weird. This is not a good feature for an effect size measure because it means that Tau-U values from different cases are only on the same scale if the cases have identical baseline and treatment phase lengths. In a multiple baseline study, each case is necessarily observed for a different number of occasions in baseline (otherwise it wouldn't be a multiple baseline). Thus, it seems inadvisable to use Tau-U to quantify the magnitude of treatment effects in a multiple baseline study.</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sensitivity under a parametric model</span></span>
 <span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sensitivity under a parametric model</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>Things may be different if we allow for the magnitude of $\tau_P$ to change along with the sample size. Such would be the case under a model where the intervention phase also exhibits a trend. For example, let's suppose that the outcome follows a linear model with a non-zero trend and the intervention leads to an immediate shift in the outcome, as in the model:</span>
 <span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>Things may be different if we allow for the magnitude of $\tau_P$ to change along with the sample size. Such would be the case under a model where the intervention phase also exhibits a trend. For example, let's suppose that the outcome follows a linear model with a non-zero trend and the intervention leads to an immediate shift in the outcome, as in the model:</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>y_t = \beta_0 + \beta_1 t + \beta_2 I(t &gt; m) + \epsilon_t.</span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>y_t = \beta_0 + \beta_1 t + \beta_2 I(t &gt; m) + \epsilon_t.</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>For simplicity, I'll assume that the errors in this model are normally distributed with unit variance. Under this model, </span>
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>For simplicity, I'll assume that the errors in this model are normally distributed with unit variance. Under this model, </span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>\tau_B &amp;= \frac{4}{m (m - 1)} \left<span class="co">[</span><span class="ot">\sum_{i=1}^{m-1} \sum_{j=i+1}^m \Phi\left[\beta_1\left(j - i\right) / \sqrt{2}\right]\right</span><span class="co">]</span> - 1, <span class="sc">\\</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>\tau_P &amp;= \frac{2}{m n} \left<span class="co">[</span><span class="ot">\sum_{i=1}^m \sum_{j=1}^n \Phi\left[\left(\beta_1 (m + j - i) + \beta_2\right) / \sqrt{2}\right]\right</span><span class="co">]</span> - 1,</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>\tau_B &amp;= \frac{4}{m (m - 1)} \left<span class="co">[</span><span class="ot">\sum_{i=1}^{m-1} \sum_{j=i+1}^m \Phi\left[\beta_1\left(j - i\right) / \sqrt{2}\right]\right</span><span class="co">]</span> - 1, <span class="sc">\\</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>\tau_P &amp;= \frac{2}{m n} \left<span class="co">[</span><span class="ot">\sum_{i=1}^m \sum_{j=1}^n \Phi\left[\left(\beta_1 (m + j - i) + \beta_2\right) / \sqrt{2}\right]\right</span><span class="co">]</span> - 1,</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>where $\Phi()$ is the standard normal cumulative distribution function. I can use the above formulas to calculate the average value of Tau-U for various degrees of baseline trend $(\beta_1)$, level shift $(\beta_2)$, and phase lengths $(m,n)$. </span>
 <span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>where $\Phi()$ is the standard normal cumulative distribution function. I can use the above formulas to calculate the average value of Tau-U for various degrees of baseline trend $(\beta_1)$, level shift $(\beta_2)$, and phase lengths $(m,n)$. </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, fig.width = 10, fig.height = 10}</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">E_TauU &lt;- function(b1, b2, m, n) {</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_B &lt;- sum(sapply(1:(m - 1), function(i) </span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">    sum(pnorm(b1 * ((i+1):m - i) / sqrt(2))))) * 4 / (m * (m - 1)) - 1</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_P &lt;- sum(sapply(1:m, function(i) </span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">    sum(pnorm((b1 * (m + 1:n - i) + b2) / sqrt(2))))) * 2 / (m * n) - 1</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_P - tau_B * (m - 1) / (2 * n)</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyr)</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">b1 &lt;- c(-0.2, -0.1, 0, 0.1, 0.2)</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">b2 &lt;- c(0, 0.5, 1.0, 2.0)</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in">m &lt;- c(5, 10, 15, 20)</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 5:20</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">expand.grid(b1 = b1, b2 = b2, m = m, n = n) %&gt;%</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">  group_by(b1, b2, m, n) %&gt;% </span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(TauU = E_TauU(b1, b2, m, n)) -&gt;</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">  TauU_values</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">ex &lt;- filter(TauU_values, b1 == -0.2 &amp; b2 == 0)</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(TauU_values, aes(n, TauU, color = factor(m))) + </span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">  facet_grid(b1 ~ b2, labeller = "label_both") + </span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() + </span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(y = "Expected magnitude of Tau-U", color = "m") + </span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_bw() + theme(legend.position = "bottom")</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message = FALSE, fig.width = 10, fig.height = 10}</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">E_TauU &lt;- function(b1, b2, m, n) {</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_B &lt;- sum(sapply(1:(m - 1), function(i) </span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">    sum(pnorm(b1 * ((i+1):m - i) / sqrt(2))))) * 4 / (m * (m - 1)) - 1</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_P &lt;- sum(sapply(1:m, function(i) </span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">    sum(pnorm((b1 * (m + 1:n - i) + b2) / sqrt(2))))) * 2 / (m * n) - 1</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">  tau_P - tau_B * (m - 1) / (2 * n)</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyr)</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">b1 &lt;- c(-0.2, -0.1, 0, 0.1, 0.2)</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">b2 &lt;- c(0, 0.5, 1.0, 2.0)</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">m &lt;- c(5, 10, 15, 20)</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 5:20</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">expand.grid(b1 = b1, b2 = b2, m = m, n = n) %&gt;%</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">  group_by(b1, b2, m, n) %&gt;% </span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">  mutate(TauU = E_TauU(b1, b2, m, n)) -&gt;</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">  TauU_values</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">ex &lt;- filter(TauU_values, b1 == -0.2 &amp; b2 == 0)</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(TauU_values, aes(n, TauU, color = factor(m))) + </span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">  facet_grid(b1 ~ b2, labeller = "label_both") + </span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_line() + </span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(y = "Expected magnitude of Tau-U", color = "m") + </span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_bw() + theme(legend.position = "bottom")</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>In the figure above, each plot corresponds to a different value of the baseline slope ($\beta_1$, ranging from -0.2 in the top row to 0.2 in the bottom row) and treatment shift ($\beta_2$, ranging from 0 in the first column to 2 in the last column). Within each plot, the x axis corresponds to treatment phase length and the different lines correspond to different baseline phase lengths. The thing to note is that, when the baseline slope is non-zero, the expected value of Tau-U ranges quite widely within each plot, depending on the values of $m$ and $n$. For example, when $\beta_2 = 0$ (in the first column), the data follow a simple linear trend with no shift. If the slope of the trend is equal to -0.2 (the first row), then the expected magnitude of Tau-U ranges from <span class="in">`{r} round(min(ex$TauU), 2)`</span> to <span class="in">`{r} round(max(ex$TauU), 2)`</span> depending on the phase lengths, which is quite a wide range. </span>
 <span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>In the figure above, each plot corresponds to a different value of the baseline slope ($\beta_1$, ranging from -0.2 in the top row to 0.2 in the bottom row) and treatment shift ($\beta_2$, ranging from 0 in the first column to 2 in the last column). Within each plot, the x axis corresponds to treatment phase length and the different lines correspond to different baseline phase lengths. The thing to note is that, when the baseline slope is non-zero, the expected value of Tau-U ranges quite widely within each plot, depending on the values of $m$ and $n$. For example, when $\beta_2 = 0$ (in the first column), the data follow a simple linear trend with no shift. If the slope of the trend is equal to -0.2 (the first row), then the expected magnitude of Tau-U ranges from <span class="in">`{r} round(min(ex$TauU), 2)`</span> to <span class="in">`{r} round(max(ex$TauU), 2)`</span> depending on the phase lengths, which is quite a wide range. </span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>Generally, the degree of sample size sensitivity depends on the absolute magnitude of the baseline slope, with steeper slopes leading to increased sensitivity. For steeper values of slope, it appears that the degree to which the measure is affected by sample size even swamps the degree to which the measure is sensitive to the magnitude of the treatment effect. Very peculiar.</span>
 <span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>Generally, the degree of sample size sensitivity depends on the absolute magnitude of the baseline slope, with steeper slopes leading to increased sensitivity. For steeper values of slope, it appears that the degree to which the measure is affected by sample size even swamps the degree to which the measure is sensitive to the magnitude of the treatment effect. Very peculiar.</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## A final thought</span></span>
 <span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## A final thought</span></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>Of course, these results are contingent on the particular model under which I derived the expected magnitude of Tau-U. If the data followed some other model, such as a log-linear model with Poisson-distributed outcomes, then the behavior described above might change. Still, I think all of this raises the reasonable question: under what model (i.e., what sort of patterns of baseline trend, what sort of patterns of response to the intervention) does Tau-U provide a meaningful effect size measure that clearly quantifies the magnitude of treatment effects without being strongly affected by phase lengths? Unless and until such a model can be identified, I would be wary of interpreting Tau-U as a measure of treatment effect magnitude.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>Of course, these results are contingent on the particular model under which I derived the expected magnitude of Tau-U. If the data followed some other model, such as a log-linear model with Poisson-distributed outcomes, then the behavior described above might change. Still, I think all of this raises the reasonable question: under what model (i.e., what sort of patterns of baseline trend, what sort of patterns of response to the intervention) does Tau-U provide a meaningful effect size measure that clearly quantifies the magnitude of treatment effects without being strongly affected by phase lengths? Unless and until such a model can be identified, I would be wary of interpreting Tau-U as a measure of treatment effect magnitude.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -1,18 +1,16 @@
 ---
 title: Tau-U
-
 date: '2016-03-23'
 categories:
 - effect size
 - single-case design
 - non-overlap measures
 code-tools: true
-
 ---
 
 [Parker, Vannest, Davis, and Sauber (2011)](http://doi.org/10.1016/j.beth.2010.08.006) proposed Tau-U as an effect size measure for use in single-case designs that exhibit baseline trend. In their original paper, they actually conceptualize Tau-U as a family of four distinct indices, distinguished by a) whether the index includes an adjustment for the presence of baseline trend and b) whether the index incorporates information about trend during the intervention phase. However, in subsequent presentations the authors seem to have focused exclusively on the index that adjusts for baseline trend but not for intervention phase trend, and so I'll do the same here. (This version is also the one available in the web-tool at [singlecaseresearch.org](http://singlecaseresearch.org/calculators).)
 
-Tau-U is an elaboration on their previously proposed effect sizes [NAP and Tau](/NAP-SEs-and-CIs), which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has $m$ observations and treatment phase has $n$ observations. Let $y^A_1,...,y^A_m$ denote the baseline phase data and $y^B_1,...,y^B_n$ denote the treatment phase data. Tau-U is then calculated as
+Tau-U is an elaboration on their previously proposed effect sizes [NAP and Tau](/posts/NAP-SEs-and-CIs/), which do not account for baseline trends. The index is calculated as follows. Suppose that we have data from A and B phases from a single case, where the baseline phase has $m$ observations and treatment phase has $n$ observations. Let $y^A_1,...,y^A_m$ denote the baseline phase data and $y^B_1,...,y^B_n$ denote the treatment phase data. Tau-U is then calculated as
 
 $$
 \text{Tau-U} = \frac{S_P - S_B}{mn}

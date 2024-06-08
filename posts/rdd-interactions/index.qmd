@@ -1,6 +1,5 @@
 ---
 title: Regression discontinuities with covariate interactions in the rdd package
-
 date: '2016-01-25'
 categories:
 - econometrics
@@ -8,7 +7,7 @@ categories:
 - causal inference
 - regression discontinuity
 code-tools: true
-
+date-modified: '2019-09-24'
 ---
 
 __*NOTE (2019-09-24): This post pertains to version 0.56 of the `rdd` package. The problems described in this post have been corrected in version 0.57 of the package, which was posted to CRAN on 2016-03-14.*__
@@ -172,4 +171,4 @@ ldply(covariates_cent, RD_est, mod = "Y ~ R", .id = "Specification")
 
 The estimates are now insensitive to the inclusion of the (properly centered) covariates, just as in the no-interactions model. In this example, the standard errors from the model that includes covariate-by-treatment interactions are just ever so slightly smaller than those from the model without interactions. 
     
-Why does this third approach work? I'll explain more in a later post...
+Why does this third approach work? I'll explain more in [a later post](/posts/rdd-interactions-again/)...
