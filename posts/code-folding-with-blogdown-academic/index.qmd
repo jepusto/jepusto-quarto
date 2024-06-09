@@ -6,11 +6,11 @@ categories:
 - Rstats
 number-sections: true
 code-tools: false
-date-modified: '2024-06-24'
+date-modified: '2024-06-08'
 ---
 
 ::: callout-important
-**2024-06-24** I have ported my website to Quarto, which has native support for code folding. I'm leaving this post up despite the fact that the functionality is no longer relevant for this website.
+**2024-06-08** I have ported my website to Quarto, which has native support for code folding. I'm leaving this post up despite the fact that the functionality is no longer relevant for this website.
 
 **2020-05-03** This post describes an implementation of code folding for an older version of the Academic Theme. It does not work with Academic 4.+. See [my updated instructions](/posts/code-folding-update/) to get it working with newer versions of Academic.
 :::

@@ -1,13 +1,11 @@
 ---
 title: The Woodbury identity
 subtitle: A life-hack for analyzing hierarchical models
-
 date: '2020-12-04'
 categories:
 - hierarchical models
 - matrix algebra
 code-tools: true
-
 ---
 
 As in many parts of life, statistics is full of little bits of knowledge that are useful if you happen to know them, but which hardly anybody ever bothers to mention. You would think, if something is so useful, perhaps your professors would spend a fair bit of time explaining it to you. But maybe the stuff seems trivial, obvious, or simple to them, so they don't bother. 
@@ -108,7 +106,7 @@ where $w_j = \frac{1}{1 + (n_j - 1) \rho}$ and $\displaystyle{W = \sum_{j=1}^J n
 
 ## A meta-analysis example
 
-In a [previous post](/weighting-in-multivariate-meta-analysis/) on multi-variate meta-analysis, I examined how weighting works in some multi-variate meta-analysis models, where you have multiple effect size estimates nested within a study. Letting $T_{ij}$ denote effect size estimate $i$ in study $j$, for $i = 1,...,n_j$ and $j = 1,...,J$. The first model I considered in the previous post was 
+In a [previous post](/posts/weighting-in-multivariate-meta-analysis/) on multi-variate meta-analysis, I examined how weighting works in some multi-variate meta-analysis models, where you have multiple effect size estimates nested within a study. Letting $T_{ij}$ denote effect size estimate $i$ in study $j$, for $i = 1,...,n_j$ and $j = 1,...,J$. The first model I considered in the previous post was 
 $$
 T_{ij} = \mu + \eta_j + \nu_{ij} + e_{ij},
 $$
@@ -128,11 +126,11 @@ The Woodbury identity comes in handy here again, if we want to examine the weigh
 
 [^squint]: Or squint hard at the formula for the variance of $\mathbf{T}_j$, and you'll see that it has the same form as the random intercepts model in the previous example. Just replace the $\tau^2$ in that model with $\tau^2 + V_j \rho$ and replace the $\sigma^2$ in that model with $\omega^2 + V_j (1 - \rho)$.
 
-[^original]: See the [previous post](/weighting-in-multivariate-meta-analysis/) for the answer.
+[^original]: See the [previous post](/posts/weighting-in-multivariate-meta-analysis/) for the answer.
 
 ## Another meta-analysis example
 
-In the [previous post](/weighting-in-multivariate-meta-analysis/), I also covered weighting in a bit more general model, where the sampling variances and correlations are no longer quite so constrained. As before, we have 
+In the [previous post](/posts/weighting-in-multivariate-meta-analysis/), I also covered weighting in a bit more general model, where the sampling variances and correlations are no longer quite so constrained. As before, we have 
 $$
 \mathbf{T}_j = \mu \mathbf{1}_j + \eta_j \mathbf{1}_j + \boldsymbol\nu_j + \mathbf{e}_j,
 $$

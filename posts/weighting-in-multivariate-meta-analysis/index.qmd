@@ -1,28 +1,17 @@
 ---
 title: Weighting in multivariate meta-analysis
-
 date: '2020-06-09'
 categories:
 - meta-analysis
 - weighting
 number-sections: true
-description: One common question about multivariate/multi-level meta-analysis is how
-  such models assign weight to individual effect size estimates. When a version of
-  the question came up recently on the R-sig-meta-analysis listserv, Dr. Wolfgang
-  Viechtbauer offered a whole blog post in reply, demonstrating how weights work in
-  simpler fixed effect and random effects meta-analysis and then how things get more
-  complicated in multivariate models. In this post, I'll try to add some further intuition
-  on how weights work in certain multivariate meta-analysis models. Most of the discussion
-  will apply to models that include multiple level of random effects, but no predictors.
-  I'll also comment briefly on meta-regression models with only study-level predictor
-  variables, and finally give some pointers to work on more complicated models.
 code-tools: false
-
+toc: true
 ---
 
 One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the [R-sig-meta-analysis listserv](https://stat.ethz.ch/pipermail/r-sig-meta-analysis/2020-June/002149.html), Dr. Wolfgang Viechtbauer offered a [whole blog post](http://www.metafor-project.org/doku.php/tips:weights_in_rma.mv_models) in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. I started thumb-typing my own reply as well, but then decided it would be better to write up a post so that I could use a bit of math notation (and to give my thumbs a break). So, in this post I'll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I'll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.
 
-## A little background
+# A little background
 
 It's helpful to start by looking briefly at the basic fixed effect and random effects models, assuming that we've got a set of studies that each contribute a single effect size estimate so everything's independent. Letting $T_j$ be the effect size from study $j$, with sampling variance $V_j$, both for $j = 1,...,k$, the basic random effects model is:
 $$
@@ -40,7 +29,7 @@ w_j = \frac{1}{\hat\tau^2 + V_j},
 $$
 for $j = 1,...,k$. The denominator term here includes both the (estimated) between-study heterogeneity and the sampling variance because both terms contribute to how noisy the effect size estimate is. In the fixed effect model, we ignore between-study heterogeneity so the weights are inversely proportional to the sampling variances, with $w_j = 1 / V_j$. In the random effects model, larger between-study heterogeneity will make the weights closer to equal, while smaller between-study heterogeneity will lead to weights that tend to emphasize larger studies with more precise estimates. In the remainder, I'll show that there are some similar dynamics at work in a more complicated, multivariate meta-analysis model.
 
-## A multivariate meta-analysis
+# A multivariate meta-analysis
 
 Now let's consider the case where some or all studies in our synthesis contribute more than one effect size estimate. Say that we have effect sizes $T_{ij}$, where $i = 1,...,n_j$ indexes effect size estimates within study $j$ and $j$ indexes studies, for $j = 1,...,k$. Say that effect size estimate $T_{ij}$ has sampling variance $V_{ij}$, and there is some sampling correlation between effect sizes $h$ and $i$ within study $j$, denoted $r_{hij}$. 
 
@@ -58,11 +47,11 @@ In the second line of the model, $\mu$ is still the overall average effect size 
 
 One thing to note about this model is that it treats all of the effect sizes as coming from a population with a common mean $\mu$. Some statisticians might object to calling it a multivariate model because we're not distinguishing averages for different dimensions (or variates) of the effect sizes. To this I say: whatev's, donkey! I'm calling it multivariate because you have to use the `rma.mv()` function from the `metafor` package to estimate it. I will acknowledge, though, that there will often be reason to use more complicated models, for example by replacing the overall average $\mu$ with some meta-regression $\mathbf{x}_{ij} \boldsymbol\beta$. That’s a discussion for another day. For now, we're only going to consider the model with an overall average effect size parameter $\mu$. The question is, __*how do the individual effect size estimates $T_{ij}$ contribute to the estimate of this overall average effect?*__
 
-## Equally precise effect size estimates
+# Equally precise effect size estimates
 
 To make some headway, it is helpful to first consider an even more specific model where, within a given study, all effect size estimates are equally precise and equally correlated. In particular, let's assume that for each study $j$, the sampling variances are all equal, with $V_{ij} = V_j$ for $i = 1,...,n_j$, and the correlations between the sampling errors are also all equal, with $r_{hij} = r_j$ for $h,i = 1,...,n_j$. 
 
-These assumptions might not be all that far-fetched. Within a given study, if the effect size estimates are for different measures of a common construct, it's not unlikely that they would all be based on similar sample sizes (+/- a bit of item non-response). It might be a bit less likely if the effect size estimates are for treatment effects from different follow-up times (since drop-out/non-response tends to increase over time) or different treatment groups compared to a common control group---but still perhaps not entirely unreasonable. Further, it's rather _uncommon_ to have good information about the correlations between effect size estimates from a given study (because primary studies don't often report all of the information needed to calculate these correlations). In practice, meta-analysts might need to simply [make a rough guess about the correlations](/imputing-covariance-matrices-for-multi-variate-meta-analysis/) and then use robust variance estimation and/or sensitivity analysis to check themselves. And if we're just ball-parking, then we'll probably assume a single correlation for all of the studies. 
+These assumptions might not be all that far-fetched. Within a given study, if the effect size estimates are for different measures of a common construct, it's not unlikely that they would all be based on similar sample sizes (+/- a bit of item non-response). It might be a bit less likely if the effect size estimates are for treatment effects from different follow-up times (since drop-out/non-response tends to increase over time) or different treatment groups compared to a common control group---but still perhaps not entirely unreasonable. Further, it's rather _uncommon_ to have good information about the correlations between effect size estimates from a given study (because primary studies don't often report all of the information needed to calculate these correlations). In practice, meta-analysts might need to simply [make a rough guess about the correlations](/posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/) and then use robust variance estimation and/or sensitivity analysis to check themselves. And if we're just ball-parking, then we'll probably assume a single correlation for all of the studies. 
 
 The handy thing about this particular scenario is that, because all of the effect size estimates within a study are equally precise and equally correlated, the most efficient way to estimate an average effect for a given study is to __*just take the simple average*__ (and, intuitively, this seems like the only sensible thing to do). To be precise, consider how we would estimate $\theta_j$ for a given study $j$. The most precise possible estimate is simply
 $$
@@ -104,7 +93,7 @@ Second, now suppose that there is no between-study heterogeneity ($\tau^2 = 0$) 
 
 Third and finally, between-study heterogeneity will tend to equalize the weights at the study level, so that the overall average is pulled closer to a simple average of the study-specific average effects. This works very much like in basic random effects meta-analysis, where increased heterogeneity will lead to weights that are closer to equal and an average effect size estimate that is closer to a simple average.
 
-## A computational example
+# A computational example
 
 ```{r, include = FALSE}
 data(corrdat, package = "robumeta")
@@ -297,7 +286,7 @@ ggplot(corrdat_study) +
 ```
 
 
-## Now without compound symmetry
+# Now without compound symmetry
 
 If we remove the restrictions that effect sizes from the same study have the same sampling variance and are equi-correlated, then the weights get a little bit more complicated. However, the general intuitions carry through. Let's now consider the model with arbitrary sampling variance $V_{ij}$ and sampling correlations within studies $r_{hij}$. The most efficient estimate of the study-specific average effect is now a _weighted_ average, with weights that depend on both the variances and covariances of the effect size estimates within each study. Let 
 $$
@@ -331,7 +320,7 @@ How do $\omega^2$ and $\tau^2$ affect these more general weights? The intuitions
 
 One wrinkle with the more general form of the weights is that the effect-size level weights can sometimes be _negative_ (i.e., negative $s_{ij}$). This will tend to happen when the sampling variances within a study are discrepant, such as when one $V_{ij}$ is much smaller than the others in study $j$, when the (assumed or estimated) sampling correlation is high, and when $\omega^2$ is zero or small. This is something that warrants further investigation. 
 
-## What about meta-regression?
+# What about meta-regression?
 
 Some of the foregoing analysis also applies to models that include predictors. In particular, the formulas I've given for the weights will still hold for meta-regression models __*that include only study-level predictors*__. In other words, they work for models of the following form:
 $$
@@ -343,7 +332,7 @@ $$
 $$
 where $\text{Var}(\tilde{e}_j) = \text{Var}(\hat\theta_j | \theta_j)$.[^simpler]
 
-[^simpler]: Things get even simpler if the model does not include within-study random effects, as I discussed in [a previous post](/sometimes-aggregating-effect-sizes-is-fine/).
+[^simpler]: Things get even simpler if the model does not include within-study random effects, as I discussed in [a previous post](/posts/sometimes-aggregating-effect-sizes-is-fine/).
 
 Here is an illustration with the `corrdat` meta-analysis. In these data, the variable `college` indicates whether the effect size comes from a college-age sample; it varies only at the study level. The variable `males`, `binge`, and `followup` have some within-study variation, which I'll by taking the average of each of these predictors at the study level:
 ```{r}

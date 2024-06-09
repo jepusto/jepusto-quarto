@@ -8,7 +8,6 @@
 
 <meta name="author" content="James E. Pustejovsky">
 <meta name="dcterms.date" content="2020-06-09">
-<meta name="description" content="One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.">
 
 <title>James E. Pustejovsky - Weighting in multivariate meta-analysis</title>
 <style>
@@ -136,14 +135,14 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="James E. Pustejovsky - Weighting in multivariate meta-analysis">
-<meta property="og:description" content="One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.">
+<meta property="og:description" content="Education Statistics and Meta-Analysis">
 <meta property="og:site_name" content="James E. Pustejovsky">
 <meta name="twitter:title" content="James E. Pustejovsky - Weighting in multivariate meta-analysis">
-<meta name="twitter:description" content="One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.">
+<meta name="twitter:description" content="Education Statistics and Meta-Analysis">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -215,12 +214,7 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Weighting in multivariate meta-analysis</h1>
-                  <div>
-        <div class="description">
-          One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the R-sig-meta-analysis listserv, Dr.&nbsp;Wolfgang Viechtbauer offered a whole blog post in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. In this post, I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.
-        </div>
-      </div>
-                          <div class="quarto-categories">
+                                <div class="quarto-categories">
                 <div class="quarto-category">meta-analysis</div>
                 <div class="quarto-category">weighting</div>
               </div>
@@ -233,7 +227,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -251,7 +245,21 @@ window.Quarto = {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#a-little-background" id="toc-a-little-background" class="nav-link active" data-scroll-target="#a-little-background"><span class="header-section-number">1</span> A little background</a></li>
+  <li><a href="#a-multivariate-meta-analysis" id="toc-a-multivariate-meta-analysis" class="nav-link" data-scroll-target="#a-multivariate-meta-analysis"><span class="header-section-number">2</span> A multivariate meta-analysis</a></li>
+  <li><a href="#equally-precise-effect-size-estimates" id="toc-equally-precise-effect-size-estimates" class="nav-link" data-scroll-target="#equally-precise-effect-size-estimates"><span class="header-section-number">3</span> Equally precise effect size estimates</a></li>
+  <li><a href="#a-computational-example" id="toc-a-computational-example" class="nav-link" data-scroll-target="#a-computational-example"><span class="header-section-number">4</span> A computational example</a></li>
+  <li><a href="#now-without-compound-symmetry" id="toc-now-without-compound-symmetry" class="nav-link" data-scroll-target="#now-without-compound-symmetry"><span class="header-section-number">5</span> Now without compound symmetry</a></li>
+  <li><a href="#what-about-meta-regression" id="toc-what-about-meta-regression" class="nav-link" data-scroll-target="#what-about-meta-regression"><span class="header-section-number">6</span> What about meta-regression?</a></li>
+  <li><a href="#and-beyond" id="toc-and-beyond" class="nav-link" data-scroll-target="#and-beyond"><span class="header-section-number">7</span> And beyond!</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -260,8 +268,8 @@ window.Quarto = {
 
 
 <p>One common question about multivariate/multi-level meta-analysis is how such models assign weight to individual effect size estimates. When a version of the question came up recently on the <a href="https://stat.ethz.ch/pipermail/r-sig-meta-analysis/2020-June/002149.html">R-sig-meta-analysis listserv</a>, Dr.&nbsp;Wolfgang Viechtbauer offered a <a href="http://www.metafor-project.org/doku.php/tips:weights_in_rma.mv_models">whole blog post</a> in reply, demonstrating how weights work in simpler fixed effect and random effects meta-analysis and then how things get more complicated in multivariate models. I started thumb-typing my own reply as well, but then decided it would be better to write up a post so that I could use a bit of math notation (and to give my thumbs a break). So, in this post I’ll try to add some further intuition on how weights work in certain multivariate meta-analysis models. Most of the discussion will apply to models that include multiple level of random effects, but no predictors. I’ll also comment briefly on meta-regression models with only study-level predictor variables, and finally give some pointers to work on more complicated models.</p>
-<section id="a-little-background" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="a-little-background"><span class="header-section-number">0.1</span> A little background</h2>
+<section id="a-little-background" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> A little background</h1>
 <p>It’s helpful to start by looking briefly at the basic fixed effect and random effects models, assuming that we’ve got a set of studies that each contribute a single effect size estimate so everything’s independent. Letting <span class="math inline">\(T_j\)</span> be the effect size from study <span class="math inline">\(j\)</span>, with sampling variance <span class="math inline">\(V_j\)</span>, both for <span class="math inline">\(j = 1,...,k\)</span>, the basic random effects model is: <span class="math display">\[
 T_j = \mu + \eta_j + e_j
 \]</span> where <span class="math inline">\(\mu\)</span> is the overall average effect size, <span class="math inline">\(v_j\)</span> is a random effect with variance <span class="math inline">\(\text{Var}(\eta_j) = \tau^2\)</span> and <span class="math inline">\(e_j\)</span> is a sampling error with known variance <span class="math inline">\(V_j\)</span>. The first step in estimating this model is to estimate <span class="math inline">\(\tau^2\)</span>. There’s lots of methods for doing so, but let’s not worry about those details—just pick one and call the estimate <span class="math inline">\(\hat\tau^2\)</span>. Then, to estimate <span class="math inline">\(\mu\)</span>, we take a weighted average of the effect size estimates: <span class="math display">\[
@@ -271,8 +279,8 @@ T_j = \mu + \eta_j + e_j
 w_j = \frac{1}{\hat\tau^2 + V_j},
 \]</span> for <span class="math inline">\(j = 1,...,k\)</span>. The denominator term here includes both the (estimated) between-study heterogeneity and the sampling variance because both terms contribute to how noisy the effect size estimate is. In the fixed effect model, we ignore between-study heterogeneity so the weights are inversely proportional to the sampling variances, with <span class="math inline">\(w_j = 1 / V_j\)</span>. In the random effects model, larger between-study heterogeneity will make the weights closer to equal, while smaller between-study heterogeneity will lead to weights that tend to emphasize larger studies with more precise estimates. In the remainder, I’ll show that there are some similar dynamics at work in a more complicated, multivariate meta-analysis model.</p>
 </section>
-<section id="a-multivariate-meta-analysis" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="a-multivariate-meta-analysis"><span class="header-section-number">0.2</span> A multivariate meta-analysis</h2>
+<section id="a-multivariate-meta-analysis" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> A multivariate meta-analysis</h1>
 <p>Now let’s consider the case where some or all studies in our synthesis contribute more than one effect size estimate. Say that we have effect sizes <span class="math inline">\(T_{ij}\)</span>, where <span class="math inline">\(i = 1,...,n_j\)</span> indexes effect size estimates within study <span class="math inline">\(j\)</span> and <span class="math inline">\(j\)</span> indexes studies, for <span class="math inline">\(j = 1,...,k\)</span>. Say that effect size estimate <span class="math inline">\(T_{ij}\)</span> has sampling variance <span class="math inline">\(V_{ij}\)</span>, and there is some sampling correlation between effect sizes <span class="math inline">\(h\)</span> and <span class="math inline">\(i\)</span> within study <span class="math inline">\(j\)</span>, denoted <span class="math inline">\(r_{hij}\)</span>.</p>
 <p>There are many models that a meta-analyst might consider for this data structure. A fairly common one would be a model that includes random effects not only for between-study heterogeneity (as in the basic random effects model) but also random effects capturing within-study heterogeneity in true effect sizes. Let me write this model heirarchically, as <span class="math display">\[
 \begin{align}
@@ -282,10 +290,10 @@ T_{ij} &amp;= \theta_j + \nu_{ij} + e_{ij} \\
 \]</span> In the first line of the model, <span class="math inline">\(\theta_j\)</span> denotes the average effect size parameter for study <span class="math inline">\(j\)</span>, <span class="math inline">\(\nu_{ij}\)</span> captures within-study heterogeneity in the true effect size parameters and <span class="math inline">\(e_{ij}\)</span> is a sampling error. Above, I’ve assumed that we know the structure of the sampling errors, so <span class="math inline">\(\text{Var}(e_{ij}) = V_{ij}\)</span> and <span class="math inline">\(\text{Cov}(e_{hj}, e_{ij}) = r_{hij} \sqrt{V_{hj} V_{ij}}\)</span>. Let’s also denote the within-study variance as <span class="math inline">\(\omega^2\)</span>, so <span class="math inline">\(\text{Var}(\nu_{ij}) = \omega^2\)</span>. In the second line of the model, <span class="math inline">\(\mu\)</span> is still the overall average effect size across all studies and effect sizes within studies and <span class="math inline">\(\eta_j\)</span> is a between-study error, with <span class="math inline">\(\text{Var}(\eta_j) = \tau^2\)</span>, capturing the degree of heterogeneity in the <em>average</em> effect sizes (the <span class="math inline">\(\theta_j\)</span>’s) across studies.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>One thing to note about this model is that it treats all of the effect sizes as coming from a population with a common mean <span class="math inline">\(\mu\)</span>. Some statisticians might object to calling it a multivariate model because we’re not distinguishing averages for different dimensions (or variates) of the effect sizes. To this I say: whatev’s, donkey! I’m calling it multivariate because you have to use the <code>rma.mv()</code> function from the <code>metafor</code> package to estimate it. I will acknowledge, though, that there will often be reason to use more complicated models, for example by replacing the overall average <span class="math inline">\(\mu\)</span> with some meta-regression <span class="math inline">\(\mathbf{x}_{ij} \boldsymbol\beta\)</span>. That’s a discussion for another day. For now, we’re only going to consider the model with an overall average effect size parameter <span class="math inline">\(\mu\)</span>. The question is, <strong><em>how do the individual effect size estimates <span class="math inline">\(T_{ij}\)</span> contribute to the estimate of this overall average effect?</em></strong></p>
 </section>
-<section id="equally-precise-effect-size-estimates" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="equally-precise-effect-size-estimates"><span class="header-section-number">0.3</span> Equally precise effect size estimates</h2>
+<section id="equally-precise-effect-size-estimates" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Equally precise effect size estimates</h1>
 <p>To make some headway, it is helpful to first consider an even more specific model where, within a given study, all effect size estimates are equally precise and equally correlated. In particular, let’s assume that for each study <span class="math inline">\(j\)</span>, the sampling variances are all equal, with <span class="math inline">\(V_{ij} = V_j\)</span> for <span class="math inline">\(i = 1,...,n_j\)</span>, and the correlations between the sampling errors are also all equal, with <span class="math inline">\(r_{hij} = r_j\)</span> for <span class="math inline">\(h,i = 1,...,n_j\)</span>.</p>
-<p>These assumptions might not be all that far-fetched. Within a given study, if the effect size estimates are for different measures of a common construct, it’s not unlikely that they would all be based on similar sample sizes (+/- a bit of item non-response). It might be a bit less likely if the effect size estimates are for treatment effects from different follow-up times (since drop-out/non-response tends to increase over time) or different treatment groups compared to a common control group—but still perhaps not entirely unreasonable. Further, it’s rather <em>uncommon</em> to have good information about the correlations between effect size estimates from a given study (because primary studies don’t often report all of the information needed to calculate these correlations). In practice, meta-analysts might need to simply <a href="../..\imputing-covariance-matrices-for-multi-variate-meta-analysis/">make a rough guess about the correlations</a> and then use robust variance estimation and/or sensitivity analysis to check themselves. And if we’re just ball-parking, then we’ll probably assume a single correlation for all of the studies.</p>
+<p>These assumptions might not be all that far-fetched. Within a given study, if the effect size estimates are for different measures of a common construct, it’s not unlikely that they would all be based on similar sample sizes (+/- a bit of item non-response). It might be a bit less likely if the effect size estimates are for treatment effects from different follow-up times (since drop-out/non-response tends to increase over time) or different treatment groups compared to a common control group—but still perhaps not entirely unreasonable. Further, it’s rather <em>uncommon</em> to have good information about the correlations between effect size estimates from a given study (because primary studies don’t often report all of the information needed to calculate these correlations). In practice, meta-analysts might need to simply <a href="../..\posts/imputing-covariance-matrices-for-multi-variate-meta-analysis/">make a rough guess about the correlations</a> and then use robust variance estimation and/or sensitivity analysis to check themselves. And if we’re just ball-parking, then we’ll probably assume a single correlation for all of the studies.</p>
 <p>The handy thing about this particular scenario is that, because all of the effect size estimates within a study are equally precise and equally correlated, the most efficient way to estimate an average effect for a given study is to <strong><em>just take the simple average</em></strong> (and, intuitively, this seems like the only sensible thing to do). To be precise, consider how we would estimate <span class="math inline">\(\theta_j\)</span> for a given study <span class="math inline">\(j\)</span>. The most precise possible estimate is simply <span class="math display">\[
 \hat\theta_j = \frac{1}{n_j} \sum_{i=1}^{n_j} T_{ij}.
 \]</span> And we could do the same for each of the other studies, <span class="math inline">\(j = 1,...,k\)</span>. It turns out that the estimate of the overall average effect size is a weighted average of these study-specific average effect sizes: <span class="math display">\[
@@ -306,8 +314,8 @@ w_{ij} = \frac{1}{n_j \tau^2 + \omega^2 + (n_j - 1) r_j V_j + V_j}.
 <p>Second, now suppose that there is no between-study heterogeneity (<span class="math inline">\(\tau^2 = 0\)</span>) but there is positive within-study heterogeneity. Larger degrees of within-study heterogeneity will tend to equalize the weights <em>at the effect size level</em>, regardless of how effect size estimates are nested within studies. When there is within-study heterogeneity, averaging together a bunch of estimates will yield a more precise estimate of study-specific average effects. Therefore, when <span class="math inline">\(\omega^2\)</span> is larger, studies with more effect sizes will tend to get a relatively larger share of the weight.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>Third and finally, between-study heterogeneity will tend to equalize the weights at the study level, so that the overall average is pulled closer to a simple average of the study-specific average effects. This works very much like in basic random effects meta-analysis, where increased heterogeneity will lead to weights that are closer to equal and an average effect size estimate that is closer to a simple average.</p>
 </section>
-<section id="a-computational-example" class="level2" data-number="0.4">
-<h2 data-number="0.4" class="anchored" data-anchor-id="a-computational-example"><span class="header-section-number">0.4</span> A computational example</h2>
+<section id="a-computational-example" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> A computational example</h1>
 <p>I think it’s useful to verify algebraic results like the ones I’ve given above by checking that you can reproduce them with real data. I’ll use the <code>corrdat</code> dataset from the <code>robumeta</code> package for illustration. The dataset has one duplicated row in it (I have no idea why!), which I’ll remove before analyzing further.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -504,15 +512,6 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>Below is a plot illustrating the changes in study-level weights (i.e., aggregating the weight assigned to each study). The bar color corresponds to the number of effect size estimates in each study; light grey studies have just one effect size, while studies with more effect sizes are more intensly purple. The notable drops in weight for studies with a single effect size estimate (light grey) are visible here too. Studies with more effect sizes (e.g., studies 2, 15, 30, with dark purple bars) gain weight when we allow <span class="math inline">\(\omega^2\)</span> to be greater than zero.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The `guide` argument in `scale_*()` cannot be `FALSE`. This was deprecated in
-ggplot2 3.3.4.
-ℹ Please use "none" instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -522,8 +521,8 @@ ggplot2 3.3.4.
 </div>
 </div>
 </section>
-<section id="now-without-compound-symmetry" class="level2" data-number="0.5">
-<h2 data-number="0.5" class="anchored" data-anchor-id="now-without-compound-symmetry"><span class="header-section-number">0.5</span> Now without compound symmetry</h2>
+<section id="now-without-compound-symmetry" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Now without compound symmetry</h1>
 <p>If we remove the restrictions that effect sizes from the same study have the same sampling variance and are equi-correlated, then the weights get a little bit more complicated. However, the general intuitions carry through. Let’s now consider the model with arbitrary sampling variance <span class="math inline">\(V_{ij}\)</span> and sampling correlations within studies <span class="math inline">\(r_{hij}\)</span>. The most efficient estimate of the study-specific average effect is now a <em>weighted</em> average, with weights that depend on both the variances and covariances of the effect size estimates within each study. Let <span class="math display">\[
 \boldsymbol{\hat\Sigma}_j = \hat\omega^2 \mathbf{I}_j + \mathbf{V}_j,
 \]</span> where <span class="math inline">\(\mathbf{I}_j\)</span> is an <span class="math inline">\(n_j \times n_j\)</span> identity matrix and <span class="math inline">\(\mathbf{V}_j\)</span> is the sampling variance-covariance matrix of the effect size estimates, with entry <span class="math inline">\((h,i)\)</span> equal to <span class="math inline">\(\left[\mathbf{V}_j\right]_{h,i} = r_{hij} \sqrt{V_{hj} V_{ij}}\)</span>. The estimate of the study-specific average effect size for study <span class="math inline">\(j\)</span> is still a weighted average: <span class="math display">\[
@@ -541,8 +540,8 @@ w_{ij} = \frac{s_{ij} V^C_j}{\hat\tau^2 + V^C_j}.
 \]</span> How do <span class="math inline">\(\omega^2\)</span> and <span class="math inline">\(\tau^2\)</span> affect these more general weights? The intuitions that I described earlier still mostly hold. Increasing <span class="math inline">\(\omega^2\)</span> will tend to equalize the weights at the effect size level (i.e., equalize the <span class="math inline">\(s_{ij}\)</span> across <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>), pulling weight towards studies with more effect size estimates. Increasing <span class="math inline">\(\tau^2\)</span> will tend to equalize the weights at the study-level.</p>
 <p>One wrinkle with the more general form of the weights is that the effect-size level weights can sometimes be <em>negative</em> (i.e., negative <span class="math inline">\(s_{ij}\)</span>). This will tend to happen when the sampling variances within a study are discrepant, such as when one <span class="math inline">\(V_{ij}\)</span> is much smaller than the others in study <span class="math inline">\(j\)</span>, when the (assumed or estimated) sampling correlation is high, and when <span class="math inline">\(\omega^2\)</span> is zero or small. This is something that warrants further investigation.</p>
 </section>
-<section id="what-about-meta-regression" class="level2" data-number="0.6">
-<h2 data-number="0.6" class="anchored" data-anchor-id="what-about-meta-regression"><span class="header-section-number">0.6</span> What about meta-regression?</h2>
+<section id="what-about-meta-regression" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> What about meta-regression?</h1>
 <p>Some of the foregoing analysis also applies to models that include predictors. In particular, the formulas I’ve given for the weights will still hold for meta-regression models <strong><em>that include only study-level predictors</em></strong>. In other words, they work for models of the following form: <span class="math display">\[
 T_{ij} = \mathbf{x}_j \boldsymbol\beta + \eta_j + \nu_{ij} + e_{ij},
 \]</span> where <span class="math inline">\(\mathbf{x}_j\)</span> is a row-vector of one or more predictors for study <span class="math inline">\(j\)</span> (including a constant intercept). Introducing these predictors will alter the variance component estimates <span class="math inline">\(\hat\tau^2\)</span> and <span class="math inline">\(\hat\omega^2\)</span>, but the form of the weights will remain the same as above, and the intuitions still hold. This is because, for purposes of estimating <span class="math inline">\(\boldsymbol\beta\)</span>, the model is essentially the same as a meta-regression at the study level, using the study-specific average effect size estimates as input: <span class="math display">\[
@@ -552,26 +551,26 @@ T_{ij} = \mathbf{x}_j \boldsymbol\beta + \eta_j + \nu_{ij} + e_{ij},
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">males_M =</span> <span class="fu">mean</span>(males),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">binge_M =</span> <span class="fu">mean</span>(binge),</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">followup_M =</span> <span class="fu">mean</span>(followup)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>corrdat <span class="ot">&lt;-</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">males_M =</span> <span class="fu">mean</span>(males),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">binge_M =</span> <span class="fu">mean</span>(binge),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">followup_M =</span> <span class="fu">mean</span>(followup)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now let’s fit a meta-regression model using all of the study-level predictors:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>MVMR_fit <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize, <span class="at">V =</span> V_mat,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M,  </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid <span class="sc">/</span> esid,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MVMR_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>MVMR_fit <span class="ot">&lt;-</span> <span class="fu">rma.mv</span>(<span class="at">yi =</span> effectsize, <span class="at">V =</span> V_mat,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M,  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> studyid <span class="sc">/</span> esid,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> corrdat)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MVMR_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -610,29 +609,29 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tau_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">1</span>]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>omega_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">2</span>]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>corrdat_studylevel <span class="ot">&lt;-</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_j =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_at</span>(<span class="fu">vars</span>(effectsize, n_j, V_bar, college, binge_M, followup_M, males_M), mean</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_cond =</span> (omega_sq_reg <span class="sc">+</span> (n_j <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> r <span class="sc">*</span> V_bar <span class="sc">+</span> V_bar) <span class="sc">/</span> n_j,</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">w_j =</span> <span class="dv">1</span> <span class="sc">/</span> (tau_sq_reg <span class="sc">+</span> V_cond)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tau_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">1</span>]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>omega_sq_reg <span class="ot">&lt;-</span> MVMR_fit<span class="sc">$</span>sigma2[<span class="dv">2</span>]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>corrdat_studylevel <span class="ot">&lt;-</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  corrdat <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studyid) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_j =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize_at</span>(<span class="fu">vars</span>(effectsize, n_j, V_bar, college, binge_M, followup_M, males_M), mean</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">V_cond =</span> (omega_sq_reg <span class="sc">+</span> (n_j <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> r <span class="sc">*</span> V_bar <span class="sc">+</span> V_bar) <span class="sc">/</span> n_j,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">w_j =</span> <span class="dv">1</span> <span class="sc">/</span> (tau_sq_reg <span class="sc">+</span> V_cond)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now I can fit a study-level meta-regression model. I use the <code>weights</code> argument to ensure that the meta-regression is estimated using the <span class="math inline">\(w_j\)</span> weights:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>MR_study_fit <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> effectsize, <span class="at">vi =</span> V_cond, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M, </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">weights =</span> w_j, <span class="at">data =</span> corrdat_studylevel)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MR_study_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>MR_study_fit <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> effectsize, <span class="at">vi =</span> V_cond, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mods =</span> <span class="sc">~</span> college <span class="sc">+</span> males_M <span class="sc">+</span> binge_M <span class="sc">+</span> followup_M, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">weights =</span> w_j, <span class="at">data =</span> corrdat_studylevel)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(MR_study_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -668,8 +667,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>The meta-regression coefficient estimates are essentially identical to those from the multi-variate meta-regression, although the between-study heterogeneity estimate differs slightly because it is based on maximizing the single-level model, conditional on an estimate of <span class="math inline">\(\omega^2\)</span>.</p>
 </section>
-<section id="and-beyond" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> And beyond!</h1>
+<section id="and-beyond" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> And beyond!</h1>
 <p>In true multi-variate models, the meta-regression specification would typically include indicators for each dimension of the model. More generally, we might have a model that includes predictors varying within study, encoding characteristics of the outcome measures, sub-groups, or treatment conditions corresponding to each effect size estimate. The weights in these model get substantially more complicated, not in the least because the weights <em>are specific to the predictors</em>. For instance, in a model with four within-study predictors, a different set of weights is used in estimating the coefficients corresponding to each predictor. As Dr.&nbsp;<a href="https://twitter.com/Richard_D_Riley">Richard Riley</a> noted on Twitter, relevant work on more complicated models includes <a href="https://doi.org/10.1177/0962280215611702">this great paper by Dan Jackson and colleagues</a> and <a href="https://doi.org/10.1177/0962280216688033">this paper by Riley and colleagues</a>. The latter paper demonstrates how multivariate models entail partial “borrowing of strength” across dimensions of the effect sizes, which is very helpful for building intuition about how these models work. I would encourage you to check out both papers if you are grappling with understanding how weights work in complex meta-regression models.</p>
 
 
@@ -681,7 +680,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <ol>
 <li id="fn1"><p>Note that this model also encompasses the multi-level meta-analysis described by <a href="https://doi.org/10.1002/jrsm.35">Konstantopoulos (2011)</a> and <a href="https://doi.org/10.3758/s13428-012-0261-6">Van den Noortgate, et al.&nbsp;(2013)</a> as a special case, with <span class="math inline">\(r_{hij} = 0\)</span> for all <span class="math inline">\(h,i=1,...,n_j\)</span> and <span class="math inline">\(j = 1,...,k\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Perhaps that makes sense, if you’ve carefully selected the set of effect sizes for inclusion in your meta-analysis. However, it seems to me that it could sometimes lead to perverse results. Say that all studies but one include just a single effect size estimate, each using the absolute gold standard approach to assessing the outcome, but that one study took a “kitchen sink” approach and assessed the outcome a bunch of different ways, including the gold standard plus a bunch of junky scales. Inclusion of the junky scales will lead to within-study heterogeneity, which in turn will <em>pull the overall average effect size towards this study—the one with all the junk!</em> That seems less than ideal, and the sort of situation where it would be better to select from the study with multiple outcomes the single effect size estimate based on the outcome assessment that most closely aligns with the other studies.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Things get even simpler if the model does not include within-study random effects, as I discussed in <a href="../..\sometimes-aggregating-effect-sizes-is-fine/">a previous post</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Things get even simpler if the model does not include within-study random effects, as I discussed in <a href="../..\posts/sometimes-aggregating-effect-sizes-is-fine/">a previous post</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>However, this need not be the case—it’s possible that introducing between-study predictors could <em>increase</em> the estimate of between-study heterogeneity. Yes, that’s totally counter-intuitive. Multi-level models can be weird.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,

@@ -8,6 +8,9 @@ freeze: true
 title-block-banner: true
 lang: en
 
+# Table of contents
+toc-title: Contents
+
 ## Appendix
 
 # Enable CC licence appendix
