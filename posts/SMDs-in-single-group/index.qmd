@@ -1,13 +1,11 @@
 ---
 title: Standardized mean differences in single-group, repeated measures designs
-
 date: '2021-10-06'
 categories:
 - effect size
 - standardized mean difference
 - distribution theory
 code-tools: true
-
 ---
 
 I received a question from a colleague about computing variances and covariances for standardized mean difference effect sizes from a design involving a single group, measured repeatedly over time. Deriving these quantities is a little exercise in normal distribution theory, which I find kind of relaxing sometimes (hey, we all have our coping mechanisms!). 
@@ -32,7 +30,7 @@ $$
 $$ 
 and 
 $$\text{Cov}(D_s, D_t) = \frac{1}{n}\left[\sigma_0^2 + \rho_{st} \sigma_s \sigma_t - \sigma_0 \left(\rho_{s0} \sigma_s + \rho_{t0} \sigma_t\right) \right].$$
-From a [previous post](/distribution-of-sample-variances/) about the distribution of sample variances, we have that 
+From a [previous post](/posts/distribution-of-sample-variances/) about the distribution of sample variances, we have that 
 $$
 \text{Cov}(s_s^2, s_t^2) = \frac{2 \left(\rho_{st} \sigma_s \sigma_t\right)^2}{n - 1}.
 $$
@@ -43,7 +41,7 @@ $$
 &= \frac{2}{(n-1)(T + 1)^2} \sum_{s=0}^T \sum_{t=0}^T \left(\rho_{st} \sigma_s \sigma_t\right)^2.
 \end{aligned}
 $$
-Let $\sigma_P^2 = \frac{1}{T+1}\sum_{t=0}^T \sigma_t^2$ denote the average population variance across all $T + 1$ time-points, and let $\delta_t$ denote the standardized mean difference parameter at time $t$. Then, following the [multivariate delta method](/multivariate-delta-method/),
+Let $\sigma_P^2 = \frac{1}{T+1}\sum_{t=0}^T \sigma_t^2$ denote the average population variance across all $T + 1$ time-points, and let $\delta_t$ denote the standardized mean difference parameter at time $t$. Then, following the [multivariate delta method](/posts/multivariate-delta-method/),
 $$
 \text{Var}(d_t) \approx \frac{\text{Var}(D_t)}{\sigma_P^2} + \frac{\delta_t^2}{2 \nu} \qquad \text{and} \qquad \text{Cov}(d_s, d_t) \approx \frac{\text{Cov}(D_s, D_t)}{\sigma_P^2} + \frac{\delta_s \delta_t}{2 \nu},
 $$

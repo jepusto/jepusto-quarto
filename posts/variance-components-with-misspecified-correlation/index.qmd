@@ -1,24 +1,15 @@
 ---
 title: Variance component estimates in meta-analysis with mis-specified sampling correlation
-
 date: '2021-11-28'
 categories:
 - meta-analysis
 - dependent effect sizes
 - distribution theory
 - hierarchical models
-number-sections: true
 code-fold: true
 code-tools: true
-
+toc: true
 ---
-
-$$
-\def\Pr{{\text{Pr}}}
-\def\E{{\text{E}}}
-\def\Var{{\text{Var}}}
-\def\Cov{{\text{Cov}}}
-$$
 
 In a recent paper with Beth Tipton, we proposed [new working models](/publication/rve-meta-analysis-expanding-the-range/) for meta-analyses involving dependent effect sizes. The central idea of our approach is to use a working model that captures the main features of the effect size data, such as by allowing for both between- and within-study heterogeneity in the true effect sizes (rather than only between-study heterogeneity). Doing so will lead to more precise estimates of overall average effects or, in models that include predictor variables, more precise estimates of meta-regression coefficients. Further, one can combine this working model with robust variance estimation methods to provide protection against the possibility that some of the model's assumptions could be mis-specified. 
 
@@ -26,7 +17,14 @@ In order to estimate these new working models, the analyst must first make some 
 
 There's a few reasons to wonder about how much the correlation matters. One is that the analyst might actually care about the variance component estimates from the working model, if they're substantively interested in the extent of heterogeneity or if they're trying to make predictions about the distribution of effect sizes that could be expected in a new study. Compared to earlier working models, the variance component estimates of the models that we proposed in the paper seem to be relatively more sensitive to the assumed correlation. Second, one alternative analytic strategy that's been proposed (and applied) for meta-analysis of dependent effect sizes is to use a multi-level meta-analysis (MLMA) model. The MLMA is a special case of the correlated-and-hierarchical effects model that we described in the paper, the main difference being that MLMA _ignores_ any correlations between effect size estimates (at the level of the sampling errors), or equivalently, assumes that the correlations are all zero. Thus, MLMA is one specific way that this correlation assumption might be mis-specified. There's some simulation evidence that inferences based on MLMA may be robust (even without using robust variance estimation), but it's not clear how general this robustness property might be.
 
-In this post, I'm going to look at the implications of using a mis-specified assumption about the sampling correlation for the variance components in the correlated-and-hierarchical effects working model. As in [my previous post on weights in multivariate meta-analysis](/weighting-in-multivariate-meta-analysis/), I'm going to mostly limit consideration to the simple (but important!) case of an intercept-only model, without any further predictors of effect size, to see what can be learned about how the variance components can go wrong. 
+In this post, I'm going to look at the implications of using a mis-specified assumption about the sampling correlation for the variance components in the correlated-and-hierarchical effects working model. As in [my previous post on weights in multivariate meta-analysis](/posts/weighting-in-multivariate-meta-analysis/), I'm going to mostly limit consideration to the simple (but important!) case of an intercept-only model, without any further predictors of effect size, to see what can be learned about how the variance components can go wrong. 
+
+$$
+\def\Pr{{\text{Pr}}}
+\def\E{{\text{E}}}
+\def\Var{{\text{Var}}}
+\def\Cov{{\text{Cov}}}
+$$
 
 # The correlated-and-hierarchical effects (CHE) model
 
@@ -174,7 +172,6 @@ ggplot() +
 ```
 
 The white points correspond to the true parameter values, while the red points correspond with the values that minimized the K-L divergence. In the middle plot, where $\rho = 0.4$ corresponds to the true sampling correlation, the function is minimized at the true values of $\tau$ and $\omega$. In the left-hand plot, assuming $\rho = 0.0$ leads to an upwardly biased value of $\tau$ and a downwardly biased value of $\omega$. In the right-hand plot, assuming $\rho = 0.8$ leads to a smaller value of $\tau$ and a larger value of $\omega$.
-
 
 ## Completely balanced designs
 

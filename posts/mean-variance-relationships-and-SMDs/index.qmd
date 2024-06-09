@@ -1,6 +1,5 @@
 ---
 title: Implications of mean-variance relationships for standardized mean differences
-
 date: '2021-11-02'
 categories:
 - standardized mean difference
@@ -20,7 +19,6 @@ description: A question came up on the R-SIG-meta-analysis listserv about whethe
   relationships in raw data can signal that the standardized mean differences might
   be less useful as an effect size metric compared to alternatives.
 code-tools: true
-
 ---
 
 ```{r setup, echo = FALSE}
