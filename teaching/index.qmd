@@ -15,7 +15,7 @@ listing:
       place: "{UW Madison}"
     fields: [title]
     field-display-names:
-      title: "Course Title"
+      title: "At UW Madison"
   - id: UT
     sort: 
       - "place desc" 
@@ -30,15 +30,11 @@ listing:
       place: "{UT Austin}"
     fields: [title]
     field-display-names:
-      title: "Course Title"
+      title: "At UT Austin"
 ---
-
-### At UW Madison
 
 :::::{#UW}
 :::::
-
-### At UT Austin
 
 :::::{#UT}
 :::::

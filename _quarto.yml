@@ -8,6 +8,8 @@ website:
   description: "Education Statistics and Meta-Analysis"
   twitter-card: true
   open-graph: true
+  page-navigation: true
+  back-to-top-navigation: true
   navbar:
     left:
       - text: CV
@@ -24,6 +26,10 @@ website:
     right:
       - icon: rss
         href: index.xml
+  comments: 
+    utterances:
+      repo: jepusto/jepusto-quarto
+      label: comment
 format:
   html:
     theme: 
