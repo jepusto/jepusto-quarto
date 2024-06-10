@@ -1,11 +1,11 @@
 - Create a template for software pages
 - Add citations and bibtex to publication pages
 
-
-- Copy-edit posts
-  - fix code fence in posts/Simulating-correlated-SMDs
-  - fix code fence in posts/code-folding-update
-
 - Check for dead links
 - Create redirects
 - Publish on netlify
+- set up commenting
+
+- new update on package downloads
+- posts/distribution-of-significant-effects
+  - Add moment approximations to interactive graph

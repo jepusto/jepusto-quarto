@@ -260,7 +260,7 @@ Important
 <li><p>Add the file <a href="../..\files/_codefolding/article_footer_js.html"><code>article_footer_js.html</code></a> to the <code>/layouts/partials</code> directory of your site.</p></li>
 <li><p>Add the file <a href="../..\files/_codefolding/header_maincodefolding.html"><code>header_maincodefolding.html</code></a> to the <code>/layouts/partials</code> directory of your site.</p></li>
 <li><p>If you do not already have a file <code>head_custom.html</code> in the <code>/layouts/partials</code> directory, create it. Add the following lines of code to the file:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{{ <span class="cf">if</span> not site<span class="op">.</span><span class="at">Params</span><span class="op">.</span><span class="at">disable_codefolding</span> }}</span>
@@ -268,25 +268,25 @@ Important
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>link rel<span class="op">=</span><span class="st">"stylesheet"</span> href<span class="op">=</span><span class="st">"{{ "</span>css<span class="op">/</span>codefolding<span class="op">.</span><span class="at">css</span><span class="st">" | relURL }}"</span> <span class="op">/&gt;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>{{ end }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
+</div></li>
 <li><p>If you do not already have a file <code>site_footer.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following lines of code to it, somewhere towards the bottom:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;!--</span> Init code folding <span class="op">--&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>{{ partial <span class="st">"article_footer_js.html"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
+</div></li>
 <li><p>If you do not already have the file <code>page_header.html</code> in the <code>/layouts/partials</code> directory, copy it over from <code>/themes/hugo-academic/layouts/partials</code>. Add the following line of code at appropriate points so that your posts will include the “Show/hide code” button:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>{{ partial <span class="st">"header_maincodefolding"</span> <span class="op">.</span> }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p>
+</div>
 <p>Note that you’ll likely need to add it twice due do conditionals in <code>page_header.html</code>. For example, <a href="../..\files/_codefolding/page_header.html">my version of the file</a> includes the partial at lines 62 and 91.</p></li>
 <li><p>Modify your <code>params.toml</code> file (in the directory <code>/config/_default</code>) to include the following lines:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">############################</span></span>
@@ -300,7 +300,7 @@ Important
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set to true to exclude the "Show/hide all" button</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>codefolding_nobutton <span class="ot">=</span> false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p></li>
+</div></li>
 </ol>
 </section>
 <section id="using-the-codefolding-parameters" class="level2" data-number="2">

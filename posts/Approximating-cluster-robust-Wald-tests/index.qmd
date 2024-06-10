@@ -1,8 +1,11 @@
 ---
 title: Approximating the distribution of cluster-robust Wald statistics
 date: '2024-03-24'
-slug: cluster-robust-Wald-statistics
-categories: [robust variance estimation, distribution theory]
+categories:
+- robust variance estimation
+- distribution theory
+code-tools: true
+toc: true
 ---
 
 In [Tipton and Pustejovsky (2015)](http://doi.org/10.3102/1076998615606099), we examined several different small-sample approximations for cluster-robust Wald test statistics, which are like $F$ statistics but based on cluster-robust variance estimators. These statistics are, frankly, kind of weird and awkward to work with, and the approximations that we examined were far from perfect. In this post, I will look in detail at the robust Wald statistic for a simple but common scenario: a one-way ANOVA problem with clusters of dependent observations.
@@ -14,6 +17,8 @@ $\def\Pr{{\text{Pr}}}
 \def\bm{\mathbf}
 \def\bs{\boldsymbol}$
 
+# Meta-ANOVA
+
 Consider a setup where clusters can be classified into one of $C$ categories, with each cluster of observations falling into a single category. Let $\bs\mu = \left[\mu_c \right]_{c=1}^C$ denote the means of these categories. Suppose we have an estimator of those means $\bs{\hat\mu} = \left[\hat\mu_c\right]_{c=1}^C$ and a corresponding cluster-robust variance estimator $\bm{V}^R = \bigoplus_{c=1}^C V^R_c$. Note that $\bm{V}^R$ is diagonal because the estimators for each category are independent. 
 Assume that the robust variance estimator is unbiased so $\E\left(V^R_c\right) = \Var\left( \hat\mu_c \right) = \psi_c$ for $c = 1,...,C$. 
 Let $\bs\Psi = \bigoplus_{c=1}^C \psi_c$. 
@@ -23,6 +28,8 @@ $$
 Q = \bs{\hat\mu}' \bm{C}' \left(\bm{C} \bm{V}^R \bm{C}'\right)^{-1} \bm{C} \bs{\hat\mu}.
 $$
 Under the null hypothesis, the distribution of $Q$ will converge to a $\chi^2_q$ as the number of clusters in each category grows large. However, with a limited number of clusters in some of the categories, this approximate reference distribution is not very accurate and tests based on it can have wildly inflated type I error rates. 
+
+# Small-sample approximation
 
 In the paper, we considered several different ways of approximating the distribution of $Q$ that work at smaller sample sizes. 
 One class of approaches to approximating the sampling distribution of $Q$ is to use a Hotelling's $T^2$ distribution with degrees of freedom $\eta$. Given the degrees of freedom, Hotelling's $T^2$ is a multiple of an $F$ distribution:
@@ -41,11 +48,15 @@ $$
 $$
 The various approaches we considered involve different ways of approximating the sampling distribution of $\bm{D}$. 
 
+## Zhang's approximation
+
 One of the approximations involves finding degrees of freedom $\eta$ by following a strategy suggested by Zhang ([2012](https://doi.org/10.1016/j.jspi.2011.07.023), [2013](https://doi.org/10.14419/ijasp.v1i2.908)). These degrees of freedom are given by
 $$
 \eta_Z = \frac{q(q + 1)}{\sum_{s=1}^q \sum_{t = 1}^q \Var(d_{st})},
 $$
 where $d_{st}$ is the entry in row $s$, column $t$ of $\bm{D}$. To find $\eta_Z$, we can compute the denominator using general formulas given in the paper. However, with a bit of analysis we can find a much simpler expression for the special case of one-way ANOVA.
+
+## A bit of math
 
 Before going further, it's useful to observe that $\bm{D}$ is invariant to linear transformations of $\bm{C}$. In particular, an equivalent way to write the null hypothesis is as $H_0: \bs\Psi_{\circ}^{-1/2} \bm{C} = \bm{0}_q$, where $\bs\Psi_{\circ} = \bigoplus_{c=2}^C \psi_c$ is the diagonal of the true sampling variances of categories 2 through $C$, omitting the first category. Thus, let me redefine 
 $$
@@ -56,6 +67,8 @@ $$
 \bm{G} = \bs\Omega^{-1/2} \bs\Psi_{\circ}^{-1/2} \bm{C}.
 $$
 This transformation of the constraint matrix will make it possible to find a closed-form expression for $\bs\Omega^{-1/2}$.
+
+## Deriving Zhang's degrees of freedom
 
 Now, observe that 
 $$
@@ -146,6 +159,10 @@ $$
 It's a surprisingly clean formula!
 Once these degrees of freedom are calculated, the degrees of freedom for the reference $F$ distribution would be $q$ and $\eta_Z - q + 1$.
 
+## Other approximations
+
 In the paper, we also considered two other degrees of freedom approximations, which involve not only the variances of $d_{st}$ but also the covariances between entries. In principle, one could follow similar algebra to get expressions for these other degrees of freedom as well. However, our simulations indicated that the other degrees of freedom approximations tend to be overly conservative and produce type-I error rates way below the nominal level (essentially, hardly ever rejecting the null) and less accurate than HTZ. So, there's not much reason to work through them unless you find algebra enjoyable for its own sake.
+
+# What's the right non-central distribution?
 
 A further question about this cluster-robust Wald statistic is how to approximate its sampling distribution under specific alternative hypotheses. In other words, given a vector of means $\mu_1,...,\mu_C$ where the null does not hold, plus some information to determine $\psi_c$ and $\nu_c$ for $c = 1,...,C$, how could we approximate the distribution of $Q$? We need something like a non-central Hotelling's $T^2$ distribution...

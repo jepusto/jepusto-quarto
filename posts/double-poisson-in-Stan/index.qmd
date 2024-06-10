@@ -1,6 +1,5 @@
 ---
 title: Implementing Efron's double Poisson distribution in Stan
-
 date: '2023-09-15'
 categories:
 - Bayes
@@ -11,17 +10,8 @@ categories:
 - Rstats
 code-fold: show
 code-tools: true
-
+toc: true
 ---
-
-$$
-\def\Pr{{\text{Pr}}}
-\def\E{{\text{E}}}
-\def\Var{{\text{Var}}}
-\def\Cov{{\text{Cov}}}
-\def\bm{\mathbf}
-\def\bs{\boldsymbol}
-$$
 
 For a project I am working on, we are using [Stan](https://mc-stan.org/) to fit generalized random effects location-scale models to a bunch of count data. We're interested in using the double-Poisson distribution, as described by [Efron (1986)](https://doi.org/10.2307/2289002). 
 This is an interesting distribution because it admits for both over- and under-dispersion relative to the Poisson distribution, whereas most of the conventional alternatives such as the negative binomial distribution or Poisson-normal mixture distribution allow only for over-dispersion. 
@@ -33,10 +23,18 @@ I'm trying to work in Stan to the maximum extent possible solely as an excuse to
 
 [^bamlss]: I should also note that the [`bamlss` package](http://www.bamlss.org/index.html) provides similar functionality and can be combined with `gamlss.dist` to accomplish basically the same thing as I'm going to do here.
 
+$$
+\def\Pr{{\text{Pr}}}
+\def\E{{\text{E}}}
+\def\Var{{\text{Var}}}
+\def\Cov{{\text{Cov}}}
+\def\bm{\mathbf}
+\def\bs{\boldsymbol}
+$$
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.retina = 2)
 ```
-
 
 ```{r pkgs, warning = FALSE, message = FALSE}
 library(tidyverse)

@@ -1,25 +1,23 @@
 ---
 title: Cohen's $d_z$ makes me dizzy when considering measurement error
-
 date: '2023-02-17'
 categories:
 - effect size
 - standardized mean difference
 - design-comparable SMD
 - measurement-error
-description: Meta-analyses in education, psychology, and related fields rely heavily
-  of Cohen's $d$, or the standardized mean difference effect size, for quantitatively
-  describing the magnitude and direction of intervention effects. In these fields,
-  Cohen's $d$ is so pervasive that its use is nearly automatic, and analysts rarely
-  question its utility or consider alternatives (response ratios, anyone? POMP?).
-  Despite this state of affairs, working with Cohen's $d$ is theoretically challenging
-  because the standardized mean difference metric does not have a singular definition.
-  Rather, its definition depends on the choice of the standardizing variance used
-  in the denominator.
+description: Meta-analyses in education, psychology, and related fields rely heavily of Cohen's $d$, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen's $d$ is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen's $d$ is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.
 code-fold: true
 code-tools: true
-
+toc: true
 ---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+Meta-analyses in education, psychology, and related fields rely heavily of Cohen's $d$, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen's $d$ is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen's $d$ is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.[^blogroll] 
+
 $$
 \def\Pr{{\text{Pr}}}
 \def\E{{\text{E}}}
@@ -29,11 +27,6 @@ $$
 \def\bm{\mathbf}
 \def\bs{\boldsymbol}
 $$
-```{r, echo = FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-```
-
-Meta-analyses in education, psychology, and related fields rely heavily of Cohen's $d$, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen's $d$ is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen's $d$ is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.[^blogroll] 
 
 [^blogroll]: Perhaps because use of Cohen's $d$ is so under-scrutinized in practice, methodologists have spent many an afternoon blogging about this problem. For general discussions about issues with how to define Cohen's $d$, see excellent posts from [Jan Vanhove](https://janhove.github.io/reporting/2015/02/05/standardised-vs-unstandardised-es) (with [a sequel](https://janhove.github.io/design/2015/03/16/standardised-es-revisited)), [Jake Westfall](http://jakewestfall.org/blog/index.php/2016/03/25/five-different-cohens-d-statistics-for-within-subject-designs/), [Uri Simonsohn](http://datacolada.org/33), and [Pierre Dragicevic](https://transparentstatistics.org/2018/07/05/meanings-effect-size/); a more formal discussion by [Thom Baguley](https://www.floppybunny.org/robin/web/virtualclassroom/stats/basics/articles/effect_size/effect_size_baguley_2009.pdf); and some very interesting work on alternative conceptualizations by [Tony Ades and colleagues](https://doi.org/10.1002/jrsm.1130). 
 I can promise, dear reader, that the present blog post will not be nearly as cogent as these contributions---this is more about getting my own thoughts straight than making any recommendations---and so _caveat lector_ applies. 

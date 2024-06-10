@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/Simulating-correlated-SMDs/index.html</loc>
-    <lastmod>2024-06-08T21:59:43.741Z</lastmod>
+    <lastmod>2024-06-09T19:38:18.020Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/scdhlm-tutorial/index.html</loc>
@@ -382,7 +382,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/generalized-poisson-in-Stan/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
+    <lastmod>2024-06-10T00:26:22.415Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/Four-methods-for-analyzing-PIR-data/index.html</loc>
@@ -394,7 +394,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/dizzy-for-d-z/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
+    <lastmod>2024-06-09T17:44:26.853Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/distribution-of-sample-variances/index.html</loc>
@@ -438,7 +438,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/index.html</loc>
-    <lastmod>2024-06-07T19:34:05.375Z</lastmod>
+    <lastmod>2024-06-09T19:53:04.441Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/ancova-puzzler/index.html</loc>
@@ -534,11 +534,11 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/cluster-bootstrap-selection-model/index.html</loc>
-    <lastmod>2024-06-07T20:55:34.608Z</lastmod>
+    <lastmod>2024-06-09T20:47:53.659Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/code-folding-update/index.html</loc>
-    <lastmod>2024-06-08T23:06:47.170Z</lastmod>
+    <lastmod>2024-06-09T19:36:40.739Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/Crashes-in-Austin-and-Travis-Co/index.html</loc>
@@ -558,7 +558,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/double-poisson-in-Stan/index.html</loc>
-    <lastmod>2024-05-22T11:42:52.318Z</lastmod>
+    <lastmod>2024-06-09T19:59:16.885Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/effective-sample-size-aggregation/index.html</loc>
@@ -586,7 +586,7 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index.html</loc>
-    <lastmod>2024-06-09T01:33:36.722Z</lastmod>
+    <lastmod>2024-06-09T17:53:59.278Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/MI-with-clubSandwich/index.html</loc>
@@ -954,6 +954,10 @@
   </url>
   <url>
     <loc>https://jepusto.com/posts/correlated-z-transformed-correlations/index.html</loc>
-    <lastmod>2024-06-07T19:34:05.396Z</lastmod>
+    <lastmod>2024-06-09T19:40:09.031Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/distribution-of-significant-effects/index.html</loc>
+    <lastmod>2024-06-09T19:54:57.505Z</lastmod>
   </url>
 </urlset>

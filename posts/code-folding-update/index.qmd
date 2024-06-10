@@ -7,6 +7,7 @@ categories:
 number-sections: true
 code-tools: false
 date-modified: '2024-06-08'
+keep-md: true
 ---
 
 ::: callout-important
@@ -27,15 +28,16 @@ In this post, I'll provide instructions on how to reproduce the approach with th
 
 ## Code folding with the Academic theme
 
-1. You'll first need to add the codefolding javascript assets. Create a folder called `js` under the `/static` directory of your site. Add the file [`codefolding.js`](/files/_codefolding/codefolding.js).
+1.  You'll first need to add the codefolding javascript assets. Create a folder called `js` under the `/static` directory of your site. Add the file [`codefolding.js`](/files/_codefolding/codefolding.js).
 
-3. Create a folder called `css` under the `/static` directory of your site. Add the file [`codefolding.css`](/files/_codefolding/codefolding.css). This is the css for the buttons that will appear on your posts. 
+2.  Create a folder called `css` under the `/static` directory of your site. Add the file [`codefolding.css`](/files/_codefolding/codefolding.css). This is the css for the buttons that will appear on your posts. 
 
-4. Add the file [`article_footer_js.html`](/files/_codefolding/article_footer_js.html) to the `/layouts/partials` directory of your site.
+3.  Add the file [`article_footer_js.html`](/files/_codefolding/article_footer_js.html) to the `/layouts/partials` directory of your site.
 
-5. Add the file [`header_maincodefolding.html`](/files/_codefolding/header_maincodefolding.html) to the `/layouts/partials` directory of your site.
+4.  Add the file [`header_maincodefolding.html`](/files/_codefolding/header_maincodefolding.html) to the `/layouts/partials` directory of your site.
 
-6. If you do not already have a file `head_custom.html` in the `/layouts/partials` directory, create it. Add the following lines of code to the file:
+5.  If you do not already have a file `head_custom.html` in the `/layouts/partials` directory, create it. Add the following lines of code to the file:
+
 ```{js, indent = "    ", eval = FALSE}
 {{ if not site.Params.disable_codefolding }}
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -43,19 +45,22 @@ In this post, I'll provide instructions on how to reproduce the approach with th
 {{ end }}
 ```
 
-7. If you do not already have a file `site_footer.html` in the `/layouts/partials` directory, copy it over from `/themes/hugo-academic/layouts/partials`. Add the following lines of code to it, somewhere towards the bottom:
+6.  If you do not already have a file `site_footer.html` in the `/layouts/partials` directory, copy it over from `/themes/hugo-academic/layouts/partials`. Add the following lines of code to it, somewhere towards the bottom:
+
 ```{js, indent = "    ", eval = FALSE}
 <!-- Init code folding -->
 {{ partial "article_footer_js.html" . }}
 ```
 
-8. If you do not already have the file `page_header.html` in the `/layouts/partials` directory, copy it over from `/themes/hugo-academic/layouts/partials`. Add the following line of code at appropriate points so that your posts will include the "Show/hide code" button:
+7.  If you do not already have the file `page_header.html` in the `/layouts/partials` directory, copy it over from `/themes/hugo-academic/layouts/partials`. Add the following line of code at appropriate points so that your posts will include the "Show/hide code" button:
+
 ```{js, indent = "    ", eval = FALSE}
 {{ partial "header_maincodefolding" . }}
 ```
+
     Note that you'll likely need to add it twice due do conditionals in `page_header.html`. For example, [my version of the file](/files/_codefolding/page_header.html) includes the partial at lines 62 and 91.
     
-9. Modify your `params.toml` file (in the directory `/config/_default`) to include the following lines:
+8.  Modify your `params.toml` file (in the directory `/config/_default`) to include the following lines:
 
 ```{r, indent = "    ", eval = FALSE}
 ############################

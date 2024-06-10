@@ -38,7 +38,7 @@ $$
 \text{cor}(z_{ab}, z_{ac}) &= \frac{\left(\rho_{bc} - \frac{1}{2}\rho_{ab}^2\right)\left(1 - 2\rho_{ab}^2\right) + \frac{1}{2} \rho_{ab}^2 \rho_{bc}^2}{\left(1 - \rho_{ab}^2\right)^2} \\
 &=1 -  \frac{(1 - \rho_{bc})\left[2 - \rho_{ab}^2(3 - \rho_{bc})\right]}{2\left(1 - \rho_{ab}^2\right)^2}.
 \end{aligned}
-$$.
+$$
 To apply this formula, we need to specify values of $\rho_{ab}$ and $\rho_{bc}$. The following table gives the resulting correlation between z-transformed sample correlations for a few values of $\rho_{ab} = \rho_{ac}$ and $\rho_{bc}$. 
 
 ::: {.grid}

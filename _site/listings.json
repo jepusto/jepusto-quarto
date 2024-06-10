@@ -213,7 +213,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/correlated-z-transformed-correlations/index.html",
-      "/posts/Distribution-of-signficant-effects/index.html",
+      "/posts/distribution-of-significant-effects/index.html",
       "/posts/Approximating-cluster-robust-Wald-tests/index.html",
       "/posts/generalized-poisson-in-Stan/index.html",
       "/posts/double-poisson-in-Stan/index.html",
@@ -327,7 +327,7 @@
     "listing": "/posts/index.html",
     "items": [
       "/posts/correlated-z-transformed-correlations/index.html",
-      "/posts/Distribution-of-signficant-effects/index.html",
+      "/posts/distribution-of-significant-effects/index.html",
       "/posts/Approximating-cluster-robust-Wald-tests/index.html",
       "/posts/generalized-poisson-in-Stan/index.html",
       "/posts/double-poisson-in-Stan/index.html",

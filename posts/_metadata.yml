@@ -18,6 +18,8 @@ license: "CC BY"
 
 # Default fields for citation
 citation: true
+google-scholar: true
+
 author:
   - name: 
       given: James E. 

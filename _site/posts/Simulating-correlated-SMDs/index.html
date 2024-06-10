@@ -345,11 +345,11 @@ window.Quarto = {
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r_SMDs_raw</span>(<span class="at">delta =</span> delta, <span class="at">J =</span> <span class="dv">4</span>, <span class="at">N =</span> <span class="dv">40</span>, <span class="at">Psi =</span> <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>          ES        SE  N
-1 0.20636715 0.3171125 40
-2 0.00944881 0.3162296 40
-3 0.05834946 0.3162986 40
-4 0.27005202 0.3177414 40</code></pre>
+<pre><code>         ES        SE  N
+1 0.3855613 0.3193055 40
+2 0.5944490 0.3234959 40
+3 0.4130571 0.3197576 40
+4 0.9150846 0.3331939 40</code></pre>
 </div>
 </div>
 <p>Or if you’d rather specify the full <span class="math inline">\(\Psi_k\)</span> matrix yourself:</p>
@@ -372,10 +372,10 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         ES        SE  N
-1 0.7846964 0.3287886 40
-2 1.0052282 0.3365945 40
-3 1.0160157 0.3370204 40
-4 0.8310726 0.3302846 40</code></pre>
+1 0.5366188 0.3221629 40
+2 0.5439397 0.3223244 40
+3 0.1063544 0.3164630 40
+4 0.7696820 0.3283213 40</code></pre>
 </div>
 </div>
 <section id="exercises" class="level2">
@@ -450,12 +450,12 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      delta J  N       Psi
-1 0.1905403 5 48 0.6049361
-2 0.2134220 6 44 0.5660675
-3 0.2253686 4 30 0.6636925
-4 0.2058220 5 50 0.6208646
-5 0.1491957 3 50 0.5964943
-6 0.1322353 9 38 0.7402750</code></pre>
+1 0.2092696 2 38 0.6668007
+2 0.2299119 5 42 0.4487449
+3 0.0664768 3 54 0.7200542
+4 0.1609013 6 34 0.6149950
+5 0.2180899 6 54 0.7553845
+6 0.1299188 3 58 0.7155828</code></pre>
 </div>
 </div>
 <p>Once we have the “menu” of study-level characteristics, it’s just a matter of mapping the parameters to the data-generating function. One way to do this is with <code>pmap_df</code>:</p>
@@ -468,38 +468,31 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   study          ES        SE  N
-1      1  0.06517315 0.2887551 48
-2      1  0.34168631 0.2908648 48
-3      1  0.12496023 0.2889690 48
-4      1 -0.04072462 0.2887064 48
-5      1  0.09419262 0.2888421 48
-6      2 -0.36639431 0.3041500 44
-7      2  0.38766554 0.3044638 44
-8      2 -0.61520751 0.3088929 44
-9      2 -0.19841569 0.3022876 44
-10     2 -0.03526328 0.3015359 44
-11     2 -0.28365479 0.3030956 44
-12     3  0.36311779 0.3683584 30
-13     3  0.34736028 0.3680869 30
-14     3  0.16983695 0.3658530 30
-15     3  0.15218953 0.3657143 30
-16     4 -0.27633892 0.2842454 50
-17     4  0.17355790 0.2833968 50
-18     4  0.07927586 0.2829584 50
-19     4  0.05850698 0.2829057 50
-20     4  0.31610918 0.2846768 50
-21     5  0.50796626 0.2875549 50
-22     5  0.24858625 0.2839783 50
-23     5  0.32865767 0.2848248 50
-24     6  0.15205069 0.3249373 38
-25     6  0.04637057 0.3244889 38
-26     6  0.23761521 0.3256491 38
-27     6  0.32584452 0.3267075 38
-28     6  0.18745682 0.3251941 38
-29     6  0.05995579 0.3245198 38
-30     6  0.42337775 0.3282571 38
-31     6  0.45489411 0.3288422 38
-32     6  0.23466333 0.3256194 38</code></pre>
+1      1 -0.12575818 0.3247812 38
+2      1 -0.24412399 0.3257160 38
+3      2  0.26556471 0.3100317 42
+4      2  0.95331328 0.3264938 42
+5      2  0.78835910 0.3209470 42
+6      2  0.12122926 0.3089042 42
+7      2  0.05945635 0.3086783 42
+8      3 -0.16817702 0.2726647 54
+9      3 -0.28555997 0.2736022 54
+10     3  0.10045972 0.2723437 54
+11     4 -0.55943777 0.3500532 34
+12     4 -0.31311385 0.3452230 34
+13     4 -0.29413648 0.3449621 34
+14     4 -0.25214567 0.3444422 34
+15     4 -0.36021385 0.3459400 34
+16     4 -0.53997094 0.3495752 34
+17     5 -0.30208044 0.2737727 54
+18     5  0.04982397 0.2722094 54
+19     5  0.04273584 0.2721978 54
+20     5 -0.15579886 0.2725940 54
+21     5 -0.24978710 0.2732655 54
+22     5 -0.25431832 0.2733056 54
+23     6 -0.32438779 0.2643956 58
+24     6 -0.14951874 0.2629926 58
+25     6 -0.36681929 0.2648904 58</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -508,7 +501,7 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <div class="cell-output cell-output-stdout">
 <pre><code>
 1 2 3 4 5 6 
-5 6 4 5 3 9 </code></pre>
+2 5 3 6 6 3 </code></pre>
 </div>
 </div>
 <p>Putting it all together into a function, we have</p>
@@ -536,7 +529,7 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <li><p>Modify <code>r_meta</code> so that it uses <code>r_SMDs_stats</code>.</p></li>
 <li><p>Add options to <code>r_meta</code> for <code>Hedges_g</code>, <code>p_val = TRUE</code>, and <code>corr_mat = FALSE</code> and ensure that these get passed along to the <code>r_SMDs</code> function.</p></li>
 <li><p>One way to check that the <code>r_meta</code> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here’s a very large meta-analytic dataset:</p>
-<p>::: {.cell}</p>
+<div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>meta_data <span class="ot">&lt;-</span> <span class="fu">r_meta</span>(</span>
@@ -546,7 +539,7 @@ r_k \sim Beta\left(\rho \nu, (1 - \rho)\nu\right),
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rho =</span> <span class="fl">0.6</span>, <span class="at">nu =</span> <span class="dv">39</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p>
+</div>
 <p>Compare the distribution of the simulated dataset against what you would expect to get based on the input parameters.</p></li>
 <li><p>Modify the <code>r_meta</code> function so that <span class="math inline">\(J_k\)</span> and <span class="math inline">\(N_k\)</span> are correlated, according to <span class="math display">\[
 \begin{align}
@@ -1143,11 +1136,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a>The function above is serviceable but quite basic. I can think of several additional features that one might like to have for use in research simulations, but I'm feeling both cheeky and lazy at the moment, so I'll leave them for you, dear reader. Here are some suggested exercises:</span>
 <span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Add an argument to the function, <span class="in">`Hedges_g = TRUE`</span>, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.</span>
+<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Add an argument to the function, <span class="in">`Hedges_g = TRUE`</span>, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.</span>
 <span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Add an argument to the function, <span class="in">`p_val = TRUE`</span>, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.</span>
+<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Add an argument to the function, <span class="in">`p_val = TRUE`</span>, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.</span>
 <span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Add an argument to the function, <span class="in">`corr_mat = FALSE`</span>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <span class="co">[</span><span class="ot">here</span><span class="co">](/posts/correlations-between-SMDs/)</span> for the relevant formulas.</span>
+<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Add an argument to the function, <span class="in">`corr_mat = FALSE`</span>, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See <span class="co">[</span><span class="ot">here</span><span class="co">](/posts/correlations-between-SMDs/)</span> for the relevant formulas.</span>
 <span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a><span class="fu"># Simulating summary statistics</span></span>
 <span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a></span>
@@ -1171,11 +1164,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a>Once again, I'll leave it to you, dear reader, to do the fun programming bits:</span>
 <span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Create a modified version of the function <span class="in">`r_SMDs_raw`</span> that simulates summary statistics instead of raw data (Call it <span class="in">`r_SMDs_stats`</span>). </span>
+<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Create a modified version of the function <span class="in">`r_SMDs_raw`</span> that simulates summary statistics instead of raw data (Call it <span class="in">`r_SMDs_stats`</span>). </span>
 <span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Use the <span class="in">`microbenchmark`</span> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</span>
+<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Use the <span class="in">`microbenchmark`</span> package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.</span>
 <span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. </span>
+<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. </span>
 <span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a><span class="fu"># Which approach is better?</span></span>
 <span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a></span>
@@ -1254,11 +1247,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercises</span></span>
 <span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>Modify <span class="in">`r_meta`</span> so that it uses <span class="in">`r_SMDs_stats`</span>.</span>
+<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>Modify <span class="in">`r_meta`</span> so that it uses <span class="in">`r_SMDs_stats`</span>.</span>
 <span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>Add options to <span class="in">`r_meta`</span> for <span class="in">`Hedges_g`</span>, <span class="in">`p_val = TRUE`</span>, and <span class="in">`corr_mat = FALSE`</span> and ensure that these get passed along to the <span class="in">`r_SMDs`</span> function.</span>
+<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>Add options to <span class="in">`r_meta`</span> for <span class="in">`Hedges_g`</span>, <span class="in">`p_val = TRUE`</span>, and <span class="in">`corr_mat = FALSE`</span> and ensure that these get passed along to the <span class="in">`r_SMDs`</span> function.</span>
 <span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>One way to check that the <span class="in">`r_meta`</span> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:</span>
+<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>One way to check that the <span class="in">`r_meta`</span> function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:</span>
 <span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, indent = "    ", eval = FALSE}</span></span>
 <span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a><span class="in">meta_data &lt;- r_meta(</span></span>

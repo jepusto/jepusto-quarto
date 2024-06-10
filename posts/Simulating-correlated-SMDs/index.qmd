@@ -99,11 +99,11 @@ r_SMDs_raw(delta = delta, J = 4, N = 40, Psi = Psi_k)
 
 The function above is serviceable but quite basic. I can think of several additional features that one might like to have for use in research simulations, but I'm feeling both cheeky and lazy at the moment, so I'll leave them for you, dear reader. Here are some suggested exercises:
 
-1. Add an argument to the function, `Hedges_g = TRUE`, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.
+1.  Add an argument to the function, `Hedges_g = TRUE`, which controls where the simulated effect size is Hedges' $g$ or Cohen's $d$. If it is Hedges' g, make sure that the standard error is corrected too.
 
-2. Add an argument to the function, `p_val = TRUE`, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.
+2.  Add an argument to the function, `p_val = TRUE`, which allows the user to control whether or not to return $p$-values from the test of mean differences for each outcome. Note that the p-values should be for a test of the _raw_ mean differences between groups, rather than a test of the effect size $\delta_{jk} = 0$.
 
-3. Add an argument to the function, `corr_mat = FALSE`, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See [here](/posts/correlations-between-SMDs/) for the relevant formulas.
+3.  Add an argument to the function, `corr_mat = FALSE`, which controls whether the function returns just the simulated effect sizes and SEs or both the simulated effect sizes and the full sampling variance-covariance matrix of the effect sizes. See [here](/posts/correlations-between-SMDs/) for the relevant formulas.
 
 # Simulating summary statistics
 
@@ -127,11 +127,11 @@ Thus, to simulate the denominators of the SMD estimates, we can simulate a singl
 
 Once again, I'll leave it to you, dear reader, to do the fun programming bits:
 
-4. Create a modified version of the function `r_SMDs_raw` that simulates summary statistics instead of raw data (Call it `r_SMDs_stats`). 
+4.  Create a modified version of the function `r_SMDs_raw` that simulates summary statistics instead of raw data (Call it `r_SMDs_stats`). 
 
-5. Use the `microbenchmark` package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.
+5.  Use the `microbenchmark` package (or your preferred benchmarking tool) to compare the computational efficiency of both versions of the function.
 
-6. Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. 
+6.  Check your work! Verify that both versions of the function generate the same distributions if the same parameters are used as input. 
 
 # Which approach is better?
 
@@ -210,11 +210,11 @@ r_meta <- function(K, mu, tau, J_mean, N_mean, rho, nu) {
 
 ## Exercises
 
-7. Modify `r_meta` so that it uses `r_SMDs_stats`.
+7.  Modify `r_meta` so that it uses `r_SMDs_stats`.
 
-8. Add options to `r_meta` for `Hedges_g`, `p_val = TRUE`, and `corr_mat = FALSE` and ensure that these get passed along to the `r_SMDs` function.
+8.  Add options to `r_meta` for `Hedges_g`, `p_val = TRUE`, and `corr_mat = FALSE` and ensure that these get passed along to the `r_SMDs` function.
 
-9. One way to check that the `r_meta` function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:
+9.  One way to check that the `r_meta` function is working properly is to generate a very large meta-analytic dataset, then to verify that the generated distributions align with expectations. Here's a very large meta-analytic dataset:
 
 ```{r, indent = "    ", eval = FALSE}
 meta_data <- r_meta(

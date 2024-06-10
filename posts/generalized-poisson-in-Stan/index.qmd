@@ -1,6 +1,5 @@
 ---
 title: Implementing Consul's generalized Poisson distribution in Stan
-
 date: '2023-12-06'
 categories:
 - Bayes
@@ -11,8 +10,15 @@ categories:
 - Rstats
 code-fold: show
 code-tools: true
-
+toc: true
 ---
+
+For a project I am working on, we are using [Stan](https://mc-stan.org/) to fit generalized random effects location-scale models to a bunch of count data. 
+In [a previous post](/posts/double-poisson-in-Stan/), I walked through our implementation of [Efron's (1986)](https://doi.org/10.2307/2289002) double-Poisson distribution, which we are interested in using because it allows for both over- and under-dispersion relative to the Poisson distribution. 
+Another distribution with these properties is the generalized Poisson distribution described by [Consul and Jain (1973)](https://doi.org/10.1080/00401706.1973.10489112).
+
+In this post, I'll walk through my implementation of the GPO in Stan.
+The [`gamlss.dist` package](https://cran.r-project.org/package=gamlss.dist) provides a full set of distributional functions for the generalized Poisson distribution, including a sampler, but the functions are configured to only allow for over-dispersion. Since I'm interested in allowing for under-dispersion as well, I'll need to write my own functions. As in my previous post, I can validate my Stan functions against the functions from `gamlss.dist` (although only for over-dispersion scenarios).
 
 $$
 \def\Pr{{\text{Pr}}}
@@ -22,13 +28,6 @@ $$
 \def\bm{\mathbf}
 \def\bs{\boldsymbol}
 $$
-
-For a project I am working on, we are using [Stan](https://mc-stan.org/) to fit generalized random effects location-scale models to a bunch of count data. 
-In [a previous post](/double-poisson-in-Stan/), I walked through our implementation of [Efron's (1986)](https://doi.org/10.2307/2289002) double-Poisson distribution, which we are interested in using because it allows for both over- and under-dispersion relative to the Poisson distribution. 
-Another distribution with these properties is the generalized Poisson distribution described by [Consul and Jain (1973)](https://doi.org/10.1080/00401706.1973.10489112).
-
-In this post, I'll walk through my implementation of the GPO in Stan.
-The [`gamlss.dist` package](https://cran.r-project.org/package=gamlss.dist) provides a full set of distributional functions for the generalized Poisson distribution, including a sampler, but the functions are configured to only allow for over-dispersion. Since I'm interested in allowing for under-dispersion as well, I'll need to write my own functions. As in my previous post, I can validate my Stan functions against the functions from `gamlss.dist` (although only for over-dispersion scenarios).
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.retina = 2)
@@ -296,7 +295,7 @@ Looks like the sample moments closely match the parameter values, with deviation
 
 # Using the custom distribution functions
 
-To finish out my tests of these functions, I'll try out a small simulation. Following my [previous post](/Double-Poisson-in-Stan/), I'll generate data based on a generalized linear model with a single predictor $X$, where the outcome $Y$ follows a generalized Poisson distribution conditional on $X$. The data-generating process is:
+To finish out my tests of these functions, I'll try out a small simulation. Following my [previous post](/posts/Double-Poisson-in-Stan/), I'll generate data based on a generalized linear model with a single predictor $X$, where the outcome $Y$ follows a generalized Poisson distribution conditional on $X$. The data-generating process is:
 
 $$
 \begin{aligned}
