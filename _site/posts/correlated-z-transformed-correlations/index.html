@@ -146,7 +146,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2024-06-06">
 <meta name="citation_year" content="2024">
 <meta name="citation_online_date" content="2024-06-06">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/correlated-z-transformed-correlations">
 <meta name="citation_language" content="en">
 </head>
 
@@ -263,7 +263,7 @@ window.Quarto = {
 
 
 
-<p>For a little meta-analysis project that I’m working on with <a href="../..\authors/jingru-zhang/">Jingru</a>, we are dealing with a database of correlation coefficients, where some of the included studies report correlations for more than one instrument or sub-scale for one of the relevant variables. This leads to every meta-analytic methodologist’s favorite tongue-twister of distribution theory: inter-correlated correlation coefficients. Fortunately, Grandpa Ingram worked out the distribution theory for this stuff long ago (Olkin and Siotani, 1976; reviewed in <a href="https://doi.org/10.1037/0033-2909.108.2.330">Olkin and Finn, 1990</a>).</p>
+<p>For a little meta-analysis project that I’m working on with <a href="../..\people/jingru-zhang/">Jingru</a>, we are dealing with a database of correlation coefficients, where some of the included studies report correlations for more than one instrument or sub-scale for one of the relevant variables. This leads to every meta-analytic methodologist’s favorite tongue-twister of distribution theory: inter-correlated correlation coefficients. Fortunately, Grandpa Ingram worked out the distribution theory for this stuff long ago (Olkin and Siotani, 1976; reviewed in <a href="https://doi.org/10.1037/0033-2909.108.2.330">Olkin and Finn, 1990</a>).</p>
 <p>Suppose that we have three variables, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>, where <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> are different measures of the same construct. From a sample of size <span class="math inline">\(N\)</span>, we have correlation estimates <span class="math inline">\(r_{ab}\)</span> and <span class="math inline">\(r_{ac}\)</span>, both of which are relevant for understanding the underlying construct relation. These correlations are estimates of underlying population correlations <span class="math inline">\(\rho_{ab}\)</span> and <span class="math inline">\(\rho_{ac}\)</span> respectively, and the population correlation between <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span> is <span class="math inline">\(\rho_{bc}\)</span>. Typically, we would analyze the correlations after applying Fisher’s variance stabilizing and normalizing transformation. Denote the Fisher transformation as <span class="math inline">\(Z(r)= \frac{1}{2}\ln\left(\frac{1 + r}{1 - r}\right)\)</span>), with derivative given by <span class="math inline">\(Z'(r) = \frac{1}{1 - r^2}\)</span>. Let <span class="math inline">\(z_{ab} = Z(r_{ab})\)</span>, with the other transformed correlations defined similarly. The question is then: how strongly correlated are the sampling errors of the resulting effect size estimates—that is, what is <span class="math inline">\(\text{cor}(z_{ab}, z_{ac})\)</span>?</p>
 <p><a href="https://doi.org/10.1037/0033-2909.108.2.330">Olkin and Finn (1990)</a> give the following expression for the covariance between two sample correlation coefficients that share a common variable: <span class="math display">\[
 \text{Cov}(r_{ab}, r_{ac}) = \frac{1}{N - 1}\left[\left(\rho_{bc} - \frac{1}{2}\rho_{ab}\rho_{ac}\right)\left(1 - \rho_{ab}^2 - \rho_{ac}^2\right) + \frac{1}{2} \rho_{ab} \rho_{ac} \rho_{bc}^2\right].
@@ -398,12 +398,12 @@ window.Quarto = {
   author = {Pustejovsky, James E.},
   title = {Correlations Between z-Transformed Correlation Coefficients},
   date = {2024-06-06},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations},
+  url = {https://jepusto.com/posts/correlated-z-transformed-correlations},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2024. <span>“Correlations Between z-Transformed
-Correlation Coefficients.”</span> June 6, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations">https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations</a>.
+Correlation Coefficients.”</span> June 6, 2024. <a href="https://jepusto.com/posts/correlated-z-transformed-correlations">https://jepusto.com/posts/correlated-z-transformed-correlations</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -537,7 +537,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -879,7 +879,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>For a little meta-analysis project that I'm working on with <span class="co">[</span><span class="ot">Jingru</span><span class="co">](/authors/jingru-zhang/)</span>, we are dealing with a database of correlation coefficients, where some of the included studies report correlations for more than one instrument or sub-scale for one of the relevant variables. This leads to every meta-analytic methodologist's favorite tongue-twister of distribution theory: inter-correlated correlation coefficients. Fortunately, Grandpa Ingram worked out the distribution theory for this stuff long ago (Olkin and Siotani, 1976; reviewed in <span class="co">[</span><span class="ot">Olkin and Finn, 1990</span><span class="co">](https://doi.org/10.1037/0033-2909.108.2.330)</span>). </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>For a little meta-analysis project that I'm working on with <span class="co">[</span><span class="ot">Jingru</span><span class="co">](/people/jingru-zhang/)</span>, we are dealing with a database of correlation coefficients, where some of the included studies report correlations for more than one instrument or sub-scale for one of the relevant variables. This leads to every meta-analytic methodologist's favorite tongue-twister of distribution theory: inter-correlated correlation coefficients. Fortunately, Grandpa Ingram worked out the distribution theory for this stuff long ago (Olkin and Siotani, 1976; reviewed in <span class="co">[</span><span class="ot">Olkin and Finn, 1990</span><span class="co">](https://doi.org/10.1037/0033-2909.108.2.330)</span>). </span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>Suppose that we have three variables, $a$, $b$, and $c$, where $b$ and $c$ are different measures of the same construct. From a sample of size $N$, we have correlation estimates $r_{ab}$ and $r_{ac}$, both of which are relevant for understanding the underlying construct relation. These correlations are estimates of underlying population correlations $\rho_{ab}$ and $\rho_{ac}$ respectively, and the population correlation between $b$ and $c$ is $\rho_{bc}$. </span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>Typically, we would analyze the correlations after applying Fisher's variance stabilizing and normalizing transformation. </span>
