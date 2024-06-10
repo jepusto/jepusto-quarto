@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>James E. Pustejovsky</title>
-<link>https://jepusto.com/posts/</link>
-<atom:link href="https://jepusto.com/posts/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/</link>
+<atom:link href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
 <generator>quarto-1.4.552</generator>
 <lastBuildDate>Thu, 06 Jun 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Correlations between z-transformed correlation coefficients</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/correlated-z-transformed-correlations/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations/</link>
   <description><![CDATA[ 
 
 
@@ -292,24 +292,24 @@ font-style: inherit;">"{.sm}"</span></span>
   author = {Pustejovsky, James E.},
   title = {Correlations Between z-Transformed Correlation Coefficients},
   date = {2024-06-06},
-  url = {https://jepusto.com/posts/correlated-z-transformed-correlations},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Correlations Between z-Transformed
-Correlation Coefficients.”</span> June 6, 2024. <a href="https://jepusto.com/posts/correlated-z-transformed-correlations">https://jepusto.com/posts/correlated-z-transformed-correlations</a>.
+Correlation Coefficients.”</span> June 6, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations">https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>correlation</category>
   <category>distribution theory</category>
   <category>meta-analysis</category>
-  <guid>https://jepusto.com/posts/correlated-z-transformed-correlations/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations/</guid>
   <pubDate>Thu, 06 Jun 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Distribution of the number of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/distribution-of-significant-effects/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects/</link>
   <description><![CDATA[ 
 
 
@@ -1132,22 +1132,22 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
   author = {Pustejovsky, James E.},
   title = {Distribution of the Number of Significant Effect Sizes},
   date = {2024-03-28},
-  url = {https://jepusto.com/posts/distribution-of-significant-effects},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Distribution of the Number of
-Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/distribution-of-significant-effects">https://jepusto.com/posts/distribution-of-significant-effects</a>.
+Significant Effect Sizes.”</span> March 28, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects">https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
-  <guid>https://jepusto.com/posts/distribution-of-significant-effects/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects/</guid>
   <pubDate>Thu, 28 Mar 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Approximating the distribution of cluster-robust Wald statistics</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests/</link>
   <description><![CDATA[ 
 
 
@@ -1191,27 +1191,27 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2024,
   author = {Pustejovsky, James E.},
   title = {Approximating the Distribution of Cluster-Robust {Wald}
     Statistics},
   date = {2024-03-24},
-  url = {https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Approximating the Distribution of
-Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
+Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests</a>.
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>
-  <guid>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests/</guid>
   <pubDate>Sun, 24 Mar 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implementing Consul’s generalized Poisson distribution in Stan</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/generalized-poisson-in-Stan/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
 
@@ -1504,7 +1504,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1793,7 +1793,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/check-quantile-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/check-quantile-plot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2157,7 +2157,7 @@ font-style: inherit;">"none"</span>) </span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/check-rng-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/check-rng-plot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2339,7 +2339,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/test-sample-moments-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/test-sample-moments-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -2463,7 +2463,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/glm-scatterplot-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/glm-scatterplot-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -3411,7 +3411,7 @@ font-style: inherit;">2.0</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/dispersion-comparison-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/dispersion-comparison-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -3637,7 +3637,7 @@ font-style: inherit;">2.1</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -3763,7 +3763,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3999,7 +3999,7 @@ font-style: inherit;">3.5</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residuals-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residuals-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -4333,7 +4333,7 @@ font-style: inherit;">"Loess smooth of squared residuals"</span>)</span></code><
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residual-smooth-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residual-smooth-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -4405,17 +4405,17 @@ loaded via a namespace (and not attached):
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2023,
   author = {Pustejovsky, James E.},
   title = {Implementing {Consul’s} Generalized {Poisson} Distribution in
     {Stan}},
   date = {2023-12-06},
-  url = {https://jepusto.com/posts/generalized-poisson-in-Stan},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Implementing Consul’s Generalized
-Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://jepusto.com/posts/generalized-poisson-in-Stan">https://jepusto.com/posts/generalized-poisson-in-Stan</a>.
+Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan">https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan</a>.
 </div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
@@ -4423,13 +4423,13 @@ Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://jepus
   <category>generalized linear model</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://jepusto.com/posts/generalized-poisson-in-Stan/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/</guid>
   <pubDate>Wed, 06 Dec 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implementing Efron’s double Poisson distribution in Stan</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/double-poisson-in-Stan/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
 
@@ -4711,7 +4711,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5033,7 +5033,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5378,7 +5378,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5830,7 +5830,7 @@ font-style: inherit;">"none"</span>) </span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5944,7 +5944,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -6354,7 +6354,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/DPO-dispersion-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/DPO-dispersion-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -6660,7 +6660,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -6832,7 +6832,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppd-grouped-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppd-grouped-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -6992,7 +6992,7 @@ font-style: inherit;">1.3</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -7069,7 +7069,7 @@ loaded via a namespace (and not attached):
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>To be clear up front, what I present is more complicated than really necessary because of these existing R functions to simulate values from the double-Poisson—we can just use the functions from <code>gamlss.dist</code> for purposes of posterior predictive checks (about which more below). I’m trying to work in Stan to the maximum extent possible solely as an excuse to learn more about the language, which I haven’t used much up until today.↩︎</p></li>
@@ -7083,12 +7083,12 @@ loaded via a namespace (and not attached):
   title = {Implementing {Efron’s} Double {Poisson} Distribution in
     {Stan}},
   date = {2023-09-15},
-  url = {https://jepusto.com/posts/double-poisson-in-Stan},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Implementing Efron’s Double Poisson
-Distribution in Stan.”</span> September 15, 2023. <a href="https://jepusto.com/posts/double-poisson-in-Stan">https://jepusto.com/posts/double-poisson-in-Stan</a>.
+Distribution in Stan.”</span> September 15, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan">https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan</a>.
 </div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
@@ -7096,14 +7096,14 @@ Distribution in Stan.”</span> September 15, 2023. <a href="https://jepusto.com
   <category>generalized linear model</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://jepusto.com/posts/double-poisson-in-Stan/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/</guid>
   <pubDate>Fri, 15 Sep 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Cluster-Bootstrapping a meta-analytic selection model</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Megha Joshi</dc:creator>
-  <link>https://jepusto.com/posts/cluster-bootstrap-selection-model/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/</link>
   <description><![CDATA[ 
 
 
@@ -11607,7 +11607,7 @@ font-style: inherit;">"gray75"</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/cluster-bootstrap-selection-model/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -12674,7 +12674,7 @@ Calculations and Intervals on Original Scale</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-vanaert2016conducting" class="csl-entry">
 Aert, R. C. M. van, Wicherts, J. M., &amp; Assen, M. A. L. M. van. (2016). Conducting meta-analyses based on <em>p</em> values: Reservations and recommendations for applying <em>p</em> -uniform and <em>p</em> -curve. <em>Perspectives on Psychological Science</em>, <em>11</em>(5), 713–729. <a href="https://doi.org/10.1177/1745691616650874">https://doi.org/10.1177/1745691616650874</a>
 </div>
@@ -12790,12 +12790,12 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
   author = {Pustejovsky, James E. and Joshi, Megha},
   title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
   date = {2023-03-30},
-  url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E., &amp; Joshi, M. (2023, March 30).
-<em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
+<em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model">https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model</a>
 </div></div></section></div> ]]></description>
   <category>bootstrap</category>
   <category>dependent effect sizes</category>
@@ -12803,13 +12803,13 @@ Pustejovsky, J. E., &amp; Joshi, M. (2023, March 30).
   <category>publication bias</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://jepusto.com/posts/cluster-bootstrap-selection-model/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/</guid>
   <pubDate>Thu, 30 Mar 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Cohen’s \(d_z\) makes me dizzy when considering measurement error</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/dizzy-for-d-z/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/</link>
   <description><![CDATA[ 
 
 
@@ -13042,7 +13042,7 @@ font-style: inherit;">+</span> p_A_z</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13103,7 +13103,7 @@ font-style: inherit;">+</span> p_A_z_trunc</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13211,7 +13211,7 @@ font-style: inherit;">+</span> p_B_z</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13272,7 +13272,7 @@ font-style: inherit;">+</span> p_B_z_trunc</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13863,7 +13863,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -13883,7 +13883,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Perhaps because use of Cohen’s <img src="https://latex.codecogs.com/png.latex?d"> is so under-scrutinized in practice, methodologists have spent many an afternoon blogging about this problem. For general discussions about issues with how to define Cohen’s <img src="https://latex.codecogs.com/png.latex?d">, see excellent posts from <a href="https://janhove.github.io/reporting/2015/02/05/standardised-vs-unstandardised-es">Jan Vanhove</a> (with <a href="https://janhove.github.io/design/2015/03/16/standardised-es-revisited">a sequel</a>), <a href="http://jakewestfall.org/blog/index.php/2016/03/25/five-different-cohens-d-statistics-for-within-subject-designs/">Jake Westfall</a>, <a href="http://datacolada.org/33">Uri Simonsohn</a>, and <a href="https://transparentstatistics.org/2018/07/05/meanings-effect-size/">Pierre Dragicevic</a>; a more formal discussion by <a href="https://www.floppybunny.org/robin/web/virtualclassroom/stats/basics/articles/effect_size/effect_size_baguley_2009.pdf">Thom Baguley</a>; and some very interesting work on alternative conceptualizations by <a href="https://doi.org/10.1002/jrsm.1130">Tony Ades and colleagues</a>. I can promise, dear reader, that the present blog post will not be nearly as cogent as these contributions—this is more about getting my own thoughts straight than making any recommendations—and so <em>caveat lector</em> applies.↩︎</p></li>
@@ -13897,24 +13897,24 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
   title = {Cohen’s \$d\_z\$ Makes Me Dizzy When Considering Measurement
     Error},
   date = {2023-02-17},
-  url = {https://jepusto.com/posts/dizzy-for-d-z},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Cohen’s $d_z$ Makes Me Dizzy When
-Considering Measurement Error.”</span> February 17, 2023. <a href="https://jepusto.com/posts/dizzy-for-d-z">https://jepusto.com/posts/dizzy-for-d-z</a>.
+Considering Measurement Error.”</span> February 17, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z">https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>design-comparable SMD</category>
   <category>measurement-error</category>
-  <guid>https://jepusto.com/posts/dizzy-for-d-z/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/</guid>
   <pubDate>Fri, 17 Feb 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018), redux</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux/</link>
   <description><![CDATA[ 
 
 
@@ -13957,27 +13957,27 @@ UPDATE, March 8, 2023
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2022,
   author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018), Redux},
   date = {2022-11-07},
-  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2022, November 7). <em>Corrigendum to Pustejovsky
-and Tipton (2018), redux</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
+and Tipton (2018), redux</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
-  <guid>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux/</guid>
   <pubDate>Mon, 07 Nov 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018)</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2/</link>
   <description><![CDATA[ 
 
 
@@ -14397,7 +14397,7 @@ font-style: inherit;">all.equal</span>(UiAtilde, UiA)</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-Bell2002bias" class="csl-entry">
 Bell, R. M., &amp; McCaffrey, D. F. (2002). <span class="nocase">Bias reduction in standard errors for linear regression with multi-stage samples</span>. <em>Survey Methodology</em>, <em>28</em>(2), 169–181.
 </div>
@@ -14408,23 +14408,23 @@ McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">G
   author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018)},
   date = {2022-09-28},
-  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2022, September 28). <em>Corrigendum to Pustejovsky
-and Tipton (2018)</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2</a>
+and Tipton (2018)</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2</a>
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
-  <guid>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2/</guid>
   <pubDate>Wed, 28 Sep 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Variance component estimates in meta-analysis with mis-specified sampling correlation</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/variance-components-with-misspecified-correlation/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/</link>
   <description><![CDATA[ 
 
 
@@ -14939,7 +14939,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -15356,7 +15356,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -15375,7 +15375,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Consequently, <img src="https://latex.codecogs.com/png.latex?%5Cphi"> is not identifiable (in the statistical sense) in the completely balanced design.↩︎</p></li>
@@ -15385,25 +15385,25 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
   title = {Variance Component Estimates in Meta-Analysis with
     Mis-Specified Sampling Correlation},
   date = {2021-11-28},
-  url = {https://jepusto.com/posts/variance-components-with-misspecified-correlation},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Variance Component Estimates in
 Meta-Analysis with Mis-Specified Sampling Correlation.”</span> November
-28, 2021. <a href="https://jepusto.com/posts/variance-components-with-misspecified-correlation">https://jepusto.com/posts/variance-components-with-misspecified-correlation</a>.
+28, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation">https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
   <category>distribution theory</category>
   <category>hierarchical models</category>
-  <guid>https://jepusto.com/posts/variance-components-with-misspecified-correlation/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/</guid>
   <pubDate>Sun, 28 Nov 2021 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implications of mean-variance relationships for standardized mean differences</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/</link>
   <description><![CDATA[ 
 
 
@@ -15876,7 +15876,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -15968,7 +15968,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -16130,7 +16130,7 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16250,7 +16250,7 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16330,7 +16330,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16455,7 +16455,7 @@ font-style: inherit;">+</span> Ti_d_plot</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -16621,7 +16621,7 @@ font-style: inherit;">+</span> Ti_lRR_plot</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -16680,7 +16680,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Yes, there are other ways to define the SMD. Yes, usually we use the standard deviation pooled across both groups. I’m going to use the standard deviation in group <img src="https://latex.codecogs.com/png.latex?A"> alone because it simplifies some of the mathy bits. Please feel free to work through the case with a pooled SD for yourself.↩︎</p></li>
@@ -16691,25 +16691,25 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   title = {Implications of Mean-Variance Relationships for Standardized
     Mean Differences},
   date = {2021-11-02},
-  url = {https://jepusto.com/posts/mean-variance-relationships-and-SMDs},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Implications of Mean-Variance
 Relationships for Standardized Mean Differences.”</span> November 2,
-2021. <a href="https://jepusto.com/posts/mean-variance-relationships-and-SMDs">https://jepusto.com/posts/mean-variance-relationships-and-SMDs</a>.
+2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs">https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs</a>.
 </div></div></section></div> ]]></description>
   <category>standardized mean difference</category>
   <category>response ratio</category>
   <category>distribution theory</category>
   <category>meta-analysis</category>
-  <guid>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/</guid>
   <pubDate>Tue, 02 Nov 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Inverting partitioned matrices</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/inverting-partitioned-matrices/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices/</link>
   <description><![CDATA[ 
 
 
@@ -16726,7 +16726,7 @@ Relationships for Standardized Mean Differences.”</span> November 2,
 
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p><a href="https://tminka.github.io/papers/matrix/">Minka’s notes</a> on partitioned matrices treat a more general case, in which <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BA%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cmathbf%7BD%7D"> need not be square matrices, nor must they be invertible.↩︎</p></li>
@@ -16735,21 +16735,21 @@ Relationships for Standardized Mean Differences.”</span> November 2,
   author = {Pustejovsky, James E.},
   title = {Inverting Partitioned Matrices},
   date = {2021-10-20},
-  url = {https://jepusto.com/posts/inverting-partitioned-matrices},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Inverting Partitioned
-Matrices.”</span> October 20, 2021. <a href="https://jepusto.com/posts/inverting-partitioned-matrices">https://jepusto.com/posts/inverting-partitioned-matrices</a>.
+Matrices.”</span> October 20, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices">https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices</a>.
 </div></div></section></div> ]]></description>
   <category>matrix algebra</category>
-  <guid>https://jepusto.com/posts/inverting-partitioned-matrices/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices/</guid>
   <pubDate>Wed, 20 Oct 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Standardized mean differences in single-group, repeated measures designs</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/SMDs-in-single-group/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group/</link>
   <description><![CDATA[ 
 
 
@@ -16776,28 +16776,28 @@ Matrices.”</span> October 20, 2021. <a href="https://jepusto.com/posts/inverti
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
   author = {Pustejovsky, James E.},
   title = {Standardized Mean Differences in Single-Group, Repeated
     Measures Designs},
   date = {2021-10-06},
-  url = {https://jepusto.com/posts/SMDs-in-single-group},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Standardized Mean Differences in
-Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="https://jepusto.com/posts/SMDs-in-single-group">https://jepusto.com/posts/SMDs-in-single-group</a>.
+Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group">https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>distribution theory</category>
-  <guid>https://jepusto.com/posts/SMDs-in-single-group/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group/</guid>
   <pubDate>Wed, 06 Oct 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Finding the distribution of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/number-of-significant-effects/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects/</link>
   <description><![CDATA[ 
 
 
@@ -16822,26 +16822,26 @@ Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="htt
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2021,
   author = {Pustejovsky, James E.},
   title = {Finding the Distribution of Significant Effect Sizes},
   date = {2021-04-27},
-  url = {https://jepusto.com/posts/number-of-significant-effects},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Finding the Distribution of
-Significant Effect Sizes.”</span> April 27, 2021. <a href="https://jepusto.com/posts/number-of-significant-effects">https://jepusto.com/posts/number-of-significant-effects</a>.
+Significant Effect Sizes.”</span> April 27, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects">https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
-  <guid>https://jepusto.com/posts/number-of-significant-effects/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects/</guid>
   <pubDate>Tue, 27 Apr 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The Woodbury identity</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/Woodbury-identity/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity/</link>
   <description><![CDATA[ 
 
 
@@ -16894,7 +16894,7 @@ Significant Effect Sizes.”</span> April 27, 2021. <a href="https://jepusto.com
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>This model is what we call the “correlated-and-hierarchical effects model” in my paper (with Beth Tipton) on <a href="../..\publication/rve-meta-analysis-expanding-the-range/">extending working models for robust variance estimation</a>.↩︎</p></li>
@@ -16906,22 +16906,22 @@ Significant Effect Sizes.”</span> April 27, 2021. <a href="https://jepusto.com
   author = {Pustejovsky, James E.},
   title = {The {Woodbury} Identity},
   date = {2020-12-04},
-  url = {https://jepusto.com/posts/Woodbury-identity},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“The Woodbury Identity.”</span>
-December 4, 2020. <a href="https://jepusto.com/posts/Woodbury-identity">https://jepusto.com/posts/Woodbury-identity</a>.
+December 4, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity</a>.
 </div></div></section></div> ]]></description>
   <category>hierarchical models</category>
   <category>matrix algebra</category>
-  <guid>https://jepusto.com/posts/Woodbury-identity/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity/</guid>
   <pubDate>Fri, 04 Dec 2020 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>An ANCOVA puzzler</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/ancova-puzzler/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler/</link>
   <description><![CDATA[ 
 
 
@@ -17048,27 +17048,27 @@ December 4, 2020. <a href="https://jepusto.com/posts/Woodbury-identity">https://
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
   author = {Pustejovsky, James E.},
   title = {An {ANCOVA} Puzzler},
   date = {2020-11-24},
-  url = {https://jepusto.com/posts/ancova-puzzler},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
-24, 2020. <a href="https://jepusto.com/posts/ancova-puzzler">https://jepusto.com/posts/ancova-puzzler</a>.
+24, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler">https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>effect size</category>
   <category>standardized mean difference</category>
-  <guid>https://jepusto.com/posts/ancova-puzzler/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler/</guid>
   <pubDate>Tue, 24 Nov 2020 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>From Longhorn to Badger</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/from-longhorn-to-badger/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger/</link>
   <description><![CDATA[ 
 
 
@@ -17084,24 +17084,24 @@ Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
 <!-- -->
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
   author = {Pustejovsky, James E.},
   title = {From {Longhorn} to {Badger}},
   date = {2020-08-28},
-  url = {https://jepusto.com/posts/from-longhorn-to-badger},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“From Longhorn to Badger.”</span>
-August 28, 2020. <a href="https://jepusto.com/posts/from-longhorn-to-badger">https://jepusto.com/posts/from-longhorn-to-badger</a>.
+August 28, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger">https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger</a>.
 </div></div></section></div> ]]></description>
-  <guid>https://jepusto.com/posts/from-longhorn-to-badger/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger/</guid>
   <pubDate>Fri, 28 Aug 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What do meta-analysts mean by ‘multivariate’ meta-analysis?</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/what-does-multivariate-mean/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean/</link>
   <description><![CDATA[ 
 
 
@@ -17119,7 +17119,7 @@ August 28, 2020. <a href="https://jepusto.com/posts/from-longhorn-to-badger">htt
 </div>
 </div>
 <p>As another example, consider that introductory statistics students always struggle to distinguish between no less than <strong><em>three</em></strong> different concepts that are all called “variance”: population variance, sample variance, and sampling variance.<sup>2</sup> Unless the instructor also took diction training from the Royal Shakespeare Company, it’s no wonder that a fair number of students are left confused.</p>
-<p><img src="https://jepusto.com/img/Hamlet-z-transform.jpg" class="img-fluid"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/img/Hamlet-z-transform.jpg" class="img-fluid"></p>
 <p>In this post, I will try to clarify (at least a little bit) another mess of terminology that crops up a lot in my work on meta-analysis: what do we mean when we say a model or method is “multivariate”? In the context of meta-analysis methods, I think there are at least three distinct senses in which this term is used:</p>
 <ul>
 <li>As an umbrella term for models/methods where there is more than one effect size estimate per study,</li>
@@ -17196,7 +17196,7 @@ font-style: inherit;">+</span> college_pct</span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-Becker2000multivariate" class="csl-entry">
 Becker, B. J. (2000). <span class="nocase">Multivariate meta-analysis</span>. In S. D. Brown &amp; H. E. A. Tinsley (Eds.), <em>Handbook of applied multivariate statistics and mathematical modeling</em> (pp. 499–525). Academic Press. <a href="https://doi.org/10.1016/B978-012691360-6/50018-5">https://doi.org/10.1016/B978-012691360-6/50018-5</a>
 </div>
@@ -17232,23 +17232,23 @@ Riley, Richard D., Jackson, D., Salanti, G., Burke, D. L., Price, M., Kirkham, J
   author = {Pustejovsky, James E.},
   title = {What Do Meta-Analysts Mean by “Multivariate” Meta-Analysis?},
   date = {2020-06-27},
-  url = {https://jepusto.com/posts/what-does-multivariate-mean},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2020, June 27). <em>What do meta-analysts mean by
-<span>“multivariate”</span> meta-analysis?</em> <a href="https://jepusto.com/posts/what-does-multivariate-mean">https://jepusto.com/posts/what-does-multivariate-mean</a>
+<span>“multivariate”</span> meta-analysis?</em> <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean">https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean</a>
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>multivariate</category>
   <category>dependent effect sizes</category>
-  <guid>https://jepusto.com/posts/what-does-multivariate-mean/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean/</guid>
   <pubDate>Sat, 27 Jun 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Weighting in multivariate meta-analysis</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/</link>
   <description><![CDATA[ 
 
 
@@ -17315,7 +17315,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -17325,7 +17325,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -17582,7 +17582,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -17702,7 +17702,7 @@ font-style: inherit;">w =</span> w_ij_no_omega))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -17712,7 +17712,7 @@ font-style: inherit;">w =</span> w_ij_no_omega))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -17992,7 +17992,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Note that this model also encompasses the multi-level meta-analysis described by <a href="https://doi.org/10.1002/jrsm.35">Konstantopoulos (2011)</a> and <a href="https://doi.org/10.3758/s13428-012-0261-6">Van den Noortgate, et al.&nbsp;(2013)</a> as a special case, with <img src="https://latex.codecogs.com/png.latex?r_%7Bhij%7D%20=%200"> for all <img src="https://latex.codecogs.com/png.latex?h,i=1,...,n_j"> and <img src="https://latex.codecogs.com/png.latex?j%20=%201,...,k">.↩︎</p></li>
@@ -18004,22 +18004,22 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   author = {Pustejovsky, James E.},
   title = {Weighting in Multivariate Meta-Analysis},
   date = {2020-06-09},
-  url = {https://jepusto.com/posts/weighting-in-multivariate-meta-analysis},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“Weighting in Multivariate
-Meta-Analysis.”</span> June 9, 2020. <a href="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis">https://jepusto.com/posts/weighting-in-multivariate-meta-analysis</a>.
+Meta-Analysis.”</span> June 9, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis">https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>weighting</category>
-  <guid>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/</guid>
   <pubDate>Tue, 09 Jun 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>An update on code folding with blogdown + Academic theme</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://jepusto.com/posts/code-folding-update/</link>
+  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update/</link>
   <description><![CDATA[ 
 
 
@@ -18190,20 +18190,20 @@ font-style: inherit;">=</span> false</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pustejovsky2020,
   author = {Pustejovsky, James E.},
   title = {An Update on Code Folding with Blogdown + {Academic} Theme},
   date = {2020-05-03},
-  url = {https://jepusto.com/posts/code-folding-update},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“An Update on Code Folding with
-Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://jepusto.com/posts/code-folding-update">https://jepusto.com/posts/code-folding-update</a>.
+Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update">https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update</a>.
 </div></div></section></div> ]]></description>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://jepusto.com/posts/code-folding-update/</guid>
+  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update/</guid>
   <pubDate>Sun, 03 May 2020 05:00:00 GMT</pubDate>
 </item>
 </channel>

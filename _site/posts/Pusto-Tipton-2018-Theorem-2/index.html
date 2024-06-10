@@ -161,6 +161,20 @@ window.Quarto = {
 <meta name="twitter:title" content="James E. Pustejovsky - Corrigendum to Pustejovsky and Tipton (2018)">
 <meta name="twitter:description" content="In my 2018 paper with Beth Tipton, published in the Journal of Business and Economic Statistics, we considered how to do cluster-robust variance estimation in fixed effects models estimated by weighted (or unweighted) least squares. A careful reader recently alerted us to a problem with Theorem 2 in the paper, which concerns a computational short cut for a certain cluster-robust variance estimator in models with cluster-specific fixed effects. The theorem is incorrect as stated, and we are currently working on issuing a correction for the published version of the paper. In the interim, this post details the problem with Theorem 2. I’ll first review the CR2 variance estimator, then describe the assertion of the theorem, and then provide a numerical counter-example demonstrating that the assertion is not correct as stated.">
 <meta name="twitter:card" content="summary">
+<meta name="citation_title" content="Corrigendum to Pustejovsky and Tipton (2018)">
+<meta name="citation_author" content="James E. Pustejovsky">
+<meta name="citation_publication_date" content="2022-09-28">
+<meta name="citation_cover_date" content="2022-09-28">
+<meta name="citation_year" content="2022">
+<meta name="citation_online_date" content="2022-09-28">
+<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Computing robust standard errors for within-groups estimators;,citation_author=Manuel Arellano;,citation_publication_date=1987;,citation_cover_date=1987;,citation_year=1987;,citation_issue=4;,citation_volume=49;,citation_journal_title=Oxford Bulletin of Economics and Statistics;">
+<meta name="citation_reference" content="citation_title=Bias reduction in standard errors for linear regression with multi-stage samples;,citation_author=Robert M Bell;,citation_author=Daniel F McCaffrey;,citation_publication_date=2002;,citation_cover_date=2002;,citation_year=2002;,citation_issue=2;,citation_volume=28;,citation_journal_title=Survey Methodology;">
+<meta name="citation_reference" content="citation_title=On deriving the inverse of a sum of matrices;,citation_author=H V Henderson;,citation_author=S R Searle;,citation_publication_date=1981;,citation_cover_date=1981;,citation_year=1981;,citation_issue=1;,citation_volume=23;,citation_journal_title=Siam Review;">
+<meta name="citation_reference" content="citation_title=Robust variance estimation in meta-regression with dependent effect size estimates;,citation_author=Larry V. Hedges;,citation_author=Elizabeth Tipton;,citation_author=Matthew C Johnson;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_issue=1;,citation_doi=10.1002/jrsm.5;,citation_volume=1;,citation_journal_title=Research Synthesis Methods;">
+<meta name="citation_reference" content="citation_title=Generalizations of biased reduced linearization;,citation_author=Daniel F McCaffrey;,citation_author=Robert M Bell;,citation_author=Carsten H Botts;,citation_publication_date=2001;,citation_cover_date=2001;,citation_year=2001;,citation_conference_title=Proceedings of the annual meeting of the american statistical association;">
+<meta name="citation_reference" content="citation_title=Improved hypothesis testing for coefficients in generalized estimating equations with small samples of clusters.;,citation_author=Daniel F McCaffrey;,citation_author=Robert M Bell;,citation_publication_date=2006;,citation_cover_date=2006;,citation_year=2006;,citation_issue=23;,citation_doi=10.1002/sim.2502;,citation_issn=0277-6715;,citation_pmid=16456895;,citation_volume=25;,citation_journal_title=Statistics in medicine;">
 </head>
 
 <body class="nav-fixed">
@@ -483,7 +497,7 @@ $D
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Bell2002bias" class="csl-entry" role="listitem">
 Bell, R. M., &amp; McCaffrey, D. F. (2002). <span class="nocase">Bias reduction in standard errors for linear regression with multi-stage samples</span>. <em>Survey Methodology</em>, <em>28</em>(2), 169–181.
 </div>
@@ -494,12 +508,12 @@ McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">G
   author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018)},
   date = {2022-09-28},
-  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2},
+  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, J. E. (2022, September 28). <em>Corrigendum to Pustejovsky
-and Tipton (2018)</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2</a>
+and Tipton (2018)</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2</a>
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -633,7 +647,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/jepusto\.com");
+      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -960,6 +974,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="jepusto/jepusto-quarto" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Corrigendum to Pustejovsky and Tipton (2018)</span></span>

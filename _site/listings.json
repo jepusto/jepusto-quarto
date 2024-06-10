@@ -151,62 +151,32 @@
     ]
   },
   {
-    "listing": "/people/Melissa-A-Rodgers/index.html",
+    "listing": "/people/Young-Ri-Lee/index.html",
     "items": [
-      "/publication/selective-reporting-with-dependent-effects/index.html",
-      "/presentations/SRSM-2019-generalized-excess-significance-test.html",
-      "/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html"
+      "/publication/competing-approaches-for-cross-classified-data/index.html"
     ]
   },
   {
-    "listing": "/people/Man-Chen/index.html",
+    "listing": "/people/Megha-Joshi/index.html",
     "items": [
-      "/presentations/AERA-2024-Bayes-BCSMD.html",
-      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
-      "/publication/AAC-group-and-SCD/index.html",
-      "/presentations/AERA-2023-BCSMD-benchmarks.html",
-      "/publication/Three-level-BC-SMD/index.html",
-      "/publication/SCED-MLMA-RVE/index.html",
-      "/presentations/AERA-2022-synthesis-of-NAP.html",
-      "/publication/AAC-communication-outcomes/index.html",
-      "/publication/AAC-instructional-contexts/index.html",
-      "/publication/AAC-participant-characteristics/index.html",
-      "/presentations/AERA-2021-meta-analysis-of-SCDs.html"
+      "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
+      "/posts/cluster-bootstrap-selection-model/index.html",
+      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
+      "/publication/Transition-to-College-Mathematics-Year-1/index.html"
     ]
   },
   {
-    "listing": "/people/index.html",
+    "listing": "/people/Jingru-Zhang/index.html",
     "items": [
-      "/people/Bethany-H-Bhat/index.html",
-      "/people/Jingru-Zhang/index.html",
-      "/people/Man-Chen/index.html",
-      "/people/Melissa-A-Rodgers/index.html",
-      "/people/Paulina-Grekov/index.html",
-      "/people/Christopher-Runyon/index.html",
-      "/people/Daniel-M.-Swan/index.html",
-      "/people/Gleb-Furman/index.html",
-      "/people/Megha-Joshi/index.html",
-      "/people/Young-Ri-Lee/index.html"
+      "/presentations/SREE-2023-Equity-related-moderator-analysis.html"
     ]
   },
   {
-    "listing": "/people/Daniel-M.-Swan/index.html",
+    "listing": "/people/Christopher-Runyon/index.html",
     "items": [
-      "/publication/response-guided-designs-in-SCED-baselines/index.html",
-      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
-      "/presentations/AERA-2019-outcome-measurement-procedures.html",
-      "/presentations/AERA-2019-response-guided-algorithms.html",
-      "/publication/gradual-effects-model/index.html",
-      "/presentations/IES-2018-gradual-effects-model.html",
-      "/presentations/AERA-2017-intervention-analysis.html",
-      "/publication/Four-methods-for-PIR/index.html",
-      "/presentations/AERA-2014-four-methods-for-PIR.html"
-    ]
-  },
-  {
-    "listing": "/people/Bethany-H-Bhat/index.html",
-    "items": [
-      "/publication/AAC-group-and-SCD/index.html"
+      "/publication/ARP-for-behavioral-observation/index.html"
     ]
   },
   {
@@ -295,32 +265,62 @@
     ]
   },
   {
-    "listing": "/people/Christopher-Runyon/index.html",
+    "listing": "/people/Bethany-H-Bhat/index.html",
     "items": [
-      "/publication/ARP-for-behavioral-observation/index.html"
+      "/publication/AAC-group-and-SCD/index.html"
     ]
   },
   {
-    "listing": "/people/Jingru-Zhang/index.html",
+    "listing": "/people/Daniel-M.-Swan/index.html",
     "items": [
-      "/presentations/SREE-2023-Equity-related-moderator-analysis.html"
+      "/publication/response-guided-designs-in-SCED-baselines/index.html",
+      "/publication/measurement-procedures-and-baseline-outcomes/index.html",
+      "/presentations/AERA-2019-outcome-measurement-procedures.html",
+      "/presentations/AERA-2019-response-guided-algorithms.html",
+      "/publication/gradual-effects-model/index.html",
+      "/presentations/IES-2018-gradual-effects-model.html",
+      "/presentations/AERA-2017-intervention-analysis.html",
+      "/publication/Four-methods-for-PIR/index.html",
+      "/presentations/AERA-2014-four-methods-for-PIR.html"
     ]
   },
   {
-    "listing": "/people/Megha-Joshi/index.html",
+    "listing": "/people/index.html",
     "items": [
-      "/presentations/ESMARConf2023-clustered-bootstrap-selection-model.html",
-      "/posts/cluster-bootstrap-selection-model/index.html",
-      "/publication/cluster-wild-bootstrap-for-meta-analysis/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-3/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-2/index.html",
-      "/publication/Transition-to-College-Mathematics-Year-1/index.html"
+      "/people/Bethany-H-Bhat/index.html",
+      "/people/Jingru-Zhang/index.html",
+      "/people/Man-Chen/index.html",
+      "/people/Melissa-A-Rodgers/index.html",
+      "/people/Paulina-Grekov/index.html",
+      "/people/Christopher-Runyon/index.html",
+      "/people/Daniel-M.-Swan/index.html",
+      "/people/Gleb-Furman/index.html",
+      "/people/Megha-Joshi/index.html",
+      "/people/Young-Ri-Lee/index.html"
     ]
   },
   {
-    "listing": "/people/Young-Ri-Lee/index.html",
+    "listing": "/people/Man-Chen/index.html",
     "items": [
-      "/publication/competing-approaches-for-cross-classified-data/index.html"
+      "/presentations/AERA-2024-Bayes-BCSMD.html",
+      "/publication/Equivalences-between-ad-hoc-strategies-and-models/index.html",
+      "/publication/AAC-group-and-SCD/index.html",
+      "/presentations/AERA-2023-BCSMD-benchmarks.html",
+      "/publication/Three-level-BC-SMD/index.html",
+      "/publication/SCED-MLMA-RVE/index.html",
+      "/presentations/AERA-2022-synthesis-of-NAP.html",
+      "/publication/AAC-communication-outcomes/index.html",
+      "/publication/AAC-instructional-contexts/index.html",
+      "/publication/AAC-participant-characteristics/index.html",
+      "/presentations/AERA-2021-meta-analysis-of-SCDs.html"
+    ]
+  },
+  {
+    "listing": "/people/Melissa-A-Rodgers/index.html",
+    "items": [
+      "/publication/selective-reporting-with-dependent-effects/index.html",
+      "/presentations/SRSM-2019-generalized-excess-significance-test.html",
+      "/publication/Testing-for-funnel-plot-asymmetry-of-SMDs/index.html"
     ]
   },
   {
