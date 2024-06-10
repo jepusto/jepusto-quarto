@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description','listing-categories','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       page: 25,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
@@ -289,17 +289,26 @@ window.Quarto = {
 <div id="listing-recent-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
 <div class="quarto-post image-right" data-index="0" data-categories="effect size,correlation,distribution theory,meta-analysis" data-listing-date-sort="1717650000000" data-listing-file-modified-sort="1717962009031" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="626">
-<div class="thumbnail">
-<p><a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external"></a></p><a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" style="height: 100pt;">&nbsp;</div>
-</a><p><a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external"></a></p>
-</div>
 <div class="body">
 <h3 class="no-anchor listing-title" data-anchor-id="recent-posts">
 <a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external">Correlations between z-transformed correlation coefficients</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('effect size'); return false;">
+effect size
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('correlation'); return false;">
+correlation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution theory'); return false;">
+distribution theory
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('meta-analysis'); return false;">
+meta-analysis
+</div>
 </div>
 <div class="listing-description">
 <a href="./posts/correlated-z-transformed-correlations/index.html" class="no-external">For a little meta-analysis project that I’m working on with Jingru, we are dealing with a database of correlation coefficients, where some of the included studies report…</a>
@@ -317,17 +326,20 @@ James E. Pustejovsky
 </div>
 </div>
 <div class="quarto-post image-right" data-index="1" data-categories="effect size,distribution theory" data-listing-date-sort="1711602000000" data-listing-file-modified-sort="1717962897505" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1279">
-<div class="thumbnail">
-<p><a href="./posts/distribution-of-significant-effects/index.html" class="no-external"></a></p><a href="./posts/distribution-of-significant-effects/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" style="height: 100pt;">&nbsp;</div>
-</a><p><a href="./posts/distribution-of-significant-effects/index.html" class="no-external"></a></p>
-</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/distribution-of-significant-effects/index.html" class="no-external">Distribution of the number of significant effect sizes</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/distribution-of-significant-effects/index.html" class="no-external">In a study reporting multiple outcomes</a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('effect size'); return false;">
+effect size
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution theory'); return false;">
+distribution theory
+</div>
 </div>
 <div class="listing-description">
 <a href="./posts/distribution-of-significant-effects/index.html" class="no-external">A while back, I posted the outline of a problem about the number of significant effect size estimates in a study that reports multiple outcomes. This problem interests me…</a>
@@ -345,17 +357,20 @@ James E. Pustejovsky
 </div>
 </div>
 <div class="quarto-post image-right" data-index="2" data-categories="robust variance estimation,distribution theory" data-listing-date-sort="1711256400000" data-listing-file-modified-sort="1717962784441" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1215">
-<div class="thumbnail">
-<p><a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external"></a></p><a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" style="height: 100pt;">&nbsp;</div>
-</a><p><a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external"></a></p>
-</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external">Approximating the distribution of cluster-robust Wald statistics</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('robust variance estimation'); return false;">
+robust variance estimation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution theory'); return false;">
+distribution theory
+</div>
 </div>
 <div class="listing-description">
 <a href="./posts/Approximating-cluster-robust-Wald-tests/index.html" class="no-external">In Tipton and Pustejovsky (2015), we examined several different small-sample approximations for cluster-robust Wald test statistics, which are like <span class="math inline">\(F\)</span> statistics but…<span class="math inline"></span></a>
@@ -373,17 +388,32 @@ James E. Pustejovsky
 </div>
 </div>
 <div class="quarto-post image-right" data-index="3" data-categories="Bayes,simulation,distribution-theory,generalized linear model,programming,Rstats" data-listing-date-sort="1701842400000" data-listing-file-modified-sort="1717979182415" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="21" data-listing-word-count-sort="4197">
-<div class="thumbnail">
-<p><a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external"></a></p><a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\generalized-poisson-in-Stan\index_files\figure-html\unnamed-chunk-1-1.png" style="height: 100pt;"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external"></a></p>
-</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external">Implementing Consul’s generalized Poisson distribution in Stan</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Bayes'); return false;">
+Bayes
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('simulation'); return false;">
+simulation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution-theory'); return false;">
+distribution-theory
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('generalized linear model'); return false;">
+generalized linear model
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming'); return false;">
+programming
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Rstats'); return false;">
+Rstats
+</div>
 </div>
 <div class="listing-description">
 <a href="./posts/generalized-poisson-in-Stan/index.html" class="no-external">For a project I am working on, we are using Stan to fit generalized random effects location-scale models to a bunch of count data. In a previous post, I walked through our…</a>
@@ -401,17 +431,32 @@ James E. Pustejovsky
 </div>
 </div>
 <div class="quarto-post image-right" data-index="4" data-categories="Bayes,simulation,distribution-theory,generalized linear model,programming,Rstats" data-listing-date-sort="1694754000000" data-listing-file-modified-sort="1717963156885" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4201">
-<div class="thumbnail">
-<p><a href="./posts/double-poisson-in-Stan/index.html" class="no-external"></a></p><a href="./posts/double-poisson-in-Stan/index.html" class="no-external">
-<p class="card-img-top"><img src="posts\double-poisson-in-Stan\index_files\figure-html\unnamed-chunk-1-1.png" style="height: 100pt;"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/double-poisson-in-Stan/index.html" class="no-external"></a></p>
-</div>
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/double-poisson-in-Stan/index.html" class="no-external">Implementing Efron’s double Poisson distribution in Stan</a>
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/double-poisson-in-Stan/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Bayes'); return false;">
+Bayes
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('simulation'); return false;">
+simulation
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('distribution-theory'); return false;">
+distribution-theory
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('generalized linear model'); return false;">
+generalized linear model
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('programming'); return false;">
+programming
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Rstats'); return false;">
+Rstats
+</div>
 </div>
 <div class="listing-description">
 <a href="./posts/double-poisson-in-Stan/index.html" class="no-external">For a project I am working on, we are using Stan to fit generalized random effects location-scale models to a bunch of count data. We’re interested in using the…<sup></sup><code></code><code></code><sup></sup></a>
@@ -433,8 +478,8 @@ James E. Pustejovsky
 No matching items
 </div>
 </div>
-<section id="more-blog-posts" class="level4">
-<h4 data-anchor-id="more-blog-posts"><a href=".\posts/">More blog posts…</a></h4>
+<section id="more-posts" class="level4">
+<h4 data-anchor-id="more-posts"><a href=".\posts/">More posts…</a></h4>
 
 
 
