@@ -146,7 +146,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2016-02-28">
 <meta name="citation_year" content="2016">
 <meta name="citation_online_date" content="2016-02-28">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/NAP-SEs-and-CIs">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/NAP-SEs-and-CIs">
 <meta name="citation_language" content="en">
 </head>
 
@@ -205,11 +205,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -263,7 +277,7 @@ window.Quarto = {
 
 
 
-<p><a href="http://doi.org/10.1016/j.beth.2008.10.006">Parker and Vannest (2009)</a> proposed non-overlap of all pairs (NAP) as an effect size index for use in single-case research. NAP is defined in terms of all pair-wise comparisons between the data points in two different phases for a given case (i.e., a treatment phase versus a baseline phase). For an outcome that is desirable to increase, NAP is the proportion of all such pair-wise comparisons where the treatment phase observation exceeds the baseline phase observation, with pairs that are exactly tied getting a weight of 1/2. NAP belongs to the family of non-overlap measures, which also includes the percentage of non-overlapping data, the improvement rate difference, and several other indices. It is exactly equivalent to <a href="http://doi.org/10.2307/1165329">Vargha and Delaney’s (2000)</a> modified Common Language Effect Size and has been proposed as an effect size index in other contexts too (e.g., <a href="http://doi.org/10.1002/sim.2256">Acion, Peterson, Temple, &amp; Arndt, 2006</a>).</p>
+<p><a href="http://doi.org/10.1016/j.beth.2008.10.006">Parker and Vannest (2009)</a> proposed non-overlap of all pairs (NAP) as an effect size index for use in single-case research. NAP is defined in terms of all pair-wise comparisons between the data points in two different phases for a given case (i.e., a treatment phase versus a baseline phase). For an outcome that is desirable to increase, NAP is the proportion of all such pair-wise comparisons where the treatment phase observation exceeds the baseline phase observation, with pairs that are exactly tied getting a weight of 1/2. NAP belongs to the family of non-overlap measures, which also includes the percentage of non-overlapping data, the improvement rate difference, and several other indices. It is exactly equivalent to <a href="https://doi.org/10.3102/10769986025002101">Vargha and Delaney’s (2000)</a> modified Common Language Effect Size and has been proposed as an effect size index in other contexts too (e.g., <a href="http://doi.org/10.1002/sim.2256">Acion, Peterson, Temple, &amp; Arndt, 2006</a>).</p>
 <p>The developers of NAP have created a <a href="http://singlecaseresearch.org/calculators">web-based tool</a> for calculating it (as well as several other non-overlap indices), and I have the impression that the tool is fairly widely used. For example, <a href="http://doi.org/10.1007%2Fs10864-013-9189-x">Roth, Gillis, and DiGennaro Reed (2014)</a> and <a href="http://doi.org/10.1007/s10803-015-2373-1">Whalon, Conroy, Martinez, and Welch (2015)</a> both used NAP in their meta-analyses of single-case research, and both noted that they used <a href="http://www.singlecaseresearch.org/calculators/nap">singlecaseresearch.org</a> for calculating the effect size measure. Given that the web tool is being used, it is worth scrutinizing the methods behind the calculations it reports. As of this writing, the standard error and confidence intervals reported along with the NAP statistic are incorrect, and should not be used. After introducing a bit of notation, I’ll explain why the existing methods are deficient. I’ll also suggest some methods for calculating standard errors and confidence intervals that are potentially more accurate.</p>
 <section id="preliminaries" class="level2">
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
@@ -566,12 +580,12 @@ score    0.7499741 0.9950729</code></pre>
   author = {Pustejovsky, James E.},
   title = {Standard Errors and Confidence Intervals for {NAP}},
   date = {2016-02-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/NAP-SEs-and-CIs},
+  url = {https://jepusto.com/posts/NAP-SEs-and-CIs},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2016" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2016. <span>“Standard Errors and Confidence
-Intervals for NAP.”</span> February 28, 2016. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/NAP-SEs-and-CIs">https://mellifluous-buttercream-e2edd2.netlify.app/posts/NAP-SEs-and-CIs</a>.
+Intervals for NAP.”</span> February 28, 2016. <a href="https://jepusto.com/posts/NAP-SEs-and-CIs">https://jepusto.com/posts/NAP-SEs-and-CIs</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -705,7 +719,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1046,7 +1060,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Parker and Vannest (2009)</span><span class="co">](http://doi.org/10.1016/j.beth.2008.10.006)</span> proposed non-overlap of all pairs (NAP) as an effect size index for use in single-case research. NAP is defined in terms of all pair-wise comparisons between the data points in two different phases for a given case (i.e., a treatment phase versus a baseline phase). For an outcome that is desirable to increase, NAP is the proportion of all such pair-wise comparisons where the treatment phase observation exceeds the baseline phase observation, with pairs that are exactly tied getting a weight of 1/2. NAP belongs to the family of non-overlap measures, which also includes the percentage of non-overlapping data, the improvement rate difference, and several other indices. It is exactly equivalent to <span class="co">[</span><span class="ot">Vargha and Delaney's (2000)</span><span class="co">](http://doi.org/10.2307/1165329)</span> modified Common Language Effect Size and has been proposed as an effect size index in other contexts too (e.g., <span class="co">[</span><span class="ot">Acion, Peterson, Temple, &amp; Arndt, 2006</span><span class="co">](http://doi.org/10.1002/sim.2256)</span>). </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Parker and Vannest (2009)</span><span class="co">](http://doi.org/10.1016/j.beth.2008.10.006)</span> proposed non-overlap of all pairs (NAP) as an effect size index for use in single-case research. NAP is defined in terms of all pair-wise comparisons between the data points in two different phases for a given case (i.e., a treatment phase versus a baseline phase). For an outcome that is desirable to increase, NAP is the proportion of all such pair-wise comparisons where the treatment phase observation exceeds the baseline phase observation, with pairs that are exactly tied getting a weight of 1/2. NAP belongs to the family of non-overlap measures, which also includes the percentage of non-overlapping data, the improvement rate difference, and several other indices. It is exactly equivalent to <span class="co">[</span><span class="ot">Vargha and Delaney's (2000)</span><span class="co">](https://doi.org/10.3102/10769986025002101)</span> modified Common Language Effect Size and has been proposed as an effect size index in other contexts too (e.g., <span class="co">[</span><span class="ot">Acion, Peterson, Temple, &amp; Arndt, 2006</span><span class="co">](http://doi.org/10.1002/sim.2256)</span>). </span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>The developers of NAP have created a <span class="co">[</span><span class="ot">web-based tool</span><span class="co">](http://singlecaseresearch.org/calculators)</span> for calculating it (as well as several other non-overlap indices), and I have the impression that the tool is fairly widely used. For example, <span class="co">[</span><span class="ot">Roth, Gillis, and DiGennaro Reed (2014)</span><span class="co">](http://doi.org/10.1007%2Fs10864-013-9189-x)</span> and <span class="co">[</span><span class="ot">Whalon, Conroy, Martinez, and Welch (2015)</span><span class="co">](http://doi.org/10.1007/s10803-015-2373-1)</span> both used NAP in their meta-analyses of single-case research, and both noted that they used <span class="co">[</span><span class="ot">singlecaseresearch.org</span><span class="co">](http://www.singlecaseresearch.org/calculators/nap)</span> for calculating the effect size measure. Given that the web tool is being used, it is worth scrutinizing the methods behind the calculations it reports. As of this writing, the standard error and confidence intervals reported along with the NAP statistic are incorrect, and should not be used. After introducing a bit of notation, I'll explain why the existing methods are deficient. I'll also suggest some methods for calculating standard errors and confidence intervals that are potentially more accurate. </span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>

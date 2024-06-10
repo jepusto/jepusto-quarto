@@ -39,9 +39,7 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
-
 ---
-
 
 __Objective__: This meta-analysis reviews the literature on communication modes, communicative functions, and types of augmentative and alternative communication (AAC) interventions for school-age participants with autism spectrum disorders and/or intellectual disabilities who experience complex communication needs. Considering potential differences related to outcomes that were targeted for intervention could help identify the most effective means of individualizing AAC interventions.
 

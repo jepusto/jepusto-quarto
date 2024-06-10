@@ -27,7 +27,6 @@ about:
     url: https://meghapsimatrix.github.io/wildmeta/
   - icon: github
     url: https://github.com/meghapsimatrix/wildmeta/
-
 ---
 
 An R package for conducting hypothesis tests of meta-regression models using cluster wild bootstrapping, based on methods examined in [Joshi, Pustejovsky, and Beretvas (2021)](/publication/cluster-wild-bootstrap-for-meta-analysis/).

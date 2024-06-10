@@ -146,7 +146,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2017-04-27">
 <meta name="citation_year" content="2017">
 <meta name="citation_online_date" content="2017-04-27">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/PET-PEESE-performance">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/PET-PEESE-performance">
 <meta name="citation_language" content="en">
 </head>
 
@@ -205,11 +205,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -331,7 +345,7 @@ t = d / \sqrt{\frac{n_0 + n_1}{n_0 n_1}}.
 <li>the modified PEESE estimator, which I’ll call “SPEESE”; and</li>
 <li>SPET-SPEESE, which follows the same conditional logic as PET-PEESE.</li>
 </ul>
-<p>Simulation results are summarized across 4000 replications. The R code for all this <a href="../..\R/PET-PEESE-performance-simulations.R">lives here</a>. Complete numerical results <a href="../..\files/PET-PEESE-Simulation-Results.Rdata">live here</a>. Code for creating the graphs below <a href="../..\R/PET-PEESE-performance-graphs.R">lives here</a>.</p>
+<p>Simulation results are summarized across 4000 replications. The R code for all this <a href="../..\files/_PET-PEESE/PET-PEESE-performance-simulations.R">lives here</a>. Complete numerical results <a href="../..\files/_PET-PEESE/PET-PEESE-Simulation-Results.Rdata">live here</a>. Code for creating the graphs below <a href="../..\files/_PET-PEESE/PET-PEESE-performance-graphs.R">lives here</a>.</p>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
@@ -459,12 +473,12 @@ These trends seem mostly to hold for the other sample size distributions I exami
   author = {Pustejovsky, James E.},
   title = {You Wanna {PEESE} of d’s?},
   date = {2017-04-27},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/PET-PEESE-performance},
+  url = {https://jepusto.com/posts/PET-PEESE-performance},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2017" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2017. <span>“You Wanna PEESE of d’s?”</span> April
-27, 2017. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/PET-PEESE-performance">https://mellifluous-buttercream-e2edd2.netlify.app/posts/PET-PEESE-performance</a>.
+27, 2017. <a href="https://jepusto.com/posts/PET-PEESE-performance">https://jepusto.com/posts/PET-PEESE-performance</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -598,7 +612,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1032,7 +1046,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>the modified PEESE estimator, which I'll call "SPEESE"; and </span>
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>SPET-SPEESE, which follows the same conditional logic as PET-PEESE. </span>
 <span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>Simulation results are summarized across <span class="in">`{r} unique(params$reps)`</span> replications. The R code for all this <span class="co">[</span><span class="ot">lives here</span><span class="co">](/R/PET-PEESE-performance-simulations.R)</span>. Complete numerical results <span class="co">[</span><span class="ot">live here</span><span class="co">](/files/PET-PEESE-Simulation-Results.Rdata)</span>. Code for creating the graphs below <span class="co">[</span><span class="ot">lives here</span><span class="co">](/R/PET-PEESE-performance-graphs.R)</span>.</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>Simulation results are summarized across <span class="in">`{r} unique(params$reps)`</span> replications. The R code for all this <span class="co">[</span><span class="ot">lives here</span><span class="co">](/files/_PET-PEESE/PET-PEESE-performance-simulations.R)</span>. Complete numerical results <span class="co">[</span><span class="ot">live here</span><span class="co">](/files/_PET-PEESE/PET-PEESE-Simulation-Results.Rdata)</span>. Code for creating the graphs below <span class="co">[</span><span class="ot">lives here</span><span class="co">](/files/_PET-PEESE/PET-PEESE-performance-graphs.R)</span>.</span>
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="fu"># Results</span></span>
 <span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>

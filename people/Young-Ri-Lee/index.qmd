@@ -8,7 +8,7 @@ about:
   image-shape: round
   links:
   - icon: envelope
-    href: yrlee@utexas.edu
+    href: mailto:yrlee@utexas.edu
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=ajUXozoAAAAJ&hl=en&authuser=1
 org_name: Urban Education Institute at the University of Chicago

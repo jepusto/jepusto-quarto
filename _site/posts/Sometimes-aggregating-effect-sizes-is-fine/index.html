@@ -255,11 +255,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">

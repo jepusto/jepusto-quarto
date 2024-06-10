@@ -7,7 +7,6 @@ categories:
 number-sections: true
 code-tools: false
 date-modified: '2024-06-08'
-keep-md: true
 ---
 
 ::: callout-important
@@ -86,7 +85,7 @@ The `params.toml` file now has three parameters that control code folding:
 The above parameters are defaults for your entire site. To over-ride the defaults, you can also set the parameters in the YAML header of any post: 
 
 - Set `disable_codefolding: true` to turn off code folding for the post.
-- Set `codefolding_show: hide` to hide the code blocks in the post (as in [this post](/package-downloads/)).
+- Set `codefolding_show: hide` to hide the code blocks in the post (as in [this post](/posts/package-downloads/)).
 - Set `codefolding_nobutton: true` to turn off the "Show/hide code" button at the top of the post (as in the present post).
 
 I hope these instructions work for you. If not, questions, corrections, and clarifications are welcome. Happy blogging, y'all! 

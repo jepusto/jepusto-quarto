@@ -15,7 +15,7 @@ categories:
 - response ratio
 - robust variance estimation
 - single-case design
-image: Distribution of LRR-d and LRR-i effect size estimates by outcome metric.
+image-alt: Distribution of LRR-d and LRR-i effect size estimates by outcome metric.
 links:
 - text: Journal
   url: https://doi.org/10.1016/j.jsp.2018.02.003

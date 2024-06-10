@@ -15,7 +15,7 @@ categories:
 - response ratio
 - single-case design
 - systematic review
-image: Forest plots of LRRi estimates for peer and focal participants
+image-alt: Forest plots of LRRi estimates for peer and focal participants
 links:
 - text: Journal
   url: https://doi.org/10.1177/1098300720983521

@@ -25,7 +25,13 @@ website:
       - contact.qmd
     right:
       - icon: rss
-        href: index.xml
+        menu: 
+          - icon: rss
+            text: Posts
+            href: posts/index.xml
+          - icon: rss
+            text: Publications
+            href: publication/index.xml
   comments: 
     utterances:
       repo: jepusto/jepusto-quarto

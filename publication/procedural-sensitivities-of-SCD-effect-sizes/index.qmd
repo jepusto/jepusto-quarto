@@ -16,7 +16,7 @@ categories:
 - single-case design
 - behavioral observation
 - non-overlap measures
-image: Conditional range distributions of the non-overlap effect size measures for each procedural factor, by percentage change from baseline to treatment. For clarity of illustration, the conditional range distributions for PND are truncated at 40.
+image-alt: Conditional range distributions of the non-overlap effect size measures for each procedural factor, by percentage change from baseline to treatment. For clarity of illustration, the conditional range distributions for PND are truncated at 40.
 links:
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000179

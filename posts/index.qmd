@@ -8,7 +8,8 @@ listing:
   categories: cloud
   sort-ui: false
   filter-ui: true
-  feed: true
+  feed: 
+    title: posts
 page-layout: full
 title-block-banner: true
 citation: false

@@ -18,7 +18,7 @@ categories:
 - meta-analysis
 - dependent effect sizes
 - robust variance estimation
-image: Forest Plot of TD-DLD Group Differences in Narrative Performance
+image-alt: Forest Plot of TD-DLD Group Differences in Narrative Performance
 links:
 - text: Journal
   url: https://doi.org/10.1044/2022_JSLHR-22-00017

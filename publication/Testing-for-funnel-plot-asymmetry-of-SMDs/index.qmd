@@ -23,7 +23,6 @@ links:
 - icon: code-slash
   text: Code
   url: https://osf.io/4ntcy/
-
 ---
 
 

@@ -205,11 +205,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -262,7 +276,7 @@ window.Quarto = {
 
 
 <p>In one example from my dissertation, I re-analyzed a systematic review by Shogren and colleagues, titled “The effect of choice-making as an intervention for problem behavior” (Shogren, et al., 2004). In order to do the analysis, I retrieved all of the original articles identified by the review, scanned in all of the graphs depicting the data, and used (actually, had an undergraduate use) a computer program called <a href="http://www.biosoft.com/w/ungraph.htm">UnGraph</a> to capture the data-points off of the graphs (see Shadish, et al., 2009 for details on this procedure).</p>
-<p>As it turned out, <a href="http://www.kuleuven.be/wieiswie/en/person/00006844">Wim Van Den Noortgate</a> and <a href="http://www.kuleuven.be/wieiswie/en/person/00015697">Patrick Onghena</a> followed a similar procedure in analyzing the same systematic review (reported in Van Den Noorgate &amp; Onghena, 2008). Wim and Patrick were kind enough to share their data so that I could calculate the reliability of this data extraction procedure, based on the two independent replications. After some initial data-munging, I arrived at a <a href="{{site.url}}/data/Shogren_data_merged.csv">clean, merged dataset</a>:</p>
+<p>As it turned out, <a href="http://www.kuleuven.be/wieiswie/en/person/00006844">Wim Van Den Noortgate</a> and <a href="http://www.kuleuven.be/wieiswie/en/person/00015697">Patrick Onghena</a> followed a similar procedure in analyzing the same systematic review (reported in Van Den Noorgate &amp; Onghena, 2008). Wim and Patrick were kind enough to share their data so that I could calculate the reliability of this data extraction procedure, based on the two independent replications. After some initial data-munging, I arrived at a <a href="../..\data/Shogren_data_merged.csv">clean, merged dataset</a>:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -299,9 +313,6 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(A, B, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">color =</span> Case, <span class="at">data =</span> Shogren) <span class="sc">+</span> <span class="fu">facet_wrap</span>( <span class="sc">~</span> Study, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `qplot()` was deprecated in ggplot2 3.4.0.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -318,30 +329,30 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Shogren_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(Shogren, <span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="at">variable_name =</span> <span class="st">"observer"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Fisher_Z <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fl">0.5</span> <span class="sc">*</span> (<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> x) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> x))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>Z_ICC <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">formula =</span> value <span class="sc">~</span> Phase){</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lme</span>(formula, <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> time, <span class="at">data =</span> x)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  tau.sq.ratio <span class="ot">&lt;-</span> <span class="fu">as.double</span>(<span class="fu">coef</span>(fit<span class="sc">$</span>modelStruct<span class="sc">$</span>reStruct, <span class="cn">FALSE</span>))</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  rho <span class="ot">&lt;-</span> tau.sq.ratio <span class="sc">/</span> (tau.sq.ratio <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">Fisher_Z</span>(rho)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">dim</span>(x)[<span class="dv">1</span>] <span class="sc">/</span> <span class="dv">2</span> <span class="sc">-</span> <span class="fu">length</span>(fit<span class="sc">$</span>coefficients<span class="sc">$</span>fixed)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="at">rho =</span> rho, <span class="at">Z =</span> Z, <span class="at">df =</span> df))</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ICC <span class="ot">&lt;-</span> <span class="fu">ddply</span>(Shogren_long, .(Study, Case, Setting, Measure, lowIntAxis), Z_ICC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Shogren_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(Shogren, <span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="at">variable_name =</span> <span class="st">"observer"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Fisher_Z <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fl">0.5</span> <span class="sc">*</span> (<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> x) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> x))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nlme)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Z_ICC <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">formula =</span> value <span class="sc">~</span> Phase){</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  fit <span class="ot">&lt;-</span> <span class="fu">lme</span>(formula, <span class="at">random =</span> <span class="sc">~</span> <span class="dv">1</span> <span class="sc">|</span> time, <span class="at">data =</span> x)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  tau.sq.ratio <span class="ot">&lt;-</span> <span class="fu">as.double</span>(<span class="fu">coef</span>(fit<span class="sc">$</span>modelStruct<span class="sc">$</span>reStruct, <span class="cn">FALSE</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  rho <span class="ot">&lt;-</span> tau.sq.ratio <span class="sc">/</span> (tau.sq.ratio <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">Fisher_Z</span>(rho)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">dim</span>(x)[<span class="dv">1</span>] <span class="sc">/</span> <span class="dv">2</span> <span class="sc">-</span> <span class="fu">length</span>(fit<span class="sc">$</span>coefficients<span class="sc">$</span>fixed)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="at">rho =</span> rho, <span class="at">Z =</span> Z, <span class="at">df =</span> df))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ICC <span class="ot">&lt;-</span> <span class="fu">ddply</span>(Shogren_long, .(Study, Case, Setting, Measure, lowIntAxis), Z_ICC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>It turns out that 5 of 6 cases with lowIntAxis==1 are perfectly correlated. The remainder of my analysis focuses on the cases with lowIntAxis==0. Here’s a histogram of the Z-transformed correlations:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(ICC, lowIntAxis<span class="sc">==</span><span class="dv">0</span>), <span class="fu">hist</span>(Z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">subset</span>(ICC, lowIntAxis<span class="sc">==</span><span class="dv">0</span>), <span class="fu">hist</span>(Z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -355,8 +366,8 @@ window.Quarto = {
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rma_Z <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> Z, <span class="at">vi =</span> <span class="dv">1</span> <span class="sc">/</span> df, <span class="at">data =</span> ICC, <span class="at">subset =</span> lowIntAxis<span class="sc">==</span><span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rma_Z <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> Z, <span class="at">vi =</span> <span class="dv">1</span> <span class="sc">/</span> df, <span class="at">data =</span> ICC, <span class="at">subset =</span> lowIntAxis<span class="sc">==</span><span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -871,103 +882,103 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://utteranc.es/client.js" repo="jepusto/jepusto-quarto" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'Reliability of UnGraphed single-case data: An example using the Shogren dataset'</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2013-10-23'</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">- single-case design</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">- inter-rater reliability</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>In one example from my dissertation, I re-analyzed a systematic review by Shogren and colleagues, titled "The effect of choice-making as an intervention for problem behavior" (Shogren, et al., 2004). In order to do the analysis, I retrieved all of the original articles identified by the review, scanned in all of the graphs depicting the data, and used (actually, had an undergraduate use) a computer program called <span class="co">[</span><span class="ot">UnGraph</span><span class="co">](http://www.biosoft.com/w/ungraph.htm)</span> to capture the data-points off of the graphs (see Shadish, et al., 2009 for details on this procedure). </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>As it turned out, <span class="co">[</span><span class="ot">Wim Van Den Noortgate</span><span class="co">](http://www.kuleuven.be/wieiswie/en/person/00006844)</span> and <span class="co">[</span><span class="ot">Patrick Onghena</span><span class="co">](http://www.kuleuven.be/wieiswie/en/person/00015697)</span> followed a similar procedure in analyzing the same systematic review (reported in Van Den Noorgate &amp; Onghena, 2008). Wim and Patrick were kind enough to share their data so that I could calculate the reliability of this data extraction procedure, based on the two independent replications. After some initial data-munging, I arrived at a <span class="co">[</span><span class="ot">clean, merged dataset</span><span class="co">]({{site.url}}/data/Shogren_data_merged.csv)</span>: </span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Shogren <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://jepusto.com/data/Shogren_data_merged.csv"</span>)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Shogren)</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>The variables are as follows:</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Study - First author of original study included in the meta-analysis;</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Case - Name of individual case;</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Setting - some of the studies used multiple baselines on single individuals across multiple settings;</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Measure - some of the studies used multiple outcome measures on each case;</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>time - sequential measurement occasion;</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>choice - indicator equal to one if the treatment condition allowed for choice;</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Phase - Factor indicating sequential phases (some of the designs were treatment reversals, such as ABA or ABAB or ABABAB);</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A - Wim's outcome measurement;</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>B - my outcome measurement;</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>lowIntAxis - an idicator equal to one if the vertical axis of the graph was labeled with integers, and the axis maximum was &lt;= 20. </span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>The final variable distinguishes graphs that are particularly easy to capture. Wim/Patrick and I used slightly different exclusion criteria, so there are a total of <span class="in">`{r} nlevels(Shogren$Case)`</span> cases across <span class="in">`{r} nlevels(Shogren$Study)`</span> studies included in the merged dataset. To begin, here's a plot of A versus B by study: </span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 10, fig.height = 6}</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="in">qplot(A, B, geom = "point", color = Case, data = Shogren) + facet_wrap( ~ Study, scales = "free") + theme(legend.position="none")</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>Clearly the two measurements are very correlated. You'll notice that the studies (and sometimes cases within studies) used several different outcome measurement scales, so the overall correlation between A and B (r = <span class="in">`{r} with(Shogren, cor(A,B))`</span>) isn't really the best approach. Furthermore, some of the variation in the outcomes is presumably due to differences between phases, and it would be better to  calculate a reliability based on the residual variation within phases. </span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>I accomplish this with a simple hierarchical model, fit separately to the data from each case. Denote the outcome as $y_{ijk}$ for phase $i = 1,...,P$, measurement occasion $j = 1,...,n_i$, and replicate $k = 1,2$. I model these outcomes as </span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>$$y_{ijk} = \beta_i + \epsilon_{ij} + \nu_{ijk}$$</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>with the $\beta$'s fixed, $\epsilon_{ij} \sim (0, \tau^2)$, and $\nu_{ijk} \sim (0, \sigma^2)$. Reliability is then captured by the intra-class correlation $\rho = \tau^2 / (\tau^2 + \sigma^2)$. </span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>I calculate the reliabilities from each case using restricted maximum likelihood, then apply Fisher's Z-transform:</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="in">library(reshape)</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="in">library(plyr)</span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="in">Shogren_long &lt;- melt(Shogren, measure.vars = c("A","B"), variable_name = "observer")</span></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="in">Fisher_Z &lt;- function(x) 0.5 * (log(1 + x) - log(1 - x))</span></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in">library(nlme)</span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="in">Z_ICC &lt;- function(x, formula = value ~ Phase){</span></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">  fit &lt;- lme(formula, random = ~ 1 | time, data = x)</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">  tau.sq.ratio &lt;- as.double(coef(fit$modelStruct$reStruct, FALSE))</span></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in">  rho &lt;- tau.sq.ratio / (tau.sq.ratio + 1)</span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="in">  Z &lt;- Fisher_Z(rho)</span></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">  df &lt;- dim(x)[1] / 2 - length(fit$coefficients$fixed)</span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="in">  return(c(rho = rho, Z = Z, df = df))</span></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a><span class="in">ICC &lt;- ddply(Shogren_long, .(Study, Case, Setting, Measure, lowIntAxis), Z_ICC)</span></span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>It turns out that <span class="in">`{r} with(ICC, sum(rho==1 &amp; lowIntAxis==1))`</span> of <span class="in">`{r} sum(ICC$lowIntAxis)`</span> cases with lowIntAxis==1 are perfectly correlated. The remainder of my analysis focuses on the cases with lowIntAxis==0. Here's a histogram of the Z-transformed correlations:</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 6, fig.height = 4}</span></span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="in">with(subset(ICC, lowIntAxis==0), hist(Z))</span></span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>With only 2 replicates per measurement occasion, the large-sample variance of the intra-class correlation is equivalent to that of the usual Pearson correlation (see Hedges, Hedberg, &amp; Kuyper, 2013), except that I use $N - P$ in the denominator to account for the fact that separate means are estimated for each of the $P$ phases: $$Var(\hat\rho) \approx \frac{(1 - \rho^2)^2}{N - P},$$ where $N = \sum_i n_i$. Applying Fisher's Z transform stabilizes the variance, so that it is appropriate to use inverse variance weights of simply $N - P$. Turning to a random-effects meta-analysis:</span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="in">summary(rma_Z &lt;- rma(yi = Z, vi = 1 / df, data = ICC, subset = lowIntAxis==0))</span></span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a><span class="in">Z_inv &lt;- function(x) (exp(2 * x) - 1) / (exp(2 * x) + 1)</span></span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>The average effect size corresponds to a reliability of <span class="in">`{r} Z_inv(rma_Z$b)`</span> (95% CI: <span class="co">[</span><span class="ot">`{r} Z_inv(rma_Z$ci.lb)`,`{r} Z_inv(rma_Z$ci.ub)`</span><span class="co">]</span>). The reliabilities are heterogeneous, but because they are all at the extreme of the scale, the heterogeneity has little practical implication: approximating the population of reliabilities by a normal distribution, and based on the RML estimates, <span class="in">`{r} with(rma_Z, 100 * round(1 - pnorm((Fisher_Z(0.99) - b) / sqrt(tau2)), 2))`</span> percent of reliabilities will be greater than 0.9900. Though one could certainly imagine factors that might explain the variation in reliabilities--the resolution of the image file from which the data were captured, the size of the points used to graph each measurement, the number of outcomes represented on the same graph--it hardly seems worth exploring further because all of the reliabilities are so high. These results are very similar to those reported by Shadish, et al. (2009), who found a median reliability of 0.9993 based on a similar study of 91 single-case graphs.</span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Hedges, L. V, Hedberg, E. C., &amp; Kuyper, A. M. (2012). The variance of intraclass correlations in three- and four-level models. Educational and Psychological Measurement. doi:10.1177/0013164412445193</span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Shadish, W. R., Brasil, I. C. C., Illingworth, D. A., White, K. D., Galindo, R., Nagler, E. D., &amp; Rindskopf, D. M. (2009). Using UnGraph to extract data from image files: Verification of reliability and validity. Behavior Research Methods, 41(1), 177-83. doi:10.3758/BRM.41.1.177</span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Shogren, K. A., Faggella-Luby, M. N., Bae, S. J., &amp; Wehmeyer, M. L. (2004). The effect of choice-making as an intervention for problem behavior. Journal of Positive Behavior Interventions, 6(4), 228-237.</span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Van den Noortgate, W., &amp; Onghena, P. (2008). A multilevel meta-analysis of single-subject experimental design studies. Evidence-Based Communication Assessment and Intervention, 2(3), 142-151. doi:10.1080/17489530802505362</span>
+<div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'Reliability of UnGraphed single-case data: An example using the Shogren dataset'</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2013-10-23'</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">- single-case design</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">- inter-rater reliability</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>In one example from my dissertation, I re-analyzed a systematic review by Shogren and colleagues, titled "The effect of choice-making as an intervention for problem behavior" (Shogren, et al., 2004). In order to do the analysis, I retrieved all of the original articles identified by the review, scanned in all of the graphs depicting the data, and used (actually, had an undergraduate use) a computer program called <span class="co">[</span><span class="ot">UnGraph</span><span class="co">](http://www.biosoft.com/w/ungraph.htm)</span> to capture the data-points off of the graphs (see Shadish, et al., 2009 for details on this procedure). </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>As it turned out, <span class="co">[</span><span class="ot">Wim Van Den Noortgate</span><span class="co">](http://www.kuleuven.be/wieiswie/en/person/00006844)</span> and <span class="co">[</span><span class="ot">Patrick Onghena</span><span class="co">](http://www.kuleuven.be/wieiswie/en/person/00015697)</span> followed a similar procedure in analyzing the same systematic review (reported in Van Den Noorgate &amp; Onghena, 2008). Wim and Patrick were kind enough to share their data so that I could calculate the reliability of this data extraction procedure, based on the two independent replications. After some initial data-munging, I arrived at a <span class="co">[</span><span class="ot">clean, merged dataset</span><span class="co">](/data/Shogren_data_merged.csv)</span>: </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>Shogren <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"http://jepusto.com/data/Shogren_data_merged.csv"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Shogren)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>The variables are as follows:</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Study - First author of original study included in the meta-analysis;</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Case - Name of individual case;</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Setting - some of the studies used multiple baselines on single individuals across multiple settings;</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Measure - some of the studies used multiple outcome measures on each case;</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>time - sequential measurement occasion;</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>choice - indicator equal to one if the treatment condition allowed for choice;</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Phase - Factor indicating sequential phases (some of the designs were treatment reversals, such as ABA or ABAB or ABABAB);</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>A - Wim's outcome measurement;</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>B - my outcome measurement;</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>lowIntAxis - an idicator equal to one if the vertical axis of the graph was labeled with integers, and the axis maximum was &lt;= 20. </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>The final variable distinguishes graphs that are particularly easy to capture. Wim/Patrick and I used slightly different exclusion criteria, so there are a total of <span class="in">`{r} nlevels(Shogren$Case)`</span> cases across <span class="in">`{r} nlevels(Shogren$Study)`</span> studies included in the merged dataset. To begin, here's a plot of A versus B by study: </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 10, fig.height = 6}</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="in">qplot(A, B, geom = "point", color = Case, data = Shogren) + facet_wrap( ~ Study, scales = "free") + theme(legend.position="none")</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>Clearly the two measurements are very correlated. You'll notice that the studies (and sometimes cases within studies) used several different outcome measurement scales, so the overall correlation between A and B (r = <span class="in">`{r} with(Shogren, cor(A,B))`</span>) isn't really the best approach. Furthermore, some of the variation in the outcomes is presumably due to differences between phases, and it would be better to  calculate a reliability based on the residual variation within phases. </span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>I accomplish this with a simple hierarchical model, fit separately to the data from each case. Denote the outcome as $y_{ijk}$ for phase $i = 1,...,P$, measurement occasion $j = 1,...,n_i$, and replicate $k = 1,2$. I model these outcomes as </span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>$$y_{ijk} = \beta_i + \epsilon_{ij} + \nu_{ijk}$$</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>with the $\beta$'s fixed, $\epsilon_{ij} \sim (0, \tau^2)$, and $\nu_{ijk} \sim (0, \sigma^2)$. Reliability is then captured by the intra-class correlation $\rho = \tau^2 / (\tau^2 + \sigma^2)$. </span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>I calculate the reliabilities from each case using restricted maximum likelihood, then apply Fisher's Z-transform:</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="in">library(reshape)</span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="in">library(plyr)</span></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="in">Shogren_long &lt;- melt(Shogren, measure.vars = c("A","B"), variable_name = "observer")</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="in">Fisher_Z &lt;- function(x) 0.5 * (log(1 + x) - log(1 - x))</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="in">library(nlme)</span></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="in">Z_ICC &lt;- function(x, formula = value ~ Phase){</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="in">  fit &lt;- lme(formula, random = ~ 1 | time, data = x)</span></span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="in">  tau.sq.ratio &lt;- as.double(coef(fit$modelStruct$reStruct, FALSE))</span></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="in">  rho &lt;- tau.sq.ratio / (tau.sq.ratio + 1)</span></span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="in">  Z &lt;- Fisher_Z(rho)</span></span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="in">  df &lt;- dim(x)[1] / 2 - length(fit$coefficients$fixed)</span></span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a><span class="in">  return(c(rho = rho, Z = Z, df = df))</span></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a><span class="in">ICC &lt;- ddply(Shogren_long, .(Study, Case, Setting, Measure, lowIntAxis), Z_ICC)</span></span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>It turns out that <span class="in">`{r} with(ICC, sum(rho==1 &amp; lowIntAxis==1))`</span> of <span class="in">`{r} sum(ICC$lowIntAxis)`</span> cases with lowIntAxis==1 are perfectly correlated. The remainder of my analysis focuses on the cases with lowIntAxis==0. Here's a histogram of the Z-transformed correlations:</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width = 6, fig.height = 4}</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="in">with(subset(ICC, lowIntAxis==0), hist(Z))</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>With only 2 replicates per measurement occasion, the large-sample variance of the intra-class correlation is equivalent to that of the usual Pearson correlation (see Hedges, Hedberg, &amp; Kuyper, 2013), except that I use $N - P$ in the denominator to account for the fact that separate means are estimated for each of the $P$ phases: $$Var(\hat\rho) \approx \frac{(1 - \rho^2)^2}{N - P},$$ where $N = \sum_i n_i$. Applying Fisher's Z transform stabilizes the variance, so that it is appropriate to use inverse variance weights of simply $N - P$. Turning to a random-effects meta-analysis:</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="in">library(metafor)</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="in">summary(rma_Z &lt;- rma(yi = Z, vi = 1 / df, data = ICC, subset = lowIntAxis==0))</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="in">Z_inv &lt;- function(x) (exp(2 * x) - 1) / (exp(2 * x) + 1)</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>The average effect size corresponds to a reliability of <span class="in">`{r} Z_inv(rma_Z$b)`</span> (95% CI: <span class="co">[</span><span class="ot">`{r} Z_inv(rma_Z$ci.lb)`,`{r} Z_inv(rma_Z$ci.ub)`</span><span class="co">]</span>). The reliabilities are heterogeneous, but because they are all at the extreme of the scale, the heterogeneity has little practical implication: approximating the population of reliabilities by a normal distribution, and based on the RML estimates, <span class="in">`{r} with(rma_Z, 100 * round(1 - pnorm((Fisher_Z(0.99) - b) / sqrt(tau2)), 2))`</span> percent of reliabilities will be greater than 0.9900. Though one could certainly imagine factors that might explain the variation in reliabilities--the resolution of the image file from which the data were captured, the size of the points used to graph each measurement, the number of outcomes represented on the same graph--it hardly seems worth exploring further because all of the reliabilities are so high. These results are very similar to those reported by Shadish, et al. (2009), who found a median reliability of 0.9993 based on a similar study of 91 single-case graphs.</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Hedges, L. V, Hedberg, E. C., &amp; Kuyper, A. M. (2012). The variance of intraclass correlations in three- and four-level models. Educational and Psychological Measurement. doi:10.1177/0013164412445193</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Shadish, W. R., Brasil, I. C. C., Illingworth, D. A., White, K. D., Galindo, R., Nagler, E. D., &amp; Rindskopf, D. M. (2009). Using UnGraph to extract data from image files: Verification of reliability and validity. Behavior Research Methods, 41(1), 177-83. doi:10.3758/BRM.41.1.177</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Shogren, K. A., Faggella-Luby, M. N., Bae, S. J., &amp; Wehmeyer, M. L. (2004). The effect of choice-making as an intervention for problem behavior. Journal of Positive Behavior Interventions, 6(4), 228-237.</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Van den Noortgate, W., &amp; Onghena, P. (2008). A multilevel meta-analysis of single-subject experimental design studies. Evidence-Based Communication Assessment and Intervention, 2(3), 142-151. doi:10.1080/17489530802505362</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

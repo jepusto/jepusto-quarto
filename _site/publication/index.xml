@@ -5,7 +5,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>James E. Pustejovsky</title>
+<title>publications</title>
 <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/</link>
 <atom:link href="https://mellifluous-buttercream-e2edd2.netlify.app/publication/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
@@ -130,7 +130,6 @@
   <category>meta-analysis</category>
   <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Decline-effects/</guid>
   <pubDate>Thu, 09 Nov 2023 06:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/publication/Decline-effects/Effect sizes and 95% CI from 16 new discoveries (yellow marks) in the social-behavioral sciences, each with four replications. Each lab is designated by a unique shape for observed effect size; blue marks correspond to self-replications, green marks to independent replications." medium="image"/>
 </item>
 <item>
   <title>Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package</title>
@@ -280,7 +279,6 @@
   <category>multivariate</category>
   <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Three-level-BC-SMD/</guid>
   <pubDate>Wed, 08 Mar 2023 06:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/publication/Three-level-BC-SMD/Clustered multiple baseline design data from Bryant et al. (2018)" medium="image"/>
 </item>
 <item>
   <title>A case for increased rigor in AAC research: A methodological quality review</title>
@@ -405,7 +403,6 @@
   <category>robust variance estimation</category>
   <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Power-approximations-for-dependent-effects/</guid>
   <pubDate>Mon, 17 Oct 2022 05:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/publication/Power-approximations-for-dependent-effects/Power difference between approximated and true (simulated) power versus approximated power for the C(H)E working models, across different methods of sampling study characteristics." medium="image"/>
 </item>
 <item>
   <title>Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis</title>
@@ -436,7 +433,6 @@
   <category>robust variance estimation</category>
   <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/investigating-narrative-performance/</guid>
   <pubDate>Fri, 30 Sep 2022 05:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/publication/investigating-narrative-performance/Forest Plot of TD-DLD Group Differences in Narrative Performance" medium="image"/>
 </item>
 <item>
   <title>Multi-level meta-analysis of single-case experimental designs using robust variance estimation</title>
@@ -592,7 +588,6 @@
   <category>robust variance estimation</category>
   <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/RVE-Meta-analysis-expanding-the-range/</guid>
   <pubDate>Fri, 01 Apr 2022 05:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/publication/RVE-Meta-analysis-expanding-the-range/Decision-tree for selecting a working model for use with RVE meta-regression" medium="image"/>
 </item>
 <item>
   <title>Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies</title>

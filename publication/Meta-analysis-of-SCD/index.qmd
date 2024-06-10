@@ -21,8 +21,6 @@ links:
 - icon: file-pdf-fill
   text: PDF
   url: /files/Pustejovsky-Ferron-2017-Research-synthesis-and-meta-analysis-of-SCDs.pdf
-
 ---
 
-
-
+Single-case designs (SCDs) comprise a large and important part of the research base in many areas of Special Education. Meta-analysis of SCDs involves the quantitative integration of results across a collection of studies that investigate a common topic, and thus has potential to bring greater clarity to research areas where SCDs are prevalent. This chapter begins by providing an overview of the process of conducting a research synthesis. A primary consideration in research synthesis is what effect size measure to use for quantifying the magnitude of intervention effects. After introducing some general considerations regarding this choice, this chapter surveys three families of effect sizes that have been proposed for application to SCDs: non-overlap measures, parametric measures for individual cases, and parametric measures that are on the same metric as effect sizes for group designs. The chapter then describes how data from a collection of SCDs can be synthesized and compared through meta-analysis, focusing in particular on multi-level meta-analysis models for effect size estimates or raw data. The chapter concludes by describing challenges and outstanding issues in meta-analysis of SCDs. 

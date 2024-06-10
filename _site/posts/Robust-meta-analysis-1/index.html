@@ -205,11 +205,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -1094,8 +1108,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a>It would be straight-forward to add a few more functions that provide robust standard errors for univariate meta-analysis models as well. All that it would take is to write <span class="in">`bread`</span> and <span class="in">`estfun`</span> methods for the class <span class="in">`rma.uni`</span>. </span>
 <span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a>Also, Beth <span class="co">[</span><span class="ot">has recently proposed</span><span class="co">](https://www.sree.org/assets/conferences/2014s/program.pdf)</span> </span>
-<span id="cb17-162"><a href="#cb17-162" aria-hidden="true" tabindex="-1"></a>small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, &amp; Botts (2001)</span><span class="co">](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf)</span>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I've done here, by building out the <span class="in">`estfun`</span> method to provide BRL results. It would take a little more thought, but actually it would be worth doing--and treating the general case--because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</span>
+<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a>Also, Beth has recently proposed small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, &amp; Botts (2001)</span><span class="co">](http://www.asasrms.org/Proceedings/y2001/Proceed/00264.pdf)</span>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I've done here, by building out the <span class="in">`estfun`</span> method to provide BRL results. It would take a little more thought, but actually it would be worth doing--and treating the general case--because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

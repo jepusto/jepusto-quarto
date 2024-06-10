@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2020-05-03">
 <meta name="citation_year" content="2020">
 <meta name="citation_online_date" content="2020-05-03">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/code-folding-update">
 <meta name="citation_language" content="en">
 </head>
 
@@ -176,11 +176,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -322,7 +336,7 @@ Important
 <p>The above parameters are defaults for your entire site. To over-ride the defaults, you can also set the parameters in the YAML header of any post:</p>
 <ul>
 <li>Set <code>disable_codefolding: true</code> to turn off code folding for the post.</li>
-<li>Set <code>codefolding_show: hide</code> to hide the code blocks in the post (as in <a href="../..\package-downloads/">this post</a>).</li>
+<li>Set <code>codefolding_show: hide</code> to hide the code blocks in the post (as in <a href="../..\posts/package-downloads/">this post</a>).</li>
 <li>Set <code>codefolding_nobutton: true</code> to turn off the “Show/hide code” button at the top of the post (as in the present post).</li>
 </ul>
 <p>I hope these instructions work for you. If not, questions, corrections, and clarifications are welcome. Happy blogging, y’all!</p>
@@ -334,12 +348,12 @@ Important
   author = {Pustejovsky, James E.},
   title = {An Update on Code Folding with Blogdown + {Academic} Theme},
   date = {2020-05-03},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update},
+  url = {https://jepusto.com/posts/code-folding-update},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2020. <span>“An Update on Code Folding with
-Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update">https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update</a>.
+Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://jepusto.com/posts/code-folding-update">https://jepusto.com/posts/code-folding-update</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -422,7 +436,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

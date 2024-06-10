@@ -12,7 +12,7 @@ code-tools: true
 
 **UPDATED 10/2/2016 after posting the package to CRAN**
 
-Here are step-by-step instructions on how to download and install the scdhlm package for R. You'll need to have a [copy of R installed](http://cran.us.r-project.org/). There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.
+Here are step-by-step instructions on how to download and install the scdhlm package for R. You'll need to have a [copy of R installed](https://cran.r-project.org/). There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.
 
 ### Option 1: Via CRAN
 

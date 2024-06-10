@@ -139,11 +139,25 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -201,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 <p>An R package for simulating different methods of recording data based on direct observation of behavior, where behavior is modeled by an alternating renewal process.</p>
 <ul>
 <li><a href="https://cran.r-project.org/package=ARPobservation">Available on the Comprehensive R Archive Network</a></li>
-<li><a href="../..\getting-started-with-ARPobservation">Installation instructions</a></li>
+<li><a href="../..\posts/getting-started-with-ARPobservation">Installation instructions</a></li>
 <li><a href="https://github.com/jepusto/ARPobservation">Source code on Github</a></li>
 <li><a href="https://jepusto.shinyapps.io/ARPsimulator/">ARPsimulator</a>: An interactive web application for simulating systematic direct observation data based on the alternating renewal process model.</li>
 </ul>

@@ -2,7 +2,7 @@
 title: "Contact"
 ---
 
-{{<fa envelope>}} [pustejovsky@wisc.edu]('mailto:pustejovsky@wisc.edu')
+{{<fa envelope>}} [pustejovsky@wisc.edu](mailto:pustejovsky@wisc.edu)
 
 {{<fa phone>}} 608-262-0842
 

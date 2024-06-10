@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2019-04-14">
 <meta name="citation_year" content="2019">
 <meta name="citation_online_date" content="2019-04-14">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-with-blogdown-academic">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/code-folding-with-blogdown-academic">
 <meta name="citation_language" content="en">
 </head>
 
@@ -176,11 +176,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -220,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">June 24, 2024</p>
+        <p class="date-modified">June 8, 2024</p>
       </div>
     </div>
       
@@ -248,11 +262,11 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>2024-06-24</strong> I have ported my website to Quarto, which has native support for code folding. I’m leaving this post up despite the fact that the functionality is no longer relevant for this website.</p>
+<p><strong>2024-06-08</strong> I have ported my website to Quarto, which has native support for code folding. I’m leaving this post up despite the fact that the functionality is no longer relevant for this website.</p>
 <p><strong>2020-05-03</strong> This post describes an implementation of code folding for an older version of the Academic Theme. It does not work with Academic 4.+. See <a href="../..\posts/code-folding-update/">my updated instructions</a> to get it working with newer versions of Academic.</p>
 </div>
 </div>
-<p>Rmarkdown documents now have a very nifty <a href="https://bookdown.org/yihui/rmarkdown/html-document.html#code-folding">code folding option</a>, which allows the reader of a compiled html document to toggle whether to view or hide code chunks. However, the feature is <a href="https://github.com/rstudio/blogdown/issues/214">not supported in blogdown</a>, the popular Rmarkdown-based website/blog creation package. I recently ran across an implementation of codefolding for blogdown, developed by <a href="https://statnmap.com/2017-11-13-enable-code-folding-in-bookdown-and-blogdown/">Sébastien Rochette</a>. I have been putzing around, trying to get it to work with my blog, which uses the Hugo <a href="https://sourcethemes.com/academic/">Academic theme</a>—alas, to no avail. To my amazement and good fortune, Sébastien swooped in with <a href="https://github.com/jepusto/jepusto.com/pull/9">a pull request</a> that cleaned up my blundering attempts at implementation. Now all of <a href="../..\package-downloads">my posts</a> have <a href="../..\handmade-clubSandwich">working</a> <a href="../..\effective-sample-size-aggregation">code folding</a>!</p>
+<p>Rmarkdown documents now have a very nifty <a href="https://bookdown.org/yihui/rmarkdown/html-document.html#code-folding">code folding option</a>, which allows the reader of a compiled html document to toggle whether to view or hide code chunks. However, the feature is <a href="https://github.com/rstudio/blogdown/issues/214">not supported in blogdown</a>, the popular Rmarkdown-based website/blog creation package. I recently ran across an implementation of codefolding for blogdown, developed by <a href="https://statnmap.com/2017-11-13-enable-code-folding-in-bookdown-and-blogdown/">Sébastien Rochette</a>. I have been putzing around, trying to get it to work with my blog, which uses the Hugo <a href="https://sourcethemes.com/academic/">Academic theme</a>—alas, to no avail. To my amazement and good fortune, Sébastien swooped in with <a href="https://github.com/jepusto/jepusto.com/pull/9">a pull request</a> that cleaned up my blundering attempts at implementation. Now all of <a href="../..\posts/package-downloads">my posts</a> have <a href="../..\posts/handmade-clubSandwich">working</a> <a href="../..\posts/effective-sample-size-aggregation">code folding</a>!</p>
 <p><img src="https://media.giphy.com/media/mIZ9rPeMKefm0/giphy.gif" class="img-fluid"></p>
 <p>In this post, I’ll lay out how to make Sébastien’s code folding feature work with the Academic theme. To be totally clear, all of the hard bits of this were <a href="https://statnmap.com/2017-11-13-enable-code-folding-in-bookdown-and-blogdown/">solved by Sébastien</a>. I don’t know javascript to save my life, and my only contribution is to write down the instructions in what I hope is a coherent fashion, so that you too can soon be doing the happy code folding dance if you so desire.</p>
 <section id="code-folding-with-the-academic-theme" class="level2" data-number="1">
@@ -333,12 +347,12 @@ Important
   author = {Pustejovsky, James E.},
   title = {Code Folding with Blogdown + {Academic} Theme},
   date = {2019-04-14},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-with-blogdown-academic},
+  url = {https://jepusto.com/posts/code-folding-with-blogdown-academic},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2019" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2019. <span>“Code Folding with Blogdown + Academic
-Theme.”</span> April 14, 2019. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-with-blogdown-academic">https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-with-blogdown-academic</a>.
+Theme.”</span> April 14, 2019. <a href="https://jepusto.com/posts/code-folding-with-blogdown-academic">https://jepusto.com/posts/code-folding-with-blogdown-academic</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -421,7 +435,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

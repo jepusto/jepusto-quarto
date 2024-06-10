@@ -189,7 +189,7 @@ window.Quarto = {
 <meta name="citation_reference" content="citation_title=Bias in meta-analysis detected by a simple, graphical test;,citation_author=Matthias Egger;,citation_author=George Davey Smith;,citation_author=Martin Schneider;,citation_author=Christoph Minder;,citation_publication_date=1997;,citation_cover_date=1997;,citation_year=1997;,citation_issue=7109;,citation_volume=315;,citation_journal_title=BMJ;">
 <meta name="citation_reference" content="citation_title=Statistical Methods for Meta-Analysis;,citation_author=Larry V Hedges;,citation_author=Ingram Olkin;,citation_publication_date=1985;,citation_cover_date=1985;,citation_year=1985;">
 <meta name="citation_reference" content="citation_title=Modeling publication selection effects in meta-analysis;,citation_author=Larry V Hedges;,citation_publication_date=1992;,citation_cover_date=1992;,citation_year=1992;,citation_issue=2;,citation_volume=7;,citation_journal_title=Statistical Science;">
-<meta name="citation_reference" content="citation_title=Estimating effect size under publication bias: Small sample properties and robustness of a random effects selection model;,citation_author=Larry V Hedges;,citation_author=Jack L Vevea;,citation_publication_date=1996;,citation_cover_date=1996;,citation_year=1996;,citation_issue=4;,citation_doi=10.2307/1165338;,citation_volume=21;,citation_journal_title=Journal of Educational and Behavioral Statistics;">
+<meta name="citation_reference" content="citation_title=Estimating effect size under publication bias: Small sample properties and robustness of a random effects selection model;,citation_author=Larry V Hedges;,citation_author=Jack L Vevea;,citation_publication_date=1996;,citation_cover_date=1996;,citation_year=1996;,citation_issue=4;,citation_doi=10.3102/10769986021004299;,citation_volume=21;,citation_journal_title=Journal of Educational and Behavioral Statistics;">
 <meta name="citation_reference" content="citation_title=Selection method approaches;,citation_author=Larry V Hedges;,citation_author=Jack L Vevea;,citation_publication_date=2005;,citation_cover_date=2005;,citation_year=2005;,citation_inbook_title=Publication bias in meta-analysis: Prevention, assessment, and adjustments;">
 <meta name="citation_reference" content="citation_title=Robust variance estimation in meta-regression with dependent effect size estimates;,citation_author=Larry V Hedges;,citation_author=Elizabeth Tipton;,citation_author=Matthew C Johnson;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_issue=1;,citation_doi=10.1002/jrsm.5;,citation_volume=1;,citation_journal_title=Research Synthesis Methods;">
 <meta name="citation_reference" content="citation_title=An exploratory test for an excess of significant findings;,citation_author=John P A Ioannidis;,citation_author=Thomas A Trikalinos;,citation_publication_date=2007-06-01;,citation_cover_date=2007-06-01;,citation_year=2007;,citation_issue=3;,citation_doi=10.1177/1740774507079441;,citation_volume=4;,citation_journal_title=Clinical Trials;">
@@ -278,11 +278,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -5007,7 +5021,7 @@ $ vi    &lt;dbl&gt; 0.10267348, 0.06030579, 0.29520322, 0.53354343, 0.02692608, 
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>time_seq <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>192.7 sec elapsed</code></pre>
+<pre><code>114.99 sec elapsed</code></pre>
 </div>
 </div>
 <p>This code takes a while to run, but we can speed it up with parallel processing.</p>
@@ -5080,10 +5094,10 @@ $ vi    &lt;dbl&gt; 0.10267348, 0.06030579, 0.29520322, 0.53354343, 0.02692608, 
 <span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>time_par <span class="ot">&lt;-</span> <span class="fu">toc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>230.15 sec elapsed</code></pre>
+<pre><code>35.97 sec elapsed</code></pre>
 </div>
 </div>
-<p>Parallel processing is really helpful here. We get 2000 bootstraps in 230 seconds, 0.8 times faster than sequential processing.</p>
+<p>Parallel processing is really helpful here. We get 2000 bootstraps in 36 seconds, 3.2 times faster than sequential processing.</p>
 </section>
 <section id="standard-errors" class="level2">
 <h2 class="anchored" data-anchor-id="standard-errors">Standard Errors</h2>
@@ -5281,7 +5295,7 @@ Hedges, L. V. (1992). Modeling publication selection effects in meta-analysis. <
 Hedges, L. V., Tipton, E., &amp; Johnson, M. C. (2010). <span class="nocase">Robust variance estimation in meta-regression with dependent effect size estimates</span>. <em>Research Synthesis Methods</em>, <em>1</em>(1), 39–65. <a href="https://doi.org/10.1002/jrsm.5">https://doi.org/10.1002/jrsm.5</a>
 </div>
 <div id="ref-Hedges1996estimating" class="csl-entry" role="listitem">
-Hedges, L. V., &amp; Vevea, J. L. (1996). <span class="nocase">Estimating effect size under publication bias: Small sample properties and robustness of a random effects selection model</span>. <em>Journal of Educational and Behavioral Statistics</em>, <em>21</em>(4), 299. <a href="https://doi.org/10.2307/1165338">https://doi.org/10.2307/1165338</a>
+Hedges, L. V., &amp; Vevea, J. L. (1996). <span class="nocase">Estimating effect size under publication bias: Small sample properties and robustness of a random effects selection model</span>. <em>Journal of Educational and Behavioral Statistics</em>, <em>21</em>(4), 299. <a href="https://doi.org/10.3102/10769986021004299">https://doi.org/10.3102/10769986021004299</a>
 </div>
 <div id="ref-hedges2005selection" class="csl-entry" role="listitem">
 Hedges, L. V., &amp; Vevea, J. L. (2005). Selection method approaches. In <em>Publication bias in meta-analysis: Prevention, assessment, and adjustments</em> (pp. 145–174). John Wiley &amp; Sons.

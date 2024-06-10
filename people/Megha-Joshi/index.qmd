@@ -10,7 +10,7 @@ about:
   - icon: globe
     href: https://meghapsimatrix.com/
   - icon: envelope
-    href: megha.j456@gmail.com
+    href: mailto:megha.j456@gmail.com
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=D8QFfGsAAAAJ&hl=en
   - icon: github

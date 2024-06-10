@@ -146,7 +146,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2016-11-03">
 <meta name="citation_year" content="2016">
 <meta name="citation_online_date" content="2016-11-03">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/What-is-Tau-U">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/What-is-Tau-U">
 <meta name="citation_language" content="en">
 </head>
 
@@ -205,11 +205,25 @@ window.Quarto = {
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -278,7 +292,7 @@ S_A &amp;= \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left[I\left(y^A_j &gt; y^A_i\r
 <p><span class="math display">\[
 \text{Tau-U} = \frac{S_P - S_A}{mn + m(m - 1) / 2} = \frac{2n}{2n + m - 1} \text{Tau} - \frac{m - 1}{2n + m - 1} t_A.
 \]</span></p>
-<p>Both <span class="math inline">\(\text{Tau}\)</span> and <span class="math inline">\(t_A\)</span> have range [-1,1], and so Tau-U has the same range. This version of Tau-U can be calculated using <a href="https://manolov.shinyapps.io/Overlap/">this web app by Rumen Manolov</a>, which is based on <a href="https://dl.dropboxusercontent.com/u/2842869/Tau_U.R">this R code by Kevin Tarlow</a>. (The app and the R script also provide the other variants of Tau-U described in <a href="http://dx.doi.org/10.1016/j.beth.2010.08.006">Parker, Vannest, Davis, and Sauber (2011)</a>.)</p>
+<p>Both <span class="math inline">\(\text{Tau}\)</span> and <span class="math inline">\(t_A\)</span> have range [-1,1], and so Tau-U has the same range. This version of Tau-U can be calculated using <a href="https://manolov.shinyapps.io/Overlap/">this web app by Rumen Manolov</a>, which is based on <a href="https://ktarlow.com/stats/r/bctau.txt">this R code by Kevin Tarlow</a>. (The app and the R script also provide the other variants of Tau-U described in <a href="http://dx.doi.org/10.1016/j.beth.2010.08.006">Parker, Vannest, Davis, and Sauber (2011)</a>.)</p>
 </section>
 <section id="the-revised-version" class="level2">
 <h2 class="anchored" data-anchor-id="the-revised-version">The revised (?) version</h2>
@@ -382,12 +396,12 @@ S_A &amp;= \sum_{i=1}^{m - 1} \sum_{j = i + 1}^m \left[I\left(y^A_j &gt; y^A_i\r
   author = {Pustejovsky, James E.},
   title = {What Is {Tau-U?}},
   date = {2016-11-03},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/What-is-Tau-U},
+  url = {https://jepusto.com/posts/What-is-Tau-U},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2016" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2016. <span>“What Is Tau-U?”</span> November 3,
-2016. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/What-is-Tau-U">https://mellifluous-buttercream-e2edd2.netlify.app/posts/What-is-Tau-U</a>.
+2016. <a href="https://jepusto.com/posts/What-is-Tau-U">https://jepusto.com/posts/What-is-Tau-U</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -521,7 +535,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -884,7 +898,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>\text{Tau-U} = \frac{S_P - S_A}{mn + m(m - 1) / 2} = \frac{2n}{2n + m - 1} \text{Tau} - \frac{m - 1}{2n + m - 1} t_A.</span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>Both $\text{Tau}$ and $t_A$ have range <span class="co">[</span><span class="ot">-1,1</span><span class="co">]</span>, and so Tau-U has the same range. This version of Tau-U can be calculated using <span class="co">[</span><span class="ot">this web app by Rumen Manolov</span><span class="co">](https://manolov.shinyapps.io/Overlap/)</span>, which is based on <span class="co">[</span><span class="ot">this R code by Kevin Tarlow</span><span class="co">](https://dl.dropboxusercontent.com/u/2842869/Tau_U.R)</span>. (The app and the R script also provide the other variants of Tau-U described in <span class="co">[</span><span class="ot">Parker, Vannest, Davis, and Sauber (2011)</span><span class="co">](http://dx.doi.org/10.1016/j.beth.2010.08.006)</span>.)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>Both $\text{Tau}$ and $t_A$ have range <span class="co">[</span><span class="ot">-1,1</span><span class="co">]</span>, and so Tau-U has the same range. This version of Tau-U can be calculated using <span class="co">[</span><span class="ot">this web app by Rumen Manolov</span><span class="co">](https://manolov.shinyapps.io/Overlap/)</span>, which is based on <span class="co">[</span><span class="ot">this R code by Kevin Tarlow</span><span class="co">](https://ktarlow.com/stats/r/bctau.txt)</span>. (The app and the R script also provide the other variants of Tau-U described in <span class="co">[</span><span class="ot">Parker, Vannest, Davis, and Sauber (2011)</span><span class="co">](http://dx.doi.org/10.1016/j.beth.2010.08.006)</span>.)</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## The revised (?) version</span></span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>

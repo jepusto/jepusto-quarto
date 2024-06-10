@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2014-04-26">
 <meta name="citation_year" content="2014">
 <meta name="citation_online_date" content="2014-04-26">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-3">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/Robust-meta-analysis-3">
 <meta name="citation_language" content="en">
 </head>
 
@@ -176,11 +176,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -234,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <a href="../..\posts/Robust-meta-analysis-1/">mentioned</a> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <a href="http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, and Botts (2001)</a>. You can find her forthcoming paper on the adjustments <a href="http://dx.doi.org/10.1037/met0000011">here</a>. My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches.</p>
+<p>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <a href="../..\posts/Robust-meta-analysis-1/">mentioned</a> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <a href="http://www.asasrms.org/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, and Botts (2001)</a>. You can find her forthcoming paper on the adjustments <a href="http://dx.doi.org/10.1037/met0000011">here</a>. My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches.</p>
 <p>I wanted to try out these small-sample corrected sandwich estimators for a meta-analyses project that I’m working on. Beth and one of her students have written an R package called <a href="http://cran.r-project.org/web/packages/robumeta/index.html">robumeta</a> that implements the sandwich covariance estimator and small-sample corrections as described in her paper. However, for my project I want to use the <a href="http://www.metafor-project.org/">metafor package</a>, which doesn’t provide these methods. I’ve therefore created a set of functions that implement the sandwich covariance estimators and small-sample corrections for models estimated using the <code>rma.mv</code> function in <code>metafor</code>. Here is <a href="https://gist.github.com/jepusto/11302318">the complete code</a>. Sorry, there’s no further documentation at the moment (beyond the rest of this post).</p>
 <section id="consistency-with-robumeta" class="level3">
 <h3 class="anchored" data-anchor-id="consistency-with-robumeta">Consistency with robumeta</h3>
@@ -404,12 +418,12 @@ binge    0.674435042 0.121660936  5.5435628 4.167780 0.004585142</code></pre>
   author = {Pustejovsky, James E.},
   title = {Meta-Sandwich with Extra Mustard},
   date = {2014-04-26},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-3},
+  url = {https://jepusto.com/posts/Robust-meta-analysis-3},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2014" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2014. <span>“Meta-Sandwich with Extra
-Mustard.”</span> April 26, 2014. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-3">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-3</a>.
+Mustard.”</span> April 26, 2014. <a href="https://jepusto.com/posts/Robust-meta-analysis-3">https://jepusto.com/posts/Robust-meta-analysis-3</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -543,7 +557,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -884,7 +898,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <span class="co">[</span><span class="ot">mentioned</span><span class="co">](/posts/Robust-meta-analysis-1/)</span> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, and Botts (2001)</span><span class="co">](http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf)</span>. </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>In an earlier post about sandwich standard errors for multi-variate meta-analysis, I <span class="co">[</span><span class="ot">mentioned</span><span class="co">](/posts/Robust-meta-analysis-1/)</span> that Beth Tipton has recently proposed small-sample corrections for the covariance estimators and t-tests, based on the bias-reduced linearization approach of <span class="co">[</span><span class="ot">McCaffrey, Bell, and Botts (2001)</span><span class="co">](http://www.asasrms.org/Proceedings/y2001/Proceed/00264.pdf)</span>. </span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>You can find her forthcoming paper on the adjustments <span class="co">[</span><span class="ot">here</span><span class="co">](http://dx.doi.org/10.1037/met0000011)</span>. </span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>My understanding is that these small-sample corrections are important because the uncorrected sandwich estimators can lead to under-statement of uncertainty and inflated type I error rates when a given meta-regression coefficient is estimated from only a small or moderately sized sample of independent studies (or clusters of studies). </span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>Moreover, it can be difficult to determine exactly when you have a large enough sample to trust the uncorrected sandwiches. </span>

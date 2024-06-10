@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2019-04-09">
 <meta name="citation_year" content="2019">
 <meta name="citation_online_date" content="2019-04-09">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/package-downloads">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/package-downloads">
 <meta name="citation_language" content="en">
 </head>
 
@@ -180,11 +180,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -517,12 +531,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   author = {Pustejovsky, James E.},
   title = {CRAN Downloads of My Packages},
   date = {2019-04-09},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/package-downloads},
+  url = {https://jepusto.com/posts/package-downloads},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2019" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2019. <span>“CRAN Downloads of My
-Packages.”</span> April 9, 2019. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/package-downloads">https://mellifluous-buttercream-e2edd2.netlify.app/posts/package-downloads</a>.
+Packages.”</span> April 9, 2019. <a href="https://jepusto.com/posts/package-downloads">https://jepusto.com/posts/package-downloads</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -656,7 +670,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

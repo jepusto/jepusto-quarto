@@ -31,7 +31,7 @@ $$
 \text{Tau-U} = \frac{S_P - S_A}{mn + m(m - 1) / 2} = \frac{2n}{2n + m - 1} \text{Tau} - \frac{m - 1}{2n + m - 1} t_A.
 $$
 
-Both $\text{Tau}$ and $t_A$ have range [-1,1], and so Tau-U has the same range. This version of Tau-U can be calculated using [this web app by Rumen Manolov](https://manolov.shinyapps.io/Overlap/), which is based on [this R code by Kevin Tarlow](https://dl.dropboxusercontent.com/u/2842869/Tau_U.R). (The app and the R script also provide the other variants of Tau-U described in [Parker, Vannest, Davis, and Sauber (2011)](http://dx.doi.org/10.1016/j.beth.2010.08.006).)
+Both $\text{Tau}$ and $t_A$ have range [-1,1], and so Tau-U has the same range. This version of Tau-U can be calculated using [this web app by Rumen Manolov](https://manolov.shinyapps.io/Overlap/), which is based on [this R code by Kevin Tarlow](https://ktarlow.com/stats/r/bctau.txt). (The app and the R script also provide the other variants of Tau-U described in [Parker, Vannest, Davis, and Sauber (2011)](http://dx.doi.org/10.1016/j.beth.2010.08.006).)
 
 ## The revised (?) version
 

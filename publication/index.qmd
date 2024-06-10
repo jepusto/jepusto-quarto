@@ -9,7 +9,8 @@ listing:
   categories: false
   sort-ui: false
   filter-ui: true
-  feed: true
   max-items: 1000
   page-size: 100
+  feed: 
+    title: publications
 ---

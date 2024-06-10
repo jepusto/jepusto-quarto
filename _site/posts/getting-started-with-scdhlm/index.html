@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2014-10-19">
 <meta name="citation_year" content="2014">
 <meta name="citation_online_date" content="2014-10-19">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/getting-started-with-scdhlm">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/getting-started-with-scdhlm">
 <meta name="citation_language" content="en">
 </head>
 
@@ -176,11 +176,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-rss" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-rss" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-rss">    
+        <li>
+    <a class="dropdown-item" href="../../posts/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Posts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../publication/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="dropdown-text">Publications</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -207,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -234,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><strong>UPDATED 10/2/2016 after posting the package to CRAN</strong></p>
-<p>Here are step-by-step instructions on how to download and install the scdhlm package for R. You’ll need to have a <a href="http://cran.us.r-project.org/">copy of R installed</a>. There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.</p>
+<p>Here are step-by-step instructions on how to download and install the scdhlm package for R. You’ll need to have a <a href="https://cran.r-project.org/">copy of R installed</a>. There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.</p>
 <section id="option-1-via-cran" class="level3">
 <h3 class="anchored" data-anchor-id="option-1-via-cran">Option 1: Via CRAN</h3>
 <p>Go via CRAN to install the most recent stable version of the package. Type the following commands at the R prompt:</p>
@@ -300,12 +314,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   author = {Pustejovsky, James E.},
   title = {Getting Started with Scdhlm},
   date = {2014-10-19},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/getting-started-with-scdhlm},
+  url = {https://jepusto.com/posts/getting-started-with-scdhlm},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2014" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2014. <span>“Getting Started with Scdhlm.”</span>
-October 19, 2014. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/getting-started-with-scdhlm">https://mellifluous-buttercream-e2edd2.netlify.app/posts/getting-started-with-scdhlm</a>.
+October 19, 2014. <a href="https://jepusto.com/posts/getting-started-with-scdhlm">https://jepusto.com/posts/getting-started-with-scdhlm</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -439,7 +453,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -783,7 +797,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>**UPDATED 10/2/2016 after posting the package to CRAN**</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>Here are step-by-step instructions on how to download and install the scdhlm package for R. You'll need to have a <span class="co">[</span><span class="ot">copy of R installed</span><span class="co">](http://cran.us.r-project.org/)</span>. There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>Here are step-by-step instructions on how to download and install the scdhlm package for R. You'll need to have a <span class="co">[</span><span class="ot">copy of R installed</span><span class="co">](https://cran.r-project.org/)</span>. There are two ways to do the installation: through the Comprehensive R Archive Network (CRAN) or from the source code on Github. I describe each approach in turn.</span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Option 1: Via CRAN</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>

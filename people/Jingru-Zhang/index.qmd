@@ -8,7 +8,7 @@ about:
   image-shape: round
   links:
   - icon: envelope
-    href: jzhang2637@wisc.edu
+    href: mailto:jzhang2637@wisc.edu
   - icon: twitter
     href: https://twitter.com/JrrrZhang
 org_name: University of Wisconsin-Madison

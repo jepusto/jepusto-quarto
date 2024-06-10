@@ -14,8 +14,7 @@ pages: forthcoming
 categories:
 - single-case design
 - response-guided design
-image: Cumulative percentage of stable baselines at a given number of observations
-  for the independent Poisson case, up to 20 observations
+image-alt: Cumulative percentage of stable baselines at a given number of observations for the independent Poisson case, up to 20 observations
 links:
 - text: Journal
   url: https://doi.org/10.1080/17489539.2020.1739048
