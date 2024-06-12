@@ -292,12 +292,12 @@ font-style: inherit;">"{.sm}"</span></span>
   author = {Pustejovsky, James E.},
   title = {Correlations Between z-Transformed Correlation Coefficients},
   date = {2024-06-06},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations},
+  url = {https://jepusto.com/posts/correlated-z-transformed-correlations},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Correlations Between z-Transformed
-Correlation Coefficients.”</span> June 6, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations">https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations</a>.
+Correlation Coefficients.”</span> June 6, 2024. <a href="https://jepusto.com/posts/correlated-z-transformed-correlations">https://jepusto.com/posts/correlated-z-transformed-correlations</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>correlation</category>
@@ -1132,12 +1132,12 @@ font-style: inherit;">"Number of quadrature points:"</span>}</span>
   author = {Pustejovsky, James E.},
   title = {Distribution of the Number of Significant Effect Sizes},
   date = {2024-03-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects},
+  url = {https://jepusto.com/posts/distribution-of-significant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Distribution of the Number of
-Significant Effect Sizes.”</span> March 28, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects">https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects</a>.
+Significant Effect Sizes.”</span> March 28, 2024. <a href="https://jepusto.com/posts/distribution-of-significant-effects">https://jepusto.com/posts/distribution-of-significant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
@@ -1196,12 +1196,12 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://mellifluous
   title = {Approximating the Distribution of Cluster-Robust {Wald}
     Statistics},
   date = {2024-03-24},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests},
+  url = {https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2024" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2024. <span>“Approximating the Distribution of
-Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests</a>.
+Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests">https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests</a>.
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>
@@ -4410,12 +4410,12 @@ loaded via a namespace (and not attached):
   title = {Implementing {Consul’s} Generalized {Poisson} Distribution in
     {Stan}},
   date = {2023-12-06},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan},
+  url = {https://jepusto.com/posts/generalized-poisson-in-Stan},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Implementing Consul’s Generalized
-Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan">https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan</a>.
+Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://jepusto.com/posts/generalized-poisson-in-Stan">https://jepusto.com/posts/generalized-poisson-in-Stan</a>.
 </div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
@@ -7083,12 +7083,12 @@ loaded via a namespace (and not attached):
   title = {Implementing {Efron’s} Double {Poisson} Distribution in
     {Stan}},
   date = {2023-09-15},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan},
+  url = {https://jepusto.com/posts/double-poisson-in-Stan},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Implementing Efron’s Double Poisson
-Distribution in Stan.”</span> September 15, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan">https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan</a>.
+Distribution in Stan.”</span> September 15, 2023. <a href="https://jepusto.com/posts/double-poisson-in-Stan">https://jepusto.com/posts/double-poisson-in-Stan</a>.
 </div></div></section></div> ]]></description>
   <category>Bayes</category>
   <category>simulation</category>
@@ -12790,12 +12790,12 @@ Xu, L., Gotwalt, C., Hong, Y., King, C. B., &amp; Meeker, W. Q. (2020). Applicat
   author = {Pustejovsky, James E. and Joshi, Megha},
   title = {Cluster-Bootstrapping a Meta-Analytic Selection Model},
   date = {2023-03-30},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model},
+  url = {https://jepusto.com/posts/cluster-bootstrap-selection-model},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E., &amp; Joshi, M. (2023, March 30).
-<em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model">https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model</a>
+<em>Cluster-Bootstrapping a meta-analytic selection model</em>. <a href="https://jepusto.com/posts/cluster-bootstrap-selection-model">https://jepusto.com/posts/cluster-bootstrap-selection-model</a>
 </div></div></section></div> ]]></description>
   <category>bootstrap</category>
   <category>dependent effect sizes</category>
@@ -12816,8 +12816,8 @@ Pustejovsky, J. E., &amp; Joshi, M. (2023, March 30).
 
 
 
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdef%5CPr%7B%7B%5Ctext%7BPr%7D%7D%7D%0A%5Cdef%5CE%7B%7B%5Ctext%7BE%7D%7D%7D%0A%5Cdef%5CVar%7B%7B%5Ctext%7BVar%7D%7D%7D%0A%5Cdef%5CCov%7B%7B%5Ctext%7BCov%7D%7D%7D%0A%5Cdef%5Ccor%7B%7B%5Ctext%7Bcor%7D%7D%7D%0A%5Cdef%5Cbm%7B%5Cmathbf%7D%0A%5Cdef%5Cbs%7B%5Cboldsymbol%7D%0A"></p>
 <p>Meta-analyses in education, psychology, and related fields rely heavily of Cohen’s <img src="https://latex.codecogs.com/png.latex?d">, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen’s <img src="https://latex.codecogs.com/png.latex?d"> is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen’s <img src="https://latex.codecogs.com/png.latex?d"> is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.<sup>1</sup></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cdef%5CPr%7B%7B%5Ctext%7BPr%7D%7D%7D%0A%5Cdef%5CE%7B%7B%5Ctext%7BE%7D%7D%7D%0A%5Cdef%5CVar%7B%7B%5Ctext%7BVar%7D%7D%7D%0A%5Cdef%5CCov%7B%7B%5Ctext%7BCov%7D%7D%7D%0A%5Cdef%5Ccor%7B%7B%5Ctext%7Bcor%7D%7D%7D%0A%5Cdef%5Cbm%7B%5Cmathbf%7D%0A%5Cdef%5Cbs%7B%5Cboldsymbol%7D%0A"></p>
 <p>In this post, I’m going to mull over how measurement error and design decisions influence the metric definition of Cohen’s <img src="https://latex.codecogs.com/png.latex?d"> in basic within-group experimental designs. The distorting effects of measurement error has long been a source of concern within psychometric meta-analysis, a perspective associated with the work of <a href="https://methods.sagepub.com/book/methods-of-meta-analysis-3e">Frank Schmidt and Jack Hunter</a>, and measurement-error corrections are well developed and often applied in meta-analyses of correlations. Straight-forward measurement-error corrections have also been described for Cohen’s <img src="https://latex.codecogs.com/png.latex?d"> from between-group designs (see recent work by <a href="https://psyarxiv.com/9mpbn/">Brenton Wiernik and Jeff Dahlke</a>). However, I have literally never seen a meta-analytic application that applied these corrections and I have thus far been unable to locate work on such corrections specifically for effect sizes in within-group designs.<sup>2</sup> So, time to muck about…</p>
 <section id="effect-size-definitions-in-within-group-designs" class="level2">
 <h2 class="anchored" data-anchor-id="effect-size-definitions-in-within-group-designs">Effect size definitions in within-group designs</h2>
@@ -13047,7 +13047,7 @@ font-style: inherit;">+</span> p_A_z</span></code></pre></div>
 </div>
 </div>
 </div>
-<p>The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> is mostly concentrated around the mean of <img src="https://latex.codecogs.com/png.latex?E(A_%7Bav%7D)%20=%200.898">, with a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_%7Bav%7D)%20=%200.085">. In contrast, the distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> has a mean very close to one, <img src="https://latex.codecogs.com/png.latex?E(A_z)%20=%201.006"> but a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_z)%20=%200.21">, about 2.5 times larger. Thus, variation in measurement procedure induces more extra heterogeneity into the distribution of <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> than into <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D">.</p>
+<p>The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> is mostly concentrated around the mean of <img src="https://latex.codecogs.com/png.latex?E(A_%7Bav%7D)%20=%200.899">, with a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_%7Bav%7D)%20=%200.085">. In contrast, the distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> has a mean very close to one, <img src="https://latex.codecogs.com/png.latex?E(A_z)%20=%201.007"> but a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_z)%20=%200.209">, about 2.5 times larger. Thus, variation in measurement procedure induces more extra heterogeneity into the distribution of <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> than into <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D">.</p>
 <p>Now, one potential objection to this hypothetical scenario is that researchers do not choose the number of trials at random, without consideration for the other parameters of the study design. A more realistic assumption might be that researchers choose <img src="https://latex.codecogs.com/png.latex?K"> to ensure they achieve at least some threshold level of reliability for the observed scores. The reliability of the observed scores is <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D%5E2">, so ensuring some threshold of reliability is equivalent to ensuring the square root of the threshold for <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D">. Let’s suppose that researchers always ensure <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D%20%5Cgeq%200.8"> so that reliability is always at least <img src="https://latex.codecogs.com/png.latex?0.64">. This leads to the following distributions for <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> and <img src="https://latex.codecogs.com/png.latex?A_z">:</p>
 <div class="cell">
 <details class="code-fold">
@@ -13108,7 +13108,7 @@ font-style: inherit;">+</span> p_A_z_trunc</span></code></pre></div>
 </div>
 </div>
 </div>
-<p>The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> loses its left tail, so that its mean is <img src="https://latex.codecogs.com/png.latex?E(A_%7Bav%7D%7CA_%7Bav%7D%20%5Cgeq%200.8)%20=%200.917"> and its coefficient of variation is reduced to <img src="https://latex.codecogs.com/png.latex?CV(A_%7Bav%7D%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%200.049">. The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> now has a mean of <img src="https://latex.codecogs.com/png.latex?E(A_z%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%201.045"> and a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_z%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%200.173">, about 3.5 times larger than the squared coefficient of variation of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D">.</p>
+<p>The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> loses its left tail, so that its mean is <img src="https://latex.codecogs.com/png.latex?E(A_%7Bav%7D%7CA_%7Bav%7D%20%5Cgeq%200.8)%20=%200.918"> and its coefficient of variation is reduced to <img src="https://latex.codecogs.com/png.latex?CV(A_%7Bav%7D%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%200.049">. The distribution of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D"> now has a mean of <img src="https://latex.codecogs.com/png.latex?E(A_z%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%201.046"> and a coefficient of variation of <img src="https://latex.codecogs.com/png.latex?CV(A_z%20%7C%20A_%7Bav%7D%20%5Cgeq%200.8)%20=%200.172">, about 3.5 times larger than the squared coefficient of variation of <img src="https://latex.codecogs.com/png.latex?A_%7Bav%7D">.</p>
 <p>Under both of these scenarios, the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is substantially more sensitive to procedural heterogeneity than is <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D">. Based on this model and hypothetical example, it seems clear <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> should be preferred over <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> as a metric for meta-analysis. However, these relationships are predicated on a certain model for the study-specific parameters. One might object to this model because there’s a sense that we have assumed that <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D"> is the right answer. After all, the underlying effect size model is specified in terms of <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">, and the design parameters—including <img src="https://latex.codecogs.com/png.latex?%5Crho"> in particular—are treated as noise, uncorrelated with <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">. What happens to the observed-score metrics <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> and <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> if we instead start with a model specified in terms of <img src="https://latex.codecogs.com/png.latex?%5Cdelta_z">?</p>
 </section>
 <section id="a-model-for-delta_z" class="level3">
@@ -13468,18 +13468,18 @@ font-style: inherit;">TRUE</span></span>
 <tr class="odd">
 <td style="text-align: left;">random</td>
 <td style="text-align: right;">0.085</td>
-<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.209</td>
 <td style="text-align: right;">2.5</td>
 <td style="text-align: right;">0.285</td>
-<td style="text-align: right;">0.182</td>
-<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.181</td>
+<td style="text-align: right;">0.63</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">at least 0.64</td>
 <td style="text-align: right;">0.049</td>
-<td style="text-align: right;">0.173</td>
+<td style="text-align: right;">0.172</td>
 <td style="text-align: right;">3.5</td>
-<td style="text-align: right;">0.257</td>
+<td style="text-align: right;">0.258</td>
 <td style="text-align: right;">0.137</td>
 <td style="text-align: right;">0.53</td>
 </tr>
@@ -13487,7 +13487,7 @@ font-style: inherit;">TRUE</span></span>
 </table>
 </div>
 </div>
-<p>The tables are now more or less turned. Under both reliability scenarios, <img src="https://latex.codecogs.com/png.latex?B_z"> has a lower coefficient of variation than <img src="https://latex.codecogs.com/png.latex?B_%7Bav%7D">, indicating that <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is less affected by procedural heterogeneity than is <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D">. However, <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is still affected in absolute terms, considering that the coefficient of variation for <img src="https://latex.codecogs.com/png.latex?B_z"> is about 79% of the coefficient of variation for <img src="https://latex.codecogs.com/png.latex?A_z">. Of course, <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is quite strongly affected under this model, with a coefficient of variation of 0.257.</p>
+<p>The tables are now more or less turned. Under both reliability scenarios, <img src="https://latex.codecogs.com/png.latex?B_z"> has a lower coefficient of variation than <img src="https://latex.codecogs.com/png.latex?B_%7Bav%7D">, indicating that <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is less affected by procedural heterogeneity than is <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D">. However, <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is still affected in absolute terms, considering that the coefficient of variation for <img src="https://latex.codecogs.com/png.latex?B_z"> is about 79% of the coefficient of variation for <img src="https://latex.codecogs.com/png.latex?A_z">. Of course, <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is quite strongly affected under this model, with a coefficient of variation of 0.258.</p>
 </section>
 <section id="consequences-for-heterogeneity" class="level3">
 <h3 class="anchored" data-anchor-id="consequences-for-heterogeneity">Consequences for heterogeneity</h3>
@@ -13868,7 +13868,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
-<p>Consider, for instance, a scenario where observed-score reliability is always at least 0.64 and <img src="https://latex.codecogs.com/png.latex?%5Ctau%20/%20%5Cmu%20=%200.5">, which would be the case if effect sizes are normally distributed and about 97% of effect sizes are positive. Under the effect size model based on <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">, the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is hardly affected by measurement heterogeneity at all, with a CV of 0.504 but the CV of the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is 0.543. Under the effect size model based on <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">, the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is strongly affected by measurement heterogeneity, with a CV of 0.591; in comparison, the CV of the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> of 0.528. Under both models, these increases in CV are effectively constant for larger values of <img src="https://latex.codecogs.com/png.latex?%5Ctau%20/%20%5Cmu">.</p>
+<p>Consider, for instance, a scenario where observed-score reliability is always at least 0.64 and <img src="https://latex.codecogs.com/png.latex?%5Ctau%20/%20%5Cmu%20=%200.5">, which would be the case if effect sizes are normally distributed and about 97% of effect sizes are positive. Under the effect size model based on <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">, the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is hardly affected by measurement heterogeneity at all, with a CV of 0.504 but the CV of the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> is 0.543. Under the effect size model based on <img src="https://latex.codecogs.com/png.latex?%5Cdelta_%7Bav%7D">, the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_%7Bav%7D"> is strongly affected by measurement heterogeneity, with a CV of 0.591; in comparison, the CV of the observed-score <img src="https://latex.codecogs.com/png.latex?%5Ctilde%5Cdelta_z"> of 0.527. Under both models, these increases in CV are effectively constant for larger values of <img src="https://latex.codecogs.com/png.latex?%5Ctau%20/%20%5Cmu">.</p>
 </section>
 </section>
 <section id="so-whats-your-point" class="level2">
@@ -13897,12 +13897,12 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
   title = {Cohen’s \$d\_z\$ Makes Me Dizzy When Considering Measurement
     Error},
   date = {2023-02-17},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z},
+  url = {https://jepusto.com/posts/dizzy-for-d-z},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2023. <span>“Cohen’s $d_z$ Makes Me Dizzy When
-Considering Measurement Error.”</span> February 17, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z">https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z</a>.
+Considering Measurement Error.”</span> February 17, 2023. <a href="https://jepusto.com/posts/dizzy-for-d-z">https://jepusto.com/posts/dizzy-for-d-z</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
@@ -13961,12 +13961,12 @@ UPDATE, March 8, 2023
   author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018), Redux},
   date = {2022-11-07},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2022, November 7). <em>Corrigendum to Pustejovsky
-and Tipton (2018), redux</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
+and Tipton (2018), redux</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux</a>
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
@@ -14408,12 +14408,12 @@ McCaffrey, D. F., Bell, R. M., &amp; Botts, C. H. (2001). <span class="nocase">G
   author = {Pustejovsky, James E.},
   title = {Corrigendum to {Pustejovsky} and {Tipton} (2018)},
   date = {2022-09-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2},
+  url = {https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2022" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2022, September 28). <em>Corrigendum to Pustejovsky
-and Tipton (2018)</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2</a>
+and Tipton (2018)</em>. <a href="https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2">https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2</a>
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>econometrics</category>
@@ -15385,13 +15385,13 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
   title = {Variance Component Estimates in Meta-Analysis with
     Mis-Specified Sampling Correlation},
   date = {2021-11-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation},
+  url = {https://jepusto.com/posts/variance-components-with-misspecified-correlation},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Variance Component Estimates in
 Meta-Analysis with Mis-Specified Sampling Correlation.”</span> November
-28, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation">https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation</a>.
+28, 2021. <a href="https://jepusto.com/posts/variance-components-with-misspecified-correlation">https://jepusto.com/posts/variance-components-with-misspecified-correlation</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
@@ -16691,13 +16691,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   title = {Implications of Mean-Variance Relationships for Standardized
     Mean Differences},
   date = {2021-11-02},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs},
+  url = {https://jepusto.com/posts/mean-variance-relationships-and-SMDs},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Implications of Mean-Variance
 Relationships for Standardized Mean Differences.”</span> November 2,
-2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs">https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs</a>.
+2021. <a href="https://jepusto.com/posts/mean-variance-relationships-and-SMDs">https://jepusto.com/posts/mean-variance-relationships-and-SMDs</a>.
 </div></div></section></div> ]]></description>
   <category>standardized mean difference</category>
   <category>response ratio</category>
@@ -16735,12 +16735,12 @@ Relationships for Standardized Mean Differences.”</span> November 2,
   author = {Pustejovsky, James E.},
   title = {Inverting Partitioned Matrices},
   date = {2021-10-20},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices},
+  url = {https://jepusto.com/posts/inverting-partitioned-matrices},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Inverting Partitioned
-Matrices.”</span> October 20, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices">https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices</a>.
+Matrices.”</span> October 20, 2021. <a href="https://jepusto.com/posts/inverting-partitioned-matrices">https://jepusto.com/posts/inverting-partitioned-matrices</a>.
 </div></div></section></div> ]]></description>
   <category>matrix algebra</category>
   <guid>https://jepusto.com/posts/inverting-partitioned-matrices/</guid>
@@ -16781,12 +16781,12 @@ Matrices.”</span> October 20, 2021. <a href="https://mellifluous-buttercream-e
   title = {Standardized Mean Differences in Single-Group, Repeated
     Measures Designs},
   date = {2021-10-06},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group},
+  url = {https://jepusto.com/posts/SMDs-in-single-group},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Standardized Mean Differences in
-Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group">https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group</a>.
+Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="https://jepusto.com/posts/SMDs-in-single-group">https://jepusto.com/posts/SMDs-in-single-group</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>standardized mean difference</category>
@@ -16826,12 +16826,12 @@ Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="htt
   author = {Pustejovsky, James E.},
   title = {Finding the Distribution of Significant Effect Sizes},
   date = {2021-04-27},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects},
+  url = {https://jepusto.com/posts/number-of-significant-effects},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2021" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2021. <span>“Finding the Distribution of
-Significant Effect Sizes.”</span> April 27, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects">https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects</a>.
+Significant Effect Sizes.”</span> April 27, 2021. <a href="https://jepusto.com/posts/number-of-significant-effects">https://jepusto.com/posts/number-of-significant-effects</a>.
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
@@ -16906,12 +16906,12 @@ Significant Effect Sizes.”</span> April 27, 2021. <a href="https://mellifluous
   author = {Pustejovsky, James E.},
   title = {The {Woodbury} Identity},
   date = {2020-12-04},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity},
+  url = {https://jepusto.com/posts/Woodbury-identity},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“The Woodbury Identity.”</span>
-December 4, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity</a>.
+December 4, 2020. <a href="https://jepusto.com/posts/Woodbury-identity">https://jepusto.com/posts/Woodbury-identity</a>.
 </div></div></section></div> ]]></description>
   <category>hierarchical models</category>
   <category>matrix algebra</category>
@@ -17052,12 +17052,12 @@ December 4, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/po
   author = {Pustejovsky, James E.},
   title = {An {ANCOVA} Puzzler},
   date = {2020-11-24},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler},
+  url = {https://jepusto.com/posts/ancova-puzzler},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
-24, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler">https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler</a>.
+24, 2020. <a href="https://jepusto.com/posts/ancova-puzzler">https://jepusto.com/posts/ancova-puzzler</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>effect size</category>
@@ -17088,12 +17088,12 @@ Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
   author = {Pustejovsky, James E.},
   title = {From {Longhorn} to {Badger}},
   date = {2020-08-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger},
+  url = {https://jepusto.com/posts/from-longhorn-to-badger},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“From Longhorn to Badger.”</span>
-August 28, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger">https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger</a>.
+August 28, 2020. <a href="https://jepusto.com/posts/from-longhorn-to-badger">https://jepusto.com/posts/from-longhorn-to-badger</a>.
 </div></div></section></div> ]]></description>
   <guid>https://jepusto.com/posts/from-longhorn-to-badger/</guid>
   <pubDate>Fri, 28 Aug 2020 05:00:00 GMT</pubDate>
@@ -17232,12 +17232,12 @@ Riley, Richard D., Jackson, D., Salanti, G., Burke, D. L., Price, M., Kirkham, J
   author = {Pustejovsky, James E.},
   title = {What Do Meta-Analysts Mean by “Multivariate” Meta-Analysis?},
   date = {2020-06-27},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean},
+  url = {https://jepusto.com/posts/what-does-multivariate-mean},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, J. E. (2020, June 27). <em>What do meta-analysts mean by
-<span>“multivariate”</span> meta-analysis?</em> <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean">https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean</a>
+<span>“multivariate”</span> meta-analysis?</em> <a href="https://jepusto.com/posts/what-does-multivariate-mean">https://jepusto.com/posts/what-does-multivariate-mean</a>
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>multivariate</category>
@@ -18004,12 +18004,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   author = {Pustejovsky, James E.},
   title = {Weighting in Multivariate Meta-Analysis},
   date = {2020-06-09},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis},
+  url = {https://jepusto.com/posts/weighting-in-multivariate-meta-analysis},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“Weighting in Multivariate
-Meta-Analysis.”</span> June 9, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis">https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis</a>.
+Meta-Analysis.”</span> June 9, 2020. <a href="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis">https://jepusto.com/posts/weighting-in-multivariate-meta-analysis</a>.
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>weighting</category>
@@ -18194,12 +18194,12 @@ font-style: inherit;">=</span> false</span></code></pre></div>
   author = {Pustejovsky, James E.},
   title = {An Update on Code Folding with Blogdown + {Academic} Theme},
   date = {2020-05-03},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update},
+  url = {https://jepusto.com/posts/code-folding-update},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2020" class="csl-entry quarto-appendix-citeas">
 Pustejovsky, James E. 2020. <span>“An Update on Code Folding with
-Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update">https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update</a>.
+Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://jepusto.com/posts/code-folding-update">https://jepusto.com/posts/code-folding-update</a>.
 </div></div></section></div> ]]></description>
   <category>programming</category>
   <category>Rstats</category>

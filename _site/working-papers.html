@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-comments','listing-title','listing-author','listing-date','listing-publish_date','listing-publication_type','listing-image','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-execute','listing-website','listing-format','listing-language','listing-comments','listing-title','listing-author','listing-date','listing-publish_date','listing-publication_type','listing-image','listing-categories','listing-links','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-comments","listing-title","listing-author","listing-date","listing-publish_date","listing-publication_type","listing-image","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-execute","listing-website","listing-format","listing-language","listing-comments","listing-title","listing-author","listing-date","listing-publish_date","listing-publication_type","listing-image","listing-categories","listing-links","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -130,12 +130,12 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="James E. Pustejovsky - Working Papers">
-<meta property="og:image" content="https://mellifluous-buttercream-e2edd2.netlify.app/software/POMADE/featured.png">
+<meta property="og:image" content="https://jepusto.com/software/POMADE/featured.png">
 <meta property="og:site_name" content="James E. Pustejovsky">
 <meta property="og:image:height" content="1500">
 <meta property="og:image:width" content="1500">
 <meta name="twitter:title" content="James E. Pustejovsky - Working Papers">
-<meta name="twitter:image" content="https://mellifluous-buttercream-e2edd2.netlify.app/software/POMADE/featured.png">
+<meta name="twitter:image" content="https://jepusto.com/software/POMADE/featured.png">
 <meta name="twitter:image-height" content="1500">
 <meta name="twitter:image-width" content="1500">
 <meta name="twitter:card" content="summary_large_image">
@@ -394,7 +394,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

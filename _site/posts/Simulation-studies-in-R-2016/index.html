@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="citation_cover_date" content="2016-09-28">
 <meta name="citation_year" content="2016">
 <meta name="citation_online_date" content="2016-09-28">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Simulation-studies-in-R-2016">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/Simulation-studies-in-R-2016">
 <meta name="citation_language" content="en">
 </head>
 
@@ -264,12 +264,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   author = {Pustejovsky, James E.},
   title = {Simulation Studies in {R} {(Fall,} 2016 Version)},
   date = {2016-09-28},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Simulation-studies-in-R-2016},
+  url = {https://jepusto.com/posts/Simulation-studies-in-R-2016},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2016" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2016. <span>“Simulation Studies in R (Fall, 2016
-Version).”</span> September 28, 2016. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Simulation-studies-in-R-2016">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Simulation-studies-in-R-2016</a>.
+Version).”</span> September 28, 2016. <a href="https://jepusto.com/posts/Simulation-studies-in-R-2016">https://jepusto.com/posts/Simulation-studies-in-R-2016</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -403,7 +403,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -735,23 +735,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Simulation studies in R (Fall, 2016 version)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2016-09-28'</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> '2016-09-28'</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">- Rstats</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">- simulation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">- programming</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>In today's Quant Methods colloquium, I gave an introduction to the logic and purposes of Monte Carlo simulation studies, with examples written in R. </span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>In today's Quant Methods colloquium, I gave an introduction to the logic and purposes of Monte Carlo simulation studies, with examples written in R. </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Here are the slides</span><span class="co">](/files/Simulations-in-R-2016.html)</span> from my presentation. </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>You can find the code that generates the slides <span class="co">[</span><span class="ot">here</span><span class="co">](https://gist.github.com/jepusto/bf6cdb6e393f54470ba4d016199c6eb8)</span>. </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Here is my <span class="co">[</span><span class="ot">presentation on the same topic</span><span class="co">](/posts/Designing-simulation-studies-using-R/)</span> from a couple of years ago.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">David Robinson's blog</span><span class="co">](http://varianceexplained.org/r/beta_binomial_baseball/)</span> has a much more in-depth discussion of beta-binomial regression.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The data I used is from <span class="co">[</span><span class="ot">Lahman's baseball database</span><span class="co">](http://www.seanlahman.com/baseball-database.html)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">Here are the slides</span><span class="co">](/files/Simulations-in-R-2016.html)</span> from my presentation. </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>You can find the code that generates the slides <span class="co">[</span><span class="ot">here</span><span class="co">](https://gist.github.com/jepusto/bf6cdb6e393f54470ba4d016199c6eb8)</span>. </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Here is my <span class="co">[</span><span class="ot">presentation on the same topic</span><span class="co">](/posts/Designing-simulation-studies-using-R/)</span> from a couple of years ago.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span><span class="co">[</span><span class="ot">David Robinson's blog</span><span class="co">](http://varianceexplained.org/r/beta_binomial_baseball/)</span> has a much more in-depth discussion of beta-binomial regression.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The data I used is from <span class="co">[</span><span class="ot">Lahman's baseball database</span><span class="co">](http://www.seanlahman.com/baseball-database.html)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

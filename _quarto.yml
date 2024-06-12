@@ -1,6 +1,9 @@
 project:
   type: website
 
+execute:
+  freeze: auto
+  
 website:
   title: "James E. Pustejovsky"
   site-url: https://jepusto.com
@@ -36,6 +39,7 @@ website:
     utterances:
       repo: jepusto/jepusto-quarto
       label: comment
+
 format:
   html:
     theme: 
