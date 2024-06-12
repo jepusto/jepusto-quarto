@@ -3,7 +3,7 @@ title: "Working Papers"
 page-layout: article
 listing:
   - id: working-papers
-    contents: publication
+    contents: publications
     sort: 
       - "date desc"
     type: custom

@@ -99,6 +99,8 @@ convert_post <- function(post) {
 
 convert_post("correlated-z-transformed-correlations.Rmd")
 convert_post("imputing-covariance-matrices-for-multi-variate-meta-analysis.Rmd")
+convert_post("Alternating-renewal-process-models-for-behavioral-observation.Rmd")
+convert_post("vcalc-example.Rmd")
 
 walk(all_posts$post, convert_post)
 

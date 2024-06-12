@@ -21,7 +21,7 @@ website:
       - href: posts/index.qmd
       - working-papers.qmd
       - text: Publications
-        href: publication/index.qmd
+        href: publications/index.qmd
       - href: presentations/index.qmd
       - href: software/index.qmd
       - href: teaching/index.qmd
