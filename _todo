@@ -1,10 +1,11 @@
 - Create a template for software pages
 - Add citations and bibtex to publication pages
 
-- Check for dead links
 - Create redirects
 - Publish on netlify
 - set up commenting
+- add a custom footer 
+  https://www.andreashandel.com/posts/2022-10-01-hugo-to-quarto-migration/#custom-footer
 
 - new update on package downloads
 - posts/distribution-of-significant-effects
