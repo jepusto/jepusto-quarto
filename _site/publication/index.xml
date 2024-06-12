@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>publications</title>
-<link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/</link>
-<atom:link href="https://mellifluous-buttercream-e2edd2.netlify.app/publication/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://jepusto.com/publication/</link>
+<atom:link href="https://jepusto.com/publication/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
 <generator>quarto-1.4.552</generator>
 <lastBuildDate>Mon, 24 Jun 2024 05:00:00 GMT</lastBuildDate>
@@ -20,7 +20,7 @@
   <dc:creator>Jacob I. Feldman</dc:creator>
   <dc:creator>Shannon Crowley LaPoint</dc:creator>
   <dc:creator>Tiffany Woynaroski</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/More-is-not-necessarily-better/</link>
+  <link>https://jepusto.com/publication/More-is-not-necessarily-better/</link>
   <description><![CDATA[ 
 
 
@@ -67,14 +67,14 @@
   <category>systematic review</category>
   <category>autism</category>
   <category>meta-analysis</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/More-is-not-necessarily-better/</guid>
+  <guid>https://jepusto.com/publication/More-is-not-necessarily-better/</guid>
   <pubDate>Mon, 24 Jun 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Man Chen</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Equivalences-between-ad-hoc-strategies-and-models/</link>
+  <link>https://jepusto.com/publication/Equivalences-between-ad-hoc-strategies-and-models/</link>
   <description><![CDATA[ 
 
 
@@ -91,7 +91,7 @@
   <category>meta-regression</category>
   <category>dependent effect sizes</category>
   <category>robust variance estimation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Equivalences-between-ad-hoc-strategies-and-models/</guid>
+  <guid>https://jepusto.com/publication/Equivalences-between-ad-hoc-strategies-and-models/</guid>
   <pubDate>Thu, 07 Mar 2024 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -113,7 +113,7 @@
   <dc:creator>Scott Roeder</dc:creator>
   <dc:creator>Jan Walleczek</dc:creator>
   <dc:creator>Jonathan W. Schooler</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Decline-effects/</link>
+  <link>https://jepusto.com/publication/Decline-effects/</link>
   <description><![CDATA[ 
 
 
@@ -128,7 +128,7 @@
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>replication</category>
   <category>meta-analysis</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Decline-effects/</guid>
+  <guid>https://jepusto.com/publication/Decline-effects/</guid>
   <pubDate>Thu, 09 Nov 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -136,7 +136,7 @@
   <dc:creator>Mikkel H. Vembye</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Terri D. Pigott</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Conducting-POMADE/</link>
+  <link>https://jepusto.com/publication/Conducting-POMADE/</link>
   <description><![CDATA[ 
 
 
@@ -153,9 +153,9 @@
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
   <category>robust variance estimation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Conducting-POMADE/</guid>
+  <guid>https://jepusto.com/publication/Conducting-POMADE/</guid>
   <pubDate>Fri, 21 Jul 2023 05:00:00 GMT</pubDate>
-  <media:content url="https://mellifluous-buttercream-e2edd2.netlify.app/software/POMADE/featured.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://jepusto.com/software/POMADE/featured.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>The efficacy of combining cognitive training and non-invasive brain stimulation: A transdiagnostic systematic review and meta-analysis</title>
@@ -167,7 +167,7 @@
   <dc:creator>Branislava Ćurčić-Blake</dc:creator>
   <dc:creator>Gerdina H.M. Pijnenborg</dc:creator>
   <dc:creator>Lisette van der Meer</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Efficacy-of-combining-cognitive-training-and-NIBS/</link>
+  <link>https://jepusto.com/publication/Efficacy-of-combining-cognitive-training-and-NIBS/</link>
   <description><![CDATA[ 
 
 
@@ -184,7 +184,7 @@
   <category>systematic review</category>
   <category>cognitive remediation</category>
   <category>non-invasive brain stimulation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Efficacy-of-combining-cognitive-training-and-NIBS/</guid>
+  <guid>https://jepusto.com/publication/Efficacy-of-combining-cognitive-training-and-NIBS/</guid>
   <pubDate>Fri, 21 Jul 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -205,7 +205,7 @@
   <dc:creator>Daira Rodriguez</dc:creator>
   <dc:creator>Amara Yoro</dc:creator>
   <dc:creator>Jay B. Ganz</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-group-and-SCD/</link>
+  <link>https://jepusto.com/publication/AAC-group-and-SCD/</link>
   <description><![CDATA[ 
 
 
@@ -225,14 +225,14 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-group-and-SCD/</guid>
+  <guid>https://jepusto.com/publication/AAC-group-and-SCD/</guid>
   <pubDate>Fri, 26 May 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Comparison of competing approaches to analyzing cross-classified data: Random effects models, ordinary least squares, or fixed effects with cluster robust standard errors</title>
   <dc:creator>Young Ri Lee</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/competing-approaches-for-cross-classified-data/</link>
+  <link>https://jepusto.com/publication/competing-approaches-for-cross-classified-data/</link>
   <description><![CDATA[ 
 
 
@@ -249,7 +249,7 @@
   <category>random effects</category>
   <category>robust variance estimation</category>
   <category>fixed effects</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/competing-approaches-for-cross-classified-data/</guid>
+  <guid>https://jepusto.com/publication/competing-approaches-for-cross-classified-data/</guid>
   <pubDate>Thu, 09 Mar 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -258,7 +258,7 @@
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>David A. Klingbeil</dc:creator>
   <dc:creator>Ethan R. Van Norman</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Three-level-BC-SMD/</link>
+  <link>https://jepusto.com/publication/Three-level-BC-SMD/</link>
   <description><![CDATA[ 
 
 
@@ -277,7 +277,7 @@
   <category>design-comparable SMD</category>
   <category>hierarchical models</category>
   <category>multivariate</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Three-level-BC-SMD/</guid>
+  <guid>https://jepusto.com/publication/Three-level-BC-SMD/</guid>
   <pubDate>Wed, 08 Mar 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -294,7 +294,7 @@
   <dc:creator>Mary Rose Sallese</dc:creator>
   <dc:creator>S. D. Smith</dc:creator>
   <dc:creator>Valeria Yllades</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-increased-rigor/</link>
+  <link>https://jepusto.com/publication/AAC-increased-rigor/</link>
   <description><![CDATA[ 
 
 
@@ -310,7 +310,7 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-increased-rigor/</guid>
+  <guid>https://jepusto.com/publication/AAC-increased-rigor/</guid>
   <pubDate>Fri, 20 Jan 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -330,7 +330,7 @@
   <dc:creator>Emily Kenny</dc:creator>
   <dc:creator>Peyton Morgan</dc:creator>
   <dc:creator>Scout Paterson</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-social-validity/</link>
+  <link>https://jepusto.com/publication/AAC-social-validity/</link>
   <description><![CDATA[ 
 
 
@@ -349,7 +349,7 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-social-validity/</guid>
+  <guid>https://jepusto.com/publication/AAC-social-validity/</guid>
   <pubDate>Wed, 14 Dec 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -360,7 +360,7 @@
   <dc:creator>Kathleen N. Zimmerman</dc:creator>
   <dc:creator>Nicole Hollins</dc:creator>
   <dc:creator>Erin E. Barton</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Single-case-next-generation-standards/</link>
+  <link>https://jepusto.com/publication/Single-case-next-generation-standards/</link>
   <description><![CDATA[ 
 
 
@@ -376,7 +376,7 @@
   <category>single-case design</category>
   <category>meta-analysis</category>
   <category>effect size</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Single-case-next-generation-standards/</guid>
+  <guid>https://jepusto.com/publication/Single-case-next-generation-standards/</guid>
   <pubDate>Tue, 22 Nov 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -384,7 +384,7 @@
   <dc:creator>Mikkel H. Vembye</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Terri D. Pigott</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Power-approximations-for-dependent-effects/</link>
+  <link>https://jepusto.com/publication/Power-approximations-for-dependent-effects/</link>
   <description><![CDATA[ 
 
 
@@ -401,7 +401,7 @@
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
   <category>robust variance estimation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/Power-approximations-for-dependent-effects/</guid>
+  <guid>https://jepusto.com/publication/Power-approximations-for-dependent-effects/</guid>
   <pubDate>Mon, 17 Oct 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -410,7 +410,7 @@
   <dc:creator>Javier Jasso</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Courtney Byrd</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/investigating-narrative-performance/</link>
+  <link>https://jepusto.com/publication/investigating-narrative-performance/</link>
   <description><![CDATA[ 
 
 
@@ -431,14 +431,14 @@
   <category>meta-analysis</category>
   <category>dependent effect sizes</category>
   <category>robust variance estimation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/investigating-narrative-performance/</guid>
+  <guid>https://jepusto.com/publication/investigating-narrative-performance/</guid>
   <pubDate>Fri, 30 Sep 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Multi-level meta-analysis of single-case experimental designs using robust variance estimation</title>
   <dc:creator>Man Chen</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/SCED-MLMA-RVE/</link>
+  <link>https://jepusto.com/publication/SCED-MLMA-RVE/</link>
   <description><![CDATA[ 
 
 
@@ -457,7 +457,7 @@
   <category>response ratio</category>
   <category>non-overlap measures</category>
   <category>standardized mean difference</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/SCED-MLMA-RVE/</guid>
+  <guid>https://jepusto.com/publication/SCED-MLMA-RVE/</guid>
   <pubDate>Fri, 29 Apr 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -476,7 +476,7 @@
   <dc:creator>Rachel Skov</dc:creator>
   <dc:creator>S. D. Smith</dc:creator>
   <dc:creator>Valeria Yllades</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-communication-outcomes/</link>
+  <link>https://jepusto.com/publication/AAC-communication-outcomes/</link>
   <description><![CDATA[ 
 
 
@@ -495,7 +495,7 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-communication-outcomes/</guid>
+  <guid>https://jepusto.com/publication/AAC-communication-outcomes/</guid>
   <pubDate>Wed, 20 Apr 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -512,7 +512,7 @@
   <dc:creator>Man Chen</dc:creator>
   <dc:creator>Rachel Skov</dc:creator>
   <dc:creator>S. D. Smith</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-instructional-contexts/</link>
+  <link>https://jepusto.com/publication/AAC-instructional-contexts/</link>
   <description><![CDATA[ 
 
 
@@ -528,7 +528,7 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-instructional-contexts/</guid>
+  <guid>https://jepusto.com/publication/AAC-instructional-contexts/</guid>
   <pubDate>Wed, 20 Apr 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -546,7 +546,7 @@
   <dc:creator>Mary Rose Sallese</dc:creator>
   <dc:creator>Rachel Skov</dc:creator>
   <dc:creator>S. D. Smith</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-participant-characteristics/</link>
+  <link>https://jepusto.com/publication/AAC-participant-characteristics/</link>
   <description><![CDATA[ 
 
 
@@ -562,14 +562,14 @@
   <category>single-case design</category>
   <category>systematic review</category>
   <category>Augmentative and alternative communication</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/AAC-participant-characteristics/</guid>
+  <guid>https://jepusto.com/publication/AAC-participant-characteristics/</guid>
   <pubDate>Wed, 20 Apr 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Meta-Analysis with robust variance estimation: Expanding the range of working models</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Elizabeth Tipton</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/RVE-Meta-analysis-expanding-the-range/</link>
+  <link>https://jepusto.com/publication/RVE-Meta-analysis-expanding-the-range/</link>
   <description><![CDATA[ 
 
 
@@ -586,7 +586,7 @@
   <category>meta-regression</category>
   <category>dependent effect sizes</category>
   <category>robust variance estimation</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/RVE-Meta-analysis-expanding-the-range/</guid>
+  <guid>https://jepusto.com/publication/RVE-Meta-analysis-expanding-the-range/</guid>
   <pubDate>Fri, 01 Apr 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -594,7 +594,7 @@
   <dc:creator>Megha Joshi</dc:creator>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>S. Natasha Beretvas</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/cluster-wild-bootstrap-for-meta-analysis/</link>
+  <link>https://jepusto.com/publication/cluster-wild-bootstrap-for-meta-analysis/</link>
   <description><![CDATA[ 
 
 
@@ -610,7 +610,7 @@
   <category>meta-analysis</category>
   <category>robust variance estimation</category>
   <category>bootstrap</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/cluster-wild-bootstrap-for-meta-analysis/</guid>
+  <guid>https://jepusto.com/publication/cluster-wild-bootstrap-for-meta-analysis/</guid>
   <pubDate>Tue, 08 Feb 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
@@ -619,7 +619,7 @@
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Michaelene M. Ostrosky</dc:creator>
   <dc:creator>Rosa Milagros Santos</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/</link>
+  <link>https://jepusto.com/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/</link>
   <description><![CDATA[ 
 
 
@@ -635,7 +635,7 @@
   <category>single-case design</category>
   <category>meta-analysis</category>
   <category>systematic review</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/</guid>
+  <guid>https://jepusto.com/publication/effects-of-social-stories-on-challenging-behavior-and-prosocial-skills/</guid>
   <pubDate>Tue, 01 Feb 2022 06:00:00 GMT</pubDate>
 </item>
 </channel>

@@ -147,7 +147,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2023-02-17">
 <meta name="citation_year" content="2023">
 <meta name="citation_online_date" content="2023-02-17">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/dizzy-for-d-z">
 <meta name="citation_language" content="en">
 </head>
 
@@ -257,7 +257,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>admin </p>
+               <p>James E. Pustejovsky </p>
             </div>
     </div>
       
@@ -299,6 +299,7 @@ window.Quarto = {
 
 
 
+<p>Meta-analyses in education, psychology, and related fields rely heavily of Cohen’s <span class="math inline">\(d\)</span>, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen’s <span class="math inline">\(d\)</span> is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen’s <span class="math inline">\(d\)</span> is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><span class="math display">\[
 \def\Pr{{\text{Pr}}}
 \def\E{{\text{E}}}
@@ -308,7 +309,6 @@ window.Quarto = {
 \def\bm{\mathbf}
 \def\bs{\boldsymbol}
 \]</span></p>
-<p>Meta-analyses in education, psychology, and related fields rely heavily of Cohen’s <span class="math inline">\(d\)</span>, or the standardized mean difference effect size, for quantitatively describing the magnitude and direction of intervention effects. In these fields, Cohen’s <span class="math inline">\(d\)</span> is so pervasive that its use is nearly automatic, and analysts rarely question its utility or consider alternatives (response ratios, anyone? POMP?). Despite this state of affairs, working with Cohen’s <span class="math inline">\(d\)</span> is theoretically challenging because the standardized mean difference metric does not have a singular definition. Rather, its definition depends on the choice of the standardizing variance used in the denominator.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>In this post, I’m going to mull over how measurement error and design decisions influence the metric definition of Cohen’s <span class="math inline">\(d\)</span> in basic within-group experimental designs. The distorting effects of measurement error has long been a source of concern within psychometric meta-analysis, a perspective associated with the work of <a href="https://methods.sagepub.com/book/methods-of-meta-analysis-3e">Frank Schmidt and Jack Hunter</a>, and measurement-error corrections are well developed and often applied in meta-analyses of correlations. Straight-forward measurement-error corrections have also been described for Cohen’s <span class="math inline">\(d\)</span> from between-group designs (see recent work by <a href="https://psyarxiv.com/9mpbn/">Brenton Wiernik and Jeff Dahlke</a>). However, I have literally never seen a meta-analytic application that applied these corrections and I have thus far been unable to locate work on such corrections specifically for effect sizes in within-group designs.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> So, time to muck about…</p>
 <section id="effect-size-definitions-in-within-group-designs" class="level2">
 <h2 class="anchored" data-anchor-id="effect-size-definitions-in-within-group-designs">Effect size definitions in within-group designs</h2>
@@ -404,7 +404,7 @@ Y_{ijk} = \mu_i + u_{ij} + e_{ijk}
 </div>
 </div>
 </div>
-<p>The distribution of <span class="math inline">\(A_{av}\)</span> is mostly concentrated around the mean of <span class="math inline">\(E(A_{av}) = 0.898\)</span>, with a coefficient of variation of <span class="math inline">\(CV(A_{av}) = 0.085\)</span>. In contrast, the distribution of <span class="math inline">\(A_{av}\)</span> has a mean very close to one, <span class="math inline">\(E(A_z) = 1.006\)</span> but a coefficient of variation of <span class="math inline">\(CV(A_z) = 0.21\)</span>, about 2.5 times larger. Thus, variation in measurement procedure induces more extra heterogeneity into the distribution of <span class="math inline">\(\tilde\delta_z\)</span> than into <span class="math inline">\(\tilde\delta_{av}\)</span>.</p>
+<p>The distribution of <span class="math inline">\(A_{av}\)</span> is mostly concentrated around the mean of <span class="math inline">\(E(A_{av}) = 0.899\)</span>, with a coefficient of variation of <span class="math inline">\(CV(A_{av}) = 0.085\)</span>. In contrast, the distribution of <span class="math inline">\(A_{av}\)</span> has a mean very close to one, <span class="math inline">\(E(A_z) = 1.007\)</span> but a coefficient of variation of <span class="math inline">\(CV(A_z) = 0.209\)</span>, about 2.5 times larger. Thus, variation in measurement procedure induces more extra heterogeneity into the distribution of <span class="math inline">\(\tilde\delta_z\)</span> than into <span class="math inline">\(\tilde\delta_{av}\)</span>.</p>
 <p>Now, one potential objection to this hypothetical scenario is that researchers do not choose the number of trials at random, without consideration for the other parameters of the study design. A more realistic assumption might be that researchers choose <span class="math inline">\(K\)</span> to ensure they achieve at least some threshold level of reliability for the observed scores. The reliability of the observed scores is <span class="math inline">\(A_{av}^2\)</span>, so ensuring some threshold of reliability is equivalent to ensuring the square root of the threshold for <span class="math inline">\(A_{av}\)</span>. Let’s suppose that researchers always ensure <span class="math inline">\(A_{av} \geq 0.8\)</span> so that reliability is always at least <span class="math inline">\(0.64\)</span>. This leads to the following distributions for <span class="math inline">\(A_{av}\)</span> and <span class="math inline">\(A_z\)</span>:</p>
 <div class="cell">
 <details class="code-fold">
@@ -423,7 +423,7 @@ Y_{ijk} = \mu_i + u_{ij} + e_{ijk}
 </div>
 </div>
 </div>
-<p>The distribution of <span class="math inline">\(A_{av}\)</span> loses its left tail, so that its mean is <span class="math inline">\(E(A_{av}|A_{av} \geq 0.8) = 0.917\)</span> and its coefficient of variation is reduced to <span class="math inline">\(CV(A_{av} | A_{av} \geq 0.8) = 0.049\)</span>. The distribution of <span class="math inline">\(A_{av}\)</span> now has a mean of <span class="math inline">\(E(A_z | A_{av} \geq 0.8) = 1.045\)</span> and a coefficient of variation of <span class="math inline">\(CV(A_z | A_{av} \geq 0.8) = 0.173\)</span>, about 3.5 times larger than the squared coefficient of variation of <span class="math inline">\(A_{av}\)</span>.</p>
+<p>The distribution of <span class="math inline">\(A_{av}\)</span> loses its left tail, so that its mean is <span class="math inline">\(E(A_{av}|A_{av} \geq 0.8) = 0.918\)</span> and its coefficient of variation is reduced to <span class="math inline">\(CV(A_{av} | A_{av} \geq 0.8) = 0.049\)</span>. The distribution of <span class="math inline">\(A_{av}\)</span> now has a mean of <span class="math inline">\(E(A_z | A_{av} \geq 0.8) = 1.046\)</span> and a coefficient of variation of <span class="math inline">\(CV(A_z | A_{av} \geq 0.8) = 0.172\)</span>, about 3.5 times larger than the squared coefficient of variation of <span class="math inline">\(A_{av}\)</span>.</p>
 <p>Under both of these scenarios, the observed-score <span class="math inline">\(\tilde\delta_z\)</span> is substantially more sensitive to procedural heterogeneity than is <span class="math inline">\(\tilde\delta_{av}\)</span>. Based on this model and hypothetical example, it seems clear <span class="math inline">\(\tilde\delta_{av}\)</span> should be preferred over <span class="math inline">\(\tilde\delta_z\)</span> as a metric for meta-analysis. However, these relationships are predicated on a certain model for the study-specific parameters. One might object to this model because there’s a sense that we have assumed that <span class="math inline">\(\delta_{av}\)</span> is the right answer. After all, the underlying effect size model is specified in terms of <span class="math inline">\(\delta_{av}\)</span>, and the design parameters—including <span class="math inline">\(\rho\)</span> in particular—are treated as noise, uncorrelated with <span class="math inline">\(\delta_{av}\)</span>. What happens to the observed-score metrics <span class="math inline">\(\tilde\delta_z\)</span> and <span class="math inline">\(\tilde\delta_{av}\)</span> if we instead start with a model specified in terms of <span class="math inline">\(\delta_z\)</span>?</p>
 </section>
 <section id="a-model-for-delta_z" class="level3">
@@ -537,18 +537,18 @@ B_{av} = \frac{\sqrt{2}(1 - \rho)}{\sqrt{1 - \rho + \frac{1 - \phi}{\phi K}}}.
 <tr class="odd">
 <td style="text-align: left;">random</td>
 <td style="text-align: right;">0.085</td>
-<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.209</td>
 <td style="text-align: right;">2.5</td>
 <td style="text-align: right;">0.285</td>
-<td style="text-align: right;">0.182</td>
-<td style="text-align: right;">0.64</td>
+<td style="text-align: right;">0.181</td>
+<td style="text-align: right;">0.63</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">at least 0.64</td>
 <td style="text-align: right;">0.049</td>
-<td style="text-align: right;">0.173</td>
+<td style="text-align: right;">0.172</td>
 <td style="text-align: right;">3.5</td>
-<td style="text-align: right;">0.257</td>
+<td style="text-align: right;">0.258</td>
 <td style="text-align: right;">0.137</td>
 <td style="text-align: right;">0.53</td>
 </tr>
@@ -556,7 +556,7 @@ B_{av} = \frac{\sqrt{2}(1 - \rho)}{\sqrt{1 - \rho + \frac{1 - \phi}{\phi K}}}.
 </table>
 </div>
 </div>
-<p>The tables are now more or less turned. Under both reliability scenarios, <span class="math inline">\(B_z\)</span> has a lower coefficient of variation than <span class="math inline">\(B_{av}\)</span>, indicating that <span class="math inline">\(\tilde\delta_z\)</span> is less affected by procedural heterogeneity than is <span class="math inline">\(\tilde\delta_{av}\)</span>. However, <span class="math inline">\(\tilde\delta_z\)</span> is still affected in absolute terms, considering that the coefficient of variation for <span class="math inline">\(B_z\)</span> is about 79% of the coefficient of variation for <span class="math inline">\(A_z\)</span>. Of course, <span class="math inline">\(\tilde\delta_{av}\)</span> is quite strongly affected under this model, with a coefficient of variation of 0.257.</p>
+<p>The tables are now more or less turned. Under both reliability scenarios, <span class="math inline">\(B_z\)</span> has a lower coefficient of variation than <span class="math inline">\(B_{av}\)</span>, indicating that <span class="math inline">\(\tilde\delta_z\)</span> is less affected by procedural heterogeneity than is <span class="math inline">\(\tilde\delta_{av}\)</span>. However, <span class="math inline">\(\tilde\delta_z\)</span> is still affected in absolute terms, considering that the coefficient of variation for <span class="math inline">\(B_z\)</span> is about 79% of the coefficient of variation for <span class="math inline">\(A_z\)</span>. Of course, <span class="math inline">\(\tilde\delta_{av}\)</span> is quite strongly affected under this model, with a coefficient of variation of 0.258.</p>
 </section>
 <section id="consequences-for-heterogeneity" class="level3">
 <h3 class="anchored" data-anchor-id="consequences-for-heterogeneity">Consequences for heterogeneity</h3>
@@ -617,7 +617,7 @@ B_{av} = \frac{\sqrt{2}(1 - \rho)}{\sqrt{1 - \rho + \frac{1 - \phi}{\phi K}}}.
 </div>
 </div>
 </div>
-<p>Consider, for instance, a scenario where observed-score reliability is always at least 0.64 and <span class="math inline">\(\tau / \mu = 0.5\)</span>, which would be the case if effect sizes are normally distributed and about 97% of effect sizes are positive. Under the effect size model based on <span class="math inline">\(\delta_{av}\)</span>, the observed-score <span class="math inline">\(\tilde\delta_{av}\)</span> is hardly affected by measurement heterogeneity at all, with a CV of 0.504 but the CV of the observed-score <span class="math inline">\(\tilde\delta_z\)</span> is 0.543. Under the effect size model based on <span class="math inline">\(\delta_{av}\)</span>, the observed-score <span class="math inline">\(\tilde\delta_{av}\)</span> is strongly affected by measurement heterogeneity, with a CV of 0.591; in comparison, the CV of the observed-score <span class="math inline">\(\tilde\delta_z\)</span> of 0.528. Under both models, these increases in CV are effectively constant for larger values of <span class="math inline">\(\tau / \mu\)</span>.</p>
+<p>Consider, for instance, a scenario where observed-score reliability is always at least 0.64 and <span class="math inline">\(\tau / \mu = 0.5\)</span>, which would be the case if effect sizes are normally distributed and about 97% of effect sizes are positive. Under the effect size model based on <span class="math inline">\(\delta_{av}\)</span>, the observed-score <span class="math inline">\(\tilde\delta_{av}\)</span> is hardly affected by measurement heterogeneity at all, with a CV of 0.504 but the CV of the observed-score <span class="math inline">\(\tilde\delta_z\)</span> is 0.543. Under the effect size model based on <span class="math inline">\(\delta_{av}\)</span>, the observed-score <span class="math inline">\(\tilde\delta_{av}\)</span> is strongly affected by measurement heterogeneity, with a CV of 0.591; in comparison, the CV of the observed-score <span class="math inline">\(\tilde\delta_z\)</span> of 0.527. Under both models, these increases in CV are effectively constant for larger values of <span class="math inline">\(\tau / \mu\)</span>.</p>
 </section>
 </section>
 <section id="so-whats-your-point" class="level2">
@@ -646,12 +646,12 @@ B_{av} = \frac{\sqrt{2}(1 - \rho)}{\sqrt{1 - \rho + \frac{1 - \phi}{\phi K}}}.
   title = {Cohen’s \$d\_z\$ Makes Me Dizzy When Considering Measurement
     Error},
   date = {2023-02-17},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z},
+  url = {https://jepusto.com/posts/dizzy-for-d-z},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2023" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2023. <span>“Cohen’s $d_z$ Makes Me Dizzy When
-Considering Measurement Error.”</span> February 17, 2023. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z">https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z</a>.
+Considering Measurement Error.”</span> February 17, 2023. <a href="https://jepusto.com/posts/dizzy-for-d-z">https://jepusto.com/posts/dizzy-for-d-z</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -785,7 +785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

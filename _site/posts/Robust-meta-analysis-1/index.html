@@ -146,7 +146,7 @@ window.Quarto = {
 <meta name="citation_cover_date" content="2014-04-21">
 <meta name="citation_year" content="2014">
 <meta name="citation_online_date" content="2014-04-21">
-<meta name="citation_fulltext_html_url" content="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-1">
+<meta name="citation_fulltext_html_url" content="https://jepusto.com/posts/Robust-meta-analysis-1">
 <meta name="citation_language" content="en">
 </head>
 
@@ -484,7 +484,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="notes" class="level3">
 <h3 class="anchored" data-anchor-id="notes">Notes</h3>
 <p>It would be straight-forward to add a few more functions that provide robust standard errors for univariate meta-analysis models as well. All that it would take is to write <code>bread</code> and <code>estfun</code> methods for the class <code>rma.uni</code>.</p>
-<p>Also, Beth <a href="https://www.sree.org/conferences/2014s/program/downloads/abstracts/1089.pdf">has recently proposed</a> small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <a href="http://www.amstat.org/sections/SRMS/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, &amp; Botts (2001)</a>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I’ve done here, by building out the <code>estfun</code> method to provide BRL results. It would take a little more thought, but actually it would be worth doing–and treating the general case–because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</p>
+<p>Also, Beth has recently proposed small-sample corrections to the cluster-robust estimators, based on the bias-reduced linearization (BRL) approach of <a href="http://www.asasrms.org/Proceedings/y2001/Proceed/00264.pdf">McCaffrey, Bell, &amp; Botts (2001)</a>. It seems to me that these small-sample corrections could also be implemented using an approach similar to what I’ve done here, by building out the <code>estfun</code> method to provide BRL results. It would take a little more thought, but actually it would be worth doing–and treating the general case–because BRL seems like it would be useful for all sorts of models besides multi-variate meta-analysis.</p>
 
 
 <!-- -->
@@ -495,12 +495,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
   author = {Pustejovsky, James E.},
   title = {A Meta-Sandwich},
   date = {2014-04-21},
-  url = {https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-1},
+  url = {https://jepusto.com/posts/Robust-meta-analysis-1},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pustejovsky2014" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pustejovsky, James E. 2014. <span>“A Meta-Sandwich.”</span> April 21,
-2014. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-1">https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-1</a>.
+2014. <a href="https://jepusto.com/posts/Robust-meta-analysis-1">https://jepusto.com/posts/Robust-meta-analysis-1</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -634,7 +634,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/mellifluous-buttercream-e2edd2\.netlify\.app");
+      var filterRegex = new RegExp("https:\/\/jepusto\.com");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

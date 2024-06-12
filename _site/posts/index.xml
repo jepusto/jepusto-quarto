@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>posts</title>
-<link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/</link>
-<atom:link href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://jepusto.com/posts/</link>
+<atom:link href="https://jepusto.com/posts/index.xml" rel="self" type="application/rss+xml"/>
 <description>Education Statistics and Meta-Analysis</description>
 <generator>quarto-1.4.552</generator>
 <lastBuildDate>Thu, 06 Jun 2024 05:00:00 GMT</lastBuildDate>
 <item>
   <title>Correlations between z-transformed correlation coefficients</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations/</link>
+  <link>https://jepusto.com/posts/correlated-z-transformed-correlations/</link>
   <description><![CDATA[ 
 
 
@@ -303,13 +303,13 @@ Correlation Coefficients.”</span> June 6, 2024. <a href="https://mellifluous-b
   <category>correlation</category>
   <category>distribution theory</category>
   <category>meta-analysis</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/correlated-z-transformed-correlations/</guid>
+  <guid>https://jepusto.com/posts/correlated-z-transformed-correlations/</guid>
   <pubDate>Thu, 06 Jun 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Distribution of the number of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects/</link>
+  <link>https://jepusto.com/posts/distribution-of-significant-effects/</link>
   <description><![CDATA[ 
 
 
@@ -1141,13 +1141,13 @@ Significant Effect Sizes.”</span> March 28, 2024. <a href="https://mellifluous
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/distribution-of-significant-effects/</guid>
+  <guid>https://jepusto.com/posts/distribution-of-significant-effects/</guid>
   <pubDate>Thu, 28 Mar 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Approximating the distribution of cluster-robust Wald statistics</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests/</link>
+  <link>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</link>
   <description><![CDATA[ 
 
 
@@ -1205,13 +1205,13 @@ Cluster-Robust Wald Statistics.”</span> March 24, 2024. <a href="https://melli
 </div></div></section></div> ]]></description>
   <category>robust variance estimation</category>
   <category>distribution theory</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Approximating-cluster-robust-Wald-tests/</guid>
+  <guid>https://jepusto.com/posts/Approximating-cluster-robust-Wald-tests/</guid>
   <pubDate>Sun, 24 Mar 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implementing Consul’s generalized Poisson distribution in Stan</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/</link>
+  <link>https://jepusto.com/posts/generalized-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
 
@@ -1504,7 +1504,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1793,7 +1793,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/check-quantile-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/check-quantile-plot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2157,7 +2157,7 @@ font-style: inherit;">"none"</span>) </span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/check-rng-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/check-rng-plot-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2339,7 +2339,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/test-sample-moments-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/test-sample-moments-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -2463,7 +2463,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/glm-scatterplot-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/glm-scatterplot-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -3411,7 +3411,7 @@ font-style: inherit;">2.0</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/dispersion-comparison-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/dispersion-comparison-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -3637,7 +3637,7 @@ font-style: inherit;">2.1</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -3763,7 +3763,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3999,7 +3999,7 @@ font-style: inherit;">3.5</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residuals-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residuals-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -4333,7 +4333,7 @@ font-style: inherit;">"Loess smooth of squared residuals"</span>)</span></code><
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residual-smooth-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://jepusto.com/posts/generalized-poisson-in-Stan/index_files/figure-html/ppd-residual-smooth-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -4423,13 +4423,13 @@ Poisson Distribution in Stan.”</span> December 6, 2023. <a href="https://melli
   <category>generalized linear model</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/</guid>
+  <guid>https://jepusto.com/posts/generalized-poisson-in-Stan/</guid>
   <pubDate>Wed, 06 Dec 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implementing Efron’s double Poisson distribution in Stan</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/</link>
+  <link>https://jepusto.com/posts/double-poisson-in-Stan/</link>
   <description><![CDATA[ 
 
 
@@ -4711,7 +4711,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5033,7 +5033,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5378,7 +5378,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5830,7 +5830,7 @@ font-style: inherit;">"none"</span>) </span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -5944,7 +5944,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -6354,7 +6354,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/DPO-dispersion-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/DPO-dispersion-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -6660,7 +6660,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppd-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -6832,7 +6832,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppd-grouped-1.png" class="img-fluid figure-img" width="1152"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppd-grouped-1.png" class="img-fluid figure-img" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -6992,7 +6992,7 @@ font-style: inherit;">1.3</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="https://jepusto.com/posts/double-poisson-in-Stan/index_files/figure-html/ppc-dispersion-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -7096,14 +7096,14 @@ Distribution in Stan.”</span> September 15, 2023. <a href="https://mellifluous
   <category>generalized linear model</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/double-poisson-in-Stan/</guid>
+  <guid>https://jepusto.com/posts/double-poisson-in-Stan/</guid>
   <pubDate>Fri, 15 Sep 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Cluster-Bootstrapping a meta-analytic selection model</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
   <dc:creator>Megha Joshi</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/</link>
+  <link>https://jepusto.com/posts/cluster-bootstrap-selection-model/</link>
   <description><![CDATA[ 
 
 
@@ -11607,7 +11607,7 @@ font-style: inherit;">"gray75"</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="https://jepusto.com/posts/cluster-bootstrap-selection-model/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -12803,13 +12803,13 @@ Pustejovsky, J. E., &amp; Joshi, M. (2023, March 30).
   <category>publication bias</category>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/</guid>
+  <guid>https://jepusto.com/posts/cluster-bootstrap-selection-model/</guid>
   <pubDate>Thu, 30 Mar 2023 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Cohen’s \(d_z\) makes me dizzy when considering measurement error</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/</link>
+  <link>https://jepusto.com/posts/dizzy-for-d-z/</link>
   <description><![CDATA[ 
 
 
@@ -13042,7 +13042,7 @@ font-style: inherit;">+</span> p_A_z</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13103,7 +13103,7 @@ font-style: inherit;">+</span> p_A_z_trunc</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13211,7 +13211,7 @@ font-style: inherit;">+</span> p_B_z</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13272,7 +13272,7 @@ font-style: inherit;">+</span> p_B_z_trunc</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -13863,7 +13863,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/dizzy-for-d-z/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -13908,13 +13908,13 @@ Considering Measurement Error.”</span> February 17, 2023. <a href="https://mel
   <category>standardized mean difference</category>
   <category>design-comparable SMD</category>
   <category>measurement-error</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/dizzy-for-d-z/</guid>
+  <guid>https://jepusto.com/posts/dizzy-for-d-z/</guid>
   <pubDate>Fri, 17 Feb 2023 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018), redux</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux/</link>
+  <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux/</link>
   <description><![CDATA[ 
 
 
@@ -13971,13 +13971,13 @@ and Tipton (2018), redux</em>. <a href="https://mellifluous-buttercream-e2edd2.n
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2-redux/</guid>
+  <guid>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2-redux/</guid>
   <pubDate>Mon, 07 Nov 2022 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Corrigendum to Pustejovsky and Tipton (2018)</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2/</link>
+  <link>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2/</link>
   <description><![CDATA[ 
 
 
@@ -14418,13 +14418,13 @@ and Tipton (2018)</em>. <a href="https://mellifluous-buttercream-e2edd2.netlify.
   <category>robust variance estimation</category>
   <category>econometrics</category>
   <category>matrix algebra</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Pusto-Tipton-2018-Theorem-2/</guid>
+  <guid>https://jepusto.com/posts/Pusto-Tipton-2018-Theorem-2/</guid>
   <pubDate>Wed, 28 Sep 2022 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Variance component estimates in meta-analysis with mis-specified sampling correlation</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/</link>
+  <link>https://jepusto.com/posts/variance-components-with-misspecified-correlation/</link>
   <description><![CDATA[ 
 
 
@@ -14939,7 +14939,7 @@ font-style: inherit;">"none"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -15356,7 +15356,7 @@ font-style: inherit;">"bottom"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="https://jepusto.com/posts/variance-components-with-misspecified-correlation/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -15397,13 +15397,13 @@ Meta-Analysis with Mis-Specified Sampling Correlation.”</span> November
   <category>dependent effect sizes</category>
   <category>distribution theory</category>
   <category>hierarchical models</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/variance-components-with-misspecified-correlation/</guid>
+  <guid>https://jepusto.com/posts/variance-components-with-misspecified-correlation/</guid>
   <pubDate>Sun, 28 Nov 2021 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Implications of mean-variance relationships for standardized mean differences</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/</link>
+  <link>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/</link>
   <description><![CDATA[ 
 
 
@@ -15876,7 +15876,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -15968,7 +15968,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -16130,7 +16130,7 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16250,7 +16250,7 @@ font-style: inherit;">0.9</span>))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16330,7 +16330,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -16455,7 +16455,7 @@ font-style: inherit;">+</span> Ti_d_plot</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -16621,7 +16621,7 @@ font-style: inherit;">+</span> Ti_lRR_plot</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -16703,13 +16703,13 @@ Relationships for Standardized Mean Differences.”</span> November 2,
   <category>response ratio</category>
   <category>distribution theory</category>
   <category>meta-analysis</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/mean-variance-relationships-and-SMDs/</guid>
+  <guid>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/</guid>
   <pubDate>Tue, 02 Nov 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Inverting partitioned matrices</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices/</link>
+  <link>https://jepusto.com/posts/inverting-partitioned-matrices/</link>
   <description><![CDATA[ 
 
 
@@ -16743,13 +16743,13 @@ Pustejovsky, James E. 2021. <span>“Inverting Partitioned
 Matrices.”</span> October 20, 2021. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices">https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices</a>.
 </div></div></section></div> ]]></description>
   <category>matrix algebra</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/inverting-partitioned-matrices/</guid>
+  <guid>https://jepusto.com/posts/inverting-partitioned-matrices/</guid>
   <pubDate>Wed, 20 Oct 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Standardized mean differences in single-group, repeated measures designs</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group/</link>
+  <link>https://jepusto.com/posts/SMDs-in-single-group/</link>
   <description><![CDATA[ 
 
 
@@ -16791,13 +16791,13 @@ Single-Group, Repeated Measures Designs.”</span> October 6, 2021. <a href="htt
   <category>effect size</category>
   <category>standardized mean difference</category>
   <category>distribution theory</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/SMDs-in-single-group/</guid>
+  <guid>https://jepusto.com/posts/SMDs-in-single-group/</guid>
   <pubDate>Wed, 06 Oct 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Finding the distribution of significant effect sizes</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects/</link>
+  <link>https://jepusto.com/posts/number-of-significant-effects/</link>
   <description><![CDATA[ 
 
 
@@ -16835,13 +16835,13 @@ Significant Effect Sizes.”</span> April 27, 2021. <a href="https://mellifluous
 </div></div></section></div> ]]></description>
   <category>effect size</category>
   <category>distribution theory</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/number-of-significant-effects/</guid>
+  <guid>https://jepusto.com/posts/number-of-significant-effects/</guid>
   <pubDate>Tue, 27 Apr 2021 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The Woodbury identity</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity/</link>
+  <link>https://jepusto.com/posts/Woodbury-identity/</link>
   <description><![CDATA[ 
 
 
@@ -16915,13 +16915,13 @@ December 4, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/po
 </div></div></section></div> ]]></description>
   <category>hierarchical models</category>
   <category>matrix algebra</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Woodbury-identity/</guid>
+  <guid>https://jepusto.com/posts/Woodbury-identity/</guid>
   <pubDate>Fri, 04 Dec 2020 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>An ANCOVA puzzler</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler/</link>
+  <link>https://jepusto.com/posts/ancova-puzzler/</link>
   <description><![CDATA[ 
 
 
@@ -17062,13 +17062,13 @@ Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
   <category>meta-analysis</category>
   <category>effect size</category>
   <category>standardized mean difference</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/ancova-puzzler/</guid>
+  <guid>https://jepusto.com/posts/ancova-puzzler/</guid>
   <pubDate>Tue, 24 Nov 2020 06:00:00 GMT</pubDate>
 </item>
 <item>
   <title>From Longhorn to Badger</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger/</link>
+  <link>https://jepusto.com/posts/from-longhorn-to-badger/</link>
   <description><![CDATA[ 
 
 
@@ -17095,13 +17095,13 @@ Pustejovsky, James E. 2020. <span>“An ANCOVA Puzzler.”</span> November
 Pustejovsky, James E. 2020. <span>“From Longhorn to Badger.”</span>
 August 28, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger">https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger</a>.
 </div></div></section></div> ]]></description>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/from-longhorn-to-badger/</guid>
+  <guid>https://jepusto.com/posts/from-longhorn-to-badger/</guid>
   <pubDate>Fri, 28 Aug 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What do meta-analysts mean by ‘multivariate’ meta-analysis?</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean/</link>
+  <link>https://jepusto.com/posts/what-does-multivariate-mean/</link>
   <description><![CDATA[ 
 
 
@@ -17119,7 +17119,7 @@ August 28, 2020. <a href="https://mellifluous-buttercream-e2edd2.netlify.app/pos
 </div>
 </div>
 <p>As another example, consider that introductory statistics students always struggle to distinguish between no less than <strong><em>three</em></strong> different concepts that are all called “variance”: population variance, sample variance, and sampling variance.<sup>2</sup> Unless the instructor also took diction training from the Royal Shakespeare Company, it’s no wonder that a fair number of students are left confused.</p>
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/img/Hamlet-z-transform.jpg" class="img-fluid"></p>
+<p><img src="https://jepusto.com/img/Hamlet-z-transform.jpg" class="img-fluid"></p>
 <p>In this post, I will try to clarify (at least a little bit) another mess of terminology that crops up a lot in my work on meta-analysis: what do we mean when we say a model or method is “multivariate”? In the context of meta-analysis methods, I think there are at least three distinct senses in which this term is used:</p>
 <ul>
 <li>As an umbrella term for models/methods where there is more than one effect size estimate per study,</li>
@@ -17242,13 +17242,13 @@ Pustejovsky, J. E. (2020, June 27). <em>What do meta-analysts mean by
   <category>meta-analysis</category>
   <category>multivariate</category>
   <category>dependent effect sizes</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/what-does-multivariate-mean/</guid>
+  <guid>https://jepusto.com/posts/what-does-multivariate-mean/</guid>
   <pubDate>Sat, 27 Jun 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Weighting in multivariate meta-analysis</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/</link>
+  <link>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</link>
   <description><![CDATA[ 
 
 
@@ -17315,7 +17315,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></p>
+<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="480"></p>
 </figure>
 </div>
 </div>
@@ -17325,7 +17325,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -17582,7 +17582,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="384"></p>
 </figure>
 </div>
 </div>
@@ -17702,7 +17702,7 @@ font-style: inherit;">w =</span> w_ij_no_omega))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -17712,7 +17712,7 @@ font-style: inherit;">w =</span> w_ij_no_omega))</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -18013,13 +18013,13 @@ Meta-Analysis.”</span> June 9, 2020. <a href="https://mellifluous-buttercream-
 </div></div></section></div> ]]></description>
   <category>meta-analysis</category>
   <category>weighting</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/weighting-in-multivariate-meta-analysis/</guid>
+  <guid>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/</guid>
   <pubDate>Tue, 09 Jun 2020 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>An update on code folding with blogdown + Academic theme</title>
   <dc:creator>James E. Pustejovsky</dc:creator>
-  <link>https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update/</link>
+  <link>https://jepusto.com/posts/code-folding-update/</link>
   <description><![CDATA[ 
 
 
@@ -18182,7 +18182,7 @@ font-style: inherit;">=</span> false</span></code></pre></div>
 <p>The above parameters are defaults for your entire site. To over-ride the defaults, you can also set the parameters in the YAML header of any post:</p>
 <ul>
 <li>Set <code>disable_codefolding: true</code> to turn off code folding for the post.</li>
-<li>Set <code>codefolding_show: hide</code> to hide the code blocks in the post (as in <a href="../..\package-downloads/">this post</a>).</li>
+<li>Set <code>codefolding_show: hide</code> to hide the code blocks in the post (as in <a href="../..\posts/package-downloads/">this post</a>).</li>
 <li>Set <code>codefolding_nobutton: true</code> to turn off the “Show/hide code” button at the top of the post (as in the present post).</li>
 </ul>
 <p>I hope these instructions work for you. If not, questions, corrections, and clarifications are welcome. Happy blogging, y’all!</p>
@@ -18203,7 +18203,7 @@ Blogdown + Academic Theme.”</span> May 3, 2020. <a href="https://mellifluous-b
 </div></div></section></div> ]]></description>
   <category>programming</category>
   <category>Rstats</category>
-  <guid>https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update/</guid>
+  <guid>https://jepusto.com/posts/code-folding-update/</guid>
   <pubDate>Sun, 03 May 2020 05:00:00 GMT</pubDate>
 </item>
 </channel>

@@ -346,7 +346,7 @@
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/PET-PEESE-performance/index.html</loc>
-    <lastmod>2024-06-10T13:45:39.980Z</lastmod>
+    <lastmod>2024-06-10T14:59:44.515Z</lastmod>
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/parallel-R-on-TACC/index.html</loc>
@@ -378,7 +378,7 @@
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/getting-started-with-scdhlm/index.html</loc>
-    <lastmod>2024-05-21T21:54:43.305Z</lastmod>
+    <lastmod>2024-06-10T15:03:59.566Z</lastmod>
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/generalized-poisson-in-Stan/index.html</loc>
@@ -414,7 +414,7 @@
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/code-folding-update/index.html</loc>
-    <lastmod>2024-06-10T13:50:30.656Z</lastmod>
+    <lastmod>2024-06-10T14:55:36.708Z</lastmod>
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/cluster-bootstrap-selection-model/index.html</loc>
@@ -626,7 +626,7 @@
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/Robust-meta-analysis-3/index.html</loc>
-    <lastmod>2024-06-07T19:34:05.390Z</lastmod>
+    <lastmod>2024-06-10T15:05:38.081Z</lastmod>
   </url>
   <url>
     <loc>https://mellifluous-buttercream-e2edd2.netlify.app/posts/SCD-effect-size-sensitivities/index.html</loc>
@@ -961,39 +961,59 @@
     <lastmod>2024-06-10T02:32:11.696Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/code-folding-update/index.html</loc>
-    <lastmod>2024-06-10T14:55:36.708Z</lastmod>
+    <loc>https://jepusto.com/posts/code-folding-with-blogdown-academic/index.html</loc>
+    <lastmod>2024-06-12T01:48:54.050Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/package-downloads/index.html</loc>
     <lastmod>2024-06-08T20:45:25.322Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/code-folding-with-blogdown-academic/index.html</loc>
-    <lastmod>2024-06-10T13:50:20.566Z</lastmod>
+    <loc>https://jepusto.com/posts/Robust-meta-analysis-1/index.html</loc>
+    <lastmod>2024-06-10T13:38:27.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/publication/index.html</loc>
+    <lastmod>2024-06-10T14:41:13.905Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/index.html</loc>
+    <lastmod>2024-06-10T14:40:11.990Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/generalized-poisson-in-Stan/index.html</loc>
+    <lastmod>2024-06-10T00:26:22.415Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/dizzy-for-d-z/index.html</loc>
+    <lastmod>2024-06-09T17:44:26.853Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/mean-variance-relationships-and-SMDs/index.html</loc>
+    <lastmod>2024-06-09T17:53:59.278Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/posts/weighting-in-multivariate-meta-analysis/index.html</loc>
+    <lastmod>2024-06-09T00:25:32.835Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/PET-PEESE-performance/index.html</loc>
     <lastmod>2024-06-10T14:59:44.515Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/What-is-Tau-U/index.html</loc>
-    <lastmod>2024-06-10T13:43:06.461Z</lastmod>
+    <loc>https://jepusto.com/posts/Crashes-in-Austin-and-Travis-Co/index.html</loc>
+    <lastmod>2024-06-07T19:34:05.380Z</lastmod>
   </url>
   <url>
-    <loc>https://jepusto.com/posts/NAP-SEs-and-CIs/index.html</loc>
-    <lastmod>2024-06-10T13:39:56.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/getting-started-with-scdhlm/index.html</loc>
-    <lastmod>2024-06-10T15:03:59.566Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jepusto.com/posts/Robust-meta-analysis-3/index.html</loc>
-    <lastmod>2024-06-10T15:05:38.081Z</lastmod>
+    <loc>https://jepusto.com/posts/PIR-overestimates-prevalence/index.html</loc>
+    <lastmod>2024-06-12T02:15:39.285Z</lastmod>
   </url>
   <url>
     <loc>https://jepusto.com/posts/ARPobservation-basic-use/index.html</loc>
     <lastmod>2024-06-07T19:34:05.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jepusto.com/software/clubSandwich/index.html</loc>
+    <lastmod>2024-06-12T02:17:47.283Z</lastmod>
   </url>
 </urlset>
