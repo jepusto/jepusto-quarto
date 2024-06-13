@@ -1,13 +1,11 @@
 ---
 title: An ANCOVA puzzler
-
 date: '2020-11-24'
 categories:
 - meta-analysis
 - effect size
 - standardized mean difference
 code-tools: true
-
 ---
 
 Doing effect size calculations for meta-analysis is a good way to lose your faith in humanity---or at least your faith in researchers' abilities to do anything like sensible statistical inference. Try it, and you're surely encounter head-scratchingly weird ways that authors have reported even simple analyses, like basic group comparisons. When you encounter this sort of thing, you have two paths: you can despair, curse, and/or throw things, or you can view the studies as curious little puzzles---brain-teasers, if you will---to keep you awake and prevent you from losing track of those notes you took during your stats courses, back when. Here's one of those curious little puzzles, which I recently encountered in helping a colleague with a meta-analysis project.

@@ -14,10 +14,10 @@ toc-title: Contents
 ## Appendix
 
 # Enable CC licence appendix
-license: "CC BY"
+# license: "CC BY"
 
 # Default fields for citation
-citation: true
+# citation: true
 google-scholar: true
 
 comments: 
