@@ -20,7 +20,7 @@ people-group: Alumni
 listing:
   - id: publications
     contents: 
-      - "../../publication/**/*.qmd"
+      - "../../publications/**/*.qmd"
       - "../../presentations/*.qmd"
       - "../../posts/**/*.qmd"
     sort: 

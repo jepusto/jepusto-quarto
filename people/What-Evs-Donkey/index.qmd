@@ -17,7 +17,6 @@ org_name: National Organic Standards Board
 org_url: ''
 role: Lab mascot
 people-group: Mascot
-
 ---
 
 :::::{#about}

@@ -13,6 +13,26 @@ org_name: University of Wisconsin-Madison
 org_url: ''
 role: Graduate student
 people-group: Current Advisees
+listing:
+  - id: publications
+    contents: 
+      - "../../publications/**/*.qmd"
+      - "../../presentations/*.qmd"
+      - "../../posts/**/*.qmd"
+    sort: 
+      - "date desc"
+    type: table
+    categories: false
+    sort-ui: false
+    filter-ui: false
+    max-items: 50
+    fields: [date, author, title, publication]
+    field-display-names:
+      date: "Date"
+      author: "Authors"
+      title: "Title"
+    include: 
+      author: 'Paulina Grekov'
 ---
 
 :::::{#about}
