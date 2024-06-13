@@ -6,7 +6,6 @@ categories:
 - correlation
 - distribution theory
 - meta-analysis
-code-tools: true
 code-fold: true
 ---
 
