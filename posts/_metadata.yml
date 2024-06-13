@@ -20,6 +20,11 @@ license: "CC BY"
 citation: true
 google-scholar: true
 
+comments: 
+  utterances:
+    repo: jepusto/jepusto-quarto
+    label: comment
+
 author:
   - name: 
       given: James E. 

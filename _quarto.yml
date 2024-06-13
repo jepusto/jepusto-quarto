@@ -35,12 +35,11 @@ website:
           - icon: rss
             text: Publications
             href: publication/index.xml
-            
-comments: 
-  utterances:
-    repo: jepusto/jepusto-quarto
-    label: comment
-
+  page-footer: 
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/) <br>
+      [{{< fa brands github >}} Source](https://github.com/jepusto/jepusto-quarto)
+    
 format:
   html:
     theme: 
