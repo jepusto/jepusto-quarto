@@ -1,4 +1,3 @@
-- Create a template for software pages
 - Add citations and bibtex to publication pages
 
 - Publish on netlify
@@ -10,3 +9,4 @@
 - posts/distribution-of-significant-effects
   - Add moment approximations to interactive graph
 - Update Danny's profile
+- Create a template for software pages
