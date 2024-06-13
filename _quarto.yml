@@ -35,10 +35,11 @@ website:
           - icon: rss
             text: Publications
             href: publication/index.xml
-  comments: 
-    utterances:
-      repo: jepusto/jepusto-quarto
-      label: comment
+            
+comments: 
+  utterances:
+    repo: jepusto/jepusto-quarto
+    label: comment
 
 format:
   html:
