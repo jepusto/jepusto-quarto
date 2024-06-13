@@ -23,7 +23,6 @@ google-scholar: true
 comments: 
   utterances:
     repo: jepusto/jepusto-quarto
-    label: comment
 
 author:
   - name: 
