@@ -2,8 +2,12 @@
 title: Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies
 author:
 - Megha Joshi
-- James E. Pustejovsky
-- S. Natasha Beretvas
+- name: 
+    given: James E.
+    family: Pustejovsky
+- name: 
+    given: S. Natasha
+    family: Beretvas
 date: 2022-02-08T00:00:00
 publish_date: 2022-02-25T00:00:00
 publication_type: Journal article
@@ -11,6 +15,14 @@ publication: Research Synthesis Methods
 volume: 13
 issue: 4
 pages: 457-477
+citation: 
+  type: article-journal
+  container-title: Research Synthesis Methods
+  doi: 10.1002/jrsm.1554
+  url: https://doi.org/10.1002/jrsm.1554
+  volume: 13
+  issue: 4
+  page: 457-477
 categories:
 - meta-analysis
 - robust variance estimation

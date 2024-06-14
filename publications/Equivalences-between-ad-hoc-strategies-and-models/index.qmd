@@ -1,13 +1,21 @@
 ---
 title: Equivalences between ad hoc strategies and meta-analytic models for dependent effect sizes
 author:
-- James E. Pustejovsky
+- name: 
+    given: James E. 
+    family: Pustejovsky
 - Man Chen
 date: 2024-03-07T00:00:00
 publish_date: 2024-03-07T00:00:00
 publication_type: Journal article
 publication: Journal of Educational and Behavioral Statistics
 pages: advance online publication
+citation: 
+  type: article-journal
+  container-title: Journal of Educational and Behavioral Statistics
+  doi: 10.3102/10769986241232524
+  url: https://doi.org/10.3102/10769986241232524
+  page: advance online publication
 categories:
 - meta-analysis
 - meta-regression
