@@ -1,16 +1,17 @@
 ---
-title: 'Design-comparable effect sizes in multiple baseline designs: A general modeling framework'
+title: 'Design-comparable effect sizes in multiple baseline designs: A general modeling
+  framework'
 author:
-- James E. Pustejovsky
-- Larry V. Hedges
-- William R. Shadish
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Larry V.
+    family: Hedges
+- name:
+    given: William R.
+    family: Shadish
 date: 2014-10-01T00:00:00
-publish_date: 2014-10-01T00:00:00
-publication_type: Journal article
-publication: Journal of Educational and Behavioral Statistics
-volume: 39
-issue: 5
-pages: 368-393
 categories:
 - single-case design
 - design-comparable SMD
@@ -31,6 +32,16 @@ links:
 - text: Web app
   url: https://jepusto.shinyapps.io/scdhlm/
   icon: tablet
+citation:
+  type: article-journal
+  container-title: Journal of Educational and Behavioral Statistics
+  url: https://doi.org/10.3102/1076998614547577
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 39
+  issue: 5
+  page: 368-393
+
 ---
 
 In single-case research, the multiple baseline design is a widely used approach for evaluating the effects of interventions on individuals. Multiple baseline designs involve repeated measurement of outcomes over time and the controlled introduction of a treatment at different times for different individuals. This article outlines a general framework for defining effect sizes in multiple baseline designs that are directly comparable to the standardized mean difference from a between-subjects randomized experiment. The target, design-comparable effect size parameter can be estimated using restricted maximum likelihood together with a small sample correction analogous to Hedges’s g. The approach is demonstrated using hierarchical linear models that include baseline time trends and treatment-by-time interactions. A simulation compares the performance of the proposed estimator to that of an alternative, and an application illustrates the model-fitting process.
+

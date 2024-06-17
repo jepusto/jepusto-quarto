@@ -1,16 +1,16 @@
 ---
 title: Introduction to the special issue on single-case systematic reviews and meta-analysis
 author:
-- Daniel M. Maggin
-- Kathleen L. Lane
-- James E. Pustejovsky
+- name:
+    given: Daniel M.
+    family: Maggin
+- name:
+    given: Kathleen L.
+    family: Lane
+- name:
+    given: James E.
+    family: Pustejovsky
 date: 2017-11-01T00:00:00
-publish_date: 2017-11-01T00:00:00
-publication_type: Journal article
-publication: Remedial and Special Education
-volume: 38
-issue: 6
-pages: 323-330
 categories:
 - effect size
 - meta-analysis
@@ -19,7 +19,17 @@ links:
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517717043
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Remedial and Special Education
+  url: http://dx.doi.org/10.1177/0741932517717043
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 38
+  issue: 6
+  page: 323-330
+
 ---
 
 This special issue provides an update on recent conceptual and methodological developments for conducting systematic reviews and meta-analyses of single-case research. In this introductory article, we (a) describe the important role of systematic reviews and meta-analyses within special education; (b) discuss several methodological issues authors must consider when planning and conducting a rigorous single-case review; and (c) summarize current approaches for addressing each of these issues. Following this overview, we describe each article in the special issue, paying particular attention to the methodological areas highlighted. We conclude with recommendations for continued research and development in several areas.
+
 

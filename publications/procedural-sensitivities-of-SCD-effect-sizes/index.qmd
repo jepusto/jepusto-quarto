@@ -1,14 +1,11 @@
 ---
-title: Procedural sensitivities of effect sizes for single-case designs with behavioral outcome measures
-author: 
- - James E. Pustejovsky
+title: Procedural sensitivities of effect sizes for single-case designs with behavioral
+  outcome measures
+author:
+- name:
+    given: James E.
+    family: Pustejovsky
 date: 2019-04-01T00:00:00
-publish_date: 2019-04-01T00:00:00
-publication_type: Journal article
-publication: Psychological Methods
-volume: 24
-issue: 2
-pages: 217-235
 categories:
 - alternating renewal process
 - effect size
@@ -16,7 +13,10 @@ categories:
 - single-case design
 - behavioral observation
 - non-overlap measures
-image-alt: Conditional range distributions of the non-overlap effect size measures for each procedural factor, by percentage change from baseline to treatment. For clarity of illustration, the conditional range distributions for PND are truncated at 40.
+image-alt: Conditional range distributions of the non-overlap effect size measures
+  for each procedural factor, by percentage change from baseline to treatment. For
+  clarity of illustration, the conditional range distributions for PND are truncated
+  at 40.
 links:
 - text: Journal
   url: http://dx.doi.org/10.1037/met0000179
@@ -26,7 +26,17 @@ links:
 - icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/vxa86
+citation:
+  type: article-journal
+  container-title: Psychological Methods
+  url: http://dx.doi.org/10.1037/met0000179
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 24
+  issue: 2
+  page: 217-235
+
 ---
 
 A wide variety of effect size indices have been proposed for quantifying the magnitude of treatment effects in single-case designs. Commonly used measures include parametric indices such as the standardized mean difference, as well as non-overlap measures such as the percentage of non-overlapping data, improvement rate difference, and non-overlap of all pairs. Currently, little is known about the properties of these indices when applied to behavioral data collected by systematic direct observation, even though systematic direct observation is the most common method for outcome measurement in single-case research. This study uses Monte Carlo simulation to investigate the properties of several widely used single-case effect size measures when applied to systematic direct observation data. Results indicate that the magnitude of the non-overlap measures and of the standardized mean difference can be strongly influenced by procedural details of the study's design, which is a significant limitation to using these indices as effect sizes for meta-analysis of single-case designs. A less widely used parametric index, the log-response ratio, has the advantage of being insensitive to sample size and observation session length, although its magnitude is influenced by the use of partial interval recording.
+
 

@@ -1,25 +1,44 @@
 ---
-title: 'Considering instructional contexts in AAC interventions for people with ASD and/or IDD experiencing complex communication needs: A single-case design meta-analysis'
+title: 'Considering instructional contexts in AAC interventions for people with ASD
+  and/or IDD experiencing complex communication needs: A single-case design meta-analysis'
 author:
-- Jay B. Ganz
-- James E. Pustejovsky
-- Joe Reichle
-- Kimberly J. Vannest
-- Margaret Foster
-- April N. Haas
-- Lauren M. Pierson
-- Sanikan Wattanawongwan
-- Amando Bernal
-- Man Chen
-- Rachel Skov
-- S. D. Smith
+- name:
+    given: Jay B.
+    family: Ganz
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Joe
+    family: Reichle
+- name:
+    given: Kimberly J.
+    family: Vannest
+- name:
+    given: Margaret
+    family: Foster
+- name:
+    given: April N.
+    family: Haas
+- name:
+    given: Lauren M.
+    family: Pierson
+- name:
+    given: Sanikan
+    family: Wattanawongwan
+- name:
+    given: Amando
+    family: Bernal
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: Rachel
+    family: Skov
+- name:
+    given: S. D.
+    family: Smith
 date: 2022-04-20T00:00:00
-publish_date: 2022-04-20T00:00:00
-publication_type: Journal article
-publication: Review Journal of Autism and Developmental Disorders 
-volume: 10
-issue: 
-pages: 615-629
 categories:
 - single-case design
 - systematic review
@@ -37,7 +56,16 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
+citation:
+  type: article-journal
+  container-title: Review Journal of Autism and Developmental Disorders
+  url: https://doi.org/10.1007/s40489-022-00314-w
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 10
+  page: 615-629
+
 ---
 
 For children with autism or intellectual and developmental disabilities who also have complex communication needs, communication is a necessary skill set to increase independence and quality of life. Understanding the how, where, and communication style being taught is important for identifying deficits in the field as well as which interventions are most effective. This meta-analysis sought to identify effectiveness among different settings, behavioral strategies, and moderator variables. A systematic search and screening process identified 114 eligible studies with 330 participants; overall outcomes indicate that augmentative and alternative communication interventions were effective with Tau effects ranging from 0.53 to 1.03 and log response ratio effects ranging from 0.21 to 2.90. However, no instructional context variables systematically predicted differences in intervention effectiveness.
+
 

@@ -1,15 +1,14 @@
 ---
-title: Small sample methods for cluster-robust variance estimation and hypothesis testing in fixed effects models
+title: Small sample methods for cluster-robust variance estimation and hypothesis
+  testing in fixed effects models
 author:
-- James E. Pustejovsky
-- Elizabeth Tipton
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Elizabeth
+    family: Tipton
 date: 2018-11-02T00:00:00
-publish_date: 2018-11-02T00:00:00
-publication_type: Journal article
-publication: Journal of Business and Economic Statistics
-volume: 36
-issue: 4
-pages: 672-683
 categories:
 - robust variance estimation
 - panel data
@@ -27,7 +26,17 @@ links:
 - text: R package
   url: https://CRAN.R-project.org/package=clubSandwich
   icon: box2
+citation:
+  type: article-journal
+  container-title: Journal of Business and Economic Statistics
+  url: http://doi.org/10.1080/07350015.2016.1247004
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 36
+  issue: 4
+  page: 672-683
+
 ---
 
 In panel data models and other regressions with unobserved effects, fixed effects estimation is often paired with cluster-robust variance estimation (CRVE) to account for heteroscedasticity and un-modeled dependence among the errors. Although asymptotically consistent, CRVE can be biased downward when the number of clusters is small, leading to hypothesis tests with rejection rates that are too high. More accurate tests can be constructed using bias-reduced linearization (BRL), which corrects the CRVE based on a working model, in conjunction with a Satterthwaite approximation for t-tests. We propose a generalization of BRL that can be applied in models with arbitrary sets of fixed effects, where the original BRL method is undefined, and describe how to apply the method when the regression is estimated after absorbing the fixed effects. We also propose a small-sample test for multiple-parameter hypotheses, which generalizes the Satterthwaite approximation for t-tests. In simulations covering a wide range of scenarios, we find that the conventional cluster-robust Wald test can severely over-reject while the proposed small-sample test maintains Type I error close to nominal levels. The proposed methods are implemented in an R package called clubSandwich. This article has online supplementary materials.
+
 

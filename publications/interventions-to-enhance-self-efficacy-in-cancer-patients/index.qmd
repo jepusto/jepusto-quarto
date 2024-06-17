@@ -1,19 +1,26 @@
 ---
-title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A meta-analysis of randomized controlled trials'
+title: 'Interventions to enhance self-efficacy in cancer patients and survivors: A
+  meta-analysis of randomized controlled trials'
 author:
-- Tom V. Merluzzi
-- James E. Pustejovsky
-- Errol J. Philip
-- Stephanie J. Sohl
-- Mark Berendsen
-- John A. Salsman
+- name:
+    given: Tom V.
+    family: Merluzzi
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Errol J.
+    family: Philip
+- name:
+    given: Stephanie J.
+    family: Sohl
+- name:
+    given: Mark
+    family: Berendsen
+- name:
+    given: John A.
+    family: Salsman
 date: 2019-06-06T00:00:00
-publish_date: 2019-06-06T00:00:00
-publication_type: Journal article
-publication: Psycho-Oncology
-volume: 28
-issue: 9
-pages: 1781-1790
 categories:
 - psycho-social intervention
 - cancer
@@ -27,6 +34,15 @@ links:
 - icon: table
   text: Data
   url: https://curate.nd.edu/show/jw827943c2d
+citation:
+  type: article-journal
+  container-title: Psycho-Oncology
+  url: https://doi.org/10.1002/pon.5148
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 28
+  issue: 9
+  page: 1781-1790
+
 ---
 
 __Objective__: Self-efficacy expectations are associated with improvements in problematic outcomes widely considered clinically significant (i.e., emotional distress, fatigue, pain), related to positive health behaviors, and, as a type of personal agency, inherently valuable. Self-efficacy expectancies, estimates of confidence to execute behaviors, are important in that changes in selfefficacy expectations are positively related to future behaviors that promote health and wellbeing. The current meta-analysis investigated the impact of psychological interventions on self-efficacy expectations for a variety of health behaviors among cancer patients. 
@@ -36,3 +52,4 @@ __Methods__: Ovid Medline, PsycINFO, CINAHL, EMBASE, Cochrane Library, and Web o
 __Results__: Across 79 RCTs, 223 effect sizes, and 8678 participants, the weighted average effect of self-efficacy expectations was estimated as g=0.274 (p<.001). Consistent with Self-Efficacy Theory, the average effect for in-person intervention delivery (g=0.329) was significantly greater than for all other formats (g=0.154, p=.023; e.g., audiovisual, print, telephone, web/internet). 
 
 __Conclusions__: The results establish the impact of psychological interventions on self-efficacy expectations as comparable in effect size to commonly reported outcomes (distress, fatigue, pain). Additionally, the result that in-person interventions achieved the largest effect is supported by Social Learning Theory and could inform research related to the development and evaluation of interventions.
+

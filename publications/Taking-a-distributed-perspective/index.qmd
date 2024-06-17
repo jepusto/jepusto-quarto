@@ -1,18 +1,23 @@
 ---
-title: "Taking a distributed perspective: epistemological and methodological tradeoffs in operationalizing the leader-plus aspect"
+title: 'Taking a distributed perspective: epistemological and methodological tradeoffs
+  in operationalizing the leader-plus aspect'
 author:
-- James P. Spillane
-- Eric M. Camburn
-- James E. Pustejovsky
-- Amber Stitziel-Pareja
-- Geoff Lewis
+- name:
+    given: James P.
+    family: Spillane
+- name:
+    given: Eric M.
+    family: Camburn
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Amber
+    family: Stitziel-Pareja
+- name:
+    given: Geoff
+    family: Lewis
 date: 2008-03-21T00:00:00
-publish_date: 2008-03-21T00:00:00
-publication_type: Journal article
-publication: Journal of Educational Administration
-volume: 46
-issue: 2
-pages: 189-213
 categories:
 - distributed leadership
 - experience sampling
@@ -21,6 +26,15 @@ links:
 - text: Journal
   url: https://doi.org/10.1108/09578230810863262
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Journal of Educational Administration
+  url: https://doi.org/10.1108/09578230810863262
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 46
+  issue: 2
+  page: 189-213
+
 ---
 
 ### Purpose
@@ -42,3 +56,4 @@ Limited by the data set, the paper focuses on only four operationalizations of t
 ### Originality/value
 
 The primary value of this paper is that it will prompt scholars to think about the entailments of different ways of operationalizing the leader-plus aspect when using a distributed perspective.
+

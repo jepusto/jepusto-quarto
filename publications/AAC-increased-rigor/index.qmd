@@ -1,25 +1,43 @@
 ---
 title: 'A case for increased rigor in AAC research: A methodological quality review'
 author:
-- Jay B. Ganz
-- James E. Pustejovsky
-- Joe Reichle
-- Kimberly J. Vannest
-- Lauren M. Pierson
-- Sanikan Wattanawongwan
-- Margaret Foster
-- Marcus Fuller
-- April N. Haas
-- Mary Rose Sallese
-- S. D. Smith
-- Valeria Yllades
+- name:
+    given: Jay B.
+    family: Ganz
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Joe
+    family: Reichle
+- name:
+    given: Kimberly J.
+    family: Vannest
+- name:
+    given: Lauren M.
+    family: Pierson
+- name:
+    given: Sanikan
+    family: Wattanawongwan
+- name:
+    given: Margaret
+    family: Foster
+- name:
+    given: Marcus
+    family: Fuller
+- name:
+    given: April N.
+    family: Haas
+- name:
+    given: Mary Rose
+    family: Sallese
+- name:
+    given: S. D.
+    family: Smith
+- name:
+    given: Valeria
+    family: Yllades
 date: 2023-01-20T00:00:00
-publish_date: 2023-01-20T00:00:00
-publication_type: Journal article
-publication: Education and Training in Autism and Developmental Disabilities
-volume: 58
-issue: 1
-pages: 3-21
 categories:
 - single-case design
 - systematic review
@@ -34,6 +52,13 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
+citation:
+  type: article-journal
+  container-title: Education and Training in Autism and Developmental Disabilities
+  volume: 58
+  issue: 1
+  page: 3-21
 ---
 
 This comprehensive review reports on methodological quality of 162 single-case studies on augmentative and alternative communication interventions for communication and challenging behavior in individuals diagnosed with autism or intellectual disabilities and with complex communication needs. Following review for inclusion criteria, documents were excluded if they failed to meet basic methodological standards. Each remaining study was evaluated for 10 detailed quality criteria. No studies met all standards without reservations. Only three of the included studies met all of the standards with reservations and the remainder met some but not all standards, with or without reservations. The included studies reported adequate detail for half of the quality indicators, but insufficient details for participant, setting, maintenance, generalization, and social validity descriptions. An increased quantity and quality of research were found in over four decades. More recent studies have adequately reported half of the criteria investigated, including describing the materials, defining the outcome variables, describing baseline and intervention procedures, and evaluating procedural integrity. After identifying quality features, the authors report in more detail on low-rated quality indicators particularly relevant to studies addressing social-communication interventions. The literature infrequently reported race, ethnicity, or home language. Future research should report characteristics of participants to ensure that research becomes representative of the population.
+

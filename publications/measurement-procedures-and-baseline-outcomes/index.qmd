@@ -1,21 +1,23 @@
 ---
-title: An examination of measurement procedures and characteristics of baseline outcome data in single-case research
+title: An examination of measurement procedures and characteristics of baseline outcome
+  data in single-case research
 author:
-- James E. Pustejovsky
-- Daniel M. Swan
-- Kyle W. English
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Daniel M.
+    family: Swan
+- name:
+    given: Kyle W.
+    family: English
 date: 2019-08-02T00:00:00
-publish_date: 2019-08-02T00:00:00
-publication_type: Journal article
-publication: Behavior Modification
-volume: 47
-issue: 6
-pages: 1423-1454
 categories:
 - single-case design
 - behavioral observation
 - systematic review
-image-alt: Distributions with means of 2, 5, and 9. The binomial distribution has size 10.
+image-alt: Distributions with means of 2, 5, and 9. The binomial distribution has
+  size 10.
 links:
 - text: Journal
   url: https://doi.org/10.1177/0145445519864264
@@ -29,7 +31,17 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b7a3u/
+citation:
+  type: article-journal
+  container-title: Behavior Modification
+  url: https://doi.org/10.1177/0145445519864264
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 47
+  issue: 6
+  page: 1423-1454
+
 ---
 
 There has been growing interest in using statistical methods to analyze data and estimate effect size indices from studies that use single-case designs (SCDs), as a complement to traditional visual inspection methods. The validity of a statistical method rests on whether its assumptions are plausible representations of the process by which the data were collected, yet there is evidence that some assumptions---particularly regarding normality of error distributions---may be inappropriate for single-case data. To develop more appropriate modelling assumptions and statistical methods, researchers must attend to the features of real SCD data. In this study, we examine several features of SCDs with behavioral outcome measures in order to inform development of statistical methods. Drawing on a corpus of over 300 studies, including approximately 1800 cases, from seven systematic reviews that cover a range of interventions and outcome constructs, we report the distribution of study designs, distribution of outcome measurement procedures, and features of baseline outcome data distributions for the most common types of measurements used in single-case research. We discuss implications for the development of more realistic assumptions regarding outcome distributions in SCD studies, as well as the design of Monte Carlo simulation studies evaluating the performance of statistical analysis techniques for SCED data.
+
 

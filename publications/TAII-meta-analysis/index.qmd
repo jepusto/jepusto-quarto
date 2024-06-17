@@ -1,17 +1,20 @@
 ---
-title: A meta-analysis of technology-aided instruction and intervention for students with ASD
+title: A meta-analysis of technology-aided instruction and intervention for students
+  with ASD
 author:
-- Erin E. Barton
-- James E. Pustejovsky
-- Daniel M. Maggin
-- Brian Reichow
+- name:
+    given: Erin E.
+    family: Barton
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Daniel M.
+    family: Maggin
+- name:
+    given: Brian
+    family: Reichow
 date: 2017-07-01T00:00:00
-publish_date: 2017-07-01T00:00:00
-publication_type: Journal article
-publication: Remedial and Special Education
-volume: 38
-issue: 6
-pages: 371-386
 categories:
 - design-comparable SMD
 - meta-analysis
@@ -21,7 +24,17 @@ links:
 - text: Journal
   url: http://dx.doi.org/10.1177/0741932517729508
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Remedial and Special Education
+  url: http://dx.doi.org/10.1177/0741932517729508
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 38
+  issue: 6
+  page: 371-386
+
 ---
 
 The adoption of methods and strategies validated through rigorous, experimentally oriented research is a core professional value of special education. We conducted a systematic review and meta-analysis examining the experimental literature on Technology-Aided Instruction and Intervention (TAII) using research identified as part of the National Autism Professional Development Project. We applied novel between-case effect size methods to the TAII single-case research base. In addition, we used meta-analytic methodologies to examine the methodological quality of the research, calculate average effect sizes to quantify the level of evidence for TAII, and compare effect sizes across single-case and group-based experimental research. Results identified one category of TAII—computer-assisted instruction—as an evidence-based practice across both single-case and group studies. The remaining two categories of TAII—augmentative and alternative communication and virtual reality—were not identified as evidence-based using What Works Clearinghouse summary ratings.
+
 

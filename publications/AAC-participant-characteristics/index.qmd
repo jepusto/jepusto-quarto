@@ -1,26 +1,47 @@
 ---
-title: 'Participant characteristics predicting communication outcomes in AAC implementation for individuals with ASD and IDD: Meta-analysis'
+title: 'Participant characteristics predicting communication outcomes in AAC implementation
+  for individuals with ASD and IDD: Meta-analysis'
 author:
-- Jay B. Ganz
-- James E. Pustejovsky
-- Joe Reichle
-- Kimberly J. Vannest
-- Margaret Foster
-- Lauren M. Pierson
-- Sanikan Wattanawongwan
-- Amando Bernal
-- Man Chen
-- April N. Haas
-- Mary Rose Sallese
-- Rachel Skov
-- S. D. Smith
+- name:
+    given: Jay B.
+    family: Ganz
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Joe
+    family: Reichle
+- name:
+    given: Kimberly J.
+    family: Vannest
+- name:
+    given: Margaret
+    family: Foster
+- name:
+    given: Lauren M.
+    family: Pierson
+- name:
+    given: Sanikan
+    family: Wattanawongwan
+- name:
+    given: Amando
+    family: Bernal
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: April N.
+    family: Haas
+- name:
+    given: Mary Rose
+    family: Sallese
+- name:
+    given: Rachel
+    family: Skov
+- name:
+    given: S. D.
+    family: Smith
 date: 2022-04-20T00:00:00
-publish_date: 2022-04-20T00:00:00
-publication_type: Journal article
-publication: Augmentative and Alternative Communication
-volume: 39
-issue: 1
-pages: 7-22
 categories:
 - single-case design
 - systematic review
@@ -38,7 +59,17 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
+citation:
+  type: article-journal
+  container-title: Augmentative and Alternative Communication
+  url: https://doi.org/10.1080/07434618.2022.2116355
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 39
+  issue: 1
+  page: 7-22
+
 ---
 
 This meta-analysis examined social communication outcomes in augmentative and alternative communication (AAC) interventions, or those that involved aided (e.g., speech generating devices, picture point systems) or unaided AAC (e.g., gestures, manual sign language) as a component of intervention, and the extent to which communication outcomes were predicted by participant characteristics. Variables of interest included chronological age, communication mode used prior to intervention, number of words produced and imitation skills of participants prior to intervention. Investigators identified 117 primary studies that implemented AAC interventions with school-aged individuals (up to 22 years) with autism spectrum disorder and/or intellectual disability associated with complex communication needs and assessed social-communication outcomes. All included studies involved single-case experimental designs and met basic study design quality standards. We synthesized findings across studies using two complementary effect size indices, Tau(AB) and the log response ratio, and multi-level meta-analysis with robust variance estimation. With Tau(AB), the overall average effect across 338 participants was 0.72, 95% CI [0.67, 0.76], with a high degree of heterogeneity across studies. With the log response ratio, the overall average effect corresponded to a 538% increase from baseline levels of responding, 95% CI [388%, 733%], with a high degree of heterogeneity across studies and contrasts. Moderator analyses detected few differences in effectiveness when comparing across diagnoses, ages, the number and type of communication modes the participants used prior to intervention, the number of words used by the participants prior to intervention, and imitation use prior to intervention.
+
 

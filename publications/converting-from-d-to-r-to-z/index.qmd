@@ -1,14 +1,11 @@
 ---
-title: Converting from d to r to z when the design uses extreme groups, dichotomization, or experimental control
-author: 
- - James E. Pustejovsky
+title: Converting from d to r to z when the design uses extreme groups, dichotomization,
+  or experimental control
+author:
+- name:
+    given: James E.
+    family: Pustejovsky
 date: 2014-03-01T00:00:00
-publish_date: 2014-03-01T00:00:00
-publication_type: Journal article
-publication: Psychological Methods
-volume: 19
-issue: 1
-pages: 92-112
 categories:
 - effect size
 - meta-analysis
@@ -25,6 +22,16 @@ links:
 - icon: code-slash
   text: Code
   url: https://github.com/jepusto/d-to-r-to-z
+citation:
+  type: article-journal
+  container-title: Psychological Methods
+  url: http://psycnet.apa.org/doi/10.1037/a0033788
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 19
+  issue: 1
+  page: 92-112
+
 ---
 
 Meta-analyses of the relationship between 2 continuous variables sometimes involves conversions between different effect sizes, but methodological literature offers conflicting guidance about how to make such conversions. This article provides methods for converting from a standardized mean difference to a correlation coefficient (and from there to Fisher’s z) under 3 types of study designs: extreme groups, dichotomization of a continuous variable, and controlled experiments. Also provided are formulas and recommendations regarding how the sampling variance of effect size statistics should be estimated in each of these cases. The conversion formula for extreme groups designs, originally due to Feldt (1961), can be viewed as a generalization of Hunter and Schmidt’s (1990) method for dichotomization designs. A simulation study examines the finite-sample properties of the proposed methods. The conclusion highlights areas where current guidance in the literature should be amended or clarified.
+

@@ -1,29 +1,56 @@
 ---
-title: 'Systematic review of variables related to instruction in augmentative and alternative communication implementation: Group and single-case design'
+title: 'Systematic review of variables related to instruction in augmentative and
+  alternative communication implementation: Group and single-case design'
 author:
-- Joe Reichle
-- James E. Pustejovsky
-- Kimberly J. Vannest
-- Margaret Foster
-- Lauren M. Pierson
-- Sanikan Wattanawongwan
-- Man Chen
-- Marcus Fuller
-- April N. Haas
-- Bethany H. Bhat
-- Mary R. Sallese
-- S. D. Smith
-- Valeria Yllades
-- Daira Rodriguez
-- Amara Yoro
-- Jay B. Ganz
+- name:
+    given: Joe
+    family: Reichle
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Kimberly J.
+    family: Vannest
+- name:
+    given: Margaret
+    family: Foster
+- name:
+    given: Lauren M.
+    family: Pierson
+- name:
+    given: Sanikan
+    family: Wattanawongwan
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: Marcus
+    family: Fuller
+- name:
+    given: April N.
+    family: Haas
+- name:
+    given: Bethany H.
+    family: Bhat
+- name:
+    given: Mary R.
+    family: Sallese
+- name:
+    given: S. D.
+    family: Smith
+- name:
+    given: Valeria
+    family: Yllades
+- name:
+    given: Daira
+    family: Rodriguez
+- name:
+    given: Amara
+    family: Yoro
+- name:
+    given: Jay B.
+    family: Ganz
 date: 2023-05-26T00:00:00
-publish_date: 2023-05-26T00:00:00
-publication_type: Journal article
-publication: American Journal of Speech-Language Pathology 
-volume: 32
-issue: 4
-pages: 1734-1757
 categories:
 - single-case design
 - systematic review
@@ -41,6 +68,15 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
+citation:
+  type: article-journal
+  container-title: American Journal of Speech-Language Pathology
+  doi: 10.1044/2023_AJSLP-22-00314
+  url: https://doi.org/10.1044/2023_AJSLP-22-00314
+  volume: 32
+  issue: 4
+  page: 1734-1757
+
 ---
 
 __Purpose__: This article provides a systematic review and analysis of group and single-case studies addressing augmentative and alternative communication (AAC) intervention with school-aged persons having autism spectrum disorder (ASD) and/or intellectual/developmental disabilities resulting in complex communication needs (CCNs). Specifically, we examined participant characteristics in group-design studies reporting AAC intervention outcomes and how these compared to those reported in single-case experimental designs (SCEDs). In addition, we compared the status of intervention features reported in group and SCED studies with respect to instructional strategies utilized.
@@ -52,3 +88,4 @@ __Method__: A systematic review using descriptive statistics and effect sizes wa
 __Results__: Findings revealed that participant features such as race, ethnicity, and home language continue to be underreported in both SCED and group-design studies. Participants in SCED investigations more frequently used multiple communication modes when compared to participants in group studies. The status of pivotal skills such as imitation was sparsely reported in both types of studies. With respect to instructional features, group-design studies were more apt to utilize clinical rather than educational or home settings when compared with SCED studies. In addition, SCED studies were more apt to utilize instructional methods that closely adhered to instructional features more typically characterized as being associated with behavioral approaches.
 
 __Conclusion__: The authors discuss future research needs, practice implications, and a more detailed specification of treatment intensity parameters for future research.
+

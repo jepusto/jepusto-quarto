@@ -1,24 +1,34 @@
 ---
-title: "Organizing for instruction: A comparative study of public, charter, & Catholic schools"
+title: 'Organizing for instruction: A comparative study of public, charter, & Catholic
+  schools'
 author:
-- Lisa Dorner
-- James P. Spillane
-- James E. Pustejovsky
+- name:
+    given: Lisa
+    family: Dorner
+- name:
+    given: James P.
+    family: Spillane
+- name:
+    given: James E.
+    family: Pustejovsky
 date: 2010-10-01T00:00:00
-publish_date: 2010-10-01T00:00:00
-publication_type: Journal article
-publication: Journal of Educational Change
-volume: 12
-issue:
-pages: 71-98
 categories:
 - distributed leadership
 - experience sampling
 - social networks
 links:
 - text: Journal
-  url: https://doi.org/10.1007/s10833-010-9147-5 
+  url: https://doi.org/10.1007/s10833-010-9147-5
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Journal of Educational Change
+  url: https://doi.org/10.1007/s10833-010-9147-5
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 12
+  page: 71-98
+
 ---
 
 Guided by theories of institutions, organizations, and sense-making, this manuscript examines how public, charter, and Catholic school staff in a large urban area organize for instruction and respond to educational change. To build theory about institutional processes of “organizing” from participants’ perspectives, data included a survey regarding staff networks $(N = 271)$ and semi-structured, qualitative interviews $(n = 49)$. Findings demonstrate that all 11 schools in this study reflected the current reform environment with its focus on managing instruction. However, staff from different kinds of schools organized in distinct ways. Most charter and Catholic school staff described obtaining information about instruction through "organic" relationships using the metaphor of family to define their work situations. Alternatively, public schools tended to be "mechanistic," with staff viewing themselves as professionals who were focused on standards and testing. One charter school, however, combined organic and mechanistic characteristics demonstrating the contagion that occurs among organizations in the same institutional sector and the reach that institutional policy scripts, such as _No Child Left Behind_, have in changing instructional practice at all kinds of schools.
+

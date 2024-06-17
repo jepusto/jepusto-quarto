@@ -1,20 +1,29 @@
 ---
-title: A systematic review and meta-analysis of effects of psychosocial interventions on spiritual well-being in adults with cancer
+title: A systematic review and meta-analysis of effects of psychosocial interventions
+  on spiritual well-being in adults with cancer
 author:
-- Laurie E. McLouth
-- C. Graham Ford
-- James E. Pustejovsky
-- Crystal Park
-- Allen C. Sherman
-- Kelly Trevino
-- John A. Salsman
+- name:
+    given: Laurie E.
+    family: McLouth
+- name:
+    given: C. Graham
+    family: Ford
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Crystal
+    family: Park
+- name:
+    given: Allen C.
+    family: Sherman
+- name:
+    given: Kelly
+    family: Trevino
+- name:
+    given: John A.
+    family: Salsman
 date: 2021-02-01T00:00:00
-publish_date: 2021-02-01T00:00:00
-publication_type: Journal article
-publication: Psycho-Oncology
-volume: 30 
-issue: 2
-pages: 147-158
 categories:
 - cancer
 - meta-analysis
@@ -24,6 +33,15 @@ links:
 - text: Journal
   url: https://doi.org/10.1002/pon.5562
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Psycho-Oncology
+  url: https://doi.org/10.1002/pon.5562
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 30
+  issue: 2
+  page: 147-158
+
 ---
 
 __Objective__: Spiritual well‐being (SpWb) is an important dimension of health‐related quality of life for many cancer patients. Accordingly, an increasing number of psychosocial intervention studies have included SpWb as a study endpoint, and may improve SpWb even if not designed explicitly to do so. This meta‐analysis of randomized controlled trials (RCTs) evaluated effects of psychosocial interventions on SpWb in adults with cancer and tested potential moderators of intervention effects.
@@ -33,3 +51,4 @@ __Methods__: Six literature databases were systematically searched to identify R
 __Results__: Forty‐one RCTs were identified, encompassing 88 treatment effects among 3883 survivors. Interventions were associated with significant improvements in SpWb ($g = 0.22$, 95% CI [0.14, 0.29], $p < 0.0001$). Studies assessing the FACIT‐Sp demonstrated larger effect sizes than did those using other measures of SpWb ($g = 0.25$, 95% CI [0.17, 0.34], vs. $g = 0.10$, 95% CI [−0.02, 0.23], $p = 0.03$). No other intervention, clinical, or demographic characteristics significantly moderated effect size.
 
 __Conclusions__: Psychosocial interventions are associated with small‐to‐medium‐sized effects on SpWb among cancer survivors. Future research should focus on conceptually coherent interventions explicitly targeting SpWb and evaluate interventions in samples that are diverse with respect to race and ethnicity, sex and cancer type.
+

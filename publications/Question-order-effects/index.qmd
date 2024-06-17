@@ -1,15 +1,13 @@
 ---
 title: Question-order effects in social network name generators
 author:
-- James E. Pustejovsky
-- James P. Spillane
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: James P.
+    family: Spillane
 date: 2009-10-01T00:00:00
-publish_date: 2009-10-01T00:00:00
-publication_type: Journal article
-publication: Social Networks
-volume: 31
-issue: 4
-pages: 221-229
 categories:
 - question-order
 - social networks
@@ -23,7 +21,17 @@ links:
 - icon: table
   text: Data
   url: https://www.icpsr.umich.edu/icpsrweb/instructors/series/00255
+citation:
+  type: article-journal
+  container-title: Social Networks
+  url: http://doi.org/10.1016/j.socnet.2009.06.001
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 31
+  issue: 4
+  page: 221-229
+
 ---
 
 Social network surveys are an important tool for empirical research in a variety of fields, including the study of social capital and the evaluation of educational and social policy. A growing body of methodological research sheds light on the validity and reliability of social network survey data regarding a single relation, but much less attention has been paid to the measurement of multiplex networks and the validity of comparisons among criterion relations. In this paper, we identify ways that surveys designed to collect multiplex social network data might be vulnerable to question-order effects. We then test several hypotheses using a split-ballot experiment embedded in an online multiple name generator survey of teachers’ advice networks, collected for a study of complete networks. We conclude by discussing implications for the design of multiple name generator social network surveys.
+
 

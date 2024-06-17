@@ -1,5 +1,8 @@
 - Add citations and bibtex to publication pages
   https://quarto.org/docs/authoring/create-citeable-articles.html
+  - add citations to publications that aren't journal articles
+  - fix publication listing template
+  - add software citations
 
 - Publish as jepusto.com
 - set up commenting

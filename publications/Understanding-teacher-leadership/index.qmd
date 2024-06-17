@@ -1,17 +1,20 @@
 ---
-title: "Understanding teacher leadership in middle school mathematics: A collaborative research effort"
+title: 'Understanding teacher leadership in middle school mathematics: A collaborative
+  research effort'
 author:
-- James E. Pustejovsky
-- James P. Spillane
-- Ruth Heaton
-- W. Jim Lewis
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: James P.
+    family: Spillane
+- name:
+    given: Ruth
+    family: Heaton
+- name:
+    given: W. Jim
+    family: Lewis
 date: 2009-11-01T00:00:00
-publish_date: 2009-11-01T00:00:00
-publication_type: Journal article
-publication: "Journal of Mathematics and Science: Collaborative Explorations"
-volume: 11
-issue: 
-pages: 19-40
 categories:
 - distributed leadership
 - social networks
@@ -19,6 +22,15 @@ links:
 - text: Journal
   url: https://doi.org/10.25891/MZVX-A892
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: 'Journal of Mathematics and Science: Collaborative Explorations'
+  url: https://doi.org/10.25891/MZVX-A892
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 11
+  page: 19-40
+
 ---
 
 We report ﬁndings from a collaborative research effort designed to examine how teachers act as leaders in their schools. We ﬁnd that teachers educated by the Math in the Middle Institute act as key sources of advice for colleagues within their schools while drawing support from a network consisting of other teachers in the program and university-level advisors. In addition to reporting on our ﬁndings, we reﬂect on our research process, noting some of the practical challenges involved, as well as some of the beneﬁts of collaboration.
+

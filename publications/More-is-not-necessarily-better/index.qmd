@@ -1,18 +1,29 @@
 ---
-title: 'Determining associations between intervention amount and outcomes for young autistic children: A systematic review and meta-analysis'
+title: 'Determining associations between intervention amount and outcomes for young
+  autistic children: A systematic review and meta-analysis'
 author:
-- Micheal Sandbank
-- James E. Pustejovsky
-- Kristen Bottema-Beutel
-- Nicolette Caldwell
-- Jacob I. Feldman
-- Shannon Crowley LaPoint
-- Tiffany Woynaroski
+- name:
+    given: Micheal
+    family: Sandbank
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Kristen
+    family: Bottema-Beutel
+- name:
+    given: Nicolette
+    family: Caldwell
+- name:
+    given: Jacob I.
+    family: Feldman
+- name:
+    given: Shannon Crowley
+    family: LaPoint
+- name:
+    given: Tiffany
+    family: Woynaroski
 date: 2024-06-24T00:00:00
-publish_date: 2024-06-24T00:00:00
-publication_type: Journal article
-publication: JAMA Pediatrics
-pages: forthcoming
 categories:
 - systematic review
 - autism
@@ -27,6 +38,13 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/kr2cd/
+citation:
+  type: article-journal
+  container-title: JAMA Pediatrics
+  doi: 10.1001/jamapediatrics.2024.1832
+  url: https://doi.org/10.1001/jamapediatrics.2024.1832
+  page: forthcoming
+
 ---
 
 ### Importance
@@ -60,3 +78,4 @@ None of the meta-regression models evidenced a significant, positive association
 ### Conclusions and Relevance
 
 Our findings do not support the assertion that intervention effects increase with increasing amounts of intervention. Health professionals recommending supports should be advised that there is little robust evidence supporting the provision of "intensive" intervention. Our prior meta-analyses suggest that some interventions have the potential to improve some outcomes for autistic children during early childhood. The present results, however, suggest that providing more of such interventions will not necessarily result in larger effects on outcomes of interest. There is a pressing need for future primary research to be designed and conducted in a manner that allows us to determine the most supportive amounts of interventions by child characteristics, intervention type, and the outcomes targeted by the intervention. 
+

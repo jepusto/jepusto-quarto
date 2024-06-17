@@ -1,16 +1,16 @@
 ---
 title: Current practices in meta-regression in psychology, education, and medicine
 author:
-- Elizabeth Tipton
-- James E. Pustejovsky
-- Hedyeh Ahmadi
+- name:
+    given: Elizabeth
+    family: Tipton
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Hedyeh
+    family: Ahmadi
 date: 2019-01-07T00:00:00
-publish_date: 2019-01-07T00:00:00
-publication_type: Journal article
-publication: Research Synthesis Methods
-volume: 10
-issue: 2
-pages: 180-194
 categories:
 - meta-analysis
 - meta-regression
@@ -25,6 +25,16 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/z3cx2/
+citation:
+  type: article-journal
+  container-title: Research Synthesis Methods
+  url: https://doi.org/10.1002/jrsm.1339
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 10
+  issue: 2
+  page: 180-194
+
 ---
 
 Having surveyed the history and methods of meta‐regression in a previous paper, in this paper we review which and how meta‐regression methods are applied in recent research syntheses. To do so, we reviewed studies published in 2016 across four leading research synthesis journals: _Psychological Bulletin_, the _Journal of Applied Psychology_, _Review of Education Research_, and the _Cochrane Library_. We find that the best practices defined in the previous review are rarely carried out in practice. In light of the identified discrepancies, we consider how to move forward, first by identifying areas where further methods development is needed to address persistent problems in the field, and second by discussing how to more effectively disseminate points of methodological consensus.
+

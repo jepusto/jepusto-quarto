@@ -1,16 +1,17 @@
 ---
-title: 'A history of meta-regression: Technical, conceptual, and practical developments between 1974 and 2018'
+title: 'A history of meta-regression: Technical, conceptual, and practical developments
+  between 1974 and 2018'
 author:
-- Elizabeth Tipton
-- James E. Pustejovsky
-- Hedyeh Ahmadi
+- name:
+    given: Elizabeth
+    family: Tipton
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Hedyeh
+    family: Ahmadi
 date: 2018-12-27T00:00:00
-publish_date: 2018-12-27T00:00:00
-publication_type: Journal article
-publication: Research Synthesis Methods
-volume: 10 
-issue: 2
-pages: 161-179
 categories:
 - meta-analysis
 - meta-regression
@@ -21,7 +22,17 @@ links:
 - icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/dvb6r
+citation:
+  type: article-journal
+  container-title: Research Synthesis Methods
+  url: https://doi.org/10.1002/jrsm.1338
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 10
+  issue: 2
+  page: 161-179
+
 ---
 
 At the beginning of the development of meta‐analysis, understanding the role of moderators was given the highest priority, with meta‐regression provided as a method for achieving this goal. Yet in current practice, meta‐regression is not as commonly used as anticipated. This paper seeks to understand this mismatch by reviewing the history of meta‐regression methods over the past 40 years. We divide this time span into four periods and examine three types of methodological developments within each period: technical, conceptual, and practical. Our focus is broad and includes development of methods in the fields of education, psychology, and medicine. We conclude the paper with a discussion of five consensus points, as well as open questions and areas of research for the future.
+
 

@@ -1,19 +1,26 @@
 ---
-title: 'Single-case synthesis tools II: Comparing overlap measures and parametric effect sizes for synthesizing antecedent sensory-based interventions'
+title: 'Single-case synthesis tools II: Comparing overlap measures and parametric
+  effect sizes for synthesizing antecedent sensory-based interventions'
 author:
-- Kathleen N. Zimmerman
-- James E. Pustejovsky
-- Jennifer R. Ledford
-- Erin E. Barton
-- Katherine E. Severini
-- Blair P. Lloyd
+- name:
+    given: Kathleen N.
+    family: Zimmerman
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Jennifer R.
+    family: Ledford
+- name:
+    given: Erin E.
+    family: Barton
+- name:
+    given: Katherine E.
+    family: Severini
+- name:
+    given: Blair P.
+    family: Lloyd
 date: 2018-03-07T00:00:00
-publish_date: 2018-03-07T00:00:00
-publication_type: Journal article
-publication: Research in Developmental Disabilities
-volume: 79
-issue: 
-pages: 65-76
 categories:
 - non-overlap measures
 - response ratio
@@ -23,7 +30,16 @@ links:
 - text: Journal
   url: https://doi.org/10.1016/j.ridd.2018.02.001
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Research in Developmental Disabilities
+  url: https://doi.org/10.1016/j.ridd.2018.02.001
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 79
+  page: 65-76
+
 ---
 
 Varying methods for evaluating the outcomes of single case research designs (SCD) are currently used in reviews and meta-analyses of interventions. Quantitative effect size measures are often presented alongside visual analysis conclusions. Six measures across two classes—overlap measures (percentage non-overlapping data, improvement rate difference, and Tau) and parametric within-case effect sizes (standardized mean difference and log response ratio [increasing and decreasing])—were compared to determine if choice of synthesis method within and across classes impacts conclusions regarding effectiveness. The effectiveness of sensory-based interventions (SBI), a commonly used class of treatments for young children, was evaluated. Separately from evaluations of rigor and quality, authors evaluated behavior change between baseline and SBI conditions. SBI were unlikely to result in positive behavior change across all measures except IRD. However, subgroup analyses resulted in variable conclusions, indicating that the choice of measures for SCD meta-analyses can impact conclusions. Suggestions for using the log response ratio in SCD meta-analyses and considerations for understanding variability in SCD meta-analysis conclusions are discussed.
+
 

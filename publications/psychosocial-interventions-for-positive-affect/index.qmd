@@ -1,20 +1,29 @@
 ---
-title: 'Psychosocial interventions for cancer survivors: A meta-analysis of effects on positive affect'
+title: 'Psychosocial interventions for cancer survivors: A meta-analysis of effects
+  on positive affect'
 author:
-- John A. Salsman
-- James E. Pustejovsky
-- Stephen M. Schueller
-- Rosalba Hernandez
-- Mark Berendsen
-- Laurie E. Steffen McLouth
-- Judith T. Moskowitz
+- name:
+    given: John A.
+    family: Salsman
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Stephen M.
+    family: Schueller
+- name:
+    given: Rosalba
+    family: Hernandez
+- name:
+    given: Mark
+    family: Berendsen
+- name:
+    given: Laurie E. Steffen
+    family: McLouth
+- name:
+    given: Judith T.
+    family: Moskowitz
 date: 2019-11-19T00:00:00
-publish_date: 2019-11-19T00:00:00
-publication_type: Journal article
-publication: Journal of Cancer Survivorship
-volume: 13
-issue: 
-pages: 943-955
 categories:
 - cancer
 - meta-analysis
@@ -25,6 +34,14 @@ links:
 - text: Journal
   url: https://doi.org/10.1007/s11764-019-00811-8
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Journal of Cancer Survivorship
+  url: https://doi.org/10.1007/s11764-019-00811-8
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 13
+  page: 943-955
+
 ---
 
 __Purpose__: Positive affect has demonstrated unique benefits in the context of health-related stress and is emerging as an important target for psychosocial interventions. The primary objective of this meta-analysis was to determine whether psychosocial interventions increase positive affect in cancer survivors.
@@ -36,4 +53,5 @@ __Results__: Interventions had a modest effect on positive affect (g = 0.35, 95%
 __Conclusions__: In-person interventions with survivors of early-stage cancers hold promise for enhancing positive affect, but more methodological rigor is needed.
 
 __Implications for Cancer Survivors__: Positive affect strategies can be an explicit target in evidence-based medicine and have a role in patient-centered survivorship care, providing tools to uniquely mobilize human strengths.
+
 

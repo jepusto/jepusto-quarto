@@ -1,27 +1,50 @@
 ---
-title: 'Augmentative and Alternative Communication intervention targets for school-aged participants with ASD and ID: A single-case systematic review and meta-analysis'
+title: 'Augmentative and Alternative Communication intervention targets for school-aged
+  participants with ASD and ID: A single-case systematic review and meta-analysis'
 author:
-- Jay B. Ganz
-- James E. Pustejovsky
-- Joe Reichle
-- Kimberly J. Vannest
-- Margaret Foster
-- Marcus Fuller
-- Lauren M. Pierson
-- Sanikan Wattanawongwan
-- Amando Bernal
-- Man Chen
-- April N. Haas
-- Rachel Skov
-- S. D. Smith
-- Valeria Yllades
+- name:
+    given: Jay B.
+    family: Ganz
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Joe
+    family: Reichle
+- name:
+    given: Kimberly J.
+    family: Vannest
+- name:
+    given: Margaret
+    family: Foster
+- name:
+    given: Marcus
+    family: Fuller
+- name:
+    given: Lauren M.
+    family: Pierson
+- name:
+    given: Sanikan
+    family: Wattanawongwan
+- name:
+    given: Amando
+    family: Bernal
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: April N.
+    family: Haas
+- name:
+    given: Rachel
+    family: Skov
+- name:
+    given: S. D.
+    family: Smith
+- name:
+    given: Valeria
+    family: Yllades
 date: 2022-04-20T00:00:00
-publish_date: 2022-04-20T00:00:00
-publication_type: Journal article
-publication: Review Journal of Autism and Developmental Disorders
-volume: 11
-issue: 
-pages: 52-65
 categories:
 - single-case design
 - systematic review
@@ -39,6 +62,14 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/b5ydr/
+citation:
+  type: article-journal
+  container-title: Review Journal of Autism and Developmental Disorders
+  doi: 10.1007/s40489-022-00326-6
+  url: https://doi.org/10.1007/s40489-022-00326-6
+  volume: 11
+  page: 52-65
+
 ---
 
 __Objective__: This meta-analysis reviews the literature on communication modes, communicative functions, and types of augmentative and alternative communication (AAC) interventions for school-age participants with autism spectrum disorders and/or intellectual disabilities who experience complex communication needs. Considering potential differences related to outcomes that were targeted for intervention could help identify the most effective means of individualizing AAC interventions.
@@ -50,4 +81,5 @@ __Results__: Across 114 included studies with 330 participants and 767 effect si
 __Conclusions__: This meta-analysis highlights the potential differences related to outcomes that were targeted for AAC interventions for individuals with ASD and IDD. AAC intervention has been shown to improve communication outcomes in this population. However, there was a lack of sufficient data to analyze for some potential moderators such as insufficient descriptive information on participant characteristics. This is likely due to the heterogeneity of the participants and implementation factors; however, these factors were frequently underreported by original study authors which disallowed systematic analysis. That said, there is a need for more detailed participant characteristic descriptions in original research reports to support future aggregation across the literature.
 Sponsorship: We received funding for the review from the Institute of Education Sciences.
 Protocol: The review protocol was registered in the PROSPERO system (CRD42018112428).
+
 

@@ -1,34 +1,65 @@
 ---
 title: High replicability of newly-discovered social-behavioral findings is achievable.
 author:
-- John Protzko
-- Jon Krosnick
-- Leif Nelson
-- Brian Nosek
-- Jordan Axt
-- Matt Berent
-- Nicholas Buttrick
-- Matthew DeBell
-- Charles R. Ebersole
-- Sebastian Lundmark
-- Bo MacInnis
-- Michael O'Donnell
-- Hannah Perfecto
-- James E. Pustejovsky
-- Scott Roeder
-- Jan Walleczek
-- Jonathan W. Schooler
+- name:
+    given: John
+    family: Protzko
+- name:
+    given: Jon
+    family: Krosnick
+- name:
+    given: Leif
+    family: Nelson
+- name:
+    given: Brian
+    family: Nosek
+- name:
+    given: Jordan
+    family: Axt
+- name:
+    given: Matt
+    family: Berent
+- name:
+    given: Nicholas
+    family: Buttrick
+- name:
+    given: Matthew
+    family: DeBell
+- name:
+    given: Charles R.
+    family: Ebersole
+- name:
+    given: Sebastian
+    family: Lundmark
+- name:
+    given: Bo
+    family: MacInnis
+- name:
+    given: Michael
+    family: O'Donnell
+- name:
+    given: Hannah
+    family: Perfecto
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Scott
+    family: Roeder
+- name:
+    given: Jan
+    family: Walleczek
+- name:
+    given: Jonathan W.
+    family: Schooler
 date: 2023-11-09T00:00:00
-publish_date: 2023-11-09T00:00:00
-publication_type: Journal article
-publication: Nature Human Behavior 
-volume: 8
-issue: 
-pages: 311-319
 categories:
 - replication
 - meta-analysis
-image-alt: "Effect sizes and 95% CI from 16 new discoveries (yellow marks) in the social-behavioral sciences, each with four replications. Each lab is designated by a unique shape for observed effect size; blue marks correspond to self-replications, green marks to independent replications."
+image-alt: Effect sizes and 95% CI from 16 new discoveries (yellow marks) in the social-behavioral
+  sciences, each with four replications. Each lab is designated by a unique shape
+  for observed effect size; blue marks correspond to self-replications, green marks
+  to independent replications.
 links:
 - text: Journal
   url: https://doi.org/10.1038/s41562-023-01749-9
@@ -38,7 +69,16 @@ links:
 - icon: unlock-fill
   text: Pre-Print
   url: https://psyarxiv.com/n2a9x/
+citation:
+  type: article-journal
+  container-title: Nature Human Behavior
+  url: https://doi.org/10.1038/s41562-023-01749-9
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 8
+  page: 311-319
+
 ---
 
 Failures to replicate evidence of new discoveries have forced scientists to ask whether this unreliability is due to suboptimal implementation of optimal methods or whether presumptively optimal methods are not, in fact, optimal. This paper reports an investigation by four coordinated laboratories of the prospective replicability of 16 novel experimental findings using current optimal practices: high statistical power, preregistration, and complete methodological transparency. In contrast to past systematic replication efforts that reported replication rates averaging 50%, replication attempts here produced the expected effects with significance testing (p<.05) in 86% of attempts, slightly exceeding maximum expected replicability based on observed effect size and sample size. When one lab attempted to replicate an effect discovered by another lab, the effect size in the replications was 97% that of the original study. This high replication rate justifies confidence in rigor enhancing methods and suggests that past failures to replicate may be attributable to departures from optimal procedures.
+
 

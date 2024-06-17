@@ -1,16 +1,17 @@
 ---
-title: 'A meta-analysis of school-based group contingency interventions for students with challenging behavior: An update'
+title: 'A meta-analysis of school-based group contingency interventions for students
+  with challenging behavior: An update'
 author:
-- Daniel M. Maggin
-- James E. Pustejovsky
-- Austin H. Johnson
+- name:
+    given: Daniel M.
+    family: Maggin
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Austin H.
+    family: Johnson
 date: 2017-07-01T00:00:00
-publish_date: 2017-07-01T00:00:00
-publication_type: Journal article
-publication: Remedial and Special Education
-volume: 38
-issue: 6
-pages: 353-370
 categories:
 - design-comparable SMD
 - meta-analysis
@@ -25,6 +26,16 @@ links:
 - icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/hvuw5/
+citation:
+  type: article-journal
+  container-title: Remedial and Special Education
+  url: https://doi.org/10.1177/0741932517716900
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 38
+  issue: 6
+  page: 353-370
+
 ---
 
 Group contingencies are recognized as a potent intervention for addressing challenging student behavior in the classroom, with research reviews supporting the use of this intervention platform going back more than four decades. Over this time period, the field of education has increasingly emphasized the role of research evidence for informing practice, as reflected in the increased use of systematic reviews and meta-analyses. In the current article, we continue this trend by applying recently developed between-case effect size measures and transparent visual analysis procedures to synthesize an up-to-date set of group contingency studies that used single-case designs. Results corroborated recent systematic reviews by indicating that group contingencies are generally effective—particularly for addressing challenging behavior in general education classrooms. However, our review highlights the need for more research on students with disabilities and the need to collect and report information about participants’ functional level.
+

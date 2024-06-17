@@ -1,20 +1,22 @@
 ---
-title: The impact of response-guided designs on count outcomes in single-case experimental design baselines
+title: The impact of response-guided designs on count outcomes in single-case experimental
+  design baselines
 author:
-- Daniel M. Swan
-- James E. Pustejovsky
-- S. Natasha Beretvas
+- name:
+    given: Daniel M.
+    family: Swan
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: S. Natasha
+    family: Beretvas
 date: 2020-03-26T00:00:00
-publish_date: 2020-03-26T00:00:00
-publication_type: Journal article
-publication: Evidence-Based Communication Assessment and Intervention
-volume: 
-issue: 
-pages: forthcoming
 categories:
 - single-case design
 - response-guided design
-image-alt: Cumulative percentage of stable baselines at a given number of observations for the independent Poisson case, up to 20 observations
+image-alt: Cumulative percentage of stable baselines at a given number of observations
+  for the independent Poisson case, up to 20 observations
 links:
 - text: Journal
   url: https://doi.org/10.1080/17489539.2020.1739048
@@ -22,9 +24,16 @@ links:
 - icon: code-slash
   text: Code
   url: https://osf.io/f8bmu/
+citation:
+  type: article-journal
+  container-title: Evidence-Based Communication Assessment and Intervention
+  url: https://doi.org/10.1080/17489539.2020.1739048
+  doi: 10.1016/j.jsp.2018.02.003
+  page: forthcoming
 
 ---
 
 
 In single-case experimental design (SCED) research, researchers often choose when to start treatment based on whether the baseline data collected so far are stable, using what is called a response-guided design. There is evidence that response-guided designs are common, and researchers have described a variety of criteria for assessing stability. With many of these criteria, making judgments about stability could yield data with limited variability, which may have consequences for statistical inference and effect size estimates. However, little research has examined the impact of response-guided design on the resulting data. Drawing on both applied and methodological research, we describe several algorithms as models for response-guided design. We use simulation methods to assess how using a response-guided design impacts the baseline data pattern. The simulations generate baseline data in the form of frequency counts, a common type of outcome in SCEDs. Most of the response-guided algorithms we identified lead to baselines with approximately unbiased mean levels, but nearly all of them lead to underestimates in the baseline variance. We discuss implications for the use of response-guided designs in practice and for the plausibility of specific algorithms as representations of actual research practice.
+
 

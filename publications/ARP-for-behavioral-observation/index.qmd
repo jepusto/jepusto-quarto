@@ -1,15 +1,14 @@
 ---
-title: 'Alternating renewal process models for behavioral observation: Simulation methods and validity implications'
+title: 'Alternating renewal process models for behavioral observation: Simulation
+  methods and validity implications'
 author:
-- James E. Pustejovsky
-- Christopher Runyon
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Christopher
+    family: Runyon
 date: 2014-08-01T00:00:00
-publish_date: 2014-08-01T00:00:00
-publication_type: Journal article
-publication: Behavioral Disorders
-volume: 39
-issue: 4
-pages: 211-227
 categories:
 - single-case design
 - behavioral observation
@@ -24,6 +23,16 @@ links:
 - text: R package
   url: https://CRAN.R-project.org/package=ARPobservation
   icon: box2
+citation:
+  type: article-journal
+  container-title: Behavioral Disorders
+  url: https://dx.doi.org/10.1177/019874291303900406
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 39
+  issue: 4
+  page: 211-227
+
 ---
 
 Direct observation recording procedures produce reductive summary measurements of an underlying stream of behavior. Previous methodological studies of these recording procedures have employed simulation methods for generating random behavior streams, many of which amount to special cases of a statistical model known as the alternating renewal process. This paper describes the alternating renewal process model in its general form, demonstrates how it provides an organizing framework for most past simulation research on direct observation procedures, and introduces a freely available software package that implements the model. The software can be used to simulate behavior streams as well as data from many common recording procedures, including continuous recording, momentary time sampling, event counting, and interval recording procedures. Several examples illustrate how the software can be used to study the validity and reliability of direct observation data and to develop measurement strategies during the planning phases of empirical studies.
+

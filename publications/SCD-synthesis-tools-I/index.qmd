@@ -1,19 +1,26 @@
 ---
-title: 'Single-case synthesis tools I: Evaluating the quality and rigor of research on antecedent sensory-based interventions'
+title: 'Single-case synthesis tools I: Evaluating the quality and rigor of research
+  on antecedent sensory-based interventions'
 author:
-- Kathleen N. Zimmerman
-- Jennifer R. Ledford
-- Katherine E. Severini
-- James E. Pustejovsky
-- Erin E. Barton
-- Blair P. Lloyd
+- name:
+    given: Kathleen N.
+    family: Zimmerman
+- name:
+    given: Jennifer R.
+    family: Ledford
+- name:
+    given: Katherine E.
+    family: Severini
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Erin E.
+    family: Barton
+- name:
+    given: Blair P.
+    family: Lloyd
 date: 2018-03-03T00:00:00
-publish_date: 2018-03-03T00:00:00
-publication_type: Journal article
-publication: Research in Developmental Disabilities
-volume: 79
-issue: 
-pages: 19-32
 categories:
 - single-case design
 - systematic review
@@ -21,7 +28,16 @@ links:
 - text: Journal
   url: https://doi.org/10.1016/j.ridd.2018.02.003
   icon: newspaper
+citation:
+  type: article-journal
+  container-title: Research in Developmental Disabilities
+  url: https://doi.org/10.1016/j.ridd.2018.02.003
+  doi: 10.1016/j.jsp.2018.02.003
+  volume: 79
+  page: 19-32
+
 ---
 
 Tools for evaluating the quality and rigor of single case research designs (SCD) are often used when conducting SCD syntheses. Preferred components include evaluations of design features related to the internal validity of SCD to obtain quality and/or rigor ratings. Three tools for evaluating the quality and rigor of SCD (Council for Exceptional Children, What Works Clearinghouse, and Single-Case Analysis and Design Framework) were compared to determine if conclusions regarding the effectiveness of antecedent sensory-based interventions for young children changed based on choice of quality evaluation tool. Evaluation of SCD quality differed across tools, suggesting selection of quality evaluation tools impacts evaluation findings. Suggestions for selecting an appropriate quality and rigor assessment tool are provided and across-tool conclusions are drawn regarding the quality and rigor of studies. Finally, authors provide guidance for using quality evaluations in conjunction with outcome analyses when conducting syntheses of interventions evaluated in the context of SCD.
+
 
