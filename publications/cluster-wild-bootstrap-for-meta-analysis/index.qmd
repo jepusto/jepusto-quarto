@@ -1,7 +1,9 @@
 ---
 title: Cluster wild bootstrapping to handle dependent effect sizes in meta-analysis with a small number of studies
 author:
-- Megha Joshi
+- name:
+    given: Megha
+    family: Joshi
 - name: 
     given: James E.
     family: Pustejovsky

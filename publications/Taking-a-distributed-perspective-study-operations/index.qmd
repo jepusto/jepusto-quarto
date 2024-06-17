@@ -7,14 +7,22 @@ author:
 - Amber Stitziel-Pareja
 - Geoff Lewis
 date: 2009-03-21T00:00:00
-publish_date: 2009-03-21T00:00:00
-publication_type: Book chapter
-publication: "Distributed Leadership: Different Perspectives"
-publication_editor: A. Harris (ed.)
-publisher: Springer
-location: 
-pages: 47-80
 categories:
 - distributed leadership
 links:
+- text: Publisher
+  url: https://doi.org/10.1007/978-1-4020-9737-9_4
+  icon: newspaper
+citation: 
+  type: chapter
+  container-title: "Distributed Leadership: Different Perspectives"
+  editor: 
+  - name: 
+      given: Alma
+      family: Harris
+  publisher: Springer
+  publisher-place: Dordrecht
+  chapter-number: 3
+  page: 47-80
+  url: https://doi.org/10.1007/978-1-4020-9737-9_4
 ---

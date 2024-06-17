@@ -1,12 +1,16 @@
 ---
 title: 'Conducting power analysis for meta-analysis of dependent effect sizes: Common guidelines and an introduction to the POMADE R package'
 author:
-- Mikkel H. Vembye
-- James E. Pustejovsky
-- Terri D. Pigott
+- name:
+    given: Mikkel H.
+    family: Vembye
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Terri D.
+    family: Pigott
 date: 2023-07-21T00:00:00
-publish_date: 2024-02-12T00:00:00
-publication_type: Pre-print
 image: ../../software/POMADE/featured.png
 categories:
 - power
@@ -22,6 +26,10 @@ links:
 - icon: code-slash
   text: Code
   url: https://osf.io/yurzh
+citation: 
+  type: article
+  doi: 10.31222/osf.io/3x2en
+  url: https://osf.io/preprints/metaarxiv/3x2en
 ---
 
 Sample size and statistical power are important factors to consider when planning a research synthesis. Power analysis methods have been developed for fixed effect or random effects models, but until recently these methods were limited to simple data structures with a single, independent effect per study. Recent work has provided power approximation formulas for meta-analyses involving studies with multiple, dependent effect size estimates, which are common in syntheses of social science research. Prior work focused on developing and validating the approximations, but did not address the practice challenges encountered in applying them for purposes of planning a synthesis involving dependent effect sizes. We aim to facilitate application of these recent developments by providing practical guidance on how to conduct power analysis for planning a meta-analysis of dependent effect sizes and by introducing a new R package, POMADE, designed for this purpose. We present a comprehensive overview of resources for finding information about the study design features and model parameters needed to conduct power analysis, along with detailed worked examples using the POMADE package. For presenting power analysis findings, we emphasize graphical tools that can depict power under a range of pausible assumptions and introduce a novel plot, the traffic light power plot, for conveying the degree of certainty in one’s assumptions.

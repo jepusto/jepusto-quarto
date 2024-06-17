@@ -1,14 +1,13 @@
 ---
 title: 'Evaluating the Transition to College Mathematics Course in Texas high schools: Examining heterogeneity across schools and student characteristics'
 author:
-- James E. Pustejovsky
-- Megha Joshi
+- name: 
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Megha
+    family: Joshi
 date: 2021-04-20T00:00:00
-publish_date: 2021-04-20T00:00:00
-publication_type: Report
-publication: Greater Texas Foundation White Paper
-organization: Greater Texas Foundation
-location: Bryan, TX
 categories:
 - causal inference
 - evaluation
@@ -18,6 +17,11 @@ links:
 - icon: file-pdf-fill
   text: PDF
   url: /files/TCMC-Eval-Yr-3.pdf
+citation: 
+  type: report
+  collection-title: Greater Texas Foundation White Paper
+  publisher: Greater Texas Foundation
+  publisher-place: Bryan, TX
 ---
 
 Texas House Bill 5 introduced requirements that school districts partner with institutions of higher education to provide college preparatory courses in mathematics and English language arts for high school seniors who are not yet college ready. In response to House Bill 5 requirements, the Charles A. Dana Center developed a model college preparatory mathematics course, Transition to College Mathematics Course (TCMC), which has been adopted by dozens of school districts across Texas over the past several school years. In prior work, we examined the effects of TCMC on students’ progress into post-secondary education by comparing two student cohorts who participated in TCMC to observationally similar students from the same cohort but who did not enroll in the course. In this report, we investigate the extent of heterogeneity in the effects of participating in TCMC. We find little evidence that the program was differentially effective for students from different socio-economic backgrounds, nor do we find evidence that program effects varied by the number of years that it had been offered. However, for key outcomes such as rates of passing a college-level math course, the effects of participating in TCMC may have varied across the schools that offered the course. Just as in prior work, these findings must be interpreted cautiously because we were unable to fully assess and account for students' college-readiness status at the start of their senior year.

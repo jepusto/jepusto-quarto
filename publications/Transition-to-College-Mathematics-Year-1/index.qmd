@@ -1,14 +1,13 @@
 ---
 title: 'Evaluating the Transition to College Mathematics Course in Texas high schools: Findings from the first year of implementation'
 author:
-- James E. Pustejovsky
-- Megha Joshi
+- name: 
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Megha
+    family: Joshi
 date: 2019-06-30T00:00:00
-publish_date: 2019-06-30T00:00:00
-publication_type: Report
-publication: Greater Texas Foundation White Paper
-organization: Greater Texas Foundation
-location: Bryan, TX
 categories:
 - causal inference
 - evaluation
@@ -20,6 +19,12 @@ links:
 - icon: file-pdf-fill
   text: PDF
   url: /files/TCMC-Eval-Yr-1.pdf
+citation: 
+  type: report
+  collection-title: Greater Texas Foundation White Paper
+  publisher: Greater Texas Foundation
+  publisher-place: Bryan, TX
+  url: https://www.greatertexasfoundation.org/wp-content/uploads/2021/08/Pustejovsky-Final-2019.pdf
 ---
 
 

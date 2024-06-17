@@ -111,12 +111,6 @@ yaml_vals %>%
   count(author) %>%
   View()
 
-yaml_vals %>%
-  filter(unit != "index.qmd") %>%
-  mutate(
-    type = map_chr(yamls, ~ .x$publication_type)
-  ) %>%
-  count(type)
 
 parse_names <- function(name) {
   if (is.list(name)) return(name)
@@ -212,3 +206,19 @@ all_pubs <-
 edit_publication(all_pubs[3])
 
 walk(all_pubs, edit_publication)
+
+
+pub_types <- 
+  yaml_vals %>%
+  filter(unit != "index.qmd") %>%
+  mutate(
+    type = map_chr(yamls, ~ if ("citation" %in% names(.x)) { .x$citation$type } else {.x$publication_type})
+  )
+
+pub_types %>%
+  count(type)
+
+pub_types %>%
+  filter(type != "article-journal") %>%
+  arrange(type) 
+
