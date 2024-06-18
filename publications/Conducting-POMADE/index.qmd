@@ -26,6 +26,7 @@ links:
 - icon: code-slash
   text: Code
   url: https://osf.io/yurzh
+preprint: true
 citation: 
   type: article
   doi: 10.31222/osf.io/3x2en

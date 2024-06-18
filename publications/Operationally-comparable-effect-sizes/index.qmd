@@ -21,7 +21,7 @@ links:
   url: /files/Pustejovsky-2013-Thesis.pdf
 citation:
   type: thesis
-  genre: doctoral dissertation 
+  genre: Doctoral dissertation 
   publisher: Northwestern University, Department of Statistics
   publisher-place: Evanston, IL
 ---

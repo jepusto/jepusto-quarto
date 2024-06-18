@@ -4,3 +4,4 @@ format:
     template-partials: 
     - _templates/title-block.html
 csl: apa.csl
+google-scholar: true

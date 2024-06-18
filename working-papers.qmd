@@ -13,7 +13,7 @@ listing:
     filter-ui: false
     max-items: 5
     include:
-      publication_type: "{Pre-print}*"
+      preprint: true
 ---
 
 :::::{#working-papers}

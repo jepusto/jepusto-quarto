@@ -14,21 +14,21 @@
       <p class="listing-author"><%= item.author %></p>
       <% } %>
       <p class="citation">
-      <% if (item.publication_type) { %>
-        <% if (item.publication) { %>
-        <% if (item.publication_type == "Journal article") { %>
-          <em class="listing-publication"><%= item.publication %>,</em>
-          <% if (item.volume) { %><em><%= item.volume %></em><% if (item.issue) { %>(<%= item.issue %>),<% } else {%>,<% } %><% } %>
-          <% if (item.pages) { %>
-            <%= item.pages %>.
+        <% if (item.citation) { %>
+        <% if (item.citation.type == "article-journal") { %>
+          <em class="listing-publication"><%= item.citation['container-title'] %>,</em>
+          <% if (item.citation.volume) { %><em><%= item.citation.volume %></em><% if (item.citation.issue) { %>(<%= item.citation.issue %>),<% } else {%>,<% } %><% } %>
+          <% if (item.citation.page) { %>
+            <%= item.citation.page %>.
           <% } %>
-        <% } else if (item.publication_type == "Report") {%>
-          <em class="listing-publication"><%= item.publication %>,</em>
-          <% if (item.organization) { %><%= item.organization %><% if (item.location) { %>, <%= item.location %><% } %>.<% } %>
-        <% } else if (item.publication_type == "Book chapter") {%>
-          <% if (item.publication_editor) { %>In <%= item.publication_editor %>, <% } %><% if (item.publication) { %><em><%= item.publication %></em><% } %>. <% if (item.location) {%><%= item.location %>: <% } %><% if (item.publisher) {%><%= item.publisher %>.<% } %>
+        <% } else if (item.citation.type == "report") {%>
+          <em class="listing-publication"><%= item.citation['container-title'] %>,</em>
+          <% if (item.citation.publisher) { %><%= item.citation.publisher %><% if (item.citation['publisher-place']) { %>, <%= item.citation['publisher-place'] %><% } %>.<% } %>
+        <% } else if (item.citation.type == "chapter") {%>
+          <% if (item.citation['container-title']) { %>In <em><%= item.citation['container-title'] %></em>.<% } %> <% if (item.citation['publisher-place']) {%><%= item.citation['publisher-place'] %>: <% } %><% if (item.citation.publisher) {%><%= item.citation.publisher %>.<% } %>
+        <% } else if (item.citation.type == "thesis") {%>
+          <% if (item.citation.genre) { %><%= item.citation.genre %><% } %><% if (item.citation.publisher) {%>, <%= item.citation.publisher %>.<% } %>
         <% } %>
-      <% } %>
       <% } %>
       </p>
       <% if (item.links) { %>
