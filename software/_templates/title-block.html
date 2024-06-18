@@ -1,0 +1,52 @@
+$if(header-image)$
+  <div class="quarto-figure quarto-figure-center page-columns page-full">
+  <figure class="figure page-columns page-full">
+    <p class="page-columns page-full"><img src="$header-image$" class="img-fluid figure-img column-page" style="width:100.0%"></p>
+    $if(header-caption)$
+    <figcaption>$header-caption$</figcaption>
+    $endif$
+  </figure>
+  </div>
+$endif$
+
+
+<header id="title-block-header" class="quarto-title-block default">
+  
+  <div class="quarto-title column-body">
+    $if(title)$<h1 class="title">$title$</h1>$endif$
+    $if(subtitle)$
+    <p class="subtitle">$subtitle$</p>
+    $endif$
+  </div>
+
+  <div class="quarto-title-meta">
+    $if(author)$
+    <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+        $for(author)$<p class="author">$author$</p>$endfor$
+      </div>
+    </div>
+    $endif$
+    <div>
+    $if(date)$
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        $if(date)$
+        <p class="date">$date$</p>
+        $endif$
+      </div>
+    </div>
+    $endif$
+    $if(links)$
+      <div class="software-links quarto-links">
+      $for(links)$
+      <a href="$links.url$" class="btn btn-outline-primary">
+        $if(links.icon)$<i class="bi bi-$links.icon$" aria-label="$links.icon$"></i>$endif$
+        $links.text$
+      </a>
+      $endfor$
+      </div>
+    $endif$
+  </div>
+</header>

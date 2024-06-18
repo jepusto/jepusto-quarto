@@ -1,5 +1,6 @@
 ---
 title: "Software"
+page-layout: article
 listing:
     sort: ltitle
     type: custom
@@ -10,12 +11,3 @@ listing:
     filter-ui: false
     max-items: 10
 ---
-
-```{r}
-library(pkgsearch)
-Pusto_pkgs <- c("ARPobservation","clubSandwich","lmeInfo","POMADE","scdhlm","simhelpers","SingleCaseES","wildmeta")
-pkg_dat <- cran_packages(Pusto_pkgs)
-pkg_dat |>
-  subset(select = c(Package, Title, Version, `Authors@R`, date))
-```
-

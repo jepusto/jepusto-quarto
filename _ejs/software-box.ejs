@@ -20,12 +20,12 @@
       <% if (item.author) { %>
       <p class="authors"><%= item.author %></p>
       <% } %>
-      <% if (item.about.links) { %>
+      <% if (item.links) { %>
         <ul class="publication-links">
-          <% for (const link of item.about.links) { %>
+          <% for (const link of item.links) { %>
             <li class="publication-link btn btn-outline-primary">
               <a href="<%= link.url %>">
-                <i class="bi bi-<%= link.icon %>" aria-label="<%= link.icon %>"></i>
+                <% if (link.icon) { %><i class="bi bi-<%= link.icon %>" aria-label="<%= link.icon %>"></i><% } %>
                 <%= link.text %>
               </a>
             </li>

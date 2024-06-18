@@ -3,30 +3,40 @@ title: SingleCaseES
 ltitle: singlecasees
 subtitle: Single-case design effect size calculator
 image: featured.png
-header_image: Romaniuk-wide.png
+header-image: Romaniuk-wide.png
 author:
-- James E. Pustejovsky
-- Man Chen
-- Daniel M. Swan
-- Paulina Grekov
-date: '2016-04-27T00:00:00Z'
+- name:
+    given: James E. 
+    family: Pustejovsky
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: Daniel M.
+    family: Swan
+- name:
+    given: Paulina
+    family: Grekov
 categories:
 - effect size
 - response ratio
 - non-overlap measures
 - single-case design
 - Rstats
-page-layout: full
-about:
-  template: trestles
-  links:
-  - text: CRAN
-    url: https://cran.r-project.org/package=SingleCaseES
-  - text: Website
-    url: https://jepusto.github.io/SingleCaseES/
-  - icon: github
-    url: https://github.com/jepusto/SingleCaseES
-
+links:
+- text: CRAN
+  url: https://cran.r-project.org/package=SingleCaseES
+- text: Website
+  url: https://jepusto.github.io/SingleCaseES/
+- icon: github
+  url: https://github.com/jepusto/SingleCaseES
+citation:
+  type: software
+  doi: 10.32614/CRAN.package.SingleCaseES
+  medium: R package
+  note: R package
+  version: 0.7.2
+  issued: '2023-08-12T00:00:00Z'
 ---
 
 An R package for calculating basic effect size indices for single-case designs, including several non-overlap measures and parametric effect size measures, and for estimating the gradual effects model developed by Swan and Pustejovsky (2017).

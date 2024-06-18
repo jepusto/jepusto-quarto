@@ -2,26 +2,29 @@
 title: ARPobservation
 ltitle: arpobservation
 subtitle: Simulate systematic direct observation data
-image: ARP-simulator.png
-header_image: headers/ABAB-design.png
-header_caption: Simulated frequency counting data in a treatment reversal design
+image: featured.png
+header-image: ARP-simulator.png
 author: 
- - James E. Pustejovsky
-date: '2016-04-27T00:00:00Z'
+ - name:
+    given: James E. 
+    family: Pustejovsky
 categories:
 - behavioral observation
 - alternating renewal process
 - simulation
 - Rstats
-page-layout: full
-about:
-  template: trestles
-  links:
-  - text: CRAN
-    url: https://cran.r-project.org/package=ARPobservation
-  - icon: github
-    url: https://github.com/jepusto/ARPobservation
-
+links:
+- text: CRAN
+  url: https://cran.r-project.org/package=ARPobservation
+- icon: github
+  url: https://github.com/jepusto/ARPobservation
+citation:
+  type: software
+  doi: 10.32614/CRAN.package.ARPobservation
+  medium: R package
+  note: R package
+  version: 1.2.2
+  issued: '2023-08-25T00:00:00Z'
 ---
 
 An R package for simulating different methods of recording data based on direct observation of behavior, where behavior is modeled by an alternating renewal process.

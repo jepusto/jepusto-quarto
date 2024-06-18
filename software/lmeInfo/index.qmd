@@ -4,25 +4,31 @@ ltitle: lmeinfo
 subtitle: Information Matrices for 'lmeStruct' and 'glsStruct' Objects
 image: featured.jpg
 author:
-- James E. Pustejovsky
-- Man Chen
-date: '2020-04-24T00:00:00Z'
+- name:
+    given: James E. 
+    family: Pustejovsky
+- name:
+    given: Man
+    family: Chen
 categories:
 - hierarchical models
 - effect size
 - Rstats
 - nlme
-page-layout: full
-about:
-  template: trestles
-  links:
-  - text: CRAN
-    url: https://cran.r-project.org/package=lmeInfo
-  - text: Website
-    url: https://jepusto.github.io/lmeInfo/
-  - icon: github
-    url: https://github.com/jepusto/lmeInfo
-
+links:
+- text: CRAN
+  url: https://cran.r-project.org/package=lmeInfo
+- text: Website
+  url: https://jepusto.github.io/lmeInfo/
+- icon: github
+  url: https://github.com/jepusto/lmeInfo
+citation:
+  type: software
+  doi: 10.32614/CRAN.package.lmeInfo
+  medium: R package
+  note: R package
+  version: 0.3.2
+  issued: '2023-04-17T00:00:00Z'
 ---
 
 lmeInfo provides analytic derivatives and information matrices for fitted linear mixed effects models and generalized least squares models estimated using `nlme::lme()` and `nlme::gls()`, respectively. The package includes functions for estimating the sampling variance-covariance of variance component parameters using the inverse Fisher information. The variance components include the parameters of the random effects structure (for lme models), the variance structure, and the correlation structure. The expected and average forms of the Fisher information matrix are used in the calculations, and models estimated by full maximum likelihood or restricted maximum likelihood are supported. The package also includes a function for estimating standardized mean difference effect sizes ([Pustejovsky et al., 2014](/publication/design-comparable-effect-sizes/)) based on fitted lme or gls models.

@@ -3,29 +3,37 @@ title: scdhlm
 ltitle: scdhlm
 subtitle: Between-case SMD for single-case designs
 image: featured.png
-header_image: Rodriguez.png
+header-image: Rodriguez.png
 author: 
- - James E. Pustejovsky
- - Man Chen
- - Bethany H. Bhat
-date: '2016-04-27T00:00:00Z'
+- name:
+    given: James E. 
+    family: Pustejovsky
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: Bethany H.
+    family: Bhat
 categories:
 - design-comparable SMD
 - effect size
 - hierarchical models
 - single-case design
 - Rstats
-page-layout: full
-about:
-  template: trestles
-  links:
-  - text: CRAN
-    url: https://cran.r-project.org/package=scdhlm
-  - text: Website
-    url: https://jepusto.github.io/scdhlm/
-  - icon: github
-    url: https://github.com/jepusto/scdhlm
-
+links:
+- text: CRAN
+  url: https://cran.r-project.org/package=scdhlm
+- text: Website
+  url: https://jepusto.github.io/scdhlm/
+- icon: github
+  url: https://github.com/jepusto/scdhlm
+citation:
+  type: software
+  doi: 10.32614/CRAN.package.scdhlm
+  medium: R package
+  note: R package
+  version: 0.7.3
+  issued: '2024-02-25T00:00:00Z'
 ---
 
 An R package implementing several methods of estimating a design-comparable standardized mean difference effect size based on data from a single-case design. Methods include those from Hedges, Pustejovsky, & Shadish ([2012](/publication/SMD-for-SCD), [2013](/publication/SMD-for-MBD)) and [Pustejovsky, Hedges, & Shadish (2014)](/publication/design-comparable-effect-sizes/).
