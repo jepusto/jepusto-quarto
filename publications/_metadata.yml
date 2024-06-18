@@ -3,5 +3,5 @@ format:
   html:
     template-partials: 
     - _templates/title-block.html
-csl: apa.csl
+csl: ../apa.csl
 google-scholar: true
