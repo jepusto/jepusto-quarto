@@ -10,16 +10,16 @@ about:
   - icon: globe
     href: https://www.dmswan.com/
   - icon: envelope
-    href: mailto:dmswan@uoregon.edu
+    href: mailto:dms031000@gmail.com
   - icon: twitter
     href: https://twitter.com/scienterrifical
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=e-RXsc8AAAAJ
   - icon: github
     href: https://github.com/dmswan
-org_name: Prevention Science Institute, University of Oregon
-org_url: https://psi.uoregon.edu/
-role: Research Associate
+org_name: Abt Global
+org_url: https://www.abtglobal.com/
+role: Senior Analysis
 people-group: Alumni
 listing:
   - id: publications
@@ -45,9 +45,11 @@ listing:
 
 :::::{#about}
 
-Danny is currently a research associate working at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the What Works Clearinghouse and assists with revision and refinement of the WWC’s Standards and Procedures Handbooks. 
+Danny is currently a senior analyst at [Abt Global](https://www.abtglobal.com/), where he works on meta-analysis and evidence clearinghouse projects. 
+Prior to joining Abt, he was a research associate at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the What Works Clearinghouse and assists with revision and refinement of the WWC’s Standards and Procedures Handbooks. 
 His dissertation work involved examining the impact of response-guided designs on treatment effect estimates from single-case designs. 
-His personal research interests center on analysis and meta-analysis of single-case designs (SCDs) in the context of education. He is particularly interested in the quality indicators of primary studies, the different kinds of inferences made in SCDs, and how the common, frequently unspoken research practices in this field might impact the intervention estimates from these kinds of studies.
+His personal research interests center on analysis and meta-analysis of single-case designs (SCDs) in the context of education. 
+He is particularly interested in the quality indicators of primary studies, the different kinds of inferences made in SCDs, and how the common, frequently unspoken research practices in this field might impact the intervention estimates from these kinds of studies.
 
 ::::{.grid}
 
