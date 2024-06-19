@@ -1,0 +1,166 @@
+---
+title: Step-function selection models for meta-analysis
+---
+
+```{css}
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.slider-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+}
+
+.slider-pointer {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #0066cc;
+  cursor: pointer;
+}
+
+.result-container {
+  margin-top: 20px;
+  font-size: 16px;
+}
+```
+
+```{js}
+const sliderContainer = document.querySelector(".slider-container");
+const sliders = document.querySelectorAll(".slider-pointer");
+const value1 = document.getElementById("value1");
+const value2 = document.getElementById("value2");
+const value3 = document.getElementById("value3");
+const value4 = document.getElementById("value4");
+
+function updateValues() {
+  const values = Array.from(sliders).map((slider) => Number(slider.dataset.value));
+  value1.textContent = values[0];
+  value2.textContent = values[1] - values[0];
+  value3.textContent = values[2] - values[1];
+  value4.textContent = 100 - (values[2] - values[1] + values[1] - values[0] + values[0]);
+
+
+}
+
+sliders.forEach((slider) => {
+  slider.addEventListener("mousedown", (e) => {
+    const target = e.target;
+    const sliderWidth = target.parentNode.offsetWidth;
+    let prevX = e.clientX;
+
+    function onMouseMove(e) {
+      const deltaX = e.clientX - prevX;
+      const newPosition = Math.min(Math.max(target.offsetLeft + deltaX, 0), sliderWidth);
+      prevX = e.clientX;
+
+      target.style.left = newPosition + "px";
+      target.dataset.value = Math.round((newPosition / sliderWidth) * 100);
+      updateValues();
+    }
+
+    function onMouseUp() {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    }
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  });
+});
+
+// Update the values initially
+updateValues();
+```
+
+```{=html}
+<div class="slider-container">
+    <div class="slider-track"></div>
+    <div class="slider-pointer" data-value="50" style="left: 50%;"></div>
+    <div class="slider-pointer" data-value="90" style="left: 90%;"></div>
+    <div class="slider-pointer" data-value="100" style="left: 100%;"></div>
+</div>
+<div class="result-container">
+  <div>Value 1: <span id="value1">50</span></div>
+  <div>Value 2: <span id="value2">40</span></div>
+  <div>Value 3: <span id="value3">10</span></div>
+  <div>Value 4: <span id="value4">0</span></div>
+</div>
+```
+
+
+
+```{r}
+pwnormal <- function(mu, tau, sigma, alpha, lambda) {
+  eta <- sqrt(tau^2 + sigma^2)
+  H <- length(alpha)
+  alpha_f <- c(0, alpha, 1)
+  lambda_f <- c(1, lambda)
+  c_h <- (sigma * qnorm(1 - alpha_f) - mu) / eta
+  B_h <- pnorm(c_h[-(H+2)]) - pnorm(c_h[-1])
+  A <- sum(B_h * lambda_f)
+  pr_h <- B_h * lambda_f / A
+  function(x) {
+    x_interval <- cut(x, breaks = sigma * qnorm(1 - alpha_f), include.lowest = TRUE)
+    wt <- rev(lambda_f)[x_interval]
+    gen_prob <- dnorm((x - mu) / eta) / eta
+    wt * gen_prob / A
+  }
+}
+```
+```{ojs}
+math = require("mathjs")
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+lambda = Array(H+1).fill(1)
+
+eta = math.sqrt(tau**2 + sigma**2)
+
+```
+
+:::: {.grid .column-page-inset}
+
+::: {.g-col-7}
+
+:::
+
+::: {.g-col-5}
+
+```{ojs}
+//| panel: input
+
+viewof H = Inputs.range(
+  [1, 10], 
+  {value: 1, step: 1, label: "Number of thresholds (H):"}
+)
+
+viewof mu = Inputs.range(
+  [-2, 2], 
+  {value: 0, step: 0.01, label: "Average effect size (mu):"}
+)
+
+viewof tau = Inputs.range(
+  [0, 2], 
+  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+)
+
+viewof sigma = Inputs.range(
+  [0, 1], 
+  {value: 0.10, step: 0.01, label: "Standard error (sigma):"}
+)
+
+```
+:::
+
+::::
