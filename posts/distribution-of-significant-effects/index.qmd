@@ -7,6 +7,7 @@ categories:
 - distribution theory
 execute:
   echo: false
+css: styles.css
 ---
 
 [A while back](/posts/number-of-significant-effects/), I posted the outline of a problem about the number of significant effect size estimates in a study that reports multiple outcomes. This problem interests me because it connects to the issue of selective reporting of study results, which creates problems for meta-analysis. 
@@ -92,9 +93,28 @@ p_binom_norm = binomial_coefs.map((coef, a) => {
 })
 ```
 
-:::: {.grid .column-page-inset}
+```{ojs}
+psi = norm.cdf((mu - crit * sigma) / math.sqrt(tau**2 + omega**2 + sigma**2))
 
-::: {.g-col-7}
+E_NA = m * psi 
+pi_deriv = norm.pdf((mu - crit * sigma) / zeta_sd)
+V_pi_approx = (pi_deriv**2) * (tau**2 + rho * sigma**2) / (omega**2 + (1 - rho) * sigma**2)
+V_NA_approx = m * psi * (1 - psi) + m * (m - 1) * V_pi_approx
+
+V_NA = {
+  let V_NA = 0 - E_NA**2;
+  for (let i = 0; i <= m; i++) {
+  	V_NA += i**2 * p_binom_norm[i];
+  }
+  return V_NA;
+}
+```
+
+::::: {.grid .column-page-inset}
+
+:::: {.g-col-7}
+
+#### Distribution of $N_A$
 
 ```{ojs}
 Plot.plot({
@@ -114,9 +134,24 @@ Plot.plot({
 })
 ```
 
-:::
+#### Moments of $N_A$:
 
-::: {.g-col-5}
+:::{.moments}
+
+```{ojs}
+tex`
+\begin{aligned}
+\psi &= ${psi} \\
+\mathbb{E}\left(N_A\right) &= ${E_NA} \\
+\mathbb{V}\left(N_A\right) &= ${V_NA} \\
+V_{N_A} &= ${V_NA_approx}
+\end{aligned}
+`
+```
+:::
+::::
+
+:::: {.g-col-5}
 
 ```{ojs}
 //| panel: input
@@ -162,9 +197,9 @@ viewof qp = Inputs.range(
 )
 
 ```
-:::
-
 ::::
+
+:::::
 
 ## Just the moments, please
 
