@@ -46,7 +46,42 @@ $$
 $$
 where $f_{N_A}\left(a | \zeta, \omega, \sigma, \rho \right)$ is a binomial density with size $m$ and probability $\pi = \pi(\zeta, \omega, \sigma, \rho)$ and $f_\zeta(\zeta | \mu, \tau, \sigma, \rho)$ is a normal density with mean $\mu$ and variance $\tau^2 + \rho \sigma^2$. 
 
-This distribution is what you might call a binomial-normal convolution or a random-intercept probit model (where the random intercept is $\zeta$). As far as I know, the distribution cannot be evaluated analytically but instead must be calculated using some sort of numerical integration routine. Here is an interactive graph of the probability mass function (the probability points are calculated using Gaussian quadrature):
+This distribution is what you might call a binomial-normal convolution or a random-intercept probit model (where the random intercept is $\zeta$). As far as I know, the distribution cannot be evaluated analytically but instead must be calculated using some sort of numerical integration routine. 
+
+## Just the moments, please
+
+If all we care about is the expectation of $N_A$, we don't need to bother with all the conditioning business and can just look at the marginal distribution of the effect size estimates taken individually. Marginally, $T_i$ is normally distributed with mean $\mu$ and variance $\tau^2 + \omega^2 + \sigma^2$, so $\text{Pr}(A_i = 1) = \psi$, where
+$$
+\psi = \Phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\tau^2 + \omega^2 + \sigma^2}}\right).
+$$
+By the linearity of expectations,
+$$
+\text{E}(N_A) = \sum_{i=1}^m \text{E}(A_i) = m \psi.
+$$
+
+We can also get an approximation for the variance of $N_A$ by working with its conditional distribution above. By the rule of variance decomposition,
+$$
+\begin{aligned}
+\text{Var}(N_A) &= \text{E}\left[\text{Var}\left(N_A | \zeta\right)\right] + \text{Var}\left[\text{E}\left(N_A | \zeta\right)\right] \\
+&= m \times \text{E}\left[\pi (1 - \pi)\right] + m^2 \times \text{Var}\left[\pi\right]\\
+&= m \times \text{E}\left[\pi\right] \left(1 - \text{E}\left[\pi\right]\right) + m (m - 1) \times \text{Var}\left[\pi\right],
+\end{aligned}
+$$
+where $\pi$ is, as defined above, a function of $\zeta$ and thus a random variable. Now, $\text{E}(\pi) = \psi$ and we can get something close to $\text{Var}(\pi)$ using a first-order approximation:
+$$
+\text{Var}\left(\pi\right) \approx \left(\left.\frac{\delta \pi}{\delta \zeta}\right|_{\zeta = \mu}\right)^2 \times \text{Var}\left(\zeta\right) = \left[\phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\omega^2 + (1 - \rho)\sigma^2}}\right)\right]^2 \times \frac{\tau^2 + \rho \sigma^2}{\omega^2 + (1 - \rho)\sigma^2}.
+$$
+Thus,
+$$
+\begin{aligned}
+\text{Var}(N_A) \approx m \times \psi \left(1 - \psi\right) + m (m - 1) \times \left[\phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\omega^2 + (1 - \rho)\sigma^2}}\right)\right]^2 \times \frac{\tau^2 + \rho \sigma^2}{\omega^2 + (1 - \rho)\sigma^2}.
+\end{aligned}
+$$
+If the amount of common variation is small, so $\tau^2$ is near zero and $\rho$ is near zero, then the contribution of the second term will be small, and $N_A$ will act more or less like a binomial random variable with size $m$ and probability $\psi$. On the other hand, if the amount of independent variation in the effect sizes is small, so $\omega^2$ is near zero and $\rho$ is near 1, then the term on the right will approach $m(m - 1)\psi(1 - \psi)$ and $\text{Var}\left(N_A\right)$ will approach $m^2 \psi(1 - \psi)$, or the variance of $m$ times a single Bernoulli variate. So you could say that $N_A$ has anywhere between $1$ and $m$ variate's worth of information in it, depending on the degree of correlation between the effect size estimates. 
+
+# Interactive distribution
+
+Here is an interactive graph of the probability mass function of $N_A$, with probability points calculated using Gaussian quadrature:
 
 ```{r}
 #| echo: false
@@ -90,6 +125,7 @@ p_binom_norm = binomial_coefs.map((coef, a) => {
   });
   return coef * math.sum(p);
 })
+
 ```
 
 :::: {.grid .column-page-inset}
@@ -112,6 +148,10 @@ Plot.plot({
     }),
   ]
 })
+```
+
+```{ojs}
+p_binom_norm
 ```
 
 :::
@@ -165,34 +205,3 @@ viewof qp = Inputs.range(
 :::
 
 ::::
-
-## Just the moments, please
-
-If all we care about is the expectation of $N_A$, we don't need to bother with all the conditioning business and can just look at the marginal distribution of the effect size estimates taken individually. Marginally, $T_i$ is normally distributed with mean $\mu$ and variance $\tau^2 + \omega^2 + \sigma^2$, so $\text{Pr}(A_i = 1) = \psi$, where
-$$
-\psi = \Phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\tau^2 + \omega^2 + \sigma^2}}\right).
-$$
-By the linearity of expectations,
-$$
-\text{E}(N_A) = \sum_{i=1}^m \text{E}(A_i) = m \psi.
-$$
-
-We can also get an approximation for the variance of $N_A$ by working with its conditional distribution above. By the rule of variance decomposition,
-$$
-\begin{aligned}
-\text{Var}(N_A) &= \text{E}\left[\text{Var}\left(N_A | \zeta\right)\right] + \text{Var}\left[\text{E}\left(N_A | \zeta\right)\right] \\
-&= m \times \text{E}\left[\pi (1 - \pi)\right] + m^2 \times \text{Var}\left[\pi\right]\\
-&= m \times \text{E}\left[\pi\right] \left(1 - \text{E}\left[\pi\right]\right) + m (m - 1) \times \text{Var}\left[\pi\right],
-\end{aligned}
-$$
-where $\pi$ is, as defined above, a function of $\zeta$ and thus a random variable. Now, $\text{E}(\pi) = \psi$ and we can get something close to $\text{Var}(\pi)$ using a first-order approximation:
-$$
-\text{Var}\left(\pi\right) \approx \left(\left.\frac{\delta \pi}{\delta \zeta}\right|_{\zeta = \mu}\right)^2 \times \text{Var}\left(\zeta\right) = \left[\phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\omega^2 + (1 - \rho)\sigma^2}}\right)\right]^2 \times \frac{\tau^2 + \rho \sigma^2}{\omega^2 + (1 - \rho)\sigma^2}.
-$$
-Thus,
-$$
-\begin{aligned}
-\text{Var}(N_A) \approx m \times \psi \left(1 - \psi\right) + m (m - 1) \times \left[\phi\left(\frac{\mu - q_{\alpha} \sigma}{\sqrt{\omega^2 + (1 - \rho)\sigma^2}}\right)\right]^2 \times \frac{\tau^2 + \rho \sigma^2}{\omega^2 + (1 - \rho)\sigma^2}.
-\end{aligned}
-$$
-If the amount of common variation is small, so $\tau^2$ is near zero and $\rho$ is near zero, then the contribution of the second term will be small, and $N_A$ will act more or less like a binomial random variable with size $m$ and probability $\psi$. On the other hand, if the amount of independent variation in the effect sizes is small, so $\omega^2$ is near zero and $\rho$ is near 1, then the term on the right will approach $m(m - 1)\psi(1 - \psi)$ and $\text{Var}\left(N_A\right)$ will approach $m^2 \psi(1 - \psi)$, or the variance of $m$ times a single Bernoulli variate. So you could say that $N_A$ has anywhere between $1$ and $m$ variate's worth of information in it, depending on the degree of correlation between the effect size estimates. 
