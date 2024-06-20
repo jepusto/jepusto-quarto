@@ -82,7 +82,8 @@ If the amount of common variation is small, so $\tau^2$ is near zero and $\rho$ 
 
 # Interactive distribution
 
-Here is an interactive graph of the probability mass function of $N_A$, with probability points calculated using Gaussian quadrature:
+Here is an interactive graph of the probability mass function of $N_A$, with probability points calculated using Gaussian quadrature. Below the graph, I also report $\psi$, the exact mean and variance of $N_A$, and the first-order approximation to the variance (denoted $V_{approx}). 
+When $\tau > 0$ and $\rho > 0$, the approximate variance is not all that accurate because the first-order approximation to $\text{Var}(\pi)$ isn't that good. 
 
 ```{r}
 #| echo: false
@@ -132,11 +133,15 @@ p_binom_norm = binomial_coefs.map((coef, a) => {
 
 ```{ojs}
 psi = norm.cdf((mu - crit * sigma) / math.sqrt(tau**2 + omega**2 + sigma**2))
+psi_print = psi.toFixed(3)
 
 E_NA = m * psi 
+E_NA_print = E_NA.toFixed(3)
+
 dpi_dzeta = norm.pdf((mu - crit * sigma) / ID_sd)
 V_pi_approx = (dpi_dzeta * zeta_sd / ID_sd)**2
-V_NA_approx = m * psi * (1 - psi) + m * (m - 1) * V_pi_approx
+V_approx = m * psi * (1 - psi) + m * (m - 1) * V_pi_approx
+V_approx_print = V_approx.toFixed(3)
 
 V_NA = {
   let V_NA = 0 - E_NA**2;
@@ -145,9 +150,10 @@ V_NA = {
   }
   return V_NA;
 }
+V_NA_print = V_NA.toFixed(3)
 ```
 
-::::: {.grid .column-page-inset}
+::::: {.grid .column-page}
 
 :::: {.g-col-7}
 
@@ -171,17 +177,16 @@ Plot.plot({
 })
 ```
 
-#### Moments of $N_A$:
+#### Moments of $N_A$
 
 :::{.moments}
 
 ```{ojs}
 tex`
 \begin{aligned}
-\psi &= ${psi} \\
-\mathbb{E}\left(N_A\right) &= ${E_NA} \\
-\mathbb{V}\left(N_A\right) &= ${V_NA} \\
-V_{approx} &= ${V_NA_approx}
+\psi &= ${psi_print} \\
+\mathbb{E}\left(N_A\right) &= ${E_NA_print} \\
+\mathbb{V}\left(N_A\right) &= ${V_NA_print} &V_{approx} &= ${V_approx_print}
 \end{aligned}
 `
 ```
@@ -235,3 +240,4 @@ viewof qp = Inputs.range(
 
 ```
 ::::
+:::::

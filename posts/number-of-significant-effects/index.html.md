@@ -11,6 +11,8 @@ keep-md: true
 
 
 
+
+
 In basic meta-analysis, where each study contributes just a single effect size estimate, there has been a lot of work devoted to developing models for selective reporting. Most of these models formulate the selection process as a function of the statistical significance of the effect size estimate; some also allow for the possibility that the precision of the study's effect influences the probability of selection (i.e., bigger studies are more likely to be reported, regardless of statistical significance). 
 
 A problem that I've been mulling recently is how to think about selective reporting in meta-analyses that include some studies with _multiple_ effect size estimates. This setting is quite a bit more complicated than basic meta-analysis because there are several different ways that selective reporting could happen. It could be that each effect size estimate is selected (or censored) individually, on the basis of its statistical significance. However, it seems just as plausible that the pattern of statistical significance across the full set of results could influence whether _any_ of the results get selected. 
