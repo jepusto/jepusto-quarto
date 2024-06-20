@@ -7,6 +7,7 @@ categories:
 - distribution theory
 execute:
   echo: false
+css: styles.css
 ---
 
 [A while back](/posts/number-of-significant-effects/), I posted the outline of a problem about the number of significant effect size estimates in a study that reports multiple outcomes. This problem interests me because it connects to the issue of selective reporting of study results, which creates problems for meta-analysis. 
@@ -107,6 +108,7 @@ quad_points = JSON.parse(all_quad_points).at(qp - 1)
 sigma = 2 / math.sqrt(ESS)
 
 zeta_sd = math.sqrt(tau**2 + rho * sigma**2)
+ID_sd = math.sqrt(omega**2 + (1 - rho) * sigma**2)
 
 crit = norm.icdf(1 - alpha)
 
@@ -115,7 +117,7 @@ binomial_coefs = Array(m+1).fill(null).map((x,index) => {
 })
 
 probs = quad_points.map(zeta => {
-  let Z = (zeta[0] * zeta_sd + mu - crit * sigma) / math.sqrt(omega**2 + (1 - rho) * sigma**2);
+  let Z = (zeta[0] * zeta_sd + mu - crit * sigma) / ID_sd;
   return [norm.cdf(Z), zeta[1]];
 })
 
@@ -128,9 +130,28 @@ p_binom_norm = binomial_coefs.map((coef, a) => {
 
 ```
 
-:::: {.grid .column-page-inset}
+```{ojs}
+psi = norm.cdf((mu - crit * sigma) / math.sqrt(tau**2 + omega**2 + sigma**2))
 
-::: {.g-col-7}
+E_NA = m * psi 
+dpi_dzeta = norm.pdf((mu - crit * sigma) / ID_sd)
+V_pi_approx = (dpi_dzeta * zeta_sd / ID_sd)**2
+V_NA_approx = m * psi * (1 - psi) + m * (m - 1) * V_pi_approx
+
+V_NA = {
+  let V_NA = 0 - E_NA**2;
+  for (let i = 0; i <= m; i++) {
+  	V_NA += i**2 * p_binom_norm[i];
+  }
+  return V_NA;
+}
+```
+
+::::: {.grid .column-page-inset}
+
+:::: {.g-col-7}
+
+#### Distribution of $N_A$
 
 ```{ojs}
 Plot.plot({
@@ -150,13 +171,24 @@ Plot.plot({
 })
 ```
 
+#### Moments of $N_A$:
+
+:::{.moments}
+
 ```{ojs}
-p_binom_norm
+tex`
+\begin{aligned}
+\psi &= ${psi} \\
+\mathbb{E}\left(N_A\right) &= ${E_NA} \\
+\mathbb{V}\left(N_A\right) &= ${V_NA} \\
+V_{approx} &= ${V_NA_approx}
+\end{aligned}
+`
 ```
-
 :::
+::::
 
-::: {.g-col-5}
+:::: {.g-col-5}
 
 ```{ojs}
 //| panel: input
@@ -202,6 +234,4 @@ viewof qp = Inputs.range(
 )
 
 ```
-:::
-
 ::::
