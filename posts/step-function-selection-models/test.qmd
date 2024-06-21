@@ -1,87 +1,99 @@
 ---
 title: Step-function selection models for meta-analysis
+date: '2024-06-18'
+draft: true
 ---
 
-```{css}
-.slider-container {
-  position: relative;
-  width: 100%;
-  height: 20px;
-  background-color: #ddd;
+```{ojs}
+import {html} from "@observablehq/htl"
+
+list = arr => html`<ul>
+  ${arr.map(v => html.fragment`<li>${v}</li>`)}
+</ul>`
+
+defaultInput = v => html`<input type="range" min="0" max="1" step = ".005" value=${v} />`
+
+listInput = ({
+  input = defaultInput,
+  min = 0,
+  max = 0,
+  value = null,
+  defaultValue = '',
+} = {}) => {
+  // This is a state variable that we will change as events occur on the input
+  let values = value !== null ? value : new Array(Math.max(min, 1)).fill(defaultValue)
+  
+  // Templates
+  const inputRow = (v, i) => html.fragment`<tr>
+    <td onchange=${e => changeValueAt(i, e.target.value)}>${input(v, i, values)}</td>
+    <td>      
+    <button onclick=${e => removeRow(i)} disabled=${values.length <= min}>&times;</button>
+</td>
+  </tr>`
+  
+  const footerRow = () => html.fragment`<tr>
+      <td></td>
+      <td>
+        <button onclick=${addRow} disabled=${values.length >= max && max !== 0}>+</button>
+      </td>
+  </tr>`
+  
+  // Rerender Helpers
+  const rerenderTbody = () => {
+    const tbody = output.querySelector('tbody')
+    tbody.innerHTML = ''
+    tbody.appendChild(html.fragment`${values.map(inputRow)}`)
+  }
+  
+  const rerenderTfoot = () => {
+    const tfoot = output.querySelector('tfoot')
+    tfoot.innerHTML = ''
+    tfoot.appendChild(footerRow())    
+  }
+  
+  const rerender = () => {
+    rerenderTbody()
+    rerenderTfoot()
+  }
+
+  // Event Dispatcher
+  const dispatchInputEvent = () => {
+    output.value = values
+    output.dispatchEvent(new CustomEvent('input'))
+  }
+  
+  // Event Handlers
+  const addRow = () => {
+    values.push(defaultValue)
+    rerender()
+    dispatchInputEvent()
+  }
+  
+  const removeRow = removeIdx => {
+    values = values.filter((_, i) => i !== removeIdx)
+    rerender()
+    dispatchInputEvent()
+  }
+  
+  const changeValueAt = (i, value) => {
+    values[i] = value
+    rerender()
+    dispatchInputEvent()
+  }
+  
+  const output = html`<table style=${{ width: 'auto' }}>
+    <tbody>
+      ${values.map(inputRow)}
+    </tbody>
+    <tfoot>
+      ${footerRow()}
+    </tfoot>
+  </table>`
+  
+  output.value = values
+  return output
 }
 
-.slider-track {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #333;
-}
-
-.slider-pointer {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #0066cc;
-  cursor: pointer;
-}
-
-.result-container {
-  margin-top: 20px;
-  font-size: 16px;
-}
-```
-
-```{js}
-const sliderContainer = document.querySelector(".slider-container");
-const sliders = document.querySelectorAll(".slider-pointer");
-const value1 = document.getElementById("value1");
-const value2 = document.getElementById("value2");
-const value3 = document.getElementById("value3");
-const value4 = document.getElementById("value4");
-
-function updateValues() {
-  const values = Array.from(sliders).map((slider) => Number(slider.dataset.value));
-  value1.textContent = values[0];
-  value2.textContent = values[1] - values[0];
-  value3.textContent = values[2] - values[1];
-  value4.textContent = 100 - (values[2] - values[1] + values[1] - values[0] + values[0]);
-
-
-}
-
-sliders.forEach((slider) => {
-  slider.addEventListener("mousedown", (e) => {
-    const target = e.target;
-    const sliderWidth = target.parentNode.offsetWidth;
-    let prevX = e.clientX;
-
-    function onMouseMove(e) {
-      const deltaX = e.clientX - prevX;
-      const newPosition = Math.min(Math.max(target.offsetLeft + deltaX, 0), sliderWidth);
-      prevX = e.clientX;
-
-      target.style.left = newPosition + "px";
-      target.dataset.value = Math.round((newPosition / sliderWidth) * 100);
-      updateValues();
-    }
-
-    function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    }
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  });
-});
-
-// Update the values initially
-updateValues();
 ```
 
 ```{=html}
@@ -91,15 +103,7 @@ updateValues();
     <div class="slider-pointer" data-value="90" style="left: 90%;"></div>
     <div class="slider-pointer" data-value="100" style="left: 100%;"></div>
 </div>
-<div class="result-container">
-  <div>Value 1: <span id="value1">50</span></div>
-  <div>Value 2: <span id="value2">40</span></div>
-  <div>Value 3: <span id="value3">10</span></div>
-  <div>Value 4: <span id="value4">0</span></div>
-</div>
 ```
-
-
 
 ```{r}
 pwnormal <- function(mu, tau, sigma, alpha, lambda) {
@@ -139,6 +143,14 @@ eta = math.sqrt(tau**2 + sigma**2)
 
 ```{ojs}
 //| panel: input
+
+viewof alphas = listInput({
+  min: 1,
+  max: 10,
+  value: [.025,.500],
+  defaultValue: .500,
+})
+
 
 viewof H = Inputs.range(
   [1, 10], 
