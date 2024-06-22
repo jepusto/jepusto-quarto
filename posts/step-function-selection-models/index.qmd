@@ -66,13 +66,18 @@ $$
 \Pr(T = t | \sigma_i) = \frac{\Pr\left(O_i^* = 1| T_i^* = t, \sigma_i^* = \sigma_i\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i)}{\Pr\left(O_i^* = 1| \sigma_i^* = \sigma_i\right)}
 $$ {#eq-observed-effect-distribution}
 For the specific distributional assumptions of the step-function selection model, we can find an expression for the exact form of (@eq-observed-effect-distribution). 
-Note that (@eq-selection-process) is equivalent to writing the relative selection probabilities as a function of $T_i^*$ and $\sigma_i^*$:
+In doing so, it will be useful to define a further random variable---call it $S_i$---that is equal to the p-value interval into which effect size $T_i$ falls. For a given effect size with standard error $\sigma_i^*$, these intervals are equivalent to intervals on the scale of the outcome, with thresholds $\gamma_{hi} = \sigma_i^* \Phi^{-1}(1 - \alpha_h)$. Now, let's define $S_i^*$ as
 $$
-w\left(T_i^*, \sigma_i^*\right) = \begin{cases}
-1 & \text{if} \quad -\sigma_i^*  \Phi^{-1}\left(\alpha_1\right) < T_i^* \\ 
-\lambda_1 & \text{if} \quad -\sigma_i^*  \Phi^{-1}\left(\alpha_{h+1}\right) < T_i^* \leq -\sigma_i^*  \Phi^{-1}\left(\alpha_h\right), \quad h = 1,...,H-1 \\ 
-\lambda_H & \text{if} \quad T_i^* \leq -\sigma_i^*  \Phi^{-1}\left(\alpha_H \right) \\ 
-\end{cases}.
+S_i^* = \begin{cases}
+0 & \text{if} \quad \gamma_{1i} < T_i^* \\ 
+h & \text{if} \quad \gamma_{h+1,i} < T_i^* \leq \gamma_{hi}, \quad h = 1,...,H-1 \\ 
+H & \text{if} \quad T_i^* \leq \gamma_{Hi} \\ 
+\end{cases}
+$$
+and $S_i$ as the corresponding interval for the observed effect size $T_i$.
+Note that (@eq-selection-process) is equivalent to writing the relative selection probabilities as a function of $S_i$:
+$$
+w\left(T_i^*, \sigma_i^*\right) = \lambda_{S_i^*}
 $$ {#eq-selection-weights}
 Also note that, prior to selection, the effect size estimate $T_i^*$ has marginal variance $\eta_i^2 = \tau^2 + \left(\sigma_i^*\right)^2$, so we can write $\Pr(T_i^*  = t| \sigma_i^*) =  \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right)$, where $\phi()$ is the standard normal density.  We can then write the distribution of the observed effect size estimates as
 $$
@@ -82,14 +87,27 @@ where
 $$
 \begin{aligned}
 A_i &= \int w\left(t, \sigma_i^*\right) \times \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right) dt \\
-&= \sum_{h=0}^H \lambda_h \left[\Phi(c_{hi}) - \Phi(c_{h+1,i})\right],
+&= \sum_{h=0}^H \lambda_h B_{hi},
 \end{aligned}
 $$
-with $c_{hi} = \left(-\sigma_i^* \Phi^{-1}(\alpha_h) - \mu\right) / \eta_i$ and where we take $\lambda_0 = 1$, $\alpha_0 = 0$, and $\alpha_{H+1} = 1$ [@hedges2005selection].
+with 
+$$
+B_{hi} = \Phi\left(\frac{\gamma_{hi} - \mu}{\eta_i}\right) - \Phi\left(\frac{\gamma_{h+1,i} - \mu}{\eta_i}\right)
+$$
+and where we take $\lambda_0 = 1$, $\alpha_0 = 0$, and $\alpha_{H+1} = 1$ [@hedges2005selection].
 
 The observed effect size estimates follow what we might call a "piece-wise normal" distribution. 
-For a given $\sigma_i$, the p-value thresholds correspond to fixed intervals of the range of $T_i$, and $T_i$ follows a truncated normal distribution within each interval. 
-Here are some pictures of these distributions for a few different values of $\mu$, $\tau$, and $\sigma_i$, using selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$ with $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$:
+For a given $\sigma_i$ and given the interval $S_i$ into which the effect size falls, the effect size follows a truncated normal distribution. Formally, 
+$$
+\left(T_i | S_i = h, \sigma_i \right) \sim TN(\mu,\eta_i^2, \gamma_{h+1,i},\gamma_{h i}).
+$$
+Furthermore, the distribution of $S_i$ is given by
+$$
+\Pr(S_i = h | \sigma_i) = \frac{\lambda_h B_{hi}}{\sum_{g=0}^H \lambda_g B_{gi}},
+$$
+which will be useful for deriving moments of the distribution of $T_i$.
+
+Here are some pictures of the distribution of observed effect sizes for a few different values of $\mu$, $\tau$, and $\sigma_i$, using selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$ with $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$:
 ```{r}
 pwnormal <- function(mu, tau, sigma, alpha, lambda) {
   eta <- sqrt(tau^2 + sigma^2)
@@ -154,3 +172,47 @@ viewof sigma = Inputs.range(
 :::
 
 ::::
+
+# Moments of $T_i | \sigma_i$
+
+Using the auxiliary random variable $S_i$ makes it pretty straight-forward to find the moments of $T_i | \sigma_i$. Let me denote
+$$
+\psi_{hi} = \frac{\phi\left(c_{h+1,i}\right) - \phi\left(c_{hi}\right)}{B_{hi}},
+$$
+where $c_{hi} = \left(\gamma_{hi} - \mu\right) / \eta_i$ for $h=0,...,H$.
+Then from the properties of truncated normal distributions, 
+$$
+\mathbb{E}(T_i | S_i = h, \sigma_i) = \mu + \eta_i \times \psi_{hi},
+$$
+It follows immediately that
+$$
+\begin{aligned}
+\mathbb{E}(T_i | \sigma_i) &= \sum_{h=0}^H \Pr(S_i = h | \sigma_i) \times \mathbb{E}(T_i | S_i = h, \sigma_i) \\
+&= \mu + \eta_i \frac{\sum_{h=0}^H \lambda_h B_{hi} \psi_{hi}}{\sum_{h=0}^H \lambda_h B_{hi}}.
+\end{aligned}
+$$ {#eq-Ti-expectation}
+The second term of @eq-Ti-expectation is the bias of $T_i$ relative to the overall mean effect $\mu$. Generally, it will depend on all the parameters of the evidence-generating process, including $\sigma_i$, $\mu$, and $\tau$ (through the $c_{hi}$ and $B_{hi}$ terms) and on the selection weights $\lambda_1,...,\lambda_H$.
+
+Just for giggles, let me chug through and get the variance of $T_i$ as well. Letting 
+$$
+\bar\psi_i = \frac{\sum_{h=0}^H \lambda_h B_{hi} \psi_{hi}}{\sum_{h=0}^H \lambda_h B_{hi}}
+$$
+and
+$$
+\kappa_{hi} = \frac{c_{hi} \phi\left(c_{hi}\right) - c_{h+1,i} \phi\left(c_{h+1,i}\right)}{B_{hi}},
+$$
+we can write the variance of the truncated normal conditional distribution
+$$
+\mathbb{V}(T_i | S_i = h, \sigma_i) = \eta_i^2 \left(1 - \kappa_{hi} - \psi_{hi}^2\right).
+$$
+Using variance decomposition, we then have
+$$
+\begin{aligned}
+\mathbb{V}(T_i | \sigma_i) &= \mathbb{E}\left[\mathbb{V}(T_i | S_i, \sigma_i)\right] + \mathbb{V}\left[\mathbb{E}(T_i | S_i, \sigma_i)\right] \\
+&= \mathbb{E}\left[\mathbb{V}(T_i | S_i, \sigma_i) + \left[\mathbb{E}(T_i | S_i, \sigma_i) - \mathbb{E}(T_i | \sigma_i)\right]^2\right] \\
+&= \frac{1}{\sum_{h=0}^H \lambda_h B_{hi}} \sum_{h=0}^H \lambda_h B_{hi} \left( \eta_i^2 \left(1 - \kappa_{hi} - \psi_{hi}^2\right) + \eta_i^2  \left[\psi_{hi} - \bar\psi_i \right]^2\right) \\
+&= \eta_i^2 \frac{\sum_{h=0}^H \lambda_h B_{hi} \left(1 - \kappa_{hi} - \bar\psi_i^2\right)}{\sum_{h=0}^H \lambda_h B_{hi}}.
+\end{aligned}
+$$
+Just as with the expectation, the variance is a complicated function of all the model parameters. 
+Although these expressions are pretty complex, it seems like they could be useful for studying the properties of different estimators that have been proposed for dealing with selective reporting, such as the "unrestricted weighted least squares" method, which is just the idea of using fixed effects weights even though the effects are heterogeneous [@henmi2010confidence; @stanley2014metaregression]; the PET and PEESE estimators [@stanley2008metaregression]; the endogenous kink meta-regression [@bom2019kinked]; and perhaps other estimators in the literature.
