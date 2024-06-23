@@ -1,0 +1,149 @@
+---
+title: Pusto's package downloads
+subtitle: June 2024 edition
+date: '2024-06-23'
+draft: true
+categories:
+- programming
+- Rstats
+code-fold: true
+code-tools: true
+---
+
+Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R packages that I have developed, looking at how frequently they have been downloaded, comparing them to other topically related packages, and examining time trends in download frequency. I was coming up for tenure review at that point and so wanted to document and provide a little bit of data about the software tools that I'd worked on, even though (at my institution, at least) these weren't really understood as academic contributions like journal articles or books or whatnot. 
+
+These days, I'm (happily) tenured at a different university and still developing some R packages, but my work has become much more collaborative. 
+Of the four R packages that I looked at in 2019, two were solo projects (`clubSandwich` and `ARPobservation`) and two were my design, with some contributions from students (`SingleCaseES` and `scdhlm`). 
+I've since been involved with four additional R packages (`lmeInfo`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
+In short, the packages are no longer _mine_, but rather represent tools to which I've contributed. 
+I'm no less proud of the products, though. 
+
+Since it has been five years since my previous post on package downloads, I felt like it was time for an updated look.
+
+```{r setup, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(lubridate)
+library(cranlogs)
+
+file_name <- paste0("CRAN package downloads ", today() - 3L, ".rds")
+from_date <- as.character(as_date(today() - 3L - duration(2, "year")))
+```
+
+I used daily download counts from the RStudio CRAN mirror from `r from_date` through `r today()`. Note that this is only one of 50+ CRAN mirrors, although I think I've heard that it's the most highly trafficked. 
+
+```{r scrape-downloads, eval = FALSE}
+pkg_downloads <-
+  available.packages() %>%
+  as_tibble() %>%
+  select(Package, Version) %>%
+  mutate(grp = 1 + trunc((row_number() - 1) / 100)) %>%
+  nest(data = c(Package, Version)) %>%
+  mutate(downloads = map(.$data, ~ cran_downloads(packages = .$Package, from = from_date))) %>%
+  select(-data) %>%
+  unnest(cols = downloads)
+
+saveRDS(pkg_downloads, file = file_name)
+```
+
+I limited the sample to packages that had been downloaded at least once between `r today() - duration(12, "months")` and `r as_date(today() - duration(6, "months"))`.
+
+```{r past-six}
+pkg_downloads <- readRDS(file_name)
+
+downloaded_last_yr <- 
+  pkg_downloads %>%
+  filter(date <= today() - duration(12, "months")) %>%
+  group_by(package) %>%
+  summarise(
+    count = sum(count)
+  ) %>%
+  filter(count > 0) %>%
+  select(package)
+```
+
+This yielded `r nrow(downloaded_last_yr)` packages. For each of these packages, I then calculated the average monthly download rate over the past twelve months, along with where that rate falls as a percentile of all packages in the sample.
+
+```{r}
+
+downloads_past_twelve <-
+  pkg_downloads %>%
+  filter(date > today() - duration(12, "months")) %>%
+  semi_join(downloaded_last_yr, by = "package") %>%
+  group_by(package) %>%
+  summarise(
+    count = sum(count) / 12
+  ) %>%
+  mutate(
+    pct_less = 100 * cume_dist(count)
+  )
+
+```
+
+Here are the average monthly download rates (over the past six months) for each of my packages, along with metafor and robumeta:
+
+```{r}
+Pusto_pkgs <- c("ARPobservation","scdhlm","SingleCaseES","lmeInfo","clubSandwich","wildmeta","simhelpers","POMADE")
+comp_pkgs <- c("sandwich","metafor","robumeta","nlme","merDeriv","glmmTMB","plm","PowerUpR")
+
+downloads_past_twelve %>%
+  filter(package %in% c(Pusto_pkgs, comp_pkgs)) %>%
+  arrange(desc(pct_less)) %>%
+  rename(`Average monthly downloads` = count, `Percentage of packages with smaller download rate` = pct_less) %>%
+  knitr::kable(digits = 1)
+
+```
+```{r}
+downloads_last_yr <-
+  pkg_downloads %>%
+  group_by(package) %>%
+  summarize(
+    count2 = sum(count[date <= as_date("2023-02-28")]),
+    count = sum(count) / 12
+  ) %>%
+  filter(count2 > 0) %>%
+  mutate(
+    pct_less = 100 * cume_dist(count)
+  )
+
+downloads_last_yr %>%
+  select(-count2) %>%
+  filter(package %in% c(Pusto_pkgs, comp_pkgs)) %>%
+  arrange(desc(pct_less)) %>%
+  rename(`Average monthly downloads` = count, `Percentage of packages with smaller download rate` = pct_less) %>%
+  knitr::kable(digits = 1)
+```
+
+Here are the weekly download rates for each of these packages (note that the vertical scales of the graphs differ).
+
+```{r, fig.width = 8, fig.height = 8}
+weekly_downloads <- 
+  pkg_downloads %>%
+  mutate(
+    yr = year(date),
+    wk = week(date)
+  ) %>%
+  group_by(package, yr, wk) %>%
+  mutate(
+    date = max(date)
+  ) %>%
+  group_by(package, date) %>%
+  summarise(
+    count = sum(count),
+    days = n(),
+    .groups = "drop"
+  )
+
+weekly_downloads %>%
+  filter(
+    days == 7,
+    package %in% c(Pusto_pkgs, comp_pkgs)
+  ) %>%
+  ggplot(aes(date, count)) + 
+  geom_line() + 
+  expand_limits(y = 0) + 
+  facet_wrap(~ package, scales = "free", ncol = 2) + 
+  theme_minimal()
+
+```
+
+
