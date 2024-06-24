@@ -43,8 +43,7 @@ citation:
   container-title: JAMA Pediatrics
   doi: 10.1001/jamapediatrics.2024.1832
   url: https://doi.org/10.1001/jamapediatrics.2024.1832
-  page: forthcoming
-
+  page: advance online publication
 ---
 
 ### Importance

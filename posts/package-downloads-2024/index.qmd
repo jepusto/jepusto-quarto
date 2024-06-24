@@ -25,8 +25,8 @@ library(tidyverse)
 library(lubridate)
 library(cranlogs)
 
-file_name <- paste0("CRAN package downloads ", today() - 3L, ".rds")
-from_date <- as.character(as_date(today() - 3L - duration(2, "year")))
+file_name <- paste0("CRAN package downloads ", today() - 4L, ".rds")
+from_date <- as.character(as_date(today() - 4L - duration(2, "year")))
 ```
 
 I used daily download counts from the RStudio CRAN mirror from `r from_date` through `r today()`. Note that this is only one of 50+ CRAN mirrors, although I think I've heard that it's the most highly trafficked. 
