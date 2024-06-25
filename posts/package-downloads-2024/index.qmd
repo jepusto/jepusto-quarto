@@ -8,6 +8,8 @@ categories:
 - Rstats
 code-fold: true
 code-tools: true
+html-table-processing: none
+toc: true
 ---
 
 Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R packages that I have developed, looking at how frequently they have been downloaded, comparing them to other topically related packages, and examining time trends in download frequency. I was coming up for tenure review at that point and so wanted to provide a little bit of data about the software tools that I'd worked on, even though (at my institution, at least) these weren't really understood as academic contributions like journal articles or books or whatnot. 
@@ -33,7 +35,7 @@ Some of my other packages have a broader statistical scope:
 
 * [clubSandwich](/software/clubSandwich/) provides cluster-robust variance estimators for a variety of different  models (including meta-regression, hierarchical linear models, panel data models, GEE models, instrumental variables models, etc.). The obvious comparison would be [sandwich](https://cran.r-project.org/package=sandwich), which implements a broader class of sandwich estimators for a range of different models, but without some of the small-sample corrections provided by `clubSandwich`. Other relevant points of comparison are packages that implement some form of cluster-robust standard errors for a certain class of models, such as [plm](https://cran.r-project.org/package=plm) and [fixest](https://cran.r-project.org/package=fixest) for fixed effect models and [robumeta](https://cran.r-project.org/package=robumeta) for meta-regression models.
 * [lmeInfo](/software/lmeInfo/) provides analytic derivatives for hierarchical linear models estimated using `nlme::lme()`. Comparison package: [merDeriv](https://cran.r-project.org/package=merDeriv) provides similar functionality for `lme4::lmer()` models; [nlme](https://cran.r-project.org/package=nlme), which my package enhances.
-* [simhelpers](/software/simhelpers/) provides helper functions for running Monte Carlo simulations. Other packages that provide tools for Monte Carlo simulations include [SimDesign](https://cran.r-project.org/package=SimDesign), [simEngine](https://cran.r-project.org/package=simEngine), [simFrame](https://cran.r-project.org/package=simFrame), [simstudy](https://cran.r-project.org/package=simstudy), [simulator](https://cran.r-project.org/package=simulator),
+* [simhelpers](/software/simhelpers/) provides helper functions for running Monte Carlo simulations. Other packages that provide tools for Monte Carlo simulations include [SimDesign](https://cran.r-project.org/package=SimDesign), [SimEngine](https://cran.r-project.org/package=simEngine), [simFrame](https://cran.r-project.org/package=simFrame), [simstudy](https://cran.r-project.org/package=simstudy), [simulator](https://cran.r-project.org/package=simulator),
 [simpr](https://cran.r-project.org/package=simpr),
 [simTool](https://cran.r-project.org/package=simTool), and
 [MonteCarlo](https://cran.r-project.org/package=MonteCarlo).
@@ -42,6 +44,9 @@ Some of my other packages have a broader statistical scope:
 library(tidyverse)
 library(lubridate)
 library(cranlogs)
+library(kableExtra)
+library(plotly)
+
 to_date <- as_date("2024-06-25")
 file_name <- paste0("CRAN package downloads ", to_date, ".rds")
 long_file_name <- paste0("CRAN package download history ", to_date, ".rds")
@@ -86,18 +91,22 @@ downloads_past_twelve <-
     count = sum(count) / 12
   ) %>%
   mutate(
-    pct_less = 100 * cume_dist(count)
+    pct_less = 100 * cume_dist(count),
+    package_sort = fct_rev(fct_infreq(package, w = count))
   )
 ```
+
+# Downloads over the past year
 
 I used daily download counts from the RStudio CRAN mirror from `r from_date` through `r to_date`. 
 I limited the sample to packages that had been downloaded at least once between `r to_date - duration(12, "months")` and `r as_date(to_date - duration(6, "months"))`.
 This yielded `r nrow(downloaded_last_yr)` packages. 
 For each of these packages, I then calculated the average monthly download rate over the past twelve months, along with where that rate falls as a percentile of all packages in the sample.
 
-Here are the average monthly download rates (over the past six months) for each of my packages, along with the full set of comparison packages:
+Here are the average monthly download rates for each of my packages (highlighted in blue), along with the full set of comparison packages:
 
 ```{r}
+
 comp_pkg_dat <- tribble(
   ~ Pusto_pkg, ~ Comp_pkg,
   "ARPobservation", "Countr",
@@ -113,7 +122,7 @@ comp_pkg_dat <- tribble(
   "wildmeta", "bayesmeta",
   "wildmeta", "metaforest",
   "simhelpers", "SimDesign",
-  "simhelpers", "simEngine",
+  "simhelpers", "SimEngine",
   "simhelpers", "simFrame",
   "simhelpers", "simstudy",
   "simhelpers", "simulator",
@@ -122,17 +131,117 @@ comp_pkg_dat <- tribble(
   "simhelpers", "MonteCarlo",
   "POMADE", "PowerUpR"
 )
+
+pkg_groups <- 
+  comp_pkg_dat %>%
+  mutate(
+    group = recode(Pusto_pkg, SingleCaseES = "scdhlm/SingleCaseES", scdhlm = "scdhlm/SingleCaseES")
+  ) %>%
+  pivot_longer(ends_with("_pkg"), names_to = "type", values_to = "package") %>%
+  mutate(
+    type = recode(type, Pusto_pkg = "Pusto", Comp_pkg = "Comparison")
+  ) %>%
+  filter(!is.na(package)) %>%
+  group_by(group, type, package) %>%
+  summarize(.groups = "drop")
+
 Pusto_pkgs <- unique(comp_pkg_dat$Pusto_pkg)
 comp_pkgs <- unique(comp_pkg_dat$Comp_pkg)
 comp_pkgs <- comp_pkgs[!is.na(comp_pkgs)]
 
-downloads_past_twelve %>%
-  filter(package %in% c(Pusto_pkgs, comp_pkgs)) %>%
-  arrange(desc(pct_less)) %>%
+focal_package_downloads <- 
+  pkg_groups %>%
+  left_join(downloads_past_twelve) %>%
+  arrange(desc(pct_less))
+          
+focal_package_downloads %>%
+  select(package, count, pct_less) %>%
   rename(`Average monthly downloads` = count, `Percentage of packages with smaller download rate` = pct_less) %>%
-  knitr::kable(digits = 1)
+  kable(
+    table.attr = 'data-quarto-disable-processing="true"',
+    digits = c(0,0,1)
+  ) %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("responsive","hover"), fixed_thead = TRUE) %>%
+  column_spec(2:3, width = "12em") %>%
+  row_spec(which(focal_package_downloads$type == "Pusto"), background = "lightblue")
 
 ```
+
+
+```{r}
+#| fig-column: page
+#| fig-width: 10
+#| fig-height: 6
+ 
+downloads_past_twelve_with_groups <-
+  downloads_past_twelve %>%
+  left_join(pkg_groups) %>%
+  mutate(
+    package = fct_rev(fct_infreq(package, w = count)),
+    group = recode(group, .missing = "none"),
+    type = recode(type, .missing = "none")
+  )
+
+title_str <- paste("Average monthly downloads of R packages from", as_date(as_date(from_date)),"through",to_date)
+
+downloads_past_twelve_plot <- 
+  downloads_past_twelve %>%
+  select(package = package_sort, count) 
+
+p <- 
+  ggplot(downloads_past_twelve_plot) +
+  aes(x = package, y = count) + 
+  geom_col(fill = "lightgrey") + 
+  scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
+  labs(x = "", y = "Downloads (per month)", title = title_str) + 
+  theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
+
+ggplotly(
+  p,
+  tooltip = c("x","y")
+)
+
+# library(colorspace)
+# library(ggrepel)
+
+# downloads_sample <- 
+#   downloads_past_twelve %>%
+#   arrange(count) %>%
+#   mutate(
+#     focal = package %in% c(Pusto_pkgs),
+#     tenth = (row_number(count) %% 10) == 1,
+#   ) %>%
+#   filter(focal | tenth) %>%
+#   mutate(
+#     package = fct_inorder(package)
+#   )
+# 
+# focal_pkg_dat <- 
+#   downloads_sample %>%
+#   filter(focal) %>%
+#   mutate(Pusto = if_else(package %in% Pusto_pkgs, "Pusto","comparison"))
+# 
+# 
+# qualitative_hcl(n = 2, h = c(140, -30), c = 90, l = 40, register = "custom-qual")
+# 
+# ggplot(downloads_sample, aes(x = package, y = count)) +
+#   geom_col() + 
+#   geom_col(data = focal_pkg_dat, aes(color = Pusto, fill = Pusto), size = 1) + 
+#   geom_label_repel(
+#     data = focal_pkg_dat, aes(color = Pusto, label = package),
+#     segment.size = 0.4,
+#     segment.color = "grey50",
+#     nudge_y = 0.5,
+#     point.padding = 0.3
+#   ) + 
+#   scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
+#   scale_fill_discrete_qualitative(palette = "custom-qual") + 
+#   scale_color_discrete_qualitative(palette = "custom-qual") + 
+#   labs(x = "", y = "Downloads (per month)", title = title_str) + 
+#   theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
+```
+
+# Time trends
 
 ```{r scrape-long-history, eval = FALSE}
 long_from_date <- as.character(as_date(to_date - duration(10, units = "years"))) 
@@ -181,46 +290,5 @@ weekly_downloads %>%
 
 ```
 
-```{r}
-library(colorspace)
-library(ggrepel)
-
-downloads_sample <- 
-  downloads_past_twelve %>%
-  arrange(count) %>%
-  mutate(
-    focal = package %in% c(Pusto_pkgs),
-    tenth = (row_number(count) %% 10) == 1,
-  ) %>%
-  filter(focal | tenth) %>%
-  mutate(
-    package = fct_inorder(package)
-  )
-
-focal_pkg_dat <- 
-  downloads_sample %>%
-  filter(focal) %>%
-  mutate(Pusto = if_else(package %in% Pusto_pkgs, "Pusto","comparison"))
-
-title_str <- paste("Average monthly downloads of R packages from", as_date(as_date(from_date)),"through",to_date)
-
-qualitative_hcl(n = 2, h = c(140, -30), c = 90, l = 40, register = "custom-qual")
-
-ggplot(downloads_sample, aes(x = package, y = count)) +
-  geom_col() + 
-  geom_col(data = focal_pkg_dat, aes(color = Pusto, fill = Pusto), size = 1) + 
-  geom_label_repel(
-    data = focal_pkg_dat, aes(color = Pusto, label = package),
-    segment.size = 0.4,
-    segment.color = "grey50",
-    nudge_y = 0.5,
-    point.padding = 0.3
-  ) + 
-  scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
-  scale_fill_discrete_qualitative(palette = "custom-qual") + 
-  scale_color_discrete_qualitative(palette = "custom-qual") + 
-  labs(x = "", y = "Downloads (per month)", title = title_str) + 
-  theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
-```
 
 
