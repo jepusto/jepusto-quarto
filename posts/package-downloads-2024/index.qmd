@@ -1,7 +1,7 @@
 ---
 title: Pusto's package downloads
 subtitle: June 2024 edition
-date: '2024-06-23'
+date: '2024-06-25'
 draft: true
 categories:
 - programming
@@ -10,26 +10,43 @@ code-fold: true
 code-tools: true
 ---
 
-Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R packages that I have developed, looking at how frequently they have been downloaded, comparing them to other topically related packages, and examining time trends in download frequency. I was coming up for tenure review at that point and so wanted to document and provide a little bit of data about the software tools that I'd worked on, even though (at my institution, at least) these weren't really understood as academic contributions like journal articles or books or whatnot. 
+Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R packages that I have developed, looking at how frequently they have been downloaded, comparing them to other topically related packages, and examining time trends in download frequency. I was coming up for tenure review at that point and so wanted to provide a little bit of data about the software tools that I'd worked on, even though (at my institution, at least) these weren't really understood as academic contributions like journal articles or books or whatnot. 
 
-These days, I'm (happily) tenured at a different university and still developing some R packages, but my work has become much more collaborative. 
+These days, I'm (happily) tenured at a different university, still developing some R packages, but my work has become much more collaborative. 
 Of the four R packages that I looked at in 2019, two were solo projects (`clubSandwich` and `ARPobservation`) and two were my design, with some contributions from students (`SingleCaseES` and `scdhlm`). 
 I've since been involved with four additional R packages (`lmeInfo`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
 In short, the packages are no longer _mine_, but rather represent tools to which I've contributed. 
 I'm no less proud of the products, though. 
 
-Since it has been five years since my previous post on package downloads, I felt like it was time for an updated look.
+Since it has been five years since my previous post on package downloads, I felt like it was time for an updated look. I'll follow more or less the same methodology as before, using statistics from [METACRAN](https://www.r-pkg.org/). The site makes available data on daily downloads from the RStudio mirror of CRAN, which is just one of many mirrors around the world. Although the data do not represent complete tallies of all package downloads, as far as I know, it is still the best available source of this sort of data. 
+
+# Comparison packages
+
+The eight packages that I've developed or contributed to do a variety of things, but the dominant theme is meta-analysis and effect size calculation. Here's how I'm thinking about packages to use as points of comparison:
+
+* [POMADE](/software/POMADE/) does power calculations for meta-analysis with dependent effect sizes. Comparison package: [PowerUpR](https://cran.r-project.org/package=PowerUpR), a general power analysis package with included Shiny app.
+* [wildmeta](/software/wildmeta/) implements bootstrap tests for meta-analytic models. Comparison packages: [bayesmeta](https://cran.r-project.org/package=bayesmeta) and [metaforest](https://cran.r-project.org/package=metaforest), which both do specialized meta-analysis stuff.
+* [scdhlm](/software/scdhlm/) and [SingleCaseES](/software/SingleCaseES/) do effect size calculations for use in meta-analysis of single-case designs. Comparison package: [compute.es](https://cran.r-project.org/package=compute.es) does effect size calculations for a variety of generic effect size measures.
+* [ARPobservation](/software/ARPobservation/) provides tools for simulating behavioral observation data based on an alternating renewal process model. Comparison package: [Countr](https://cran.r-project.org/package=Countr) provides estimation routines for renewal process models.
+
+Some of my other packages have a broader statistical scope:
+
+* [clubSandwich](/software/clubSandwich/) provides cluster-robust variance estimators for a variety of different  models (including meta-regression, hierarchical linear models, panel data models, GEE models, instrumental variables models, etc.). The obvious comparison would be [sandwich](https://cran.r-project.org/package=sandwich), which implements a broader class of sandwich estimators for a range of different models, but without some of the small-sample corrections provided by `clubSandwich`. Other relevant points of comparison are packages that implement some form of cluster-robust standard errors for a certain class of models, such as [plm](https://cran.r-project.org/package=plm) and [fixest](https://cran.r-project.org/package=fixest) for fixed effect models and [robumeta](https://cran.r-project.org/package=robumeta) for meta-regression models.
+* [lmeInfo](/software/lmeInfo/) provides analytic derivatives for hierarchical linear models estimated using `nlme::lme()`. Comparison package: [merDeriv](https://cran.r-project.org/package=merDeriv) provides similar functionality for `lme4::lmer()` models; [nlme](https://cran.r-project.org/package=nlme), which my package enhances.
+* [simhelpers](/software/simhelpers/) provides helper functions for running Monte Carlo simulations. Other packages that provide tools for Monte Carlo simulations include [SimDesign](https://cran.r-project.org/package=SimDesign), [simEngine](https://cran.r-project.org/package=simEngine), [simFrame](https://cran.r-project.org/package=simFrame), [simstudy](https://cran.r-project.org/package=simstudy), [simulator](https://cran.r-project.org/package=simulator),
+[simpr](https://cran.r-project.org/package=simpr),
+[simTool](https://cran.r-project.org/package=simTool), and
+[MonteCarlo](https://cran.r-project.org/package=MonteCarlo).
 
 ```{r setup, message = FALSE, warning = FALSE}
 library(tidyverse)
 library(lubridate)
 library(cranlogs)
-
-file_name <- paste0("CRAN package downloads ", today() - 4L, ".rds")
-from_date <- as.character(as_date(today() - 4L - duration(2, "year")))
+to_date <- as_date("2024-06-25")
+file_name <- paste0("CRAN package downloads ", to_date, ".rds")
+long_file_name <- paste0("CRAN package download history ", to_date, ".rds")
+from_date <- as.character(as_date(to_date - duration(1, "year")))
 ```
-
-I used daily download counts from the RStudio CRAN mirror from `r from_date` through `r today()`. Note that this is only one of 50+ CRAN mirrors, although I think I've heard that it's the most highly trafficked. 
 
 ```{r scrape-downloads, eval = FALSE}
 pkg_downloads <-
@@ -45,29 +62,24 @@ pkg_downloads <-
 saveRDS(pkg_downloads, file = file_name)
 ```
 
-I limited the sample to packages that had been downloaded at least once between `r today() - duration(12, "months")` and `r as_date(today() - duration(6, "months"))`.
-
 ```{r past-six}
 pkg_downloads <- readRDS(file_name)
 
 downloaded_last_yr <- 
   pkg_downloads %>%
-  filter(date <= today() - duration(12, "months")) %>%
+  filter(
+    date <= to_date - duration(6, "months"),
+  ) %>%
   group_by(package) %>%
   summarise(
     count = sum(count)
   ) %>%
   filter(count > 0) %>%
   select(package)
-```
-
-This yielded `r nrow(downloaded_last_yr)` packages. For each of these packages, I then calculated the average monthly download rate over the past twelve months, along with where that rate falls as a percentile of all packages in the sample.
-
-```{r}
 
 downloads_past_twelve <-
   pkg_downloads %>%
-  filter(date > today() - duration(12, "months")) %>%
+  filter(date > to_date - duration(12, "months")) %>%
   semi_join(downloaded_last_yr, by = "package") %>%
   group_by(package) %>%
   summarise(
@@ -76,14 +88,43 @@ downloads_past_twelve <-
   mutate(
     pct_less = 100 * cume_dist(count)
   )
-
 ```
 
-Here are the average monthly download rates (over the past six months) for each of my packages, along with metafor and robumeta:
+I used daily download counts from the RStudio CRAN mirror from `r from_date` through `r to_date`. 
+I limited the sample to packages that had been downloaded at least once between `r to_date - duration(12, "months")` and `r as_date(to_date - duration(6, "months"))`.
+This yielded `r nrow(downloaded_last_yr)` packages. 
+For each of these packages, I then calculated the average monthly download rate over the past twelve months, along with where that rate falls as a percentile of all packages in the sample.
+
+Here are the average monthly download rates (over the past six months) for each of my packages, along with the full set of comparison packages:
 
 ```{r}
-Pusto_pkgs <- c("ARPobservation","scdhlm","SingleCaseES","lmeInfo","clubSandwich","wildmeta","simhelpers","POMADE")
-comp_pkgs <- c("sandwich","metafor","robumeta","nlme","merDeriv","glmmTMB","plm","PowerUpR")
+comp_pkg_dat <- tribble(
+  ~ Pusto_pkg, ~ Comp_pkg,
+  "ARPobservation", "Countr",
+  "scdhlm", "compute.es",
+  "SingleCaseES", NA_character_,
+  "lmeInfo", "merDeriv",
+  "lmeInfo", "nlme",
+  "clubSandwich", "sandwich",
+  "clubSandwich", "robumeta",
+  "clubSandwich", "plm",
+  "clubSandwich", "fixest",
+  "clubSandwich", "metafor",
+  "wildmeta", "bayesmeta",
+  "wildmeta", "metaforest",
+  "simhelpers", "SimDesign",
+  "simhelpers", "simEngine",
+  "simhelpers", "simFrame",
+  "simhelpers", "simstudy",
+  "simhelpers", "simulator",
+  "simhelpers", "simpr",
+  "simhelpers", "simTool",
+  "simhelpers", "MonteCarlo",
+  "POMADE", "PowerUpR"
+)
+Pusto_pkgs <- unique(comp_pkg_dat$Pusto_pkg)
+comp_pkgs <- unique(comp_pkg_dat$Comp_pkg)
+comp_pkgs <- comp_pkgs[!is.na(comp_pkgs)]
 
 downloads_past_twelve %>%
   filter(package %in% c(Pusto_pkgs, comp_pkgs)) %>%
@@ -92,25 +133,19 @@ downloads_past_twelve %>%
   knitr::kable(digits = 1)
 
 ```
-```{r}
-downloads_last_yr <-
-  pkg_downloads %>%
-  group_by(package) %>%
-  summarize(
-    count2 = sum(count[date <= as_date("2023-02-28")]),
-    count = sum(count) / 12
-  ) %>%
-  filter(count2 > 0) %>%
+
+```{r scrape-long-history, eval = FALSE}
+long_from_date <- as.character(as_date(to_date - duration(10, units = "years"))) 
+long_downloads <- cran_downloads(packages = c(Pusto_pkgs, comp_pkgs), from = long_from_date)
+long_downloads <- 
+  long_downloads %>%
   mutate(
-    pct_less = 100 * cume_dist(count)
+    year = year(date),
+    qtr = ceiling(month(date) / 3),
+    yr = year + (qtr - 1) / 4
   )
 
-downloads_last_yr %>%
-  select(-count2) %>%
-  filter(package %in% c(Pusto_pkgs, comp_pkgs)) %>%
-  arrange(desc(pct_less)) %>%
-  rename(`Average monthly downloads` = count, `Percentage of packages with smaller download rate` = pct_less) %>%
-  knitr::kable(digits = 1)
+saveRDS(long_downloads, file = long_file_name)
 ```
 
 Here are the weekly download rates for each of these packages (note that the vertical scales of the graphs differ).
@@ -144,6 +179,48 @@ weekly_downloads %>%
   facet_wrap(~ package, scales = "free", ncol = 2) + 
   theme_minimal()
 
+```
+
+```{r}
+library(colorspace)
+library(ggrepel)
+
+downloads_sample <- 
+  downloads_past_twelve %>%
+  arrange(count) %>%
+  mutate(
+    focal = package %in% c(Pusto_pkgs),
+    tenth = (row_number(count) %% 10) == 1,
+  ) %>%
+  filter(focal | tenth) %>%
+  mutate(
+    package = fct_inorder(package)
+  )
+
+focal_pkg_dat <- 
+  downloads_sample %>%
+  filter(focal) %>%
+  mutate(Pusto = if_else(package %in% Pusto_pkgs, "Pusto","comparison"))
+
+title_str <- paste("Average monthly downloads of R packages from", as_date(as_date(from_date)),"through",to_date)
+
+qualitative_hcl(n = 2, h = c(140, -30), c = 90, l = 40, register = "custom-qual")
+
+ggplot(downloads_sample, aes(x = package, y = count)) +
+  geom_col() + 
+  geom_col(data = focal_pkg_dat, aes(color = Pusto, fill = Pusto), size = 1) + 
+  geom_label_repel(
+    data = focal_pkg_dat, aes(color = Pusto, label = package),
+    segment.size = 0.4,
+    segment.color = "grey50",
+    nudge_y = 0.5,
+    point.padding = 0.3
+  ) + 
+  scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
+  scale_fill_discrete_qualitative(palette = "custom-qual") + 
+  scale_color_discrete_qualitative(palette = "custom-qual") + 
+  labs(x = "", y = "Downloads (per month)", title = title_str) + 
+  theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
 ```
 
 
