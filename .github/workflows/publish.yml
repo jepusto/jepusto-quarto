@@ -26,6 +26,7 @@ jobs:
           install.packages("knitr")
           install.packages("rmutil")
           install.packages("jsonlite")
+          install.packages("leaflet")
     
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
