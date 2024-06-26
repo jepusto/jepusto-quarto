@@ -92,7 +92,7 @@ downloads_past_twelve <-
   ) %>%
   mutate(
     pct_less = 100 * cume_dist(count),
-    package_sort = fct_rev(fct_infreq(package, w = count))
+    package = fct_rev(fct_infreq(package, w = count))
   )
 ```
 
@@ -143,7 +143,10 @@ pkg_groups <-
   ) %>%
   filter(!is.na(package)) %>%
   group_by(group, type, package) %>%
-  summarize(.groups = "drop")
+  summarize(.groups = "drop") %>%
+  mutate(
+    package = factor(package, levels = levels(downloads_past_twelve$package))
+  )
 
 Pusto_pkgs <- unique(comp_pkg_dat$Pusto_pkg)
 comp_pkgs <- unique(comp_pkg_dat$Comp_pkg)
@@ -173,72 +176,37 @@ focal_package_downloads %>%
 #| fig-width: 10
 #| fig-height: 6
  
-downloads_past_twelve_with_groups <-
-  downloads_past_twelve %>%
-  left_join(pkg_groups) %>%
-  mutate(
-    package = fct_rev(fct_infreq(package, w = count)),
-    group = recode(group, .missing = "none"),
-    type = recode(type, .missing = "none")
-  )
-
 title_str <- paste("Average monthly downloads of R packages from", as_date(as_date(from_date)),"through",to_date)
 
-downloads_past_twelve_plot <- 
+downloads_graph <- 
   downloads_past_twelve %>%
-  select(package = package_sort, count) 
+  arrange(package) %>%
+  left_join(pkg_groups, by = "package") %>%
+  mutate(
+    type = recode(type, .missing = "none"),
+    pkg_num = as.numeric(package)
+  )
+
+focal_downloads_graph <- 
+  downloads_graph %>%
+  filter(!is.na(group))
 
 p <- 
-  ggplot(downloads_past_twelve_plot) +
-  aes(x = package, y = count) + 
-  geom_col(fill = "lightgrey") + 
+  ggplot(focal_downloads_graph) +
+  aes(x = pkg_num, y = count) + 
+  geom_col(aes(color = type, group = package), size = 0.7) + 
+  geom_line(data = downloads_graph, color = "black") + 
+  scale_color_manual(values = c(Pusto = "green", Comparison = "grey")) +
   scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
+  theme_minimal() + 
   labs(x = "", y = "Downloads (per month)", title = title_str) + 
   theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
 
 ggplotly(
   p,
-  tooltip = c("x","y")
+  tooltip = c("group","color","y"),
 )
 
-# library(colorspace)
-# library(ggrepel)
-
-# downloads_sample <- 
-#   downloads_past_twelve %>%
-#   arrange(count) %>%
-#   mutate(
-#     focal = package %in% c(Pusto_pkgs),
-#     tenth = (row_number(count) %% 10) == 1,
-#   ) %>%
-#   filter(focal | tenth) %>%
-#   mutate(
-#     package = fct_inorder(package)
-#   )
-# 
-# focal_pkg_dat <- 
-#   downloads_sample %>%
-#   filter(focal) %>%
-#   mutate(Pusto = if_else(package %in% Pusto_pkgs, "Pusto","comparison"))
-# 
-# 
-# qualitative_hcl(n = 2, h = c(140, -30), c = 90, l = 40, register = "custom-qual")
-# 
-# ggplot(downloads_sample, aes(x = package, y = count)) +
-#   geom_col() + 
-#   geom_col(data = focal_pkg_dat, aes(color = Pusto, fill = Pusto), size = 1) + 
-#   geom_label_repel(
-#     data = focal_pkg_dat, aes(color = Pusto, label = package),
-#     segment.size = 0.4,
-#     segment.color = "grey50",
-#     nudge_y = 0.5,
-#     point.padding = 0.3
-#   ) + 
-#   scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
-#   scale_fill_discrete_qualitative(palette = "custom-qual") + 
-#   scale_color_discrete_qualitative(palette = "custom-qual") + 
-#   labs(x = "", y = "Downloads (per month)", title = title_str) + 
-#   theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
 ```
 
 # Time trends
@@ -252,6 +220,10 @@ long_downloads <-
     year = year(date),
     qtr = ceiling(month(date) / 3),
     yr = year + (qtr - 1) / 4
+  ) %>%
+  group_by(package, year, qtr, yr) %>%
+  summarize(
+    count = sum(count)
   )
 
 saveRDS(long_downloads, file = long_file_name)
@@ -259,34 +231,28 @@ saveRDS(long_downloads, file = long_file_name)
 
 Here are the weekly download rates for each of these packages (note that the vertical scales of the graphs differ).
 
-```{r, fig.width = 8, fig.height = 8}
-weekly_downloads <- 
-  pkg_downloads %>%
-  mutate(
-    yr = year(date),
-    wk = week(date)
-  ) %>%
-  group_by(package, yr, wk) %>%
-  mutate(
-    date = max(date)
-  ) %>%
-  group_by(package, date) %>%
-  summarise(
-    count = sum(count),
-    days = n(),
-    .groups = "drop"
-  )
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+#| fig-column: page
 
-weekly_downloads %>%
-  filter(
-    days == 7,
-    package %in% c(Pusto_pkgs, comp_pkgs)
-  ) %>%
-  ggplot(aes(date, count)) + 
+long_downloads <- 
+  readRDS("CRAN package download history 2024-06-25.rds") %>%
+  left_join(pkg_groups, by = "package")
+
+long_downloads_select <- 
+  long_downloads %>%
+  filter(! package %in% c("sandwich","nlme","plm"))
+
+ggplot(long_downloads_select, aes(yr, count, color = type, group = package)) + 
   geom_line() + 
+  scale_x_continuous(breaks = seq(2014, 2024, 2)) + 
+  scale_color_manual(values = c(Pusto = "green", Comparison = "grey")) +
   expand_limits(y = 0) + 
-  facet_wrap(~ package, scales = "free", ncol = 2) + 
-  theme_minimal()
+  expand_limits(x = 2025) + 
+  facet_wrap(~ group, scales = "free", ncol = 2) + 
+  theme_minimal() + 
+  theme(legend.position = "none")
 
 ```
 
