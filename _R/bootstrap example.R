@@ -90,6 +90,20 @@ ggplot(boot_experiments, aes(B_sub, coverage, color = B)) +
   theme(legend.position = "none") + 
   labs(x = "1 / B", y = "")
 
+ggplot(boot_experiments, aes(B_sub, coverage, color = B)) + 
+  geom_point(size = 2) + geom_line() + 
+  scale_x_continuous(breaks = B_vals, transform  = "reciprocal") + 
+  geom_smooth(
+    data = filter(boot_experiments, B_sub <= 399),
+    method = "lm", formula = y ~ poly(x,2), 
+    se = FALSE, fullrange = TRUE
+  ) + 
+  facet_wrap(~ B, ncol = 2, scales = "fixed", labeller = "label_both") + 
+  expand_limits(x = 1e5) + 
+  theme_minimal() + 
+  theme(legend.position = "none") + 
+  labs(x = "1 / B", y = "")
+
 ggplot(boot_experiments, aes(B_sub, width, color = B)) + 
   geom_point(size = 2) + geom_line() + 
   scale_x_continuous(breaks = B_vals, transform  = "reciprocal") + 
