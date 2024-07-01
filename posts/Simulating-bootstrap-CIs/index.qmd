@@ -208,6 +208,7 @@ Summarizing across replications results in the following:
 ```{r}
 #| fig-width: 8
 #| fig-height: 4
+#| out-width: 100%
 #| column: body-outset
 #| code-fold: true
 
@@ -238,7 +239,7 @@ sim_summary %>%
   geom_pointrange(aes(ymin = M - qn * SE, ymax = M + qn * SE)) + 
   facet_wrap(~ metric, scales = "free") + 
   theme_minimal() + 
-  labs(x = "Bootstraps (B)", y = "")
+  labs(x = "Bootstraps (inverse scale)", y = "")
 ```
 The graphs above suggest that linear extrapolation is quite reasonable, both for coverage and interval width. 
 The graphs also show that both metrics are meaningfully affected by the number of bootstraps. 
@@ -335,6 +336,7 @@ big_sim_summary
 ```{r}
 #| fig-width: 8
 #| fig-height: 4
+#| out-width: 100%
 #| column: body-outset
 #| code-fold: true
 
@@ -359,7 +361,7 @@ big_sim_summary %>%
   facet_wrap(~ metric, scales = "free") + 
   theme_minimal() + 
   theme(legend.position = c(0.9, 0.9)) + 
-  labs(x = "Bootstraps (B)", y = "", color = "")
+  labs(x = "Bootstraps (inverse scale)", y = "", color = "")
 
 ```
 ```{r}
