@@ -1,6 +1,6 @@
 ---
 title: Step-function selection models for meta-analysis
-date: '2024-06-18'
+date: '2024-07-08'
 categories:
 - effect size
 - distribution theory
@@ -13,12 +13,13 @@ csl: "../apa.csl"
 link-citations: true
 code-tools: true
 toc: true
+css: styles.css
 crossref: 
   eq-prefix: ""
 ---
 
 In [a recent post](/posts/distribution-of-significant-effects/) I looked at the distribution of statistically significant effect sizes in studies that report multiple outcomes, when those studies are subject to a certain form of selective reporting. 
-Specifically, I considered a scenario where each effect size within the study is more likely to be reported when it is _affirmative_---or statistically significant and in the hypothesized direction---than when it is _non-affirmative_. 
+I considered a model where each effect size within the study is more likely to be reported when it is _affirmative_---or statistically significant and in the hypothesized direction---than when it is _non-affirmative_. 
 Because studies with multiple effect sizes are a very common occurrence in social science meta-analysis, it's interesting to think about how this form of selection leads to distortions of the results that are actually reported and available for meta-analysis. 
 In this post, I want to look a different scenario that is simpler in one respect but more complicated in another. 
 Simpler, in that I'm going to ignore dependence issues and just think about the distribution of one effect size at a time. 
@@ -81,7 +82,7 @@ w\left(T_i^*, \sigma_i^*\right) = \lambda_{S_i^*}
 $$ {#eq-selection-weights}
 Also note that, prior to selection, the effect size estimate $T_i^*$ has marginal variance $\eta_i^2 = \tau^2 + \left(\sigma_i^*\right)^2$, so we can write $\Pr(T_i^*  = t| \sigma_i^*) =  \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right)$, where $\phi()$ is the standard normal density.  We can then write the distribution of the observed effect size estimates as
 $$
-\Pr(T = t | \sigma_i) = \frac{w\left(t, \sigma_i\right) \times \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right)}{A_i},
+\Pr(T_i = t | \sigma_i) = \frac{w\left(t, \sigma_i\right) \times \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right)}{A_i},
 $$ {#eq-observed-effect-density}
 where
 $$
@@ -94,7 +95,7 @@ with
 $$
 B_{hi} = \Phi\left(\frac{\gamma_{hi} - \mu}{\eta_i}\right) - \Phi\left(\frac{\gamma_{h+1,i} - \mu}{\eta_i}\right)
 $$
-and where we take $\lambda_0 = 1$, $\alpha_0 = 0$, and $\alpha_{H+1} = 1$ [@hedges2005selection].
+and where we take $\lambda_0 = 1$, $\alpha_0 = 0$, and $\alpha_{H+1} = 1$ [@hedges2005selection]. Note that $A_i  = \Pr(O^* = 1 | \sigma_i^*)$, the probability that an effect size estimate with precision $\sigma_i^*$ will be observed.
 
 The observed effect size estimates follow what we might call a "piece-wise normal" distribution. 
 For a given $\sigma_i$ and given the interval $S_i$ into which the effect size falls, the effect size follows a truncated normal distribution. Formally, 
@@ -107,55 +108,156 @@ $$
 $$
 which will be useful for deriving moments of the distribution of $T_i$.
 
-Here are some pictures of the distribution of observed effect sizes for a few different values of $\mu$, $\tau$, and $\sigma_i$, using selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$ with $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$:
-```{r}
-pwnormal <- function(mu, tau, sigma, alpha, lambda) {
-  eta <- sqrt(tau^2 + sigma^2)
-  H <- length(alpha)
-  alpha_f <- c(0, alpha, 1)
-  lambda_f <- c(1, lambda)
-  c_h <- (sigma * qnorm(1 - alpha_f) - mu) / eta
-  B_h <- pnorm(c_h[-(H+2)]) - pnorm(c_h[-1])
-  A <- sum(B_h * lambda_f)
-  pr_h <- B_h * lambda_f / A
-  function(x) {
-    x_interval <- cut(x, breaks = sigma * qnorm(1 - alpha_f), include.lowest = TRUE)
-    wt <- rev(lambda_f)[x_interval]
-    gen_prob <- dnorm((x - mu) / eta) / eta
-    wt * gen_prob / A
-  }
-}
-```
+Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue), using selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$. Initially, the selection parameters are set to $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$, but you can change these however you like.
 
 ```{ojs}
 math = require("mathjs")
 norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
 
-lambda = Array(H+1).fill(1)
-
 eta = math.sqrt(tau**2 + sigma**2)
+H = 2
+alpha = [.025, .500]
+lambda = [1, lambda1, lambda2]
+
+function findlambda(p, alpha, lambda) {
+  var m = 0;
+  while (p >= alpha[m]) {
+    m += 1;
+  }
+  return lambda[m];
+}
+
+gamma_h = Array(H+2).fill(null).map((x,i) => {
+  if (i==0) {
+    return Infinity;
+  } else if (i==H+1) {
+    return -Infinity;
+  } else {
+    return sigma * norm.icdf(1 - alpha[i-1]);
+  }
+})
+
+c_h = Array(H+2).fill(null).map((x,i) => {
+  return (gamma_h[i] - mu) / eta;
+})
+
+B_h = Array(H+1).fill(null).map((x,i) => {
+  return norm.cdf(c_h[i]) - norm.cdf(c_h[i+1])
+})
+
+Ai = {
+  let A = 0;
+  for (let i = 0; i <= H; i++) {
+  	A += lambda[i] * B_h[i];
+  }
+  return A;
+}
+
+Ai_toprint = Ai.toFixed(3)
+```
+
+```{ojs}
+
+function weighted_mean(x) {
+  let top = 0;
+  for (let i = 0; i <= H; i++) {
+  	top += lambda[i] * B_h[i] * x[i];
+  }
+  return top / Ai;
+}
+
+psi_h = Array(H+1).fill(null).map((x,i) => {
+  return (norm.pdf(c_h[i+1]) - norm.pdf(c_h[i])) / B_h[i]
+})
+
+psi_bar = weighted_mean(psi_h)
+ET = mu + eta * psi_bar
+
+ET_toprint = ET.toFixed(3)
+
+dc_h = c_h.map((c_val) => {
+  if (math.abs(c_val) == Infinity) {
+    return 0;
+  } else {
+    return c_val * norm.pdf(c_val);
+  }
+})
+
+V_h = Array(H+1).fill(null).map((x,i) => {
+  let kappa = (dc_h[i] - dc_h[i+1]) / B_h[i]    
+  return (1 - kappa - psi_bar**2);
+})
+
+SDT = eta * math.sqrt(weighted_mean(V_h))
+eta_toprint = eta.toFixed(3)
+SDT_toprint = SDT.toFixed(3)
+```
+
+```{ojs}
+pts = 201
+
+dat = Array(pts).fill().map((element, index) => {
+  let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let lambda_val = findlambda(p, alpha, lambda);
+  return ({
+    t: t,
+    d_unselected: dt,
+    d_selected: lambda_val * dt
+  })
+})
 
 ```
 
-:::: {.grid .column-page-inset}
+::::: {.grid .column-page-inset}
 
-::: {.g-col-7}
+:::: {.g-col-7}
 
+```{ojs}
+Plot.plot({
+  height: 300,
+  y: {
+    grid: false,
+    label: "Density"
+  },
+  x: {
+    label: "Effect size estimate (Ti)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0]),
+    Plot.areaY(dat, {x: "t", y: "d_unselected", fillOpacity: 0.3}),
+    Plot.areaY(dat, {x: "t", y: "d_selected", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(dat, {x: "t", y: "d_selected", stroke: "blue"})
+  ]
+})
+```
+
+:::{.moments}
+
+```{ojs}
+tex`
+\begin{aligned}
+\mu &= ${mu} & \qquad \eta &= ${eta_toprint} \\
+\mathbb{E}\left(T_i\right) &= ${ET_toprint}
+& \qquad \sqrt{\mathbb{V}\left(T_i\right)} &= ${SDT_toprint} \\ 
+\Pr(O_i^* = 1) &= ${Ai_toprint}
+\end{aligned}
+`
+```
 :::
 
-::: {.g-col-5}
+::::
+
+:::: {.g-col-5}
 
 ```{ojs}
 //| panel: input
 
-viewof H = Inputs.range(
-  [1, 10], 
-  {value: 1, step: 1, label: "Number of thresholds (H):"}
-)
-
 viewof mu = Inputs.range(
   [-2, 2], 
-  {value: 0, step: 0.01, label: "Average effect size (mu):"}
+  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
 )
 
 viewof tau = Inputs.range(
@@ -165,13 +267,25 @@ viewof tau = Inputs.range(
 
 viewof sigma = Inputs.range(
   [0, 1], 
-  {value: 0.10, step: 0.01, label: "Standard error (sigma):"}
+  {value: 0.20, step: 0.01, label: "Standard error (sigma):"}
+)
+
+viewof lambda1 = Inputs.range(
+  [0, 2],
+  {value: 0.60, step: 0.01, label: "Selection probability over .025 < p <= .500 (lambda1)"}
+)
+
+viewof lambda2 = Inputs.range(
+  [0, 2],
+  {value: 0.30, step: 0.01, label: "Selection probability over .500 < p (lambda2)"}
 )
 
 ```
-:::
 
 ::::
+
+
+:::::
 
 # Moments of $T_i | \sigma_i$
 
@@ -216,3 +330,40 @@ $$
 $$
 Just as with the expectation, the variance is a complicated function of all the model parameters. 
 Although these expressions are pretty complex, it seems like they could be useful for studying the properties of different estimators that have been proposed for dealing with selective reporting, such as the "unrestricted weighted least squares" method, which is just the idea of using fixed effects weights even though the effects are heterogeneous [@henmi2010confidence; @stanley2014metaregression]; the PET and PEESE estimators [@stanley2008metaregression]; the endogenous kink meta-regression [@bom2019kinked]; and perhaps other estimators in the literature.
+
+```{r}
+pwnormal <- function(mu, tau, sigma, alpha, lambda) {
+  eta <- sqrt(tau^2 + sigma^2)
+  H <- length(alpha)
+  alpha_f <- c(0, alpha, 1)
+  lambda_f <- c(1, lambda)
+  c_h <- (sigma * qnorm(1 - alpha_f) - mu) / eta
+  B_h <- pnorm(c_h[-(H+2)]) - pnorm(c_h[-1])
+  A <- sum(B_h * lambda_f)
+  pr_h <- B_h * lambda_f / A
+  function(x) {
+    x_interval <- cut(x, breaks = sigma * qnorm(1 - alpha_f), include.lowest = TRUE)
+    wt <- rev(lambda_f)[x_interval]
+    gen_prob <- dnorm((x - mu) / eta) / eta
+    wt * gen_prob / A
+  }
+}
+```
+
+# Funnel density
+
+```{ojs}
+funnel_dat = Array(t_pts * SE_pts).fill(null).map((x,row) => {
+  let i = row % SE_pts;
+  let j = (row - i) / SE_pts;
+  let sigma = i * 0.5 / SE_pts;
+  let eta_max = math.sqrt(tau**2 + 0.5**2);
+  let t = mu - 3 * eta_max + j * eta_max * 6 / (t_pts - 1);
+  let eta = math.sqrt(tau**2 + sigma**2);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let lambda_val = findlambda(p, alpha, lambda);
+  return ({i: i, j: j, t: t, sigma: sigma, d_selected: lambda_val * dt});
+})
+```
+
