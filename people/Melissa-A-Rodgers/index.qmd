@@ -28,7 +28,7 @@ listing:
     sort-ui: false
     filter-ui: false
     max-items: 50
-    fields: [date, author, title, publication]
+    fields: [date, author, title]
     field-display-names:
       date: "Date"
       author: "Authors"
