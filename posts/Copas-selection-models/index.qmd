@@ -24,3 +24,53 @@ This is not the only form of selection model, though.
 One prominent alternative model, usually referred to as the Copas selection model, is based on subtly different assumptions than the step-function model.
 This model was described in a series of papers by John Copas and colleagues [@copas1997inference; @copas1999what; @copas2000metaanalysis; @Copas2001sensitivity] and has received quite a lot of attention in the literature on meta-analysis of medical and epidemiological research, but relatively little attention from folks focused on meta-analysis of social science research. 
 In this post, I'll give an overview of the Copas model and highlight some of the ways that it differs from step function models.
+
+# The Copas selection model 
+
+Similar to the step function selection model, the Copas model is composed of two components: an _evidence-generating process_ that describes the distribution of effect size estimates prior to selection and a _selective reporting process_ that describes how selective reporting happens as a function of the effect size estimates. 
+The evidence-generating process is (once again) just a conventional random effects model. 
+Letting $T_i^*$ denote an effect size estimate prior to selective reporting, $\theta_i^*$ denote the corresponding effect size parameter, and $\sigma_i^*$ denote its (known) standard error, we assume that effect size estimate $i$ is drawn from a normal distribution with mean $\theta_i^*$ and standard deviation $\sigma_i^*$:
+$$
+T_i^* | \theta_i^*, \sigma_i^* \sim N\left(\theta_i^*,  \left(\sigma_i^*\right)^2\right).
+$$ {#eq-evidence-generation-level1}
+We further assume that the effect size parameters are drawn from a normal distribution with overall average effect size $\mu$ and standard deviation $\tau$:
+$$
+\theta_i^* | \sigma_i^* \sim N\left(\mu,  \tau^2\right).
+$$ {#eq-evidence-generation-level2}
+The full evidence-generating process can also be written as a random effects model with two sources of error:
+$$
+T_i^* = \mu + \nu_i^* + \epsilon_i^*,
+$$ {#eq-evidence-generation-full}
+where $\nu_i^* \sim N(0, \tau^2)$ and $\epsilon_i^* \sim N\left(0, \left(\sigma_i^*\right)^2\right)$.
+
+The second component is where the Copas model diverges from the step-function model. The Copas model posits that selection is driven by a latent index $\zeta_i$ that is normally distributed, correlated with $\epsilon_i^*$, and has a mean that is a function of $\sigma_i^*$:
+$$
+\zeta_i = \alpha + \frac{\beta}{\sigma_i^*} + \delta_i,
+$$ {#eq-selection}
+where $\delta_i \sim N(0, 1)$ and $\text{cor}(\delta_i, \epsilon_i^*) = \rho$. 
+With this specification, $T_i^*$ is reported (and thus available for inclusion in a meta-analysis) if $\zeta_i > 0$ and is otherwise unreported.
+Following the notation of my previous post, I'll use $O_i^*$ to denote a binary indicator equal to 1 if $T_i^*$ is reported and otherwise equal to zero, so $\Pr\left(O_i^* = 1 | \sigma_i^*\right) = \Pr\left(\zeta_i > 0 | \sigma_i^*\right)$.
+
+@Copas2001sensitivity calls $\zeta_i$ the _propensity for selection_. 
+Under the posited model, the selection propensity depends both on the precision of the study through $\sigma_i^*$ (because the mean of $\zeta_i$ depends on  the inverse of $\sigma_i^*$) and on the magnitude of the reported effect size estimate (because $\zeta_i$ is correlated with $\epsilon_i^*$).
+The parameter $\alpha$ controls the overall probability of selection, irrespective of the findings; $\beta$ controls how strongly selection depends on study precision; and $\rho$ controls how strongly selection depends on the effect size estimate itself.
+
+The Copas model posits a stable correlation $\rho$ between the selection propensity index and the _samplng error_ of the random effects model, $\epsilon_i^*$. 
+If there is heterogeneity in the effect size parameters and heterogeneity in the sampling variances, then the correlation between $\zeta_i$ and $T_i^*$ will differ for each study. 
+With a little variance algebra, it can be seen that
+$$
+\text{cor}\left(\zeta_i, T_i^* | \sigma_i^*\right) = \tilde\rho_i = \frac{\rho \sigma_i^*}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}. 
+$$ {#eq-zeta-correlation}
+Using the correlation, we can write the selection propensity index in terms of a regression on $T_i^*$:
+$$
+\zeta_i | T_i^*, \sigma_i^* \sim N \left(\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right), \ 1 - \rho_i^2\right).
+$$
+Thus, given the effect size estimate $T_i^*$ and its standard error $\sigma_i^*$, the probability that finding $i$ is reported is
+$$
+\Pr\left(O_i^* = 1 | T_i^*, \sigma_i^*\right) = \Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)
+$$ {#eq-conditional-selection-probability}
+[@Copas2001sensitivity, Equation 4; @hedges2005selection, Equation 9.6].
+
+# Distribution of observed effect sizes
+
+The observed effect size estimates $T_i$ follow a distribution equivalent to that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. Under the assumptions of the Copas selection model, this distribution is a _generalized skew-normal_ [@arellano20006unification]. @arnold1999nontruncated
