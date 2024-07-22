@@ -1,0 +1,26 @@
+---
+title: Copas selection models for meta-analysis
+date: '2024-07-21'
+categories:
+- effect size
+- distribution theory
+- selective reporting
+draft: true
+execute:
+  echo: false
+bibliography: "../selection-references.bib"
+csl: "../apa.csl"
+link-citations: true
+code-tools: true
+toc: true
+css: styles.css
+crossref: 
+  eq-prefix: ""
+---
+
+Recently, I've been working a lot on models for selective reporting of study results in meta-analysis.
+I've mostly focused on [step-function selection models](/posts/step-function-selection-models/) [@hedges1992modeling; @vevea1995general; @Hedges1996estimating; @vevea2005publication], which assume that selective reporting of study results is driven fully by the $p$-values of the reported effect size estimates (and specifically, where those $p$-values fall relative to certain thresholds).
+This is not the only form of selection model, though.
+One prominent alternative model, usually referred to as the Copas selection model, is based on subtly different assumptions than the step-function model.
+This model was described in a series of papers by John Copas and colleagues [@copas1997inference; @copas1999what; @copas2000metaanalysis; @Copas2001sensitivity] and has received quite a lot of attention in the literature on meta-analysis of medical and epidemiological research, but relatively little attention from folks focused on meta-analysis of social science research. 
+In this post, I'll give an overview of the Copas model and highlight some of the ways that it differs from step function models.
