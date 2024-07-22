@@ -1,11 +1,10 @@
 ---
 title: Step-function selection models for meta-analysis
-date: '2024-07-08'
+date: '2024-07-09'
 categories:
 - effect size
 - distribution theory
 - selective reporting
-draft: true
 execute:
   echo: false
 bibliography: "../selection-references.bib"
@@ -21,6 +20,7 @@ crossref:
 In [a recent post](/posts/distribution-of-significant-effects/) I looked at the distribution of statistically significant effect sizes in studies that report multiple outcomes, when those studies are subject to a certain form of selective reporting. 
 I considered a model where each effect size within the study is more likely to be reported when it is _affirmative_---or statistically significant and in the hypothesized direction---than when it is _non-affirmative_. 
 Because studies with multiple effect sizes are a very common occurrence in social science meta-analysis, it's interesting to think about how this form of selection leads to distortions of the results that are actually reported and available for meta-analysis. 
+
 In this post, I want to look a different scenario that is simpler in one respect but more complicated in another. 
 Simpler, in that I'm going to ignore dependence issues and just think about the distribution of one effect size at a time. 
 More complicated, in that I'm going to look at a more general model for how selective reporting occurs, which I'll call the __*step-function selection model*__.
@@ -28,7 +28,8 @@ More complicated, in that I'm going to look at a more general model for how sele
 # The step-function selection model 
 
 The step-function selection model was introduced by @hedges1992modeling and has been further expanded, tweaked, and studied in a bunch of subsequent work. 
-The model has two components: a set of assumptions about how effect size estimates are generated prior to selection (the __*evidence-generation process*__), and a set of assumptions about how selective reporting happens as a function of the effect size estimates (the __*selective reporting process*__). 
+The model has two components: a set of assumptions about how effect size estimates are generated prior to selection (the _evidence-generation process_), and a set of assumptions about how selective reporting happens as a function of the effect size estimates (the _selective reporting process_). 
+
 In the original formulation, the evidence-generation process is a random effects model. Letting $T_i^*$ denote an effect size estimate prior to selective reporting and $\sigma_i^*$ denote its (known) standard error, we assume that
 $$
 T_i^* | \sigma_i^* \sim N\left(\mu, \tau^2 + \left(\sigma_i^*\right)^2\right),
@@ -90,7 +91,7 @@ $$
 A_i &= \int w\left(t, \sigma_i^*\right) \times \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right) dt \\
 &= \sum_{h=0}^H \lambda_h B_{hi},
 \end{aligned}
-$$
+$$ {#eq-Ai}
 with 
 $$
 B_{hi} = \Phi\left(\frac{\gamma_{hi} - \mu}{\eta_i}\right) - \Phi\left(\frac{\gamma_{h+1,i} - \mu}{\eta_i}\right)
@@ -108,7 +109,7 @@ $$
 $$
 which will be useful for deriving moments of the distribution of $T_i$.
 
-Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue), using selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$. Initially, the selection parameters are set to $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$, but you can change these however you like.
+Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on a four-parameter selection model with selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$. Initially, the selection parameters are set to $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$, but you can change these however you like.
 
 ```{ojs}
 math = require("mathjs")
@@ -119,78 +120,82 @@ H = 2
 alpha = [.025, .500]
 lambda = [1, lambda1, lambda2]
 
-function findlambda(p, alpha, lambda) {
+function findlambda(p, alp, lam) {
   var m = 0;
-  while (p >= alpha[m]) {
+  while (p >= alp[m]) {
     m += 1;
   }
-  return lambda[m];
+  return lam[m];
 }
 
-gamma_h = Array(H+2).fill(null).map((x,i) => {
-  if (i==0) {
-    return Infinity;
-  } else if (i==H+1) {
-    return -Infinity;
-  } else {
-    return sigma * norm.icdf(1 - alpha[i-1]);
-  }
-})
+function findMoments(mu, tau, sigma, alp, lam) {
+  let H = alp.length;
+  let eta = math.sqrt(tau**2 + sigma**2);
+  
+  let gamma_h = Array(H+2).fill(null).map((x,i) => {
+    if (i==0) {
+      return Infinity;
+    } else if (i==H+1) {
+      return -Infinity;
+    } else {
+      return sigma * norm.icdf(1 - alp[i-1]);
+    }
+  });
+  
+  let c_h = Array(H+2).fill(null).map((x,i) => {
+    return (gamma_h[i] - mu) / eta;
+  });
 
-c_h = Array(H+2).fill(null).map((x,i) => {
-  return (gamma_h[i] - mu) / eta;
-})
+  let B_h = Array(H+1).fill(null).map((x,i) => {
+    return norm.cdf(c_h[i]) - norm.cdf(c_h[i+1])
+  });
 
-B_h = Array(H+1).fill(null).map((x,i) => {
-  return norm.cdf(c_h[i]) - norm.cdf(c_h[i+1])
-})
-
-Ai = {
-  let A = 0;
+  let Ai = 0;
   for (let i = 0; i <= H; i++) {
-  	A += lambda[i] * B_h[i];
+  	Ai += lam[i] * B_h[i];
   }
-  return A;
-}
+  
+  let psi_h = Array(H+1).fill(null).map((x,i) => {
+    return (norm.pdf(c_h[i+1]) - norm.pdf(c_h[i])) / B_h[i]
+  }); 
 
-Ai_toprint = Ai.toFixed(3)
-```
-
-```{ojs}
-
-function weighted_mean(x) {
-  let top = 0;
+  let psi_top = 0;
   for (let i = 0; i <= H; i++) {
-  	top += lambda[i] * B_h[i] * x[i];
+  	psi_top += lam[i] * B_h[i] * psi_h[i];
   }
-  return top / Ai;
+  
+  let psi_bar = psi_top / Ai;
+
+  let ET = mu + eta * psi_bar;
+
+  let dc_h = c_h.map((c_val) => {
+    if (math.abs(c_val) == Infinity) {
+      return 0;
+    } else {
+      return c_val * norm.pdf(c_val);
+    }
+  });
+
+  let kappa_h = Array(H+1).fill(null).map((x,i) => {
+    return (dc_h[i] - dc_h[i+1]) / B_h[i];
+  });
+
+  let kappa_top = 0;
+  for (let i = 0; i <= H; i++) {
+  	kappa_top += lam[i] * B_h[i] * kappa_h[i];
+  }
+  let kappa_bar = kappa_top / Ai;
+  let SDT = eta * math.sqrt(1 - kappa_bar - psi_bar**2);
+  
+  return ({Ai: Ai, ET: ET, SDT: SDT});
 }
 
-psi_h = Array(H+1).fill(null).map((x,i) => {
-  return (norm.pdf(c_h[i+1]) - norm.pdf(c_h[i])) / B_h[i]
-})
-
-psi_bar = weighted_mean(psi_h)
-ET = mu + eta * psi_bar
-
-ET_toprint = ET.toFixed(3)
-
-dc_h = c_h.map((c_val) => {
-  if (math.abs(c_val) == Infinity) {
-    return 0;
-  } else {
-    return c_val * norm.pdf(c_val);
-  }
-})
-
-V_h = Array(H+1).fill(null).map((x,i) => {
-  let kappa = (dc_h[i] - dc_h[i+1]) / B_h[i]    
-  return (1 - kappa - psi_bar**2);
-})
-
-SDT = eta * math.sqrt(weighted_mean(V_h))
+moments = findMoments(mu, tau, sigma, alpha, lambda)
+Ai_toprint = moments.Ai.toFixed(3)
+ET_toprint = moments.ET.toFixed(3)
 eta_toprint = eta.toFixed(3)
-SDT_toprint = SDT.toFixed(3)
+SDT_toprint = moments.SDT.toFixed(3)
+
 ```
 
 ```{ojs}
@@ -212,7 +217,7 @@ dat = Array(pts).fill().map((element, index) => {
 
 ::::: {.grid .column-page-inset}
 
-:::: {.g-col-7}
+:::: {.g-col-8 .center}
 
 ```{ojs}
 Plot.plot({
@@ -250,7 +255,7 @@ tex`
 
 ::::
 
-:::: {.g-col-5}
+:::: {.g-col-4}
 
 ```{ojs}
 //| panel: input
@@ -305,7 +310,7 @@ $$
 &= \mu + \eta_i \frac{\sum_{h=0}^H \lambda_h B_{hi} \psi_{hi}}{\sum_{h=0}^H \lambda_h B_{hi}}.
 \end{aligned}
 $$ {#eq-Ti-expectation}
-The second term of @eq-Ti-expectation is the bias of $T_i$ relative to the overall mean effect $\mu$. Generally, it will depend on all the parameters of the evidence-generating process, including $\sigma_i$, $\mu$, and $\tau$ (through the $c_{hi}$ and $B_{hi}$ terms) and on the selection weights $\lambda_1,...,\lambda_H$.
+The second term of (@eq-Ti-expectation) is the bias of $T_i$ relative to the overall mean effect $\mu$. Generally, it will depend on all the parameters of the evidence-generating process, including $\sigma_i$, $\mu$, and $\tau$ (through the $c_{hi}$ and $B_{hi}$ terms) and on the selection weights $\lambda_1,...,\lambda_H$.
 
 Just for giggles, let me chug through and get the variance of $T_i$ as well. Letting 
 $$
@@ -325,45 +330,177 @@ $$
 \mathbb{V}(T_i | \sigma_i) &= \mathbb{E}\left[\mathbb{V}(T_i | S_i, \sigma_i)\right] + \mathbb{V}\left[\mathbb{E}(T_i | S_i, \sigma_i)\right] \\
 &= \mathbb{E}\left[\mathbb{V}(T_i | S_i, \sigma_i) + \left[\mathbb{E}(T_i | S_i, \sigma_i) - \mathbb{E}(T_i | \sigma_i)\right]^2\right] \\
 &= \frac{1}{\sum_{h=0}^H \lambda_h B_{hi}} \sum_{h=0}^H \lambda_h B_{hi} \left( \eta_i^2 \left(1 - \kappa_{hi} - \psi_{hi}^2\right) + \eta_i^2  \left[\psi_{hi} - \bar\psi_i \right]^2\right) \\
-&= \eta_i^2 \frac{\sum_{h=0}^H \lambda_h B_{hi} \left(1 - \kappa_{hi} - \bar\psi_i^2\right)}{\sum_{h=0}^H \lambda_h B_{hi}}.
+&= \eta_i^2 \left(1 - \bar\kappa_i - \bar\psi_i^2\right),
 \end{aligned}
+$$ {#eq-Ti-variance}
+where 
+$$
+\bar\kappa_i = \frac{\sum_{h=0}^H \lambda_h B_{hi} \kappa_{hi}}{\sum_{h=0}^H \lambda_h B_{hi}}
 $$
 Just as with the expectation, the variance is a complicated function of all the model parameters. 
-Although these expressions are pretty complex, it seems like they could be useful for studying the properties of different estimators that have been proposed for dealing with selective reporting, such as the "unrestricted weighted least squares" method, which is just the idea of using fixed effects weights even though the effects are heterogeneous [@henmi2010confidence; @stanley2014metaregression]; the PET and PEESE estimators [@stanley2008metaregression]; the endogenous kink meta-regression [@bom2019kinked]; and perhaps other estimators in the literature.
-
-```{r}
-pwnormal <- function(mu, tau, sigma, alpha, lambda) {
-  eta <- sqrt(tau^2 + sigma^2)
-  H <- length(alpha)
-  alpha_f <- c(0, alpha, 1)
-  lambda_f <- c(1, lambda)
-  c_h <- (sigma * qnorm(1 - alpha_f) - mu) / eta
-  B_h <- pnorm(c_h[-(H+2)]) - pnorm(c_h[-1])
-  A <- sum(B_h * lambda_f)
-  pr_h <- B_h * lambda_f / A
-  function(x) {
-    x_interval <- cut(x, breaks = sigma * qnorm(1 - alpha_f), include.lowest = TRUE)
-    wt <- rev(lambda_f)[x_interval]
-    gen_prob <- dnorm((x - mu) / eta) / eta
-    wt * gen_prob / A
-  }
-}
-```
 
 # Funnel density
 
+The graph above shows the distribution of observed effect size estimates with a given sampling standard error $\sigma_i$. 
+In practice, meta-analysis datasets include many effect sizes with a range of different standard errors. 
+Funnel plots are a commonly used graphical representation the distribution of effects in a meta-analysis.
+They are simply scatterplots, showing effect size estimates on the horizontal axis and standard errors (or some measure of precision) on the vertical axis.
+Usually, they are arranged so that effects from larger studies appear closer to the top of the plot.
+Funnel plots are often used a diagnostic for selective reporting because they will tend to be asymmetric when non-affirmative effects are less likely to be reported than affirmative effects.
+
+I think it's pretty useful to use the layout of a funnel plot to understand how meta-analytic models work. A basic random effects model implies a certain distribution of population effects, which can be represented by the density of points in a funnel plot.[^technically-conditional] 
+That density will have a shape kind of like an upside down funnel: narrow near the top (where studies are large and $\sigma_i$ is small), getting wider and wider as $\sigma_i$ increases (i.e., as studies get smaller and smaller). 
+
+[^technically-conditional]: To be precise, the density will depend on the marginal distribution of $\sigma_i^*$'s in the population of effects. I'm going to side-step this problem by using the funnel plot layout to show the _conditional_ distribution of the effect size estimates, given $\sigma_i^* = \sigma_i$. 
+
+Here's an illustration of this density, using darker color to indicate areas of the plot where effect sizes are more likely. 
+I've used $\mu = 0.15$ (represented by the vertical red line) and $\tau = 0.10$ to calculate the density. 
+The vertical gray line corresponds to $\mu = 0$, which is also the threshold where effect size estimates will have $p$-values of $\alpha = .50$. 
+The sloped gray line corresponds to the treshold where effect size estimates have $p$-values of $\alpha = .025$; to the right of this line, effects will be statistically significant and affirmative; to the left, effects are non-affirmative.
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 90%
+
+library(tidyverse)
+mu <- 0.15
+tau <- 0.10
+
+dat <- 
+  expand_grid(
+    t = seq(-1.5, 1.5, length.out = 201),
+    se = seq(0.005, 0.500, 0.005)
+  ) %>%
+  mutate(
+    eta = sqrt(tau^2 + se^2),
+    dt = dnorm(t, mean = mu, sd = eta)
+  )
+
+ggplot(dat, aes(t, se, fill = dt)) + 
+  geom_tile() + 
+  geom_hline(yintercept = 0, color = "darkgrey") + 
+  geom_vline(xintercept = 0, color = "darkgrey") + 
+  geom_abline(intercept = 0, slope = -1 / qnorm(0.975), color = "darkgrey") + 
+  geom_vline(xintercept = mu, color = "red") + 
+  scale_fill_gradient2(
+    transform = "sqrt", 
+    low = "white",
+    mid = scales::muted("blue"),
+    high = "darkgreen",
+    midpoint = 1
+  ) + 
+  scale_y_reverse() + 
+  coord_cartesian(expand = FALSE) + 
+  theme_minimal() + 
+  theme(legend.position = "bottom", legend.justification.bottom = "left") + 
+  labs(
+    x = expression(Effect~size~estimate~(T[i])),
+    y = expression(Standard~error~(sigma[i])),
+    fill = "Density"
+  )
+```
+
+The above graph shows the (conditional) distribution of effect size estimates under the random effects model, without any selective reporting. 
+Selective reporting of study results will distort this distribution, shrinking the density for effects that are not affirmative.
+
+Here is an interactive funnel plot showing the distribution of effect size estimates under a four-parameter selection model. Just as in the interactive graph above, I use fixed selection thresholds of $\alpha_1 = .025$ and $\alpha_2 = .50$. Initially, I set $\mu = 0.15$ and $\tau = 0.10$ and selection parameters of $\lambda_1 = 0.6$ and $\lambda_2 = 0.3$, but you can change these however you like.
+
 ```{ojs}
+SE_pts = 100
+t_pts = 181
+lambda_f = [1, lambda1_f, lambda2_f]
+alpha_f = [.025, .500]
+sigma_max = 0.5
+eta_max_f = math.sqrt(tau_f**2 + sigma_max**2)
+
 funnel_dat = Array(t_pts * SE_pts).fill(null).map((x,row) => {
   let i = row % SE_pts;
   let j = (row - i) / SE_pts;
-  let sigma = i * 0.5 / SE_pts;
-  let eta_max = math.sqrt(tau**2 + 0.5**2);
-  let t = mu - 3 * eta_max + j * eta_max * 6 / (t_pts - 1);
-  let eta = math.sqrt(tau**2 + sigma**2);
+  let sigma = (i + 1) * sigma_max / SE_pts;
+  let t = mu_f - 3 * eta_max_f + j * eta_max_f * 6 / (t_pts - 1);
+  let eta = math.sqrt(tau_f**2 + sigma**2);
   let p = 1 - norm.cdf(t / sigma);
-  let dt = norm.pdf((t - mu) / eta) / eta;
-  let lambda_val = findlambda(p, alpha, lambda);
-  return ({i: i, j: j, t: t, sigma: sigma, d_selected: lambda_val * dt});
+  let dt = norm.pdf((t - mu_f) / eta) / eta;
+  let lambda_val = findlambda(p, alpha_f, lambda_f);
+  return ({i: i, j: j, t: t, sigma: sigma, eta: eta, p: p, dt: dt, lambda: lambda_val, d_selected: lambda_val * dt});
+})
+
+sigline_dat = [
+  ({t: 0, sigma: 0}),
+  ({t: sigma_max * norm.icdf(0.975), sigma: sigma_max})
+]
+
+
+```
+
+::::: {.grid .column-page-inset}
+
+:::: {.g-col-8 .center}
+
+```{ojs}
+Plot.plot({
+  height: 400,
+  width: 700,
+  padding: 0,
+  grid: false,
+  x: {axis: "top", label: "Effect size estimate (Ti)"},
+  y: {label: "Standard error (sigma_i)", reverse: true},
+  color: {
+    scheme: "pubugn",
+    type: "sqrt",
+    label: "Density"
+  },
+  marks: [
+    Plot.dot(funnel_dat, {x: "t", y: "sigma", fill: "d_selected", r:2, symbol: "square"}),
+    Plot.ruleY([0], {stroke: "black"}),
+    Plot.ruleX([0], {stroke: "grey"}),
+    Plot.line(sigline_dat, {x: "t", y: "sigma", stroke: "gray", strokeWidth: 1})
+  ]
 })
 ```
 
+```{ojs}
+Plot.legend({color: {scheme: "pubugn", type: "sqrt", label: "Density"}})
+```
+
+::::
+
+:::: {.g-col-4}
+
+```{ojs}
+//| panel: input
+
+viewof mu_f = Inputs.range(
+  [-2, 2], 
+  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+)
+
+viewof tau_f = Inputs.range(
+  [0, 2], 
+  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+)
+
+viewof lambda1_f = Inputs.range(
+  [0, 2],
+  {value: 0.60, step: 0.01, label: "Selection probability over .025 < p <= .500 (lambda1)"}
+)
+
+viewof lambda2_f = Inputs.range(
+  [0, 2],
+  {value: 0.30, step: 0.01, label: "Selection probability over .500 < p (lambda2)"}
+)
+```
+
+::::
+
+:::::
+
+If you fiddle with the selection parameters, you will see that the density of certain areas of the plot changes.
+For instance, lowering $\lambda_2$ will reduce the density of negative effect size estimates; lowering $\lambda_1$ will reduce the density of positive but non-affirmative effect size estimates, which fall between the vertical axis and the diagonal line corresponding to $\alpha = .025$. 
+
+# Comment
+
+In this post, I've given expressions for the density of effect size estimates under the step-function selection model, as well as expressions for the mean and variance of effect size estimates of a given precision (i.e., for $T_i | \sigma_i$). 
+Although these expressions are pretty complex, it seems like they could be useful for studying the properties of different estimators that have been proposed for dealing with selective reporting, such as the "unrestricted weighted least squares" method, which is just the idea of using fixed effects weights even though the effects are heterogeneous [@henmi2010confidence; @stanley2014metaregression]; the PET and PEESE estimators [@stanley2008metaregression]; the endogenous kink meta-regression [@bom2019kinked]; and perhaps other estimators in the literature. 
+Graphical depictions of the step function density (as in the funnel plot above) also seem potentially useful for understanding the properties of these estimators.

@@ -19,7 +19,7 @@ about:
     href: https://github.com/dmswan
 org_name: Abt Global
 org_url: https://www.abtglobal.com/
-role: Senior Analysis
+role: Senior Analyst
 people-group: Alumni
 listing:
   - id: publications
@@ -34,7 +34,7 @@ listing:
     sort-ui: false
     filter-ui: false
     max-items: 50
-    fields: [date, author, title, publication]
+    fields: [date, author, title]
     field-display-names:
       date: "Date"
       author: "Authors"
