@@ -215,7 +215,7 @@ dat = Array(pts).fill().map((element, index) => {
 
 ```
 
-::::: {.grid .column-page-inset}
+::::: {.grid .column-page}
 
 :::: {.g-col-8 .center}
 
@@ -434,7 +434,7 @@ sigline_dat = [
 
 ```
 
-::::: {.grid .column-page-inset}
+::::: {.grid .column-page}
 
 :::: {.g-col-8 .center}
 
