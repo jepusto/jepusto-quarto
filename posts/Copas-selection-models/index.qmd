@@ -73,4 +73,136 @@ $$ {#eq-conditional-selection-probability}
 
 # Distribution of observed effect sizes
 
-The observed effect size estimates $T_i$ follow a distribution equivalent to that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. Under the assumptions of the Copas selection model, this distribution is a _generalized skew-normal_ [@arellano20006unification]. @arnold1999nontruncated
+The observed effect size estimates $T_i$ follow a distribution equivalent to that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. It's possible to find an analytic expression for the density of the observed effect sizes (using Bayes Theorem, just as in [my previous post](/posts/step-function-selection-models/)). The density of the observed $T_i$'s is
+$$
+\Pr\left(T_i = t| \sigma_i^*\right) = \Pr\left(T_i^* = t | \sigma_i^*, O_i^* = 1\right) = \frac{\Pr\left(O_i^* = 1 | T_i^* = t, \sigma_i^*\right) \times \Pr\left(T_i^* = t | \sigma_i^*\right)}{\Pr\left(O_i^* = 1 | \sigma_i^*\right)},
+$$ {#eq-Bayes-theorem}
+where the first term in the numerator is given in (@eq-conditional-selection-probability), the second term in the numerator can be derived from (@eq-evidence-generation-full), and the denominator can be derived from (@eq-selection).
+Substituting everything into the above gives
+$$
+\Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}} \phi\left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}
+$$ {#eq-observed-density}
+This density is identical to that of the _generalized skew-normal distribution_ [@arnold1999nontruncated; @arellano20006unification]. 
+
+Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on the Copas selection model:
+
+```{ojs}
+math = require("mathjs")
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+eta = math.sqrt(tau**2 + sigma**2)
+
+function CopasSelection(t, s) {
+  let eta_ = math.sqrt(tau**2 + s**2);
+  let rho_i = rho * s / eta_; 
+  let z = (t - mu) / eta_;
+  let u = alpha + beta / s;
+}
+
+Ai_toprint = moments.Ai.toFixed(3)
+ET_toprint = moments.ET.toFixed(3)
+eta_toprint = eta.toFixed(3)
+SDT_toprint = moments.SDT.toFixed(3)
+
+```
+
+```{ojs}
+pts = 201
+
+dat = Array(pts).fill().map((element, index) => {
+  let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let lambda_val = findlambda(p, alpha, lambda);
+  return ({
+    t: t,
+    d_unselected: dt,
+    d_selected: lambda_val * dt
+  })
+})
+
+```
+
+::::: {.grid .column-page-inset}
+
+:::: {.g-col-8 .center}
+
+```{ojs}
+Plot.plot({
+  height: 300,
+  y: {
+    grid: false,
+    label: "Density"
+  },
+  x: {
+    label: "Effect size estimate (Ti)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0]),
+    Plot.areaY(dat, {x: "t", y: "d_unselected", fillOpacity: 0.3}),
+    Plot.areaY(dat, {x: "t", y: "d_selected", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(dat, {x: "t", y: "d_selected", stroke: "blue"})
+  ]
+})
+```
+
+:::{.moments}
+
+```{ojs}
+tex`
+\begin{aligned}
+\mu &= ${mu} & \qquad \eta &= ${eta_toprint} \\
+\mathbb{E}\left(T_i\right) &= ${ET_toprint}
+& \qquad \sqrt{\mathbb{V}\left(T_i\right)} &= ${SDT_toprint} \\ 
+\Pr(O_i^* = 1) &= ${Ai_toprint}
+\end{aligned}
+`
+```
+:::
+
+::::
+
+:::: {.g-col-4}
+
+```{ojs}
+//| panel: input
+
+viewof mu = Inputs.range(
+  [-2, 2], 
+  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+)
+
+viewof tau = Inputs.range(
+  [0, 2], 
+  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+)
+
+viewof sigma = Inputs.range(
+  [0, 1], 
+  {value: 0.20, step: 0.01, label: "Standard error (sigma):"}
+)
+
+viewof alpha = Inputs.range(
+  [-5, 5],
+  {value: 0.0, step: 0.1, label: "alpha selection parameter"}
+)
+
+viewof beta = Inputs.range(
+  [0, 2],
+  {value: 1, step: 0.01, label: "beta selection parameter"}
+)
+
+viewof rho = Inputs.range(
+  [-1, 1],
+  {value: 0, step: 0.01, label: "rho selection parameter"}
+)
+
+```
+
+::::
+
+
+:::::
+
+# Moments of $T_i | \sigma_i$
