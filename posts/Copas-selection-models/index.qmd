@@ -80,7 +80,7 @@ $$ {#eq-Bayes-theorem}
 where the first term in the numerator is given in (@eq-conditional-selection-probability), the second term in the numerator can be derived from (@eq-evidence-generation-full), and the denominator can be derived from (@eq-selection).
 Substituting everything into the above gives
 $$
-\Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}} \phi\left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{T_i^* - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}
+\Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}} \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}
 $$ {#eq-observed-density}
 This density is identical to that of the _generalized skew-normal distribution_ [@arnold1999nontruncated; @arellano20006unification]. 
 
@@ -91,18 +91,25 @@ math = require("mathjs")
 norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
 
 eta = math.sqrt(tau**2 + sigma**2)
+rho_i = rho * sigma / eta
+u = alpha + beta / sigma
+lambda = norm.pdf(u) / norm.cdf(u)
+
+Ai = norm.cdf(u)
+ET = mu + rho * sigma * lambda
+SDT = eta * math.sqrt(1 - rho_i**2 * lambda * (u + lambda))
+Ai_toprint = Ai.toFixed(3)
+ET_toprint = ET.toFixed(3)
+eta_toprint = eta.toFixed(3)
+SDT_toprint = SDT.toFixed(3)
 
 function CopasSelection(t, s) {
   let eta_ = math.sqrt(tau**2 + s**2);
-  let rho_i = rho * s / eta_; 
+  let rho_i_ = rho * s / eta_; 
   let z = (t - mu) / eta_;
-  let u = alpha + beta / s;
+  let x = (u + rho_i_ * z) / math.sqrt(1 - rho_i_**2);
+  return norm.cdf(x);
 }
-
-Ai_toprint = moments.Ai.toFixed(3)
-ET_toprint = moments.ET.toFixed(3)
-eta_toprint = eta.toFixed(3)
-SDT_toprint = moments.SDT.toFixed(3)
 
 ```
 
@@ -111,19 +118,18 @@ pts = 201
 
 dat = Array(pts).fill().map((element, index) => {
   let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
-  let p = 1 - norm.cdf(t / sigma);
   let dt = norm.pdf((t - mu) / eta) / eta;
-  let lambda_val = findlambda(p, alpha, lambda);
+  let pr_sel = CopasSelection(t, sigma);
   return ({
     t: t,
     d_unselected: dt,
-    d_selected: lambda_val * dt
+    d_selected: pr_sel * dt
   })
 })
 
 ```
 
-::::: {.grid .column-page-inset}
+::::: {.grid .column-page}
 
 :::: {.g-col-8 .center}
 
@@ -153,9 +159,9 @@ Plot.plot({
 tex`
 \begin{aligned}
 \mu &= ${mu} & \qquad \eta &= ${eta_toprint} \\
-\mathbb{E}\left(T_i\right) &= ${ET_toprint}
-& \qquad \sqrt{\mathbb{V}\left(T_i\right)} &= ${SDT_toprint} \\ 
-\Pr(O_i^* = 1) &= ${Ai_toprint}
+\mathbb{E}\left(T_i | \sigma_i\right) &= ${ET_toprint}
+& \qquad \sqrt{\mathbb{V}\left(T_i | \sigma_i\right)} &= ${SDT_toprint} \\ 
+\Pr(O_i^* = 1 | \sigma_i^*) &= ${Ai_toprint}
 \end{aligned}
 `
 ```
@@ -184,13 +190,13 @@ viewof sigma = Inputs.range(
 )
 
 viewof alpha = Inputs.range(
-  [-5, 5],
-  {value: 0.0, step: 0.1, label: "alpha selection parameter"}
+  [-10, 10],
+  {value: -3, step: 0.1, label: "alpha selection parameter"}
 )
 
 viewof beta = Inputs.range(
   [0, 2],
-  {value: 1, step: 0.01, label: "beta selection parameter"}
+  {value: 0.5, step: 0.01, label: "beta selection parameter"}
 )
 
 viewof rho = Inputs.range(
@@ -206,3 +212,11 @@ viewof rho = Inputs.range(
 :::::
 
 # Moments of $T_i | \sigma_i$
+
+# Comments
+
+The shape of the distribution does not depend at all on $\mu$, and so the bias of $T_i$ is contant across all possible values of $\mu$.
+
+The selection propensity index is correlated with the _sampling errors_ rather than with the marginal distribution of $T_i^*$.
+
+The probability of selection is not directly connected to $p$-values.
