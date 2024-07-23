@@ -82,7 +82,7 @@ Substituting everything into the above gives
 $$
 \Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}} \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}
 $$ {#eq-observed-density}
-This density is identical to that of the _generalized skew-normal distribution_ [@arnold1999nontruncated; @arellano20006unification]. 
+This density is identical to that of the _generalized skew-normal distribution_ [@arellano20006unification]. 
 
 Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on the Copas selection model:
 
@@ -213,7 +213,43 @@ viewof rho = Inputs.range(
 
 # Moments of $T_i | \sigma_i$
 
+@arnold1999nontruncated derived the moment-generating function and first several moments of a further generalization of the skew-normal distribution, of which the distribution of $T_i$ is a special case. Letting $Z_i = \frac{T_i - \mu}{\sqrt{\tau^2 + \sigma_i^2}}$, $u_i = \alpha + \frac{\beta}{\sigma_i}$, and $\lambda(u_i) = \frac{\phi(u_i)}{\Phi(u_i)}$, they give the first two moments of $Z_i$ as
+$$
+\begin{aligned}
+\mathbb{E}\left(Z_i | \sigma_i \right) &= \rho_i \lambda\left(u_i\right) \\
+\mathbb{E}\left(Z_i^2 | \sigma_i \right) &= 1 - \rho_i^2 u_i \lambda(u_i) 
+\end{aligned}
+$$
+by which it follows that
+$$
+\begin{aligned}
+\mathbb{E}\left(T_i | \sigma_i \right) &= \mu + \sqrt{\tau^2 + \sigma_i^2} \times \rho_i \lambda\left(u_i\right) \\
+ &= \mu + \rho \sigma_i \lambda\left(u_i\right)
+ \end{aligned}
+$$ {#eq-Ti-mean}
+and 
+$$
+\begin{aligned}
+\mathbb{V}\left(T_i | \sigma_i \right) &= \left(\tau^2 + \sigma_i^2\right) \left(1 - \rho_i^2\lambda(u_i) \times [u_i  + \lambda(u_i)]\right) \\
+ &= \tau^2 + \sigma_i^2\left(1 - \rho^2 \lambda(u_i) \times [u_i  + \lambda(u_i)]\right).
+\end{aligned}
+$$ {#eq-Ti-variance}
+The expression for $\mathbb{E}\left(T_i | \sigma_i \right)$ is also given in @copas2000metaanalysis and @Copas2001sensitivity.[^variance-of-T]
+
+[^variance-of-T]: These sources give the variance of the observed effect size estimates as $\mathbb{V}\left(T_i | \sigma_i \right) =  \sigma_i^2\left(1 - \rho^2 \lambda(u_i) \times [u_i  + \lambda(u_i)]\right)$ [see p. 250 of @copas2000metaanalysis; see Equation 6 of @Copas2001sensitivity]. However, these expressions are incorrect as stated because they ignore the between-study heterogeneity $\tau^2$.
+
+# Funnel density
+
+The graph above shows the distribution of observed effect size estimates with a given sampling standard error $\sigma_i$. 
+
+Here's an illustration of this density, using darker color to indicate areas of the plot where effect sizes are more likely. 
+I've used $\mu = 0.15$ (represented by the vertical red line) and $\tau = 0.10$ to calculate the density. 
+The vertical gray line corresponds to $\mu = 0$, which is also the threshold where effect size estimates will have $p$-values of $\alpha = .50$. 
+The sloped gray line corresponds to the treshold where effect size estimates have $p$-values of $\alpha = .025$; to the right of this line, effects will be statistically significant and affirmative; to the left, effects are non-affirmative.
+
 # Comments
+
+The Copas model has three parameters but only produces a limited range of distributional shapes.
 
 The shape of the distribution does not depend at all on $\mu$, and so the bias of $T_i$ is contant across all possible values of $\mu$.
 
