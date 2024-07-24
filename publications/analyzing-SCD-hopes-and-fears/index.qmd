@@ -29,6 +29,9 @@ links:
 - text: Publisher
   url: https://doi.org/10.1037/14376-009
   icon: newspaper
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://drive.google.com/file/d/1PfVFP4OY-_V0LrlJ-EAny1qVpITVJL_j/view
 citation: 
   type: chapter
   container-title: "Single-Case Intervention Research: Methodological and Data-Analysis Advances"

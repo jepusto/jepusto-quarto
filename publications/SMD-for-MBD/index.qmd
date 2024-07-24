@@ -19,6 +19,9 @@ links:
 - text: Journal
   url: https://dx.doi.org/10.1002/jrsm.1086
   icon: newspaper
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://drive.google.com/file/d/1FA-O17TcTyxUWN3S2qlW_0YhTavQQRjc/view
 - text: R package
   url: https://CRAN.R-project.org/package=scdhlm
   icon: box2
