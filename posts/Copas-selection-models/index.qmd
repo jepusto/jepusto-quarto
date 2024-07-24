@@ -18,16 +18,16 @@ crossref:
   eq-prefix: ""
 ---
 
-Recently, I've been working a lot on models for selective reporting of study results in meta-analysis.
-I've mostly focused on [step-function selection models](/posts/step-function-selection-models/) [@hedges1992modeling; @vevea1995general; @Hedges1996estimating; @vevea2005publication], which assume that selective reporting of study results is driven fully by the $p$-values of the reported effect size estimates (and specifically, where those $p$-values fall relative to certain thresholds).
+Recently, I've been working on and studying meta-analytic models for selective reporting of findings from primary studies.
+I've mostly focused on [step-function selection models](/posts/step-function-selection-models/) [@hedges1992modeling; @vevea1995general; @Hedges1996estimating; @vevea2005publication], which assume that selective reporting of primary study results is driven by the $p$-values of the effect size estimates (and specifically, where those $p$-values fall relative to certain thresholds).
 This is not the only form of selection model, though.
-One prominent alternative model, usually referred to as the Copas selection model, is based on distinctly different assumptions than the step-function model.
-This model was described in a series of papers by John Copas and colleagues [@copas1997inference; @copas1999what; @copas2000metaanalysis; @Copas2001sensitivity] and has received a fair amount of attention in the literature on meta-analysis of medical and epidemiological research, but relatively little attention from the social science side of things. 
+One prominent alternative model, described in a series of papers by John Copas and colleagues [@copas1997inference; @copas1999what; @copas2000metaanalysis; @Copas2001sensitivity], is based on distinctly different assumptions than the step-function model.
+The Copas selection model has received a fair amount of attention in the literature on meta-analysis of medical and epidemiological research, but relatively little attention from the social science side of things. 
 In this post, I'll give an overview of the Copas model and highlight some of the ways that it differs from step function selection models.
 
 # The Copas selection model 
 
-Similar to the step function selection model, the Copas model is composed of two components: an _evidence-generating process_ that describes the distribution of effect size estimates prior to selection and a _selective reporting process_ that describes how selective reporting happens as a function of the effect size estimates. 
+Similar to the step function selection model, the Copas model is composed of two components: an _evidence-generating process_ that describes the distribution of effect size estimates prior to selection and a _selective reporting process_ that describes how selective reporting happens as a function of the effect size estimates and associated quantities like standard errors and $p$-values. 
 The evidence-generating process is (once again) just a conventional random effects model. 
 Letting $T_i^*$ denote an effect size estimate prior to selective reporting, $\theta_i^*$ denote the corresponding effect size parameter, and $\sigma_i^*$ denote its (known) standard error, we assume that effect size estimate $i$ is drawn from a normal distribution with mean $\theta_i^*$ and standard deviation $\sigma_i^*$:
 $$
@@ -49,11 +49,11 @@ $$
 $$ {#eq-selection}
 where $\delta_i \sim N(0, 1)$ and $\text{cor}(\delta_i, \epsilon_i^*) = \rho$. 
 With this specification, $T_i^*$ is reported (and thus available for inclusion in a meta-analysis) if $\zeta_i > 0$ and is otherwise unreported.
-Following the notation of my previous post, I'll use $O_i^*$ to denote a binary indicator equal to 1 if $T_i^*$ is reported and otherwise equal to zero, so $\Pr\left(O_i^* = 1 | \sigma_i^*\right) = \Pr\left(\zeta_i > 0 | \sigma_i^*\right)$.
+Following the notation of my previous post, I'll use $O_i^*$ to denote a binary indicator equal to 1 if $T_i^*$ is reported and otherwise equal to zero. With this notation, $\Pr\left(O_i^* = 1 | \sigma_i^*\right) = \Pr\left(\zeta_i > 0 | \sigma_i^*\right)$.
 
 @Copas2001sensitivity calls $\zeta_i$ the _propensity for selection_. 
 Under the posited model, the selection propensity depends both on the precision of the study through $\sigma_i^*$ (because the mean of $\zeta_i$ depends on  the inverse of $\sigma_i^*$) and on the magnitude of the reported effect size estimate (because $\zeta_i$ is correlated with $\epsilon_i^*$).
-The parameter $\alpha$ controls the overall probability of selection, irrespective of the findings; $\beta$ controls how strongly selection depends on study precision; and $\rho$ controls how strongly selection depends on the effect size estimate itself.
+The parameter $\alpha$ controls the overall probability of selection, irrespective of the findings; $\beta$ controls how strongly selection depends on study precision; and $\rho$ controls how strongly selection depends on the magnitude of the effect size estimate itself.
 
 The Copas model posits a stable correlation $\rho$ between the selection propensity index and the _samplng error_ of the random effects model, $\epsilon_i^*$. 
 If there is heterogeneity in the effect size parameters and heterogeneity in the sampling variances, then the correlation between $\zeta_i$ and $T_i^*$ will be lower than $\rho$ and will differ from  study to study. 
