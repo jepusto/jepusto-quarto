@@ -140,6 +140,7 @@ dat = Array(pts).fill().map((element, index) => {
 ```{ojs}
 Plot.plot({
   height: 300,
+  width: 700,
   y: {
     grid: false,
     label: "Density"
@@ -162,7 +163,7 @@ Plot.plot({
 ```{ojs}
 tex`
 \begin{aligned}
-\mu &= ${mu} & \qquad \eta &= ${eta_toprint} \\
+\mu &= ${mu} & \qquad \eta_i &= ${eta_toprint} \\
 \mathbb{E}\left(T_i | \sigma_i\right) &= ${ET_toprint}
 & \qquad \sqrt{\mathbb{V}\left(T_i | \sigma_i\right)} &= ${SDT_toprint} \\ 
 \Pr(O_i^* = 1 | \sigma_i^*) &= ${Ai_toprint}
@@ -176,36 +177,52 @@ tex`
 :::: {.g-col-4}
 
 ```{ojs}
+html`
+<style>
+form.oi-3a86ea {
+  --input-width:250px;
+  --label-width:30px;
+  text-align: center;
+}
+
+.oi-3a86ea-input > input[type="number"] {
+  max-width: 8ch;
+}
+</style>
+`
+```
+
+```{ojs}
 //| panel: input
 
 viewof mu = Inputs.range(
   [-2, 2], 
-  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+  {value: 0.15, step: 0.01, label: tex`\mu`}
 )
 
 viewof tau = Inputs.range(
   [0, 2], 
-  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+  {value: 0.10, step: 0.01, label: tex`\tau`}
 )
 
 viewof sigma = Inputs.range(
   [0, 1], 
-  {value: 0.20, step: 0.01, label: "Standard error (sigma):"}
+  {value: 0.20, step: 0.01, label: tex`\sigma_i`}
 )
 
 viewof alpha = Inputs.range(
   [-10, 10],
-  {value: -3, step: 0.1, label: "alpha selection parameter"}
+  {value: -3, step: 0.1, label: tex`\alpha`}
 )
 
 viewof beta = Inputs.range(
   [0, 2],
-  {value: 0.5, step: 0.01, label: "beta selection parameter"}
+  {value: 0.5, step: 0.01, label: tex`\beta`}
 )
 
 viewof rho = Inputs.range(
   [-1, 1],
-  {value: 0.5, step: 0.01, label: "rho selection parameter"}
+  {value: 0.5, step: 0.01, label: tex`\rho`}
 )
 
 ```
@@ -356,27 +373,27 @@ Plot.legend({color: {scheme: "pubugn", type: "sqrt", label: "Density"}})
 
 viewof mu_f = Inputs.range(
   [-2, 2], 
-  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+  {value: 0.15, step: 0.01, label: tex`\mu`}
 )
 
 viewof tau_f = Inputs.range(
   [0, 2], 
-  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+  {value: 0.10, step: 0.01, label: tex`\tau`}
 )
 
 viewof alpha_f = Inputs.range(
   [-10, 10],
-  {value: -3, step: 0.1, label: "alpha selection parameter"}
+  {value: -3, step: 0.1, label: tex`\alpha`}
 )
 
 viewof beta_f = Inputs.range(
   [0, 2],
-  {value: 0.5, step: 0.01, label: "beta selection parameter"}
+  {value: 0.5, step: 0.01, label: tex`\beta`}
 )
 
 viewof rho_f = Inputs.range(
   [-1, 1],
-  {value: 0.5, step: 0.01, label: "rho selection parameter"}
+  {value: 0.5, step: 0.01, label: tex`\rho`}
 )
 ```
 
