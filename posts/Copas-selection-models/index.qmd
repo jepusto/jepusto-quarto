@@ -177,22 +177,6 @@ tex`
 :::: {.g-col-4}
 
 ```{ojs}
-html`
-<style>
-form.oi-3a86ea {
-  --input-width:250px;
-  --label-width:30px;
-  text-align: center;
-}
-
-.oi-3a86ea-input > input[type="number"] {
-  max-width: 8ch;
-}
-</style>
-`
-```
-
-```{ojs}
 //| panel: input
 
 viewof mu = Inputs.range(

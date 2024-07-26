@@ -222,6 +222,7 @@ dat = Array(pts).fill().map((element, index) => {
 ```{ojs}
 Plot.plot({
   height: 300,
+  width: 700,
   y: {
     grid: false,
     label: "Density"
@@ -244,7 +245,7 @@ Plot.plot({
 ```{ojs}
 tex`
 \begin{aligned}
-\mu &= ${mu} & \qquad \eta &= ${eta_toprint} \\
+\mu &= ${mu} & \qquad \eta_i &= ${eta_toprint} \\
 \mathbb{E}\left(T_i\right) &= ${ET_toprint}
 & \qquad \sqrt{\mathbb{V}\left(T_i\right)} &= ${SDT_toprint} \\ 
 \Pr(O_i^* = 1) &= ${Ai_toprint}
@@ -262,27 +263,27 @@ tex`
 
 viewof mu = Inputs.range(
   [-2, 2], 
-  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+  {value: 0.15, step: 0.01, label: tex`\mu`}
 )
 
 viewof tau = Inputs.range(
   [0, 2], 
-  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+  {value: 0.10, step: 0.01, label: tex`\tau`}
 )
 
 viewof sigma = Inputs.range(
   [0, 1], 
-  {value: 0.20, step: 0.01, label: "Standard error (sigma):"}
+  {value: 0.20, step: 0.01, label: tex`\sigma_i`}
 )
 
 viewof lambda1 = Inputs.range(
   [0, 2],
-  {value: 0.60, step: 0.01, label: "Selection probability over .025 < p <= .500 (lambda1)"}
+  {value: 0.60, step: 0.01, label: tex`\lambda_1`}
 )
 
 viewof lambda2 = Inputs.range(
   [0, 2],
-  {value: 0.30, step: 0.01, label: "Selection probability over .500 < p (lambda2)"}
+  {value: 0.30, step: 0.01, label: tex`\lambda_2`}
 )
 
 ```
@@ -473,22 +474,22 @@ Plot.legend({color: {scheme: "pubugn", type: "sqrt", label: "Density"}})
 
 viewof mu_f = Inputs.range(
   [-2, 2], 
-  {value: 0.15, step: 0.01, label: "Average effect size (mu):"}
+  {value: 0.15, step: 0.01, label: tex`\mu`}
 )
 
 viewof tau_f = Inputs.range(
   [0, 2], 
-  {value: 0.10, step: 0.01, label: "Heterogeneity SD (tau):"}
+  {value: 0.10, step: 0.01, label: tex`\tau`}
 )
 
 viewof lambda1_f = Inputs.range(
   [0, 2],
-  {value: 0.60, step: 0.01, label: "Selection probability over .025 < p <= .500 (lambda1)"}
+  {value: 0.60, step: 0.01, label: tex`\lambda_1`}
 )
 
 viewof lambda2_f = Inputs.range(
   [0, 2],
-  {value: 0.30, step: 0.01, label: "Selection probability over .500 < p (lambda2)"}
+  {value: 0.30, step: 0.01, label: tex`\lambda_2`}
 )
 ```
 
