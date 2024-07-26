@@ -385,7 +385,12 @@ viewof rho_f = Inputs.range(
 
 :::::
 
-If you fiddle with the selection parameters, you can see how the density of certain areas of the plot changes.
+The funnel plot shows the _un-normalized_ distribution of the observed effect sizes conditional on $\sigma_i$. One of the very striking things about the funnel is just how steeply the marginal selection probabilities (i.e., $\Pr(O_i^* = 1| \sigma_i^*)$) drop off as $\sigma_i$ increases (going from the top to the bottom of the plot). 
+With the initial parameter settings, findings from small studies are generally _quite_ unlikely to be published, regardless of their significance or effect size.
+Increasing $\alpha$ will increase the marginal selection probability for all studies, though in a non-linear way depending on their $\sigma_i$'s. 
+Reducing $\beta$ will mitigate the drop-off in selection probabilities from large studies to small ones.
+
+
 
 # Comments
 
