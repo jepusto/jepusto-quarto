@@ -1,6 +1,6 @@
 ---
 title: Copas selection models for meta-analysis
-date: '2024-07-21'
+date: '2024-07-27'
 categories:
 - effect size
 - distribution theory
@@ -18,17 +18,17 @@ crossref:
   eq-prefix: ""
 ---
 
-Recently, I've been working on and studying meta-analytic models for selective reporting of findings from primary studies.
+Recently, I've been studying and tinkering with meta-analytic models for selective reporting of findings from primary studies.
 I've mostly focused on [step-function selection models](/posts/step-function-selection-models/) [@hedges1992modeling; @vevea1995general; @Hedges1996estimating; @vevea2005publication], which assume that selective reporting of primary study results is driven by the $p$-values of the effect size estimates (and specifically, where those $p$-values fall relative to certain thresholds).
 This is not the only form of selection model, though.
 One prominent alternative model, described in a series of papers by John Copas and colleagues [@copas1997inference; @copas1999what; @copas2000metaanalysis; @Copas2001sensitivity], is based on distinctly different assumptions than the step-function model.
 The Copas selection model has received a fair amount of attention in the literature on meta-analysis of medical and epidemiological research, but relatively little attention from the social science side of things. 
-In this post, I'll give an overview of the Copas model and highlight some of the ways that it differs from step function selection models.
+In this post, I'll give an overview of the Copas model and try to highlight some of the ways that it differs from step function selection models.
 
 # The Copas selection model 
 
 Similar to the step function selection model, the Copas model is composed of two components: an _evidence-generating process_ that describes the distribution of effect size estimates prior to selection and a _selective reporting process_ that describes how selective reporting happens as a function of the effect size estimates and associated quantities like standard errors and $p$-values. 
-The evidence-generating process is (once again) just a conventional random effects model. 
+The evidence-generating process is just a conventional random effects model. 
 Letting $T_i^*$ denote an effect size estimate prior to selective reporting, $\theta_i^*$ denote the corresponding effect size parameter, and $\sigma_i^*$ denote its (known) standard error, we assume that effect size estimate $i$ is drawn from a normal distribution with mean $\theta_i^*$ and standard deviation $\sigma_i^*$:
 $$
 T_i^* | \theta_i^*, \sigma_i^* \sim N\left(\theta_i^*,  \left(\sigma_i^*\right)^2\right).
@@ -73,14 +73,14 @@ $$ {#eq-conditional-selection-probability}
 
 # Distribution of observed effect sizes
 
-The observed effect size estimates $T_i$ follow a distribution equivalent to that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. It's possible to find an analytic expression for the density of the observed effect sizes (using Bayes Theorem, just as in [my previous post](/posts/step-function-selection-models/)). The density of the observed $T_i$'s is
+The observed effect size estimates $T_i$ follow a distribution equivalent to that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. It's possible to find an analytic expression for the density of the observed effect sizes. Using Bayes Theorem, the density of the observed $T_i$'s is
 $$
 \Pr\left(T_i = t| \sigma_i^*\right) = \Pr\left(T_i^* = t | \sigma_i^*, O_i^* = 1\right) = \frac{\Pr\left(O_i^* = 1 | T_i^* = t, \sigma_i^*\right) \times \Pr\left(T_i^* = t | \sigma_i^*\right)}{\Pr\left(O_i^* = 1 | \sigma_i^*\right)},
 $$ {#eq-Bayes-theorem}
 where the first term in the numerator is given in (@eq-conditional-selection-probability), the second term in the numerator can be derived from (@eq-evidence-generation-full), and the denominator can be derived from (@eq-selection).
-Substituting everything into the above gives
+Letting $\eta_i = \sqrt{\tau^2 + \left(\sigma_i^*\right)^2}$ and substituting everything into the above gives
 $$
-\Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}} \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{t - \mu}{\sqrt{\tau^2 + \left(\sigma_i^*\right)^2}}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}
+\Pr\left(T_i = t| \sigma_i^*\right) = \frac{1}{\eta_i} \phi\left(\frac{t - \mu}{\eta_i}\right) \times \frac{\Phi\left(\frac{1}{\sqrt{1 - \tilde\rho_i^2}}\left[\alpha + \frac{\beta}{\sigma_i^*} + \tilde\rho_i \left(\frac{t - \mu}{\eta_i}\right)\right]\right)} {\Phi\left(\alpha + \frac{\beta}{\sigma_i^*}\right)}.
 $$ {#eq-observed-density}
 This density is identical to that of the _generalized skew-normal distribution_ [@arellano20006unification]. 
 
@@ -386,16 +386,29 @@ viewof rho_f = Inputs.range(
 :::::
 
 The funnel plot shows the _un-normalized_ distribution of the observed effect sizes conditional on $\sigma_i$. One of the very striking things about the funnel is just how steeply the marginal selection probabilities (i.e., $\Pr(O_i^* = 1| \sigma_i^*)$) drop off as $\sigma_i$ increases (going from the top to the bottom of the plot). 
-With the initial parameter settings, findings from small studies are generally _quite_ unlikely to be published, regardless of their significance or effect size.
+With the initial parameter settings, findings from small studies with large $\sigma_i$s are generally _quite_ unlikely to be published, regardless of their significance or effect size.
 Increasing $\alpha$ will increase the marginal selection probability for all studies, though in a non-linear way depending on their $\sigma_i$'s. 
 Reducing $\beta$ will mitigate the drop-off in selection probabilities from large studies to small ones.
 
-
-
 # Comments
 
-The Copas model has three parameters but only produces a limited range of distributional shapes.
+There are several aspects of the Copas model that I find somewhat perplexing.
+One is the assumption that the selection propensity index is correlated with the _sampling errors_ rather than with the marginal distribution of $T_i^*$.
+Taken literally, this means that the selection propensity depends not just on the effect size estimate (which is an observable quantity) but on where that estimate lies relative to the true study-specific effect size parameter  $\theta_i$. 
+It seems more plausible to me that authors, reviewers, editors, etc. would make decisions that could influence selective reporting based on observable quantities such as effect size estimates, standard errors, or $p$-values (as in the [step-function selection model](/posts/step-function-selection-models/)). 
 
-The selection propensity index is correlated with the _sampling errors_ rather than with the marginal distribution of $T_i^*$.
+Another perplexing aspect of the model is that, for a given set of selection parameters $\alpha$, $\beta$, and $\rho$, the bias due to selection is constant and unaffected by the location $\mu$ or scale $\tau$ of the true effect size distribution.
+As a result, under the model's posited form of selection bias, the extent of bias is disconnected from considerations of statistical significance or power.
+In practice, I would expect the risk of selection bias to be greater for small studies examining small effects than for small studies examining very strong effect sizes, but the parameterization of the Copas model makes it kind of hard to capture such a pattern.
+Put another way, I think this implies that the plausibility of a given selection parameters $\alpha$, $\beta$, and $\rho$ might actually depend on $\mu$ and $\tau$.
 
-The probability of selection is not directly connected to $p$-values.
+Third, a well known aspect of the model is that its three selection-related parameters are only very weakly identifiable from observed effect size distributions.
+Because of this, the Copas model is typically used as a sort of sensitivity analysis, where the analyst  estimates $\mu$, $\tau$, and $\rho$ by maximum likelihood [@Copas2001sensitivity] for specified values for $\alpha$ and $\beta$, and then examines how these parameter estimates vary across a range of possible $\alpha$ and $\beta$.[^empirical-priors]
+But sensitivity analysis is only really helpful to the extent that the analyst can specify a plausible range of values for the selection parameters, which is hard to do if the plausible range depends on $\mu$ and $\tau$.
+Other scholars have proposed using the Copas in a Bayesian framework [e.g., @bai2021robust; @mavridis2013fully], but it seems like similar concerns would apply---if key parameters are only weakly identified, then their priors may be strongly influential, but if it's hard to formulas credible priors....
+
+[^empirical-priors]: Some recent work by @huang2021using proposes using clinical trial registry information to estimate all the parameters of the Copas model, which seems like an interesting and potentially useful strategy.
+
+To be clear, my comments here are all just half-baked impressions as I work through a model that's pretty new to me. 
+Copas has some more recent work that considers alternative assumptions about the selective reporting process [@copas2013likelihood], which seem simpler and more closely connected to $p$-value-based selection processes.
+However, other scholars have continued to study and extend the Copas selection model [e.g., @duan2020testing; @ning2017maximum; @piao2019copas], so I probably just need to read more about how it's applied to get a better sense of its strengths and utility.
