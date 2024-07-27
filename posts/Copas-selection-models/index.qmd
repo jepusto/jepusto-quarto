@@ -5,7 +5,6 @@ categories:
 - effect size
 - distribution theory
 - selective reporting
-draft: true
 execute:
   echo: false
 bibliography: "../selection-references.bib"
