@@ -11,10 +11,10 @@ about:
     href: mailto:manchen9005@gmail.com
   - icon: twitter
     href: https://twitter.com/manchen07
-org_name: University of Wisconsin-Madison
+org_name: University of Texas at Austin
 org_url: ''
-role: Graduate student
-people-group: Current Advisees
+role: Assistant Professor
+people-group: Alumni
 listing:
   - id: publications
     contents: 
@@ -39,7 +39,7 @@ listing:
 
 :::::{#about}
 
-Man Chen is a doctoral student in the Quantitative Methods area in the Educational Psychology Department at UW-Madison. Her research interests include meta-analysis, single-case experimental designs, and hierarchical linear modeling. She is currently working as a project assistant at the Wisconsin Center for Educational Research (WCER) with Dr. Pustejovsky.
+Man completed her PhD in the Quantitative Methods program at UW-Madison. Her research interests include meta-analysis, single-case experimental designs, and hierarchical linear modeling. She is currently an assistant professor in the Educational Psychology Department (Quantitative Methods Program) at UT Austin.
 
 ::::{.grid}
 
@@ -47,7 +47,7 @@ Man Chen is a doctoral student in the Quantitative Methods area in the Education
 
 ## Education
 
-- PhD in Quantitative Methods | 2023 (expected) <br> [University of Wisconsin-Madison]{style='color:gray;'}
+- PhD in Quantitative Methods | 2024 <br> [University of Wisconsin-Madison]{style='color:gray;'}
 - MEd in Quantitative Methods | 2018 <br> [The University of Texas at Austin]{style='color:gray;'}
 
 :::
