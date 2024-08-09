@@ -1,7 +1,7 @@
 ---
 title: Pusto's package downloads
 subtitle: June 2024 edition
-date: '2024-06-25'
+date: '2024-06-30'
 draft: true
 categories:
 - programming
@@ -47,7 +47,7 @@ library(cranlogs)
 library(kableExtra)
 library(plotly)
 
-to_date <- as_date("2024-06-25")
+to_date <- as_date("2024-06-30")
 file_name <- paste0("CRAN package downloads ", to_date, ".rds")
 long_file_name <- paste0("CRAN package download history ", to_date, ".rds")
 from_date <- as.character(as_date(to_date - duration(1, "year")))
@@ -162,7 +162,8 @@ focal_package_downloads %>%
   rename(`Average monthly downloads` = count, `Percentage of packages with smaller download rate` = pct_less) %>%
   kable(
     table.attr = 'data-quarto-disable-processing="true"',
-    digits = c(0,0,1)
+    digits = c(0,0,1),
+    format = "html"
   ) %>%
   kable_styling(full_width = FALSE, bootstrap_options = c("responsive","hover"), fixed_thead = TRUE) %>%
   column_spec(2:3, width = "12em") %>%
