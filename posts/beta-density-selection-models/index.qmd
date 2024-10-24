@@ -1,0 +1,104 @@
+---
+title: Beta-density selection models for meta-analysis
+date: '2024-10-23'
+draft: true
+categories:
+- effect size
+- distribution theory
+- selective reporting
+execute:
+  echo: false
+bibliography: "../selection-references.bib"
+csl: "../apa.csl"
+link-citations: true
+code-tools: true
+toc: true
+css: styles.css
+crossref: 
+  eq-prefix: ""
+---
+
+I still have meta-analytic selection models on my mind. 
+As part of [an IES-funded project](https://ies.ed.gov/funding/grantsearch/details.asp?ID=5730) with [colleagues from the American Institutes for Research](https://www.air.org/mosaic/experts), I've been working on developing methods for estimating selection models that can accommodate dependent effect sizes.
+We're looking at two variations of p-value selection models: step-function selection models  similar to those proposed by @hedges1992modeling and @vevea1995general and beta-density models as developed in @Citkowicz2017parsimonious. 
+Both models fall within the broader class of $p$-value selection models, which make explicit assumptions about the probability of observing an effect size, given its statistical significance level and sign. 
+I've already described how step-function models work (see [this previous post](/posts/step-function-selection-models/)) and also took a stab at demystifying the [Copas selection model](/posts/Copas-selection-models). 
+In this post, I'll look at the beta-density model,  try to highlight how it differs from step-function models, and explain some of the tweaks to the model specification that we're examining as part of the project. 
+
+# The beta-density selection model 
+
+The beta-density selection model is another entry in the class of $p$-value selection models. 
+Like the step-function model, it consists of a set of assumptions about
+how effect size estimates are generated prior to selection (the _evidence-generation process_), and a set of assumptions about how selective reporting happens as a function of the effect size estimates (the _selective reporting process_).
+In both models, the evidence-generating process is a random effects model:
+$$
+T_i^* | \sigma_i^* \sim N\left(\mu, \tau^2 + \left(\sigma_i^*\right)^2\right),
+$$ {#eq-evidence-generation}
+where $T_i^*$ denotes an effect size estimate prior to selective reporting and $\sigma_i^*$ denotes its (known) standard error.
+The only difference between the models is the functional form of the selective reporting process. The step-function model uses a piece-wise constant function with level shifts at specific, analyst-specified significance thresholds (see @fig-step-fun). 
+The beta-density model instead uses...wait for it...a beta density kernel function, which can take on a variety of smooth shapes over the unit interval (see @fig-beta-dens).
+
+::: {.column-body-outset layout-ncol=2}
+
+```{r}
+#| echo: false
+#| label: fig-step-fun
+#| fig-width: 5
+#| fig-height: 3
+#| fig-cap: "Two-step selection model with $\\lambda_1 = 0.6, \\lambda_2 = 0.4$"
+
+library(metaselection)
+library(ggplot2)
+pvals <- seq(0,1,.005)
+step_sel <- step_fun(cut_vals = c(.025, .500), weights = c(0.6, 0.4))
+beta_sel <- beta_fun(delta_1 = 0.5, delta_2 = 0.9, trunc_1 = .005, trunc_2 = 1 - .005)
+
+dat <- data.frame(
+  p = pvals, 
+  step = step_sel(pvals),
+  beta = beta_sel(pvals)
+)
+
+ggplot(dat, aes(x = pvals)) + 
+  scale_y_continuous(limits = c(0,1.1), expand = expansion(0,0)) + 
+  scale_x_continuous(breaks = seq(0,1,0.2), expand = expansion(0,0)) + 
+  geom_vline(xintercept = c(0.025, .500), linetype = "dashed") + 
+  geom_hline(yintercept = 0) + 
+  geom_area(aes(y = step), fill = "darkgreen", alpha = 0.6) +   
+  theme_minimal() + 
+  labs(x = "p-value (one-sided)", y = "Selection probability")
+
+```
+
+```{r}
+#| echo: false
+#| label: fig-beta-dens
+#| fig-width: 5
+#| fig-height: 3
+#| fig-cap: "Beta-density selection model with $\\lambda_1 = 0.5, \\lambda_2 = 0.9$"
+
+ggplot(dat, aes(x = pvals)) + 
+  scale_y_continuous(limits = c(0,1.1), expand = expansion(0,0)) + 
+  scale_x_continuous(breaks = seq(0,1,0.2), expand = expansion(0,0)) + 
+  geom_hline(yintercept = 0) + 
+  geom_area(aes(y = beta), fill = "darkorange", alpha = 0.6) +   
+  theme_minimal() + 
+  labs(x = "p-value (one-sided)", y = "Selection probability")
+
+```
+
+:::
+
+In the original formulation of the beta density model, the selection function is given by
+$$
+\text{Pr}(O_i^* = 1 | p_i^*) = \left(p_i^*\right)^{(\lambda_1 - 1)} \left(1 - p_i^*\right)^{(\lambda_2 - 1)},
+$$
+where $O_i^*$ be a binary indicator equal to 1 if $T_i^*$ is reported and $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$ is the one-sided p-value corresponding to the effect size estimate.
+The parameters $\lambda_1$ and $\lambda_2$ must be strictly greater than zero, and $\lambda_1 = \lambda_2 = 1$ corresponds to a constant probability of selection (i.e., no selective reporting bias).
+In proposing the model, @Citkowicz2017parsimonious argued that the beta-density function provides a parsimonious expression of more complex forms of selective reporting than can easily be captured by a step function. 
+For instance, the beta density in @fig-beta-dens is smoothly declining from $p < .005$ through the psychologically salient thresholds $p = .025$ and $p = .05$ and beyond. In order to approximate such a smooth curve with a step function, one would have to use many thresholds and therefore many more than the two parameters of the beta density.
+
+Although using smoothly varying selection probabilities may seem appealing, the beta density also comes with an important limitation, highlighted in a commentary by @hedges2017plausibility. For some parameter values, the beta density implies selection probabilities that differ by many orders of magnitude. These extreme differences in selection probability can imply implausible selection processes, in which hundreds of non-significant effect size estimates would need to go unreported to observe a sample of a few dozen findings. Extreme differences in selection probabilities make the model highly sensitive to the inclusion or exclusion of some effect size estimates because the influence of each estimate is driven by the inverse of its selection probability [@hedges2017plausibility]. 
+
+
+
