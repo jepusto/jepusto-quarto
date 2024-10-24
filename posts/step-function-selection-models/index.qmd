@@ -119,6 +119,7 @@ eta = math.sqrt(tau**2 + sigma**2)
 H = 2
 alpha = [.025, .500]
 lambda = [1, lambda1, lambda2]
+lambda_max = math.max(lambda)
 
 function findlambda(p, alp, lam) {
   var m = 0;
@@ -209,7 +210,7 @@ dat = Array(pts).fill().map((element, index) => {
   return ({
     t: t,
     d_unselected: dt,
-    d_selected: lambda_val * dt
+    d_selected: lambda_val * dt / lambda_max
   })
 })
 
