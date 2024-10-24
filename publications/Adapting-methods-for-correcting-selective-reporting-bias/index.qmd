@@ -1,0 +1,32 @@
+---
+title: 'Adapting methods for correcting selective reporting bias in meta-analysis of dependent effect sizes'
+author:
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: James E.
+    family: Pustejovsky
+date: 2024-10-23T00:00:00
+draft: true
+image: reg-one-step-rmse.png
+categories:
+- meta-analysis
+- selective reporting
+- publication bias
+- dependent effect sizes
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/jq52s
+- icon: code-slash
+  text: Code
+  url: https://osf.io/cxwvm
+preprint: true
+citation:
+  type: article
+  url: https://osf.io/preprints/metaarxiv/jq52s
+  doi: something
+---
+
+In a meta-analysis, selective reporting arises if some results within a study or the entire study are more likely to be reported due to the statistical significance or magnitude of the quantitative findings. Selective reporting can result in over-estimated average effect size, inflated Type-I error rates, and inappropriate inferences about intervention effects. In practice, meta-analysts seek to both identify the presence of selective reporting and correct or adjust for the distortions it creates. Various statistical methods have been developed for correcting selective reporting bias. However, these methods are usually based on the assumption that effect sizes are independent, which is violated in meta-analysis with multiple, dependent effect sizes. In this paper, we evaluate how currently available selective reporting adjustment methods work in the presence of effect size dependencies. We also propose novel adaptations of several adjustment methods based on a multivariate working model and weighting scheme that correct for selective reporting bias while handling dependencies among effect sizes. We investigate the performance of existing adjustment methods and our novel adaptations via an extensive simulation study of dependent effect size estimates. We focus on the estimation of overall average effects and examine performance criteria including bias, RMSE, and confidence interval coverage rate and width. Based on the simulation findings, we provide suggestions for how to correct selective reporting bias while accounting for effect size dependencies.
