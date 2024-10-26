@@ -17,14 +17,14 @@ categories:
 links:
 - icon: unlock-fill
   text: Pre-Print
-  url: https://osf.io/preprints/metaarxiv/jq52s
+  url: https://doi.org/10.31222/osf.io/jq52s
 - icon: code-slash
   text: Code
   url: https://osf.io/cxwvm
 preprint: true
 citation:
   type: article
-  url: https://osf.io/preprints/metaarxiv/jq52s
+  url: https://doi.org/10.31222/osf.io/jq52s
   doi: 10.31222/osf.io/jq52s
 ---
 
