@@ -8,6 +8,7 @@ categories:
 - selective reporting
 execute:
   echo: false
+code-fold: true
 bibliography: "../selection-references.bib"
 csl: "../apa.csl"
 link-citations: true
@@ -22,8 +23,8 @@ I still have meta-analytic selection models on my mind.
 As part of [an IES-funded project](https://ies.ed.gov/funding/grantsearch/details.asp?ID=5730) with [colleagues from the American Institutes for Research](https://www.air.org/mosaic/experts), I've been working on developing methods for estimating selection models that can accommodate dependent effect sizes.
 We're looking at two variations of p-value selection models: step-function selection models  similar to those proposed by @hedges1992modeling and @vevea1995general and beta-density models as developed in @Citkowicz2017parsimonious. 
 Both models fall within the broader class of $p$-value selection models, which make explicit assumptions about the probability of observing an effect size, given its statistical significance level and sign. 
-I've already described how step-function models work (see [this previous post](/posts/step-function-selection-models/)) and also took a stab at demystifying the [Copas selection model](/posts/Copas-selection-models). 
-In this post, I'll look at the beta-density model,  try to highlight how it differs from step-function models, and explain some of the tweaks to the model specification that we're examining as part of the project. 
+I've already described how step-function models work (see [this previous post](/posts/step-function-selection-models/)) and, as a bit of a detour, I also took a stab at demystifying the [Copas selection model](/posts/Copas-selection-models). 
+In this post, I'll look at the beta-density model,  try to highlight how it differs from step-function models, and explain some of the tweaks to the model that we're examining as part of the project. 
 
 # The beta-density selection model 
 
@@ -35,7 +36,11 @@ $$
 T_i^* | \sigma_i^* \sim N\left(\mu, \tau^2 + \left(\sigma_i^*\right)^2\right),
 $$ {#eq-evidence-generation}
 where $T_i^*$ denotes an effect size estimate prior to selective reporting and $\sigma_i^*$ denotes its (known) standard error.
-The only difference between the models is the functional form of the selective reporting process. The step-function model uses a piece-wise constant function with level shifts at specific, analyst-specified significance thresholds (see @fig-step-fun). 
+
+The only difference between the models is the functional form of the selective reporting process. 
+Letting $O_i^*$ be an indicator equal to 1 if $T_i^*$ is reported and $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$ be the one-sided p-value corresponding to the effect size estimate, 
+the selective reporting process describes the shape of $\text{Pr}(O_i^* = 1 | p_i^*)$.
+The step-function model uses a piece-wise constant function with level shifts at specific, analyst-specified significance thresholds (see @fig-step-fun). 
 The beta-density model instead uses...wait for it...a beta density kernel function, which can take on a variety of smooth shapes over the unit interval (see @fig-beta-dens).
 
 ::: {.column-body-outset layout-ncol=2}
@@ -91,14 +96,317 @@ ggplot(dat, aes(x = pvals)) +
 
 In the original formulation of the beta density model, the selection function is given by
 $$
-\text{Pr}(O_i^* = 1 | p_i^*) = \left(p_i^*\right)^{(\lambda_1 - 1)} \left(1 - p_i^*\right)^{(\lambda_2 - 1)},
+\text{Pr}(O_i^* = 1 | p_i^*) \propto \left(p_i^*\right)^{(\lambda_1 - 1)} \left(1 - p_i^*\right)^{(\lambda_2 - 1)},
 $$
-where $O_i^*$ be a binary indicator equal to 1 if $T_i^*$ is reported and $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$ is the one-sided p-value corresponding to the effect size estimate.
-The parameters $\lambda_1$ and $\lambda_2$ must be strictly greater than zero, and $\lambda_1 = \lambda_2 = 1$ corresponds to a constant probability of selection (i.e., no selective reporting bias).
+where the parameters $\lambda_1$ and $\lambda_2$ must be strictly greater than zero, and $\lambda_1 = \lambda_2 = 1$ corresponds to a constant probability of selection (i.e., no selective reporting bias).
 In proposing the model, @Citkowicz2017parsimonious argued that the beta-density function provides a parsimonious expression of more complex forms of selective reporting than can easily be captured by a step function. 
 For instance, the beta density in @fig-beta-dens is smoothly declining from $p < .005$ through the psychologically salient thresholds $p = .025$ and $p = .05$ and beyond. In order to approximate such a smooth curve with a step function, one would have to use many thresholds and therefore many more than the two parameters of the beta density.
 
+# A truncated beta-density
+
 Although using smoothly varying selection probabilities may seem appealing, the beta density also comes with an important limitation, highlighted in a commentary by @hedges2017plausibility. For some parameter values, the beta density implies selection probabilities that differ by many orders of magnitude. These extreme differences in selection probability can imply implausible selection processes, in which hundreds of non-significant effect size estimates would need to go unreported to observe a sample of a few dozen findings. Extreme differences in selection probabilities make the model highly sensitive to the inclusion or exclusion of some effect size estimates because the influence of each estimate is driven by the inverse of its selection probability [@hedges2017plausibility]. 
 
+To address this issue, we consider a modification of the beta density where the function is truncated at $p$-values larger or smaller than certain thresholds. 
+For user-specified thresholds $\alpha_1$ and $\alpha_2$, let $\tilde{p}_i^* = \min\{\max\{\alpha_1, p_i^*\}, \alpha_2\}$. The truncated beta density is then 
+$$
+\text{Pr}(O_i^* = 1 | p_i^*) \propto (\tilde{p}_i^*)^{(\lambda_1 - 1)} \left(1 - \tilde{p}_i^*\right)^{(\lambda_2 - 1)},
+$$ {#eq-selection-process}
+Setting the truncation thresholds at psychologically salient levels such as $\alpha_1 = .025$ and $\alpha_2 = .975$ (which correspond to positive and negative effects that are statistically significant based on two-sided tests with $\alpha = .05$) gives something kind of like the step-function selection model, but with smoothly varying selection probabilities in the interior. 
+Alternately, one could set the second threshold at $\alpha_2 = .500$ (corresponding to an effect of zero) so that all negative effect size estimates have a constant probability of selection, but positive effect size estimates that are non-significant have smoothly varying selection probabilities, up to the point where $p_i^* = .025$.
 
+# Distribution of observed effect sizes
+
+Just as with the step-function selection model, the assumptions of the evidence-generating process (@eq-evidence-generation) and the selection process (@eq-selection-process) can be combined to obtain the distribution of observed effect sizes, 
+with 
+$$
+\begin{aligned}
+\Pr(T_i = t | \sigma_i) &\propto \Pr\left(O_i^* = 1| p_i^*\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i) \\
+&\propto \frac{(\tilde{p}_i^*)^{(\lambda_1 - 1)} \left(1 - \tilde{p}_i^*\right)^{(\lambda_2 - 1)}}{\sqrt{\tau^2 + \sigma_i^2}}\times \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right)
+\end{aligned}
+$$
+
+Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on the truncated beta-density selection model. Initially, the truncation points are set at $\alpha_1 = .025$ and $\alpha_2 = .975$ and the selection parameters are set to $\lambda_1 = 0.6$ and $\lambda_2 = 0.9$, but you can change these however you like.
+Below the effect size distribution are the moments of the distribution (computed numerically) and a graph of the truncated beta density that determines the selection probabilities.
+
+```{ojs}
+math = require("mathjs")
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+function findprob(p, alp1, alp2, lam1, lam2) {
+  let p_ = math.min(math.max(p, alp1), alp2);
+  let prob = (p_)**(lam1 - 1) * (1 - p_)**(lam2 - 1);
+  return prob;
+}
+
+eta = math.sqrt(tau**2 + sigma**2)
+
+max_p = {
+  if (lambda1 + lambda2 > 2) {
+    return (lambda1 - 1) / (lambda1 + lambda2 - 2);
+  } else if (lambda1 > lambda2) {
+    return alpha2;
+  } else {
+    return alpha1;
+  }
+}
+
+max_prob = findprob(max_p, alpha1, alpha2, lambda1, lambda2)
+
+```
+
+```{ojs}
+pts = 201
+
+dat = Array(pts).fill().map((element, index) => {
+  let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let prob = findprob(p, alpha1, alpha2, lambda1, lambda2);
+  return ({
+    t: t,
+    d_unselected: dt,
+    d_selected: prob * dt / max_prob
+  })
+})
+
+selfundat = Array(pts).fill().map((element, index) => {
+  let p = index / (pts - 1);
+  let prob = findprob(p, alpha1, alpha2, lambda1, lambda2);
+  return ({
+    p: p,
+    prob: prob
+  })
+})
+
+moments = {
+  let prob = 0;
+  let ET = 0;
+  let ET2 = 0;
+  for (let i = 0; i < pts; i++) {
+    prob += dat[i].d_selected;
+  	ET += dat[i].t * dat[i].d_selected;
+    ET2 += dat[i].t**2 * dat[i].d_selected;
+  }
+  let ET_val = ET / prob;
+  let VT_val = ET2 / prob - ET_val**2;
+  return ({
+    Ai: prob * 6 * eta / (pts - 1),
+    ET: ET_val,
+    SDT: math.sqrt(VT_val)
+  })
+}
+
+eta_toprint = eta.toFixed(3)
+Ai_toprint = moments.Ai.toFixed(3)
+ET_toprint = moments.ET.toFixed(3)
+SDT_toprint = moments.SDT.toFixed(3)
+
+```
+
+:::::: {.grid .column-page}
+
+::::: {.g-col-8 .center}
+
+```{ojs}
+Plot.plot({
+  height: 300,
+  width: 700,
+  y: {
+    grid: false,
+    label: "Density"
+  },
+  x: {
+    label: "Effect size estimate (Ti)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0]),
+    Plot.areaY(dat, {x: "t", y: "d_unselected", fillOpacity: 0.3}),
+    Plot.areaY(dat, {x: "t", y: "d_selected", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(dat, {x: "t", y: "d_selected", stroke: "blue"})
+  ]
+})
+```
+
+:::: {.grid}
+
+:::{.g-col-4 .moments}
+ 
+```{ojs}
+tex`
+\begin{aligned}
+\Pr(O_i^* = 1) &= ${Ai_toprint} \\
+\mu &= ${mu} \\
+\mathbb{E}\left(T_i\right) &= ${ET_toprint} \\ 
+\eta_i &= ${eta_toprint} \\
+\sqrt{\mathbb{V}\left(T_i\right)} &= ${SDT_toprint}
+\end{aligned}`
+```
+
+:::
+
+::: {.g-col-8 .center}
+
+```{ojs}
+Plot.plot({
+  height: 200,
+  width: 400,
+  y: {
+    grid: false,
+    label: "Selection probability"
+  },
+  x: {
+    label: "p-value (one-sided)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0,1]),
+    Plot.areaY(selfundat, {x: "p", y: "prob", fill: "green", fillOpacity: 0.5}),
+    Plot.lineY(selfundat, {x: "p", y: "prob", stroke: "green"})
+  ]
+})
+```
+
+:::
+
+::::
+
+:::::
+
+::::: {.g-col-4}
+
+```{ojs}
+//| panel: input
+
+viewof mu = Inputs.range(
+  [-2, 2], 
+  {value: 0.15, step: 0.01, label: tex`\mu`}
+)
+
+viewof tau = Inputs.range(
+  [0, 2], 
+  {value: 0.10, step: 0.01, label: tex`\tau`}
+)
+
+viewof sigma = Inputs.range(
+  [0, 1], 
+  {value: 0.20, step: 0.01, label: tex`\sigma_i`}
+)
+
+viewof alpha1 = Inputs.range(
+  [0, 1],
+  {value: 0.025, step: 0.005, label: tex`\alpha_1`}
+)
+
+viewof alpha2 = Inputs.range(
+  [0, 1],
+  {value: 0.975, step: 0.005, label: tex`\alpha_2`}
+)
+
+viewof lambda1 = Inputs.range(
+  [0, 5],
+  {value: 0.60, step: 0.01, label: tex`\lambda_1`}
+)
+
+viewof lambda2 = Inputs.range(
+  [0, 5],
+  {value: 0.90, step: 0.01, label: tex`\lambda_2`}
+)
+
+```
+
+:::::
+
+::::::
+
+# Empirical example
+
+@Citkowicz2017parsimonious presented an example of a meta-analysis where applying the original form of the beta-density selection model led to dramatically different findings from the summary meta-analysis. The data come from a synthesis by @baskerville2012systematic examining the effects of practice facilitation on the uptake of evidence-based practices (EBPs) in primary care settings. The original meta-analysis found a large average effect indicating that facilitation improves adoption of EBPs, although there were also indications of publication bias based on an Egger's regression test. Fitting the beta-density model leads to much smaller effects.  
+However, @hedges2017plausibility criticized the beta-density results as involving an implausibly large degree of selection and noted that the estimated average effect is very sensitive to high-influence observations.
+Does using a more strongly truncated beta density change this picture? I'll first work through the previously presented analyses, then examine how the truncation points change things.
+
+## Summary random effects model
+
+Here are the random effects meta-analysis results, estimated using maximum likelihood for consistency with subsequent modeling:
+
+```{r}
+#| echo: true
+
+library(tibble)
+library(dplyr)
+library(metafor)
+
+Baskerville <- tribble(
+  ~ SMD, ~ V, ~ Blinded,
+  1.01,	0.2704,	'B',
+  0.82,	0.2116,	'O',
+  0.59,	0.0529,	'O',
+  0.44,	0.0324,	'O',
+  0.84,	0.0841,	'B',
+  0.73,	0.0841,	'O',
+  1.12,	0.1296,	'B',
+  0.04,	0.1369,	'B',
+  0.24,	0.0225,	'O',
+  0.32,	0.1600,	'O',
+  1.04,	0.1024,	'O',
+  1.31,	0.3249,	'B',
+  0.59,	0.0841,	'B',
+  0.66,	0.0361,	'O',
+  0.62,	0.0961,	'B',
+  0.47,	0.0729,	'B',
+  1.08,	0.1024,	'O',
+  0.98,	0.1024,	'B',
+  0.26,	0.0324,	'B',
+  0.39,	0.0324,	'B',
+  0.60,	0.0961,	'B',
+  0.94,	0.2809,	'B',
+  0.11,	0.0729,	'B'
+)
+
+RE_fit <- rma(yi = SMD, vi = V, data = Baskerville, method = "ML")
+RE_fit
+```
+
+The average effect estimate is `r round(RE_fit$b, 3)`, with a 95% CI of $[`r round(RE_fit$ci.lb, 3)`, `r round(RE_fit$ci.ub, 3)`]$. Here is a funnel plot of the effect size estimates against standard errors, with contours indicating regions of statistical significance for positive and negative estimates:
+```{r}
+#| echo: true
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 75%
+
+funnel(RE_fit, refline = 0)
+```
+There's clearly asymmetry in the funnel plot, which can be an indication of selective reporting.
+
+## Original beta-density model
+
+@Citkowicz2017parsimonious fit the original form of the beta-density model to the data. This is now quite easy to do with the `metafor` package:
+```{r}
+#| echo: true
+
+beta_fit <- selmodel(RE_fit, type = "beta")
+beta_fit
+```
+The overall average effect size in the un-selected population is now estimated to be `r round(beta_fit$b[,1], 3)`, 95% CI $[`r round(beta_fit$ci.lb, 3)`, `r round(beta_fit$ci.ub, 3)`]$, with selection parameters (called $\delta_1$ and $\delta_2$ in metafor) estimated as $\hat\lambda_1 = `r round(beta_fit$delta[1], 3)`$ and $\hat\lambda_2 = `r round(beta_fit$delta[2], 3)`$. 
+
+The same model can also be fit using our `metaselection` package:
+```{r}
+library(metaselection)
+Baskerville$se <- sqrt(Baskerville$V)
+Baskerville$pi <- with(Baskerville, pnorm(SMD / se, lower.tail = FALSE))
+
+beta_sel <- selection_model(
+  data = Baskerville,
+  yi = SMD,
+  sei = se,
+  selection_type = "beta",
+  steps = c(1e-5, 1 - 1e-5),
+  # steps = c(.025, 1 - .025),
+  vcov_type = "model-based",
+  theta = c(0.11, log(0.01), log(0.47), log(4.46))
+)
+
+summary(beta_sel)
+selection_plot(beta_sel)
+```
 

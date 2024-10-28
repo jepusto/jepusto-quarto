@@ -65,7 +65,7 @@ Many other choices are possible, of course.
 
 Equations (@eq-evidence-generation) and (@eq-selection-process) are sufficient to describe the distribution of effect sizes actually observed after selection. If we let $T_i$ and $\sigma_i$ denote effect size estimates that are actually observed, then the distribution of $\left(T_i | \sigma_i\right)$ is the same as that of $\left(T_i^* | \sigma_i^*, O_i^* = 1\right)$. By Bayes Theorem, 
 $$
-\Pr(T = t | \sigma_i) = \frac{\Pr\left(O_i^* = 1| T_i^* = t, \sigma_i^* = \sigma_i\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i)}{\Pr\left(O_i^* = 1| \sigma_i^* = \sigma_i\right)}
+\Pr(T_i = t | \sigma_i) = \frac{\Pr\left(O_i^* = 1| T_i^* = t, \sigma_i^* = \sigma_i\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i)}{\Pr\left(O_i^* = 1| \sigma_i^* = \sigma_i\right)}
 $$ {#eq-observed-effect-distribution}
 For the specific distributional assumptions of the step-function selection model, we can find an expression for the exact form of (@eq-observed-effect-distribution). 
 In doing so, it will be useful to define a further random variable---call it $S_i$---that is equal to the p-value interval into which effect size $T_i$ falls. For a given effect size with standard error $\sigma_i^*$, these intervals are equivalent to intervals on the scale of the outcome, with thresholds $\gamma_{hi} = \sigma_i^* \Phi^{-1}(1 - \alpha_h)$. Now, let's define $S_i^*$ as
