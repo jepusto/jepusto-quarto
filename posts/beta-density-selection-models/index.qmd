@@ -415,9 +415,35 @@ I will stick with the `metaselection` package for subsequent analysis because it
 ```{r}
 #| echo: true
 #| fig-width: 6
-#| fig-height: 4
-#| out-width: 75%
+#| fig-height: 3
+#| out-width: 70%
 
 selection_plot(beta_sel)
 ```
 
+## Hedges' critiques
+
+::: {.column-margin}
+```{r}
+#| label: tbl-selection-probs
+#| tbl-cap: Probabilities of selection relative to $\text{Pr}(O_i = 1 \vert p_i = .0005)$
+
+selwts <- selection_wts(beta_sel, pvals = c(.0005,.001, .005, .01, .025, .05, .10, .5))
+selwts$wt <- selwts$wt / selwts$wt[1]
+
+selwts %>%
+  filter(p > .0005) %>%
+  knitr::kable(
+    digits = 3, 
+    col.names = c("$p_i$", "$\\text{Pr}(O_i = 1 \\vert p_i)$")
+  )
+```
+:::
+
+@hedges2017plausibility noted that the beta-density model for these data generates very extreme selection probabilities. Following along with his numerical example, @tbl-selection-probs reports the probability of observing effects for several different $p$-values, relative to the probability of observing a highly significant effect with $p = .0005$.
+Notably, based on the estimated selection function, an effect with one-sided $p_i = .0005$ is over eight times more likely to be reported than an effect with $p = .025$ and nearly 500 times more likely to be reported than an effect of zero with $p_i = .500$. Quoth @hedges2017plausibility: "This seems like an extraordinarily high degree of selection" (p. 43).
+
+- $N_{missing}$
+- inverse selection weights
+
+## Sensitivity to truncation points
