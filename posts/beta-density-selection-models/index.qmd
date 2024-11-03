@@ -443,7 +443,35 @@ selwts %>%
 @hedges2017plausibility noted that the beta-density model for these data generates very extreme selection probabilities. Following along with his numerical example, @tbl-selection-probs reports the probability of observing effects for several different $p$-values, relative to the probability of observing a highly significant effect with $p = .0005$.
 Notably, based on the estimated selection function, an effect with one-sided $p_i = .0005$ is over eight times more likely to be reported than an effect with $p = .025$ and nearly 500 times more likely to be reported than an effect of zero with $p_i = .500$. Quoth @hedges2017plausibility: "This seems like an extraordinarily high degree of selection" (p. 43).
 
-- $N_{missing}$
+Hedges goes on to explain how the estimated selection parameters can be used to infer the total number of effect sizes that would need to be _generated_ in order to obtain a sample of $k = 23$ observed effect sizes. The calculation involves the quantity 
+$$
+A_i = \text{Pr}(O_i^* = 1 | \sigma_i^*) = \text{E}\left[\left.\Pr\left(O_i^* = 1| p_i^*\right) \right| \sigma_i^*\right],
+$$
+which is the overall probability of observing an effect size estimate in a study with standard error $\sigma_i^*$.[^Hedges-notation]
+The inverse of $A_i$ is the expected number of effect size estimates that would need to be generated (including both observed and unobserved) in order to obtain one observed estimate. 
+Estimates of $A_i$ can be computed given the parameter estimates $\hat\mu$, $\hat\tau$, $\hat\lambda_1$, $\hat\lambda_2$. These are reported in 
+Taking the sum across the sample of observed effect sizes, we can find an estimate of the number of effect sizes that would need to be generated:
+$$
+k_{generated} = \sum_{i=1}^{k} \frac{1}{\hat{A}_i}.
+$$
+
+In the Baskerville data and using the beta-density parameter estimates obtained from meta-selection, I find 
+
+
+```{r}
+selection_wts(beta_sel) |> 
+  mutate(
+    wt_14 = wt / wt[14],
+    inv_sel = 1 / wt,
+    Ai = beta_sel$predictions$Ai / wt[14],
+    Ai_inv = 1 / Ai
+  )
+```
+
+
+[^Hedges-notation]: @hedges2017plausibility denotes this quantity $g_i(T_i)$.
+
+
 - inverse selection weights
 
 ## Sensitivity to truncation points
