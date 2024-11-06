@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.2",
+    "Version": "4.4.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -1128,9 +1128,9 @@
     },
     "future.apply": {
       "Package": "future.apply",
-      "Version": "1.11.2",
+      "Version": "1.11.3",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "future",
@@ -1138,7 +1138,7 @@
         "parallel",
         "utils"
       ],
-      "Hash": "afe1507511629f44572e6c53b9baeb7c"
+      "Hash": "0efead26b03bb60716ed29971b1953dc"
     },
     "gamlss.dist": {
       "Package": "gamlss.dist",
@@ -1954,7 +1954,7 @@
       "RemoteRepo": "metaselection",
       "RemoteUsername": "jepusto",
       "RemoteRef": "HEAD",
-      "RemoteSha": "a501782d1112025aeb43e036bc75da2d52804b5f",
+      "RemoteSha": "e51e3aa694594cb7ceb2cc647c2753ae5119389e",
       "Requirements": [
         "Formula",
         "MASS",
@@ -1971,7 +1971,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "a6fd88895ae0871f769302083b78e098"
+      "Hash": "ba74f4265b5b60d0c9b68a8beeed0adc"
     },
     "mgcv": {
       "Package": "mgcv",
@@ -2163,14 +2163,14 @@
     },
     "mvtnorm": {
       "Package": "mvtnorm",
-      "Version": "1.3-1",
+      "Version": "1.3-2",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R",
         "stats"
       ],
-      "Hash": "77c61d51ce0f36e3c1a76e6b295aab31"
+      "Hash": "9e8405eacb262c0a939e121650247f4b"
     },
     "nleqslv": {
       "Package": "nleqslv",
@@ -2595,7 +2595,7 @@
     },
     "progressr": {
       "Package": "progressr",
-      "Version": "0.14.0",
+      "Version": "0.15.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -2603,7 +2603,7 @@
         "digest",
         "utils"
       ],
-      "Hash": "ac50c4ffa8f6a46580dd4d7813add3c4"
+      "Hash": "b3727a8cfc03525cc44a5f2854d6e025"
     },
     "promises": {
       "Package": "promises",
@@ -3691,7 +3691,7 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "3.0.1",
+      "Version": "3.0.2",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -3699,7 +3699,7 @@
         "grDevices",
         "graphics"
       ],
-      "Hash": "07909200e8bbe90426fbfeb73e1e27aa"
+      "Hash": "cc2d62c76458d425210d1eb1478b30b4"
     },
     "xfun": {
       "Package": "xfun",

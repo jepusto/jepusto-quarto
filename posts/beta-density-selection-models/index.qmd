@@ -37,18 +37,17 @@ T_i^* | \sigma_i^* \sim N\left(\mu, \tau^2 + \left(\sigma_i^*\right)^2\right),
 $$ {#eq-evidence-generation}
 where $T_i^*$ denotes an effect size estimate prior to selective reporting and $\sigma_i^*$ denotes its (known) standard error.[^metareg]
 
-[^metareg]: With either model, the evidence-generating process can be extended to include a meta-regression with predictors of the average effect size. This amounts to replacing $\mu$ with $\beta_0 + \beta_1 x_{1i} + \cdots + \beta_p x_{pi}$ for some set of predictors $x_{1i},...,x_{pi}$. In this post I'm not going to worry about this additional complexity.
+[^metareg]: With either model, the evidence-generating process can be extended to include a meta-regression with predictors of the average effect size. This amounts to replacing $\mu$ with $\beta_0 + \beta_1 x_{1i} + \cdots + \beta_p x_{pi}$ for some set of predictors $x_{1i},...,x_{pi}$. For simplicity, I'm not going to worry about this additional complexity as part of this post.
 
 The only difference between the beta-density and step-function selection models is the functional form of the selective reporting process. 
 Letting $O_i^*$ be an indicator equal to 1 if $T_i^*$ is reported and $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$ be the one-sided p-value corresponding to the effect size estimate, 
 the selective reporting process describes the shape of $\text{Pr}(O_i^* = 1 | p_i^*)$.
-The step-function model uses a piece-wise constant function with level shifts at specific, analyst-specified significance thresholds (see @fig-step-fun). 
+The step-function model uses a piece-wise constant function with level shifts at analyst-specified significance thresholds (see @fig-step-fun). 
 The beta-density model instead uses...wait for it...a beta density kernel function, which can take on a variety of smooth shapes over the unit interval (see @fig-beta-dens).
 
-::: {.column-page-inset-right layout-ncol=2}
+::: {.column-body-outset layout-ncol=2}
 
 ```{r}
-#| echo: false
 #| label: fig-step-fun
 #| fig-width: 5
 #| fig-height: 3
@@ -58,7 +57,7 @@ library(metaselection)
 library(ggplot2)
 pvals <- seq(0,1,.005)
 step_sel <- step_fun(cut_vals = c(.025, .500), weights = c(0.6, 0.4))
-beta_sel <- beta_fun(delta_1 = 0.5, delta_2 = 0.9, trunc_1 = .005, trunc_2 = 1 - .005)
+beta_sel <- beta_fun(delta_1 = 0.5, delta_2 = 0.8, trunc_1 = .005, trunc_2 = 1 - .005)
 
 dat <- data.frame(
   p = pvals, 
@@ -78,11 +77,10 @@ ggplot(dat, aes(x = pvals)) +
 ```
 
 ```{r}
-#| echo: false
 #| label: fig-beta-dens
 #| fig-width: 5
 #| fig-height: 3
-#| fig-cap: "Beta-density selection model with $\\lambda_1 = 0.5, \\lambda_2 = 0.9$"
+#| fig-cap: "Beta-density selection model with $\\lambda_1 = 0.5, \\lambda_2 = 0.8$"
 
 ggplot(dat, aes(x = pvals)) + 
   scale_y_continuous(limits = c(0,1.1), expand = expansion(0,0)) + 
@@ -108,7 +106,7 @@ For instance, the beta density in @fig-beta-dens is smoothly declining from $p <
 
 Although using smoothly varying selection probabilities may seem appealing, the beta density also comes with an important limitation, highlighted in a commentary by @hedges2017plausibility. For some parameter values, the beta density implies selection probabilities that differ by many orders of magnitude. These extreme differences in selection probability can imply implausible selection processes, in which hundreds of non-significant effect size estimates would need to go unreported to observe a sample of a few dozen findings. Extreme differences in selection probabilities make the model highly sensitive to the inclusion or exclusion of some effect size estimates because the influence of each estimate is driven by the inverse of its selection probability [@hedges2017plausibility]. 
 
-To address this issue, we consider a modification of the beta density where the function is truncated at $p$-values larger or smaller than certain thresholds. 
+In part to address these issues with the beta density, we consider a modification of the model where the function is truncated at $p$-values larger or smaller than certain thresholds. 
 For user-specified thresholds $\alpha_1$ and $\alpha_2$, let $\tilde{p}_i^* = \min\{\max\{\alpha_1, p_i^*\}, \alpha_2\}$. The truncated beta density is then 
 $$
 \text{Pr}(O_i^* = 1 | p_i^*) \propto (\tilde{p}_i^*)^{(\lambda_1 - 1)} \left(1 - \tilde{p}_i^*\right)^{(\lambda_2 - 1)},
@@ -127,7 +125,7 @@ $$
 \end{aligned}
 $$
 
-Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on the truncated beta-density selection model. Initially, the truncation points are set at $\alpha_1 = .025$ and $\alpha_2 = .975$ and the selection parameters are set to $\lambda_1 = 0.6$ and $\lambda_2 = 0.9$, but you can change these however you like.
+Here is an interactive graph showing the distribution of the effects prior to selection (in grey) and the distribution of observed effect sizes (in blue) based on the truncated beta-density selection model. Initially, the truncation points are set at $\alpha_1 = .025$ and $\alpha_2 = .975$ and the selection parameters are set to $\lambda_1 = 0.5$ and $\lambda_2 = 0.8$, but you can change these however you like.
 Below the effect size distribution are the moments of the distribution (computed numerically) and a graph of the truncated beta density that determines the selection probabilities.
 
 ```{ojs}
@@ -307,12 +305,12 @@ viewof alpha2 = Inputs.range(
 
 viewof lambda1 = Inputs.range(
   [0, 5],
-  {value: 0.60, step: 0.01, label: tex`\lambda_1`}
+  {value: 0.50, step: 0.01, label: tex`\lambda_1`}
 )
 
 viewof lambda2 = Inputs.range(
   [0, 5],
-  {value: 0.90, step: 0.01, label: tex`\lambda_2`}
+  {value: 0.80, step: 0.01, label: tex`\lambda_2`}
 )
 
 ```
@@ -325,7 +323,7 @@ viewof lambda2 = Inputs.range(
 
 @Citkowicz2017parsimonious presented an example of a meta-analysis where applying the original form of the beta-density selection model led to dramatically different findings from the summary meta-analysis. The data come from a synthesis by @baskerville2012systematic that examined the effects of practice facilitation on the uptake of evidence-based practices (EBPs) in primary care settings. The original meta-analysis found a large average effect indicating that facilitation improves adoption of EBPs, although there were also indications of publication bias based on an Egger's regression test. Fitting the beta-density model leads to much smaller effects.
 However, @hedges2017plausibility criticized the beta-density results as involving an implausibly large degree of selection and noted that the estimated average effect is very sensitive to high-influence observations.
-Does using a more strongly truncated beta density change this picture? I'll first work through the previously presented analyses, then examine how using truncation points for the beta density changes the picture.
+Does using a more strongly truncated beta density change this picture? I'll first work through the previously presented analyses, then examine the extent to which introducing truncation points for the beta density affects the model estimates.
 
 ## Summary random effects model
 
@@ -373,10 +371,12 @@ RE_fit
 The average effect estimate is $\hat\mu = `r round(RE_fit$b, 3)`$, with a 95% CI of $[`r round(RE_fit$ci.lb, 3)`, `r round(RE_fit$ci.ub, 3)`]$. Here is a funnel plot of the effect size estimates against standard errors, with contours indicating regions of statistical significance for positive and negative estimates:
 ```{r}
 #| echo: true
-#| fig-width: 6
-#| fig-height: 4
-#| out-width: 75%
+#| fig-width: 5
+#| fig-height: 3
+#| fig-retina: 2
+#| out-width: 80%
 
+par(mar=c(4,4,0,2))
 funnel(RE_fit, refline = 0)
 ```
 There's clearly asymmetry in the funnel plot, which can be an indication of selective reporting.
@@ -447,10 +447,10 @@ Hedges goes on to explain how the estimated selection parameters can be used to 
 $$
 A_i = \text{Pr}(O_i^* = 1 | \sigma_i^*) = \text{E}\left[\left.\Pr\left(O_i^* = 1| p_i^*\right) \right| \sigma_i^*\right],
 $$
-which is the overall probability of observing an effect size estimate in a study with standard error $\sigma_i^*$.^[@hedges2017plausibility denotes this quantity $g_i(T_i)$.]
-The inverse of $A_i$ is the expected number of effect size estimates that would need to be generated (including both observed and unobserved) in order to obtain one observed estimate. 
+which is the overall probability of observing an effect size estimate in a study with standard error $\sigma_i^*$.^[@hedges2017plausibility denotes this quantity as $g_i(T_i)$.]
+The inverse of $A_i$ is the expected number of effect size estimates that would need to be generated (including both those that are subsequently reported and those that remain unreported) in order to obtain one observed estimate. 
 A challenge here is that the selection is only identified up to a proportionality constant, so the _absolute_ probability of reporting cannot be estimated without making some further assumption.
-Hedges approaches this by assuming that an effect size estimate with $p$-value equal to the smallest $p$-value will be reported with certainty, so that the proportionality constant is $w_{min} = (p_{min})^{\lambda_1 - 1} (1 - p_{min})^{\lambda_2 - 1}$.
+Hedges approaches this by assuming that any effect size estimate with $p$-value equal to the smallest observed $p$-value will be reported with certainty, so that the proportionality constant becomes $w_{min} = (p_{min})^{\lambda_1 - 1} (1 - p_{min})^{\lambda_2 - 1}$.
 Under this assumption, estimates of $A_i$ can be computed given the parameter estimates $\hat\mu$, $\hat\tau$, $\hat\lambda_1$, $\hat\lambda_2$ and the reference $p$-value $p_{min}$. 
 Taking the sum across the sample of observed standard errors, we can find an estimate of the number of effect sizes that would need to be generated:
 $$
@@ -494,15 +494,60 @@ Baskerville_Table1 %>%
   )
 ```
 
-Another, related limitation of the beta density model is that it puts too much emphasis on a few individual observations that have low probability of selection. 
+Another, related limitation of the beta density model is that it puts extreme emphasis on a few individual observations that have low probability of selection. 
 @hedges2017plausibility suggests that the influence of individual observations can be approximated by the inverse selection probabilities, such that the fraction of the total weight allocated to observation $i$ is
 $$
 \omega_i = \frac{1 / \hat{w}(p_i)}{\sum_{j=1}^k 1 / \hat{w}(p_j)}.
 $$
-I report these relative weights in the last column of @tbl-Hedges-Table1. 
+The last column of @tbl-Hedges-Table1 reports these relative weights. 
 As Hedges noted, the overall average effect is strongly influenced by just two observations: study 8, which has approximately `{r} round(Baskerville_Table1$omega[8] * 100)`% of the weight, and study 23, which has approximately `{r} round(Baskerville_Table1$omega[23] * 100)`% of the weight. 
 
 ## Sensitivity to truncation points
+
+Does introducing truncation points into the beta density selection function change this picture in any meaningful way? My intuition is that using truncation points connected to psychologically salient thresholds (such as $\alpha_1 = .025$ and $\alpha_2 = .50$ or $.975$) should tend to moderate things in terms of both the implied overall degree of selection and the degree to which individual observations influence the model results. Here's what happens if I use truncation points corresponding to the usual 2-sided significance threshold of $\alpha = .05$:
+
+```{r}
+beta_trunc <- selection_model(
+  data = Baskerville,
+  yi = SMD,
+  sei = se,
+  selection_type = "beta",
+  steps = c(.025, .975),
+  vcov_type = "model-based"
+)
+
+summary(beta_trunc)
+```
+
+Under the truncated beta density, the estimated average effect size increases a bit to $\hat\mu = `r round(beta_trunc$est$Est[1], 3)`$, but with much greater uncertainty, 95% CI $[`r round(beta_trunc$est$CI_lo[1], 3)`, `r round(beta_trunc$est$CI_hi[1], 3)`]$. 
+Contributing to this additional uncertainty is the larger estimate of between-study heterogeneity, $\tau^2 =  `r round(exp(beta_trunc$est$Est[2]), 3)`$. 
+The selection parameters are now estimated as $\hat\lambda_1 \approx `r round(exp(beta_trunc$est$Est[3]), 3)`$ and $\hat\lambda_2 = `r round(exp(beta_trunc$est$Est[4]), 3)`$. 
+
+```{r}
+#| label: fig-selection-functions
+#| fig-cap: Estimated selection function under the truncated beta density model (green) and original beta density model (blue).
+#| fig-width: 5
+#| fig-height: 3
+#| fig-retina: 2
+#| out-width: 80%
+
+untrunc_selection_curve <- 
+  selection_wts(beta_sel, pvals = seq(0,1,.005), ref_pval = Baskerville$p[14]) %>%
+  mutate(wt = pmin(wt, 1))
+
+selection_plot(beta_trunc, fill = "darkgreen") + 
+  geom_area(data = untrunc_selection_curve, fill = "blue", alpha = 0.5)
+
+lambda <- exp(beta_trunc$est$Est[3:4])
+Ni <- (.025^(lambda[1] - 1)) * (.975^(lambda[2] - 1)) / beta_trunc$predictions$Ai
+k_gen <- sum(Ni)
+```
+
+@fig-selection-functions is a graph of the estimated selection function. The green area is the selection function based on the truncated beta density model; for reference, the blue area is the selection function from the previous, untruncated model. 
+The model with truncation points does clearly imply a more moderate degree of selective reporting, although it still represents a fairly strong degree of selection.
+The estimated selection parameters imply that $k_{gen} = `r round(k_gen)`$ effect sizes would need to have been generated to produce a sample of 23 observed effects---this is large but not nearly so far outside the realm of plausible as with the untruncated beta density. 
+
+To get a more systematic sense of how sensitive the results are to the use of truncation points, I re-estimated the model many times with a range of different truncation points. For the left-hand truncation, I looked at $\alpha_1$ ranging from $10^{-5}$ to $10^{-2}$ and then also $\alpha_1 = .025$; for every one of these values, I looked at two different right-hand truncation points, first setting $\alpha_2 = 1 - \alpha_1$ and then fixing $\alpha_2 = .5$. With each model, I tracked the maximum log-likelihood, estimated mean and variance of the effects prior to selective reporting, and the total number of generated effects ($k_{gen}$) implied by the fitted model. The results are depicted in @fig-parameter-sensitivity.
 
 ```{r}
 #| cache: true
@@ -524,23 +569,25 @@ fit_fun <- function(alpha1, alpha2 = 1 - alpha1) {
   Table1 <- 
     Baskerville %>%
     mutate(
+      Study = 1:n(),
       p_star = pmin(pmax(alpha1, p), alpha2),
       wt = (p_star^(lambda[1] - 1)) * (1 - p_star)^(lambda[2] - 1),
       wt_norm = wt / wt[14], 
-      Ni = wt[14] / beta_sel$predictions$Ai,
+      Ni = wt[14] / beta_fit$predictions$Ai,
       omega = (1 / wt) / sum(1 / wt)
     )
 
-  summary_measures <- data.frame(
-    param = c("k_gen","omega_8","omega_23", "log-likelihood"),
-    Est = c(sum(Table1$Ni), Table1$omega[8], Table1$omega[23], as.numeric(logLik(beta_fit)))
+  summary_measures <- tibble(
+    param = c("k_gen","log-likelihood", "omega"),
+    Est = c(sum(Table1$Ni), as.numeric(logLik(beta_fit)), NA),
+    wt = c(NA, NA, list(select(Table1, Study, Ni, omega)))
   )
 
   bind_rows(print(beta_fit), summary_measures)
 }
 
 trunc_points <- expand_grid(
-  alpha1 = c(1e-5, 5e-5, 1e-4, 5e-4, 1e-3, 5e-3, 1e-2, 0.025),
+  alpha1 = c(1e-5, 2.5e-5, 5e-5, 1e-4, 2.5e-4, 5e-4, 1e-3, 2.5e-3, 5e-3, 1e-2, 0.025),
   alpha2 = c(NA, 0.5)
 ) %>%
   mutate(
@@ -554,14 +601,16 @@ plan(multisession)
 beta_sens <- 
   trunc_points %>%
   mutate(
-    res = future_pmap(., fit_fun, .progress = TRUE)
+    res = future_pmap(., fit_fun)
   ) %>%
   unnest(res)
 
 
 ```
+
 ```{r}
-#| column: body-outset
+#| label: fig-parameter-sensitivity
+#| fig-cap: Sensitivity analysis for the beta density model across varying truncation points
 #| fig-align: center
 #| fig-width: 8
 #| fig-height: 5
@@ -571,13 +620,14 @@ beta_sens <-
 
 beta_sens_clean <- 
   beta_sens %>%
-  filter(param %in% c("beta","tau2","log-likelihood", "k_gen", "omega_8", "omega_23")) %>%
+  filter(param %in% c("beta","tau2","k_gen","log-likelihood")) %>%
+  select(-wt) %>%
   mutate(
     alpha2 = if_else(alpha2 == 0.5, "alpha[2] == 0.5", "alpha[2] == 1 - alpha[1]"),
     param = factor(
       param, 
-      levels = c("log-likelihood", "beta", "tau2","k_gen", "omega_8", "omega_23"), 
-      labels = c("log-likelihood","mu","tau^2","k[gen]","omega[8]","omega[23]")
+      levels = c("log-likelihood", "k_gen", "beta", "tau2"), 
+      labels = c("log-likelihood","k[gen]","mu","tau^2")
     )
   )
 
@@ -598,3 +648,37 @@ ggplot(beta_sens_clean) +
 
 ```
 
+```{r}
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 4
+#| fig-retina: 2
+#| out-width: 100%
+
+
+beta_sens_omega <- 
+  beta_sens %>%
+  filter(param == "omega") %>%
+  select(alpha1, alpha2, wt) %>%
+  unnest(wt) %>%
+  mutate(
+    alpha2 = if_else(alpha2 == 0.5, "alpha[2] == 0.5", "alpha[2] == 1 - alpha[1]"),
+    alpha2 = factor(alpha2, levels = c("alpha[2] == 1 - alpha[1]", "alpha[2] == 0.5"))
+  )
+
+ggplot(beta_sens_omega) + 
+  aes(alpha1, omega, color = factor(Study)) + 
+  geom_point() + geom_line() + 
+  expand_limits(y = 0) + 
+  theme_minimal() + 
+  scale_x_log10() + 
+  facet_wrap(~ alpha2, scales = "fixed", labeller = "label_parsed") + 
+  labs(
+    x = expression(alpha[1]), 
+    y = expression(omega[i])
+  ) + 
+  theme(legend.position = "none")
+
+```
+
+# Comments
