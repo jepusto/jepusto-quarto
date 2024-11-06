@@ -336,6 +336,7 @@ Here are the random effects meta-analysis results, estimated using maximum likel
 
 library(tibble)
 library(dplyr)
+library(tidyr)
 library(metafor)
 
 Baskerville <- tribble(
@@ -456,19 +457,7 @@ $$
 k_{gen} = \sum_{i=1}^{k} \frac{1}{\hat{A}_i}.
 $$
 
-My attempt to reproduce the calculations in Table 1 of @hedges2017plausibility are displayed in @tbl-Hedges-Table1 below 
-Columns $T_i$ and $\sigma_i$ are the effect size estimates and standard errors reported by @baskerville2012systematic; $p_i$ is the one-sided $p$-value calculated from the data. The column labeled $\hat{w}(p_i)$ is the relative selection probability calculated from the estimated selection parameters $\hat\lambda_1 = `{r} round(lambda[1], 3)`, \hat\lambda_2 = `{r} round(lambda[2], 3)`$; the next column reports the same quantities, standardized by the relative probability of observation 14, which has the smallest reported $p$-value of $p_{min} = `{r} round(Baskerville_Table1$p[14], 5)`$. 
-Using the beta-density parameter estimates and standardizing to the minimum observed $p$-value, I calculate the probability of observing effect size estimates with each observed standard error. 
-The inverse of this quantity is the number of generated effect sizes one would need to produce a single observed effect size estimate; it is reported in the column labeled $\hat{A}_i^{-1}$.
-Totalling these, I find $k_{gen} = `{r} round(k_gen, 0)`$.[^Hedges-discrepancy]
-This implies quite a large number of missing studies that were conducted but not reported; Hedges argues that it is so large as to be implausible.
-
-[^Hedges-discrepancy]: My estimate of $k_{gen}$ and the component quantities differ from those reported in Table 1 of @hedges2017plausibility; I am currently unsure why there is a discrepancy.
-
 ```{r}
-#| label: tbl-Hedges-Table1
-#| tbl-cap: Effect size estimates and computed values for beta density selection model estimated on Baskerville meta-analysis data
-
 lambda <- exp(beta_sel$est$Est[3:4])
 
 Baskerville_Table1 <- 
@@ -483,6 +472,20 @@ Baskerville_Table1 <-
   )
 
 k_gen <- sum(Baskerville_Table1$Ni)
+```
+
+My attempt to reproduce the calculations in Table 1 of @hedges2017plausibility are displayed in @tbl-Hedges-Table1 below 
+Columns $T_i$ and $\sigma_i$ are the effect size estimates and standard errors reported by @baskerville2012systematic; $p_i$ is the one-sided $p$-value calculated from the data. The column labeled $\hat{w}(p_i)$ is the relative selection probability calculated from the estimated selection parameters $\hat\lambda_1 = `{r} round(lambda[1], 3)`, \hat\lambda_2 = `{r} round(lambda[2], 3)`$; the next column reports the same quantities, standardized by the relative probability of observation 14, which has the smallest reported $p$-value of $p_{min} = `{r} round(Baskerville$p[14], 5)`$. 
+Using the beta-density parameter estimates and standardizing to the minimum observed $p$-value, I calculate the probability of observing effect size estimates with each observed standard error. 
+The inverse of this quantity is the number of generated effect sizes one would need to produce a single observed effect size estimate; it is reported in the column labeled $\hat{A}_i^{-1}$.
+Totalling these, I find $k_{gen} = `{r} round(k_gen, 0)`$.[^Hedges-discrepancy]
+This implies quite a large number of missing studies that were conducted but not reported; Hedges argues that it is so large as to be implausible.
+
+[^Hedges-discrepancy]: My estimate of $k_{gen}$ and the component quantities differ from those reported in Table 1 of @hedges2017plausibility; I am currently unsure why there is a discrepancy.
+
+```{r}
+#| label: tbl-Hedges-Table1
+#| tbl-cap: Effect size estimates and computed values for beta density selection model estimated on Baskerville meta-analysis data
 
 Baskerville_Table1 %>%
   knitr::kable(
@@ -562,6 +565,7 @@ beta_sens <-
 #| fig-align: center
 #| fig-width: 8
 #| fig-height: 5
+#| fig-retina: 2
 #| out-width: 100%
 
 
