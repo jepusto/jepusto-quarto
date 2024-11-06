@@ -7,13 +7,15 @@ author:
 - name:
     given: Man
     family: Chen
-date: 2024-03-07T00:00:00
+date: 2024-03-05T00:00:00
 citation: 
   type: article-journal
   container-title: Journal of Educational and Behavioral Statistics
   doi: 10.3102/10769986241232524
   url: https://doi.org/10.3102/10769986241232524
-  page: advance online publication
+  volume: 49
+  issue: 6
+  page: 1013-1043
 categories:
 - meta-analysis
 - meta-regression
