@@ -541,6 +541,7 @@ selection_plot(beta_trunc, fill = "darkgreen") +
 lambda <- exp(beta_trunc$est$Est[3:4])
 Ni <- (.025^(lambda[1] - 1)) * (.975^(lambda[2] - 1)) / beta_trunc$predictions$Ai
 k_gen <- sum(Ni)
+Baskerville$Ni_trunc <- Ni
 ```
 
 @fig-selection-functions is a graph of the estimated selection function. The green area is the selection function based on the truncated beta density model; for reference, the blue area is the selection function from the previous, untruncated model. 
@@ -649,6 +650,8 @@ ggplot(beta_sens_clean) +
 ```
 
 ```{r}
+#| label: fig-parameter-sensitivity
+#| fig-cap: Sensitivity analysis for the beta density model across varying truncation points
 #| fig-align: center
 #| fig-width: 8
 #| fig-height: 4
@@ -682,3 +685,35 @@ ggplot(beta_sens_omega) +
 ```
 
 # Comments
+
+My examination of the truncated beta density function selection model is, of course, just one example of how this model might be applied---other datasets will have different features and might show a different degree of sensitivity to the truncation points. 
+Still, this exercise has got me thinking about what more is needed to actually use meta-analytic selection models in practice.
+For one, it seems to me that there's a need for more thinking, tools, and guidance about how to choose a model specification (...how to _select_ a selection model, if you will...) and assess its fit and appropriateness.
+The $k_{gen}$ statistic is one tool for building some intuition about a selection model. 
+@hedges1992modeling suggests another, which is to examine the distribution of $p$-values in the observed sample and consider whether and how it differs from the distribution of reported p-values implied by a fitted model.[^In a Bayesian framework, one might refine this further by simulating from the posterior predictive distribution of reported $p$-values.]
+I think there might be still other diagnostics that could be worth exploring. 
+For instance, one could use the reporting probabilities from the estimated selection model to estimate not only the _total_ number of generated studies, but also the distribution of standard errors in the evidence base prior to selective reporting. 
+
+```{r}
+#| label: fig-parameter-sensitivity
+#| fig-cap: Sensitivity analysis for the beta density model across varying truncation points
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 5
+#| fig-retina: 2
+#| out-width: 100%
+
+ggplot(Baskerville) + 
+  geom_density(aes(x = se, y = after_stat(scaled * k_gen / 23), weight = Ni), alpha = .5, fill = "darkgrey", color = "darkgrey") + 
+  geom_density(aes(x = se, y = after_stat(scaled)), alpha = .5, fill = "darkgreen", color = "darkgreen") + 
+  labs(
+    x = "Standard error",
+    y = ""
+  ) + 
+  theme_minimal()
+```
+
+
+At a broader level, how to approach examining selective reporting bias in actual, empirical meta-analysis projects.
+Right now, it feels to me like the literature is kind of a big mess.
+_Lots_ of tools have been proposed, but uptake has been haphazard and there's little guidance about what to conclude 
