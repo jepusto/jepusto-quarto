@@ -1,6 +1,6 @@
 ---
 title: 'Determining associations between intervention amount and outcomes for young
-  autistic children: A systematic review and meta-analysis'
+  autistic children: A meta-analysis'
 author:
 - name:
     given: Micheal
@@ -43,7 +43,9 @@ citation:
   container-title: JAMA Pediatrics
   doi: 10.1001/jamapediatrics.2024.1832
   url: https://doi.org/10.1001/jamapediatrics.2024.1832
-  page: advance online publication
+  volume: 178
+  issue: 8
+  page: 763-773
 ---
 
 ### Importance
