@@ -370,9 +370,11 @@ RE_fit
 
 The average effect estimate is $\hat\mu = `r round(RE_fit$b, 3)`$, with a 95% CI of $[`r round(RE_fit$ci.lb, 3)`, `r round(RE_fit$ci.ub, 3)`]$. Here is a funnel plot of the effect size estimates against standard errors, with contours indicating regions of statistical significance for positive and negative estimates:
 ```{r}
+#| label: fig-funnel
+#| fig-cap: "Funnel plot of effect size estimates from the Baskerville meta-analysis"
 #| echo: true
-#| fig-width: 5
-#| fig-height: 3
+#| fig-width: 7
+#| fig-height: 4
 #| fig-retina: 2
 #| out-width: 80%
 
@@ -548,7 +550,7 @@ Baskerville$Ni_trunc <- Ni
 The model with truncation points does clearly imply a more moderate degree of selective reporting, although it still represents a fairly strong degree of selection.
 The estimated selection parameters imply that $k_{gen} = `r round(k_gen)`$ effect sizes would need to have been generated to produce a sample of 23 observed effects---this is large but not nearly so far outside the realm of plausible as with the untruncated beta density. 
 
-To get a more systematic sense of how sensitive the results are to the use of truncation points, I re-estimated the model many times with a range of different truncation points. For the left-hand truncation, I looked at $\alpha_1$ ranging from $10^{-5}$ to $10^{-2}$ and then also $\alpha_1 = .025$; for every one of these values, I looked at two different right-hand truncation points, first setting $\alpha_2 = 1 - \alpha_1$ and then fixing $\alpha_2 = .5$. With each model, I tracked the maximum log-likelihood, estimated mean and variance of the effects prior to selective reporting, and the total number of generated effects ($k_{gen}$) implied by the fitted model. The results are depicted in @fig-parameter-sensitivity.
+To get a more systematic sense of how sensitive the results are to the use of truncation points, I re-estimated the model many times with a range of different truncation points. For the left-hand truncation, I looked at $\alpha_1$ ranging from $10^{-5}$ to $10^{-2}$ and then also $\alpha_1 = .025$ and $\alpha_1 = .05$; for every one of these values, I looked at two different right-hand truncation points, first setting $\alpha_2 = 1 - \alpha_1$ and then fixing $\alpha_2 = .5$. With each model, I tracked the maximum log-likelihood, estimated mean and variance of the effects prior to selective reporting, and the total number of generated effects ($k_{gen}$) implied by the fitted model. The results are depicted in @fig-parameter-sensitivity.
 
 ```{r}
 #| cache: true
@@ -584,11 +586,12 @@ fit_fun <- function(alpha1, alpha2 = 1 - alpha1) {
     wt = c(NA, NA, list(select(Table1, Study, Ni, omega)))
   )
 
-  bind_rows(print(beta_fit), summary_measures)
+  capture.output(param_ests <- print(beta_fit))
+  bind_rows(param_ests, summary_measures)
 }
 
 trunc_points <- expand_grid(
-  alpha1 = c(1e-5, 2.5e-5, 5e-5, 1e-4, 2.5e-4, 5e-4, 1e-3, 2.5e-3, 5e-3, 1e-2, 0.025),
+  alpha1 = c(1e-5, 2.5e-5, 5e-5, 1e-4, 2.5e-4, 5e-4, 1e-3, 2.5e-3, 5e-3, 1e-2, 0.025, 0.05),
   alpha2 = c(NA, 0.5)
 ) %>%
   mutate(
@@ -627,8 +630,8 @@ beta_sens_clean <-
     alpha2 = if_else(alpha2 == 0.5, "alpha[2] == 0.5", "alpha[2] == 1 - alpha[1]"),
     param = factor(
       param, 
-      levels = c("log-likelihood", "k_gen", "beta", "tau2"), 
-      labels = c("log-likelihood","k[gen]","mu","tau^2")
+      levels = c("k_gen", "log-likelihood", "beta", "tau2"), 
+      labels = c("k[gen]","log-likelihood","mu","tau^2")
     )
   )
 
@@ -649,9 +652,17 @@ ggplot(beta_sens_clean) +
 
 ```
 
+In the top left-hand panel of @fig-parameter-sensitivity, it can be seen that the estimate of $k_{gen}$ is _strongly_ influenced by the truncation point. 
+Models with $\alpha_1 = 2 \times 10^{-4}$ and neighboring truncation points produce extremely high estimates, with $k_{gen} > 2500$. 
+Models with more psychologically relevant truncation points of $\alpha_1 = .01$ or $.025$ lead to much more moderated estimates with $k_{gen} < 150$. 
+The top right-hand panel shows the log-likelihood of models with different truncation points. 
+Models where $\alpha_2 = 1 - \alpha_1$ consistently have higher likelihood than those with the right-hand truncation point fixed to $\alpha_2 = .5$. 
+Of those examined, the truncation point with the highest overall likelihood is $\alpha_1 = 5 \times 10^{-4}$, which is rather curious. 
+The bottom panels of @fig-parameter-sensitivity depict the parameter estimates $\hat\mu$ and $\hat\tau^2$; $\hat\mu$ is fairly sensitive to the choice of truncation point, though $\hat\tau^2$ is sensitive only for larger truncation points of $\alpha_1 \geq .01$. 
+
 ```{r}
-#| label: fig-parameter-sensitivity
-#| fig-cap: Sensitivity analysis for the beta density model across varying truncation points
+#| label: fig-weight-sensitivity
+#| fig-cap: Sensitivity of approximate weights $\omega_i$ under the beta density model across varying truncation points
 #| fig-align: center
 #| fig-width: 8
 #| fig-height: 4
@@ -682,26 +693,51 @@ ggplot(beta_sens_omega) +
   ) + 
   theme(legend.position = "none")
 
+study_8_wt <- 
+  beta_sens_omega %>% 
+  filter(alpha1 == .025, alpha2 == "alpha[2] == 1 - alpha[1]", Study == 8)
+
+top3_wt <- 
+  beta_sens_omega %>% 
+  filter(alpha2 == "alpha[2] == 1 - alpha[1]", Study %in% c(8, 10, 23)) %>% 
+  group_by(alpha1) %>% 
+  summarize(omega = sum(omega)) %>%
+  filter(alpha1 == .025)
 ```
+
+@fig-weight-sensitivity plots the fraction of the total weight (i.e., the $\omega_i$ values for each effect size) assigned to each effect size as a function of the left-hand truncation point; the left panel shows the weights when $\alpha_2 = 1 - \alpha_1$ and the right panel shows the same quantities from the slightly lower-likelihood models with $\alpha_2 = 0.5$.
+Across both panels, the highest-influence observation (Study $i = 8$) becomes less so when $\alpha_1$ is set to higher truncation points.
+When $\alpha_1 = .025$, it receives `{r} round(study_8_wt$omega * 100)`% of the total weight, compared to almost 50% in the untruncated model.
+Still, it remains strongly influential.
+The next-most influential observation (Study $i = 23$) has a fairly stable weight across all truncation points, and the third-most influential observation (Study $i = 10$) grows moreso for higher truncation points. 
+Even in the model with the largest truncation point $\alpha_1 = .025, \alpha_2 = .975$, these three points still account for 
+`{r} round(top3_wt$omega * 100)`% of the total weight.
+
+Looking across all of the model outputs, it seems that adding truncation points to the beta density is consequential, in that the model results are generally sensitive to the specific truncation points chosen.
+In this example, using psychologically salient truncation points led to less extreme estimates of selection, with less implausible implications, but also yieleded estimates that are still strongly influenced by a few data points.
 
 # Comments
 
 My examination of the truncated beta density function selection model is, of course, just one example of how this model might be applied---other datasets will have different features and might show a different degree of sensitivity to the truncation points. 
 Still, this exercise has got me thinking about what more is needed to actually use meta-analytic selection models in practice.
-For one, it seems to me that there's a need for more thinking, tools, and guidance about how to choose a model specification (...how to _select_ a selection model, if you will...) and assess its fit and appropriateness.
+For one, I like the $k_{gen}$ statistic and think it's pretty evocative. 
+For a proper analysis, it should come with measures of uncertainty, so working out a standard error and confidence interval to go along with the point estimate seems useful and necessary. 
+
+For another, it seems to me that there's a need for more thinking, tools, and guidance about how to choose a model specification (...how to _select_ a selection model, if you will...) and assess its fit and appropriateness.
 The $k_{gen}$ statistic is one tool for building some intuition about a selection model. 
 @hedges1992modeling suggests another, which is to examine the distribution of $p$-values in the observed sample and consider whether and how it differs from the distribution of reported p-values implied by a fitted model.[^In a Bayesian framework, one might refine this further by simulating from the posterior predictive distribution of reported $p$-values.]
 I think there might be still other diagnostics that could be worth exploring. 
 For instance, one could use the reporting probabilities from the estimated selection model to estimate not only the _total_ number of generated studies, but also the distribution of standard errors in the evidence base prior to selective reporting. 
+Here's a hacky attempt at representing this:
 
 ```{r}
-#| label: fig-parameter-sensitivity
-#| fig-cap: Sensitivity analysis for the beta density model across varying truncation points
+#| label: fig-SE-distribution
+#| fig-cap: Distribution of standard errors across observed effect sizes and across all generated effect sizes (observed and unreported)
 #| fig-align: center
-#| fig-width: 8
-#| fig-height: 5
+#| fig-width: 5
+#| fig-height: 3
 #| fig-retina: 2
-#| out-width: 100%
+#| out-width: 80%
 
 ggplot(Baskerville) + 
   geom_density(aes(x = se, y = after_stat(scaled * k_gen / 23), weight = Ni), alpha = .5, fill = "darkgrey", color = "darkgrey") + 
@@ -711,9 +747,15 @@ ggplot(Baskerville) +
     y = ""
   ) + 
   theme_minimal()
+
 ```
+The green density shows the distribution of standard errors for the 23 reported effect sizes.
+The larger grey density shows the distribution of standard errors for all _generated_ effect sizes, as implied by the truncated beta density model. 
+The plot suggests that many of the unobserved effect sizes would be from relatively larger studies (with standard errors of 0.3 or less), even though the probability of going unreported is larger for smaller studies.
+Other interesting diagnostics might be to consider how $\text{E}(T_i | O_i^* = 1, \sigma_i)$ varies with $\sigma_i$ or how $A_i = \text{Pr}(O_i^* = 1 | \sigma_i)$ varies with $\sigma_i$. 
 
-
-At a broader level, how to approach examining selective reporting bias in actual, empirical meta-analysis projects.
+Finally, pulling out a bit, working through this stuff has only reinforced my sense that there's still a big need for guidance about how to examine selective reporting bias in actual, empirical meta-analysis projects.
 Right now, it feels to me like the literature is kind of a big mess.
-_Lots_ of tools have been proposed, but uptake has been haphazard and there's little guidance about what to conclude 
+_Lots_ of tools have been proposed, but uptake seems slow and pretty haphazard (based on my own informal experience) and the main advice I hear is to throw spaghetti at the wall and run _lots_ of different analyses. 
+This leaves it on the analyst to figure out what to conclude when the analyses don't all tell a consistent story, which hardly seems fair or even feasible.  
+I suspect that the way out of this a fix is to 1) put more stock in and invest further in careful formal modeling, whether with the beta density model, the step function selection model, the Copas model, or some other form of selection model and 2) work to identify novel data that could let us refine our understanding of how reporting processes work in the real world.
