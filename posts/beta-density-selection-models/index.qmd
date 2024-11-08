@@ -1,6 +1,6 @@
 ---
 title: Beta-density selection models for meta-analysis
-date: '2024-11-07'
+date: '2024-11-08'
 draft: true
 categories:
 - effect size
@@ -24,7 +24,7 @@ As part of [an IES-funded project](https://ies.ed.gov/funding/grantsearch/detail
 We're looking at two variations of p-value selection models: step-function selection models  similar to those proposed by @hedges1992modeling and @vevea1995general and beta-density models as developed in @Citkowicz2017parsimonious. 
 Both models fall within the broader class of $p$-value selection models, which make explicit assumptions about the probability of observing an effect size, given its statistical significance level and sign. 
 I've already described how step-function models work (see [this previous post](/posts/step-function-selection-models/)) and, as a bit of a detour, I also took a stab at demystifying the [Copas selection model](/posts/Copas-selection-models). 
-In this post, I'll look at the beta-density model,  highlight how it differs from step-function models, and explain some of the tweaks to the model that we're examining as part of the project. 
+In this post, I'll look at the beta-density model,  highlight how it differs from step-function models, and do a deep dive into some of the tweaks to the model that we've implemented as part of the project. 
 
 # The beta-density selection model 
 
@@ -37,7 +37,7 @@ T_i^* | \sigma_i^* \sim N\left(\mu, \tau^2 + \left(\sigma_i^*\right)^2\right),
 $$ {#eq-evidence-generation}
 where $T_i^*$ denotes an effect size estimate prior to selective reporting and $\sigma_i^*$ denotes its (known) standard error.[^metareg]
 
-[^metareg]: With either model, the evidence-generating process can be extended to include a meta-regression with predictors of the average effect size. This amounts to replacing $\mu$ with $\beta_0 + \beta_1 x_{1i} + \cdots + \beta_p x_{pi}$ for some set of predictors $x_{1i},...,x_{pi}$. For simplicity, I'm not going to worry about this additional complexity as part of this post.
+[^metareg]: With either model, the evidence-generating process can be extended to include a meta-regression with predictors of the average effect size. This amounts to replacing $\mu$ with $\beta_0 + \beta_1 x_{1i} + \cdots + \beta_p x_{pi}$ for some set of predictors $x_{1i},...,x_{pi}$. For present purposes, I'm not going to worry about this additional complexity.
 
 The only difference between the beta-density and step-function selection models is the functional form of the selective reporting process. 
 Letting $O_i^*$ be an indicator equal to 1 if $T_i^*$ is reported and $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$ be the one-sided p-value corresponding to the effect size estimate, 
@@ -98,7 +98,11 @@ In the original formulation of the beta density model, the selection function is
 $$
 \text{Pr}(O_i^* = 1 | p_i^*) \propto \left(p_i^*\right)^{(\lambda_1 - 1)} \left(1 - p_i^*\right)^{(\lambda_2 - 1)},
 $$
-where the parameters $\lambda_1$ and $\lambda_2$ must be strictly greater than zero, and $\lambda_1 = \lambda_2 = 1$ corresponds to a constant probability of selection (i.e., no selective reporting bias).
+where the parameters $\lambda_1$ and $\lambda_2$ must be strictly greater than zero, and $\lambda_1 = \lambda_2 = 1$ corresponds to a constant probability of selection (i.e., no selective reporting bias). Because $p_i^*$ is a function of the effect size estimate and its standard error, the selection function can also be written as
+$$
+\text{Pr}(O_i^* = 1 | T_i^*, \sigma_i^*) \propto \left[\Phi(-T_i^* / \sigma_i^*)\right]^{(\lambda_1 - 1)} \left[\Phi(T_i^* / \sigma_i^*)\right]^{(\lambda_2 - 1)},
+$$
+where $\Phi()$ is the cumulative standard normal distribution.
 In proposing the model, @Citkowicz2017parsimonious argued that the beta-density function provides a parsimonious expression of more complex forms of selective reporting than can easily be captured by a step function. 
 For instance, the beta density in @fig-beta-dens is smoothly declining from $p < .005$ through the psychologically salient thresholds $p = .025$ and $p = .05$ and beyond. In order to approximate such a smooth curve with a step function, one would have to use many thresholds and therefore many more than the two parameters of the beta density.
 
@@ -106,13 +110,13 @@ For instance, the beta density in @fig-beta-dens is smoothly declining from $p <
 
 Although using smoothly varying selection probabilities may seem appealing, the beta density also comes with an important limitation, highlighted in a commentary by @hedges2017plausibility. For some parameter values, the beta density implies selection probabilities that differ by many orders of magnitude. These extreme differences in selection probability can imply implausible selection processes, in which hundreds of non-significant effect size estimates would need to go unreported to observe a sample of a few dozen findings. Extreme differences in selection probabilities make the model highly sensitive to the inclusion or exclusion of some effect size estimates because the influence of each estimate is driven by the inverse of its selection probability [@hedges2017plausibility]. 
 
-In part to address these issues with the beta density, we consider a modification of the model where the function is truncated at $p$-values larger or smaller than certain thresholds. 
+As a means to mitigate these issues with the beta density, we consider a modification of the model where the function is truncated at $p$-values larger or smaller than certain thresholds. 
 For user-specified thresholds $\alpha_1$ and $\alpha_2$, let $\tilde{p}_i^* = \min\{\max\{\alpha_1, p_i^*\}, \alpha_2\}$. The truncated beta density is then 
 $$
 \text{Pr}(O_i^* = 1 | p_i^*) \propto (\tilde{p}_i^*)^{(\lambda_1 - 1)} \left(1 - \tilde{p}_i^*\right)^{(\lambda_2 - 1)},
 $$ {#eq-selection-process}
 Setting the truncation thresholds at psychologically salient levels such as $\alpha_1 = .025$ and $\alpha_2 = .975$ (which correspond to positive and negative effects that are statistically significant based on two-sided tests with $\alpha = .05$) gives something kind of like the step-function selection model, but with smoothly varying selection probabilities in the interior. 
-Alternately, one could set the second threshold at $\alpha_2 = .500$ (corresponding to an effect of zero) so that all negative effect size estimates have a constant probability of selection, but positive effect size estimates that are non-significant have smoothly varying selection probabilities, up to the point where $p_i^* = .025$.
+Alternately, one could set the second threshold at $\alpha_2 = .500$ (corresponding to an effect of zero) so that all negative effect size estimates have a constant probability of selection, but positive effect size estimates that are non-significant have smoothly varying selection probabilities up to the point where $p_i^* = .025$.
 
 # Distribution of observed effect sizes
 
@@ -120,8 +124,8 @@ Just as with the step-function selection model, the assumptions of the evidence-
 with 
 $$
 \begin{aligned}
-\Pr(T_i = t | \sigma_i) &\propto \Pr\left(O_i^* = 1| p_i^*\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i) \\
-&\propto \frac{(\tilde{p}_i^*)^{(\lambda_1 - 1)} \left(1 - \tilde{p}_i^*\right)^{(\lambda_2 - 1)}}{\sqrt{\tau^2 + \sigma_i^2}}\times \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right)
+\Pr(T_i = t | \sigma_i) &\propto \Pr\left(O_i^* = 1| T_i^* = t, \sigma_i^* = \sigma_i\right) \times \Pr(T_i^*  = t| \sigma_i^* = \sigma_i) \\
+&\propto \left[\Phi(-t / \sigma_i^*)\right]^{(\lambda_1 - 1)} \left[\Phi(t / \sigma_i^*)\right]^{(\lambda_2 - 1)} \times \frac{1}{\sqrt{\tau^2 + \sigma_i^2}} \phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right)
 \end{aligned}
 $$
 
@@ -453,7 +457,7 @@ A_i = \text{Pr}(O_i^* = 1 | \sigma_i^*) = \text{E}\left[\left.\Pr\left(O_i^* = 1
 $$
 which is the overall probability of observing an effect size estimate in a study with standard error $\sigma_i^*$.^[@hedges2017plausibility denotes this quantity as $g_i(T_i)$.]
 The inverse of $A_i$ is the expected number of effect size estimates that would need to be generated (including both those that are subsequently reported and those that remain unreported) in order to obtain one observed estimate. 
-A challenge here is that the selection is only identified up to a proportionality constant, so the _absolute_ probability of reporting cannot be estimated without making some further assumption.
+A challenge here is that the selective reporting process is only identified up to a proportionality constant, so the _absolute_ probability of reporting cannot be estimated without making some further assumption.
 Hedges approaches this by assuming that any effect size estimate with $p$-value equal to the smallest observed $p$-value will be reported with certainty, so that the proportionality constant becomes $w_{min} = (p_{min})^{\lambda_1 - 1} (1 - p_{min})^{\lambda_2 - 1}$.
 Under this assumption, estimates of $A_i$ can be computed given the parameter estimates $\hat\mu$, $\hat\tau$, $\hat\lambda_1$, $\hat\lambda_2$ and the reference $p$-value $p_{min}$. 
 Taking the sum across the sample of observed standard errors, we can find an estimate of the number of effect sizes that would need to be generated:
@@ -499,7 +503,7 @@ Baskerville_Table1 %>%
 ```
 
 Another, related limitation of the beta density model is that it puts extreme emphasis on a few individual observations that have low probability of selection. 
-@hedges2017plausibility suggests that the influence of individual observations can be approximated by the inverse selection probabilities, such that the fraction of the total weight allocated to observation $i$ is
+@hedges2017plausibility noted that the influence of individual observations can be approximated by the inverse selection probabilities, such that the fraction of the total weight allocated to observation $i$ is
 $$
 \omega_i = \frac{1 / \hat{w}(p_i)}{\sum_{j=1}^k 1 / \hat{w}(p_j)}.
 $$
@@ -523,7 +527,7 @@ beta_trunc <- selection_model(
 summary(beta_trunc)
 ```
 
-Under the truncated beta density, the estimated average effect size increases a bit to $\hat\mu = `r round(beta_trunc$est$Est[1], 3)`$, but with much greater uncertainty, 95% CI $[`r round(beta_trunc$est$CI_lo[1], 3)`, `r round(beta_trunc$est$CI_hi[1], 3)`]$. 
+Under the truncated beta density, the estimated average effect size increases to $\hat\mu = `r round(beta_trunc$est$Est[1], 3)`$, but with much greater uncertainty, 95% CI $[`r round(beta_trunc$est$CI_lo[1], 3)`, `r round(beta_trunc$est$CI_hi[1], 3)`]$. 
 Contributing to this additional uncertainty is the larger estimate of between-study heterogeneity, $\tau^2 =  `r round(exp(beta_trunc$est$Est[2]), 3)`$. 
 The selection parameters are now estimated as $\hat\lambda_1 \approx `r round(exp(beta_trunc$est$Est[3]), 3)`$ and $\hat\lambda_2 = `r round(exp(beta_trunc$est$Est[4]), 3)`$. 
 
@@ -550,7 +554,7 @@ Baskerville$Ni_trunc <- Ni
 ```
 
 @fig-selection-functions is a graph of the estimated selection function. The green area is the selection function based on the truncated beta density model; for reference, the blue area is the selection function from the previous, untruncated model. 
-The model with truncation points does clearly imply a more moderate degree of selective reporting, although it still represents a fairly strong degree of selection.
+The model with truncation points does indicate a more moderate degree of selective reporting, although it still represents a fairly strong degree of selection.
 The estimated selection parameters imply that $k_{gen} = `r round(k_gen)`$ effect sizes would need to have been generated to produce a sample of 23 observed effects---this is large but not nearly so far outside the realm of plausible as with the untruncated beta density. 
 
 To get a more systematic sense of how sensitive the results are to the use of truncation points, I re-estimated the model many times with a range of different truncation points. For the left-hand truncation, I looked at $\alpha_1$ ranging from $10^{-5}$ to $10^{-2}$ and then also $\alpha_1 = .025$ and $\alpha_1 = .05$; for every one of these values, I looked at two different right-hand truncation points, first setting $\alpha_2 = 1 - \alpha_1$ and then fixing $\alpha_2 = .5$. With each model, I tracked the maximum log-likelihood, estimated mean and variance of the effects prior to selective reporting, and the total number of generated effects ($k_{gen}$) implied by the fitted model. The results are depicted in @fig-parameter-sensitivity.
@@ -713,7 +717,7 @@ Across both panels, the highest-influence observation (Study $i = 8$) becomes le
 When $\alpha_1 = .025$, it receives `{r} round(study_8_wt$omega * 100)`% of the total weight, compared to almost 50% in the untruncated model.
 Still, it remains strongly influential.
 The next-most influential observation (Study $i = 23$) has a fairly stable weight across all truncation points, and the third-most influential observation (Study $i = 10$) grows moreso for higher truncation points. 
-Even in the model with the largest truncation point $\alpha_1 = .025, \alpha_2 = .975$, these three points still account for 
+Even in the model with truncation points $\alpha_1 = .025, \alpha_2 = .975$, these three points still account for 
 `{r} round(top3_wt$omega * 100)`% of the total weight.
 
 Looking across all of the model outputs, it seems that adding truncation points to the beta density is consequential, in that the model results are generally sensitive to the specific truncation points chosen.
@@ -721,17 +725,19 @@ In this example, using psychologically salient truncation points led to less ext
 
 # Comments
 
-My examination of the truncated beta density function selection model is, of course, just one example of how this model might be applied---other datasets will have different features and might show a different degree of sensitivity to the truncation points. 
+The re-analysis that I have presented is, of course, just one example of how the truncated beta density selection model might be applied---other datasets will have different features and might show a different degree of sensitivity to the truncation points. 
 Still, this exercise has got me thinking about what more is needed to actually use meta-analytic selection models in practice.
 For one, I like the $k_{gen}$ statistic and think it's pretty evocative. 
 For a proper analysis, it should come with measures of uncertainty, so working out a standard error and confidence interval to go along with the point estimate seems useful and necessary. 
 
 For another, it seems to me that there's a need for more thinking, tools, and guidance about how to choose a model specification (...how to _select_ a selection model, if you will...) and assess its fit and appropriateness.
 The $k_{gen}$ statistic is one tool for building some intuition about a selection model. 
-@hedges1992modeling suggests another, which is to examine the distribution of $p$-values in the observed sample and consider whether and how it differs from the distribution of reported p-values implied by a fitted model.[^In a Bayesian framework, one might refine this further by simulating from the posterior predictive distribution of reported $p$-values.]
+@hedges1992modeling suggests another, which is to examine the distribution of $p$-values in the observed sample and consider whether and how it differs from the distribution of reported p-values implied by a fitted model.[^Bayes] 
 I think there might be still other diagnostics that could be worth exploring. 
 For instance, one could use the reporting probabilities from the estimated selection model to estimate not only the _total_ number of generated studies, but also the distribution of standard errors in the evidence base prior to selective reporting. 
 Here's a hacky attempt at representing this:
+
+[^Bayes]: In a Bayesian framework, one might refine this further by simulating from the posterior predictive distribution of reported $p$-values.
 
 ```{r}
 #| label: fig-SE-distribution
@@ -758,7 +764,7 @@ The plot suggests that many of the unobserved effect sizes would be from relativ
 Other interesting diagnostics might be to consider how $\text{E}(T_i | O_i^* = 1, \sigma_i)$ varies with $\sigma_i$ or how $A_i = \text{Pr}(O_i^* = 1 | \sigma_i)$ varies with $\sigma_i$. 
 
 Finally, pulling out a bit, working through this stuff has only reinforced my sense that there's still a real need for guidance about how to examine selective reporting bias in actual, empirical meta-analysis projects.
-Right now, it feels to me like the literature is kind of a mess.
+Right now, it feels to me like the methodological literature is kind of a mess.
 _Lots_ of tools have been proposed, but uptake seems slow and pretty haphazard (based on my own informal experience) and the main advice I hear is to throw spaghetti at the wall and run _lots_ of different analyses. 
-This leaves it on the analyst to figure out what to conclude when the analyses don't all tell a consistent story, which hardly seems fair or even feasible.
-I suspect that a good way out of this fix is to put more stock in and invest further in developing formal, generative models---whether with the beta density model, the step function selection model, the Copas model, or some other form of selection model---and careful model assessment and critique.
+This leaves it on the meta-analyst to figure out what to conclude when all those analyses don't all tell a consistent story, which hardly seems fair or even feasible.
+To get out of this fix, I think it will be fruitful to put more stock in and invest further in developing formal, generative models---whether that involves the beta density model, the [step function selection model](/posts/step-function-selection-models/), [the Copas model](/posts/Copas-selection-models), or some other form of selection model---and doing careful model assessment and critique.
