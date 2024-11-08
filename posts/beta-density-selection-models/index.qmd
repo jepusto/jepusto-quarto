@@ -1,6 +1,6 @@
 ---
 title: Beta-density selection models for meta-analysis
-date: '2024-10-23'
+date: '2024-11-07'
 draft: true
 categories:
 - effect size
@@ -19,7 +19,7 @@ crossref:
   eq-prefix: ""
 ---
 
-I still have meta-analytic selection models on my mind. 
+I still have meta-analytic selection models on the brain. 
 As part of [an IES-funded project](https://ies.ed.gov/funding/grantsearch/details.asp?ID=5730) with [colleagues from the American Institutes for Research](https://www.air.org/mosaic/experts), I've been working on developing methods for estimating selection models that can accommodate dependent effect sizes.
 We're looking at two variations of p-value selection models: step-function selection models  similar to those proposed by @hedges1992modeling and @vevea1995general and beta-density models as developed in @Citkowicz2017parsimonious. 
 Both models fall within the broader class of $p$-value selection models, which make explicit assumptions about the probability of observing an effect size, given its statistical significance level and sign. 
@@ -420,7 +420,9 @@ I will stick with the `metaselection` package for subsequent analysis because it
 #| fig-height: 3
 #| out-width: 70%
 
-selection_plot(beta_sel)
+selection_plot(beta_sel, ref_pval = Baskerville$p[14]) + 
+  coord_cartesian(ylim = c(0,1)) + 
+  theme_minimal()
 ```
 
 ## Hedges' critiques
@@ -538,7 +540,8 @@ untrunc_selection_curve <-
   mutate(wt = pmin(wt, 1))
 
 selection_plot(beta_trunc, fill = "darkgreen") + 
-  geom_area(data = untrunc_selection_curve, fill = "blue", alpha = 0.5)
+  geom_area(data = untrunc_selection_curve, fill = "blue", alpha = 0.5) + 
+  theme_minimal()
 
 lambda <- exp(beta_trunc$est$Est[3:4])
 Ni <- (.025^(lambda[1] - 1)) * (.975^(lambda[2] - 1)) / beta_trunc$predictions$Ai
@@ -737,7 +740,7 @@ Here's a hacky attempt at representing this:
 #| fig-width: 5
 #| fig-height: 3
 #| fig-retina: 2
-#| out-width: 80%
+#| out-width: 60%
 
 ggplot(Baskerville) + 
   geom_density(aes(x = se, y = after_stat(scaled * k_gen / 23), weight = Ni), alpha = .5, fill = "darkgrey", color = "darkgrey") + 
@@ -754,8 +757,8 @@ The larger grey density shows the distribution of standard errors for all _gener
 The plot suggests that many of the unobserved effect sizes would be from relatively larger studies (with standard errors of 0.3 or less), even though the probability of going unreported is larger for smaller studies.
 Other interesting diagnostics might be to consider how $\text{E}(T_i | O_i^* = 1, \sigma_i)$ varies with $\sigma_i$ or how $A_i = \text{Pr}(O_i^* = 1 | \sigma_i)$ varies with $\sigma_i$. 
 
-Finally, pulling out a bit, working through this stuff has only reinforced my sense that there's still a big need for guidance about how to examine selective reporting bias in actual, empirical meta-analysis projects.
-Right now, it feels to me like the literature is kind of a big mess.
+Finally, pulling out a bit, working through this stuff has only reinforced my sense that there's still a real need for guidance about how to examine selective reporting bias in actual, empirical meta-analysis projects.
+Right now, it feels to me like the literature is kind of a mess.
 _Lots_ of tools have been proposed, but uptake seems slow and pretty haphazard (based on my own informal experience) and the main advice I hear is to throw spaghetti at the wall and run _lots_ of different analyses. 
-This leaves it on the analyst to figure out what to conclude when the analyses don't all tell a consistent story, which hardly seems fair or even feasible.  
-I suspect that the way out of this a fix is to 1) put more stock in and invest further in careful formal modeling, whether with the beta density model, the step function selection model, the Copas model, or some other form of selection model and 2) work to identify novel data that could let us refine our understanding of how reporting processes work in the real world.
+This leaves it on the analyst to figure out what to conclude when the analyses don't all tell a consistent story, which hardly seems fair or even feasible.
+I suspect that a good way out of this fix is to put more stock in and invest further in developing formal, generative models---whether with the beta density model, the step function selection model, the Copas model, or some other form of selection model---and careful model assessment and critique.
