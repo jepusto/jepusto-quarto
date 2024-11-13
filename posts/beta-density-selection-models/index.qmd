@@ -1,7 +1,6 @@
 ---
 title: Beta-density selection models for meta-analysis
 date: '2024-11-08'
-draft: true
 categories:
 - effect size
 - distribution theory
