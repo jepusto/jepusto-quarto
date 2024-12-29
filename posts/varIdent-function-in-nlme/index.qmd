@@ -1,0 +1,388 @@
+---
+title: A quirk of `nlme::varIdent`
+date: '2024-12-28'
+categories:
+- Rstats
+- programming
+- hierarchical models
+- nlme
+code-tools: true
+code-fold: false
+reference-location: margin
+description: Wherein I document how to control the reference level in models that use `nlme::varIdent()` for specifying a variance structure.
+---
+
+The `nlme` package is a venerable, now quite old package for fitting hierarchical models in R. 
+Compared to the better-known `lme4` package, `nlme` provides greater flexibility for specifying dependence structures at the finest-grain level of the model, such as allowing for heteroskedastic errors or correlated errors that follow an auto-regressive structure within each higher-level unit.[^my-packages] 
+Due to its quite advanced age (the first entry in the changelog is from December 23, 1999!), it is perhaps not surprising that the package has a number of what one might call quirks---odd, counter-intuitive behaviors that are unlike the behavior of other core model-fitting functions in R.
+A few of my past posts have documented [some](/posts/bug-in-nlme-getVarCov/) of [these quirks](/posts/Bug-in-nlme-with-fixed-sigma/). 
+Here's another one.
+
+[^my-packages]: `nlme` is a minor obsession for me because Several packages that I've worked on provide formal enhancements to or are at least very closely connected to it. The [`clubSandwich` package](/software/clubSandwich/) provides cluster-robust standard errors for fitted models, and it supports models fitted with `nlme::lme()` and `nlme::gls()`. The [`lmeInfo` package](/software/lmeInfo/) provides analytic derivatives for models fitted with `nlme::lme()` and `nlme::gls()`. The [`scdhlm` package](/software/scdhlm/) for calculating effect sizes from single-case designs relies heavily on `nlme::lme()` and on `lmeInfo::g_mlm()`.
+
+### varIdent()
+
+In `nlme`'s syntax, `varIdent()` is used to specify a model in which the variance of the lowest-level error term differs depending on a categorical covariate. I'll call this a "heteroskedastic error" model. Say that we have repeated measures (indexed by $h$) nested within units (indexed by $i$), so that $y_{hi}$ is measurement $h$ on unit $i$ for $h = 1,...,H_i$ and $i=1,...,N$. Let $c_{hi} \in \{1,...,C\}$ denote the category of observation $hi$, and suppose that the last category serves as a reference level. Say we have some model with predictors $\mathbf{x}_{hi}$ and potentially also with random effects terms described by $\mathbf{z}_{hi}$:
+$$
+y_{hi} = \mathbf{x}_{hi} \boldsymbol\beta + \mathbf{z}_{hi} \mathbf{u}_i + e_{hi}
+$$
+where 
+$$
+\text{Var}(e_{hi}) = \sigma^2 \times \exp\left( \sum_{j=1}^{C-1} \lambda_j I(c_{hi} = j)\right).
+$$
+The coefficients $\lambda_1,...,\lambda_{C-1}$ capture how the variance of errors in category $j$ differ from the variance of errors in category $C$. 
+The question is, how can one control the reference level (i.e., choose which category is $C$) when fitting this model?
+
+Let me give a few examples of models with this feature using `Orthodont`, one of the standard datasets included in the `nlme` package. Below I do a bit of tidying up on the factors in this dataset.
+```{r}
+library(tidyverse)
+library(nlme)
+data("Orthodont")
+
+Orthodont <- 
+  Orthodont %>%
+  as.data.frame() %>%
+  mutate(
+    age = as.integer(age),
+    Subject = factor(Subject, levels = sort(levels(Subject)), ordered = FALSE),
+    Sex_rev = fct_rev(Sex),
+    Sex3 = factor(if_else(
+      Subject %in% c("M11","M12","M13","M14","M15","M16"),
+      "Non-binary", 
+      Sex), levels = c("Female","Male","Non-binary")
+    )
+  )
+```
+Here is a simple example of a heteroskedastic error model, without any random effects or any other bells or whistles.
+```{r}
+gls1 <- gls(
+  distance ~ age + Sex, 
+  weights = varIdent(form = ~ 1 | Sex),
+  data = Orthodont
+)
+summary(gls1)
+```
+The reference level of the variance structure is `Male`.[^helper-function]
+
+[^helper-function]: For ease of exposition, let me make a little helper function that pulls out the reference level of the variance structure.
+    ```{r}
+    ref_level <- function(mod) {
+      attr(mod$modelStruct$varStruct, "groupNames")[1]
+    }
+    ref_level(gls1)
+    ```
+
+
+Here's another `gls` model, this time allowing the errors to be correlated within subject:
+```{r}
+gls2 <- update(
+  gls1, 
+  correlation = corCompSymm(form = ~ 1 | Subject)
+)
+ref_level(gls2)
+```
+The reference category has now changed to `{r} ref_level(gls2)`. The same thing happens if I fit a heteroskedastic error model using `lme()`:
+```{r}
+lme1 <- lme(
+  distance ~ age + Sex, 
+  random = ~ 1 | Subject, 
+  weights = varIdent(form = ~ 1 | Sex),
+  data = Orthodont
+)
+ref_level(lme1)
+```
+It would be nice to be able to control the reference level.[^prior-question]
+
+[^prior-question]: I'm not the only one seeking to do this. Someone on the R-SIG-mixed-models listserv [had the same query](https://stat.ethz.ch/pipermail/r-sig-mixed-models/2013q3/020572.html) in July of 2013, but none of the responses provide a solution.
+
+
+### What doesn't work 
+
+The usual way that one would specify reference levels is to set a contrast for the factor:
+```{r}
+contrasts(Orthodont$Sex) <- contr.treatment(2, base = 1)
+```
+But this does not seem to have any effect on the selected reference level of the variance structures:
+```{r}
+update(gls1, data = Orthodont) |> ref_level()
+update(gls2, data = Orthodont) |> ref_level()
+update(lme1, data = Orthodont) |> ref_level()
+```
+Nor does using a factor with the levels in reverse order:
+```{r}
+update(gls1, weights = varIdent(form = ~ 1 | Sex_rev)) |> ref_level()
+update(gls2, weights = varIdent(form = ~ 1 | Sex_rev)) |> ref_level()
+update(lme1, weights = varIdent(form = ~ 1 | Sex_rev)) |> ref_level()
+
+```
+Emma Knight [suggested on R-SIG-mixed-models](https://stat.ethz.ch/pipermail/r-sig-mixed-models/2013q3/020587.html) that the reference level is selected based on the category with the largest number of observations (which is `Male`). That could be what determines the reference level in `gls1` (though it clearly can't be so for `gls2` or `lme`). I've created another factor called `Sex3` where the largest category is Female. If this theory is true, then the reference level of `gls1` should change to Female:
+```{r}
+update(gls1, weights = varIdent(form = ~ 1 | Sex3)) |> ref_level()
+```
+Nothing changes with the other models either:
+```{r}
+update(gls2, weights = varIdent(form = ~ 1 | Sex3)) |> ref_level()
+update(lme1, weights = varIdent(form = ~ 1 | Sex3)) |> ref_level()
+```
+
+What about the order of the data? There is [a bug report](https://bugs.r-project.org/show_bug.cgi?id=18505) documenting that `varIdent()` depends on the sort order of the categorical grouping variable when used in a `gls()` call.[^SO-question]
+Sorting the data in descending order of `Sex3` does affect the reference level for `gls1`:
+```{r}
+Orthodont_sort <- arrange(Orthodont, Sex3)
+Orthodont_rev <- arrange(Orthodont, desc(Sex3))
+head(Orthodont_sort$Sex, 4)
+head(Orthodont_rev$Sex3, 4)
+
+update(
+  gls1, 
+  data = Orthodont_sort
+) |> 
+  ref_level()
+
+update(
+  gls1, 
+  weights = varIdent(form = ~ 1 | Sex3),
+  data = Orthodont_rev
+) |> 
+  ref_level()
+```
+However, this doesn't seem to affect `gls2` or `lme1` at all:
+```{r}
+update(
+  gls2, 
+  data = Orthodont_sort
+) |> 
+  ref_level()
+
+update(
+  gls2, 
+  weights = varIdent(form = ~ 1 | Sex3), 
+  data = Orthodont_rev
+) |> 
+  ref_level()
+
+update(
+  lme1, 
+  data = Orthodont_sort
+) |> 
+  ref_level()
+
+update(
+  lme1, 
+  weights = varIdent(form = ~ 1 | Sex3), 
+  data = Orthodont_rev
+) |> 
+  ref_level()
+```
+Very curious.
+
+[^SO-question]: This [StackOverflow question](https://stackoverflow.com/questions/75929847/reference-category-in-varident-function-nlme-package-depends-on-data-order) notes the same issue and links to a patch from [Ben Bolker](https://math.mcmaster.ca/~bolker/). 
+
+### How to control the reference level
+
+I [posted about this issue](https://stat.ethz.ch/pipermail/r-sig-mixed-models/2024q4/030737.html) to R-SIG-mixed-models with some of the above notes. [Sebastian Meyer](https://www.imbe.med.fau.de/lehrstuhl/sebastian-meyer/#collapse_0) provided a very helpful response, noting that 
+
+> `lme()` internally reorders the data by the grouping factor(s) before initialization, so the order of that factor ('Subject' in your example...) will indirectly determine the reference level of varIdent(), regardless of how your data or strata levels are ordered originally.
+
+Similar re-ordering behavior occurs in `gls()` when the model includes a grouping structure, as it does in `gls2` because of the `corCompSymm()` correlation structure. 
+This insight provides a key for controlling the reference level:
+for a given categorical variable, the reference level will be taken as the level of the first observation in the first level of the grouping factor. 
+Thus, for models with grouping structure, one can set the reference level to Male by re-ordering the levels of `Subject` so that a unit with `Sex = 'Male'` occurs first.
+```{r}
+Orthodont$Subject2 <- fct_relevel(Orthodont$Subject, "M01")
+table(Orthodont$Subject2) |> head()
+
+update(
+  gls2, 
+  correlation = corCompSymm(form = ~ 1 | Subject2)
+) |> 
+  ref_level()
+
+update(
+  lme1, 
+  random = ~ 1 | Subject2
+) |> 
+  ref_level()
+```
+For models without grouping structure, the reference level is indeed controlled by sort order, as if there were only a single group. 
+To control the reference level, one would need to sort the data accordingly. 
+For example, to make Female the reference level in `gls1`, the first observation in the data needs to have `Sex = 'Female'`. 
+This is so in `Orthodont_sort`:
+```{r}
+update(gls1, data = Orthodont_sort) |> ref_level()
+```
+
+What if the categorical variable varies within the grouping factor? For instance, say that we want to fit a model with heteroskedastic errors varying by age of the subject, which varies from 8 to 14 across the repeated measures of each participant. Here's a basic heteroskedastic error `gls()`:
+```{r}
+gls3 <- gls(
+  distance ~ age + Sex, 
+  weights = varIdent(form = ~ 1 | age),
+  data = Orthodont
+)
+```
+And here is one with a correlation structure:
+```{r}
+gls4 <- update(
+  gls3, 
+  correlation = corCompSymm(form = ~ 1 | Subject)
+)
+```
+In both cases, the reference level is the youngest age:
+```{r}
+c(ref_level(gls3), ref_level(gls4))
+```
+To set this to something else in the first model, just re-arrange the first few rows:
+```{r}
+Orthodont2 <- Orthodont[c(4,1,2,3,5:108),]
+
+update(
+  gls3, 
+  data = Orthodont2
+) |> 
+  ref_level()
+```
+However, this doesn't work for `gls4`[^fails-for-gls4] because the first level of the grouping factor is not the first one to appear in the data.[^grouping-order]
+But we could sort the data by the grouping factor and then by `age` so that the desired reference level appears first:
+```{r}
+Orthodont2_sort <- 
+  Orthodont %>%
+  arrange(Subject, desc(age))
+
+head(Orthodont2_sort)
+update(gls4, data = Orthodont2_sort) |> ref_level()
+```
+
+[^fails-for-gls4]: See
+    ```{r}
+    update(gls4, data = Orthodont2) |> ref_level()
+    ```
+
+[^grouping-order]: The first level of `Subject` corresponds to rows 65 through 68:
+    ```{r}
+    which(levels(Orthodont2$Subject)[1] == Orthodont2$Subject)  
+    ```
+It's not elegant, nor particularly intuitive, but it seems to work. 
+
+### Setting a `value`
+
+Sebastian also suggested another technique for directly controlling the reference level of the variance structure:
+
+> It seems that only if there are more than two strata, the reference level for varIdent() can be chosen via a named initial parameter 'value', leaving out the desired reference level, but I haven't tested if this works as intended with both gls() and lme().  It would then make sense to support such a choice also in the case of only two strata, so for a single parameter.
+
+Setting the argument `value` of `varIdent()` specifies initialization values for the variance structure. Sebastian's suggestion is to specify values for every level of the categorical variable except for the desired reference level. Let me give this a try with the `Sex3` variable, which has three distinct levels.
+
+```{r}
+gls_M <- update(
+  gls1, 
+  weights = varIdent(form = ~ 1 | Sex3)
+)
+
+gls_F <- update(
+  gls1, 
+  weights = varIdent(
+    value = c(`Non-binary` = 0.01, Male = 0.01), 
+    form = ~ 1 | Sex3
+  )
+)
+
+gls_NB <- update(
+  gls1, 
+  weights = varIdent(
+    value = c(Female = 0.01, Male = 0.01), 
+    form = ~ 1 | Sex3
+  )
+)
+
+coef(gls_M$modelStruct$varStruct, unconstrained = FALSE)
+coef(gls_F$modelStruct$varStruct, unconstrained = FALSE)
+coef(gls_NB$modelStruct$varStruct, unconstrained = FALSE)
+```
+Indeed, this works for models with variance structures but no correlation structures or random effects.
+Likewise for `gls` models that include grouping structure:
+```{r}
+update(
+  gls2, 
+  weights = varIdent(form = ~ 1 | Sex3)
+) |>
+  ref_level()
+
+update(
+  gls2, 
+  weights = varIdent(
+    value = c(`Non-binary` = 0.01, Female = 0.01), 
+    form = ~ 1 | Sex3
+  )
+) |>
+  ref_level()
+
+update(
+  gls2, 
+  weights = varIdent(
+    value = c(Female = 0.01, Male = 0.01), 
+    form = ~ 1 | Sex3
+  )
+) |> 
+  ref_level()
+```
+
+And for `lme` models with random effects:
+
+```{r}
+update(lme1, weights = varIdent(form = ~ 1 | Sex3)) |>
+  ref_level()
+
+update(
+  lme1, 
+  weights = varIdent(
+    value = c(`Non-binary` = 0.01, Female = 0.01), 
+    form = ~ 1 | Sex3
+  )
+) |>
+  ref_level()
+
+update(
+  lme1, 
+  weights = varIdent(
+    value = c(Female = 0.01, Male = 0.01), 
+    form = ~ 1 | Sex3
+  )
+) |> 
+  ref_level()
+```
+However, as Sebastian noted, it does not work for categories with only two levels (so only one non-reference level):
+```{r}
+update(
+  gls1, 
+  weights = varIdent(
+    value = c(Male = 0.01), 
+    form = ~ 1 | Sex
+  )
+) |>
+  ref_level()
+
+update(
+  gls2, 
+  weights = varIdent(
+    value = c(Female = 0.01), 
+    form = ~ 1 | Sex
+  )
+) |>
+  ref_level()
+
+update(
+  lme1, 
+  weights = varIdent(
+    value = c(Female = 0.01), 
+    form = ~ 1 | Sex
+  )
+) |>
+  ref_level()
+```
+Thus, this is only a partial solution. I agree with Sebastian that it would be useful to support user-specified levels within the `value` argument, even for factors with just one non-reference level.
+
+### Colophon
+
+```{r}
+sessioninfo::session_info()
+```
+
