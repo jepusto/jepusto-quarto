@@ -11,9 +11,9 @@ about:
     href: mailto:yrlee@utexas.edu
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=ajUXozoAAAAJ&hl=en&authuser=1
-org_name: Urban Education Institute at the University of Chicago
-org_url: https://uei.uchicago.edu/
-role: Postdoctoral Scholar
+org_name: Learning Science Institute at Seoul National University
+org_url: https://ls.snu.ac.kr/eng/main/
+role: Senior Researcher
 people-group: Alumni
 listing:
   - id: publications
@@ -39,7 +39,7 @@ listing:
 
 :::::{#about}
 
-Young Ri completed her PhD in the Quantitative Methods program at The University of Texas at Austin. She is currently a postdoctoral scholar in Developmental and Learning Sciences at the Urban Education Institute of the University of Chicago. Her research interests include Hierarchical Linear Modeling (HLM), Robust Variance Estimation methods (RVE), and meta-analysis. 
+Young Ri completed her PhD in the Quantitative Methods program at The University of Texas at Austin. She is currently a [senior researcher](https://ls.snu.ac.kr/eng/sub_people/peo_info.php?idx=172&dp=studies) at the Learning Science Institute at Seoul National University. Her research interests include Hierarchical Linear Modeling (HLM), Robust Variance Estimation methods (RVE), and meta-analysis. 
 
 ::::{.grid}
 
