@@ -6,6 +6,7 @@ categories:
 - programming
 - hierarchical models
 - nlme
+toc: true
 code-tools: true
 code-fold: false
 reference-location: margin
