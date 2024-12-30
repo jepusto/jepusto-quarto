@@ -1,6 +1,7 @@
 ---
 title: Bug in nlme::getVarCov
 date: '2016-08-10'
+date-modified: '2024-12-30'
 categories:
 - Rstats
 - programming
@@ -8,6 +9,10 @@ categories:
 - nlme
 code-tools: true
 ---
+
+::: {.callout-tip title="Update December 30, 2024"}
+The bug documented below was corrected a while ago, in version 3.1-150 of the nlme package. See [the bug report](https://bugs.r-project.org/show_bug.cgi?id=16744) and [the Changelog](https://cran.r-project.org/web/packages/nlme/ChangeLog) entry for 2020-09-24.
+:::
 
 ```{=html}
 <p>I have recently been working to ensure that <a href="https://github.com/jepusto/clubSandwich">my <code>clubSandwich</code> package</a> works correctly on fitted <code>lme</code> and <code>gls</code> models from the <code>nlme</code> package, which is one of the main R packages for fitting hierarchical linear models. In the course of digging around in the guts of <code>nlme</code>, I noticed a bug in the <code>getVarCov</code> function. The purpose of the function is to extract the estimated variance-covariance matrix of the errors from a fitted <code>lme</code> or <code>gls</code> model.</p>
