@@ -1,0 +1,75 @@
+---
+title: SCD-effect-sizes
+subtitle: Single-case design effect size calculator
+date: '2025-01-06'
+categories:
+- effect size
+draft: true
+execute:
+  echo: false
+code-fold: true
+code-tools: true
+format: live-html
+engine: knitr
+---
+
+{{< include /_extensions/r-wasm/live/_knitr.qmd >}}
+
+
+# Data input
+
+Enter data values, separated by commas, spaces, or tabs.
+
+::::: {.grid}
+
+:::: {.g-col-4}
+
+### Phase A
+
+```{ojs}
+viewof A_data = Inputs.text({placeholder: "Phase A"})
+```
+
+::::
+
+:::: {.g-col-4}
+
+### Phase B
+
+```{ojs}
+viewof B_data = Inputs.text({placeholder: "Phase B"})
+```
+
+::::
+
+:::::
+
+# Effect size specification 
+
+::::: {.panel-tabset}
+
+## Non-overlap
+
+```{ojs}
+//| panel: input
+
+NOMs = ["IRD","NAP","PAND","PEM","PND","Tau","Tau-BC","Tau-U"]
+viewof NOM_index = Inputs.select(NOMs, {value: "NAP", label: "Effect size index"})
+```
+
+## Parametric
+
+```{ojs}
+//| panel: input
+
+ES_parametric = ["LOR", "LRRd", "LRRi", "LRM", "PoGO", "SMD"]
+viewof ES_index = Inputs.select(ES_parametric, {value: "LRRd", label: "Effect size index"})
+```
+
+:::::
+
+```{webr}
+for (x in 1:5) {
+  print(x ** 2)
+}
+```

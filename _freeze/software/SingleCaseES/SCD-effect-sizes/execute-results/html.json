@@ -1,0 +1,15 @@
+{
+  "hash": "5203561f3f24ce4db9abd91ed3e1d10f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: SCD-effect-sizes\nsubtitle: Single-case design effect size calculator\nauthor:\n- name:\n    given: James E. \n    family: Pustejovsky\nformat: live-html\nengine: knitr\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n```{webr}\nfor (x in 1:5) {\n  print(x ** 2)\n}\n```\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

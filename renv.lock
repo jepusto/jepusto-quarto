@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.2",
+    "Version": "4.3.1",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -1954,7 +1954,7 @@
       "RemoteRepo": "metaselection",
       "RemoteUsername": "jepusto",
       "RemoteRef": "HEAD",
-      "RemoteSha": "990bae83717bd7493e0b17cc9f22a73e7a068c66",
+      "RemoteSha": "e51e3aa694594cb7ceb2cc647c2753ae5119389e",
       "Requirements": [
         "Formula",
         "MASS",
@@ -1971,7 +1971,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "541ae1f84541cd708a9de48e6bf0b4db"
+      "Hash": "ba74f4265b5b60d0c9b68a8beeed0adc"
     },
     "mgcv": {
       "Package": "mgcv",

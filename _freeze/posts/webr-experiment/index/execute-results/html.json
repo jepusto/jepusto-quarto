@@ -1,0 +1,15 @@
+{
+  "hash": "8e5d3a7beff17747a5c76c3f9e42d276",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: SCD-effect-sizes\nsubtitle: Single-case design effect size calculator\ndate: '2025-01-06'\ncategories:\n- effect size\ndraft: true\nexecute:\n  echo: false\ncode-fold: true\ncode-tools: true\nformat: live-html\nengine: knitr\n---\n\n::: {.cell}\n\n:::\n\n\n\n\n\n# Data input\n\nEnter data values, separated by commas, spaces, or tabs.\n\n::::: {.grid}\n\n:::: {.g-col-4}\n\n### Phase A\n\n\n\n```{ojs}\nviewof A_data = Inputs.text({placeholder: \"Phase A\"})\n```\n\n\n\n::::\n\n:::: {.g-col-4}\n\n### Phase B\n\n\n\n```{ojs}\nviewof B_data = Inputs.text({placeholder: \"Phase B\"})\n```\n\n\n\n::::\n\n:::::\n\n# Effect size specification \n\n::::: {.panel-tabset}\n\n## Non-overlap\n\n\n\n```{ojs}\n//| panel: input\n\nNOMs = [\"IRD\",\"NAP\",\"PAND\",\"PEM\",\"PND\",\"Tau\",\"Tau-BC\",\"Tau-U\"]\nviewof NOM_index = Inputs.select(NOMs, {value: \"NAP\", label: \"Effect size index\"})\n```\n\n\n\n## Parametric\n\n\n\n```{ojs}\n//| panel: input\n\nES_parametric = [\"LOR\", \"LRRd\", \"LRRi\", \"LRM\", \"PoGO\", \"SMD\"]\nviewof ES_index = Inputs.select(ES_parametric, {value: \"LRRd\", label: \"Effect size index\"})\n```\n\n\n\n:::::\n\n\n\n::: {.cell}\n```{webr}\nfor (x in 1:5) {\n  print(x ** 2)\n}\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
