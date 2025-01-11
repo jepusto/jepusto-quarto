@@ -1,0 +1,149 @@
+---
+title: Bootstrap confidence interval variations
+date: '2025-01-10'
+categories:
+- programming
+- Rstats
+- bootstrap
+code-fold: show
+code-tools: true
+toc: true
+bibliography: "references.bib"
+csl: "../apa.csl"
+---
+
+I recently added some new utilities for calculating bootstrap confidence intervals to the [`simhelpers` package](https://meghapsimatrix.github.io/simhelpers/). 
+The functions are designed to make it a bit more convenient to implement Monte Carlo simulations of bootstrap CIs, including when using an extrapolation technique suggested by @boos2000MonteCarloEvaluation, which [I blogged about here](/posts/Simulating-bootstrap-CIs/). 
+With the latest update, the package now provides options for a bunch of different variants of bootstrap CIs, including:
+
+* the normal CI, which uses bootstrapping to estimate a standard error and then takes plus or minus a normal critical value times the SE;
+* the studentized CI, which uses the bootstrap distribution of a t-statistic rather than the point estimator;
+* the percentile CI, which takes percentiles of the bootstrap distribution as the end-points of the CI;
+* the so-called "basic" CI, which is similar to the percentile CI but pivots the bootstrap distribution around the point estimator;
+* a bias-corrected version of the percentile CI;
+* Efron's bias-corrected-and-accelerated CI, which provides more accurate coverage levels than alternative CIs for some classes of estimators. 
+
+In this post, I'll demonstrate these different CI variants with an example, compare the results to implementations in other packages, and then show how the `simhelpers` implementation can be used for the  @boos2000MonteCarloEvaluation extrapolation technique.
+
+# An example
+
+These variants are also implemented in other packages. 
+Most notably, all of them are implemented in [`boot`](https://cran.r-project.org/package=boot) [@bootpkg], the venerable R package companion to the @Davison1997bootstrap book on bootstrapping.
+Although powerful, the `boot` package is not super friendly from a user-experience perspective. 
+Its output is a bit unwieldy, there are several quirks to its naming conventions, and the confidence interval calculations require the user to implement the bootstrap resampling calculations through `boot::boot()`, which is sometimes a bit awkward.
+Newer packages that provide some of the methods include [`rsample`](https://rsample.tidymodels.org/) [@rsamplepkg] and [`infer`](https://infer.netlify.app/) [@Couch2021infer].
+Both of these offer pipe-friendly workflows, but neither provides the full slate of CI variants. 
+Similar to boot, these packages also lock in the user to the package's resampling tools. 
+And none of the packages support a workflow for the @boos2000MonteCarloEvaluation extrapolation technique. 
+
+# Bootstrap confidence intervals for a mean
+
+Let me demonstrate the confidence intervals using the simple example of estimating correlation. For illustrative purposes, I'll use the `swiss` dataset of various socio-demographic measures of provinces in Switzerland from the late 19th century. I'll look at the correlation between level of education and a measure of fertility:
+```{r, fig.width = 6, fig.height = 4, out.width = "75%"}
+library(ggplot2)
+data("swiss")
+ggplot(swiss) + 
+  aes(x = Education, y = Fertility) + 
+  geom_point() + 
+  theme_minimal()
+```
+Here is a function to calculate the sample correlation and its standard error (which is necessary for the studentized CIs):
+```{r}
+calc_cor <- function(x) {
+  r <- cor(x$Education, x$Fertility) 
+  n <- nrow(x)
+  c(r = r, SE = sqrt((1 - r^2)^2 / (n - 1)))
+}
+
+est <- calc_cor(swiss)
+est
+```
+
+Using this function, we can generate a sample from the bootstrap distribution of the mean:
+
+```{r}
+N <- nrow(swiss)
+cors_boot <- replicate(999, {
+  i <- sample(1:N, replace = TRUE, size = N)
+  calc_cor(swiss[i,])
+}) |>
+  t() |>
+  as.data.frame()
+```
+
+The bootstrap distribution of the sample correlations is clearly skewed and non-normal:
+```{r, fig.width = 6, fig.height = 3, out.width = "75%"}
+ggplot(cors_boot) + 
+  aes(r) + 
+  geom_density(fill = "blue", alpha = 0.5) + 
+  theme_minimal()
+```
+As a consequence of the asymmetry of the bootstrap distribution, the different CI variants will produce discrepant intervals.
+The simhelpers function for calculating these intervals is as follows:
+```{r}
+library(simhelpers)
+
+bootstrap_CIs(
+  boot_est = cors_boot$r,
+  boot_se = cors_boot$SE,
+  est = est["r"],
+  se = est["SE"],
+  CI_type = c("normal","basic","student","percentile","bias-corrected"),
+  format = "long"
+)
+```
+For the bias-corrected-and-accelerated interval, the function requires the user to provide a vector of the empirical influence values of each observation. I'll calculate these using a jack-knife:
+```{r}
+# leave-one-out jack-knife
+jacks <- sapply(1:N, \(x) calc_cor(swiss[-x,])["r"])
+# empirical influence
+inf_vals <- est["r"] - jacks
+
+# Now recalculate the bootstrap CIs
+my_boot_CIs <- bootstrap_CIs(
+  boot_est = cors_boot$r,
+  boot_se = cors_boot$SE,
+  est = est["r"],
+  se = est["SE"],
+  influence = inf_vals,
+  CI_type = c("normal","basic","student","percentile","bias-corrected","BCa"),
+  format = "long"
+)
+
+my_boot_CIs
+```
+
+```{r}
+library(boot) 
+
+calc_cor <- function(x, i = 1:nrow(x)) {
+  r <- cor(x$Education[i], x$Fertility[i]) 
+  n <- nrow(x)
+  c(r = r, SE = sqrt((1 - r^2)^2 / (n - 1)))
+}
+
+swiss_boots <- boot(swiss, calc_cor, R = 999)
+```
+
+
+
+```{r}
+
+```
+
+
+
+```{r}
+
+r_dat <- function(n, rho, df = 10) {
+  require(mvtnorm)
+  Sigma <- rho + diag(1 - rho, nrow = 2)
+  rmvt(n = n, sigma = Sigma, df = 10)
+}
+
+calc_cor <- \(x) cor(x[,1], x[,2])
+
+r_dat(30, rho = 0.8) |> calc_cor()
+
+```
+
