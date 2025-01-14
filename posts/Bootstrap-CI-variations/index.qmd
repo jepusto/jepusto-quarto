@@ -514,19 +514,18 @@ boot_performance %>%
 ```
 In addition to the coverage rates and average widths of intervals based on between 49 and 399 bootstraps, the results also include performance summaries for intervals with $B = 1999$ bootstraps, based on the Boos and Zhang extrapolation method.
 Here's a graph showing the extrapolated coverage rates for each of the CI variants:
-```{r, fig.width = 6, fig.height = 3.5, out.width = "100%"}
+```{r, fig.width = 7, fig.height = 4, out.width = "100%"}
 boot_performance_top <- filter(boot_performance, bootstraps == 1999)
 
 ggplot(boot_performance) +
   aes(x = bootstraps, y = boot_coverage, color = CI_type) + 
   scale_x_continuous(breaks = c(49,99,199,399,1999), transform = "reciprocal") + 
-  scale_y_continuous(expand = expansion(0, c(0.01,0))) + 
+  scale_y_continuous(limits = c(0.8,1.0), expand = expansion(0, 0), sec.axis = dup_axis(name = "")) + 
   geom_hline(yintercept = 0.95, linetype = "dashed") + 
   geom_hline(data = perf, aes(yintercept = coverage), color = "darkgrey") + 
   geom_point() + 
-  geom_label(data = boot_performance_top, aes(label = CI_type), nudge_x = -0.002) + 
+  ggrepel::geom_label_repel(data = boot_performance_top, aes(label = CI_type), nudge_x = -0.004) + 
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE) + 
-  expand_limits(y = 1) +  
   theme_minimal() + 
   theme(legend.position = "none") + 
   labs(
@@ -535,4 +534,75 @@ ggplot(boot_performance) +
   )
 
 ```
+The studentized interval gets very close to the nominal coverage level with $B = 1999$ bootstraps.
+Surprisingly, BCa does not do nearly as well and is worse than the regular percentile interval.   
+Perhaps this is because, for this simple problem, the extra machinery of the bias and acceleration corrections might not be needed or the corrections cannot be estimated accurately enough with a sample of this size. 
 
+Here's the average widths of each variant:
+```{r, fig.width = 7, fig.height = 4, out.width = "100%"}
+boot_performance_top <- filter(boot_performance, bootstraps == 49)
+
+ggplot(boot_performance) +
+  aes(x = bootstraps, y = boot_width, color = CI_type) + 
+  scale_x_continuous(breaks = c(49,99,199,399,1999), transform = "reciprocal") + 
+  geom_hline(data = perf, aes(yintercept = width), color = "darkgrey") + 
+  geom_point() + 
+  ggrepel::geom_label_repel(data = boot_performance_top, aes(label = CI_type), nudge_x = 0.004) + 
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE) + 
+  theme_minimal() + 
+  theme(legend.position = "none") + 
+  labs(
+    x = "Bootstraps (B)", 
+    y = "Average CI width"
+  )
+
+```
+
+
+## Timing
+
+This particular problem is perhaps not the most compelling way illustrate Boos and Zhang's extrapolation method because it would fairly simple to just compute a larger number of bootstraps and not worry about the complications of computing a bunch of extra CIs and extrapolating. 
+Here's some timing comparisons. 
+First, the brute-force approach of just computing $B=1999$ bootstraps for each of 500 replications:
+```{r}
+library(tictoc)
+
+tic()
+perf_1999 <- sim_cor(
+  reps = 500, 
+  n = 25, rho = 0.75,
+  B_vals = 1999,
+  CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
+) %>%
+  unnest(bs_CIs) %>%
+  pivot_longer(
+    c(ends_with("_lower"), ends_with("_upper")),
+    names_pattern = "(.+)_(.+)",
+    names_to = c("CI_type",".value")
+  ) %>%
+  group_by(CI_type) %>%
+  summarize(
+    calc_coverage(lower_bound = lower, upper_bound = upper, true_param = 0.75)
+  )
+toc()
+```
+Compare that to doing 500 replications, each with 399 bootstraps but computing 5 confidence intervals each time and then extrapolating out to $B = 1999$:
+```{r}
+tic()
+sim_cor(
+  reps = 500, 
+  n = 25, rho = 0.75,
+  B_vals = c(49, 99, 199, 299, 399),
+  CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
+) %>%
+  summarize(
+    extrapolate_coverage(
+      CI_subsamples = bs_CIs, true_param = 0.75, 
+      B_target = 1999,
+      nested = TRUE, format = "long"
+    )
+  )
+toc()
+```
+There is some time savings, but perhaps not worth the extra hassle. 
+The extrapolation method is much more useful when the statistic calculated on each bootstrap re-sample takes a relatively long time to compute, so that using only a fraction of the bootstraps (399 versus 1999, in this example) substantially reduces the total compute time. 
