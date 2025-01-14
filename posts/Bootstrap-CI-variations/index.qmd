@@ -16,34 +16,39 @@ I recently added some new utilities for calculating bootstrap confidence interva
 The functions are designed to make it a bit more convenient to implement Monte Carlo simulations of bootstrap CIs, including when using an extrapolation technique suggested by @boos2000MonteCarloEvaluation, which [I wrote about a while ago](/posts/Simulating-bootstrap-CIs/). 
 With the latest update, the package now provides options for a bunch of different variants of bootstrap CIs, including:
 
-* the normal CI, which uses bootstrapping to estimate a standard error and then takes plus or minus a normal critical value times the SE;
+* the normal CI, which uses bootstrapping to estimate a standard error and bias-correction, then takes plus or minus a normal critical value times the SE;
 * the studentized CI, which uses the bootstrap distribution of a t-statistic rather than the point estimator;
 * the percentile CI, which takes percentiles of the bootstrap distribution as the end-points of the CI;
 * the so-called "basic" CI, which is similar to the percentile CI but pivots the bootstrap distribution around the point estimator;
 * a bias-corrected version of the percentile CI;
-* Efron's [-@efron1987better] bias-corrected-and-accelerated CI, which provides more accurate coverage levels than alternative CIs for some classes of estimators. 
+* Efron's [-@efron1987better] bias-corrected-and-accelerated CI, which is supposed to provide more accurate coverage levels than alternative CIs for some classes of estimators. 
 
 These CI variants are also implemented in other packages. 
 Most notably, all of them are implemented in [`boot`](https://cran.r-project.org/package=boot) [@bootpkg], the venerable R package companion to the @Davison1997bootstrap book on bootstrapping.
-Although very full-featured and widely used, the `boot` package does not offer a super-friendly user experience. 
+Although very full-featured and widely used (it has `r crandep::get_dep("boot", "all", reverse = TRUE) |> nrow()` reverse dependencies!), the `boot` package does not offer a super-friendly user experience. 
 Its output is a unwieldy, there are several quirks to its naming conventions, and its function for confidence interval calculations require the user to implement the bootstrap resampling calculations through `boot::boot()`, which is sometimes a bit awkward.
-Newer packages that provide some of the methods include [`infer`](https://infer.netlify.app/) [@Couch2021infer] and [`rsample`](https://rsample.tidymodels.org/) [@rsamplepkg].
+Newer packages that provide some of the same methods include [`infer`](https://infer.netlify.app/) [@Couch2021infer] and [`rsample`](https://rsample.tidymodels.org/) [@rsamplepkg].
 Both of these offer pipe-friendly workflows, but neither provides the full slate of CI variants. 
-As with `boot`, these packages also lock in the user to the package's resampling tools. 
+As with `boot`, these packages also lock in (or at least strongly nudge) the user to the package's resampling tools. 
 And none of the packages support a workflow for the @boos2000MonteCarloEvaluation extrapolation technique. 
 
-In this post, I'll demonstrate these different CI variants with an example, compare the results to implementations in other packages, and then show how the `simhelpers` implementation can be used for the  @boos2000MonteCarloEvaluation extrapolation technique.
+In this post, I'll demonstrate the `simhelpers` implementation of these different CI variants with an example, compare the results to implementations in other packages, and then show how the `simhelpers` implementation can be used for the  @boos2000MonteCarloEvaluation extrapolation technique.
 
 # Bootstrap confidence intervals for a mean
 
 Let me demonstrate the confidence intervals using a simple example of estimating a correlation. For illustrative purposes, I'll use the `swiss` dataset of various socio-demographic measures of provinces in Switzerland from the late 19th century. I'll look at the correlation between level of education and a measure of fertility:
 
-```{r, fig.width = 6, fig.height = 4, out.width = "75%"}
+```{r}
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 75%
+
 library(ggplot2)
 data("swiss")
 ggplot(swiss) + 
   aes(x = Education, y = Fertility) + 
-  geom_point() + 
+  geom_point(color = "purple") + 
   theme_minimal()
 ```
 Here is a function to calculate the sample correlation and its standard error (which is necessary for the studentized CIs):
@@ -71,10 +76,16 @@ cors_boot <- replicate(999, {
 ```
 
 The bootstrap distribution of the sample correlations is clearly skewed and non-normal:
-```{r, fig.width = 6, fig.height = 2, out.width = "75%"}
+```{r}
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 2
+#| out-width: 75%
+
 ggplot(cors_boot) + 
   aes(r) + 
-  geom_density(fill = "blue", alpha = 0.5) + 
+  geom_density(fill = "green", alpha = 0.25) + 
+  geom_vline(xintercept = est["r"], color = "green", linewidth = 1.2) + 
   theme_minimal()
 ```
 As a consequence of the asymmetry and non-normality of the bootstrap distribution, the different CI variants will produce discrepant intervals.
@@ -96,7 +107,7 @@ For the bias-corrected-and-accelerated interval, the function requires the user 
 # leave-one-out jack-knife
 jacks <- sapply(1:N, \(x) my_calc_cor(swiss[-x,])["r"])
 # empirical influence
-inf_vals <- est["r"] - jacks
+inf_vals <- mean(jacks) - jacks
 
 # Now recalculate the bootstrap CIs
 my_boot_CIs <- bootstrap_CIs(
@@ -123,15 +134,21 @@ CI_r <- data.frame(
 
 CI_r
 ```
-How do these various CIs compare? Here's a graph illustrating all of the intervals.
+How do these various CIs compare? Here's a graph illustrating all of the intervals:
 
-```{r, fig.width = 6, fig.height = 3, out.width = "75%"}
+```{r}
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 3
+#| out-width: 75%
+
 CI_r$bootstraps <- 0
 all_CIs <- rbind(my_boot_CIs, CI_r)
 all_CIs$type <- factor(all_CIs$type, levels = c("Fisher z","BCa","bias-corrected","percentile","basic","student","normal"))
 
 ggplot(all_CIs) +
   aes(xmin = lower, xmax = upper, y = type, color = type) + 
+  geom_vline(xintercept = est["r"], color = "green", linewidth = 1.2) + 
   geom_errorbar() + 
   theme_minimal() + 
   theme(legend.position = "none") + 
@@ -139,7 +156,7 @@ ggplot(all_CIs) +
 ```
 The various bootstrap intervals differ by quite a bit. 
 The percentile and bias-corrected percentile intervals are wide and extend to smaller correlations than the other intervals. 
-The basic interval is markedly different than the others, extending to much higher correlations than any of the others. 
+The basic interval is markedly different, extending to much higher correlations than any of the other intervals. 
 The studentized and BCa intervals are closer to each other and come closer to matching the end-points of the Fisher z interval.
 It's not necessarily the case that Fisher's z interval is correct or optimal, unless the observations actually are drawn from a bivariate normal distribution.
 But it does seem suggestive that the studentized and BCa intervals are closer to agreeing with Fisher.
@@ -174,7 +191,7 @@ The package does not have an option for bias-corrected intervals (without accele
 boot_BC_CI <- boot.ci(swiss_boots, type = "bca", L = -1:1)
 boot_BC_CI
 ```
-These results will not align with those reported above because they're based on a different sample from the bootstrap distribution. 
+These results will not align exactly with those reported above because they're based on a different sample from the bootstrap distribution. 
 To allow for direct comparison, I'll recompute the intervals using the bootstrap sample stored in `swiss_boots` (and computing the influence values using the same method as used implicitly by `boot.ci()`:
 ```{r}
 emp_inf_vals <- empinf(swiss_boots)
@@ -360,7 +377,7 @@ All checks out, with small differences due to the method used to interpolate per
 
 Although `rsample` does not provide the full set of bootstrap CI variants, the three it does include are probably the most useful ones. 
 The option to include the original sample estimate as an additional result in the `bootstraps` object is also quite nice,
-and the functions nicely handle computing bootstraps for each of several terms (such as multiple regression coefficient estimates from a given model).
+and the functions smoothly handle computing bootstraps for each of several terms (such as multiple regression coefficient estimates from a given model).
 However, the workflow enforced by `rsample` does seem to have a big downside with respect to memory management. 
 Taking a bootstrap sample with $B$ replications creates $B$ new datasets (stored in a nested list). 
 Similarly, running `loo_cv()` creates a near-copy of the dataset for every row of the original dataset.
@@ -374,8 +391,8 @@ Especially for large datasets, it would be much more memory-efficient to roll to
 
 # Extrapolating coverage rates a la Boos and Zhang
 
-The main reason that I implemented all these boostrap CI variants in `simhelpers` is to assist with running Monte Carlo simulations of bootstrap procedures. 
-The main novel feature of my implementation is that `bootstrap_CIs()` can compute not just one interval, but a collection of several intervals using different-sized subsamples of bootstrap replicates.  
+One big reason that I implemented all these boostrap CI variants in `simhelpers` is to assist with running Monte Carlo simulations of bootstrap procedures. 
+The main novel feature of my implementation is that `bootstrap_CIs()` can compute not just one interval, but a collection of several intervals using different-sized subsamples of bootstrap replicates.
 The number of bootstrap replicates to use in each interval can be specified by providing a vector to the `B_vals` argument, as follows:
 ```{r}
 bootstrap_CIs(
@@ -390,16 +407,24 @@ bootstrap_CIs(
 )
 ```
 
-In the context of a simulation study, this feature makes it feasible to compute coverage levels of a bootstrap CI for several different values of $B$, then extrapolate to higher numbers of replicates. Here is a small simulation to demonstrate how this can work. 
+In the context of a simulation study, this feature makes it feasible to compute coverage levels of a bootstrap CI for several different values of $B$, then extrapolate to higher numbers of replicates. 
+
+## Simulating bootstrap CIs for a Pearson correlation
+
+Here is a small simulation to demonstrate how all this can work. 
 I'll generate samples of size $n = 25$ from a bivariate-$t$ distribution with correlation parameter $\rho = 0.75$ and with just $\nu = 8$ degrees of freedom.  With each sample, I'll calculate the sample correlation and a set of bootstrapped confidence intervals with $B = 49, 99, 199, 299, 399$. 
 Here's the data-generating function:
 ```{r}
-r_t_bi <- function(n, rho, df = 8) {
-  require(mvtnorm)
+r_t_bi <- function(n, rho = 0, df = 8) {
   Sigma <- rho + diag(1 - rho, nrow = 2)
-  rmvt(n = n, sigma = Sigma, df = 10)
+  mvtnorm::rmvt(n = n, sigma = Sigma, df = 10)
 }
 
+rho <- 0.75
+dat <- r_t_bi(25, rho)
+```
+And the estimation function:
+```{r}
 cor_CI <- function(
   dat, 
   CI_type = "percentile", 
@@ -432,7 +457,7 @@ cor_CI <- function(
     c(r, sqrt((1 - r^2)^2 / (N - 1)))
   })
   
-  bs_CIs <- bootstrap_CIs(
+  bs_CIs <- simhelpers::bootstrap_CIs(
     boot_est = r_boot[1,],
     boot_se = r_boot[2,],
     est = r_est,
@@ -443,7 +468,7 @@ cor_CI <- function(
     format = "wide-list"
   )
   
-  tibble(
+  tibble::tibble(
     r = r_est,
     SE = SE_r,
     lo = tanh(CI_z[1]),
@@ -454,18 +479,21 @@ cor_CI <- function(
   )
 }
 
-dat <- r_t_bi(25, 0.75)
-res <- cor_CI(dat, CI_type = c("percentile","student","BCa"))
+res <- cor_CI(dat, CI_type = c("percentile","student"))
 res
 ```
-Setting the argument `format = "wide-list"` in the call to `generate_CIs()` makes it convenient to store all the CIs in a nested list-column. Here's the contents of $bs_CIs$: 
+
+Setting the argument `format = "wide-list"` in the call to `generate_CIs()` makes it convenient to store all the CIs in a nested list-column. Here's the contents of `bs_CIs`: 
 ```{r}
+#| 
 res$bs_CIs[[1]]
 ```
 
 Now let me pass these functions to `simhelpers::bundle_sim()` so that I can replicate the data-generation and estimation calls as many times as I like.
-Calling the resulting function gives me 2000 replications of the whole process, where each replication involves generating $B = 399$ bootstraps and also $N$ leave-one-out jack-knife values:
+Calling the resulting function gives me 2000 replications of the whole process, where each replication involves generating $B = 399$ bootstraps and also $n$ leave-one-out jack-knife values:
 ```{r}
+#| cache: true
+
 # bundle the data-generating and estimation functions 
 # into a simulation driver
 sim_cor <- bundle_sim(r_t_bi, cor_CI)
@@ -473,28 +501,33 @@ sim_cor <- bundle_sim(r_t_bi, cor_CI)
 # Run many replications
 sim_reps <- sim_cor(
   reps = 2000, 
-  n = 25, rho = 0.75,
+  n = 25, rho = rho,
   B_vals = c(49, 99, 199, 299, 399),
   CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
 )
 head(sim_reps)
 ```
 Now I'll summarize across replications to evaluate the coverage rates of each set of confidence intervals. For the Fisher intervals, `simhelpers::calc_coverage()` does the trick, but for the bootstrap intervals I need to use `simhelpers::extrapolate_coverage()` because each replication is a specially structured _set_ of multiple confidence intervals with different values of $B$.
-
+I will implement these summary calculations with a function so that I can re-use it later:
 ```{r}
-perf <- 
-  sim_reps %>%
-  summarize(
-    calc_absolute(estimates = r, true_param = 0.75, criteria = "bias"),
-    E_w = mean(w),
-    E_a = mean(a),
-    calc_coverage(lower_bound = lo, upper_bound = hi, true_param = 0.75),
-    extrapolate_coverage(
-      CI_subsamples = bs_CIs, true_param = 0.75, 
-      B_target = 1999,
-      nested = TRUE, format = "long"
+#| cache: true
+
+eval_performance <- function(dat, rho = 0, B_target = 1999) {
+  require(simhelpers, quietly = TRUE)
+  
+  dat |>
+    dplyr::summarize(
+      calc_absolute(estimates = r, true_param = rho, criteria = "bias"),
+      calc_coverage(lower_bound = lo, upper_bound = hi, true_param = rho),
+      extrapolate_coverage(
+        CI_subsamples = bs_CIs, true_param = rho, 
+        B_target = B_target,
+        nested = TRUE, format = "long"
+      )
     )
-  )
+}
+
+perf <- eval_performance(sim_reps, rho = rho)
 
 # Bias and Fisher interval
 perf %>%
@@ -510,11 +543,16 @@ boot_performance <-
 
 boot_performance %>%
   filter(CI_type == "percentile") %>%
-  select(bootstraps, boot_coverage, boot_width)
+  select(CI_type, bootstraps, boot_coverage, boot_width)
 ```
 In addition to the coverage rates and average widths of intervals based on between 49 and 399 bootstraps, the results also include performance summaries for intervals with $B = 1999$ bootstraps, based on the Boos and Zhang extrapolation method.
 Here's a graph showing the extrapolated coverage rates for each of the CI variants:
-```{r, fig.width = 7, fig.height = 4, out.width = "100%"}
+```{r}
+#| code-fold: true
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
 boot_performance_top <- filter(boot_performance, bootstraps == 1999)
 
 ggplot(boot_performance) +
@@ -524,7 +562,11 @@ ggplot(boot_performance) +
   geom_hline(yintercept = 0.95, linetype = "dashed") + 
   geom_hline(data = perf, aes(yintercept = coverage), color = "darkgrey") + 
   geom_point() + 
-  ggrepel::geom_label_repel(data = boot_performance_top, aes(label = CI_type), nudge_x = -0.004) + 
+  ggrepel::geom_label_repel(
+    data = boot_performance_top, 
+    aes(label = CI_type), 
+    nudge_x = -0.004
+  ) + 
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE) + 
   theme_minimal() + 
   theme(legend.position = "none") + 
@@ -539,15 +581,24 @@ Surprisingly, BCa does not do nearly as well and is worse than the regular perce
 Perhaps this is because, for this simple problem, the extra machinery of the bias and acceleration corrections might not be needed or the corrections cannot be estimated accurately enough with a sample of this size. 
 
 Here's the average widths of each variant:
-```{r, fig.width = 7, fig.height = 4, out.width = "100%"}
-boot_performance_top <- filter(boot_performance, bootstraps == 49)
+```{r}
+#| code-fold: true
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+boot_performance_bottom <- filter(boot_performance, bootstraps == 49)
 
 ggplot(boot_performance) +
   aes(x = bootstraps, y = boot_width, color = CI_type) + 
   scale_x_continuous(breaks = c(49,99,199,399,1999), transform = "reciprocal") + 
   geom_hline(data = perf, aes(yintercept = width), color = "darkgrey") + 
   geom_point() + 
-  ggrepel::geom_label_repel(data = boot_performance_top, aes(label = CI_type), nudge_x = 0.004) + 
+  ggrepel::geom_label_repel(
+    data = boot_performance_bottom, 
+    aes(label = CI_type), 
+    nudge_x = 0.004
+  ) + 
   geom_smooth(method = "lm", formula = y ~ x, se = FALSE) + 
   theme_minimal() + 
   theme(legend.position = "none") + 
@@ -557,7 +608,8 @@ ggplot(boot_performance) +
   )
 
 ```
-
+The near-nominal coverage rate for the studentized interval comes with an increased width. The percentile and basic CIs have identical widths because they're based on the same percentiles, just used in different ways.
+Notably, the percentile interval has shorter average width than the bias-corrected or BCa intervals, even though it also has better coverage. 
 
 ## Timing
 
@@ -565,15 +617,18 @@ This particular problem is perhaps not the most compelling way illustrate Boos a
 Here's some timing comparisons. 
 First, the brute-force approach of just computing $B=1999$ bootstraps for each of 500 replications:
 ```{r}
+#| cache: true
+
 library(tictoc)
 
 tic()
-perf_1999 <- sim_cor(
-  reps = 500, 
-  n = 25, rho = 0.75,
-  B_vals = 1999,
-  CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
-) %>%
+perf_1999 <- 
+  sim_cor(
+    reps = 500, 
+    n = 25, rho = 0.75,
+    B_vals = 1999,
+    CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
+  ) %>%
   unnest(bs_CIs) %>%
   pivot_longer(
     c(ends_with("_lower"), ends_with("_upper")),
@@ -588,21 +643,118 @@ toc()
 ```
 Compare that to doing 500 replications, each with 399 bootstraps but computing 5 confidence intervals each time and then extrapolating out to $B = 1999$:
 ```{r}
+#| cache: true
+
 tic()
-sim_cor(
-  reps = 500, 
-  n = 25, rho = 0.75,
-  B_vals = c(49, 99, 199, 299, 399),
-  CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
-) %>%
-  summarize(
-    extrapolate_coverage(
-      CI_subsamples = bs_CIs, true_param = 0.75, 
-      B_target = 1999,
-      nested = TRUE, format = "long"
-    )
-  )
+perf_extra <- 
+  sim_cor(
+    reps = 500, 
+    n = 25, rho = 0.75,
+    B_vals = c(49, 99, 199, 299, 399),
+    CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
+  ) %>%
+  eval_performance()
 toc()
 ```
-There is some time savings, but perhaps not worth the extra hassle. 
+There is some time savings, but perhaps not worth the extra hassle in this instance. 
 The extrapolation method is much more useful when the statistic calculated on each bootstrap re-sample takes a relatively long time to compute, so that using only a fraction of the bootstraps (399 versus 1999, in this example) substantially reduces the total compute time. 
+
+## Multifactor simulations
+
+Mostly as an excuse to showcase some of the other useful features of `simhelpers`, let me expand my simulation of CIs for a Pearson correlation to a bigger set of conditions in a multifactor simulation.
+First, I'll revise `sim_cor()` to also wrap in the `eval_performance()` function:
+```{r}
+sim_cor <- bundle_sim(
+  f_generate = r_t_bi, 
+  f_analyze = cor_CI,
+  f_summarize = eval_performance
+)
+```
+This results in a "simulation driver" function, which takes model parameters as inputs, runs a full simulation, and returns a dataset with performance measures.
+```{r}
+sim_cor(
+  reps = 10,
+  n = 25, 
+  rho = 0.75, 
+  df = 8,
+  CI_type = "percentile",
+  B_vals = c(49,99,199,299,399),
+  B_target = 1999
+)
+```
+
+Now I'll lay out a grid of parameter values on which to run the simulation:
+```{r}
+params <- expand_grid(
+  n = seq(10,100,10),
+  rho = seq(0.15,0.75,0.15),
+  df = c(8,12,16,100)
+)
+
+params
+```
+After enabling parallel computing, I can execute the simulation using `evaluate_by_row()`:
+```{r}
+#| cache: true
+library(future)
+library(furrr)
+plan(multisession)
+
+res <- evaluate_by_row(
+  params = params,
+  sim_function = sim_cor,
+  reps = 3000,
+  CI_type = c("percentile","student","BCa"),
+  B_vals = c(49,99,199,299,399),
+  B_target = 1999,
+  .options = furrr_options(seed = TRUE)
+)
+```
+After a little further data-cleaning on the back end, we can see how the coverage rates of different intervals compare to each other across a range of parameter values and sample sizes. 
+Here's a graph of the simulated coverage rates as a function of $n$:
+
+```{r}
+#| code-fold: true
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: 100%
+#| column: page
+
+Fisher_res <- 
+  res %>%
+  select(n, rho, df, coverage, width) %>%
+  mutate(CI_type = "Fisher-z")
+
+boot_res <- 
+  res %>%
+  select(n, rho, df, bootstraps, coverage = boot_coverage, width = boot_width) %>%
+  unnest(c(bootstraps, coverage, width)) %>%
+  filter(bootstraps == 1999) %>%
+  select(-bootstraps)
+
+CI_res <- 
+  bind_rows(Fisher_res, boot_res) %>%
+  mutate(
+    rho_lab = paste("rho ==", rho),
+    df_lab = paste("nu ==", df) |> factor(levels = paste("nu ==", c(8,12,16))),
+    CI_type = factor(CI_type, levels = c("Fisher-z","percentile","student","BCa"))
+  )
+
+ggplot(CI_res) + 
+  aes(n, coverage, color = CI_type) + 
+  facet_grid(df_lab ~ rho_lab, labeller = "label_parsed") + 
+  scale_x_continuous(breaks = seq(10,100,20)) + 
+  scale_y_continuous(limits = c(0.85,1.0), breaks = seq(0.9,1.0,0.05), expand = expansion(0, 0)) + 
+  geom_hline(yintercept = 0.95, linetype = "dashed") + 
+  geom_point() + geom_line() + 
+  theme_minimal() + 
+  theme(legend.position = "top") + 
+  labs(x = "n", y = "Coverage rate", color = "")
+```
+The Fisher-z interval has below-nominal coverage and does not appear to improve as sample size gets better. 
+This makes sense because the interval is derived under a bivariate normal model that is not consistent with the actual data-generating process.
+The percentile interval has below-nominal coverage for the smaller sample sizes but appears to get steadily better as sample size increases. 
+The studentized interval performs remarkably well, with coverage very close to nominal even at very small sample sizes.
+Rather curiously, the BCa interval consistently has worse coverage than the (simpler) percentile interval, even for larger sample sizes. 
+This is counter-intuitive to me because the BCa interval is supposed to have second-order accurate coverage [@efron1987better] whereas the percentile interval is only first-order accurate. 
+The upshot of this is that one would expect the coverage rate of the BCa interval to improve more quickly than the percentile interval, but that doesn't seem to be the case here. 

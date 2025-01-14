@@ -1,0 +1,11 @@
+ggplot2
+simhelpers
+boot
+dplyr
+infer
+purrr
+tidyr
+rsample
+tictoc
+future
+furrr
