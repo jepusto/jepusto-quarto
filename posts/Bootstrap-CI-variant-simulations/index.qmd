@@ -7,6 +7,7 @@ categories:
 - bootstrap
 code-fold: show
 code-tools: true
+draft: true
 toc: true
 bibliography: "references.bib"
 csl: "../apa.csl"
@@ -508,18 +509,26 @@ sim_reps <- sim_cor(
 head(sim_reps)
 ```
 Now I'll summarize across replications to evaluate the coverage rates of each set of confidence intervals. For the Fisher intervals, `simhelpers::calc_coverage()` does the trick, but for the bootstrap intervals I need to use `simhelpers::extrapolate_coverage()` because each replication is a specially structured _set_ of multiple confidence intervals with different values of $B$.
+I will implement these summary calculations with a function so that I can re-use it later:
 ```{r}
-perf <- 
-  sim_reps %>%
-  summarize(
-    calc_absolute(estimates = r, true_param = rho, criteria = "bias"),
-    calc_coverage(lower_bound = lo, upper_bound = hi, true_param = rho),
-    extrapolate_coverage(
-      CI_subsamples = bs_CIs, true_param = rho, 
-      B_target = 1999,
-      nested = TRUE, format = "long"
+#| cache: true
+
+eval_performance <- function(dat, rho = 0, B_target = 1999) {
+  require(simhelpers, quietly = TRUE)
+  
+  dat |>
+    dplyr::summarize(
+      calc_absolute(estimates = r, true_param = rho, criteria = "bias"),
+      calc_coverage(lower_bound = lo, upper_bound = hi, true_param = rho),
+      extrapolate_coverage(
+        CI_subsamples = bs_CIs, true_param = rho, 
+        B_target = B_target,
+        nested = TRUE, format = "long"
+      )
     )
-  )
+}
+
+perf <- eval_performance(sim_reps, rho = rho)
 
 # Bias and Fisher interval
 perf %>%
@@ -645,14 +654,109 @@ perf_extra <-
     B_vals = c(49, 99, 199, 299, 399),
     CI_type = c("normal","student","basic","percentile","bias-corrected", "BCa")
   ) %>%
-  summarize(
-    extrapolate_coverage(
-      CI_subsamples = bs_CIs, true_param = rho, 
-      B_target = 1999,
-      nested = TRUE, format = "long"
-    )
-  )
+  eval_performance()
 toc()
 ```
 There is some time savings, but perhaps not worth the extra hassle in this instance. 
 The extrapolation method is much more useful when the statistic calculated on each bootstrap re-sample takes a relatively long time to compute, so that using only a fraction of the bootstraps (399 versus 1999, in this example) substantially reduces the total compute time. 
+
+## Multifactor simulations
+
+Mostly as an excuse to showcase some of the other useful features of `simhelpers`, let me expand my simulation of CIs for a Pearson correlation to a bigger set of conditions in a multifactor simulation.
+First, I'll revise `sim_cor()` to also wrap in the `eval_performance()` function:
+```{r}
+sim_cor <- bundle_sim(
+  f_generate = r_t_bi, 
+  f_analyze = cor_CI,
+  f_summarize = eval_performance
+)
+```
+This results in a "simulation driver" function, which takes model parameters as inputs, runs a full simulation, and returns a dataset with performance measures.
+```{r}
+sim_cor(
+  reps = 10,
+  n = 25, 
+  rho = 0.75, 
+  df = 8,
+  CI_type = "percentile",
+  B_vals = c(49,99,199,299,399),
+  B_target = 1999
+)
+```
+
+Now I'll lay out a grid of parameter values on which to run the simulation:
+```{r}
+params <- expand_grid(
+  n = seq(10,100,10),
+  rho = seq(0.15,0.75,0.15),
+  df = c(8,16,32)
+)
+
+params
+```
+After enabling parallel computing, I can execute the simulation using `evaluate_by_row()`:
+```{r}
+#| cache: true
+library(future)
+library(furrr)
+plan(multisession)
+
+res <- evaluate_by_row(
+  params = params,
+  sim_function = sim_cor,
+  reps = 4000,
+  CI_type = c("percentile","student","BCa"),
+  B_vals = c(49,99,199,299,399),
+  B_target = 1999,
+  .options = furrr_options(seed = TRUE)
+)
+```
+After a little further data-cleaning on the back end, we can see how the coverage rates of different intervals compare to each other across a range of parameter values and sample sizes. 
+Here's a graph of the simulated coverage rates as a function of $n$:
+
+```{r}
+#| code-fold: true
+#| fig-width: 10
+#| fig-height: 6
+#| out-width: 100%
+#| column: page
+
+Fisher_res <- 
+  res %>%
+  select(n, rho, df, coverage, width) %>%
+  mutate(CI_type = "Fisher-z")
+
+boot_res <- 
+  res %>%
+  select(n, rho, df, bootstraps, coverage = boot_coverage, width = boot_width) %>%
+  unnest(c(bootstraps, coverage, width)) %>%
+  filter(bootstraps == 1999) %>%
+  select(-bootstraps)
+
+CI_res <- 
+  bind_rows(Fisher_res, boot_res) %>%
+  mutate(
+    rho_lab = paste("rho ==", rho),
+    df_lab = factor(df, levels = c(8,16,32), labels = paste("nu ==", c(8,16,32))),
+    CI_type = factor(CI_type, levels = c("Fisher-z","percentile","student","BCa"))
+  )
+
+ggplot(CI_res) + 
+  aes(n, coverage, color = CI_type) + 
+  facet_grid(df_lab ~ rho_lab, labeller = "label_parsed") + 
+  scale_x_continuous(breaks = seq(20,100,20)) + 
+  scale_y_continuous(limits = c(0.85,1.0), breaks = seq(0.9,1.0,0.05), expand = expansion(0, 0)) + 
+  geom_hline(yintercept = 0.95, linetype = "dashed") + 
+  geom_point() + geom_line() + 
+  theme_minimal() + 
+  theme(legend.position = "top") + 
+  labs(x = "n", y = "Coverage rate", color = "")
+```
+For small degrees of freedom, the Fisher-z interval has below-nominal coverage and does not appear to improve as sample size gets better. 
+This makes sense because the interval is derived under a bivariate normal model that is not consistent with the actual data-generating process unless the degrees of freedom are large.
+With large degrees of freedom $(\nu = 100)$, the Fisher-z has exactly nominal coverage.
+Across degrees of freedom and true correlations, the percentile interval has below-nominal coverage for the smaller sample sizes but appears to get steadily better as sample size increases. 
+The studentized interval performs remarkably well, with coverage very close to nominal even at very small sample sizes.
+Rather curiously, the BCa interval pretty consistently has worse coverage than the (simpler) percentile interval, even for larger sample sizes. 
+This is counter-intuitive to me because the BCa interval is supposed to have second-order accurate coverage [@efron1987better] whereas the percentile interval is only first-order accurate. 
+The upshot of this is that one would expect the coverage rate of the BCa interval to improve more quickly than the percentile interval, but that doesn't seem to be the case here. 
