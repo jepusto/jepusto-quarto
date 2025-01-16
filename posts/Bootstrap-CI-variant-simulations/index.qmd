@@ -29,16 +29,21 @@ library(simhelpers)
 
 # Data-generating process
 
+As a more-or-less arbitrary data-generating process, I'll look at a bivariate central $t$ distribution with scale matrix $\boldsymbol\Sigma = \left[\begin{array}{cc} 1 \ \rho \\ \rho \ 1 \end{array}\right]$ and degrees of freedom $\nu$:
+$$
+\left(\begin{array}{c} X_1 \\ X_2 \end{array}\right) \sim t_{MV} \left( \left[\begin{array}{c} 0 \\ 0 \end{array}\right], \left[\begin{array}{cc} 1 \ \rho \\ \rho \ 1 \end{array}\right], \nu  \right).
+$$
+The scale matrix of the multivariate $t$ is not exactly the same as its covariance, but $\rho$ nonetheless corresponds to the correlation between $X_1$ and $X_2$.
 
-Here's the data-generating function:
+Here's a data-generating function that returns randomly generated samples based on the bivariate $t$ model:
 ```{r}
 r_t_bi <- function(n, rho = 0, df = 8) {
   Sigma <- rho + diag(1 - rho, nrow = 2)
   mvtnorm::rmvt(n = n, sigma = Sigma, df = df)
 }
 
-rho <- 0.75
-dat <- r_t_bi(25, rho = rho, df = 8)
+dat <- r_t_bi(6, rho = 0.8, df = 10)
+dat
 ```
 
 # Estimation methods 
@@ -102,6 +107,7 @@ cor_CI <- function(
 res <- cor_CI(dat, CI_type = c("percentile","student"))
 res
 ```
+
 # Performance measures
 
 Now I'll summarize across replications to evaluate the coverage rates of each set of confidence intervals. For the Fisher intervals, `simhelpers::calc_coverage()` does the trick, but for the bootstrap intervals I need to use `simhelpers::extrapolate_coverage()` because each replication is a specially structured _set_ of multiple confidence intervals with different values of $B$.
