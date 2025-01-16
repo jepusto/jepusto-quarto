@@ -13,11 +13,14 @@ bibliography: "references.bib"
 csl: "../apa.csl"
 ---
 
-In my [previous post](/posts/Bootstrap-CI-variations/) I demonstrated some new utilities for calculating bootstrap confidence intervals that are brand-new additions to the [`simhelpers` package](https://meghapsimatrix.github.io/simhelpers/), validating that the functions are consistent with the results of other packages and walking through how they can be used to extrapolate confidence interval coverage rates using fewer bootstraps than one would want to see for a real data analysis.
-In the course of illustrating the functions, I set up a small simulation study evaluating how the bootstrap CIs work for estimating the Pearson correlation from a bivariate t data-generating process.
-In this post, I'm going to expand these simulations to a bigger set of conditions in a multi-factor simulation.
-I will compare the performance of four different confidence intervals for the correlation coefficient: 1) the Fisher-z interval, which is derived assuming bivariate normality of the measurements; 2) a percentile bootstrap CI; 3) a studentized bootstrap CI; and 4) Efron's bias-corrected-and-accelerated bootstrap CI.
+In my [previous post](/posts/Bootstrap-CI-variations/), I demonstrated some new brand-new additions to the [`simhelpers` package](https://meghapsimatrix.github.io/simhelpers/): utilities for calculating bootstrap confidence intervals. That post walked through validating that the functions are consistent with the results of other packages and walking through how they can be used to extrapolate confidence interval coverage rates using fewer bootstraps than one would want to see for a real data analysis.
+In the course of illustrating the functions, I set up a small simulation study (with just a single set of parameters) to show how the extrapolation technique works.
+In this post, I'm going to expand these simulations across a bigger set of conditions in a multi-factor simulation.
 This exercise is mostly an excuse to showcase some of the other useful features of `simhelpers`---especially the `bundle_sim()` function for creating simulation drivers and the `evaluate_by_row()` function for executing simulations across a grid of parameter values. 
+
+The goal of the simulation is to evaluate how the bootstrap CIs work for estimating the Pearson correlation from a bivariate t data-generating process.
+I will compare the performance of four different confidence intervals for the correlation coefficient: 1) the Fisher-z interval, which is derived assuming bivariate normality of the measurements; 2) a percentile bootstrap CI; 3) a studentized bootstrap CI; and 4) Efron's bias-corrected-and-accelerated bootstrap CI.
+For the bootstrap intervals, I will use my implementation of the @boos2000MonteCarloEvaluation extrapolation technique (which [I described in much greater detail here](/posts/Simulating-bootstrap-CIs/)).
 
 ```{r}
 library(tidyverse)
