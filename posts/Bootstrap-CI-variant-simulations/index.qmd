@@ -1,28 +1,27 @@
 ---
-title: Bootstrap confidence interval variations
-date: '2025-01-15'
+title: A bigger simulation of bootstrap confidence interval variations
+date: '2025-01-18'
 categories:
 - programming
 - Rstats
 - bootstrap
 code-fold: show
 code-tools: true
-draft: true
 toc: true
 bibliography: "references.bib"
 csl: "../apa.csl"
 ---
 
-In my [previous post](/posts/Bootstrap-CI-variations/), I demonstrated some new brand-new additions to the [`simhelpers` package](https://meghapsimatrix.github.io/simhelpers/): utilities for calculating bootstrap confidence intervals. That post walked through validating that the functions are consistent with the results of other packages and walking through how they can be used to extrapolate confidence interval coverage rates using fewer bootstraps than one would want to see for a real data analysis.
-In the course of illustrating the functions, I set up a small simulation study (with just a single set of parameters) to show how the extrapolation technique works.
+In my [previous post](/posts/Bootstrap-CI-variations/), I demonstrated some new brand-new additions to the [`simhelpers` package](https://meghapsimatrix.github.io/simhelpers/): utilities for calculating bootstrap confidence intervals. That post walked through validating the functions against the results of other packages and showing how they can be used to extrapolate confidence interval coverage rates using fewer bootstraps than one would want to see for a real data analysis.
+In the course of illustrating the functions, I set up a small simulation study (with just one set of parameters) to show how the extrapolation technique works.
 In this post, I'm going to expand these simulations across a bigger set of conditions in a multi-factor simulation.
 This exercise is mostly an excuse to showcase some of the other useful features of `simhelpers`---especially the `bundle_sim()` function for creating simulation drivers and the `evaluate_by_row()` function for executing simulations across a grid of parameter values. 
 
-The goal of the simulation is to evaluate how the bootstrap CIs work for estimating the Pearson correlation from a bivariate t data-generating process.
+The goal of the simulation is to evaluate how the bootstrap CIs work for estimating the Pearson correlation from a bivariate $t$ data-generating process.
 I will compare the performance of four different confidence intervals for the correlation coefficient: 1) the Fisher-z interval, which is derived assuming bivariate normality of the measurements; 2) a percentile bootstrap CI; 3) a studentized bootstrap CI; and 4) Efron's bias-corrected-and-accelerated bootstrap CI.
 For the bootstrap intervals, I will use my implementation of the @boos2000MonteCarloEvaluation extrapolation technique (which [I described in much greater detail here](/posts/Simulating-bootstrap-CIs/)).
 
-```{r}
+```{r setup}
 library(tidyverse)
 library(simhelpers)
 ```
@@ -33,10 +32,10 @@ As a more-or-less arbitrary data-generating process, I'll look at a bivariate ce
 $$
 \left(\begin{array}{c} X_1 \\ X_2 \end{array}\right) \sim t_{MV} \left( \left[\begin{array}{c} 0 \\ 0 \end{array}\right], \left[\begin{array}{cc} 1 \ \rho \\ \rho \ 1 \end{array}\right], \nu  \right).
 $$
-The scale matrix of the multivariate $t$ is not exactly the same as its covariance, but $\rho$ nonetheless corresponds to the correlation between $X_1$ and $X_2$.
+The scale matrix of the multivariate $t$ is not exactly the same as its covariance, but $\rho$ nonetheless corresponds to the correlation between $X_1$ and $X_2$. For purposes of simulating data, I've fixed the means to zero and the diagonals of the scale matrix to 1 because they should not affect the distribution of the sample correlation. 
 
 Here's a data-generating function that returns randomly generated samples based on the bivariate $t$ model:
-```{r}
+```{r DGP}
 r_t_bi <- function(n, rho = 0, df = 8) {
   Sigma <- rho + diag(1 - rho, nrow = 2)
   mvtnorm::rmvt(n = n, sigma = Sigma, df = df)
@@ -48,11 +47,26 @@ dat
 
 # Estimation methods 
 
-And the estimation function:
-```{r}
+Following along the same lines as my previous post, I will look at several different confidence intervals. First, I'll use an interval based on Fisher's z-transformation, which is both normalizing and variance-stabilizing (so that the standard error of the point estimator does not depend on the parameter) when the data come from a bivariate normal distribution. Let $r$ denote the usual sample correlation based on a sample of $n$ observations and let $z(r) = \frac{1}{2}\ln\left(\frac{1 + r}{1 - r}\right) = \text{atan}^{-1}(r)$ be the Fisher transformation function, with inverse $r(z) = \text{atan}(z) = \frac{e^{2z} - 1}{e^{2z} + 1}$. The $1 - 2\alpha$-level Fisher-z interval is given by 
+$$
+\left[\text{atan}\left(z(r) - \frac{\Phi^{-1}(1 - \alpha)}{\sqrt{n - 3}}\right), \ \text{atan}\left(z(r) + \frac{\Phi^{-1}(1 - \alpha)}{\sqrt{n - 3}}\right) \right].
+$$
+This interval is based on a bivariate normality assumption that isn't actually consistent with the data-generating process, so I would not expect it to have the correct coverage unless the degrees of freedom are large enough that the bivariate $t$ approaches the bivariate normal. 
+
+In addition to this interval, I'll look at several different bootstrap intervals, including the usual percentile interval, a studentized interval, and a bias-corrected-and-accelerated interval. 
+The percentile interval is approximate so will not necessarily have exactly nominal coverage, but its coverage rate should approach the nominal level as the sample size gets bigger.
+The BCa interval should have second-order accurate coverage [@efron1987better] and so one would expect its coverage rate to approach the nominal level more quickly than the percentile interval.
+With all these intervals, I'll use the the @boos2000MonteCarloEvaluation extrapolation technique to estimate the coverage level, for which I'll need to calculate and keep track of intervals based on $B = 49, 99, 199, 299$, and $399$ bootstrap replicates.
+
+The BCa interval involves making small tweaks to the percentile interval based on an estimate of bias and an estimate of an acceleration constant that is a function of the empirical influence values.
+I'm going to keep track of the bias correction estimate and the acceleration correction estimates, so that I can understand how noisy they are. 
+
+Here's a function that calculates the point estimator $r$, the Fisher-z interval, the empirical influence values, and then the bootstrap CIs. 
+
+```{r cor-CI}
 cor_CI <- function(
   dat, 
-  CI_type = "percentile", 
+  CI_type = c("percentile","student","BCa"),
   B_vals = c(49, 99, 199, 299, 399)
 ) {
   
@@ -92,28 +106,48 @@ cor_CI <- function(
     B_vals = B_vals,
     format = "wide-list"
   )
-  
+
   tibble::tibble(
     r = r_est,
     SE = SE_r,
     lo = tanh(CI_z[1]),
     hi = tanh(CI_z[2]),
-    w = mean(r_boot < r_est),
+    w = qnorm(mean(r_boot < r_est)),
     a = sum(inf_vals^3) / (6 * sum(inf_vals^2)^1.5),
     bs_CIs = bs_CIs
   )
 }
 
-res <- cor_CI(dat, CI_type = c("percentile","student"))
+res <- cor_CI(dat)
 res
 ```
+The `bundle_sim` function is a convenient way to combine the data-generating function and the estimation function into one. 
+It wraps the composition of both functions in a call to `replicate()`, so that I can repeat the steps of generating data and analyzing the data to my heart's content: 
+
+```{r bundle-sim-1}
+sim_cor <- bundle_sim(
+  f_generate = r_t_bi, 
+  f_analyze = cor_CI
+)
+```
+
+The result is one function, `sim_cor()`, with the all of the arguments from the data-generating function and analysis function combined and with an additional argument (called `reps`) to specify the number of times to repeat the whole thing:
+```{r sim-cor-args}
+args(sim_cor)
+```
+To illustrate how it works, I can call `sim_cor()` to generate five replications of the generate-and-analyze steps:
+```{r sim-cor-demo-1}
+five_reps <- sim_cor(5, n = 20, rho = 0.8, df = 8)
+five_reps
+```
+
 
 # Performance measures
 
-Now I'll summarize across replications to evaluate the coverage rates of each set of confidence intervals. For the Fisher intervals, `simhelpers::calc_coverage()` does the trick, but for the bootstrap intervals I need to use `simhelpers::extrapolate_coverage()` because each replication is a specially structured _set_ of multiple confidence intervals with different values of $B$.
-I will implement these summary calculations with a function so that I can re-use it later:
-```{r}
-#| cache: true
+After generating many sets of results, I'll need to summarize across replications to evaluate the coverage rates of each set of confidence intervals. In my previous post, I did this with a bit of `dplyr` code. 
+Because I'm going to run the simulation across multiple conditions with different parameter values, it will be helpful to have a function so that I can re-use it later. 
+Here's such a function, which has basically the same content as the code chunk from my previous post:
+```{r eval-performance}
 
 eval_performance <- function(dat, rho = 0, B_target = 1999) {
   require(simhelpers, quietly = TRUE)
@@ -126,43 +160,65 @@ eval_performance <- function(dat, rho = 0, B_target = 1999) {
         CI_subsamples = bs_CIs, true_param = rho, 
         B_target = B_target,
         nested = TRUE, format = "long"
-      )
+      ),
+      across(c(w, a), list(M = ~ mean(.x), SD = ~ sd(.x)))
     )
 }
 
+eval_performance(five_reps, rho = 0.8)
 ```
-
-# Simulation driver
-
-First, I'll revise `sim_cor()` to also wrap in the `eval_performance()` function:
-```{r}
+The function that I created earlier with `bundle_sim()` can be further enhanced by wrapping in `eval_performance()`.
+I'll just revise my earlier `sim_cor()` to add it:
+```{r bundle-sim-2}
 sim_cor <- bundle_sim(
   f_generate = r_t_bi, 
   f_analyze = cor_CI,
   f_summarize = eval_performance
 )
 ```
-This results in a "simulation driver" function, which takes model parameters as inputs, runs a full simulation, and returns a dataset with performance measures.
-```{r}
+The result is a "simulation driver" function, which takes model parameters as inputs, runs a full simulation, and returns a dataset with performance measures:
+```{r sim-cor-demo-2}
 sim_cor(
   reps = 10,
   n = 25, 
   rho = 0.75, 
   df = 8,
-  CI_type = "percentile",
-  B_vals = c(49,99,199,299,399),
-  B_target = 1999
+  CI_type = "BCa"
 )
+```
+To examine the raw results without running the performance summaries, just set the `summarize` argument to `FALSE`:
+```{r sim-cor-demo-3}
+sim_cor(
+  reps = 10,
+  n = 25, 
+  rho = 0.75, 
+  df = 8,
+  CI_type = "BCa",
+  summarize = FALSE
+)
+
 ```
 
 # Parameters to examine
 
-```{r}
+Now that I've got a simulation driver, I'm in position to run simulations across a wider set of conditions. 
+For multifactor simulations, I like to instantiate the full set of conditions in a dataset, which I then process to actually do the computation. 
+For these simulations, the model parameters are the true correlation, $\rho$, and the degrees of freedom, $\nu$;
+the only design parameter is $n$, the sample size. 
+For $\rho$, I'll look at values between 0.0 and 0.8 just to cover most of the range of possibilities. 
+(I don't need to look at negative correlations because the statistics involved here are all symmetric with respect to the sign of $\rho$.)
+For degrees of freedom, I'll look at a fairly small value of $\nu = 8$, an intermediate value of $\nu = 16$, and a larger value of $\nu = 32$, the last of which should be fairly close to a bivariate normal distribution.
+For sake of complete overkill, I guess I'll also throw in $\nu =48$, which should be almost identical to a bivariate normal distribution. 
+It's useful to evaluate such a condition because the the Fisher z interval is known to be exact under bivariate normality, so we can validate the simulation set-up by verifying that the coverage levels are consistent with theory here.
+For the choice of sample sizes to examine, I'm interested in understanding how the coverage of the bootstrap intervals changes as sample size increases, so I will look at a fairly fine grid of values between a very small sample size of $n = 10$ and a more moderate sample size of $n = 100$.
+Here's how I create a dataset of simulation conditions:
+
+```{r param-grid}
 
 params <- expand_grid(
   n = seq(10,100,10),
-  rho = seq(0.15,0.75,0.15),
-  df = c(8,16,32)
+  rho = seq(0.0,0.8,0.2),
+  df = c(8,16,32,48)
 )
 
 params
@@ -170,12 +226,22 @@ params
 
 # Execute 
 
-After enabling parallel computing, I can execute the simulation using `evaluate_by_row()`:
-```{r}
+With all these components in place, it's time to start computing.
+The task here is to run the `sim_cor()` simulation driver function on the set of parameters in each row of `params`. In the tidyverse idiom, one would normally do this with `purrr::pmap()` or one of its variants. 
+The `simhelpers` package includes a function `evaluate_by_row()` that accomplishes the same thing.
+It's more or less a wrapper to `pmap()`, with a few little extra touches.
+Instead of `purrr::pmap()`, it uses `furrr::future_pmap()` to enable parallel computing via `future` the package.
+It also keeps track of total compute time and does a little bit of tidying up the simulation results after running everything.
+Here is how I execute the simulation with `evaluate_by_row()`:
+```{r evaluate-by-row}
 #| cache: true
+
+# enable parallel computing
 library(future)
 library(furrr)
-plan(multisession)
+plan(multisession, workers = 8L)
+
+set.seed(20250117)
 
 res <- evaluate_by_row(
   params = params,
@@ -191,15 +257,16 @@ res <- evaluate_by_row(
 
 # Results
 
-After a little further data-cleaning on the back end, we can see how the coverage rates of different intervals compare to each other across a range of parameter values and sample sizes. 
+After a little further data-cleaning on the back end, we can see how the coverage rates of different intervals compare to each other across the full range of parameter values and sample sizes. 
 Here's a graph of the simulated coverage rates as a function of $n$:
 
-```{r}
+```{r coverage-graph}
 #| code-fold: true
+#| lightbox: true
 #| fig-width: 10
-#| fig-height: 6
+#| fig-height: 7
 #| out-width: 100%
-#| column: page
+#| column: body-outset
 
 Fisher_res <- 
   res %>%
@@ -217,7 +284,7 @@ CI_res <-
   bind_rows(Fisher_res, boot_res) %>%
   mutate(
     rho_lab = paste("rho ==", rho),
-    df_lab = factor(df, levels = c(8,16,32), labels = paste("nu ==", c(8,16,32))),
+    df_lab = factor(df, levels = c(8,16,32,48), labels = paste("nu ==", c(8,16,32,48))),
     CI_type = factor(CI_type, levels = c("Fisher-z","percentile","student","BCa"))
   )
 
@@ -225,7 +292,7 @@ ggplot(CI_res) +
   aes(n, coverage, color = CI_type) + 
   facet_grid(df_lab ~ rho_lab, labeller = "label_parsed") + 
   scale_x_continuous(breaks = seq(20,100,20)) + 
-  scale_y_continuous(limits = c(0.85,1.0), breaks = seq(0.9,1.0,0.05), expand = expansion(0, 0)) + 
+  scale_y_continuous(limits = c(0.87,1.0), breaks = seq(0.9,1.0,0.05), expand = expansion(0, 0)) + 
   geom_hline(yintercept = 0.95, linetype = "dashed") + 
   geom_point() + geom_line() + 
   theme_minimal() + 
@@ -233,11 +300,65 @@ ggplot(CI_res) +
   labs(x = "n", y = "Coverage rate", color = "")
 ```
 
-For small degrees of freedom, the Fisher-z interval has below-nominal coverage and does not appear to improve as sample size gets better. 
-This makes sense because the interval is derived under a bivariate normal model that is not consistent with the actual data-generating process unless the degrees of freedom are large.
-With larger degrees of freedom $(\nu = 32)$, the Fisher-z has almost exactly nominal coverage.
-Across degrees of freedom and true correlations, the percentile interval has below-nominal coverage for the smaller sample sizes but appears to get steadily better as sample size increases. 
-The studentized interval performs remarkably well, with coverage very close to nominal even at very small sample sizes.
-Rather curiously, the BCa interval pretty consistently has worse coverage than the (simpler) percentile interval, even for larger sample sizes. 
-This is counter-intuitive to me because the BCa interval is supposed to have second-order accurate coverage [@efron1987better] whereas the percentile interval is only first-order accurate. 
+A few observations here:
+
+* For small degrees of freedom, the Fisher-z interval has below-nominal coverage and appears to degrade further as sample size gets better. This makes sense because the interval is derived under a bivariate normal model that is not consistent with the actual data-generating process unless the degrees of freedom are large. With larger degrees of freedom $(\nu = 32)$, the Fisher-z has almost exactly nominal coverage.
+* Across degrees of freedom and true correlations, the percentile interval has below-nominal coverage for the smaller sample sizes but appears to get steadily better as sample size increases. 
+* The studentized interval performs remarkably well, with coverage very close to nominal even at very small sample sizes.
+* Rather curiously, the BCa interval pretty consistently has worse coverage than the (simpler) percentile interval, even for larger sample sizes. This is counter-intuitive to me because the BCa interval is supposed to have second-order accurate coverage [@efron1987better] whereas the percentile interval is only first-order accurate. 
 The upshot of this is that one would expect the coverage rate of the BCa interval to improve more quickly than the percentile interval, but that doesn't seem to be the case here. 
+
+For sake of completeness, here is a graph of the average width of each type of CI: 
+
+```{r width-graph}
+#| code-fold: true
+#| lightbox: true
+#| fig-width: 10
+#| fig-height: 7
+#| out-width: 100%
+#| column: body-outset
+
+ggplot(CI_res) + 
+  aes(n, width, color = CI_type) + 
+  facet_grid(df_lab ~ rho_lab, labeller = "label_parsed") + 
+  scale_x_continuous(breaks = seq(20,100,20)) + 
+  scale_y_continuous(breaks = seq(0,0.8,0.2), expand = expansion(0, 0)) + 
+  expand_limits(y = 0) + 
+  coord_cartesian(ylim = c(0,1)) + 
+  geom_point() + geom_line() + 
+  theme_minimal() + 
+  theme(legend.position = "top") + 
+  labs(x = "n", y = "Average interval width", color = "")
+```
+At the smallest sample sizes, all of the intervals are quite wide and the studentized interval is extremely so (I've truncated the graph at a width of 1.0, so the studentized interval goes off the scale when $n = 10$). The other intervals are all pretty similar in width, and nearly identically so when the degrees of freedom get large enough.
+
+# Thoughts
+
+I think the most intriguing thing about these simulation results is the BCa interval seems to generally be _worse_ than a regular percentile interval---not the refinement that one might expect. 
+I'm not sure why that is.
+It could have something to do with how the acceleration constant is calculated. 
+I've computed it with a jackknife approximation, but there are alternatives (such as using an infinitesimal jackknife, or just direct calculation if one is willing to impose a distributional assumption) which might work better.
+There are also some other interval construction methods that I haven't bothered to look at here.
+For instance, @hu2020Interval proposed two intervals based on non-parametric empirical likelihood methods. 
+They reported their own set of simulations to evaluate their proposed intervals against the Fisher-z interval, but they didn't look at bootstrap-based intervals.
+Their work could be the basis for a range of extensions to the simulation reported here, such as 
+
+* Adding their empirical likelihood intervals to the set of estimators examined here---how do they do compared to nonparametric bootstraps?
+* Evaluating the Fisher-z and bootstrap intervals under the non-normal data-generating processes that  @hu2020Interval examined. Does the performance of the bootstrap intervals change in meaningful ways under a bivariate exponential distribution?
+
+The main point of this post isn't so much to get into the weeds of interval estimators for the correlation coefficient. 
+Rather, it was to demonstrate an approach to programming simulations of bootstrap methods and showcase some of the tools available in `simhelpers` that can help with this process.
+The schematic I've followed for programming the simulations is discussed in much greater detail in [my book with Luke Miratrix](https://jepusto.github.io/Designing-Simulations-in-R/) on writing simulations.
+
+```{r save}
+#| include: false
+saveRDS(res, "cor-bootstrap-CI.Rdata")
+```
+
+::: {.callout-note icon=false appearance="simple" title="Session Information" collapse=true}
+```{r}
+#| code-fold: false
+sessioninfo::session_info()
+```
+:::
+
