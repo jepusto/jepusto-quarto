@@ -1,5 +1,5 @@
 ---
-title: Interactive display for simulation results
+title: Interactive display of simulation results with Observable.js
 date: '2025-01-18'
 categories:
 - simulation
@@ -8,18 +8,20 @@ draft: true
 execute:
   echo: false
 code-tools: true
-format: live-html
-engine: knitr
 ---
 
-{{< include /_extensions/r-wasm/live/_knitr.qmd >}}
-
 ```{r}
+library(dplyr)
+library(tidyr)
+
 res <- readRDS("../Bootstrap-CI-variant-simulations/cor-bootstrap-CI.Rdata")
 Fisher_res <- 
   res %>%
   select(n, rho, df, coverage, width) %>%
-  mutate(CI_type = "Fisher-z")
+  mutate(
+    CI_type = "Fisher-z",
+    bootstraps = 0
+  )
 
 boot_res <- 
   res %>%
@@ -29,21 +31,46 @@ boot_res <-
 CI_res <- 
   bind_rows(Fisher_res, boot_res) %>%
   mutate(
-    rho = paste("rho ==", rho),
-    df = factor(df, levels = c(8,16,32,48), labels = paste("nu ==", c(8,16,32,48))),
+    # rho = paste("rho ==", rho),
+    # df = factor(df, levels = c(8,16,32,48), labels = paste("nu ==", c(8,16,32,48))),
     CI_type = factor(CI_type, levels = c("Fisher-z","percentile","student","BCa"))
-  )
+  ) %>%
+  as.data.frame()
 
+ojs_define(dat = CI_res)
 ```
 
+```{ojs}
+rho_val = (rho == "All")
+  ? [0.0,0.2,0.4,0.6,0.8]
+  : [rho]
+  
+df_val = (df == "All")
+  ? [8,16,32,48]
+  : [df]
+  
+```
+
+```{ojs}
+filtered = transpose(dat).filter(function(data) {
+  return types.includes(data.CI_type) &&
+    rho_val.includes(data.rho) && 
+    df_val.includes(data.df) && 
+    (bootstraps_val == data.bootstraps || 0 == data.bootstraps);
+})
+```
+
+::::: {.grid .column-page}
+
+:::: {.g-col-4}
 ```{ojs}
 //| panel: input
 
 viewof rho = Inputs.select(
       [0.0,0.2,0.4,0.6,0.8,"All"], 
       {
-        value: "All", 
-        label: "Correlation (rho)"
+        value: 0.4, 
+        label: "Correlation"
       }
     )
 
@@ -51,29 +78,70 @@ viewof df = Inputs.select(
       [8,16,32,48,"All"], 
       {
         value: 16, 
-        label: "Degrees of freedom (nu)"
+        label: "Degrees of freedom"
       }
     )
 
-viewof booties = Inputs.select(
+viewof bootstraps_val = Inputs.select(
       [49,99,199,299,399,1999], 
       {
         value: 1999, 
-        label: "Number of bootstraps (B)"
+        label: "Number of bootstraps"
       }
     )
 
 viewof types = Inputs.checkbox(
   ["Fisher-z", "percentile", "student", "BCa"], 
   {
-    label: "Interval type"
+    label: "Interval type",
+    value: ["Fisher-z", "percentile", "student", "BCa"]
   }
 )
 
 ```
 
-```{webr}
-for (x in 1:5) {
-  print(x ** 2)
-}
+::::
+
+:::: {.g-col-8 .center}
+
+::: {.panel-tabset}
+
+## Coverage
+
+```{ojs}
+
+Plot.plot({
+  x: {domain: [0, 105], grid: true},
+  y: {domain: [0.85, 1], grid: true},
+  style: "overflow: visible;",
+  marks: [
+    Plot.ruleY([0.95], {stroke: "grey", strokeDasharray: "5,3"}),
+    Plot.dot(filtered, {fx: "rho", fy: "df", x: "n", y: "coverage", stroke: "CI_type", fill: "CI_type"}),
+    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "coverage", stroke: "CI_type"}),
+    Plot.text(filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "coverage", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
+  ]
+})
 ```
+
+## Interval width
+
+```{ojs}
+
+Plot.plot({
+  x: {domain: [0, 105], grid: true},
+  y: {domain: [0, 1], grid: true},
+  style: "overflow: visible;",
+  marks: [
+    Plot.ruleY([0]),
+    Plot.dot(filtered, {fx: "rho", fy: "df", x: "n", y: "width", stroke: "CI_type", fill: "CI_type"}),
+    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "width", stroke: "CI_type"}),
+    Plot.text(filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "width", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
+  ]
+})
+```
+
+:::
+
+::::
+
+:::::
