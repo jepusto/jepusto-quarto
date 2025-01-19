@@ -1,0 +1,79 @@
+---
+title: Interactive display for simulation results
+date: '2025-01-18'
+categories:
+- simulation
+- programming
+draft: true
+execute:
+  echo: false
+code-tools: true
+format: live-html
+engine: knitr
+---
+
+{{< include /_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+res <- readRDS("../Bootstrap-CI-variant-simulations/cor-bootstrap-CI.Rdata")
+Fisher_res <- 
+  res %>%
+  select(n, rho, df, coverage, width) %>%
+  mutate(CI_type = "Fisher-z")
+
+boot_res <- 
+  res %>%
+  select(n, rho, df, bootstraps, coverage = boot_coverage, width = boot_width) %>%
+  unnest(c(bootstraps, coverage, width))
+
+CI_res <- 
+  bind_rows(Fisher_res, boot_res) %>%
+  mutate(
+    rho = paste("rho ==", rho),
+    df = factor(df, levels = c(8,16,32,48), labels = paste("nu ==", c(8,16,32,48))),
+    CI_type = factor(CI_type, levels = c("Fisher-z","percentile","student","BCa"))
+  )
+
+```
+
+```{ojs}
+//| panel: input
+
+viewof rho = Inputs.select(
+      [0.0,0.2,0.4,0.6,0.8,"All"], 
+      {
+        value: "All", 
+        label: "Correlation (rho)"
+      }
+    )
+
+viewof df = Inputs.select(
+      [8,16,32,48,"All"], 
+      {
+        value: 16, 
+        label: "Degrees of freedom (nu)"
+      }
+    )
+
+viewof booties = Inputs.select(
+      [49,99,199,299,399,1999], 
+      {
+        value: 1999, 
+        label: "Number of bootstraps (B)"
+      }
+    )
+
+viewof types = Inputs.checkbox(
+  ["Fisher-z", "percentile", "student", "BCa"], 
+  {
+    label: "Interval type"
+  }
+)
+
+```
+
+```{webr}
+for (x in 1:5) {
+  print(x ** 2)
+}
+```

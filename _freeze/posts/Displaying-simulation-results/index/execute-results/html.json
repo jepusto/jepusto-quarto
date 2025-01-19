@@ -1,0 +1,15 @@
+{
+  "hash": "4d1d7a7c920636e6c53b36f2bbb34509",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Interactive display for simulation results\ndate: '2025-01-18'\ncategories:\n- simulation\n- programming\ndraft: true\nexecute:\n  echo: false\ncode-tools: true\nformat: live-html\nengine: knitr\n---\n\n::: {.cell}\n\n:::\n\n```{ojs}\n//| panel: input\n\nviewof rho = Inputs.select(\n      [0.0,0.2,0.4,0.6,0.8,\"All\"], \n      {\n        value: \"All\", \n        label: \"Correlation (rho)\"\n      }\n    )\n\nviewof df = Inputs.select(\n      [8,16,32,48,\"All\"], \n      {\n        value: 16, \n        label: \"Degrees of freedom (nu)\"\n      }\n    )\n\n```\n\n::: {.cell}\n```{webr}\nfor (x in 1:5) {\n  print(x ** 2)\n}\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
