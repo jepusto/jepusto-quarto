@@ -8,7 +8,54 @@ draft: true
 execute:
   echo: false
 code-tools: true
+bibliography: "../selection-references.bib"
 ---
+
+Monte Carlo simulations are an essential tool and ubiquitous feature of my work as a statistical methodologist, appearing in nearly all of my methodological publications ([and](/posts/Bootstrap-CI-variant-simulations/) [many](/posts/Simulating-correlated-SMDs/) [of](/posts/dizzy-for-d-z/), [my](/posts/PET-PEESE-performance/) [blog](/posts/Easily-simulate-thousands-of-single-case-designs/) [posts](/posts/PIR-overestimates-prevalence/), for that matter). 
+For research simulations, I often use factorial designs involving several factors, each with multiple levels, to explore a big space of model parameters and study design features.^[It's not a Pusto lab simulation if it doesn't have at least 1200 conditions in it, we say around here.]
+If you've got the infrastructure to do the computing, then it doesn't take much further effort to run big multifactor simulations.
+What does become more challenging is interpretting and making sense of all the results.
+
+For analyzing simulation results, I usually rely heavily on graphical representations of performance measures (such as bias, root mean-squared error, coverage, etc.).
+Because the simulation designs are multifactor, the graphs are usually small multiples plots (i.e., facet-grids in `ggplot2` terminology).
+Small multiples plots can be used to represent variation in a performance measure (plotted on the vertical axis) across up to four different factors, if those factors are mapped to the horizontal axis and color (and/or stroke and/or shape), along with the horizontal and vertical facets.
+For designs with more than that many factors, one needs to find other ways to deal with remaining factors.
+That might mean creating a bunch of plots that vary across the remaining dimensions, or finding ways to marginalize across those dimensions.
+It quickly gets to be unwieldy. 
+
+For a long while now, I've been looking for easy ways to create more interactive visualizations of simulation results. 
+It seems like interactivity could help with managing dimensionality, by letting a viewer iterate over different values of a parameter to see how a graph changes.
+Visualization also seems useful and appealing as a way to focus in (even literally zoom in) on particular results.
+With the development of [Quarto](https://quarto.org/) and support for tools like [Observable.js](https://observablehq.com/documentation/cells/observable-javascript), creating such interactive visualizations has evidently gotten much easier, even for someone (yours truly!) who knows next to nothing about web development.  
+In this post, I'll give an example of an interactive visualization of simulation results to illustrate what's possible.
+I'll also comment on some alternative approaches that I've seen and note how they differ from the approach demonstrated here.
+
+# An example
+
+In [my previous post](/posts/Bootstrap-CI-variant-simulations/) on bootstrap confidence intervals for correlation coefficients, I represented the results of a small simulation with graphs like this one:
+```{r}
+#| fig-width: 10
+#| fig-height: 7
+#| out-width: 100%
+
+knitr::include_graphics("../Bootstrap-CI-variant-simulations/index_files/figure-html/coverage-graph-1.png")
+```
+
+This graph encodes four distinct factors: 
+
+* sample size on the horizontal axis
+* correlation parameter $(\rho)$ in the column facet
+* degrees of freedom $(\nu)$ in the row facet
+* confidence interval type, represented with color.
+
+This was a fairly small simulation (by my standards) of a relatively simple problem. 
+But even here, some interactivity would be appealing to allow a viewer to zoom in on a panel. It would also be nice to be able to focus in on just one or two of the interval types or to easily remove an interval type that you don't care about.
+
+Below is my attempt at an interactive version of this graphic. 
+I specified the interactive tools with Observable's [inputs library](https://observablehq.com/framework/inputs/). 
+I developed the figure with Observable's [plot library](https://observablehq.com/plot/). 
+I will not get into the details of the programming because I'm still very new to both of these tools.^[If you'd like to inspect my code just click on the `</>CODE` drop-down in the header of the post and select `VIEW SOURCE`.]
+Suffice it to say, I more or less followed the first example in the [Quarto guide to Observable ](https://quarto.org/docs/interactive/ojs/), then fiddled with the plotting code to make it look more like a `ggplot2` graph.
 
 ```{r}
 library(dplyr)
@@ -44,41 +91,66 @@ ojs_define(dat = CI_res)
 rho_val = (rho == "All")
   ? [0.0,0.2,0.4,0.6,0.8]
   : [rho]
+
+rho_lab = (rho == "All")
+  ? 0.8
+  : rho
   
 df_val = (df == "All")
   ? [8,16,32,48]
   : [df]
-  
+
+x_width = (rho == "All")
+  ? 800
+  : (df == "All") 
+    ? 300
+    : 640
+
+y_height = (df == "All")
+  ? 480
+  : (rho == "All") 
+    ? 180
+    : 320
+
 ```
 
 ```{ojs}
-filtered = transpose(dat).filter(function(data) {
-  return types.includes(data.CI_type) &&
-    rho_val.includes(data.rho) && 
-    df_val.includes(data.df) && 
-    (bootstraps_val == data.bootstraps || 0 == data.bootstraps);
+filtered = transpose(dat).filter(function(el) {
+  return types.includes(el.CI_type) &&
+    rho_val.includes(el.rho) && 
+    df_val.includes(el.df) && 
+    (bootstraps_val == el.bootstraps || 0 == el.bootstraps);
 })
 ```
 
-::::: {.grid .column-page}
+```{ojs}
+label_filtered = filtered.filter(function(el) {
+  return rho_val == el.rho
+})
+```
 
-:::: {.g-col-4}
+
+::::: {.grid .column-screen-inset}
+
+:::: {.g-col-3}
 ```{ojs}
 //| panel: input
 
 viewof rho = Inputs.select(
       [0.0,0.2,0.4,0.6,0.8,"All"], 
       {
-        value: 0.4, 
-        label: "Correlation"
+        value: "All", 
+        label: "Correlation",
+        width: "100px"
       }
     )
 
 viewof df = Inputs.select(
       [8,16,32,48,"All"], 
       {
-        value: 16, 
-        label: "Degrees of freedom"
+        value: "All", 
+        label: "Degrees of freedom",
+        width: "100px"
       }
     )
 
@@ -86,7 +158,8 @@ viewof bootstraps_val = Inputs.select(
       [49,99,199,299,399,1999], 
       {
         value: 1999, 
-        label: "Number of bootstraps"
+        label: "Number of bootstraps",
+        width: "100px"
       }
     )
 
@@ -94,7 +167,8 @@ viewof types = Inputs.checkbox(
   ["Fisher-z", "percentile", "student", "BCa"], 
   {
     label: "Interval type",
-    value: ["Fisher-z", "percentile", "student", "BCa"]
+    value: ["Fisher-z", "percentile", "student", "BCa"],
+    width: "100px"
   }
 )
 
@@ -102,23 +176,39 @@ viewof types = Inputs.checkbox(
 
 ::::
 
-:::: {.g-col-8 .center}
+:::: {.g-col-9 .center}
 
 ::: {.panel-tabset}
 
 ## Coverage
 
 ```{ojs}
+colorPalette = { return {
+  "Fisher-z": "#D95F02",
+  "percentile": "#1B9E77",
+  "student": "#7570B3",
+  "BCa": "#E7298A",
+}};
+```
+
+```{ojs}
 
 Plot.plot({
   x: {domain: [0, 105], grid: true},
   y: {domain: [0.85, 1], grid: true},
-  style: "overflow: visible;",
+  fx: {padding: 0.05},
+  fy: {padding: 0.10},
+  width: x_width,
+  height: y_height,
+  color: {
+    legend: true, 
+    domain: Object.keys(colorPalette), 
+    range: Object.values(colorPalette)
+  },
   marks: [
-    Plot.ruleY([0.95], {stroke: "grey", strokeDasharray: "5,3"}),
-    Plot.dot(filtered, {fx: "rho", fy: "df", x: "n", y: "coverage", stroke: "CI_type", fill: "CI_type"}),
-    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "coverage", stroke: "CI_type"}),
-    Plot.text(filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "coverage", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
+    Plot.ruleY([0.95], {stroke: "black", strokeDasharray: "5,3"}),
+    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "coverage", stroke: "CI_type", marker: "circle"}),
+    Plot.text(label_filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "coverage", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
   ]
 })
 ```
@@ -129,13 +219,20 @@ Plot.plot({
 
 Plot.plot({
   x: {domain: [0, 105], grid: true},
-  y: {domain: [0, 1], grid: true},
-  style: "overflow: visible;",
+  y: {grid: true},
+  fx: {padding: 0.05},
+  fy: {padding: 0.10},
+  width: x_width,
+  height: y_height,
+  color: {
+    legend: true, 
+    domain: Object.keys(colorPalette), 
+    range: Object.values(colorPalette)
+  },
   marks: [
     Plot.ruleY([0]),
-    Plot.dot(filtered, {fx: "rho", fy: "df", x: "n", y: "width", stroke: "CI_type", fill: "CI_type"}),
-    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "width", stroke: "CI_type"}),
-    Plot.text(filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "width", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
+    Plot.lineY(filtered, {fx: "rho", fy: "df", x: "n", y: "width", stroke: "CI_type", marker: "circle"}),
+    Plot.text(label_filtered, Plot.selectLast({fx: "rho", fy: "df", x: "n", y: "width", z: "CI_type", text: "CI_type", textAnchor: "start", dx: 5}))
   ]
 })
 ```
@@ -145,3 +242,24 @@ Plot.plot({
 ::::
 
 :::::
+
+Three of the four factors in the simulation design can be interactively filtered using the inputs to the left of the plot. 
+(For simplicity, I kept sample size mapped to the horizontal axis and always display the full range.)
+In addition, the interactive figure lets you change the number of bootstraps used in the bootstrap intervals, a feature of the simulation's design not represented in the static figure from my previous post. 
+Setting the correlation and degrees of freedom drop-downs to specific values lets you zoom in on a specific panel of the figure, so that it's easier to see the fine details. 
+
+This simulation only looked at a few confidence interval methods.
+There are others, including other bootstrap techniques, that might be interesting to add but would make a static figure very crowded and difficult to interpret.
+With the addition of interactivity, adding further methods might be more appealing because you could interactively filter out methods that don't work well or that you're not interested in.
+
+# Alternatives
+
+I've seen methodological papers that provide Shiny apps with such interactive visualizations.^[For example, @carter2019correcting reported a big simulation study on publication bias-correction methods in meta-analysis. They developed a [Shiny app with interactive figures](https://www.shinyapps.org/apps/metaExplorer/) of the simulation results and are still serving it, five years after the paper appeared.]
+These visualizations can be very compelling, but the implementation feels a bit heavy to me---it seems like overkill to have to run a server and regenerate figures just to see graphs. 
+But just creating a bunch of graphs and sticking them in a pdf doesn't seem ideal either.
+
+In [this working paper with Man Chen](/publications/Adapting-methods-for-correcting-selective-reporting-bias/), Man hit on the idea of organizing all our graphs using tabsets to make it a bit easier to navigate all the different conditions in a big simulation.
+You can see the results in the [supplementary materials](https://osf.io/uja37)^[You'll need to download the html to view the graphs].
+Yihui Xie has a [blog post](https://yihui.org/en/2023/02/js-shiny/) demonstrating a fairly simple javascript technique that could be used to accomplish the same thing. 
+The core idea is to generate a _bunch_ of images, covering every possible scenario the viewer might care to see, and then use simple interactive elements to determine which image gets viewed. 
+
