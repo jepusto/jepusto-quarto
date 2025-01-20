@@ -131,7 +131,7 @@ label_filtered = filtered.filter(function(el) {
 ```
 
 
-::::: {.grid .column-screen-inset}
+::::: {.grid .column-page}
 
 :::: {.g-col-3}
 ```{ojs}
