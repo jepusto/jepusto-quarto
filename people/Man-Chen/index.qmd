@@ -9,8 +9,6 @@ about:
   links:
   - icon: envelope
     href: mailto:manchen9005@gmail.com
-  - icon: twitter
-    href: https://twitter.com/manchen07
 org_name: University of Texas at Austin
 org_url: ''
 role: Assistant Professor

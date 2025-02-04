@@ -9,8 +9,8 @@ about:
   links:
   - icon: envelope
     href: mailto:What-evs@donkey.com
-  - icon: twitter
-    href: https://twitter.com/DonkeySanctuary
+  - text: "{{< fa brands bluesky >}}"
+    href: https://bsky.app/profile/the-dsc.bsky.social
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/scholar?q=donkey
 org_name: National Organic Standards Board

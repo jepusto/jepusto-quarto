@@ -11,8 +11,6 @@ about:
     href: https://www.dmswan.com/
   - icon: envelope
     href: mailto:dms031000@gmail.com
-  - icon: twitter
-    href: https://twitter.com/scienterrifical
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=e-RXsc8AAAAJ
   - icon: github

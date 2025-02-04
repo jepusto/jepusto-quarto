@@ -11,6 +11,8 @@ about:
     href: https://meghapsimatrix.com/
   - icon: envelope
     href: mailto:megha.j456@gmail.com
+  - text: "{{< fa brands bluesky >}}"
+    href: https://bsky.app/profile/meghapsimatrix.bsky.social
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=D8QFfGsAAAAJ&hl=en
   - icon: github
