@@ -11,7 +11,7 @@ location: Berlin, Germany
 links:
 - icon: file-easel
   text: Slides
-  url: /presentations/DAGStat-2025/DAGStat-selection-models.html
+  url: /files/DAGStat-2025/index.html
 ---
 
 Selective reporting of primary study results is a major concern for meta-analysis. Gauging the possibility and degree of selective reporting bias is thus an important step in many research syntheses. A wide range of diagnostics and bias-correction methods have been proposed, yet few are suitable for the complex data structures encountered in social science meta-analyses. Among available methods, the step-function selection model proposed by Vevea and Hedges stands out as especially useful and generative. I describe elaborations of the step-function model to address limitations of currently available tools. First, social science syntheses often include primary studies that contribute multiple effect size estimates based on the same sample of observations, leading to statistically dependency. I describe and evaluate methods for estimating step-function selection models for the marginal distribution of effect sizes, combined with cluster-wise bootstrapping to handle effect size dependency. Second, as open science practices have grown more common, theorized selective reporting mechanisms require greater nuance. I describe extensions of the step-function model that relate the selection parameters to observable study characteristics, thereby allowing for (a) temporal change in the strength of selection, (b) studies that are known to be fully reported, and (c) study characteristics, such as publication status, that are sequelae rather than determinants of effect size magnitude. 
