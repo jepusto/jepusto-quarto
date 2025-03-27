@@ -3,6 +3,10 @@ title: "Investigating selective reporting in meta-analyses of dependent effect s
 subtitle: "Some elaborations of the step-function selection model"
 author: "James E. Pustejovsky" 
 date: "March 27, 2025"
+title-slide-attributes:
+    data-background-image: images/QR.png
+    data-background-size: 15%
+    data-background-position: left 5% bottom 5%
 format: 
   revealjs:
     math: true
