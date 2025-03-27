@@ -1,0 +1,1384 @@
+---
+title: "Investigating selective reporting in meta-analyses of dependent effect sizes"
+subtitle: "Some elaborations of the step-function selection model"
+author: "James E. Pustejovsky" 
+date: "March 27, 2025"
+format: 
+  revealjs:
+    math: true
+    html-math-method: mathjax
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    logo: images/uw-logo.png
+    css: styles.css
+    theme: [simple, mytheme.scss]
+editor: source
+bibliography: references.bib
+---
+
+## {background="#43464B"}
+
+### Collaborators from the American Institutes for Research
+
+:::: {.columns}
+
+::: {.column width="30%"}
+Martyna Citkowicz
+![](images/Citkowicz.jpg)
+:::
+
+::: {.column width="30%"}
+Megha Joshi
+![](images/Joshi.jpg)
+:::
+
+::: {.column width="30%"}
+Ryan Williams
+
+Joshua Polanin
+
+Melissa Rodgers
+
+David Miller
+:::
+
+::::
+
+::: fragment
+### Acknowledgement
+
+The research reported here was supported, in whole or in part, by the Institute of Education Sciences, U.S. Department of Education, through grant R305D220026 to the American Institutes for Research. The opinions expressed are those of the authors and do not represent the views of the Institute or the U.S. Department of Education.
+:::
+
+## Selective reporting of primary study results
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Selective reporting occurs if affirmative findings are more likely to be reported and available for inclusion in meta-analysis
+
+- Selective reporting can distort the evidence base available for systematic review/meta-analysis
+  - Inflate average effect size estimates from meta-analysis
+  - Bias estimates of heterogeneity [@augusteijn2019effect]
+  
+- Strong concerns about selective reporting across social, behavioral, and health sciences.
+
+:::
+
+
+::: {.column width="40%"}
+![](images/carnival-mirror.jpeg)
+:::
+::::
+
+::: {.notes}
+- For a given meta-analysis, we expect strength of selection to depend on
+
+    - Rigor of the systematic review search process.
+    
+    - Whether effect sizes are from focal or ancillary analysis.
+:::
+
+## Many available tools for investigating selective reporting {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Graphical diagnostics
+
+    - Funnel plots
+    - Contour-enhanced funnel plots
+    - Power-enhanced funnel plots (sunset plots)
+
+![](images/toolbelt.jpg)
+:::
+
+::: {.column width="50%"}
+    
+- Tests/adjustments for funnel plot asymmetry
+    
+    - Trim-and-fill
+    - Egger's regression
+    - PET/PEESE
+    - Kinked meta-regression
+    
+- Selection models
+
+    - Weight-function models
+    - Copas models
+    - Sensitivity analysis
+    
+- p-value diagnostics
+
+    - Test of Excess Significance
+    - $p$-curve / $p$-uniform / $p\text{-uniform}^*$
+
+:::
+
+::::
+
+## But few that accommodate dependent effect sizes
+
+::::: {.columns}
+
+::: {.column width="40%"}
+![](images/Multiple-outcomes.png)
+![](images/Multiple-timepoints.png)
+![](images/Multiple-treatments.png)
+
+
+:::
+
+
+:::: {.column width="60%"}
+::: {.fragment}
+
+- Dependent effect sizes are ubiquitous in education and social science meta-analyses.
+
+- We have well-developed methods for modeling dependent effect sizes assuming no selection.
+
+- But only very recent developments for investigating selective reporting in databases with dependent effect sizes [@chen2024adapting].
+:::
+
+::::
+
+:::::
+
+## Extending step-function selection models
+
+- Location-scale-selection regressions
+
+- Alternative estimation methods
+
+- Handling dependence
+
+- Simulation findings
+
+## Step-function selection models 
+
+- The data for $j = 1,...,J$ studies with $i = 1,...,k_j$ effect size estimates
+  
+    - $T_{ij}, \sigma_{ij} \quad$ estimate and standard error for effect size $i$ from study $j$
+    
+    - $p_{ij} = \Phi^{-1}(-T_{ij} / \sigma_{ij}) \quad$ one-sided $p$-value of estimate $i$ from study $j$.
+
+::: {.fragment}
+
+- Random effects model for the evidence-generating process (_before_ selective reporting):
+    $$T_{ij} \sim N\left(\ \mu, \ \tau^2 + \sigma_{ij}^2 \right)$$
+
+:::
+
+::: {.fragment}
+
+- @vevea1995general $H$-step model for the selection process with steps $\alpha_1,...,\alpha_H$ (taking $\lambda_0 = 1, \alpha_0 = 0, \alpha_{H+1} = 1$):
+    $$\text{Pr}(\ T_{ij} \text{ is observed} \ ) \propto \sum_{h=0}^H
+\lambda_h \times I(\alpha_{h} \leq p_{ij} < \alpha_{H+1})$$
+:::
+
+## A piece-wise normal distribution {.smaller}
+
+The step-function model implies that the distribution of observed effect size estimates is piece-wise normal.
+
+```{ojs}
+math = require("mathjs")
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+eta = math.sqrt(tau**2 + sigma**2)
+H = 2
+alpha = [alpha1, alpha2]
+lambda = [1, lambda1, lambda2_ratio * lambda1]
+lambda_max = math.max(lambda)
+
+function findlambda(p, alp, lam) {
+  var m = 0;
+  while (p >= alp[m]) {
+    m += 1;
+  }
+  return lam[m];
+}
+
+function findMoments(mu, tau, sigma, alp, lam) {
+  let H = alp.length;
+  let eta = math.sqrt(tau**2 + sigma**2);
+  
+  let gamma_h = Array(H+2).fill(null).map((x,i) => {
+    if (i==0) {
+      return Infinity;
+    } else if (i==H+1) {
+      return -Infinity;
+    } else {
+      return sigma * norm.icdf(1 - alp[i-1]);
+    }
+  });
+  
+  let c_h = Array(H+2).fill(null).map((x,i) => {
+    return (gamma_h[i] - mu) / eta;
+  });
+
+  let B_h = Array(H+1).fill(null).map((x,i) => {
+    return norm.cdf(c_h[i]) - norm.cdf(c_h[i+1])
+  });
+
+  let Ai = 0;
+  for (let i = 0; i <= H; i++) {
+  	Ai += lam[i] * B_h[i];
+  }
+  
+  let psi_h = Array(H+1).fill(null).map((x,i) => {
+    return (norm.pdf(c_h[i+1]) - norm.pdf(c_h[i])) / B_h[i]
+  }); 
+
+  let psi_top = 0;
+  for (let i = 0; i <= H; i++) {
+  	psi_top += lam[i] * B_h[i] * psi_h[i];
+  }
+  
+  let psi_bar = psi_top / Ai;
+
+  let ET = mu + eta * psi_bar;
+
+  let dc_h = c_h.map((c_val) => {
+    if (math.abs(c_val) == Infinity) {
+      return 0;
+    } else {
+      return c_val * norm.pdf(c_val);
+    }
+  });
+
+  let kappa_h = Array(H+1).fill(null).map((x,i) => {
+    return (dc_h[i] - dc_h[i+1]) / B_h[i];
+  });
+
+  let kappa_top = 0;
+  for (let i = 0; i <= H; i++) {
+  	kappa_top += lam[i] * B_h[i] * kappa_h[i];
+  }
+  let kappa_bar = kappa_top / Ai;
+  let SDT = eta * math.sqrt(1 - kappa_bar - psi_bar**2);
+  
+  return ({Ai: Ai, ET: ET, SDT: SDT});
+}
+
+moments = findMoments(mu, tau, sigma, alpha, lambda)
+Ai_toprint = moments.Ai.toFixed(3)
+ET_toprint = moments.ET.toFixed(3)
+eta_toprint = eta.toFixed(3)
+SDT_toprint = moments.SDT.toFixed(3)
+
+```
+
+```{ojs}
+pts = 201
+
+density_dat = Array(pts).fill().map((element, index) => {
+  let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let lambda_val = findlambda(p, alpha, lambda);
+  return ({
+    t: t,
+    d_unselected: dt,
+    d_selected: lambda_val * dt / lambda_max
+  })
+})
+
+```
+
+::::: {.columns}
+
+:::: {.column width="30%"}
+
+```{ojs}
+//| panel: input
+
+viewof mu = Inputs.range(
+  [-2, 2], 
+  {value: 0.1, step: 0.01, label: tex`\mu`}
+)
+
+viewof tau = Inputs.range(
+  [0, 2], 
+  {value: 0.15, step: 0.01, label: tex`\tau`}
+)
+
+viewof sigma = Inputs.range(
+  [0, 1], 
+  {value: 0.25, step: 0.01, label: tex`\sigma_i`}
+)
+
+viewof alpha1 = Inputs.range(
+  [0, 1],
+  {value: 0.025, step: 0.005, label: tex`\alpha_1`}
+)
+
+viewof alpha2 = Inputs.range(
+  [0, 1],
+  {value: 0.50, step: 0.005, label: tex`\alpha_2`}
+)
+
+viewof lambda1 = Inputs.range(
+  [0, 2],
+  {value: 1, step: 0.01, label: tex`\lambda_1`}
+)
+
+viewof lambda2_ratio = Inputs.range(
+  [0, 2],
+  {value: 1, step: 0.01, label: tex`\lambda_2 / \lambda_1`}
+)
+
+```
+::::
+
+:::: {.column width="70%"}
+
+```{ojs}
+Plot.plot({
+  height: 500,
+  width: 1000,
+  y: {
+    grid: false,
+    label: "Density"
+  },
+  x: {
+    label: "Effect size estimate (Ti)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0]),
+    Plot.areaY(density_dat, {x: "t", y: "d_unselected", fillOpacity: 0.3}),
+    Plot.areaY(density_dat, {x: "t", y: "d_selected", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(density_dat, {x: "t", y: "d_selected", stroke: "blue"})
+  ]
+})
+```
+
+:::{.moments}
+
+```{ojs}
+tex`
+\begin{aligned}
+\mu &= ${mu} & \qquad \sqrt{\tau^2 + \sigma_{ij}} &= ${eta_toprint} \\
+\mathbb{E}\left(T_{ij}\right) &= ${ET_toprint}
+& \qquad \sqrt{\mathbb{V}\left(T_{ij}\right)} &= ${SDT_toprint} \\ 
+\Pr(T_{ij} \text{ is observed}) &= ${Ai_toprint}
+\end{aligned}
+`
+```
+:::
+
+::::
+
+:::::
+
+## Location-scale-selection meta-regressions
+
+@viechtbauer2022locationscale proposed location-scale meta-regression:
+$$\begin{aligned}
+T_{ij} &\sim N(\ \mu_{ij}, \ \tau_{ij}^2 + \sigma_{ij}^2) \\
+\mu_{ij} &= \mathbf{x}_{ij} \boldsymbol\beta \\
+\log(\tau_{ij}^2) &= \mathbf{u}_{ij} \boldsymbol\gamma \\
+\end{aligned}$$
+
+::: {.fragment}
+- We use the location-scale model as the evidence-generating process.
+::: 
+
+::: {.fragment}
+- We allow selection parameters to vary according to predictors:
+$$\begin{aligned}
+\text{Pr}(\ T_{ij} \text{ is observed} \ ) &\propto \sum_{h=0}^H
+\lambda_{hij} \times I(\alpha_{h} \leq p_{ij} < \alpha_{H+1}) \\
+\log(\lambda_{hij}) &= \mathbf{z}_{ij}^{(h)} \boldsymbol\zeta_h
+\end{aligned}$$
+::: 
+
+## Why allow varying selection parameters?
+
+- @Coburn2015publication investigated variation in strength of selection as a function of study characteristics. 
+
+    - Meta-scientific questions about how selective reporting _changes over time_, _as a result of intervention_, or _by outcome type_.
+
+    - Change in selection process could _act as a confounder_ of real secular changes.
+
+::: {.fragment}
+
+- Account for studies that follow reporting practices that are _not susceptible_ to selective reporting [@vanaert2025Metaanalyzing].
+
+    - Pre-registered reports are assumed to be fully reported.
+    
+    - A selection regression with no intercept:
+
+    $$\log(\lambda_{hij}) = 0 + \zeta_{h} \times I(\text{Not Pre-Reg.})_{ij}$$
+    
+:::
+
+## Color priming
+
+@lehmann2018meta reported a systematic review of studies on __color-priming__, examining whether exposure to the color red influenced attractiveness judgements.
+
+  - Many published studies where selective reporting was suspected.
+  
+  - Review included 11 pre-registered studies.
+
+```{r}
+library(tinytable)
+# options(tinytable_html_mathjax = TRUE)
+library(metafor)
+library(metaselection)
+
+data("dat.lehmann2018", package = "metadat")
+dat.lehmann2018$study <- dat.lehmann2018$Full_Citation
+dat.lehmann2018$sei <- sqrt(dat.lehmann2018$vi)
+dat.lehmann2018$prereg <- factor(dat.lehmann2018$Preregistered, levels = c("Pre-Registered","Not Pre-Registered"))
+dat.lehmann2018$not_prereg <- as.integer(dat.lehmann2018$prereg == "Not Pre-Registered")
+
+make_table <- function(mod, labs) {
+  if (inherits(mod, "rma.uni")) {
+    if (missing(labs)) labs <- row.names(mod$beta)
+    dat <- data.frame(
+      coef = labs,
+      Est = as.vector(mod$beta),
+      Est_SE = mod$se,
+      Het_Var = mod$tau2, 
+      Het_SE = mod$se.tau2
+    )
+  } 
+  
+  if (inherits(mod, "selmodel")) {
+    params <- mod$est$param
+    if (missing(labs)) labs <- params[grepl("beta",params)]
+    dat <- data.frame(
+      coef = labs,
+      Est = mod$est[grepl("beta",params),3],
+      Est_SE = mod$est[grepl("beta",params),4],
+      Het_Var = exp(mod$est[grepl("gamma",params),3]), 
+      Het_SE = exp(mod$est[grepl("gamma",params),3]) * mod$est[grepl("gamma",params),4],
+      Sel = exp(mod$est[grepl("zeta",params),3]), 
+      sel_SE = exp(mod$est[grepl("zeta",params),3]) * mod$est[grepl("zeta",params),4]
+    )
+  }
+  
+  dat
+}
+```
+  
+:::: {.r-stack}
+::: {.fragment}
+
+```{r}
+rma0 <- rma.uni(
+  yi = yi, sei = sei, 
+  data = dat.lehmann2018
+) |>
+  robust(cluster = study, clubSandwich = TRUE) |>
+  make_table(labs = "Overall")
+
+rma1 <- rma.uni(
+  yi = yi, sei = sei, 
+  mods = ~ 0 + prereg,
+  data = dat.lehmann2018
+) |>
+  robust(cluster = study, clubSandwich = TRUE) |>
+  make_table(labs = c("Pre-Registered","Not Pre-Registered"))
+
+
+rbind(rma0, rma1) |>
+  tt(digits = 3, theme = "bootstrap") |>
+  style_tt(bootstrap_class = "table table-bordered") |>
+  setNames(c("Coef.","Est.","SE","Est.","SE")) |>
+  group_tt(
+    i = list("(A) Summary meta-analysis" = 1, "(B) Moderation by study type" = 2),
+    j = list(" " = 1, "Mean ES" = 2:3, "Heterogeneity Variance" = 4:5)
+  ) |>
+  style_tt(
+    i = c(1, 3),
+    background = "lightgray",
+    bold = TRUE
+  ) |>
+  style_tt(
+    i = 3:5,
+    background = "white",
+    color = "white"
+  )
+
+```
+
+:::
+
+::: {.fragment}
+
+```{r}
+rma0 <- rma.uni(
+  yi = yi, sei = sei, 
+  data = dat.lehmann2018
+) |>
+  robust(cluster = study, clubSandwich = TRUE) |>
+  make_table(labs = "Overall")
+
+rma1 <- rma.uni(
+  yi = yi, sei = sei, 
+  mods = ~ 0 + prereg,
+  data = dat.lehmann2018
+) |>
+  robust(cluster = study, clubSandwich = TRUE) |>
+  make_table(labs = c("Pre-Registered","Not Pre-Registered"))
+
+
+rbind(rma0,rma1) |>
+  tt(digits = 3, theme = "bootstrap") |>
+  style_tt(bootstrap_class = "table table-bordered") |>
+  setNames(c("Coef.","Est.","SE","Est.","SE")) |>
+  group_tt(
+    i = list("(A) Summary meta-analysis" = 1, "(B) Moderation by study type" = 2),
+    j = list(" " = 1, "Mean ES" = 2:3, "Heterogeneity Variance" = 4:5)
+  ) |>
+  style_tt(
+    i = c(1, 3),
+    background = "lightgray",
+    bold = TRUE
+  )
+```
+
+:::
+
+::::
+## Color-priming selection models
+
+:::: {.r-stack}
+
+::: {.fragment}
+```{r}
+sel0 <- selection_model(
+  yi = yi, sei = sei,
+  cluster = study,
+  data = dat.lehmann2018,
+  selection_type = "step",
+  steps = .025,
+  estimator = "CML"
+) |>
+  make_table(labs = c("Overall"))
+  
+sel1 <- selection_model(
+  yi = yi, sei = sei,
+  mean_mods = ~ prereg,
+  cluster = study,
+  data = dat.lehmann2018,
+  selection_type = "step",
+  steps = .025,
+  estimator = "CML"
+) |>
+  make_table(labs = c("Pre-Registered","Not Pre-Registered"))
+
+sel2 <- selection_model(
+  yi = yi, sei = sei,
+  sel_mods = ~ 0 + not_prereg,
+  cluster = study,
+  data = dat.lehmann2018,
+  selection_type = "step",
+  steps = .025,
+  estimator = "CML"
+)
+
+sel2$est <- rbind(
+  sel2$est[1:2,],
+  data.frame(estimator = "CML", param = "zeta1_prereg", Est = 0, SE = NA, p_value = NA, CI_lo = NA, CI_hi = NA),
+  sel2$est[3,,drop=FALSE]
+)
+sel2 <- make_table(sel2, labs = c("Pre-Registered","Not Pre-Registered"))
+
+rbind(sel0, sel1, sel2) |>
+  tt(digits = 3, theme = "bootstrap", width = c(3, rep(2,6))) |> 
+  format_tt(replace = "-") |>
+  style_tt(bootstrap_class = "table table-bordered") |>
+  setNames(c("Coef.","Est.","SE","Est.","SE","Est.","SE")) |>
+  group_tt(
+    i = list("(A) Summary selection model" = 1, "(B) Mean moderation by study type" = 2, "(C) Selective Reporting of Non-Pre-Registered Studies" = 4),
+    j = list(" " = 1, "Mean ES" = 2:3, "Heterogeneity Variance" = 4:5, "Selection Parameter" = 6:7)
+  ) |>
+  style_tt(
+    i = c(1, 3, 6),
+    background = "lightgray",
+    bold = TRUE
+  ) |>
+  style_tt(
+    i = 3:8,
+    background = "white",
+    color = "white"
+  )
+```
+
+:::
+
+::: {.fragment}
+```{r}
+rbind(sel0, sel1, sel2) |>
+  tt(digits = 3, theme = "bootstrap", width = c(3, rep(2,6))) |> 
+  format_tt(replace = "-") |>
+  style_tt(bootstrap_class = "table table-bordered") |>
+  setNames(c("Coef.","Est.","SE","Est.","SE","Est.","SE")) |>
+  group_tt(
+    i = list("(A) Summary selection model" = 1, "(B) Mean moderation by study type" = 2, "(C) Selective Reporting of Non-Pre-Registered Studies" = 4),
+    j = list(" " = 1, "Mean ES" = 2:3, "Heterogeneity Variance" = 4:5, "Selection Parameter" = 6:7)
+  ) |>
+  style_tt(
+    i = c(1, 3, 6),
+    background = "lightgray",
+    bold = TRUE
+  ) |>
+  style_tt(
+    i = 6:8,
+    background = "white",
+    color = "white"
+  )
+
+```
+
+:::
+
+::: {.fragment}
+```{r}
+rbind(sel0, sel1, sel2) |>
+  tt(digits = 3, theme = "bootstrap", width = c(3, rep(2,6))) |> 
+  format_tt(replace = "-") |>
+  style_tt(bootstrap_class = "table table-bordered") |>
+  setNames(c("Coef.","Est.","SE","Est.","SE","Est.","SE")) |>
+  group_tt(
+    i = list("(A) Summary selection model" = 1, "(B) Mean moderation by study type" = 2, "(C) Selective Reporting of Non-Pre-Registered Studies" = 4),
+    j = list(" " = 1, "Mean ES" = 2:3, "Heterogeneity Variance" = 4:5, "Selection Parameter" = 6:7)
+  ) |>
+  style_tt(
+    i = c(1, 3, 6),
+    background = "lightgray",
+    bold = TRUE
+  )
+
+```
+
+:::
+
+::::
+
+## Estimation { .scrollable}
+
+- Model the marginal distribution of observed effects, ignoring the dependence structure
+
+::: {.fragment}
+
+- Composite marginal likelihood:
+  $$
+  \arg\max_{\boldsymbol\beta, \boldsymbol\gamma, \boldsymbol\zeta} \   \prod_{j=1}^J \prod_{i=1}^{k_j}\mathcal{L}(T_{ij} | \mathbf{x}_{ij}, \mathbf{u}_{ij}, \mathbf{z}_{ij}; \boldsymbol\beta, \boldsymbol\gamma, \boldsymbol\zeta)
+  $$
+
+:::
+::: {.fragment}
+
+- Augmented, reweighted Gaussian likelihood:
+
+  $$
+  \arg\max_{\boldsymbol\beta, \boldsymbol\gamma} \   \sum_{j=1}^J \sum_{i=1}^{k_j}\ \frac{\log N\left(\mathbf{x}_{ij} \boldsymbol\beta, \ \exp(\mathbf{u}_{ij}\boldsymbol\gamma) + \sigma_{ij}^2 \right)}{\text{Pr}\left( \left.T_{ij} \text{ is observed} \right| \boldsymbol\beta, \boldsymbol\gamma, \boldsymbol\zeta\right)}
+  $$
+  such that
+  $$
+  \sum_{j=1}^J \sum_{i=1}^{k_j} \text{I}\left( \lambda_{h} < p_{ij} \leq \lambda_{h+1}\right) = \sum_{j=1}^J \sum_{i=1}^{k_j} \text{Pr}\left(\left. \lambda_{h} < P_{ij} \leq \lambda_{h+1} \right| \boldsymbol\beta, \boldsymbol\gamma, \boldsymbol\zeta\right)
+  $$
+  
+:::
+
+## Two methods of handling dependence
+
+- CML and ARGL estimators do not directly account for dependent effect sizes.
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+::: {.fragment}
+
+- Cluster-robust variance estimation (sandwich estimators)
+
+![](images/baloney-sandwich.jpg)
+:::
+::::
+
+:::: {.column width="50%"}
+
+::: {.fragment}
+
+- Clustered bootstrap re-sampling
+
+    - percentile, studentized, or BCa confidence intervals
+
+![](images/boot.png){width=50% fig-align="center"}
+:::
+::::
+
+:::: 
+
+## Simulation Study {background="#43464B" .center}
+
+## Data-generating process {.smaller}
+
+- Simulated summary statistics for two-group comparison designs with multiple, correlated continuous outcomes. Correlated-and-hierarchical effects generating process: 
+
+    $$\begin{aligned}\delta_{ij} &= \mu + u_i + v_{ij}, \qquad u_i \sim N(0,\tau^2), \quad v_{ij} \sim N(0, \omega^2) \\ \boldsymbol{T}_j &\sim N\left(\boldsymbol\delta_j, \frac{4}{N_j} \left((1 - \rho) \mathbf{I}_j + \rho \mathbf{J}_j\right)\right)\end{aligned}$$
+    
+- Varying primary study sample sizes $N_j$ and varying numbers of outcomes $k_j$, based on large database of impact evaluation studies in education research. 
+
+- Censored one-sided $p$-values > .025 with probability of selection $0 < \lambda_1 \leq 1$ 
+
+::: {.fragment}
+
+- Comparison estimators
+
+    - Correlated-and-hierarchical effects (CHE) model
+    
+    - PET-PEESE regression adjustment with cluster-robust SEs
+
+:::
+
+## Bias for mean effect size $(\mu)$
+
+```{r}
+library(tidyverse)
+
+selection_levels <- c(
+  "0.02 (Strong)" = 0.02,
+  "0.05" = 0.05,
+  "0.10" = 0.10,
+  "0.20" = 0.20,
+  "0.50" = 0.50,
+  "1.00 (None)" = 1.00
+)
+
+
+results <- 
+  readRDS("sim-step-function-point-estimator-results.rds") %>%
+  mutate(
+    estimator = fct(estimator, levels = c("CML","ARGL","PET","PEESE","PET/PEESE","CHE","CHE-ISCW")),
+    N_factor = fct(if_else(n_multiplier < 1, "Small", "Typical")),
+    weights = as.character(weights),
+    het_ratio = omega ^ 2 / tau ^ 2,
+    het_ratio = as.character(het_ratio),
+    scrmse = sqrt(m) * rmse, 
+    J = as.character(m),
+    J = factor(J, levels = c("15", "30", "60", "90", "120")),
+    weights = factor(
+      weights, 
+      levels = selection_levels,
+      labels = names(selection_levels)
+    ),
+    mu_fac = fct(as.character(mean_smd)),
+    tau_fac = fct(as.character(tau), levels = c("0.05","0.15","0.3","0.45","0.6")),
+    convergence = K_absolute / 2000,
+    winz_convergence = (1 - winsor_pct) * K_absolute / 2000
+  ) %>%
+  select(-cor_sd, -n_multiplier)
+
+results_CI <- 
+  readRDS("sim-step-function-confidence-interval-results.rds") %>%
+  mutate(
+    estimator = fct(estimator, levels = c("CML","ARGL","PET","PEESE","PET/PEESE","CHE","CHE-ISCW")),
+    N_factor = fct(if_else(n_multiplier < 1, "Small", "Typical")),
+    weights = as.character(weights),
+    het_ratio = omega ^ 2 / tau ^ 2,
+    het_ratio = as.character(het_ratio),
+    J = as.character(m),
+    J = factor(J, levels = c("15", "30", "60", "90", "120")),  # 120 and 200 not there 
+    weights = factor(
+      weights, 
+      levels = selection_levels,
+      labels = names(selection_levels)
+    ),
+    mu_fac = fct(as.character(mean_smd)),
+    tau_fac = fct(as.character(tau), levels = c("0.05","0.15","0.3","0.45","0.6")),
+    bootstrap_type = recode(bootstrap_type, .missing = "none"),
+    CI_boot_method = if_else(
+      CI_type == "large-sample",
+      "cluster-robust", 
+      paste(CI_type, " (", bootstrap_type, ")", sep = "")
+    ),
+    CI_boot_method = fct(
+      CI_boot_method,
+      levels = c("cluster-robust","percentile (multinomial)","percentile (exponential)",
+                 "biascorrected (multinomial)","biascorrected (exponential)","BCa (multinomial)","BCa (exponential)",
+                 "basic (multinomial)","basic (exponential)","student (multinomial)","student (exponential)")
+    )
+  ) %>%
+  select(-cor_sd, -n_multiplier)
+
+```
+
+```{r}
+
+mean_res <- 
+  results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) 
+
+ojs_define(dat = mean_res)
+```
+
+```{ojs}
+viewof mu_bias = Inputs.input(0.0)
+viewof tau_bias = Inputs.input(0.15)
+
+bias_dat = transpose(dat).filter(function(el) {
+  return el.mean_smd == mu_bias && el.tau == tau_bias;
+})
+```
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+Inputs.bind(
+  Inputs.select(
+    [0.0,0.2,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  ),
+  viewof mu_bias
+)
+
+Inputs.bind(
+  Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.15, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  ),
+  viewof tau_bias
+)
+```
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    label: null,
+    axis: null
+  },
+  fill: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+  },
+  y: {
+    grid: true,
+    domain: [-0.1,0.4]
+  },
+  fx: {
+    padding: 0.10,
+    label: "Selection probability",
+    labelAnchor: "center"
+  },
+  width: 800,
+  height: 500,
+  color: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0.0], {stroke: "black"}),
+    Plot.boxY(bias_dat, {fx: "weights", x: "estimator", y: "bias", stroke: "estimator", fill: "estimator"})
+  ]
+})
+```
+
+:::
+::::
+
+## {visibility="hidden"}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL"),
+    mean_smd == 0.0, 
+    tau == 0.15
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = bias, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = "Bias", 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+```
+
+## Accuracy for mean effect size $(\mu)$
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+Inputs.bind(
+  Inputs.select(
+    [0.0,0.2,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  ),
+  viewof mu_bias
+)
+
+Inputs.bind(
+  Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.15, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  ),
+  viewof tau_bias
+)
+
+```
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    label: null,
+    axis: null
+  },
+  fill: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+  },
+  y: {
+    grid: true,
+  },
+  fx: {
+    padding: 0.10,
+    label: "Selection probability",
+    labelAnchor: "center"
+  },
+  width: 800,
+  height: 500,
+  color: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0.0], {stroke: "black"}),
+    Plot.boxY(bias_dat, {fx: "weights", x: "estimator", y: "scrmse", stroke: "estimator", fill: "estimator"})
+  ]
+})
+```
+
+
+:::
+::::
+
+## {visibility="hidden"}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL"),
+    mean_smd == 0.0, 
+    tau == 0.15
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = scrmse, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = expression(sqrt(J) %*% RMSE), 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+```
+
+## Coverage rates of 95% CIs for $\mu$
+
+```{r}
+
+CI_res <- 
+  results_CI %>%
+  filter(    
+    param == "beta",
+    !is.na(coverage),
+    is.na(bootstraps) | bootstraps == 1999,
+    bootstrap_condition == "bootstrap",
+    estimator %in% c("CML","ARGL"),
+    CI_type %in% c("large-sample","percentile"),
+    bootstrap_type %in% c("none","multinomial")
+  ) 
+
+ojs_define(CI_dat = CI_res)
+```
+
+```{ojs}
+coverage_dat = transpose(CI_dat).filter(function(el) {
+  return el.mean_smd == mu_CI && el.tau == tau_CI && estimator.includes(el.estimator);
+})
+```
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+viewof mu_CI = Inputs.select(
+    [0.0,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  )
+
+viewof tau_CI = Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.05, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  )
+
+viewof estimator = Inputs.select(
+    ["CML","ARGL"], 
+    {
+      value: "CML", 
+      label: "estimator",
+      width: "100px"
+    }
+  )
+
+```
+
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    axis: null
+  },
+  y: {
+    grid: true,
+    domain: [0.70,1.00]
+  },
+  fx: {
+    padding: 0.10,
+    label: "Number of studies (J)",
+    labelAnchor: "center"
+  },
+  color: {
+    legend: true
+  },
+  width: 800,
+  height: 500,
+  marks: [
+    Plot.ruleY([0.95], {stroke: "black", strokeDasharray: "5,3"}),
+    Plot.boxY(coverage_dat, {fx: "J", x: "CI_boot_method", y: "coverage", stroke: "CI_boot_method", fill: "CI_boot_method"})
+  ]
+})
+```
+
+:::
+::::
+
+## {visibility="hidden"}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+results_CI %>%
+  filter(
+    param == "beta",
+    !is.na(coverage),
+    is.na(bootstraps) | bootstraps == 1999,
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL"),
+    bootstrap_condition == "bootstrap",
+    estimator %in% c("CML"),
+    CI_type %in% c("large-sample","percentile"),
+    bootstrap_type %in% c("none","multinomial"),
+    mean_smd == 0.0,
+    tau == 0.05
+  ) %>%
+  ggplot(aes(x = J, y = coverage, color = CI_boot_method, fill = CI_boot_method)) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  geom_hline(yintercept = 0.95, linetype = "dashed") +
+  scale_y_continuous(limits = c(0.75, 1), expand = expansion(0,0)) + 
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Number of studies (J)", 
+    y = "Coverage rate", 
+    color = "Method",
+    fill = "Method"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Discussion
+
+::: {.fragment}
+
+- Marginal step-function selection models are worth adding to the toolbox.
+
+    - Low bias compared to other selective reporting adjustments (including PET-PEESE)
+    
+    - Bias-variance trade-off relative to regular meta-analytic models
+    
+    - Clustered bootstrap percentile confidence intervals work tolerably well
+
+:::
+
+::: {.fragment}
+
+- Marginal modeling costs precision
+
+    - Further development should consider estimators that handle dependence (pairwise composite likelihood?)
+    
+:::
+
+::: {.fragment}
+
+- Selective reporting of each outcome
+
+    - Our data-generating process involved conditional independence of $\text{Pr}(\ T_{ij} \text{ is observed} | \ p_{ij})$
+    
+    - Need further models (and diagnostics) for multivariate selection processes
+    
+:::
+
+## R package `metaselection`
+
+- Currently available on Github at <https://github.com/jepusto/metaselection>
+
+- Install using
+
+    `remotes::install_github("jepusto/metaselection", build_vignettes = TRUE)`
+
+- Under active development, suggestions welcome!
+
+![](images/feedback-is-welcome.jpg){.absolute bottom=0 right=400 width="250" }
+
+## References
+
+::: {#refs}
+:::
+
+## Supplementary Material {visibility="uncounted" background="#43464B" .center}
+
+## Simulation Design {visibility="uncounted" .smaller}
+
+```{r}
+sim_design <- 
+  tribble(
+    ~ Parameter, ~ `Full Simulation`, ~ `Bootstrap Simulation`,
+    "Overall average effect", "0.0, 0.2, 0.4, 0.8", "0.0, 0.2, 0.4, 0.8",
+    "Between-study heterogeneity", "0.05, 0.15, 0.30, 0.45","0.05, 0.45",
+    "Within-study heterogeneity ratio", "0.0, 0.5", "0.0, 0.5", 
+    "Correlation between outcomes", "0.4, 0.8", "0.8",
+    "Selection probability", "0.02, 0.05, 0.10, 0.20, 0.50, 1.00", "0.05, 0.20, 1.00", 
+    "Number of primary studies", "15, 30, 60, 90, 120", "15, 30, 60", 
+    "Primary study sample sizes", "Typical, Small", "Typical, Small"
+  )
+
+sim_design %>%
+  tt(theme = "striped", width = c(1,1,1))
+  
+```
+
+- 2000 replications per condition
+
+- 399 bootstraps per replication
+
+## Bias for mean effect size $(\mu)$ {visibility="uncounted"}
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = bias, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = "Bias", 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Accuracy for mean effect size $(\mu)$ {visibility="uncounted"}
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = scrmse, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = expression(sqrt(J) %*% RMSE), 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Coverage rates of large-sample (sandwich) CIs {visibility="uncounted"}
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results_CI %>%
+  filter(
+    param == "beta",
+    !is.na(coverage),
+    is.na(bootstraps) | bootstraps == 1999,
+    estimator %in% c("CML","ARGL"),
+    CI_type %in% c("large-sample"),
+  ) %>%
+  ggplot(aes(x = J, y = coverage, color = estimator, fill = estimator)) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  geom_hline(yintercept = 0.95, linetype = "dashed") +
+  coord_cartesian(ylim = c(0.7,1)) + 
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Number of studies (J)", 
+    y = "Coverage rate", 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
