@@ -10,7 +10,7 @@ author:
 - name:
     given: David A.
     family: Klingbeil
-date: 2024-08-22T00:00:00
+date: 2025-03-28T00:00:00
 image: PPC-relvar-density-1.png
 categories:
 - single-case design
@@ -18,17 +18,22 @@ categories:
 - Bayes
 - posterior predictive checks
 links:
+- text: Journal
+  url: https://doi.org/10.1016/j.jsp.2025.101429
+  icon: newspaper
 - icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/psyarxiv/9sa82
 - icon: code-slash
   text: Code
   url: https://osf.io/n8546/
-preprint: true
-citation:
-  type: article
-  url: https://osf.io/preprints/psyarxiv/9sa82
-  doi: 10.31234/osf.io/9sa82
+citation: 
+  type: article-journal
+  container-title: Journal of School Psychology
+  doi: 10.1016/j.jsp.2025.101429
+  url: https://doi.org/10.1016/j.jsp.2025.101429
+  volume: 110
+  page: 101429
 ---
 
 There is growing interest in statistical modeling of data from single-case design (SCD) research. However, currently available methods such as hierarchical linear models and generalized linear mixed models have assumptions that may limit their utility for applied SCDs, such as those that use curriculum-based measures of academic performance as outcomes. We demonstrate use of a flexible class of distributional models, known as generalized additive linear mixed models for location, scale, and shape (GAMLSS), to evaluate different distributional families and modeling specifications for reading curriculum-based measures of reading fluency data drawn from SCD studies of academic interventions. Using Bayesian methods and graphical posterior predictive checks, we evaluate GAMLSS based on normal (Gaussian), Poisson, and negative binomial distributional families. We also evaluate the extent to which the dispersion, or variability of outcomes, itself varies across studies and across participants within them. We find that negative binomial models with heterogeneous dispersions fit better than other distributional families and closely reproduce features of the observed data. Findings highlight the need to consider a broader set of distributional families when developing meta-analytic models of SCD data, as well as to consider how the degree of dispersion may vary from study to study. We discuss implications for future methodological research and for meta-analysis of SCDs.
