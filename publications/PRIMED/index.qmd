@@ -1,0 +1,36 @@
+---
+title: 'A preliminary data analysis workflow for meta-analysis of dependent effect sizes'
+author:
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Jingru
+    family: Zhang
+- name:
+    given: Elizabeth
+    family: Tipton
+date: 2025-05-08T00:00:00
+image: ISCW-plot.png
+categories:
+- meta-analysis
+- dependent effect sizes
+- initial data analysis
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/vfsqx_v1
+- icon: code-slash
+  text: Code
+  url: https://osf.io/wegq9/
+- icon: table
+  text: Data
+  url: https://osf.io/wegq9/
+preprint: true
+citation: 
+  type: article
+  doi: 10.31222/osf.io/vfsqx_v1
+  url: https://osf.io/preprints/metaarxiv/vfsqx_v1
+---
+
+In many fields of application, meta-analyses routinely involve dependent effect size estimates and hierarchical data structures. Statistical methods for analyzing dependent effect sizes are now well developed, but there has been less attention to the initial stages of data analysis, prior to formal modeling. We propose a generic workflow for preliminary, exploratory analyses of meta-analytic databases, which focuses on validating the integrity of the input data and informing decisions about subsequent statistical modeling. The workflow entails creating summaries and visualizations of features of the primary studies included in the meta-analysis in order to understand the structure and distribution of the data, especially with respect to between- and within-study variation. We illustrate the workflow using data from previously published meta-analyses and discuss connections between the preliminary analysis and subsequent statistical modeling strategies.
