@@ -3,6 +3,10 @@ title: Predictive Checks of Statistical Models for SCD Data
 subtitle: An Old and Under-Appreciated Method for Assessing Whether a Model is Any Good
 author: James E. Pustejovsky
 date: May 15, 2025
+title-slide-attributes:
+    data-background-image: images/presentation-qr.png
+    data-background-size: 20%
+    data-background-position: left 5% bottom 5%
 format: 
   revealjs:
     math: true
