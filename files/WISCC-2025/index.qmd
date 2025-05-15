@@ -1,0 +1,1162 @@
+---
+title: Predictive Checks of Statistical Models for SCD Data
+subtitle: An Old and Under-Appreciated Method for Assessing Whether a Model is Any Good
+author: James E. Pustejovsky
+date: May 15, 2025
+format: 
+  revealjs:
+    math: true
+    html-math-method: mathjax
+    reference-location: document
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    logo: images/uw-logo.png
+    css: styles.css
+    theme: [simple, mytheme.scss]
+editor: source
+bibliography: references.bib
+---
+
+## Session overview {background="#43464B" .center}
+
+* Collective brain dump (15 minutes)
+
+* Predictive checks for statistical models of single-case data (30-45 minutes)
+
+* Small- and large-group discussion (30-45 minutes)
+
+## Brain-dump questions
+
+:::: {.columns}
+
+::: {.column width="35%"}
+
+[![](images/padlet-qr.png)](https://padlet.com/jepusto/WISCC2025){width=100%}
+
+:::
+
+::: {.column width="65%"}
+
+* __Editor perspective__: What common problems are you seeing in manuscript review with respect to statistical analysis and reporting? Have you noticed any improvements  in application of statistical analysis? 
+
+* __Researcher perspective__: What challenges or limitations are you running into in applying statistical analysis that you think could potentially enhance your work?
+
+* __Student perspective__: Have you seen any applications of statistical analysis that you found especially compelling? Have you learned about any statistical methodology work that you find exciting or compelling?
+
+:::
+
+::::
+
+
+## Predictive Checks of Statistical Models for SCD Data  {.center background="#43464B"}
+
+#### An Old and Under-Appreciated Method for Assessing Whether a Model is Any Good
+
+::: {.notes}
+
+* How many have published a statistical analysis involving SCD data?
+
+* How many conducted a statistical analysis on your own, without input from specialist collaborators?
+
+* How many have collaborated with a stat/quant person?
+
+* How many felt qualified / comfortable raising critiques of the quant analysis?
+
+:::
+
+## Why engage in statistical analysis of single-case data? {.center background="#43464B"} 
+
+::: {.notes}
+
+* Simplification
+
+* Noisy data
+
+* Synthesis
+
+* Statements about uncertainty
+
+* Status
+
+:::
+
+## Recent developments in models for SCD data are getting more complex and technical
+
+![](images/Natesan-Hedges.png){.absolute .border .border-thick top=200 left=30 .fragment width="900"}
+
+![](images/Chen-Pustejovsky.png){.absolute .border .border-thick top=210 left=40 .fragment width="900"}
+
+![](images/Chen-et-al.png){.absolute .border .border-thick top=220 left=50 .fragment width="900"}
+
+![](images/Li-et-al.png){.absolute .border .border-thick top=230 left=60 .fragment width="900"}
+
+![](images/Valente-Rijnhart-Miocevic.png){.absolute .border .border-thick top=240 left=70 .fragment width="900"}
+
+![](images/Lanovaz-Bailey.png){.absolute .border .border-thick top=250 left=80 .fragment width="900"}
+
+## {.center background="#43464B"} 
+
+::: {.r-fit-text}
+We need tools for evaluating the 
+
+_plausibility_ and _credibility_
+
+of statistical analyses---even when
+
+based on complex statistical models.
+:::
+
+## What is a parametric statistical model?
+
+> A succinct, highly stylized description of __the process of collecting data__. 
+
+> A mathematical story about where you got your data. 
+
+::: fragment
+
+* A model describes not just the data you obtained, but also __other possible outcomes__ of the study.
+
+    * This is what lets us make statements about __uncertainty__ in parameter estimates and inferences.
+
+:::
+
+::: {.fragment}
+
+* __A credible parametric model should tell believable, realistic stories.__
+
+:::
+
+## Predictive Checks
+
+* Predictive Checks are a general technique for evaluating the fit of a parametric statistical model by examining __other possible data__ generated from the model.
+
+    * Well-known part of Bayesian model development process [@berkhof2000posterior; @bda3; @sinharay2003posterior]
+
+    * @grekov2024flexible explore use predictive checks for meta-analytic models of oral reading fluency outcomes in SCDs.
+
+::: fragment
+
+* I will demonstrate predictive checking of a Bayesian multilevel model estimated using Markov Chain Monte Carlo.
+
+:::
+
+## Predictive Checking Workflow
+
+1. Fit a statistical model.
+
+2. Use the fitted model to simulate artificial data.
+
+3. Examine the simulated data...
+
+    * By graphing it just like you would with real data.
+    
+    * By calculating summary statistics for important features.
+
+
+## {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+### @Barton2005reading 
+
+* Multiple baseline across participant pairs
+
+* Third graders with emotional and/or behavioral disabilities.
+
+* Horizon Fast-Track reading program and Peer-Assisted Learning Strategies
+
+* One-minute oral reading fluency (words read correct)
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+library(tidyverse)
+load("BA-example.Rdata")
+
+BA_plot <- function(data, color = "blue", alpha = 1) {
+  ggplot(
+    data,
+    mapping = aes(x = session, y = outcome, shape = condition, group = interaction(condition, .draw))
+  ) +
+  geom_hline(yintercept = 0) + 
+  geom_point(alpha = alpha, color = color) +
+  geom_line(alpha = alpha, color = color) +
+  geom_vline(
+    data = phase_change,
+    mapping = aes(xintercept = phase_change),
+    linetype = "dashed"
+  ) +
+  facet_wrap(~ case, ncol = 1, strip.position = "right") +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0)
+  ) +
+  xlab("Session") +
+  ylab("Words read correct per minute") +
+  scale_x_continuous(breaks = seq(0, 32, by = 4)) +
+  scale_y_continuous(breaks = seq(0, 60, by = 20))
+}
+
+```
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+real_data_plot <- BA_plot(BA, color = "black")
+real_data_plot
+```
+
+:::
+
+::::
+
+##
+
+::::: {.columns}
+
+:::: {.column width="60%"}
+
+::: {.panel-tabset}
+
+### Real
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+real_data_plot
+```
+
+### A {.active}
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw == 1L) %>%
+  BA_plot()
+```
+
+### B
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw == 2L) %>%
+  BA_plot()
+```
+
+### C
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw == 3L) %>%
+  BA_plot()
+```
+
+### D
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw == 4L) %>%
+  BA_plot()
+```
+
+### E
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw == 5L) %>%
+  BA_plot()
+```
+
+### Many
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "gaussian", model_name == "M1", .draw <= 100) %>%
+  BA_plot(alpha = 0.05)
+```
+
+:::
+
+::::
+
+:::: {.column width="40%" .fragment}
+
+### Three points of comparison
+
+1. Are the simulated data points plausible considering what you know about the participants, behavior, and study context?
+
+2. Are the simulated data points similar to the real data?
+
+3. Are the simulated data points more realistic than data simulated from alternative models?
+
+::::
+
+
+:::::
+
+## 
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+
+### A better model
+
+- Use a negative binomial distribution instead of normal distribution [@li2023countandprop].
+
+- Allow for time trends in baseline and treatment.
+
+- Allow time trends to vary by case.
+
+::::
+
+
+:::: {.column width="60%"}
+
+::: {.panel-tabset}
+
+### Real
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+real_data_plot
+```
+
+### A {.active}
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 1L) %>%
+  BA_plot(color = "darkgreen")
+```
+
+### B
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 2L) %>%
+  BA_plot(color = "darkgreen")
+```
+
+### C
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 3L) %>%
+  BA_plot(color = "darkgreen")
+```
+
+### D
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 4L) %>%
+  BA_plot(color = "darkgreen")
+```
+
+### E
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 5L) %>%
+  BA_plot(color = "darkgreen")
+```
+
+### Many
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+same_case_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw <= 100) %>%
+  BA_plot(color = "darkgreen", alpha = 0.05)
+```
+
+:::
+
+::::
+:::::
+
+
+## Summary Statistics
+
+* Examining summary statistics allows us to focus on and isolate specific  __important visual features__ of each data series.
+
+::: {.fragment}
+
+* But which summary statistics?
+
+    * __Initial performance__: First baseline observation
+
+    * __Level__: Mean/median of each phase
+
+    * __Trend__: Slope from linear regression [@manolov2024assess]
+
+    * __Variability__: SD of each phase
+
+    * __Extinction__: Proportion of zeros [@Scotti1991metaanalysis]
+
+    * __Overlap__: Non-overlap of all pairs [@parker2009improved]
+
+    * __Immediacy__: Fine-grained effects [@Ferron2024finegrained]
+
+    * __Auto-correlation__: First-order auto-correlation estimate [@Busk1988autocorrelation; @Matyas1996serial]
+
+:::
+
+```{r}
+cp_wes <- wesanderson::wes_palette("Darjeeling1", type = "discrete")
+
+PPC_plot <- function(data, qoi, legend = "top", xlab = waiver(), cp = cp_wes[c(4,2)]) {
+  
+  real_data <- filter(data, .draw == 0L)
+  sim_data <- filter(data, .draw != 0L)
+  
+  ggplot(sim_data) + 
+    aes({{qoi}}, color = condition, fill = condition) + 
+    geom_vline(xintercept = 0, color = "darkgrey") + 
+    geom_hline(yintercept = 0, color = "darkgrey") + 
+    geom_density(alpha = 0.5, trim = TRUE) + 
+    geom_vline(data = real_data, aes(xintercept = {{qoi}}, color = condition)) + 
+    facet_wrap(~ case, ncol = 1, strip.position = "right", scales = "free_y") +
+    theme_minimal() +
+    theme(
+      legend.position = legend,
+      strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0)
+    ) +
+    scale_y_continuous(name = "", labels = NULL) + 
+    scale_x_continuous(name = xlab, expand = expansion(0,0)) + 
+    scale_fill_manual(name = "", values = cp) + 
+    scale_color_manual(name = "", values = cp)
+}
+
+```
+
+## Initial observation
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "gaussian", model_name == "M1", condition == "A") %>%
+  PPC_plot(
+    qoi = initial, legend = "none", 
+    xlab = "Words read correct per minute",
+    cp = cp_wes[4]
+  )
+```
+::::
+
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "negbinomial", model_name == "M2", condition == "A") %>%
+  PPC_plot(
+    qoi = initial, legend = "none",
+    xlab = "Words read correct per minute",
+    cp = cp_wes[4]
+  )
+```
+
+::::
+:::::
+
+## Level
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = level,
+    xlab = "Mean words read correct per minute"
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = initial,
+    xlab = "Mean words read correct per minute"
+  )
+```
+
+::::
+:::::
+
+## Trend
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = slope,
+    xlab = "Linear trend in mean words read correct per minute"
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = slope,
+    xlab = "Linear trend in mean words read correct per minute"
+  )
+```
+
+::::
+:::::
+
+## Variability
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = sd_e,
+    xlab = "Residual standard deviation of mean words read correct per minute"
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = sd_e,
+    xlab = "Residual standard deviation of mean words read correct per minute"
+  )
+```
+
+::::
+:::::
+
+## Percentage of Zeros
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = PZD,
+    xlab = "Proportion of zeros"
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_stats %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = PZD,
+    xlab = "Proportion of zeros"
+  )
+```
+
+::::
+:::::
+
+## (Non-)Overlap
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_nap %>%
+  mutate(condition = "AB") %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = Est, legend = "none",
+    xlab = "Non-overlap of all pairs",
+    cp = cp_wes[3]
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 7
+#| fig-retina: 2
+
+same_case_nap %>%
+  mutate(condition = "AB") %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = Est, legend = "none",
+    xlab = "Non-overlap of all pairs",
+    cp = cp_wes[3]
+  )
+
+```
+
+::::
+
+:::::
+
+## Auto-correlation
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Poor model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| fig-retina: 2
+
+same_case_auto %>%
+  mutate(condition = "AB", case = "All") %>%
+  filter(family == "gaussian", model_name == "M1") %>%
+  PPC_plot(
+    qoi = AR1, legend = "none",
+    xlab = "First-order auto-correlation",
+    cp = cp_wes[3]
+  )
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Better model
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| fig-retina: 2
+
+same_case_auto %>%
+  mutate(condition = "AB", case = "All") %>%
+  filter(family == "negbinomial", model_name == "M2") %>%
+  PPC_plot(
+    qoi = AR1, legend = "none",
+    xlab = "First-order auto-correlation",
+    cp = cp_wes[3]
+  )
+```
+::::
+
+:::::
+
+## Predicting with new cases
+
+* Examples so far are all about predicting possible data for the _original participants_.
+
+* With hierarchical models, we can also predict possible data for _new participants_.
+
+    * In meta-analytic models, we can predict possible data for _new studies with new participants_.
+
+## {.smaller}
+
+::::: {.columns}
+
+:::: {.column width="35%"}
+
+### Baseline summary statistics for new participants
+::::
+
+:::: {.column width="65%"}
+
+::: {.panel-tabset}
+
+```{r}
+new_labs <- levels(new_case_stats$case)
+names(new_labs) <- LETTERS[1:length(new_labs)]
+
+all_case_stats <- 
+  same_case_stats %>%
+  mutate(
+    case = fct_relabel(case, ~ paste0(.x, "*")),
+  ) %>%
+  bind_rows(new_case_stats, .id = "type") %>%
+  mutate(
+    case = fct_recode(case, !!!new_labs),
+    type = recode(as.character(type), "1" = "Original Cases", "2" = "New Cases")
+  )
+
+```
+
+### Initial obs
+
+```{r}
+#| fig-width: 7
+#| fig-height: 6.5
+#| fig-retina: 2
+
+
+all_case_stats %>%
+  filter(
+    family == "negbinomial", 
+    model_name == "M2",
+    condition == "A"
+  ) %>%
+  select(-condition) %>%
+  select(condition = type,  everything()) %>%
+  PPC_plot(
+    qoi = initial,
+    legend = "right",
+    xlab = "Initial words correct per minute",
+    cp = cp_wes[c(3,5)]
+  )
+
+```
+
+### Level
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+
+all_case_stats %>%
+  filter(
+    family == "negbinomial", 
+    model_name == "M2",
+    condition == "A"
+  ) %>%
+  select(-condition) %>%
+  select(condition = type,  everything()) %>%
+  PPC_plot(
+    qoi = level,
+    legend = "right",
+    xlab = "Mean level of words correct per minute",
+    cp = cp_wes[c(3,5)]
+  )
+
+```
+
+### Trend
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+
+all_case_stats %>%
+  filter(
+    family == "negbinomial", 
+    model_name == "M2",
+    condition == "A"
+  ) %>%
+  select(-condition) %>%
+  select(condition = type,  everything()) %>%
+  PPC_plot(
+    qoi = slope,
+    legend = "right",
+    xlab = "Linear trend in mean words read correct per minute",
+    cp = cp_wes[c(3,5)]
+  )
+
+```
+
+### Variability
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+
+all_case_stats %>%
+  filter(
+    family == "negbinomial", 
+    model_name == "M2",
+    condition == "A"
+  ) %>%
+  select(-condition) %>%
+  select(condition = type,  everything()) %>%
+  PPC_plot(
+    qoi = sd_e,
+    legend = "right",
+    xlab = "Residual standard deviation of mean words read correct per minute",
+    cp = cp_wes[c(3,5)]
+  )
+
+```
+
+### Zeros
+
+```{r}
+#| fig-width: 6
+#| fig-height: 6.5
+#| fig-retina: 2
+
+
+all_case_stats %>%
+  filter(
+    family == "negbinomial", 
+    model_name == "M2",
+    condition == "A"
+  ) %>%
+  select(-condition) %>%
+  select(condition = type,  everything()) %>%
+  PPC_plot(
+    qoi = PZD,
+    legend = "right",
+    xlab = "Proportion of zeros",
+    cp = cp_wes[c(3,5)]
+  )
+
+```
+
+
+:::
+
+
+::::
+
+:::::
+
+
+## Counterfactual/hypothetical predictions {.smaller}
+
+* Predictive checks can be generated for hypothetical scenarios such as different study designs with different numbers of participants.
+
+::::: {.columns .fragment}
+
+:::: {.column width="30%"}
+
+- Between-group randomized experiment
+
+- N = 50 per group
+
+- Pre-test assessment
+
+- Post-test after 14 intervention sessions
+
+::::
+
+
+```{r}
+RCT_plot <- function(data, alpha = 1, cp = cp_wes[c(4,2)]) {
+  ggplot(data) + 
+  aes(pretest, posttest, color = group, group = interaction(group, .draw)) + 
+  geom_point(alpha = alpha) + 
+  geom_smooth(
+    method = "lm", formula = y ~ x, 
+    se = FALSE, alpha = alpha
+  ) + 
+  theme_minimal() + 
+  theme(legend.position = c(0.1, 0.9)) + 
+  labs(x = "Pre-test (WCPM)", y = "Post-test (WCPM)", color = "Group") + 
+  scale_color_manual(values = cp) + 
+  coord_cartesian(xlim = c(0,30), ylim = c(0,100))
+  
+}
+
+```
+
+:::: {.column width="70%"}
+
+::: {.panel-tabset}
+
+### A
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 1L) %>%
+  RCT_plot()
+
+```
+
+### B
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 2L) %>%
+  RCT_plot()
+
+```
+
+### C
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 3L) %>%
+  RCT_plot()
+
+```
+
+### D
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 4L) %>%
+  RCT_plot()
+
+```
+
+### E
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw == 5L) %>%
+  RCT_plot()
+
+```
+
+### Many
+
+```{r}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+#| fig-retina: 2
+
+RCT_pred %>%
+  filter(family == "negbinomial", model_name == "M2", .draw <= 50L) %>%
+  RCT_plot(alpha = 0.01)
+
+```
+
+:::
+
+::::
+:::::
+
+##
+
+### Limitations
+
+* Predictive checking methods are limited to __parametric__ statistical models.
+
+* I have demonstrated posterior predictive checking using __Bayesian methods__.
+
+    * Predictive checks for frequentist/likelihood-based estimation methods are possible but not quite as streamlined.
+
+::: fragment
+
+### Open questions
+
+* Which summary statistics are generally useful? 
+
+* How to do raw data graphical checks for meta-analytic models?
+
+* How to make the computations easier and more feasible?
+
+* How to share predictive checks as part of a study report?
+
+:::
+
+## Summary
+
+* Predictive checks are a useful and accessible way to evaluate the credibility of a parametric statistical model.
+
+    * Judgments can be informed by context and subject-matter expertise.
+    
+    * Interpretation focuses on observable data, not unobservable parameters.
+
+    * A potential bridge between statistical and visual analysis.
+    
+::: {.fragment}
+
+* Next time you need to evaluate a statistical model of single-case data, ask 
+
+    > __*Can we look at some predictive checks?*__
+
+:::
+
+## References
+
+::: {#refs}
+:::
+
