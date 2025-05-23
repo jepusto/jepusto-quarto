@@ -32,8 +32,7 @@ links:
 citation:
   type: article-journal
   container-title: Campbell Systematic Reviews
-  url: https://doi.org/10.4073/cmdp.2016.1
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.4073/cmdp.2016.1
   volume: 12
   issue: 1
   page: 1-31

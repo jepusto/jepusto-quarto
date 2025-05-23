@@ -39,8 +39,7 @@ links:
 citation:
   type: article-journal
   container-title: Journal of School Psychology
-  url: https://doi.org/10.1016/j.jsp.2023.02.002
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1016/j.jsp.2023.02.002
   volume: 98
   page: 16-38
 

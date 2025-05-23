@@ -25,8 +25,7 @@ links:
 citation:
   type: article-journal
   container-title: Research Synthesis Methods
-  url: https://doi.org/10.1002/jrsm.1338
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1002/jrsm.1338
   volume: 10
   issue: 2
   page: 161-179

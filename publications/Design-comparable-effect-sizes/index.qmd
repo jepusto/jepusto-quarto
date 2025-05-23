@@ -35,8 +35,7 @@ links:
 citation:
   type: article-journal
   container-title: Journal of Educational and Behavioral Statistics
-  url: https://doi.org/10.3102/1076998614547577
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.3102/1076998614547577
   volume: 39
   issue: 5
   page: 368-393

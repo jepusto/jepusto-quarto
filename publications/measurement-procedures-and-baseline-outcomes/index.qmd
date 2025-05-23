@@ -34,8 +34,7 @@ links:
 citation:
   type: article-journal
   container-title: Behavior Modification
-  url: https://doi.org/10.1177/0145445519864264
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1177/0145445519864264
   volume: 47
   issue: 6
   page: 1423-1454

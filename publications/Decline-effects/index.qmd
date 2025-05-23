@@ -72,8 +72,7 @@ links:
 citation:
   type: article-journal
   container-title: Nature Human Behavior
-  url: https://doi.org/10.1038/s41562-023-01749-9
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1038/s41562-023-01749-9
   volume: 8
   page: 311-319
 draft: true
