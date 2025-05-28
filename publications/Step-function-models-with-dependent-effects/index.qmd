@@ -1,0 +1,39 @@
+---
+title: 'Estimation and inference for step-function selection models in meta-analysis with dependent effects'
+author:
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Martyna
+    family: Citkowicz
+- name:
+    given: Megha
+    family: Joshi
+date: 2025-05-28T00:00:00
+draft: true
+image: step-functions-2.png
+categories:
+- meta-analysis
+- dependent effect sizes
+- selective reporting
+- publication bias
+- selection model
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/qg5x6_v1
+- icon: code-slash
+  text: Code
+  url: https://osf.io/v25rx/
+- icon: table
+  text: Data
+  url: https://osf.io/v25rx/
+preprint: true
+citation: 
+  type: article
+  doi: TBD
+  url: https://osf.io/preprints/metaarxiv/qg5x6_v1
+---
+
+Meta-analyses in social science fields face multiple methodological challenges arising from how primary research studies are designed and reported. One challenge is that many primary studies report multiple relevant effect size estimates. Another is selective reporting bias, which arises when the availability of study findings is influenced by the statistical significance of results. Although many selective reporting diagnostics and bias-correction methods have been proposed, few are suitable for meta-analyses involving dependent effect sizes. Among available methods, step-function selection models are conceptually appealing and have shown promise in previous simulations. We study methods for estimating step-function models from data involving dependent effect sizes, focusing specifically on estimating parameters of the marginal distribution of effect sizes and accounting for dependence using cluster-robust variance estimation or bootstrap resampling. We describe two estimation strategies, demonstrate them by re-analyzing data from a synthesis on ego depletion effects, and evaluate their performance through an extensive simulation study under single-step selection. Simulation findings indicate that selection models provide low-bias estimates of average effect size and that clustered bootstrap confidence intervals provide acceptable coverage levels. However, adjusting for selective reporting bias using step-function models involves a bias-variance trade-off, and unadjusted estimates of average effect sizes may be preferable if the strength of selective reporting is mild.
