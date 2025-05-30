@@ -11,7 +11,6 @@ author:
     given: Megha
     family: Joshi
 date: 2025-05-28T00:00:00
-draft: true
 image: step-functions-2.png
 categories:
 - meta-analysis
@@ -29,10 +28,13 @@ links:
 - icon: table
   text: Data
   url: https://osf.io/v25rx/
+- text: R package
+  url: https://github.com/jepusto/metaselection
+  icon: box2
 preprint: true
 citation: 
   type: article
-  doi: TBD
+  doi: 10.31222/osf.io/qg5x6_v1
   url: https://osf.io/preprints/metaarxiv/qg5x6_v1
 ---
 
