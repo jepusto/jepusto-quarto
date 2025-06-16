@@ -1,0 +1,154 @@
+---
+title: 'Attributional style and depressive symptoms in black and white youth: A many analysts meta-analysis'
+author:
+- name:
+    given: Patrick
+    family: Pössel
+- name:
+    given: Jeffrey C.
+    family: Valentine
+- name:
+    given: Shelby
+    family: Burton
+- name:
+    given: Caroline M.
+    family: Cauley
+- name:
+    given: Ahmed
+    family: Alhrabi
+- name:
+    given: Bridget
+    family: Cauley
+- name:
+    given: Ashley Ann
+    family: Dondanville
+- name:
+    given: Samantha
+    family: Gerbine
+- name:
+    given: Hannah
+    family: Heitz
+- name:
+    given: Elizabeth
+    family: Hublar
+- name:
+    given: Erica
+    family: McClure
+- name:
+    given: Toheeb
+    family: Mustapha
+- name:
+    given: Nqobile
+    family: Nzama
+- name:
+    given: Khushboo S.
+    family: Patel
+- name:
+    given: Taylor
+    family: Pratt
+- name:
+    given: Jennifer
+    family: Tinman
+- name:
+    given: Hamid
+    family: Zarei
+- name:
+    given: Michael
+    family: Armah
+- name:
+    given: Matthew
+    family: Forte
+- name:
+    given: Daihe
+    family: Sui
+- name:
+    given: Elizabeth
+    family: Tipton
+- name:
+    given: Maya B.
+    family: Mathur
+- name:
+    given: Jingru
+    family: Zhang
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: František
+    family: Bartoš
+- name:
+    given: Maximilian
+    family: Maier
+- name:
+    given: T. D.
+    family: Stanley
+- name:
+    given: Thorben
+    family: Jansen
+- name:
+    given: Jennifer
+    family: Meyer
+- name:
+    given: Ute
+    family: Mertens
+- name:
+    given: Joshua R.
+    family: Polanin
+- name:
+    given: Laura
+    family: Michaelson
+- name:
+    given: Sean
+    family: Grant
+- name:
+    given: B. Alfons
+    family: Edmar
+- name:
+    given: Rebecca M.
+    family: Kuiper
+- name:
+    given: Edita
+    family: Chvojka
+- name:
+    given: Rebecca R.
+    family: Steingut
+- name:
+    given: Joseph A.
+    family: Taylor
+- name:
+    given: Danette Y.
+    family: Martinez
+- name:
+    given: Ruben
+    family: López-Nicolás
+- name:
+    given: José A.
+    family: López-López
+- name:
+    given: Alejandro
+    family: Sandoval-Lentisco
+date: 2025-06-13T00:00:00
+categories:
+- meta-analysis
+- dependent effect sizes
+- correlation
+links:
+- icon: 
+  text: Data
+  url: https://osf.io/jx954/files/
+draft: true
+preprint: false
+citation:
+  type: article
+---
+
+For decades, the most influential psychological theories were primarily developed based on studies involving White, middle-class Americans and Europeans. 
+This limitation raises questions about generalizability of our theories and the effectiveness of psychological interventions based on those theories when applied to more diverse populations. 
+Considering the impact of depressive symptoms and depression in youth and the relevance of the hopelessness theory of depression (Abramson et al., 1989), the purpose of our meta-analysis is to examine the predictive value of this theory for Black and White youth. 
+Our systematic review and meta-analysis involved 36 studies with 56 independent samples investigating the cross-sectional relationship between attributional style and depressive symptoms in Black and White youth. 
+Eleven teams analyzed the data independently to reduce the risk that findings were impacted by a preference-based design or analysis choices. 
+Two analytic approaches yielded similar results suggesting a correlation between attributional style and depressive symptoms of $r = -0.27$ in Black youth compared to $r = -0.38$ in White youth. 
+On average, results across ten additional independent analysis teams revealed similar results. 
+Our results suggest that the theory’s fit is somewhat less good for Black youth relative to White youth. 
+Possible explanations for our findings include a lack of measurement invariance, differential score reliability, a more external attribution of negative events in Black youth, the sociocultural context, and multiple other variables. 
+Additional research examining the generalizability of our current psychological theories to populations diverse in age, ethnicity, gender, nationality, sex, etc. is crucial. 
