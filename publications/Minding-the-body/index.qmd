@@ -1,0 +1,58 @@
+---
+title: 'Minding the body: A meta-analysis of the effects of mindfulness meditation training on self-reported interoception'
+author:
+- name:
+    given: Isaac N.
+    family: Treves
+- name:
+    given: Ya-Yun
+    family: Chen
+- name:
+    given: Caitlyn L.
+    family: Wilson
+- name:
+    given: Charles
+    family: Verdonk
+- name:
+    given: Joanne
+    family: Qina`au
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Simon B.
+    family: Goldberg
+- name:
+    given: Wolf
+    family: Mehling
+- name:
+    given: Zev
+    family: Schuman-Olivier
+- name:
+    given: Sahib S.
+    family: Khalsa
+date: 2025-06-04T00:00:00
+image: interoception-vs-distress.png
+categories:
+- meta-analysis
+- dependent effect sizes
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://doi.org/10.21203/rs.3.rs-6792067/v1
+- text: Supplementary materials
+  url: https://assets-eu.researchsquare.com/files/rs-6792067/v1/4b734f37e8b3d956461aec0c.docx
+- icon: code-slash
+  text: Code
+  url: https://osf.io/qzyh5/?view_only=c537e7d6de084f32a90eb12792175a2e
+- icon: 
+  text: Data
+  url: https://osf.io/3eu7c?view_only=c537e7d6de084f32a90eb12792175a2e
+preprint: true
+citation:
+  type: article
+  doi: 10.21203/rs.3.rs-6792067/v1
+  url: https://doi.org/10.21203/rs.3.rs-6792067/v1
+---
+
+Mindfulness meditation training may cultivate interoceptive awareness and provide therapeutic benefit when implemented within mental and physical health interventions. This pre-registered meta-analysis evaluated the impact of mindfulness interventions on self-reported interoception measures and associated relationships with psychological outcomes. Twenty-nine randomized controlled trials with 2,191 participants (77.8% female, mean age 32.8 years) were meta-analyzed using correlated and hierarchical effects models. Interventions included mindfulness-based programs ($k = 15$), body-based approaches (incorporating elements like massage, $k = 8$), and other variations ($k = 6$). Five SIMs were tested; the Multidimensional Assessment of Interoceptive Awareness was the most common (22 studies). Results showed a small-to-medium positive effect on interoception measures across all studies ($g = 0.31$, $p < 0.001$, 95% CI [0.21, 0.42]) with low-to-moderate heterogeneity ($\tau = 0.16$). Mindfulness-based programs demonstrated the largest effects ($g = 0.41$). No evidence of publication bias was found. No other moderators, such as practice dosage or clinical sample, were significant. Improvements in self-reported interoception were similar in size to improvements in self-reported mindfulness and were related to improvements in psychological distress. These meta-analytic findings provide evidence that mindfulness-based interventions lead to adaptive changes in the subjective experience of interoception, perhaps contributing to improved mental wellbeing.
