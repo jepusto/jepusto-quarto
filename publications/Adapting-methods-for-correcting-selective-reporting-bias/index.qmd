@@ -8,7 +8,6 @@ author:
     given: James E.
     family: Pustejovsky
 date: 2025-06-09T00:00:00
-draft: true
 image: reg-one-step-rmse.png
 categories:
 - meta-analysis
