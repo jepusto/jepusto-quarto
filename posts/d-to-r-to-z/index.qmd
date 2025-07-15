@@ -1,0 +1,169 @@
+---
+title: Variance stabilization of Cohen's d
+date: '2025-07-14'
+categories:
+- effect-size
+- standardized-mean-difference
+- delta-method
+execute:
+  echo: false
+  message: false
+  warning: false
+code-tools: true
+bibliography: d-r-z-refs.bib
+draft: true
+---
+
+In a recent _Psychological Methods_ paper, @Haaf2023does suggest conducting meta-analysis of standardized mean differences after transforming them to biserial correlations and then applying Fisher's $z$-transformation. 
+They argue that this leads to a variance-stabilized effect size, which has sampling variance that is constant across varying values of the true parameter $\delta$. 
+@Bartos2023robust cites @Haaf2023does as justification for conducting meta-analysis of standardized mean differences after applying this $d$-to-$r$-to-$z$ transformation.
+All this surprised me a bit because I think it's usually a good idea to transform $d$ effect sizes into other metrics [cf. @Pustejovsky2014converting] and because the transformation itself was unfamiliar to me.
+In other work [@Pustejovsky2018testing], I've used the variance-stabilizing transformation given in @Hedges1985statistical, which is not consistent with this approach. 
+Is it _really_ variance stabilizing?
+
+The first step in the transformation proposed by @Haaf2023does depends on the relative sample sizes of the two groups, which I will parameterize as $p = N_1 / (N_1 + N_2)$.
+Letting $a = 1 / [p(1 - p)]$, the transformation function is given by 
+$$
+z(d) = \frac{1}{2}\left[\log\left(\sqrt{d^2 + a} + d\right) - \log\left(\sqrt{d^2 + a} - d\right)\right]
+$$
+
+The shape of the transformation is depicted in @fig-Haaf-transform.
+
+```{r}
+#| label: fig-Haaf-transform
+#| fig-width: 8
+#| fig-height: 4
+#| fig-cap: "d-to-r-to-z transformation for various allocation fractions $p$. The dashed line is y = x / 2."
+
+library(tidyverse)
+
+d_to_z <- function(d, p) {
+  r <- d / sqrt(d^2 + 1 / (p * (1 - p)))
+  atanh(r)
+}
+
+d_to_h <- function(d, p) {
+  a <- 1 / (p * (1 - p))
+  sqrt(2) * sign(d) * (log(abs(d) + sqrt(d^2 + 2 * a)) - log(2 * a) / 2)
+}
+
+transform_dat <- 
+  expand_grid(
+    d = seq(-5,5,0.02),
+    p = seq(0.1, 0.5, 0.1)
+  ) |>
+  mutate(
+    z = d_to_z(d, p),
+    h = d_to_h(d, p),
+    p_fac = factor(p) |> fct_rev()
+  )
+
+ggplot(transform_dat) +
+  aes(d, z, color = p_fac) + 
+  geom_abline(slope = 1 / 2, intercept = 0, linetype = "dashed") + 
+  geom_line() + 
+  theme_minimal() + 
+  labs(color = "p") + 
+  scale_x_continuous(breaks = seq(-5,5,1), minor_breaks = NULL)
+```
+
+The variance-stabilizing transformation given in @Hedges1985statistical is 
+$$
+h(d) = \sqrt{2} \left(\frac{d}{|d|}\right) \left[\log\left(|d| + \sqrt{d^2 + 2a}\right) - \frac{1}{2}\log\left(2a\right)\right]
+$$
+@fig-transformation-comparison compares the two transformation functions. They're very similar over the range [-2, 2] and only begin to diverge when $|d| > 3$, the realm of what would typically be considered implausibly large effect sizes.
+
+```{r}
+#| label: fig-transformation-comparison
+#| fig-width: 8
+#| fig-height: 5
+#| fig-cap: "Comparison of transformation functions given by Haaf and Rouder (2023) and by Hedges and Olkin (1985)"
+
+transform_dat |>
+  mutate(p_fac = fct_rev(p_fac) |> fct_relabel(\(x) paste("p ==", x))) |>
+  pivot_longer(cols = c(z, h), names_to = "stat", values_to = "val") |>
+  ggplot() + 
+  aes(d, val, color = stat) + 
+  geom_line() + 
+  facet_wrap(~ p_fac, labeller = "label_parsed") + 
+  theme_minimal() + 
+  scale_x_continuous(breaks = seq(-4,4,2))
+```
+This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will likely be much less pronounced when $N_1$ and $N_2$ are large.
+I will run some quick simulations to 
+
+```{r}
+library(simhelpers)
+library(future)
+plan(multisession)
+
+r_smd <- function(reps, delta = 0, N = 20, p = 1/2) {
+  a <- sqrt(N * p * (1 - p))
+  ncp <- delta * a
+  tstats <- rt(reps, df = N - 2, ncp = ncp)
+  d <- tstats / a
+  z <- d_to_z(d, p = p)
+  h <- d_to_h(d, p = p)
+  data.frame(d = d, z = z, h = h)
+}
+
+calc_M_SE <- function(dat) {
+  M <- colMeans(dat)
+  SE <- apply(dat, 2, sd)
+  data.frame(stat = names(dat), M = M, SE = SE)
+}
+
+sim_moments <- compose(calc_M_SE, r_smd)
+dat <- sim_moments(reps = 100000, delta = 0.25, N = 12, p = 1/2)
+
+sim_d_moments <-
+  expand_grid(
+    N = c(20, 40, 60, 80, 100),
+    p = c(0.1, 0.3, 0.5),
+    delta = seq(0, 3, 0.1)
+  ) |>
+  mutate(
+    reps = 1e4
+  ) |>
+  evaluate_by_row(
+    sim_moments, 
+    .options = furrr::furrr_options(seed = TRUE),
+    system_time = FALSE
+  ) |>
+  mutate(
+    p_fac = factor(p) |> fct_relabel(\(x) paste("p ==", x)),
+    N_fac = factor(N) |> fct_relabel(\(x) paste("N ==", x))
+  )
+```
+```{r}
+#| label: fig-true-SE
+#| fig-width: 8
+#| fig-height: 8
+#| fig-cap: "True standard errors of untransformed $(d)$ and transformed ($z(d)$ and $h(d)$) effect size estimates"
+
+ggplot(sim_d_moments) + 
+  aes(delta, SE, color = stat) + 
+  expand_limits(y = 0) + 
+  geom_line() + 
+  facet_grid(N_fac ~ p_fac, scales = "free_y", labeller = "label_parsed") + 
+  theme_minimal() +
+  labs(x = expression(delta), color = "")
+```
+
+```{r}
+#| label: fig-true-SE-zoom
+#| fig-width: 8
+#| fig-height: 8
+#| fig-cap: "True standard errors of transformed ($z(d)$ and $h(d)$) effect size estimates"
+
+sim_d_moments |>
+  filter(stat != "d") |>
+ggplot() + 
+  aes(delta, SE, color = stat) + 
+  expand_limits(y = 0) + 
+  geom_line() + 
+  facet_grid(N_fac ~ p_fac, scales = "free_y", labeller = "label_parsed") + 
+  theme_minimal() +
+  labs(x = expression(delta), color = "")
+```
+
