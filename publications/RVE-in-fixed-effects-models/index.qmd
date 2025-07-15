@@ -29,8 +29,7 @@ links:
 citation:
   type: article-journal
   container-title: Journal of Business and Economic Statistics
-  url: http://doi.org/10.1080/07350015.2016.1247004
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1080/07350015.2016.1247004
   volume: 36
   issue: 4
   page: 672-683

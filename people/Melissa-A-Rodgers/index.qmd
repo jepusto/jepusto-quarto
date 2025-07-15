@@ -9,8 +9,6 @@ about:
   links:
   - icon: envelope
     href: mailto:mrodgers@air.org
-  - icon: twitter
-    href: https://twitter.com/rodgermethis
 org_name: The University of Texas at Austin
 org_url: ''
 role: Graduate student

@@ -30,7 +30,7 @@ citation:
   type: article-journal
   container-title: Journal of Educational Administration
   url: https://doi.org/10.1108/09578230810863262
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1108/09578230810863262
   volume: 46
   issue: 2
   page: 189-213

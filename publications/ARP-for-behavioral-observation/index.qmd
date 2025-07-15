@@ -26,8 +26,7 @@ links:
 citation:
   type: article-journal
   container-title: Behavioral Disorders
-  url: https://dx.doi.org/10.1177/019874291303900406
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1177/019874291303900406
   volume: 39
   issue: 4
   page: 211-227

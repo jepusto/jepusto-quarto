@@ -32,7 +32,7 @@ citation:
   type: article-journal
   container-title: Psychological Methods
   url: https://doi.org/10.1037/met0000510
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1037/met0000510
   volume: 29
   issue: 3
   page: 537-560

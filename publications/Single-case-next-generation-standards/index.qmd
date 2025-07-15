@@ -37,8 +37,7 @@ links:
 citation:
   type: article-journal
   container-title: Exceptional Children
-  url: https://doi.org/10.1177/00144029221137656
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1177/00144029221137656
   volume: 89
   issue: 4
   page: 379-396

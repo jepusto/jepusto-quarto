@@ -62,8 +62,7 @@ links:
 citation:
   type: article-journal
   container-title: Augmentative and Alternative Communication
-  url: https://doi.org/10.1080/07434618.2022.2116355
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1080/07434618.2022.2116355
   volume: 39
   issue: 1
   page: 7-22

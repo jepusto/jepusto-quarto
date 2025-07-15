@@ -9,8 +9,6 @@ about:
   links:
   - icon: envelope
     href: mailto:gleb.furman@gmail.com
-  - icon: twitter
-    href: https://twitter.com/gleb_fu
 org_name: Gibson Consulting Group
 org_url: https://gibsonconsult.com/who-we-are/
 role: Senior Quantitative Research Scientist

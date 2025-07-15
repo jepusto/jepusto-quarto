@@ -9,8 +9,6 @@ about:
   links:
   - icon: envelope
     href: mailto:CRunyon@nbme.org
-  - icon: twitter
-    href: https://twitter.com/Runyon_CR
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=JaemqrAAAAAJ&hl=en
 org_name: National Board of Medical Examiners

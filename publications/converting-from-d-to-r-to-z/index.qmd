@@ -25,8 +25,7 @@ links:
 citation:
   type: article-journal
   container-title: Psychological Methods
-  url: http://psycnet.apa.org/doi/10.1037/a0033788
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1037/a0033788
   volume: 19
   issue: 1
   page: 92-112

@@ -35,8 +35,7 @@ links:
 citation:
   type: article-journal
   container-title: Neuropsychological Rehabilitation
-  url: https://doi.org/10.1080/09602011.2013.819021
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1080/09602011.2013.819021
   volume: 24
   issue: 3-4
   page: 528-553

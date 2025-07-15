@@ -1,0 +1,66 @@
+---
+title: More on approximating the distribution of cluster-robust Wald statistics
+date: '2025-06-04'
+draft: true
+categories:
+- robust variance estimation
+- distribution theory
+code-tools: true
+toc: true
+---
+
+In [Tipton and Pustejovsky (2015)](http://doi.org/10.3102/1076998615606099), we examined several different small-sample approximations for cluster-robust Wald test statistics, which are like $F$ statistics but based on cluster-robust variance estimators. [In a previous post](/posts/cluster-robust-Wald-statistics/), I worked through the algebra of one of these small-sample Wald test statistics for the specific case of a one-way ANOVA with cluster-level predictors. 
+I focused on the Approximate Hotelling's $T^2$ test with Zhang's degrees of freedom approximation.
+In this post, I'll poke at another one of the small-sample tests, this one inspired by an approximation technique described in [Fay and Cornelius (1996)](https://doi.org/10.1080/00949659608811740), and which we called the eigen-decomposition F-test.
+$\def\Pr{{\text{Pr}}}
+\def\E{{\text{E}}}
+\def\Var{{\text{Var}}}
+\def\Cov{{\text{Cov}}}
+\def\cor{{\text{cor}}}
+\def\bm{\mathbf}
+\def\bs{\boldsymbol}$
+
+# Meta-ANOVA
+
+As in my previous post, consider a setup where clusters can be classified into one of $C$ categories, with each cluster of observations falling into a single category. Let $\bs\mu = \left[\mu_c \right]_{c=1}^C$ denote the means of these categories. Suppose we have an estimator of those means $\bs{\hat\mu} = \left[\hat\mu_c\right]_{c=1}^C$ and a corresponding cluster-robust variance estimator $\bm{V}^R = \bigoplus_{c=1}^C V^R_c$. Note that $\bm{V}^R$ is diagonal because the estimators for each category are independent. 
+Assume that the robust variance estimator is unbiased so $\E\left(V^R_c\right) = \Var\left( \hat\mu_c \right) = \psi_c$ for $c = 1,...,C$. 
+Let $\bs\Psi = \bigoplus_{c=1}^C \psi_c$. 
+
+Consider the test of the null hypothesis that that means of the categories are all equal, $H_0: \mu_1 = \mu_2 = \cdots = \mu_C$. We can express this null using a $q \times C$ contrast matrix $\bm{C} = \left[-\bm{1}_q \ \bm{I}_q \right]$, where $q = C - 1$. The null hypothesis is then $\bm{C} \bs\mu = \bm{0}_q$. The corresponding cluster-robust Wald statistic is
+$$
+Q = \bs{\hat\mu}' \bm{C}' \left(\bm{C} \bm{V}^R \bm{C}'\right)^{-1} \bm{C} \bs{\hat\mu}.
+$$
+
+# Eigen-decomposition
+
+```{r}
+library(clubSandwich)
+C <- 5
+psi <- sort(rchisq(C, df = 7), decreasing = TRUE)
+Psi_mat <- diag(psi)
+Cmat <- constrain_equal(1:C, coefs = paste0("B",1:C))
+psi_0_negsqrt <- diag(1 / sqrt(psi[-1]))
+psi_Cmat <- psi_0_negsqrt %*% Cmat
+Omega <- psi_Cmat %*% Psi_mat %*% t(psi_Cmat)
+
+f <- 1 / sqrt(psi[-1])
+all.equal(
+  diag(nrow = C - 1) + psi[1] * tcrossprod(f), 
+  Omega
+)
+z <- f / sqrt(sum(f^2))
+rho <- psi[1] * sum(f^2)
+all.equal(
+  diag(nrow = C - 1) + rho * tcrossprod(z), 
+  Omega
+)
+
+eig_vals <- c(1 + psi[1] * sum(1 / psi[-1]), rep(1, C - 2))
+eigen(Omega)$values
+all.equal(eig_vals, eigen(Omega)$values)
+
+eigen(Omega)$vectors
+
+v1 <- -z
+```
+

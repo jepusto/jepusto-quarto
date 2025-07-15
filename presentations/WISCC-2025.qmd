@@ -1,0 +1,17 @@
+---
+title: 'Predictive Checks of Statistical Models for SCD Data'
+author: 
+ - James E. Pustejovsky
+date: 2025-05-15T15:15:00
+publish_date: 2025-05-05T09:00:00
+event: Wing Institute Single Case Conference 2025
+event_short: WISCC2025
+location: Nashville, TN
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/WISCC-2025/index.html
+---
+
+
+

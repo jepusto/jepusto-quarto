@@ -9,8 +9,8 @@ about:
   links:
   - icon: envelope
     href: mailto:jzhang2637@wisc.edu
-  - icon: twitter
-    href: https://twitter.com/JrrrZhang
+  - text: "{{< fa brands bluesky >}}"
+    href: https://bsky.app/profile/jrzhang.bsky.social
 org_name: University of Wisconsin-Madison
 org_url: ''
 role: Graduate student

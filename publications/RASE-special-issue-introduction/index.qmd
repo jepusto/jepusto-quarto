@@ -23,7 +23,7 @@ citation:
   type: article-journal
   container-title: Remedial and Special Education
   url: http://dx.doi.org/10.1177/0741932517717043
-  doi: 10.1016/j.jsp.2018.02.003
+  doi: 10.1177/0741932517717043
   volume: 38
   issue: 6
   page: 323-330
