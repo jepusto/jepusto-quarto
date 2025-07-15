@@ -157,7 +157,7 @@ ggplot(sim_d_moments) +
 #| fig-cap: "True standard errors of transformed ($z(d)$ and $h(d)$) effect size estimates"
 
 sim_d_moments |>
-  filter(stat != "d") |>
+  mutate(SE = if_else(stat == "d", SE * sqrt(p * (1 - p)), SE)) |>
 ggplot() + 
   aes(delta, SE, color = stat) + 
   expand_limits(y = 0) + 
