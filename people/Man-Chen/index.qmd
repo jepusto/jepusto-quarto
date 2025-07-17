@@ -7,8 +7,16 @@ about:
   template: trestles
   image-shape: round
   links:
+  - icon: globe
+    href: https://education.utexas.edu/faculty/man_chen/
   - icon: envelope
     href: mailto:manchen9005@gmail.com
+  - text: "{{< fa brands bluesky >}}"
+    href: https://bsky.app/profile/man-chen.bsky.social
+  - text: '{{< ai google-scholar >}}'
+    href: https://scholar.google.com/citations?user=p9uPycYAAAAJ
+  - icon: github
+    href: https://github.com/manchen07
 org_name: University of Texas at Austin
 org_url: ''
 role: Assistant Professor
