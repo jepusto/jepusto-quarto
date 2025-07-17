@@ -9,7 +9,11 @@ about:
   links:
   - icon: envelope
     href: mailto:bethanybhat@gmail.com
-  - icon: github
+  - text: "{{< fa brands bluesky >}}"
+    href: https://bsky.app/profile/bethanyhbhat.bsky.social
+  - text: '{{< ai google-scholar >}}'
+    href: https://scholar.google.com/citations?user=bWMRiLwAAAAJ
+    - icon: github
     href: https://github.com/bethanyhamilton
   - icon: google scholar
     href: https://scholar.google.com/citations?user=bWMRiLwAAAAJ
@@ -49,7 +53,7 @@ Bethany Hamilton Bhat is a doctoral candidate in the Quantitative Methods area i
 
 ## Education
 
-- PhD in Quantitative Methods | 2025 (expected) <br> [University of Texas at Austin]{style='color:gray;'}
+- PhD in Quantitative Methods | 2025 <br> [University of Texas at Austin]{style='color:gray;'}
 - BA in Plan II Honors | 2014 <br> [The University of Texas at Austin]{style='color:gray;'}
 
 :::
