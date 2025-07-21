@@ -8813,8 +8813,8 @@
     },
     "simhelpers": {
       "Package": "simhelpers",
-      "Version": "0.3.1",
-      "Source": "Repository",
+      "Version": "0.3.1.9999",
+      "Source": "GitHub",
       "Type": "Package",
       "Title": "Helper Functions for Simulation Studies",
       "Authors@R": "c( person(given = \"Megha\",  family = \"Joshi\",  email = \"megha.j456@gmail.com\",  role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0001-7936-076X\")), person(given = \"James\",  family = \"Pustejovsky\",  email = \"jepusto@gmail.com\",  role = c(\"aut\"),  comment = c(ORCID = \"0000-0003-0591-9465\")))",
@@ -8853,10 +8853,14 @@
       ],
       "RdMacros": "Rdpack",
       "VignetteBuilder": "knitr",
-      "NeedsCompilation": "no",
       "Author": "Megha Joshi [aut, cre] (<https://orcid.org/0000-0001-7936-076X>), James Pustejovsky [aut] (<https://orcid.org/0000-0003-0591-9465>)",
       "Maintainer": "Megha Joshi <megha.j456@gmail.com>",
-      "Repository": "RSPM"
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "meghapsimatrix",
+      "RemoteRepo": "simhelpers",
+      "RemoteRef": "master",
+      "RemoteSha": "d131a7faa3f286e290b2d81ef3d5ee6e2dc60b33"
     },
     "slider": {
       "Package": "slider",
