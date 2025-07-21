@@ -14,10 +14,10 @@ bibliography: d-r-z-refs.bib
 draft: true
 ---
 
-In a recent _Psychological Methods_ paper, @Haaf2023does suggest conducting meta-analysis of standardized mean differences after transforming them to biserial correlations and then applying Fisher's $z$-transformation. 
+In a recent _Psychological Methods_ paper, @Haaf2023does suggest conducting meta-analysis of standardized mean differences after transforming them to point biserial correlations and then applying Fisher's $z$-transformation. 
 They argue that this leads to a variance-stabilized effect size, which has sampling variance that is constant across varying values of the true parameter $\delta$. 
 @Bartos2023robust cites @Haaf2023does as justification for conducting meta-analysis of standardized mean differences after applying this $d$-to-$r$-to-$z$ transformation.
-All this surprised me a bit because I think it's usually a not good idea to transform $d$ effect sizes into other metrics [cf. @Pustejovsky2014converting] and because the transformation itself was unfamiliar to me.
+All this surprised me a bit because the transformation was unfamiliar, although I've written about these sorts of effect size conversions before [cf. @Pustejovsky2014converting].
 In other work [@Pustejovsky2018testing], I've used the variance-stabilizing transformation given in @Hedges1985statistical, which is different than this approach. 
 What gives? Is this $d$-to-$r$-to-$z$ business _really_ variance stabilizing?
 
@@ -71,6 +71,7 @@ The variance-stabilizing transformation given in @Hedges1985statistical is
 $$
 h(d) = \sqrt{2} \left(\frac{d}{|d|}\right) \left[\log\left(|d| + \sqrt{d^2 + 2a}\right) - \frac{1}{2}\log\left(2a\right)\right]
 $$
+
 @fig-transformation-comparison compares the two transformation functions. They're very similar over the range [-2, 2] and only begin to diverge when $|d| > 3$, the realm of what would typically be considered implausibly large effect sizes.
 
 ```{r}
@@ -89,22 +90,24 @@ transform_dat |>
   theme_minimal() + 
   scale_x_continuous(breaks = seq(-4,4,2))
 ```
-This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will likely be much less pronounced when $N_1$ and $N_2$ are large.
-I will run some quick simulations to 
+This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will likely be less pronounced when $N_1$ and $N_2$ are large.
+I ran some quick simulations to look at how the variance of $d$, $z(d)$, and $h(d)$ change as a function of the true average effect size $\delta$.
+
 
 ```{r}
+#| cache: true
+
 library(simhelpers)
 library(future)
 plan(multisession)
 
-r_smd <- function(reps, delta = 0, N = 20, pi = 1/2, fixed_p = TRUE) {
-  p <- if (fixed_p) pi else pmin(N - 1, pmax(1, rbinom(reps, size = N, prob = pi))) / N
+r_smd <- function(reps, delta = 0, N = 20, p = 1/2) {
   a <- sqrt(N * p * (1 - p))
   ncp <- delta * a
   tstats <- rt(reps, df = N - 2, ncp = ncp)
   d <- tstats / a
-  z <- d_to_z(d, p = pi)
-  h <- d_to_h(d, p = pi)
+  z <- d_to_z(d, p = p)
+  h <- d_to_h(d, p = p)
   data.frame(d = d, z = z, h = h)
 }
 
@@ -114,83 +117,92 @@ calc_M_SE <- function(dat) {
   data.frame(stat = names(dat), M = M, SE = SE)
 }
 
-sim_moments <- compose(calc_M_SE, r_smd)
-dat_f <- sim_moments(reps = 100000, delta = 2, N = 20, pi = 1/2)
-dat_r <- sim_moments(reps = 100000, delta = 2, N = 20, pi = 1/2, fixed_p = FALSE)
+sim_d_twosample <- compose(calc_M_SE, r_smd)
 
 sim_grid <-
   expand_grid(
     N = c(20, 40, 60, 80, 100),
-    pi = c(0.1, 0.3, 0.5),
+    p = c(0.1, 0.3, 0.5),
     delta = seq(0, 3, 0.1)
   ) |>
   mutate(
     reps = 1e4
   )
 
-sim_d_fixed_moments <- 
+d_twosample_res <- 
   sim_grid |>
   evaluate_by_row(
-    sim_moments, 
-    .options = furrr::furrr_options(seed = TRUE),
-    system_time = FALSE
+    sim_d_twosample, 
+    system_time = FALSE,
+    verbose = FALSE
   ) |>
   mutate(
-    pi_fac = factor(pi) |> fct_relabel(\(x) paste("pi ==", x)),
+    p_fac = factor(p) |> fct_relabel(\(x) paste("p ==", x)),
     N_fac = factor(N) |> fct_relabel(\(x) paste("N ==", x))
   )
 ```
+
+@fig-true-SE-fixed
 
 ```{r}
 #| label: fig-true-SE-fixed
 #| fig-width: 8
 #| fig-height: 8
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates"
+#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates, rescaled so that SE = 1 when $\\delta$ = 0."
 
-sim_d_fixed_moments |>
-  mutate(SE = if_else(stat == "d", SE * sqrt((N - 2) * pi * (1 - pi)), sqrt(N - 2) * SE)) |>
+d_twosample_res |>
+  mutate(SE = if_else(stat == "d", SE * sqrt((N - 2) * p * (1 - p)), sqrt(N - 2) * SE)) |>
 ggplot() + 
   aes(delta, SE, color = stat) + 
   geom_hline(yintercept = 0) + 
   geom_line() + 
-  facet_grid(N_fac ~ pi_fac, scales = "free_y", labeller = "label_parsed") + 
+  facet_grid(N_fac ~ p_fac, scales = "free_y", labeller = "label_parsed") + 
   theme_minimal() +
-  labs(x = expression(delta), color = "")
+  labs(
+    x = expression(delta), 
+    y = "True Standard Error (rescaled)", 
+    color = ""
+  )
 ```
+
 ```{r}
-sim_d_random_moments <- 
+r_bivariate <- function(
+  reps, delta = 0, N = 20, p = 1/2, fixed = TRUE
+) {
+  require(mvtnorm)
+  rho <- delta / sqrt(delta^2 + 1 / (p * (1 - p)))
+  Sigma <- rho + diag(1 - rho, nrow = 2L)
+  d <- replicate(reps, {
+    Z <- rmvnorm(n = N, mean = c(0,0), sigma = Sigma)
+    if (fixed) {
+      X <- ifelse(Z[,1] <= qnorm(p), "A","B")
+    } else {
+      X <- ifelse(rank(Z[,1]) <= N * p, "A","B")
+      p <- table(X)[1] / N
+    }
+    M <- tapply(Z[,2], X, mean)
+    V <- tapply(Z[,2], X, var)
+    Vpool <- sum((table(X) - 1) * V) / (N - 2)
+    as.numeric(diff(M)) / sqrt(Vpool)
+  })
+  z <- d_to_z(d, p = p)
+  h <- d_to_h(d, p = p)
+  data.frame(d = d, z = z, h = h)
+}
+
+sim_bivariate <- compose(calc_M_SE, r_bivariate)
+
+d_bivariate_fixed <- 
   sim_grid |>
   evaluate_by_row(
-    sim_moments, 
-    fixed_p = FALSE, 
-    .options = furrr::furrr_options(seed = TRUE),
-    system_time = FALSE
+    sim_bivariate,
+    system_time = FALSE,
+    verbose = FALSE
   ) |>
   mutate(
-    pi_fac = factor(pi) |> fct_relabel(\(x) paste("pi ==", x)),
+    p_fac = factor(p) |> fct_relabel(\(x) paste("p ==", x)),
     N_fac = factor(N) |> fct_relabel(\(x) paste("N ==", x))
   )
 
 ```
 
-```{r}
-#| label: fig-true-SE-random
-#| fig-width: 8
-#| fig-height: 8
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates"
-
-bind_rows(
-  fixed = sim_d_fixed_moments, 
-  random = sim_d_random_moments,
-  .id = "pi_type"
-) |>
-  mutate(SE = if_else(stat == "d", SE * sqrt((N - 2) * pi * (1 - pi)), sqrt(N - 2) * SE)) |>
-ggplot() + 
-  aes(delta, SE, color = stat, linetype = pi_type) + 
-  geom_hline(yintercept = 0, color = "grey") + 
-  geom_line() + 
-  facet_grid(N_fac ~ pi_fac, scales = "free_y", labeller = "label_parsed") + 
-  theme_minimal() +
-  labs(x = expression(delta), color = "", linetype = "")
-
-```
