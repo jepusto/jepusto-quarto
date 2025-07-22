@@ -5,13 +5,12 @@ categories:
 - effect-size
 - standardized-mean-difference
 - delta-method
-execute:
-  code-fold: true
-  message: false
-  warning: false
+code-fold: true
 code-tools: true
+toc: true
 bibliography: d-r-z-refs.bib
 draft: true
+csl: "../apa.csl"
 ---
 
 In a recent _Psychological Methods_ paper, @Haaf2023does suggest conducting meta-analysis of standardized mean differences after transforming them to point biserial correlations and then applying Fisher's $z$-transformation. 
@@ -55,7 +54,7 @@ transform_dat <-
   mutate(
     z = d_to_z(d, R),
     h = d_to_h(d, R),
-    R_fac = factor(paste(R,"1", sep = ":")) |> fct_rev()
+    R_fac = factor(paste(R,"1", sep = ":"))
   )
 
 ggplot(transform_dat) +
@@ -63,6 +62,7 @@ ggplot(transform_dat) +
   geom_abline(slope = 1 / 2, intercept = 0, linetype = "dashed") + 
   geom_line() + 
   theme_minimal() + 
+  theme(legend.position = "inside", legend.position.inside = c(0.9, 0.2)) + 
   labs(color = "R") + 
   scale_x_continuous(breaks = seq(-5,5,1), minor_breaks = NULL)
 ```
@@ -88,12 +88,17 @@ transform_dat |>
   geom_line() + 
   facet_wrap(~ R_fac, labeller = "label_parsed") + 
   theme_minimal() + 
-  theme(legend.position = c(0.05, 0.9)) + 
+  theme(legend.position = "inside", legend.position.inside = c(0.05, 0.9)) + 
   scale_x_continuous(breaks = seq(-4,4,2)) + 
   labs(y = "", color = "")
 ```
-This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will likely be less pronounced when $N_1$ and $N_2$ are large.
-I ran some quick simulations to look at how the variance of $d$, $z(d)$, and $h(d)$ change as a function of the true average effect size $\delta$.
+This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will thus be less pronounced when $N_1$ and $N_2$ are large.
+
+# Two-sample simulations
+
+I ran some quick simulations to look at how the sampling variance of $d$, $z(d)$, and $h(d)$ change as a function of the true average effect size $\delta$. 
+These simulations are based on a data-generating process in which two independent samples are drawn from normally distributed populations with a standardized mean difference of $\delta$, with total sample size $N$ and allocation ratio of $R = N_1:N_2$.
+A variance-stabilizing transformation should produce an estimator with true standard error (i.e., square root of the sampling variance) that is constant, not depending on $\delta$. 
 
 ```{r}
 #| cache: true
@@ -101,6 +106,8 @@ I ran some quick simulations to look at how the variance of $d$, $z(d)$, and $h(
 library(simhelpers)
 library(future)
 plan(multisession)
+
+# Generate standardized mean differences d, z(d), h(d)
 
 r_smd <- function(reps, delta = 0, N = 20, R = 1) {
   a <- sqrt(N * R / (R + 1)^2)
@@ -112,14 +119,17 @@ r_smd <- function(reps, delta = 0, N = 20, R = 1) {
   data.frame(d = d, z = z, h = h)
 }
 
+# Summarize mean and variance
 calc_M_SE <- function(dat) {
   M <- colMeans(dat, na.rm = TRUE)
   SE <- apply(dat, 2, sd, na.rm = TRUE)
   data.frame(stat = names(dat), M = M, SE = SE)
 }
 
+# Simulation driver
 sim_d_twosample <- compose(calc_M_SE, r_smd)
 
+# Parameter grid
 sim_grid <-
   expand_grid(
     N = c(10, 30, 50),
@@ -130,6 +140,7 @@ sim_grid <-
     reps = 2e4
   )
 
+# Execute simulations
 d_twosample_res <- 
   sim_grid |>
   evaluate_by_row(
@@ -144,14 +155,25 @@ d_twosample_res <-
   )
 
 ```
+```{r}
+#| include: false
+d2_factors <- 
+  d_twosample_res %>% 
+  mutate(SE_scaled = round(100 * SE_scaled)) |> 
+  filter(R == 1, N == 50, delta == 2)
+```
 
-@fig-true-SE-twosample
+@fig-true-SE-twosample shows the relationship between the parameter $\delta$ and the true standard error of the standardized mean difference estimator $d$, along with the true standard errors of the transformed effect size estimators $z(d)$ and $h(d)$. 
+To facilitate comparison between the raw and transformed estimators, I have re-scaled the standard errors according to their values when $\delta = 0$ (multiplying by $\sqrt{(N - 2) R / (R + 1)^2}$ for $d$ and by $\sqrt{N - 2}$ for $z(d)$ and $h(d)$).
 
 ```{r}
 #| label: fig-true-SE-twosample
+#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a two-sample homoskedastic normal model. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
 #| fig-height: 6
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a two-sample homoskedastic normal model. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
+#| out-width: 100%
+#| lightbox: true
+#| column: body-outset
 
 ggplot(d_twosample_res) + 
   aes(delta, SE_scaled, color = stat) + 
@@ -166,11 +188,32 @@ ggplot(d_twosample_res) +
   )
 ```
 
+Clearly, the variance of $z(d)$ is not constant, but rather is _decreasing_ in $\delta$.
+For instance, when $R = 1:1$ and $N = 50$, the true SE of $z(d)$ decreases to `{r} d2_factors |> filter(stat == 'z') |> pull(SE_scaled)`% of its null value as $\delta$ increases to 2. 
+This pattern is the opposite of what we see for the raw effect size $d$, which has standard error that increases to `{r} d2_factors |> filter(stat == 'd') |> pull(SE_scaled)`% of its null value under the same conditions.
+Between these two, the transformed $h(d)$ effect sizes have stable SEs across the range of $\delta$.
+Thus, $h(d)$ is variance stabilizing but $z(d)$ is not.
+
+# Dichotomized bivariate normal simulations
+
+In @Pustejovsky2014converting, I argued that the appropriateness of $d$-to-$r$-to-$z$ transformations and the specific form of transformation to use both depend on features of the study's design. 
+The two-sample normal model would be relevant for experimental studies, and it seems that the $z(d)$ transformation is not variance-stabilizing there.
+But perhaps it would work for other study designs and data-generating processes?
+In @Pustejovsky2014converting, I also looked at extreme groups designs and "dichotomization" designs, where a researcher is interested in the correlation between two continuous variables, one of which has been dichotomized based on quantiles of its distribution (either sample quantiles or population quantiles). 
+Just out of curiosity, let me check if the $r$-to-$z$ transformation works for a dichotomization design.
+
+There are several ways to simulate a dichotomization design, which vary depending on a) whether you use a threshold defined by a population quantile or a sample quantile and b) whether, with the population quantile approach, you hold the per-group sample sizes fixed or only the total sample size (both are naturally fixed when defining the threshold based on a sample quantile).
+I will simulate using both population and sample quantiles, but only holding the total sample size fixed.^[Interested readers could modify the code to handle the further case, with population quantile thresholds and sample sizes fixed per-group, by generating observations from skew-normal distributions for each group. See `rsn()` from the `{sn}` package.]
+This creates a complication with small sample sizes because it's possible to generate data where all of the observations fall above or below the threshold, so the standardized mean difference is undefined. 
+I will handle this by just excluding such cases (i.e., conditioning on $N_1 > 0$ and $N_2 > 0$).
+
 ```{r}
 #| cache: true
 
+# Generate standardized mean differences d, z(d), h(d)
+
 r_bivariate <- function(
-  reps, delta = 0, N = 20, R = 1, fixed = TRUE
+  reps, delta = 0, N = 20, R = 1, threshold = "population"
 ) {
   require(mvtnorm)
   rho <- delta / sqrt(delta^2 + (R + 1)^2 / R)
@@ -178,7 +221,7 @@ r_bivariate <- function(
   d <- replicate(reps, {
     Z <- rmvnorm(n = N, mean = c(0,0), sigma = Sigma)
     
-    if (fixed) {
+    if (threshold == "population") {
       X <- ifelse(Z[,1] <= qnorm(R / (R + 1)), "A","B")
       Xtb <- table(X)
       if (any(Xtb == 0)) return(NA_real_)
@@ -199,12 +242,13 @@ r_bivariate <- function(
   data.frame(d = d, z = z, h = h)
 }
 
+# Simulation driver
 sim_bivariate <- compose(calc_M_SE, r_bivariate)
 
+# Execute simulations
 d_bivariate <- 
   sim_grid |>
-  mutate(reps = 2e2) |> 
-  cross_join(tibble(fixed = c(TRUE, FALSE))) |> 
+  cross_join(tibble(threshold = c("population","sample"))) |> 
   evaluate_by_row(
     sim_bivariate,
     system_time = FALSE,
@@ -218,11 +262,26 @@ d_bivariate <-
 
 ```
 
+The figures below show the true standard errors of $d$, $z(d)$, and $h(d)$ as a function of the standardized mean difference parameter $\delta$. 
+They are constructed using the same layout as @fig-true-SE-twosample (click on the tab for "population" or "sample" to see the results for your preferred form of dichotomization).
+Is $d$-to-$r$-to-$z$ variance stabilizing for the dichotomization design? In short, nope. Applying it here leads to an even stronger mean-variance relation than in the two-sample data-generating process, where larger means produce effect sizes with smaller sampling variation.
+But the $h(d)$ transformation does not work either.
+It too exhibits a negative relation between true SE and $\delta$, though it is slight.
+In fact, the _untransformed_ effect size $d$ is closer to having a stable SE.
+And for all three effect sizes, the strength of the relation changes depending on sample size---something that was not evident in the two-sample data-generating process.
+
+::: {.panel-tabset}
+
+## Population
+
 ```{r}
-#| label: fig-true-SE-bivariate-fixed
+#| label: fig-true-SE-bivariate-population
+#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a population quantile threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
 #| fig-height: 6
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a fixed threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
+#| out-width: 100%
+#| lightbox: true
+#| column: body-outset
 
 d_bivariate |>
   filter(fixed) |>
@@ -239,11 +298,16 @@ ggplot() +
   )
 ```
 
+## Sample
+
 ```{r}
 #| label: fig-true-SE-bivariate-sampled
+#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a sample threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
 #| fig-height: 6
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a sample threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
+#| out-width: 100%
+#| lightbox: true
+#| column: body-outset
 
 d_bivariate |>
   filter(!fixed) |>
@@ -259,3 +323,7 @@ ggplot() +
     color = ""
   )
 ```
+
+:::
+
+# Observations
