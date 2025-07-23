@@ -1,6 +1,6 @@
 ---
 title: Variance stabilization of Cohen's d
-date: '2025-07-14'
+date: '2025-07-23'
 categories:
 - effect-size
 - standardized-mean-difference
@@ -9,17 +9,17 @@ code-fold: true
 code-tools: true
 toc: true
 bibliography: d-r-z-refs.bib
-draft: true
 csl: "../apa.csl"
 ---
 
 In a recent _Psychological Methods_ paper, @Haaf2023does suggest conducting meta-analysis of standardized mean differences after transforming them to point biserial correlations and then applying Fisher's $z$-transformation. 
-They argue that this leads to a variance-stabilized effect size, which has sampling variance that is constant across varying values of the true parameter $\delta$. 
+They argue that this leads to a variance-stabilized effect size estimator, which has sampling variance that is constant across varying values of the true parameter $\delta$. 
 @Bartos2023robust cites @Haaf2023does as justification for conducting meta-analysis of standardized mean differences after applying this $d$-to-$r$-to-$z$ transformation.
 All this surprised me a bit because the transformation was unfamiliar, although I've written about these sorts of effect size conversions before [cf. @Pustejovsky2014converting].
 In other work [@Pustejovsky2018testing], I've used the variance-stabilizing transformation given in @Hedges1985statistical, which is different than this approach. 
 What gives? Is this $d$-to-$r$-to-$z$ business _really_ variance stabilizing?
 
+## $z(d)$
 The first step in the transformation proposed by @Haaf2023does depends on the relative sample sizes of the two groups, which I will parameterize as $R = N_1 : N_2$.
 Letting $a = (R + 1)^2 / R$, the transformation function is given by 
 $$
@@ -28,7 +28,7 @@ $$
 
 The shape of the transformation is depicted in @fig-Haaf-transform.
 
-```{r}
+```{r Haaf-transform}
 #| label: fig-Haaf-transform
 #| fig-width: 8
 #| fig-height: 4
@@ -52,6 +52,7 @@ transform_dat <-
     R = 1:3
   ) |>
   mutate(
+    a = (R + 1)^2 / R,
     z = d_to_z(d, R),
     h = d_to_h(d, R),
     R_fac = factor(paste(R,"1", sep = ":"))
@@ -66,15 +67,60 @@ ggplot(transform_dat) +
   labs(color = "R") + 
   scale_x_continuous(breaks = seq(-5,5,1), minor_breaks = NULL)
 ```
-
-The variance-stabilizing transformation given in @Hedges1985statistical is 
+One way to check whether this transformation is variance-stabilizing is by finding the [delta-method approximation](/posts/Multivariate-delta-method/) to its variance.
+I find the first derivative of $z(d)$ to be
 $$
-h(d; a) = \sqrt{2} \left(\frac{d}{|d|}\right) \left[\log\left(|d| + \sqrt{d^2 + 2a}\right) - \frac{1}{2}\log\left(2a\right)\right]
+z'(d; a) = \frac{1}{\sqrt{d^2 + a}},
+$$
+and so
+$$
+\begin{aligned}
+\text{Var}(z(d)) &\approx \left( z'(\delta; a) \right)^2 \times \text{Var}(d) \\
+&= \frac{1}{\delta^2 + a} \times \frac{1}{N} \left(a + \frac{\delta^2}{2}\right) \\
+&= \frac{1}{N} \left(\frac{a + \frac{1}{2}\delta^2}{a + \delta^2}\right).
+\end{aligned}
+$$
+This looks like the following:
+```{r Var-z}
+#| label: fig-Var-z
+#| fig-width: 8
+#| fig-height: 4
+#| fig-cap: "Delta method approximation for the variance of $z(d)$."
+
+transform_dat %>%
+  mutate(
+    Vz = (a + d^2 / 2) / (a + d^2)
+  ) %>%
+ggplot() +
+  aes(d, Vz, color = R_fac) + 
+  geom_hline(yintercept = 1) + 
+  geom_line() + 
+  theme_minimal() + 
+  theme(legend.position = "inside", legend.position.inside = c(0.9, 0.8)) + 
+  labs(x = expression(delta), y = expression(N %*% Var(z)), color = "R") + 
+  scale_x_continuous(breaks = seq(-5,5,1), minor_breaks = NULL)
+```
+Based on this approximation, $\text{Var}(z(d))$ is not independent of $\delta$ and is instead _decreasing_ in the magnitude of the true effect size.
+
+## $h(z)$
+
+The variance-stabilizing transformation given in @Hedges1985statistical [see also @Pustejovsky2018testing] is 
+$$
+h(d; a) = \sqrt{2} \times \text{sgn}(d) \times \text{sinh}^{-1}\left(\frac{|d|}{\sqrt{2a}}\right) = \sqrt{2} \left(\frac{d}{|d|}\right) \left[\log\left(|d| + \sqrt{d^2 + 2a}\right) - \frac{1}{2}\log\left(2a\right)\right].
+$$
+This transformation has derivative
+$$
+h'(d; a) = \frac{2}{\sqrt{d^2 + 2a}},
+$$
+and so
+$$
+\text{Var}(h(d)) \approx \left( h'(\delta; a) \right)^2 \times \text{Var}(d) = \frac{2}{\delta^2 + 2a} \times \frac{1}{N} \left(a + \frac{\delta^2}{2}\right) = \frac{1}{N}.
 $$
 
-@fig-transformation-comparison compares the two transformation functions, with $h(z)$ in red and $z(d)$ in blue. The functions are very similar over the range [-2, 2] and only begin to diverge when $|d| > 3$, the realm of what would typically be considered implausibly large effect sizes.
 
-```{r}
+@fig-transformation-comparison compares the two transformation functions, with $h(z)$ in red and $z(d)$ in blue. The functions are very similar over the range [-2, 2] and only begin to diverge when $|d| > 3$, the realm of what would typically be considered _very_ large effect sizes.
+
+```{r transform-comparison}
 #| label: fig-transformation-comparison
 #| fig-width: 8
 #| fig-height: 3
@@ -92,15 +138,16 @@ transform_dat |>
   scale_x_continuous(breaks = seq(-4,4,2)) + 
   labs(y = "", color = "")
 ```
+
 This suggests that any differences in the performance of the transformations will be driven by behavior in the extremes of the distribution and will thus be less pronounced when $N_1$ and $N_2$ are large.
 
 # Two-sample simulations
 
 I ran some quick simulations to look at how the sampling variance of $d$, $z(d)$, and $h(d)$ change as a function of the true average effect size $\delta$. 
-These simulations are based on a data-generating process in which two independent samples are drawn from normally distributed populations with a standardized mean difference of $\delta$, with total sample size $N$ and allocation ratio of $R = N_1:N_2$.
+These simulations are based on a data-generating process that is consistent with the stated assumptions of @Haaf2023does, in which two independent samples are drawn from normally distributed populations with a standardized mean difference of $\delta$, with total sample size $N$ and allocation ratio of $R = N_1:N_2$.
 A variance-stabilizing transformation should produce an estimator with true standard error (i.e., square root of the sampling variance) that is constant, not depending on $\delta$. 
 
-```{r}
+```{r two-sample-sims}
 #| cache: true
 
 library(simhelpers)
@@ -166,7 +213,7 @@ d2_factors <-
 @fig-true-SE-twosample shows the relationship between the parameter $\delta$ and the true standard error of the standardized mean difference estimator $d$, along with the true standard errors of the transformed effect size estimators $z(d)$ and $h(d)$. 
 To facilitate comparison between the raw and transformed estimators, I have re-scaled the standard errors according to their values when $\delta = 0$ (multiplying by $\sqrt{(N - 2) R / (R + 1)^2}$ for $d$ and by $\sqrt{N - 2}$ for $z(d)$ and $h(d)$).
 
-```{r}
+```{r two-sample-true-SE}
 #| label: fig-true-SE-twosample
 #| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a two-sample homoskedastic normal model. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
@@ -188,7 +235,7 @@ ggplot(d_twosample_res) +
   )
 ```
 
-Clearly, the variance of $z(d)$ is not constant, but rather is _decreasing_ in $\delta$.
+Consistent with the delta method approximation, it is evident that the sampling variance of $z(d)$ is not constant, but rather is _decreasing_ in $\delta$.
 For instance, when $R = 1:1$ and $N = 50$, the true SE of $z(d)$ decreases to `{r} d2_factors |> filter(stat == 'z') |> pull(SE_scaled)`% of its null value as $\delta$ increases to 2. 
 This pattern is the opposite of what we see for the raw effect size $d$, which has standard error that increases to `{r} d2_factors |> filter(stat == 'd') |> pull(SE_scaled)`% of its null value under the same conditions.
 Between these two, the transformed $h(d)$ effect sizes have stable SEs across the range of $\delta$.
@@ -199,15 +246,15 @@ Thus, $h(d)$ is variance stabilizing but $z(d)$ is not.
 In @Pustejovsky2014converting, I argued that the appropriateness of $d$-to-$r$-to-$z$ transformations and the specific form of transformation to use both depend on features of the study's design. 
 The two-sample normal model would be relevant for experimental studies, and it seems that the $z(d)$ transformation is not variance-stabilizing there.
 But perhaps it would work for other study designs and data-generating processes?
-In @Pustejovsky2014converting, I also looked at extreme groups designs and "dichotomization" designs, where a researcher is interested in the correlation between two continuous variables, one of which has been dichotomized based on quantiles of its distribution (either sample quantiles or population quantiles). 
-Just out of curiosity, let me check if the $r$-to-$z$ transformation works for a dichotomization design.
+In @Pustejovsky2014converting, I also looked at extreme groups designs and "dichotomization" designs, where a researcher is interested in the correlation between two continuous variables, one of which has been dichotomized based on some quantile of its distribution. 
+Just out of curiosity, I will check whether the $r$-to-$z$ transformation works for a dichotomization design.
 
 There are several ways to simulate a dichotomization design, which vary depending on a) whether you use a threshold defined by a population quantile or a sample quantile and b) whether, with the population quantile approach, you hold the per-group sample sizes fixed or only the total sample size (both are naturally fixed when defining the threshold based on a sample quantile).
-I will simulate using both population and sample quantiles, but only holding the total sample size fixed.^[Interested readers could modify the code to handle the further case, with population quantile thresholds and sample sizes fixed per-group, by generating observations from skew-normal distributions for each group. See `rsn()` from the `{sn}` package.]
+I will simulate using either population and sample quantiles, in each case while holding the total sample size fixed.^[Interested readers could modify the code to handle the further case, with population quantile thresholds and sample sizes fixed per-group, by generating observations from skew-normal distributions for each group. See @Azzalini2005skewnormal and the `rsn()` function from the `{sn}` package.]
 This creates a complication with small sample sizes because it's possible to generate data where all of the observations fall above or below the threshold, so the standardized mean difference is undefined. 
 I will handle this by just excluding such cases (i.e., conditioning on $N_1 > 0$ and $N_2 > 0$).
 
-```{r}
+```{r bivariate-sims}
 #| cache: true
 
 # Generate standardized mean differences d, z(d), h(d)
@@ -265,16 +312,16 @@ d_bivariate <-
 The figures below show the true standard errors of $d$, $z(d)$, and $h(d)$ as a function of the standardized mean difference parameter $\delta$. 
 They are constructed using the same layout as @fig-true-SE-twosample (click on the tab for "population" or "sample" to see the results for your preferred form of dichotomization).
 Is $d$-to-$r$-to-$z$ variance stabilizing for the dichotomization design? In short, nope. Applying it here leads to an even stronger mean-variance relation than in the two-sample data-generating process, where larger means produce effect sizes with smaller sampling variation.
-But the $h(d)$ transformation does not work either.
-It too exhibits a negative relation between true SE and $\delta$, though it is slight.
-In fact, the _untransformed_ effect size $d$ is closer to having a stable SE.
-And for all three effect sizes, the strength of the relation changes depending on sample size---something that was not evident in the two-sample data-generating process.
+But the $h(d)$ transformation does not really work either.
+It too exhibits a negative relation between true SE and $\delta$, though less pronounced than that of $z(d)$.
+The untransformed effect size $d$ still shows a positive relation between true SE and $\delta$ under some conditions, but it is weaker than under the two-sample data-generating process.
+For all three effect sizes, the strength of the relation changes depending on sample size---something that was not evident in the two-sample data-generating process.
 
 ::: {.panel-tabset}
 
 ## Population
 
-```{r}
+```{r bivariate-true-SE-pop}
 #| label: fig-true-SE-bivariate-population
 #| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a population quantile threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
@@ -284,10 +331,11 @@ And for all three effect sizes, the strength of the relation changes depending o
 #| column: body-outset
 
 d_bivariate |>
-  filter(fixed) |>
+  filter(threshold == "population") |>
 ggplot() + 
   aes(delta, SE_scaled, color = stat) + 
   geom_hline(yintercept = 0) + 
+  geom_hline(yintercept = 1, color = "grey") + 
   geom_line() + 
   facet_grid(N_fac ~ R_fac, scales = "free_y", labeller = "label_parsed") + 
   theme_minimal() +
@@ -300,9 +348,9 @@ ggplot() +
 
 ## Sample
 
-```{r}
+```{r bivariate-true-SE-sam}
 #| label: fig-true-SE-bivariate-sampled
-#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a sample threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
+#| fig-cap: "True standard errors of untransformed $d$ and transformed ($z(d)$ and $h(d)$) effect size estimates under a dichotomized bivariate normal model with a sample quantile threshold. Standard errors are rescaled so that SE = 1 when $\\delta$ = 0."
 #| fig-width: 8
 #| fig-height: 6
 #| out-width: 100%
@@ -310,10 +358,11 @@ ggplot() +
 #| column: body-outset
 
 d_bivariate |>
-  filter(!fixed) |>
+  filter(threshold == "sample") |>
 ggplot() + 
   aes(delta, SE_scaled, color = stat) + 
   geom_hline(yintercept = 0) + 
+  geom_hline(yintercept = 1, color = "grey") + 
   geom_line() + 
   facet_grid(N_fac ~ R_fac, scales = "free_y", labeller = "label_parsed") + 
   theme_minimal() +
@@ -327,3 +376,39 @@ ggplot() +
 :::
 
 # Observations
+
+In neither data-generating processes does the $d$-to-$r$-to-$z$ transformation lead to variance stabilization.
+For effect sizes that are any less than very large, the transformations appear to be quite close to linear.
+Here is a zoomed-in view of both transformations:
+```{r transform-comparison-zoom}
+#| label: fig-transformation-comparison-zoom
+#| fig-width: 8
+#| fig-height: 3
+#| fig-cap: "Comparison of transformation functions given by Haaf and Rouder (2023) and by Hedges and Olkin (1985), over the range [-1.5, 1.5]."
+
+transform_dat |>
+  mutate(R_fac = fct_rev(R_fac) |> fct_relabel(\(x) paste("R ==", x))) |>
+  pivot_longer(cols = c(z, h), names_to = "stat", values_to = "val") |>
+  filter(abs(d) < 1.5) |>
+  ggplot() + 
+  aes(d, val, color = stat) + 
+  geom_line() + 
+  facet_wrap(~ R_fac, labeller = "label_parsed") + 
+  theme_minimal() + 
+  theme(legend.position = "inside", legend.position.inside = c(0.05, 0.9)) + 
+  scale_x_continuous(breaks = -1:1) + 
+  scale_y_continuous(breaks = -seq(-0.5,0.5,0.5)) + 
+  labs(y = "", color = "")
+```
+It would seem that applying _either_ transformation will often be inconsequential for one's conclusions except in meta-analyses with quite large effect size estimates.
+In meta-analyses where the transformation is consequential, its performance seems to be contingent on the assumed data-generating process, yet meta-analysts rarely have sufficient information to assess distributional assumptions about the individual-level outcomes in primary studies.
+
+A further difficulty with both of the transformations is that they depend on the allocation ratio $R$.
+In some meta-analyses of experimental studies, it may be that most or all primary studies have equally sized groups.
+But this will not always be the case. 
+In meta-analyses where primary studies have varied sample sizes, one is then faced with the question of how to apply the transformation: should you use the correct variance-stabilizing transformation for each effect size, which then puts each primary study _on a different metric_, or should you use a common transformation (i.e., the same value of $a$) and then accept that the transformation will not stabilize all of the effects?
+Personally, I would opt for neither.
+
+In my view, using a variance-stabilizing transformation of $d$ from an experimental study seems like extra work and more hassle than it's worth.
+It adds an additional layer of technical complication to a meta-analysis, and the potential gains (in terms of variance-stabilization) are contingent on assumptions that one is rarely in position to adequately assess.
+Better to work with untransformed effect sizes, acknowledging the extent of the approximations involved and, when necessary, finding other ways to deal with the mean-variance relation of standardized mean differences.
