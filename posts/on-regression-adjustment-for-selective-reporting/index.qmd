@@ -1,0 +1,112 @@
+---
+title: Notes on regression adjustment for selectively reported results
+date: '2025-08-09'
+categories:
+- effect-size
+- distribution-theory
+- selective-reporting
+code-fold: true
+code-tools: true
+toc: true
+bibliography: "../selection-references.bib"
+csl: "../apa.csl"
+link-citations: true
+draft: true
+---
+
+Several of the most prominent methods for investigating selective reporting bias in meta-analyis take the form of simple linear regressions. 
+Methods of this form include the Precision Effect Test (PET) and Precision Effect Estimator with Standard Error (PEESE) adjustments proposed by @stanley2008metaregression and @stanley2014metaregression as well as the endogenous kink (EK) meta-regression proposed by @bom2019kinked. 
+These methods are widely used (PET and PEESE especially) and have been studied pretty extensively using Monte Carlo simulations.
+By my read, the simulation evidence is mixed---they are better than regular random effects models but they are pretty crude adjustments for the bias created by selective reporting, which don't always work very well.
+In this post, I want to look at how the methods work _analytically_. I'll derive expressions for their biases and consider how one might use these expressions to say something about the conditions under which they might be expected to perform reasonably well. 
+
+## Regression adjustments for publication bias
+
+For a meta-analysis of $K$ studies, let $T_i$ be an effect size estimates and $\sigma_i$ be its standard error for $i = 1,...,K$.[^fixed-sigma]
+Many bias adjustment methods for this context involve the regression
+$$
+T_i = \alpha + \beta \ x_i + \epsilon_i,
+$$ {#eq-linear-regression}
+where $x_i$ is a predictor that is related to the precision of the effect size estimate and $\epsilon_i$ is a residual error.  @eq-linear-regression is estimated by some form of weighted least squares with weights $w_i$, which might be the inverses of the sampling variances, $w_i = \sigma_i^{-2}$ (i.e., fixed effects weights) or the inverses of the total residual variance $w_i = \left(\hat\tau^2 + \sigma_i^2\right)^{-1}$.
+
+[^fixed-sigma]: I will treat the standard errors as known quantities that are independent of the effect size estimates, even though the standard errors are actually stochastic and, for some effect size metrics, correlated with the effect size estimates. 
+
+The intuition behind this sort of regression adjustments is that selective reporting on the basis of statistical significance tends to produce larger biases for smaller primary studies, which have larger standard errors, leading to what looks like "small-study" effects. 
+PET, PEESE, and EK adjust for the small-study effects using some form of linear regression, treating the estimate of the intercept $\alpha$ in @eq-linear-regression as the average effect size in a population of infinitely larger studies (so that their standard errors are $\sigma_i = 0$).[^small-study-effects]
+The main difference between the methods is in the predictor used to extrapolate to this hypothetical population:
+
+- PET uses $x_i = \sigma_i$,
+- PEESE uses $x_i = \sigma_i^2$, and 
+- EK uses $x_i = (\sigma_i - c) \times I(\sigma_i > c)$, where $c$ is the so-called "kink" of the meta-regression, which I will return to in a bit.
+
+[^small-study-effects]: All of the adjustment methods will run into trouble if small study effects are the result of some mechanism other than selective reporting. For instance, if some primary study feature is systematically, positively associated with effect size and tends to be less common in larger studies, then it will act as a confounder, inducing correlation between effect size and standard error even in the absence of selective reporting. 
+
+For now, let's work with the generic predictors $x_1,...,x_K$.
+Basic results from linear regression tell us that the intercept in a linear regression estimated by weighted least squares takes the form
+$$
+\hat\alpha = \sum_{i=1}^K \left[ \frac{w_i}{W} - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] T_i,
+$$ {#eq-alpha-hat}
+where $W = \sum_{i=1}^K w_i$, $\bar{x} = \frac{1}{W} \sum_{i=1}^K w_i x_i$, and $SS_x = \sum_{i=1}^K w_i (x_i - \bar{x})^2$.
+Denote the full vector of standard errors as $\boldsymbol\sigma = \left(\sigma_1,...,\sigma_K\right)'$ and noting that the predictors are all functions of the standard errors, we can then write the conditional expectation and conditional variance of $\hat\alpha$ as
+$$
+\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] \times \mathbb{E}\left(\left. T_i \right| \sigma_i \right)
+$$ {#eq-alpha-expectation}
+and
+$$
+\mathbb{V}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right]^2 \times \mathbb{V}\left(\left. T_i \right| \sigma_i \right).
+$$ {#eq-alpha-expectation}
+If the real regression is linear in $x_i$, then $\mathbb{E}\left(\left. T_i \right| \sigma_i \right) = \alpha + \beta \ x_i$. 
+Substitute this into @eq-alpha-expectation and you'll find $\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \alpha$, so the regression estimator is indeed unbiased.
+But what if the real conditional expectation is not linear? 
+
+## Data-generating processes
+
+These different regression adjustments are a bit hard to pin down because they're not full generative models.
+Instead, they're just different forms of approximations, which don't commit to any particular model for how selective reporting occurs.
+Consequently, we have to look beyond these specific methods to other models for the selective reporting process if we want to understand how well the regression adjustments work.
+
+@stanley2014metaregression motivated the PEESE adjustment through a Taylor series approximation to the bias of effect size estimates under a simple form of a [step-function selection model](/posts/step-function-selection-models/), a model in which the real form of the bias is nonlinear in $\sigma_i$. 
+There are a number of other models where the strength of selection depends on the statistical significance of the effect size estimate (e.g., the [beta density model](/posts/beta-density-selection-models/)), as well as models that exhibit small-study effects produced by other selection processes (e.g., the [Copas selection model](/posts/Copas-selection-models)).
+Here I'll look at a step-function model and the Copas model, mostly because these are a bit more tractable to analyze.
+Both models posit that effect size estimates follow a conventional random effects model prior to being put through the selection process.
+Denoting an effect size estimate prior to selection as $T_i^*$, we assume 
+$$
+T_i^* = \mu + v_i^* + e_i^*
+$$ {#eq-random-effects}
+where $\mu$ is the overall average effect size, $v_i^*$ is a mean-zero random effect with variance $\tau^2$, which captures heterogeneity in the effect size parameters, and $e_i^*$ is a mean zero sampling error with known standard error $\sigma_i^*$.
+In the ideal, a selective reporting correction would recover an estimate of the mean of the effect size distribution $\mu$.
+
+### Step function models
+
+In the step function model, we assume that the generated effect size estimate $T_i^*$ is observed with some probability that depends on its $p$-value for the one-sided hypothesis test of $H_0: \delta \leq 0$.
+Letting $p_i^* = 1 - \Phi\left(T_i^* / \sigma_i^*\right)$, the selective reporting process of the step-function model is then
+$$
+\Pr\left(T_i^* \text{ is observed}| T_i^*, \sigma_i^*\right) = \begin{cases}
+1 & \text{if} \quad p_i^* < \alpha_1 \\ 
+\lambda_1 & \text{if} \quad \alpha_h \leq p_i^* < \alpha_{h+1}, \quad h = 1,...,H-1 \\ 
+\lambda_H & \text{if} \quad \alpha_H \leq p_i^* \\ 
+\end{cases}
+$$ {#eq-selection-process}
+for some set of steps $\alpha_1,...,\alpha_H$ and selection weights $\boldsymbol\lambda = \left(\lambda_1,...,\lambda_H\right)$.
+
+In my [previous post on the step-function model](/posts/step-function-selection-models/), I showed that the conditional expectation of the observed effect size estimates is
+$$
+\mathbb{E}(T_i | \sigma_i) = \mu + \sqrt{\tau^2 + \sigma_i^2} \times \psi(\mu, \tau, \boldsymbol\lambda, \sigma_i),
+$$ {#eq-Ti-expectation}
+where $\psi()$ is a certain, rather complicated non-linear function of the model parameters given by
+$$
+\psi(\mu,\tau, \boldsymbol\lambda, \sigma_i) = \frac{\sum_{h=0}^H \lambda_h \left(\phi(c_{h+1,i}) - \phi(c_{hi})\right)}{\sum_{h=0}^H \lambda_h \left(\Phi(c_{h+1,i}) - \Phi(c_{hi})\right)},
+$$ {#eq-psi-bar}
+where 
+$$
+c_{hi} = \frac{\sigma_i \Phi^{-1}(1 - \alpha_h) - \mu}{\sqrt{\tau^2+ \sigma_i^2}},
+$$
+with $c_{0i} = \infty$ and $c_{H+1,i} = -\infty$.
+For a model with a single step at $\alpha_1$ and a single selection parameter $\lambda_1$,
+$$
+\psi(\mu,\tau,\lambda_1, \sigma_i) = \frac{(1 - \lambda_1) \phi(c_{1i})}{1 - (1 - \lambda_1)\Phi(c_{1i})}.
+$$
+Substituting into @eq-alpha-expectation, the bias of a regression adjustment under the step-funtion selection model is
+$$
+\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \mu + \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] \times \sqrt{\tau^2 + \sigma_i^2} \times \psi(\mu, \tau, \boldsymbol\lambda, \sigma_i).
+$$ {#eq-alpha-expectation}
