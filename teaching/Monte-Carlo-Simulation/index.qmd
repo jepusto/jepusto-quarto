@@ -1,0 +1,9 @@
+---
+title: Monte Carlo Simulation for Quantitative Research
+place: UW Madison
+---
+
+Monte Carlo simulations are computational experiments that involve using random number generators to study the behavior of statistical or mathematical models. Simulations allow the analyst to control the data-generating process and therefore fully know the truth—something that is almost always uncertain when analyzing real, empirical data. Thus, simulation studies provide a clean and controlled environment for testing out data analysis approaches before putting them to use with real empirical data, making them an essential tool of inquiry for quantitative methodologists, data analysts, and students of statistics. This course provide an introduction to the logic, mechanics, analysis, and interpretation of Monte Carlo simulation studies. The primary focus is on simulation studies for formal methodological research and for informing the design of empirical studies (e.g., power analysis), although other uses of simulation (such as bootstrapping and permutation inference) will be discussed as well. Course activities will include hands-on, collaborative programming activities, presentations of contemporary research that uses simulation, and discussions of contemporary scholarship covering issues in the design, analysis, and interpretation of simulation.
+
+- [2025 (Fall) syllabus and reading list](/teaching/Monte-Carlo-Simulation/EDPSYCH-506-001-Monte-Carlo-Simulation-in-Quantitative-Methods-Research.pdf)
+
