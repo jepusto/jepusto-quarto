@@ -1,0 +1,16 @@
+---
+title: 'Systematic reviews of single-case research: Aims, challenges, and good practices'
+author:
+- James E. Pustejovsky
+- Daniel D. Drevon
+date: 2025-09-26T13:00:00
+publish_date: 2025-09-26T13:00:00
+event: Association for Behavior Analysis International Single Case Conference
+event_short: ABAI SCD 2025
+event_url: https://www.abainternational.org/events/single-case-conference-2025.aspx
+location: Minneapolis, MN
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/ABAI-SCED-conference-2025.pdf
+---

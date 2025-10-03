@@ -1,0 +1,15 @@
+---
+title: "A preliminary data analysis workflow for meta-analysis of dependent effect sizes"
+author: 
+  - James E. Pustejovsky
+date: 2025-10-03T11:00:00
+publish_date: 2025-10-03T11:00:00
+event: Systematic Review and Meta-Analysis SIG Online Seminar
+event_short: SRMA-SIG
+event_url: https://www.srmasig.org/seminar/
+location: Online
+links:
+- icon: file-pdf-fill
+  text: PDF
+  url: /files/PRIMED-workflow-SRMA-SIG.pdf
+---
