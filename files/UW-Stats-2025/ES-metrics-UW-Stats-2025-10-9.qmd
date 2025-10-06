@@ -1,0 +1,256 @@
+---
+title: "What are we modeling? Using predictive fit to inform effect metric choice in meta-analysis"
+author: "James E. Pustejovsky"
+date: "October 9, 2025"
+title-slide-attributes:
+  data-background-image: images/ruler.jpg
+  data-background-size: cover
+  data-background-opacity: "35%"
+execute:
+  echo: false
+  message: false
+  warning: false
+format: 
+  revealjs:
+    center-title-slide: true
+    math: true
+    html-math-method: mathjax
+    reference-location: document
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    css: styles.css
+    theme: [simple, mytheme.scss]
+editor: source
+from: markdown+emoji
+bibliography: "references.bib"
+csl: nature.csl
+---
+
+## {.center}
+
+```{r}
+library(conflicted)
+library(tidyverse)
+library(flextable)
+conflicts_prefer(dplyr::filter, .quiet = TRUE)
+conflicts_prefer(flextable::separate_header, .quiet = TRUE)
+
+```
+
+### Research Synthesis
+
+> The systematic integration of empirical results across __multiple sources of evidence__, for purposes of drawing generalizations [@Cooper2009research]. 
+
+### Meta-Analysis
+
+> Statistical models and methods to support quantitative research synthesis. 
+
+## Fields that rely on research synthesis
+
+* Medicine (Cochrane Collaboration)
+* Education (What Works Clearinghouse)
+* Psychology
+* Social policy (justice, welfare, public health, etc.)
+* Economics, international development
+* Ecology
+* Physical sciences
+
+## {background="#43464B" .center}
+
+- Some background on meta-analysis
+
+- The problem of effect metric choice
+
+- Proposal: Use predictive fit criteria to inform metric choice
+
+- Illustrations
+
+- Discussion
+
+## Canonical Meta-Analysis
+
+- We observe summary results from each of $k$ studies:
+
+    - Effect size estimate $T_i$
+    
+    - Standard error of ES estimate $se_i$
+    
+    - Study features $N_i$, $\mathbf{x}_i$
+
+:::: {.columns}
+::: {.fragment .column width="50%"}
+
+- A summary random effects model:
+    $$
+    \begin{aligned}
+    T_i &\sim N\left(\theta_i, \ se_i^2 \right)  \\
+    \theta_i &\sim N\left(\mu, \ \tau^2\right)
+    \end{aligned}
+    $$
+
+:::
+
+::: {.fragment .column width="50%"}
+
+- A random effects meta-regression:
+    $$
+    \begin{aligned}
+    T_i &\sim N\left(\theta_i, \ se_i^2 \right)  \\
+    \theta_i &\sim N\left(\mathbf{x}_i \boldsymbol\beta,\ \tau^2\right)
+    \end{aligned}
+    $$
+:::
+
+::::
+
+:::: {.fragment}
+
+- "Conceptual unity of statistical methods" for meta-analysis [@Hedges2019statistical] suggests that most any effect size measure $\theta_i$ can be used, as long as $T_i \dot{\sim} N\left(\theta_i, \ se_i^2 \right)$.
+
+::::
+
+## Prediction Interval
+
+- An approximate $1 - 2\alpha$ prediction interval for a new study-specific parameter $\theta_{new}$ [@Higgins2009reevaluation]:
+
+  $$
+  \hat\mu \ \pm \ q_\alpha \times\sqrt{\hat\tau^2 + \mathbb{V}\left(\hat\mu\right)}
+  $$
+
+  - Largely used to characterize the extent of effect heterogeneity [@borenstein2017basics].
+  
+::: {.fragment}
+- Beyond this, "predictive modeling" culture [@Breiman2001statistical; @Donoho2017fifty]  has very little influence on meta-analysis. 
+:::
+
+## Effect Metric Menagerie {.center background-image="images/menagerie.jpg" background-size="cover" background-opacity="50%"}
+
+## Effect Metric Families
+
+::::: {.columns}
+
+:::: {.column width="48%" .callout-tip icon=false .fragment}
+
+## Single-group summaries
+
+- Raw proportions $\pi$
+- Arcsine-transformation $a = \text{asin}\left(\sqrt{\pi}\right)$
+- Raw means $\mu$
+
+:::: 
+
+:::: {.column width="48%" .callout-note icon=false .fragment}
+
+## Bivariate associations / psychometric
+
+- Pearson's correlation $\rho$
+- Fisher's $z$-transformation $\zeta = \text{atanh}(\rho)$
+- Cronbach's $\alpha$ coefficients (or transformations thereof)
+
+::::
+
+::::: 
+
+::::: {.columns}
+
+:::: {.column width="48%"}
+
+::: {.callout-warning icon=false .fragment}
+
+## Group comparison of binary outcomes
+
+- Risk differences $\pi_1 - \pi_0$
+- Risk ratios (log-transformed) $\log\left(\frac{\pi_1}{\pi_0}\right)$
+- Odds ratios (log-transformed) $\log\left(\frac{\pi_1 / (1 - \pi_1)}{\pi_0 / (1 - \pi_0)}\right)$
+- Bivariate models for $\pi_0, \pi_1$
+
+:::
+::::
+
+:::: {.column width="48%"}
+
+::: {.callout-important icon=false .fragment}
+
+## Group comparison of continuous outcomes
+
+- Raw mean differences $\mu_1 - \mu_0$
+- Standardized mean differences $\delta = \frac{\mu_1 - \mu_0}{\sigma}$
+- Response ratios (log-transformed) $\lambda = \log\left(\frac{\mu_1}{\mu_0}\right)$
+- Probability of superiority
+
+:::
+
+::::
+
+:::::
+
+## Effect Metric Choice
+
+- Choice of metric is constrained by
+
+    - Studies designs
+    
+    - Data availability, reporting conventions
+    
+    - Heterogeneity of study features (e.g., outcome scales)
+
+::: {.fragment}
+
+- In many applications, more than one metric could be used.
+
+    - Choice is often driven by disciplinary conventions.
+    
+:::
+
+## Metric choice studies
+
+- Large literature on choice of effect metrics for group comparison on binary outcomes.
+
+    - Theoretical arguments about interpretability, stability, non-collapsibility [@Poole2015risk; @Panagiotou2015commentary].
+    
+    - Risk differences tend to be more heterogeneous [@Engels2000heterogeneity; @Zhao2022empirical].
+
+::: {.fragment}
+- Strong opinions about effect metrics for group comparison on continuous outcomes [@Cummings2011arguments].
+
+    - Some novel alternatives to avoid standarization [@Ades2015simultaneous; @Lu2014simultaneous; @Davies2024mapping].
+    
+    - Various methods of standarization [e.g., @Hopkins2024standardization; @Fitzgerald2025using].
+
+:::
+
+::: {.fragment}
+- Choosing between standardized mean difference and response ratio metrics.
+
+    - Sensitivity analyses using both metrics [@Friedrich2011ratio].
+
+    - Model both metrics simultaneously [@Yang2024bivariate].
+
+:::
+
+## Can we choose based on predictive fit criteria?
+
+- Evaluate effect metrics by performance in __predicting data reported in a new study__.
+
+    - Data vector $\mathbf{d}_i$ consisting of summary statistics used to compute effect size estimates.
+    
+- Use leave-one-out log-predictive density to measure predictive performance.
+  $$
+  LPD = \sum_{i=1}^{k} \log p_\mathbf{D}\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
+  $$
+
+::: {.fragment}
+### Two challenges
+
+1. Polishing up models to generate predictions.
+
+2. Meta-analysis models one-dimensional $f(\mathbf{d}_i)$, so we need auxiliary models for the rest of the data.
+
+:::
+
+## Bivariate associations
+
+
+
+## References
