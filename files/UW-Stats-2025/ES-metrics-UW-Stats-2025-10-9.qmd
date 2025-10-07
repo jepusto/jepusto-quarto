@@ -36,6 +36,8 @@ library(flextable)
 conflicts_prefer(dplyr::filter, .quiet = TRUE)
 conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
+library(metadat)
+library(metafor)
 ```
 
 ### Research Synthesis
@@ -121,7 +123,7 @@ conflicts_prefer(flextable::separate_header, .quiet = TRUE)
   - Largely used to characterize the extent of effect heterogeneity [@borenstein2017basics].
   
 ::: {.fragment}
-- Beyond this, "predictive modeling" culture [@Breiman2001statistical; @Donoho2017fifty]  has very little influence on meta-analysis. 
+- Beyond this, "predictive modeling" culture [@Breiman2001statistical; @Donoho2017fifty]  seems to have very little influence on meta-analysis. 
 :::
 
 ## Effect Metric Menagerie {.center background-image="images/menagerie.jpg" background-size="cover" background-opacity="50%"}
@@ -197,7 +199,7 @@ conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
 ::: {.fragment}
 
-- In many applications, more than one metric could be used.
+- In many applications, more than one metric might apply.
 
     - Choice is often driven by disciplinary conventions.
     
@@ -216,12 +218,12 @@ conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
     - Some novel alternatives to avoid standarization [@Ades2015simultaneous; @Lu2014simultaneous; @Davies2024mapping].
     
-    - Various methods of standarization [e.g., @Hopkins2024standardization; @Fitzgerald2025using].
+    - Various methods for standardization [e.g., @Hopkins2024standardization; @Fitzgerald2025using].
 
 :::
 
 ::: {.fragment}
-- Choosing between standardized mean difference and response ratio metrics.
+- Choice between standardized mean difference and response ratio metrics
 
     - Sensitivity analyses using both metrics [@Friedrich2011ratio].
 
@@ -231,7 +233,7 @@ conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
 ## Can we choose based on predictive fit criteria?
 
-- Evaluate effect metrics by performance in __predicting data reported in a new study__.
+- Evaluate effect metrics by performance in __predicting summary data for a new study__.
 
     - Data vector $\mathbf{d}_i$ consisting of summary statistics used to compute effect size estimates.
     
