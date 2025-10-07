@@ -17,6 +17,7 @@ dat <-
   escalc(measure="COR", ri=ri, ni=ni, data = ., var.names = c("r", "Vr")) %>%
   mutate()
 
+k <- nrow(dat)
 #-------------------------------------------------------------------------------
 # Pearson's r
 res_r <- rma(yi = r, vi = Vr, data = dat)
@@ -31,8 +32,10 @@ f_lpd_r <- function(i, mod) {
   dnorm(mod$yi[i], mean = mean_est, sd = sd_est, log = TRUE)
 }
 
-dat$lpd_Z <- map_dbl(1:res_Z$k, f_lpd_Z, mod = res_Z)
-summary(dat$lpd_Z)
+dat$lpd_r <- map_dbl(1:k, f_lpd_r, mod = res_r)
+summary(dat$lpd_r)
+sum(dat$lpd_Z)
+
 #-------------------------------------------------------------------------------
 # Fisher's z
 
@@ -48,6 +51,6 @@ f_lpd_Z <- function(i, mod) {
   dnorm(mod$yi[i], mean = mean_est, sd = sd_est, log = TRUE)
 }
 
-dat$lpd_Z <- map_dbl(1:res_Z$k, f_lpd_Z, mod = res_Z)
+dat$lpd_Z <- map_dbl(1:k, f_lpd_Z, mod = res_Z)
 summary(dat$lpd_Z)
 sum(dat$lpd_Z)
