@@ -32,17 +32,22 @@ csl: nature.csl
 ```{r}
 library(conflicted)
 library(tidyverse)
-library(flextable)
+library(tinytable)
+library(ggsci)
 conflicts_prefer(dplyr::filter, .quiet = TRUE)
-conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
 library(metadat)
 library(metafor)
+library(statmod)
+
+theme_set(theme_minimal())
 ```
 
 ### Research Synthesis
 
 > The systematic integration of empirical results across __multiple sources of evidence__, for purposes of drawing generalizations [@Cooper2009research]. 
+
+<br>
 
 ### Meta-Analysis
 
@@ -55,7 +60,7 @@ library(metafor)
 * Psychology
 * Social policy (justice, welfare, public health, etc.)
 * Economics, international development
-* Ecology
+* Ecology and Environmental Science
 * Physical sciences
 
 ## {background="#43464B" .center}
@@ -74,11 +79,11 @@ library(metafor)
 
 - We observe summary results from each of $k$ studies:
 
-    - Effect size estimate $T_i$
+    - $T_i$ - effect size estimate 
     
-    - Standard error of ES estimate $se_i$
+    - $se_i$ - standard error of effect size estimate
     
-    - Study features $N_i$, $\mathbf{x}_i$
+    - $N_i$, $\mathbf{x}_i$ - sample size, other study features
 
 :::: {.columns}
 ::: {.fragment .column width="50%"}
@@ -199,7 +204,7 @@ library(metafor)
 
 ::: {.fragment}
 
-- In many applications, more than one metric might apply.
+- In many applications, more than one metric could apply.
 
     - Choice is often driven by disciplinary conventions.
     
@@ -207,7 +212,7 @@ library(metafor)
 
 ## Metric choice studies
 
-- Large literature on choice of effect metrics for group comparison on binary outcomes.
+- Large literature on effect metrics for group comparison on binary outcomes.
 
     - Theoretical arguments about interpretability, stability, non-collapsibility [@Poole2015risk; @Panagiotou2015commentary].
     
@@ -239,7 +244,7 @@ library(metafor)
     
 - Use leave-one-out log-predictive density to measure predictive performance.
   $$
-  LPD = \sum_{i=1}^{k} \log p_\mathbf{D}\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
+  LPD = \frac{1}{k} \sum_{i=1}^{k} \log p_\mathbf{D}\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
   $$
 
 ::: {.fragment}
@@ -251,8 +256,333 @@ library(metafor)
 
 :::
 
-## Bivariate associations
+## Class attendance and college grades {.smaller}
+
+::::: {.columns}
+:::: {.column width="40%"}
+
+- Credé and colleagues [@Crede2010class] reported a systematic review and meta-analysis of studies on association between class attendance and grades / GPA in college.
+
+- 99 correlation estimates, samples ranging from $N_i = 23$ to $3900$ (median = 151, IQR = 76-335).
+
+::::
+
+:::: {.column width="60%"}
+
+```{r Crede-funnel}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
 
 
+dat <- 
+  dat.crede2010 %>%
+  mutate(
+    ri = if_else(ri < -0.1, -ri, ri) 
+  ) %>%
+  escalc(measure="ZCOR", ri=ri, ni=ni, data = ., var.names = c("z", "Vz")) %>%
+  escalc(measure="COR", ri=ri, ni=ni, data = ., var.names = c("r", "Vr")) %>%
+  mutate()
+
+k <- nrow(dat)
+
+ggplot(dat) + 
+  aes(ri, 1 / sqrt(ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_point() +
+  scale_x_continuous(limits = c(-0.3, 1), expand = expansion(0,0)) +
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(r[i]),
+    y = expression(1 / sqrt(N[i]))
+  )
+```
+
+```{r Crede-calculations}
+#-------------------------------------------------------------------------------
+# Pearson's r
+
+res_r <- rma(yi = r, vi = Vr, data = dat)
+
+d_r <- function(ri, Ni, mu, tau, log = FALSE, points = 99) {
+  if (is.infinite(Ni)) {
+    dens_ri <- dnorm(ri, mean = mu, sd = tau)
+    Const <- diff(pnorm(c(-1,1), mean = mu, sd = tau))
+  } else {
+    qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    sub <- which(-1 < qp$nodes & qp$nodes < 1)
+    wt <- qp$weights[sub]
+    rho <- qp$nodes[sub]
+    dens_ri <- sapply(ri, \(r) sum(wt * dnorm(r, mean = rho, sd = (1 - rho^2) / sqrt(Ni))))
+    Const <- sum(wt)
+  }
+  if (log) {
+    log(dens_ri) - log(Const)
+  } else {
+    dens_ri / Const
+  }
+}
+
+f_lpd_r <- function(i, mod, points = 99) {
+  id <- 1:mod$k
+  mod_i <- update(mod, subset = id != i)
+  lpd <- d_r(
+    ri = mod$yi[i], 
+    Ni = mod$data$ni[i], 
+    mu = as.numeric(mod_i$b), 
+    tau = sqrt(mod_i$tau2), 
+    log = TRUE,
+    points = points
+  )
+  data.frame(
+    mu_r = as.numeric(mod_i$b),
+    tau_r = sqrt(mod_i$tau2),
+    lpd_r = lpd
+  )
+}
+
+dat <- bind_cols(dat, map_dfr(1:k, f_lpd_r, mod = res_r, points = 499))
+
+#-------------------------------------------------------------------------------
+# Fisher's z
+
+res_Z <- rma(yi = z, vi = Vz, data = dat)
+
+d_Z <- function(ri, Ni, mu, tau, log = FALSE) {
+  zi <- atanh(ri)
+  sd <- sqrt(tau^2 + 1 / (Ni - 3))
+  jac_const <- 1 / (1 - ri^2)
+  if (log) {
+    dnorm(zi, mean = mu, sd = sd, log = TRUE) + log(jac_const)
+  } else {
+    dnorm(zi, mean = mu, sd = sd) * jac_const
+  }
+}
+
+f_lpd_Z <- function(i, mod) {
+  id <- 1:mod$k
+  mod_i <- update(mod, subset = id != i)
+  lpd <- d_Z(
+    ri = tanh(mod$yi[i]), 
+    Ni = mod$data$ni[i], 
+    mu = as.numeric(mod_i$b), 
+    tau = sqrt(mod_i$tau2), 
+    log = TRUE
+  )
+  data.frame(
+    mu_z = as.numeric(mod_i$b),
+    tau_z = sqrt(mod_i$tau2),
+    lpd_z = lpd
+  )
+}
+
+dat <- bind_cols(dat, map_dfr(1:k, f_lpd_Z, mod = res_Z))
+```
+
+::: {.fragment}
+
+```{r}
+#| fig-width: 7
+#| fig-height: 2.5
+#| out-width: 100%
+
+r <- seq(-0.3, 0.995, 0.005)
+dist_dat <- tibble(
+  r = r,
+  d_r = d_r(r, Ni = Inf, mu = as.numeric(res_r$beta), tau = sqrt(res_r$tau2), points = 499),
+  d_Z = d_Z(r, Ni = Inf, mu = as.numeric(res_Z$beta), tau = sqrt(res_Z$tau2))
+) %>%
+  pivot_longer(starts_with("d_"), names_to = "metric", values_to = "density", names_prefix = "d_")
+
+ggplot(dist_dat) + 
+  aes(x = r, y = density, fill = metric, color = metric) + 
+  geom_area(alpha = 0.5, position = "identity") + 
+  scale_x_continuous(limits = c(-0.3, 1), expand = expansion(0,0)) +
+  scale_y_continuous(labels = \(x) formatC(x, format = "f", digits = 2)) + 
+  scale_fill_bmj() + 
+  scale_color_bmj() + 
+  labs(
+    x = expression(r[i]), 
+    y = expression(d[rho](r)),
+    title = "Estimated parameter distributions"
+  ) + 
+  theme(legend.position = c(0.95,0.8))
+
+```
+
+:::
+::::
+:::::
+
+## Bivariate associations {.smaller}
+
+- The data: Pearson correlation between two variables of interest from a sample of $N_i$ observations, $r_i$.
+
+:::: {.columns}
+::: {.column width="49%"}
+### $\rho$ metric
+
+- Effect size estimate $r_i$, standard error $\displaystyle{se_i = \frac{1 - r_i^2}{\sqrt{N_i}}}$
+
+- The motivating model:
+  $$
+  \begin{aligned}
+  r_i &\dot{\sim} \ N\left(\rho_i, \ \frac{(1 - \rho_i^2)^2}{N_i}\right) \\
+  \rho_i &\sim \ N_{trunc}\left(\mu_\rho, \ \tau_\rho^2\right)
+  \end{aligned}
+  $$
+
+:::
+::: {.fragment .column width="49%"}
+### $\zeta = \text{atanh}(\rho)$ metric
+
+- Effect size estimate $z_i = \text{atanh}(r_i)$, standard error $\displaystyle{se_i = \frac{1}{\sqrt{N_i - 3}}}$
+
+- The motivating model:
+  $$
+  \begin{aligned}
+  z_i &\dot{\sim} \ N\left(\zeta_i, \ \frac{1}{N_i - 3}\right) \\
+  \zeta_i &\sim \ N\left(\mu_\zeta, \ \tau_\zeta^2\right)
+  \end{aligned}
+  $$
+- log-predictive density:
+  $$\begin{eqnarray}
+  \log &d_r&(r_i | \hat\mu_{\zeta (-i)}, \hat\tau_{\zeta (-i)}, N_i) \\
+  &=& \log d_z\left(z_i \left| \hat\mu_{\zeta (-i)}, \hat\tau_{\zeta (-i)}, N_i \right.\right) - \log\left(1 - r_i^2\right)
+  \end{eqnarray}$$
+:::
+::::
+
+## Predictive fit {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+### Metric comparison
+
+```{r}
+summary_r <- 
+  bind_cols(
+    predict(res_r, level = 95) |> as.data.frame() |> select(pred, ci.lb, ci.ub),
+    predict(res_r, level = 80) |> as.data.frame() |> select(pi.lb, pi.ub)
+  ) %>%
+  mutate(
+    LPD = mean(dat$lpd_r),
+    SE = sd(dat$lpd_r) / sqrt(k)
+  )
+
+summary_z <- 
+  bind_cols(
+    predict(res_Z, level = 95, transf = tanh) |> as.data.frame() |> select(pred, ci.lb, ci.ub),
+    predict(res_Z, level = 80, transf = tanh) |> as.data.frame() |> select(pi.lb, pi.ub)
+  ) %>%
+  mutate(
+    LPD = mean(dat$lpd_z),
+    SE = sd(dat$lpd_z) / sqrt(k)
+  )
+
+summary_diff <- 
+  dat %>%
+  mutate(
+    lpd_diff = lpd_r - lpd_z
+  ) %>%
+  summarize(
+    LPD = mean(lpd_diff),
+    SE = sd(lpd_diff) / sqrt(k)
+  )
+
+bind_rows(
+  r = summary_r,
+  z = summary_z,
+  Difference = summary_diff,
+  .id = "Metric"
+) %>%
+  remove_rownames() %>%
+  mutate(
+    across(-Metric, ~ formatC(., digits = 2, format = "f"))
+  ) %>%
+  unite("95% CI", starts_with("ci."), sep = "-") %>%
+  unite("80% PI", starts_with("pi."), sep = "-") %>%
+  mutate(across(everything(), ~ if_else(str_detect(.x, "NA"), NA_character_, .x))) %>%
+  rename(Est. = pred) %>%
+  tt() %>%
+  format_tt(replace = "")
+  
+```
+
+```{r lpd-contributions}
+#| fig-width: 6
+#| fig-height: 3.5
+#| out-width: 100%
+
+lpd_dat <- 
+  dat %>%
+  select(studyid, ni, ri, matches("_(r|z)$")) %>%
+  pivot_longer(
+    matches("_(r|z)$"), 
+    names_to = c(".value","metric"), names_pattern = "(.+)_(.)"
+  )
+
+ggplot(lpd_dat) + 
+  aes(lpd, color = metric, fill = metric) + 
+  geom_density(alpha = 0.5) +
+  geom_rug() + 
+  scale_fill_bmj() + 
+  scale_color_bmj() + 
+  labs(
+    x = expression(LPD[i]),
+    y = "",
+    title = "Log predictive density contributions"
+  ) + 
+  theme(legend.position = c(0.1, 0.85))
+
+```
+
+:::
+
+::: {.fragment .column width="45%"}
+
+### Outliers
+
+```{r Crede-outliers}
+#| fig-width: 5
+#| fig-height: 6
+#| out-width: 100%
+
+outliers <- 
+  dat %>%
+  filter(lpd_r - lpd_z > 0.5) %>%
+  select(studyid, ni, ri, mu_r, tau_r, mu_z, tau_z) %>%
+  cross_join(tibble(r = seq(-0.3,0.995,0.005))) %>%
+  rowwise() %>%
+  mutate(
+    studyid = paste0("Study ", studyid, " (N = ", ni, ")"),
+    dens_r = d_r(ri = r, Ni = ni, mu = mu_r, tau = tau_r, points = 499),
+    dens_z = d_Z(ri = r, Ni = ni, mu = mu_z, tau = tau_z)
+  ) %>%
+  ungroup() %>%
+  pivot_longer(
+    matches("_(r|z)$"), 
+    names_to = c(".value","metric"), names_pattern = "(.+)_(.)"
+  )
+
+ggplot(outliers) + 
+  aes(x = r, y = dens, color = metric, fill = metric) + 
+  facet_wrap(~ studyid, ncol = 1) + 
+  geom_area(alpha = 0.5, position = position_identity()) +
+  geom_vline(aes(xintercept = ri)) + 
+  scale_x_continuous(expand = expansion(0,0)) + 
+  scale_y_continuous(expand = expansion(0,c(0,0.05))) + 
+  scale_fill_bmj() + 
+  scale_color_bmj() + 
+  theme(legend.position = c(0.1, 0.9))
+
+```
+
+:::
+::::
+
+## Reliability
 
 ## References

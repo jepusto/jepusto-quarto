@@ -1467,6 +1467,20 @@
       ],
       "Hash": "66488692cb8621bc78df1b9b819497a6"
     },
+    "ggsci": {
+      "Package": "ggsci",
+      "Version": "4.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grDevices",
+        "rlang",
+        "scales"
+      ],
+      "Hash": "ad7520f351f9a8f4f6ef6a67e3d9ec49"
+    },
     "gh": {
       "Package": "gh",
       "Version": "1.5.0",
@@ -3587,6 +3601,18 @@
         "utils"
       ],
       "Hash": "d9ff3b753db98bc50650314c8782abe6"
+    },
+    "statmod": {
+      "Package": "statmod",
+      "Version": "1.5.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "graphics",
+        "stats"
+      ],
+      "Hash": "26e158d12052c279bdd4ba858b80fb1f"
     },
     "stringfish": {
       "Package": "stringfish",
