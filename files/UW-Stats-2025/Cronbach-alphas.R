@@ -56,13 +56,21 @@ d_a <- function(ai, Ni, qi, mu, tau, log = FALSE, points = 99) {
     dens_ai <- dnorm(ai, mean = mu, sd = tau)
     Const <- diff(pnorm(c(-1,1), mean = mu, sd = tau))
   } else {
-    qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
-    sub <- which(0 < qp$nodes & qp$nodes < 1)
-    wt <- qp$weights[sub]
-    alpha <- qp$nodes[sub]
     sd_b <- sqrt(2 * qi / ((qi - 1) * (Ni - 2)))
-    dens_ai <- sapply(ai, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha) * sd_b )))
-    Const <- sum(wt)
+    # qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    # sub <- which(0 < qp$nodes & qp$nodes < 1)
+    # wt <- qp$weights[sub]
+    # alpha <- qp$nodes[sub]
+    # dens_ai <- sapply(ai, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha) * sd_b )))
+    # Const <- sum(wt)
+    dens_ai <- sapply(
+      ai, 
+      \(a) integrate(
+        \(alpha) dnorm(a, mean = alpha, sd = (1 - alpha) * sd_b) * dnorm(alpha, mean = mu, sd = tau), 
+        lower = 0, upper = 1 - 1e-6
+      )$value
+    )
+    Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
   }
   if (log) {
     log(dens_ai) - log(Const)
@@ -139,13 +147,21 @@ d_hw <- function(ai, Ni, qi, mu, tau, log = FALSE, points = 99) {
     dens_ai <- dnorm(hw, mean = mu, sd = tau)
     Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
   } else {
-    qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
-    sub <- which(0 < qp$nodes & qp$nodes < 1)
-    wt <- qp$weights[sub]
-    alpha <- qp$nodes[sub]
     sd_b <- sqrt(18 * (Ni - 1) * qi / ((qi - 1) * (9 * Ni - 11)^2))
-    dens_ai <- sapply(hw, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha)^(1/3) * sd_b )))
-    Const <- sum(wt)
+    # qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    # sub <- which(0 < qp$nodes & qp$nodes < 1)
+    # wt <- qp$weights[sub]
+    # alpha <- qp$nodes[sub]
+    # dens_ai <- sapply(hw, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha)^(1/3) * sd_b )))
+    # Const <- sum(wt)
+    dens_ai <- sapply(
+      hw, 
+      \(h) integrate(
+        \(alpha) dnorm(h, mean = alpha, sd = (1 - alpha)^(1/3) * sd_b) * dnorm(alpha, mean = mu, sd = tau), 
+        lower = 0, upper = 1 - 1e-6
+      )$value
+    )
+    Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
   }
   if (log) {
     log(dens_ai) + log(jac_const) - log(Const)
@@ -223,18 +239,6 @@ ggplot(lpd_dat) +
   labs(
     x = "log predictive density contribution",
     y = ""
-  ) + 
-  theme_minimal()
-
-ggplot(lpd_dat) + 
-  aes(a, 1 / sqrt(n), color = lpd) + 
-  facet_wrap(~ metric, ncol = 1) + 
-  geom_hline(yintercept = 0) + 
-  geom_point() +
-  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
-  labs(
-    x = expression(alpha[i]),
-    y = expression(1 / sqrt(N[i]))
   ) + 
   theme_minimal()
 

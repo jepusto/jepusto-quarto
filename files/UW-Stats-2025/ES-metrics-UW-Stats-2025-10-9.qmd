@@ -309,12 +309,21 @@ d_r <- function(ri, Ni, mu, tau, log = FALSE, points = 99) {
     dens_ri <- dnorm(ri, mean = mu, sd = tau)
     Const <- diff(pnorm(c(-1,1), mean = mu, sd = tau))
   } else {
-    qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
-    sub <- which(-1 < qp$nodes & qp$nodes < 1)
-    wt <- qp$weights[sub]
-    rho <- qp$nodes[sub]
-    dens_ri <- sapply(ri, \(r) sum(wt * dnorm(r, mean = rho, sd = (1 - rho^2) / sqrt(Ni))))
-    Const <- sum(wt)
+    # qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    # sub <- which(-1 < qp$nodes & qp$nodes < 1)
+    # wt <- qp$weights[sub]
+    # rho <- qp$nodes[sub]
+    # dens_ri <- sapply(ri, \(r) sum(wt * dnorm(r, mean = rho, sd = (1 - rho^2) / sqrt(Ni))))
+    # Const <- sum(wt)
+    dens_ri <- sapply(
+      ri, 
+      \(r) integrate(
+        \(rho) dnorm(r, mean = rho, sd = (1 - rho^2) / sqrt(Ni)) * dnorm(rho, mean = mu, sd = tau), 
+        lower = -1 + 1e-6, upper = 1 - 1e-6
+      )$value
+    )
+    Const <- diff(pnorm(c(-1,1), mean = mu, sd = tau))
+
   }
   if (log) {
     log(dens_ri) - log(Const)
