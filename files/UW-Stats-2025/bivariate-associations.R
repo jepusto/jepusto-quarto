@@ -1,8 +1,6 @@
 library(conflicted)
 library(tidyverse)
-library(flextable)
 conflicts_prefer(dplyr::filter, .quiet = TRUE)
-conflicts_prefer(flextable::separate_header, .quiet = TRUE)
 
 library(metadat)
 library(metafor)
@@ -15,8 +13,7 @@ dat <-
     ri = if_else(ri < -0.1, -ri, ri) 
   ) %>%
   escalc(measure="ZCOR", ri=ri, ni=ni, data = ., var.names = c("z", "Vz")) %>%
-  escalc(measure="COR", ri=ri, ni=ni, data = ., var.names = c("r", "Vr")) %>%
-  mutate()
+  escalc(measure="COR", ri=ri, ni=ni, data = ., var.names = c("r", "Vr"))
 
 k <- nrow(dat)
 
