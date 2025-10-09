@@ -1143,50 +1143,6 @@
       "Repository": "CRAN",
       "Hash": "aa5e1cd11c2d15497494c5292d7ffcc8"
     },
-    "flextable": {
-      "Package": "flextable",
-      "Version": "0.9.10",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "data.table",
-        "gdtools",
-        "grDevices",
-        "graphics",
-        "grid",
-        "htmltools",
-        "knitr",
-        "officer",
-        "ragg",
-        "rlang",
-        "rmarkdown",
-        "stats",
-        "utils",
-        "uuid",
-        "xml2"
-      ],
-      "Hash": "a7cbadbf9c83806beff786c77c5f6970"
-    },
-    "fontBitstreamVera": {
-      "Package": "fontBitstreamVera",
-      "Version": "0.1.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "f6068021eff4aba735a9b2353516636c"
-    },
-    "fontLiberation": {
-      "Package": "fontLiberation",
-      "Version": "0.1.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R"
-      ],
-      "Hash": "f918c5e723f86f409912104d5b7a71d6"
-    },
     "fontawesome": {
       "Package": "fontawesome",
       "Version": "0.5.3",
@@ -1198,18 +1154,6 @@
         "rlang"
       ],
       "Hash": "bd1297f9b5b1fc1372d19e2c4cd82215"
-    },
-    "fontquiver": {
-      "Package": "fontquiver",
-      "Version": "0.2.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "fontBitstreamVera",
-        "fontLiberation"
-      ],
-      "Hash": "fc0f4226379e451057d55419fd31761e"
     },
     "forcats": {
       "Package": "forcats",
@@ -1346,21 +1290,6 @@
         "withr"
       ],
       "Hash": "fc0b272e5847c58cd5da9b20eedbd026"
-    },
-    "gdtools": {
-      "Package": "gdtools",
-      "Version": "0.4.3",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "Rcpp",
-        "fontquiver",
-        "htmltools",
-        "systemfonts",
-        "tools"
-      ],
-      "Hash": "6f557da539e72c5bb3110c7c8641f96f"
     },
     "generics": {
       "Package": "generics",
@@ -2195,16 +2124,21 @@
     },
     "metadat": {
       "Package": "metadat",
-      "Version": "1.4-0",
-      "Source": "Repository",
-      "Repository": "RSPM",
+      "Version": "1.5-2",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "metadat",
+      "RemoteUsername": "wviechtb",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "f69789b7c3c52bc4911caaba6fd988d17c2db633",
       "Requirements": [
         "R",
         "mathjaxr",
         "tools",
         "utils"
       ],
-      "Hash": "73ce3e47c650824dc4a514a399e48357"
+      "Hash": "3b177a7ed9b7f39a6d6c541fcbb3f868"
     },
     "metafor": {
       "Package": "metafor",
@@ -2493,26 +2427,6 @@
         "R"
       ],
       "Hash": "df58958f293b166e4ab885ebcad90e02"
-    },
-    "officer": {
-      "Package": "officer",
-      "Version": "0.7.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R6",
-        "cli",
-        "grDevices",
-        "graphics",
-        "openssl",
-        "ragg",
-        "stats",
-        "utils",
-        "uuid",
-        "xml2",
-        "zip"
-      ],
-      "Hash": "87aaafb98c5e7dae46ea6596bbc44e04"
     },
     "openssl": {
       "Package": "openssl",
@@ -3939,14 +3853,14 @@
     },
     "tinytable": {
       "Package": "tinytable",
-      "Version": "0.9.0",
+      "Version": "0.14.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "7ca6065729277068853265fa5b19a800"
+      "Hash": "ead6232c8681175e2db75d609059286a"
     },
     "tinytex": {
       "Package": "tinytex",

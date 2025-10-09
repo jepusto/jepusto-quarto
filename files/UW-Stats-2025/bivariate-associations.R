@@ -6,6 +6,8 @@ library(metadat)
 library(metafor)
 library(statmod)
 
+# Should try dat.mcdaniel1994 too
+
 data("dat.crede2010", package = "metadat")
 dat <- 
   dat.crede2010 %>%

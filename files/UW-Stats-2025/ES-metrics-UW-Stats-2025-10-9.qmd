@@ -29,7 +29,7 @@ csl: nature.csl
 
 ## {.center}
 
-```{r}
+```{r setup}
 library(conflicted)
 library(tidyverse)
 library(tinytable)
@@ -38,6 +38,7 @@ conflicts_prefer(dplyr::filter, .quiet = TRUE)
 
 library(metadat)
 library(metafor)
+library(lme4)
 library(statmod)
 
 theme_set(theme_minimal())
@@ -204,10 +205,10 @@ theme_set(theme_minimal())
 
 ::: {.fragment}
 
-- In many applications, more than one metric could apply.
-
-    - Choice is often driven by disciplinary conventions.
+- Metric choice is driven by disciplinary conventions.
     
+    - In many applications, more than one metric could apply.
+
 :::
 
 ## Metric choice studies
@@ -241,18 +242,21 @@ theme_set(theme_minimal())
 - Evaluate effect metrics by performance in __predicting summary data for a new study__.
 
     - Data vector $\mathbf{d}_i$ consisting of summary statistics used to compute effect size estimates.
-    
+
+::: {.fragment}
+
 - Use leave-one-out log-predictive density to measure predictive performance.
   $$
   LPD = \frac{1}{k} \sum_{i=1}^{k} \log p_\mathbf{D}\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
   $$
+:::
 
 ::: {.fragment}
 ### Two challenges
 
 1. Polishing up models to generate predictions.
 
-2. Meta-analysis models one-dimensional $f(\mathbf{d}_i)$, so we need auxiliary models for the rest of the data.
+2. Conventional meta-analysis focuses on one-dimensional $f(\mathbf{d}_i)$, so we need auxiliary models for the rest of the data.
 
 :::
 
@@ -263,7 +267,7 @@ theme_set(theme_minimal())
 
 - Credé and colleagues [@Crede2010class] reported a systematic review and meta-analysis of studies on association between class attendance and grades / GPA in college.
 
-- 99 correlation estimates, samples ranging from $N_i = 23$ to $3900$ (median = 151, IQR = 76-335).
+- 99 correlation estimates, samples ranging from $N_i$ = 23 to 3900 (median = 151, IQR = 76-335).
 
 ::::
 
@@ -289,7 +293,7 @@ k <- nrow(dat)
 ggplot(dat) + 
   aes(ri, 1 / sqrt(ni)) + 
   geom_hline(yintercept = 0) + 
-  geom_point() +
+  geom_point(size = 2, alpha = 0.8, color = "darkblue") +
   scale_x_continuous(limits = c(-0.3, 1), expand = expansion(0,0)) +
   scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
   labs(
@@ -390,7 +394,7 @@ dat <- bind_cols(dat, map_dfr(1:k, f_lpd_Z, mod = res_Z))
 
 ::: {.fragment}
 
-```{r}
+```{r Crede-density}
 #| fig-width: 7
 #| fig-height: 2.5
 #| out-width: 100%
@@ -415,7 +419,7 @@ ggplot(dist_dat) +
     y = expression(d[rho](r)),
     title = "Estimated parameter distributions"
   ) + 
-  theme(legend.position = c(0.95,0.8))
+  theme(legend.position = "inside", legend.position.inside = c(0.95,0.8))
 
 ```
 
@@ -470,7 +474,7 @@ ggplot(dist_dat) +
 
 ### Metric comparison
 
-```{r}
+```{r Crede-summary}
 summary_r <- 
   bind_cols(
     predict(res_r, level = 95) |> as.data.frame() |> select(pred, ci.lb, ci.ub),
@@ -516,11 +520,12 @@ bind_rows(
   mutate(across(everything(), ~ if_else(str_detect(.x, "NA"), NA_character_, .x))) %>%
   rename(Est. = pred) %>%
   tt() %>%
-  format_tt(replace = "")
+  format_tt(replace = "") %>%
+  theme_revealjs()
   
 ```
 
-```{r lpd-contributions}
+```{r Crede-lpd-contributions}
 #| fig-width: 6
 #| fig-height: 3.5
 #| out-width: 100%
@@ -544,7 +549,7 @@ ggplot(lpd_dat) +
     y = "",
     title = "Log predictive density contributions"
   ) + 
-  theme(legend.position = c(0.1, 0.85))
+  theme(legend.position = "inside", legend.position.inside = c(0.1, 0.85))
 
 ```
 
@@ -585,13 +590,813 @@ ggplot(outliers) +
   scale_y_continuous(expand = expansion(0,c(0,0.05))) + 
   scale_fill_bmj() + 
   scale_color_bmj() + 
-  theme(legend.position = c(0.1, 0.9))
+  theme(legend.position = "inside", legend.position.inside = c(0.1, 0.9))
 
 ```
 
 :::
 ::::
 
-## Reliability
+## Reliability generalization of MIBS {.smaller}
+
+```{r demir-setup}
+data("dat.demir2022", package = "metadat")
+dat <- 
+  dat.demir2022 %>%
+  escalc(measure="ARAW", ai=alpha, ni=n, mi=items, data = ., var.names = c("a", "Va")) %>%
+  escalc(measure="ABT", ai=alpha, ni=n, mi=items, data = ., var.names = c("b", "Vb")) %>%
+  escalc(measure="AHW", ai=alpha, ni=n, mi=items, data = ., var.names = c("hw", "Vhw"))
+
+k <- nrow(dat)
+
+n_summary <- summary(dat$n)
+```
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+- Demir and colleagues [@Demir2024reliability] gathered `{r} k` estimates of internal consistency  (Cronbach $\alpha$) of the Mother-to-Infant Bonding Scale.
+
+- Sample sizes ranging from $N_i$ = `{r} n_summary[["Min."]]` to `{r} n_summary[["Max."]]` (median = `{r} n_summary[["Median"]]`, IQR = `{r} n_summary[["1st Qu."]]`-`{r} n_summary[["3rd Qu."]]`).
+
+::::
+
+:::: {.column width="50%"}
+
+```{r Demir-funnel}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+ggplot(dat) + 
+  aes(a, 1 / sqrt(n)) + 
+  geom_hline(yintercept = 0) + 
+  geom_point(size = 2, color = "darkgreen") +
+  scale_x_continuous(limits = c(0.2, 1), expand = expansion(0,0)) +
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(hat(alpha)[i]),
+    y = expression(1 / sqrt(N[i]))
+  )
+```
+
+::::
+
+:::::
+
+```{r Demir-calculations}
+loo_fit <- function(i, mod) {
+  id <- 1:mod$k
+  mod_i <- update(mod, subset = id != i)
+  data.frame(
+    mu = as.numeric(mod_i$b),
+    tau = sqrt(mod_i$tau2)
+  )
+}
+
+CI_PI <- function(mod,..., CI_level = 95, PI_level = 80) {
+  CI_res <- 
+    predict(mod, ..., level = CI_level) %>%
+    as.data.frame() %>%
+    remove_rownames()
+  PI_res <- predict(mod, ..., level = PI_level) %>%
+    as.data.frame() %>%
+    remove_rownames()
+  
+  CI_res %>%
+    select(Est = pred, ci.lb, ci.ub) %>%
+    bind_cols(select(PI_res, pi.lb, pi.ub))
+}
+
+#-------------------------------------------------------------------------------
+# Raw alpha
+
+res_a <- rma(yi = a, vi = Va, data = dat)
+a_est <- CI_PI(res_a)
+
+d_a <- function(ai, Ni, qi, mu, tau, log = FALSE, points = 99) {
+  if (is.infinite(Ni)) {
+    dens_ai <- dnorm(ai, mean = mu, sd = tau)
+    Const <- diff(pnorm(c(-1,1), mean = mu, sd = tau))
+  } else {
+    sd_b <- sqrt(2 * qi / ((qi - 1) * (Ni - 2)))
+    # qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    # sub <- which(0 < qp$nodes & qp$nodes < 1)
+    # wt <- qp$weights[sub]
+    # alpha <- qp$nodes[sub]
+    # dens_ai <- sapply(ai, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha) * sd_b )))
+    # Const <- sum(wt)
+    dens_ai <- sapply(
+      ai, 
+      \(a) integrate(
+        \(alpha) dnorm(a, mean = alpha, sd = (1 - alpha) * sd_b) * dnorm(alpha, mean = mu, sd = tau), 
+        lower = 0, upper = 1 - 1e-6
+      )$value
+    )
+    Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
+  }
+  if (log) {
+    log(dens_ai) - log(Const)
+  } else {
+    dens_ai / Const
+  }
+}
+
+dat_a <- 
+  dat %>%
+  mutate(
+    mod_a = map_dfr(1:k, loo_fit, mod = res_a)
+  ) %>%
+  unnest(mod_a, names_sep = "_") %>%
+  rowwise() %>%
+  mutate(
+    lpd_a = d_a(
+      ai = a, Ni = n, qi = items, 
+      mu = mod_a_mu, tau = mod_a_tau, 
+      log = TRUE
+    )
+  ) %>%
+  ungroup()
+
+#-------------------------------------------------------------------------------
+# Bonett (2002) transformation of alpha
+
+res_b <- rma(yi = b, vi = Vb, data = dat)
+b_est <- CI_PI(res_b, transf = transf.iabt)
+
+d_b <- function(ai, Ni, qi, mu, tau, log = FALSE, points = 99) {
+    bi <- -log(1 - ai)
+    sd <- if (is.infinite(Ni)) tau else sqrt(tau^2 + 2 * qi / ((qi - 1) * (Ni - 2)))
+    jac_const <- 1 / (1 - ai)
+    if (log) {
+      dnorm(bi, mean = mu, sd = sd, log = TRUE) + log(jac_const)
+    } else {
+      dnorm(bi, mean = mu, sd = sd) * jac_const
+    }
+}
+
+dat_b <- 
+  dat_a %>%
+  mutate(
+    mod_b = map_dfr(1:k, loo_fit, mod = res_b)
+  ) %>%
+  unnest(mod_b, names_sep = "_") %>%
+  rowwise() %>%
+  mutate(
+    lpd_b = d_b(
+      ai = a, Ni = n, qi = items, 
+      mu = mod_b_mu, tau = mod_b_tau, 
+      log = TRUE
+    )
+  ) %>%
+  ungroup()
+
+#-------------------------------------------------------------------------------
+# Hakstian & Whalen (1976) transformation of alpha
+
+res_hw <- rma(yi = hw, vi = Vhw, data = dat)
+hw_est <- CI_PI(res_hw, transf = transf.iahw)
+
+d_hw <- function(ai, Ni, qi, mu, tau, log = FALSE, points = 99) {
+
+  hw <- 1 - (1 - ai)^(1/3)  
+  jac_const <- (1 - ai)^(-2/3) / 3
+    
+  if (is.infinite(Ni)) {
+    dens_ai <- dnorm(hw, mean = mu, sd = tau)
+    Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
+  } else {
+    sd_b <- sqrt(18 * (Ni - 1) * qi / ((qi - 1) * (9 * Ni - 11)^2))
+    # qp <- gauss.quad.prob(n = points, dist = "normal", mu = mu, sigma = tau)
+    # sub <- which(0 < qp$nodes & qp$nodes < 1)
+    # wt <- qp$weights[sub]
+    # alpha <- qp$nodes[sub]
+    # dens_ai <- sapply(hw, \(a) sum(wt * dnorm(a, mean = alpha, sd = (1 - alpha)^(1/3) * sd_b )))
+    # Const <- sum(wt)
+    dens_ai <- sapply(
+      hw, 
+      \(h) integrate(
+        \(alpha) dnorm(h, mean = alpha, sd = (1 - alpha)^(1/3) * sd_b) * dnorm(alpha, mean = mu, sd = tau), 
+        lower = 0, upper = 1 - 1e-6
+      )$value
+    )
+    Const <- diff(pnorm(c(0,1), mean = mu, sd = tau))
+  }
+  if (log) {
+    log(dens_ai) + log(jac_const) - log(Const)
+  } else {
+    dens_ai * jac_const / Const
+  }
+}
+
+dat_hw <- 
+  dat_b %>%
+  mutate(
+    mod_hw = map_dfr(1:k, loo_fit, mod = res_hw)
+  ) %>%
+  unnest(mod_hw, names_sep = "_") %>%
+  rowwise() %>%
+  mutate(
+    lpd_hw = d_hw(
+      ai = a, Ni = n, qi = items, 
+      mu = mod_hw_mu, tau = mod_hw_tau, 
+      log = TRUE
+    )
+  ) %>%
+  ungroup()
+
+rearrange <- \(x) {
+  y <- str_match(x, "mod_(a|b|hw)_(mu|tau)")
+  paste(y[,3], y[,2], sep = "_")
+}
+
+dat_all_fits <- 
+  dat_hw %>%
+  rename_with(.fn = rearrange, .cols = starts_with("mod_"))
+
+#-------------------------------------------------------------------------------
+# Summarize fits
+
+lpd_dat <- 
+  dat_all_fits %>%
+  select(studyid, esid, n, items, a, matches("_(a|b|hw)")) %>%
+  pivot_longer(
+    matches("_(a|b|hw)$"), 
+    names_to = c(".value","metric"), names_pattern = "(.+)_(.+)$"
+  )
+
+lpd_summary <- 
+  lpd_dat %>%
+  summarise(
+    LPD = mean(lpd),
+    SE = sd(lpd) / sqrt(k),
+    .by = metric
+  )
+
+all_est <- 
+  bind_rows(
+    a = a_est,
+    b = b_est,
+    hw = hw_est,
+    .id = "metric"
+  ) %>%
+  inner_join(lpd_summary, by = "metric")
+
+
+```
+
+::::: {.columns .fragment}
+:::: {.column width="50%"}
+
+```{r Demir-summary}
+
+all_est %>%
+  mutate(
+    metric = factor(metric, levels = c("a","b","hw"), labels = c("Raw alpha","Bonett trans.","Hakstian-Whalen trans.")),
+    across(-metric, ~ formatC(., digits = 2, format = "f"))
+  ) %>%
+  unite("95% CI", starts_with("ci."), sep = "-") %>%
+  unite("80% PI", starts_with("pi."), sep = "-") %>%
+  rename(Metric = metric, Est. = Est) %>%
+  tt() %>%
+  theme_revealjs()
+
+```
+
+
+::::
+
+:::: {.column width="50%"}
+
+```{r Demir-density}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+ai <- seq(0.2, 0.995, 0.005)
+
+dist_dat <- tibble(
+  ai = ai,
+  d_a = d_a(ai, Ni = Inf, qi = 8, mu = as.numeric(res_a$beta), tau = sqrt(res_a$tau2), points = 499),
+  d_b = d_b(ai, Ni = Inf, qi = 8, mu = as.numeric(res_b$beta), tau = sqrt(res_b$tau2)),
+  d_hw = d_hw(ai, Ni = Inf, qi = 8, mu = as.numeric(res_hw$beta), tau = sqrt(res_hw$tau2), points = 499),
+) %>%
+  pivot_longer(starts_with("d_"), names_to = "metric", values_to = "density", names_prefix = "d_") %>%
+  mutate(
+    metric = factor(metric, levels = c("a","b","hw"), labels = c("Raw alpha","Bonett trans.","Hakstian-Whalen trans."))
+  )
+
+ggplot(dist_dat) + 
+  aes(x = ai, y = density, fill = metric, color = metric) + 
+  geom_area(alpha = 0.5, position = "identity") + 
+  scale_x_continuous(limits = c(0.2, 1), expand = expansion(0,0)) +
+  scale_y_continuous(labels = \(x) formatC(x, format = "f", digits = 2)) + 
+  scale_fill_bmj() + 
+  scale_color_bmj() + 
+  labs(
+    x = expression(alpha[i]), 
+    y = expression(d[alpha](alpha)),
+    title = "Estimated parameter distributions"
+  ) + 
+  theme_minimal() + 
+  theme(legend.position = "inside", legend.position.inside = c(0.15,0.8))
+
+```
+
+::::
+
+:::::
+
+## Incidence of olfactory loss in COVID-19 patients {.smaller}
+
+```{r Hannum-setup}
+data("dat.hannum2020", package = "metadat")
+
+dat <- 
+  dat.hannum2020 %>%
+  escalc(measure="PR", xi=xi, ni=ni, data=., var.names = c("pr", "Vpr"))
+
+k <- nrow(dat)
+n_summary <- summary(dat$ni)
+```
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+- Hannum and colleagues [@Hannum2020objective] compiled data on rates of olfactory loss across `{r} k` studies of COVID-19 patients.
+
+- Sample sizes ranging from $N_i$ = `{r} n_summary[["Min."]]` to `{r} n_summary[["Max."]]` (median = `{r} n_summary[["Median"]]`, IQR = `{r} n_summary[["1st Qu."]]` - `{r} n_summary[["3rd Qu."]]`).
+
+::::
+
+:::: {.column width="50%"}
+
+```{r Hannum-funnel}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+ggplot(dat) + 
+  aes(pr, 1 / sqrt(ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_point(size = 2, color = "darkred") +
+  scale_x_continuous(limits = c(0,1), expand = expansion(0,0)) + 
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(p[i]),
+    y = expression(1 / sqrt(N[i]))
+  ) + 
+  theme_minimal()
+
+```
+
+::::
+:::::
+
+::: {.fragment}
+
+- Many different transformations of $p_i$ are used as effect size measures (identity, logit, probit, arcsin-square-root, Freeman-Tukey).
+
+- Could use conventional random effects model or generalized linear mixed model.
+
+:::
+
+::: {.fragment}
+
+- Which predictive model to use?
+
+$$
+\begin{aligned}
+g(p_i) &\dot{\sim} \ N\left(g(\pi_i), \ \frac{h(\pi_i)}{N_i}\right) \qquad & N_i p_i &\sim \ Binom\left(N_i, \ \pi_i\right)\\
+g(\pi_i) &\sim \ N\left(\mu_g, \ \tau_g^2\right) \qquad & g(\pi_i) &\sim \ N\left(\mu_g, \ \tau_g^2\right)
+\end{aligned}
+$$
+:::
+
+## Incidence of olfactory loss in COVID-19 patients
+
+```{r Hannum-calculations}
+
+#-------------------------------------------------------------------------------
+# Transformations
+
+loo_fit <- function(dat, i) {
+  id <- 1:nrow(dat)
+  mod_i <- rma(yi = yi, vi = vi, data = dat, subset = id != i)
+  data.frame(
+    mu = as.numeric(mod_i$b),
+    tau = sqrt(mod_i$tau2)
+  )
+}
+
+CI_PI <- function(mod,..., CI_level = 95, PI_level = 80) {
+  CI_res <- 
+    predict(mod, ..., level = CI_level) %>%
+    as.data.frame() %>%
+    remove_rownames() %>%
+    mutate(
+      mu = as.numeric(mod$b),
+      tau = sqrt(mod$tau2)
+    )
+  
+  PI_res <- predict(mod, ..., level = PI_level) %>%
+    as.data.frame() %>%
+    remove_rownames() %>%
+    mutate(I2 = mod$I2)
+  
+  CI_res %>%
+    select(mu, tau, Est = pred, ci.lb, ci.ub) %>%
+    bind_cols(select(PI_res, pi.lb, pi.ub, I2))
+}
+
+normal_interval <- function(theta, es, Ni, mu, tau, transf, itransf, deriv) {
+  l_u <- transf(itransf(es) + c(-0.5, 0.5) / Ni)
+  pi <- itransf(theta)
+  gp <- deriv(pi)
+  sd <- sqrt(pi * (1 - pi) * gp^2 / Ni)
+  (pnorm(l_u[2], mean = theta, sd = sd) - pnorm(l_u[1], mean = theta, sd = sd)) * dnorm(theta, mean = mu, sd = tau)
+}
+
+binomial_mass <- function(theta, es, Ni, mu, tau, transf, itransf, ...) {
+  xi <- itransf(es) * Ni
+  pi <- itransf(theta)
+  dbinom(xi, size = Ni, prob = pi) * dnorm(theta, mean = mu, sd = tau)
+}
+
+d_trans <- function(pi, Ni, mu, tau, transf, itransf, deriv, integrand = normal_interval, log = FALSE) {
+  
+  es_i <- transf(pi)
+  theta_range <- transf(c(0,1))
+  Const <- diff(pnorm(theta_range, mean = mu, sd = tau))
+  lower <- max(theta_range[1], mu - 10 * tau)
+  upper <- min(theta_range[2], mu + 10 * tau)
+  
+  if (is.infinite(Ni)) {
+    dens_ai <- dnorm(es_i, mean = mu, sd = tau) * deriv(pi)
+    
+  } else {
+    dens_ai <- sapply(
+      es_i, 
+      \(es) integrate(
+        integrand, lower = lower, upper = upper, 
+        es = es, Ni = Ni, mu = mu, tau = tau,
+        transf = transf, itransf = itransf, deriv = deriv
+      )$value
+    )
+  }
+  if (log) {
+    log(dens_ai) - log(Const)
+  } else {
+    dens_ai / Const
+  }
+}
+
+eval_model <- function(dat, measure, transf, itransf, deriv) {
+  
+  k <- nrow(dat)
+  es_dat <- escalc(measure = measure, xi = xi, ni = ni, data = dat)
+  
+  pi <- dat$xi / dat$ni
+  yi <- transf(pi)
+  vi <- deriv(pi)^2 * pi * (1 - pi) / dat$ni
+  if (!isTRUE(all.equal(yi, es_dat$yi, check.attributes = FALSE))) stop("Effect sizes are not equal to the transformed probabilities.")
+  if (!isTRUE(all.equal(vi, es_dat$vi))) stop("Delta-method variances are not equal to the escalc results.")
+  
+  full_mod <- rma(yi = yi, vi = vi, data = es_dat)
+  res <- CI_PI(full_mod, transf = itransf)
+  
+  loo_dat <- 
+    es_dat %>%
+    mutate(
+      mod = map_dfr(1:k, loo_fit, dat = es_dat)
+    ) %>%
+    unnest(mod, names_sep = "_") %>%
+    rowwise() %>%
+    mutate(
+      lpd_trans = d_trans(
+        pi = pr, Ni = ni, mu = mod_mu, tau = mod_tau,
+        transf = transf, itransf = itransf, deriv = deriv,
+        integrand = normal_interval, log = TRUE
+      ),
+      lpd_binom = d_trans(
+        pi = pr, Ni = ni, mu = mod_mu, tau = mod_tau,
+        transf = transf, itransf = itransf, deriv = deriv,
+        integrand = binomial_mass, log = TRUE
+      )
+    ) %>%
+    ungroup()
+
+  lpd_summary <- 
+    loo_dat %>%
+    summarize(
+      LPD_trans = mean(lpd_trans),
+      SE_trans = sd(lpd_trans) / sqrt(k),
+      LPD_trans_i = list(lpd_trans),
+      LPD_binom = mean(lpd_binom),
+      SE_binom = sd(lpd_binom) / sqrt(k),
+      LPD_binom_i = list(lpd_binom)
+    )
+  
+  return(bind_cols(res, lpd_summary))
+}
+
+logit_res <- 
+  eval_model(
+    dat = dat, 
+    measure = "PLO", 
+    transf = qlogis, itransf = plogis, 
+    deriv = \(x) 1 / (x * (1 - x))
+  )
+
+probit_res <- 
+  eval_model(
+    dat = dat, 
+    measure = "PRZ", 
+    transf = qnorm, itransf = pnorm, 
+    deriv = \(x) 1 / dnorm(qnorm(x))
+  )
+
+arcsin_res <- 
+  eval_model(
+    dat = dat, 
+    measure = "PAS", 
+    transf = transf.arcsin, itransf = transf.iarcsin, 
+    deriv = \(x) 1 / (2 * sqrt(x * (1 - x)))
+  )
+
+
+#-------------------------------------------------------------------------------
+# GLMMs
+
+fit_glmr <- function(dat, link = "logit", i = 0) {
+  id <- 1:nrow(dat)
+  mod_i <- glmer(
+    cbind(xi, ni - xi) ~ 1 | authorName, 
+    data = dat,
+    family = binomial(link = link), 
+    subset = id != i,
+    nAGQ = 15
+  )
+  data.frame(
+    mu = fixef(mod_i),
+    mu_se = sqrt(as.numeric(vcov(mod_i))),
+    tau = sqrt(summary(mod_i)$varcor$authorName[[1]])
+  )
+}
+
+glmm_CI_PI <- function(mod, itransf = identity, CI_level = 95, PI_level = 80) {
+  q_CI <- qnorm((100 + CI_level) / 200)
+  q_PI <- qnorm((100 + PI_level) / 200)
+  sd_PI <- sqrt(mod$tau^2 + mod$mu_se^2)
+  data.frame(
+    mu = mod$mu,
+    tau = mod$tau,
+    Est = itransf(mod$mu),
+    ci.lb = itransf(mod$mu - q_CI * mod$mu_se),
+    ci.ub = itransf(mod$mu + q_CI * mod$mu_se),
+    pi.lb = itransf(mod$mu - q_PI * sd_PI),
+    pi.ub = itransf(mod$mu + q_PI * sd_PI)
+    
+  )
+}
+
+# logit link 
+
+full_GLMM_logit <- fit_glmr(dat = dat)
+
+loo_logit <- 
+  dat %>%
+  mutate(
+    mod = map_dfr(1:k, fit_glmr, link = "logit", dat = dat)
+  ) %>%
+  unnest(mod, names_sep = "_") %>%
+  rowwise() %>%
+  mutate(
+    lpd_binom = d_trans(
+      pi = pr, Ni = ni, mu = mod_mu, tau = mod_tau,
+      transf = qlogis, itransf = plogis, deriv = NULL,
+      integrand = binomial_mass, log = TRUE
+    )
+  ) %>%
+  ungroup()
+
+lpd_logit <- 
+  loo_logit %>%
+  summarize(
+    LPD_binom = mean(lpd_binom),
+    SE_binom = sd(lpd_binom) / sqrt(k),
+    LPD_binom_i = list(lpd_binom)
+  )
+
+logit_GLMM_res <- 
+  glmm_CI_PI(full_GLMM_logit, itransf = plogis) %>%
+  bind_cols(lpd_logit)
+
+# probit link 
+
+full_GLMM_probit <- fit_glmr(dat = dat, link = "probit")
+
+loo_probit <- 
+  dat %>%
+  mutate(
+    mod = map_dfr(1:k, fit_glmr, link = "probit", dat = dat)
+  ) %>%
+  unnest(mod, names_sep = "_") %>%
+  rowwise() %>%
+  mutate(
+    lpd_binom = d_trans(
+      pi = pr, Ni = ni, mu = mod_mu, tau = mod_tau,
+      transf = qnorm, itransf = pnorm, deriv = NULL,
+      integrand = binomial_mass, log = TRUE
+    )
+  ) %>%
+  ungroup()
+
+lpd_probit <- 
+  loo_probit %>%
+  summarize(
+    LPD_binom = mean(lpd_binom),
+    SE_binom = sd(lpd_binom) / sqrt(k),
+    LPD_binom_i = list(lpd_binom)
+  )
+
+probit_GLMM_res <- 
+  glmm_CI_PI(full_GLMM_probit, itransf = pnorm) %>%
+  bind_cols(lpd_probit)
+
+#-------------------------------------------------------------------------------
+# Compile results
+
+all_res <- bind_rows(
+  # `log-RE` = log_res,
+  `logit-RE` = logit_res,
+  `probit-RE` = probit_res,
+  `arcsin-RE` = arcsin_res,
+  `logit-GLMM` = logit_GLMM_res,
+  `probit-GLMM` = probit_GLMM_res,
+  .id = "model"
+)
+```
+
+```{r Hannum-summary}
+summary_table <- 
+  all_res %>%
+  separate(model, into = c("metric","model"), sep = "-") %>%
+  select(
+    model, metric, Est, ci.lb, ci.ub, pi.lb, pi.ub, 
+    ends_with("_trans"), ends_with("_binom")
+  ) %>%
+  mutate(
+    across(Est:SE_binom, ~ formatC(., digits = 2, format = "f"))
+  ) %>%
+  unite("95% CI", starts_with("ci."), sep = "-") %>%
+  unite("80% PI", starts_with("pi."), sep = "-") %>%
+  mutate(
+    across(everything(), ~ if_else(str_detect(.x, "NA"), NA_character_, .x))
+  ) %>%
+  rename(Model = model, Metric = metric, Est. = Est)
+
+summary_table %>%
+  tt() %>%
+  group_tt(
+    j = list(
+      "Normal" = 6:7,
+      "Binomial" = 8:9
+    )
+  ) %>%
+  format_tt("colnames", fn = \(x) str_remove(x, "_(trans|binom)")) %>%
+  format_tt(replace = "") %>%
+  theme_revealjs()
+
+```
+
+
+```{r Hannum-densities}
+#| fig-width: 10
+#| fig-height: 3.5
+#| out-width: 80%
+
+pi_i <- seq(0.005, 0.995, 0.005)
+dist_dat <- tibble(
+  pi_i = pi_i,
+  `d_logit-RE` = d_trans(pi = pi_i, Ni = Inf, mu = as.numeric(logit_res$mu), tau = logit_res$tau, transf = qlogis, itransf = plogis, deriv = \(x) 1 / (x * (1 - x))),
+  `d_probit-RE` = d_trans(pi = pi_i, Ni = Inf, mu = as.numeric(probit_res$mu), tau = probit_res$tau, transf = qnorm, itransf = pnorm, deriv = \(x) 1 / dnorm(qnorm(x))),
+  `d_arcsin-RE` = d_trans(pi = pi_i, Ni = Inf, mu = as.numeric(arcsin_res$mu), tau = arcsin_res$tau, transf = transf.arcsin, itransf = transf.iarcsin, deriv = \(x) 1 / (2 * sqrt(x * (1 - x)))),
+  `d_logit-GLMM` = d_trans(pi = pi_i, Ni = Inf, mu = as.numeric(logit_GLMM_res$mu), tau = logit_GLMM_res$tau, transf = qlogis, itransf = plogis, deriv = \(x) 1 / (x * (1 - x))),
+  `d_probit-GLMM` = d_trans(pi = pi_i, Ni = Inf, mu = as.numeric(probit_GLMM_res$mu), tau = probit_GLMM_res$tau, transf = qnorm, itransf = pnorm, deriv = \(x) 1 / dnorm(qnorm(x))),
+) %>%
+  pivot_longer(starts_with("d_"), names_to = c("metric","model"), values_to = "density", names_prefix = "d_", names_sep = "-") %>%
+  mutate(
+    model = case_match(model, "RE" ~ "Random effects meta-analysis", "GLMM" ~ "Generalized linear mixed model")
+  )
+
+ggplot(dist_dat) + 
+  aes(x = pi_i, y = density, fill = metric, color = metric) + 
+  facet_wrap(~ model, ncol = 2) + 
+  geom_area(alpha = 0.5, position = "identity") + 
+  scale_x_continuous(limits = c(0, 1), expand = expansion(0,0)) +
+  scale_fill_bmj() + 
+  scale_color_bmj() + 
+  labs(
+    x = expression(pi[i]), 
+    y = expression(d[pi](pi[i])),
+    title = "Estimated parameter distributions"
+  ) + 
+  theme_minimal() + 
+  theme(legend.position = "right")
+
+```
+
+## Effectiveness of nicotine replacement therapy {.smaller}
+
+```{r}
+data("dat.hartmannboyce2018", package = "metadat")
+
+dat <- 
+  dat.hartmannboyce2018 %>%
+  mutate(
+    Ni = n.ctrl + n.nrt,
+    studyid = row_number(),
+    p_C = x.ctrl / n.ctrl,
+    p_T = x.nrt / n.nrt
+  ) %>%
+  escalc(measure="RR", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("RR", "V_RR")) %>%
+  escalc(measure="RR", ai=n.ctrl - x.ctrl, n1i=n.ctrl, ci=n.nrt - x.nrt, n2i=n.nrt, data = ., var.names = c("cRR", "V_cRR")) %>%
+  escalc(measure="OR", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("OR", "V_OR")) %>%
+  escalc(measure="RD", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("RD", "V_RD"))
+
+k <- nrow(dat)
+n_summary <- summary(dat$Ni)
+
+```
+
+- Cochrane Systematic Review of effects of nicotine replacement therapy vs. control on smoking cessation, defined as abstinence at 6+ month follow-up [@HartmannBoyce2018nicotine].
+
+- Sample sizes ranging from $N_i$ = `{r} n_summary[["Min."]]` to `{r} n_summary[["Max."]]` (median = `{r} n_summary[["Median"]]`, IQR = `{r} n_summary[["1st Qu."]]` - `{r} n_summary[["3rd Qu."]]`).
+
+::::: {.columns}
+:::: {.column width="50%"}
+
+```{r NRT-funnel}
+#| fig-width: 7
+#| fig-height: 5
+#| out-width: 100%
+
+ggplot(dat) + 
+  aes(OR, 1 / sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  geom_point(size = 2, color = "purple") +
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(log(OR[i])),
+    y = expression(1 / sqrt(N[i])),
+    title = "Log odds ratios for abstinence in NRT group vs. control group"
+  ) + 
+  theme_minimal()
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+```{r NRT-probability-scatter}
+#| fig-width: 7
+#| fig-height: 5
+#| out-width: 100%
+
+ggplot(dat) + 
+  aes(p_C, p_T, size = sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  geom_abline(intercept = 0, slope = 1, color = "grey") + 
+  geom_point(color = "darkblue", alpha = 0.5) + 
+  scale_x_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
+  scale_y_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
+  labs(
+    x = expression(p[0]),
+    y = expression(p[1]),
+    title = "Abstinence rates in NRT group vs. in control group"
+  ) + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+
+```
+
+::::
+
+:::::
+
+::: {.fragment}
+
+- Multiple possible effect metrics: log odds ratio, log risk ratio, complementary log risk ratio, risk difference
+
+- Alternative models: bivariate GLMM, hypergeometric GLMM, baseline risk regression, etc.
+
+:::
+
+## Effect metric comparison
+
 
 ## References
