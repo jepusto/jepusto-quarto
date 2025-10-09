@@ -16,6 +16,23 @@
   keywords = {evidence synthesis,mapping,multiple outcomes,social anxiety}
 }
 
+@article{Arends2000baseline,
+  title = {Baseline Risk as Predictor of Treatment Benefit: Three Clinical Meta-Re-Analyses},
+  shorttitle = {Baseline Risk as Predictor of Treatment Benefit},
+  author = {Arends, Lidia R. and Hoes, Arno W. and Lubsen, Jacobus and Grobbee, Diederik E. and Stijnen, Theo},
+  date = {2000},
+  journaltitle = {Statistics in Medicine},
+  volume = {19},
+  number = {24},
+  pages = {3497--3518},
+  issn = {1097-0258},
+  doi = {10.1002/1097-0258(20001230)19:24<3497::AID-SIM830>3.0.CO;2-H},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/1097-0258%2820001230%2919%3A24%3C3497%3A%3AAID-SIM830%3E3.0.CO%3B2-H},
+  urldate = {2025-09-24},
+  abstract = {A relationship between baseline risk and treatment effect is increasingly investigated as a possible explanation of between-study heterogeneity in clinical trial meta-analysis. An approach that is still often applied in the medical literature is to plot the estimated treatment effects against the estimated measures of risk in the control groups (as a measure of baseline risk), and to compute the ordinary weighted least squares regression line. However, it has been pointed out by several authors that this approach can be seriously flawed. The main problem is that the observed treatment effect and baseline risk measures should be viewed as estimates rather than the true values. In recent years several methods have been proposed in the statistical literature to potentially deal with the measurement errors in the estimates. In this article we propose a vague priors Bayesian solution to the problem which can be carried out using the ‘Bayesian inference using Gibbs sampling’ (BUGS) implementation of Markov chain Monte Carlo numerical integration techniques. Different from other proposed methods, it uses the exact rather than an approximate likelihood, while it can handle many different treatment effect measures and baseline risk measures. The method differs from a recently proposed Bayesian method in that it explicitly models the distribution of the underlying baseline risks. We apply the method to three meta-analyses published in the medical literature and compare the results with the outcomes of the other recently proposed methods. In particular we compare our approach to McIntosh's method, for which we show how it can be carried out using standard statistical software. We conclude that our proposed method offers a very general and flexible solution to the problem, which can be carried out relatively easily with existing Bayesian analysis software. A confidence band for the underlying relationship between true effect measure and baseline risk and a confidence interval for the value of the baseline risk measure for which there is no treatment effect are easily obtained by-products of our approach. Copyright © 2000 John Wiley \& Sons, Ltd.},
+  langid = {english}
+}
+
 
 @article{borenstein2017basics,
   title = {Basics of Meta-Analysis: {{{\mkbibemph{I}}}} {\textsuperscript{2}} Is Not an Absolute Measure of Heterogeneity: {{{\mkbibemph{I}}}} {\textsuperscript{2}} Is Not an Absolute Measure of Heterogeneity},
@@ -150,6 +167,20 @@
   langid = {english}
 }
 
+@online{Deshpande2024are,
+  title = {Are You Using Test Log-Likelihood Correctly?},
+  author = {Deshpande, Sameer K. and Ghosh, Soumya and Nguyen, Tin D. and Broderick, Tamara},
+  date = {2024-01-18},
+  eprint = {2212.00219},
+  eprinttype = {arXiv},
+  eprintclass = {stat},
+  doi = {10.48550/arXiv.2212.00219},
+  url = {http://arxiv.org/abs/2212.00219},
+  urldate = {2025-10-09},
+  abstract = {Test log-likelihood is commonly used to compare different models of the same data or different approximate inference algorithms for fitting the same probabilistic model. We present simple examples demonstrating how comparisons based on test log-likelihood can contradict comparisons according to other objectives. Specifically, our examples show that (i) approximate Bayesian inference algorithms that attain higher test log-likelihoods need not also yield more accurate posterior approximations and (ii) conclusions about forecast accuracy based on test log-likelihood comparisons may not agree with conclusions based on root mean squared error.},
+  pubstate = {prepublished},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning,Statistics - Other Statistics}
+}
 
 @article{Donoho2017fifty,
   title = {50 Years of Data Science},
@@ -219,6 +250,24 @@
   abstract = {OBJECTIVE: Meta-analyses of continuous outcomes typically use mean differences (MDs) or standardized mean differences (SMDs) (MD in pooled standard deviation units). Ratio of means (RoM) is an alternative effect measure that performs comparably in simulation. We compared treatment effects and heterogeneity for RoM, MD, and SMD using empiric data. STUDY DESIGN AND SETTING: From the Cochrane Database (2008, issue 1), we included systematic reviews reporting continuous outcomes, selected the meta-analysis with the most (and ≥five) trials, and calculated MD (where possible), SMD, and RoM. For each pair of effect measures, we compared P-values separately for treatment effect and heterogeneity and assessed asymmetry of discordant pairs (statistically significant result for only one of two measures). RESULTS: Two hundred thirty-two of 5,053 reviews were included. Measures demonstrated similar treatment effects, with ≤6\% discordant pairs and no asymmetry. A 0.5 SMD increase corresponded to 22 (95\% confidence interval: 19, 24)\% increase using RoM. There was less heterogeneity in RoM vs. MD (n=143, P=0.007), SMD vs. RoM (n=232, P=0.005), and SMD vs. MD (n=143, P=0.004). Comparing discordant pairs, fewer meta-analyses showed significant heterogeneity with SMD vs. RoM (P=0.04), consistent with the known bias of SMD. CONCLUSION: Empiric data from diverse meta-analyses demonstrate similar treatment effects and no large differences in heterogeneity of RoM compared with difference-based methods.},
   langid = {english},
   keywords = {Bias,Data Interpretation Statistical,Female,Humans,Male,Meta-Analysis as Topic,Outcome Assessment Health Care,Randomized Controlled Trials as Topic,Research Design,Review Literature as Topic}
+}
+
+@article{Guolo2022measurement,
+  title = {Measurement Errors in Control Risk Regression: {{A}} Comparison of Correction Techniques},
+  shorttitle = {Measurement Errors in Control Risk Regression},
+  author = {Guolo, Annamaria},
+  date = {2022},
+  journaltitle = {Statistics in Medicine},
+  volume = {41},
+  number = {1},
+  pages = {163--179},
+  issn = {1097-0258},
+  doi = {10.1002/sim.9228},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.9228},
+  urldate = {2025-09-24},
+  abstract = {Control risk regression is a diffuse approach for meta-analysis about the effectiveness of a treatment, relating the measure of risk with which the outcome occurs in the treated group to that in the control group. The severity of illness is a source of between-study heterogeneity that can be difficult to measure. It can be approximated by the rate of events in the control group. Since the estimate is a surrogate for the underlying risk, it is prone to measurement error. Correction methods are necessary to provide reliable inference. This article illustrates the extent of measurement error effects under different scenarios, including departures from the classical normality assumption for the control risk distribution. The performance of different measurement error corrections is examined. Attention will be paid to likelihood-based structural methods assuming a distribution for the control risk measure and to functional methods avoiding the assumption, namely, a simulation-based method and two score function methods. Advantages and limits of the approaches are evaluated through simulation. In case of large heterogeneity, structural approaches are preferable to score methods, while score methods perform better for small heterogeneity and small sample size. The simulation-based approach has a satisfactory behavior whichever the examined scenario, with no convergence issues. The methods are applied to a meta-analysis about the association between diabetes and risk of Parkinson disease. The study intends to make researchers aware of the measurement error problem occurring in control risk regression and lead them to the use of appropriate correction techniques to prevent fallacious conclusions.},
+  langid = {english},
+  keywords = {likelihood,measurement error,meta-analysis,score function,SIMEX}
 }
 
 @article{Hannum2020objective,
@@ -365,6 +414,57 @@
   abstract = {There are claims in the literature that the risk difference is a more heterogeneous measure than the odds ratio or risk ratio. These claims are based on surveys of meta-analyses showing that tests reject the null hypothesis of homogeneity more often for the risk difference than for the ratio measures. Discussions of this point have neglected the fact that homogeneity tests can have different levels of statistical power (i.e., different probabilities of rejecting the null when it is false) across different scales. We give hypothetical examples in which there is arguably equal heterogeneity across risk difference and odds ratio measures but in which the risk difference homogeneity test rejects more often, and therefore has higher power, than the odds ratio homogeneity test. These examples suggest that current empirical evidence for the claim that the risk difference is more heterogeneous is not at present satisfactory. Further research could consider other approaches to empirical comparisons of the heterogeneity of the three measures.},
   langid = {american}
 }
+
+@article{Schmid1998empirical,
+  title = {An Empirical Study of the Effect of the Control Rate as a Predictor of Treatment Efficacy in Meta-Analysis of Clinical Trials},
+  author = {Schmid, Christopher H. and Lau, Joseph and McIntosh, Martin W. and Cappelleri, Joseph C.},
+  date = {1998},
+  journaltitle = {Statistics in Medicine},
+  volume = {17},
+  number = {17},
+  pages = {1923--1942},
+  issn = {1097-0258},
+  doi = {10.1002/(SICI)1097-0258(19980915)17:17<1923::AID-SIM874>3.0.CO;2-6},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-0258%2819980915%2917%3A17%3C1923%3A%3AAID-SIM874%3E3.0.CO%3B2-6},
+  urldate = {2025-09-11},
+  abstract = {If the control rate (CR) in a clinical trial represents the incidence or the baseline severity of illness in the study population, the size of treatment effects may tend to vary with the size of control rates. To investigate this hypothesis, we examined 115 meta-analyses covering a wide range of medical applications for evidence of a linear relationship between the CR and three treatment effect (TE) measures: the risk difference (RD); the log relative risk (RR), and the log odds ratio (OR). We used a hierarchical model that estimates the true regression while accounting for the random error in the measurement of and the functional dependence between the observed TE and the CR. Using a two standard error rule of significance, we found the control rate was about two times more likely to be significantly related to the RD (31 per cent) than to the RR (13 per cent) or the OR (14 per cent). Correlations between TE and CR were more likely when the meta-analysis included 10 or more trials and if patient follow-up was less than six months and homogeneous. Use of weighted linear regression (WLR) of the observed TE on the observed CR instead of the hierarchical model underestimated standard errors and overestimated the number of significant results by a factor of two. The significant correlation between the CR and the TE suggests that, rather than merely pooling the TE into a single summary estimate, investigators should search for the causes of heterogeneity related to patient characteristics and treatment protocols to determine when treatment is most beneficial and that they should plan to study this heterogeneity in clinical trials. © 1998 John Wiley \& Sons, Ltd.},
+  langid = {english}
+}
+
+@article{Stijnen2010random,
+  title = {Random Effects Meta-Analysis of Event Outcome in the Framework of the Generalized Linear Mixed Model with Applications in Sparse Data},
+  author = {Stijnen, Theo and Hamza, Taye H. and Özdemir, Pinar},
+  date = {2010-12-20},
+  journaltitle = {Statistics in Medicine},
+  shortjournal = {Statist. Med.},
+  volume = {29},
+  number = {29},
+  pages = {3046--3067},
+  issn = {02776715},
+  doi = {10.1002/sim.4040},
+  url = {https://onlinelibrary.wiley.com/doi/10.1002/sim.4040},
+  urldate = {2025-10-09},
+  langid = {english}
+}
+
+@article{VanHouwelingen2002advanced,
+  title = {Advanced Methods in Meta‐analysis: Multivariate Approach and Meta‐regression},
+  shorttitle = {Advanced Methods in Meta‐analysis},
+  author = {Van Houwelingen, Hans C. and Arends, Lidia R. and Stijnen, Theo},
+  date = {2002-02-28},
+  journaltitle = {Statistics in Medicine},
+  shortjournal = {Statistics in Medicine},
+  volume = {21},
+  number = {4},
+  pages = {589--624},
+  issn = {0277-6715, 1097-0258},
+  doi = {10.1002/sim.1040},
+  url = {https://onlinelibrary.wiley.com/doi/10.1002/sim.1040},
+  urldate = {2025-10-09},
+  abstract = {Abstract             This tutorial on advanced statistical methods for meta‐analysis can be seen as a sequel to the recent Tutorial in Biostatistics on meta‐analysis by Normand, which focused on elementary methods. Within the framework of the general linear mixed model using approximate likelihood, we discuss methods to analyse univariate as well as bivariate treatment effects in meta‐analyses as well as meta‐regression methods. Several extensions of the models are discussed, like exact likelihood, non‐normal mixtures and multiple endpoints. We end with a discussion about the use of Bayesian methods in meta‐analysis. All methods are illustrated by a meta‐analysis concerning the efficacy of BCG vaccine against tuberculosis. All analyses that use approximate likelihood can be carried out by standard software. We demonstrate how the models can be fitted using SAS Proc Mixed. Copyright © 2002 John Wiley \& Sons, Ltd.},
+  langid = {english}
+}
+
 
 @online{Yang2024bivariate,
   title = {Bivariate Multilevel Meta-Analysis of Log Response Ratio and Standardized Mean Difference for Robust and Reproducible Environmental and Biological Sciences},

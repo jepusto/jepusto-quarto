@@ -313,6 +313,20 @@
       ],
       "Hash": "c35dc5b81d7ffb1018aa090dff364ecb"
     },
+    "VGAM": {
+      "Package": "VGAM",
+      "Version": "1.1-13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods",
+        "splines",
+        "stats",
+        "stats4"
+      ],
+      "Hash": "5d4da89c3fdf713838c1bba147a9355a"
+    },
     "abind": {
       "Package": "abind",
       "Version": "1.4-8",

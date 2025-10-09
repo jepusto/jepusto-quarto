@@ -13,6 +13,7 @@ execute:
 format: 
   revealjs:
     center-title-slide: true
+    fig-format: retina
     math: true
     html-math-method: mathjax
     reference-location: document
@@ -35,10 +36,13 @@ library(tidyverse)
 library(tinytable)
 library(ggsci)
 conflicts_prefer(dplyr::filter, .quiet = TRUE)
+library(future)
+library(furrr)
 
 library(metadat)
 library(metafor)
 library(lme4)
+library(VGAM)
 library(statmod)
 
 theme_set(theme_minimal())
@@ -193,25 +197,7 @@ theme_set(theme_minimal())
 
 :::::
 
-## Effect Metric Choice
-
-- Choice of metric is constrained by
-
-    - Studies designs
-    
-    - Data availability, reporting conventions
-    
-    - Heterogeneity of study features (e.g., outcome scales)
-
-::: {.fragment}
-
-- Metric choice is driven by disciplinary conventions.
-    
-    - In many applications, more than one metric could apply.
-
-:::
-
-## Metric choice studies
+## Metric choice methodology
 
 - Large literature on effect metrics for group comparison on binary outcomes.
 
@@ -237,7 +223,25 @@ theme_set(theme_minimal())
 
 :::
 
-## Can we choose based on predictive fit criteria?
+## Effect Metric Choice
+
+- Choice of metric is constrained by
+
+    - Studies designs
+    
+    - Data availability, reporting conventions
+    
+    - Heterogeneity of study features (e.g., outcome scales)
+
+::: {.fragment}
+
+- Metric choice is driven by disciplinary conventions.
+    
+    - In many applications, more than one metric could apply.
+
+:::
+
+## Metric choice by predictive fit criteria
 
 - Evaluate effect metrics by performance in __predicting summary data for a new study__.
 
@@ -437,7 +441,7 @@ ggplot(dist_dat) +
 
 - Effect size estimate $r_i$, standard error $\displaystyle{se_i = \frac{1 - r_i^2}{\sqrt{N_i}}}$
 
-- The motivating model:
+- Predictive model:
   $$
   \begin{aligned}
   r_i &\dot{\sim} \ N\left(\rho_i, \ \frac{(1 - \rho_i^2)^2}{N_i}\right) \\
@@ -451,7 +455,7 @@ ggplot(dist_dat) +
 
 - Effect size estimate $z_i = \text{atanh}(r_i)$, standard error $\displaystyle{se_i = \frac{1}{\sqrt{N_i - 3}}}$
 
-- The motivating model:
+- Predictive model:
   $$
   \begin{aligned}
   z_i &\dot{\sim} \ N\left(\zeta_i, \ \frac{1}{N_i - 3}\right) \\
@@ -466,7 +470,7 @@ ggplot(dist_dat) +
 :::
 ::::
 
-## Predictive fit {.smaller}
+## {.smaller}
 
 :::: {.columns}
 
@@ -898,7 +902,6 @@ ggplot(dist_dat) +
     y = expression(d[alpha](alpha)),
     title = "Estimated parameter distributions"
   ) + 
-  theme_minimal() + 
   theme(legend.position = "inside", legend.position.inside = c(0.15,0.8))
 
 ```
@@ -973,7 +976,7 @@ g(\pi_i) &\sim \ N\left(\mu_g, \ \tau_g^2\right) \qquad & g(\pi_i) &\sim \ N\lef
 $$
 :::
 
-## Incidence of olfactory loss in COVID-19 patients
+## Incidence of olfactory loss in COVID-19 patients {.smaller}
 
 ```{r Hannum-calculations}
 
@@ -1372,8 +1375,8 @@ ggplot(dat) +
   geom_vline(xintercept = 0) + 
   geom_abline(intercept = 0, slope = 1, color = "grey") + 
   geom_point(color = "darkblue", alpha = 0.5) + 
-  scale_x_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
-  scale_y_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
+  scale_x_continuous(limits = c(0,NA), expand = expansion(0, c(0,0.02))) + 
+  scale_y_continuous(limits = c(0,NA), expand = expansion(0, c(0,0.02))) + 
   labs(
     x = expression(p[0]),
     y = expression(p[1]),
@@ -1392,11 +1395,412 @@ ggplot(dat) +
 
 - Multiple possible effect metrics: log odds ratio, log risk ratio, complementary log risk ratio, risk difference
 
-- Alternative models: bivariate GLMM, hypergeometric GLMM, baseline risk regression, etc.
+- Alternative models: bivariate meta-analysis [@VanHouwelingen2002advanced], bivariate logistic or hypergeometric GLMM [@Stijnen2010random], baseline risk regression [@Arends2000baseline; @Schmid1998empirical; @Guolo2022measurement], etc.
 
 :::
 
+## Random effects meta-analysis
+
+- Difference ES metrics suggest very different implications and different heterogeneity
+
+```{r NRT-meta}
+#-------------------------------------------------------------------------------
+# Meta-analysis models
+
+effect_fit <- function(data, yi, vi, i = 0, return_mod = FALSE) {
+  cl <- match.call()
+  m <- match(c("yi","vi","data"), names(cl))
+  rma_call <- cl[c(1L,m)]
+  id <- 1:nrow(dat)
+  rma_call$subset <- id != i
+  rma_call[[1]] <- quote(rma.uni)
+  mod_i <- eval(rma_call, parent.frame())
+  
+  if (return_mod) return(mod_i) 
+  
+  data.frame(
+    mu = as.numeric(mod_i$b),
+    tau = sqrt(mod_i$tau2),
+    I2 = mod_i$I2
+  )
+}
+
+RE_summary <- 
+  bind_rows(
+    RD = CI_PI(effect_fit(dat = dat, yi = RD, vi = V_RD, return_mod = TRUE)),
+    cRR = CI_PI(effect_fit(dat = dat, yi = cRR, vi = V_cRR, return_mod = TRUE), transf = exp),
+    RR = CI_PI(effect_fit(dat = dat, yi = RR, vi = V_RR, return_mod = TRUE), transf = exp),
+    OR = CI_PI(effect_fit(dat = dat, yi = OR, vi = V_OR, return_mod = TRUE), transf = exp),
+    .id = "Metric"
+  )
+
+RE_summary %>%
+  select(-mu, -tau) %>%
+  mutate(
+    Metric = case_match(
+      Metric,
+      "RD" ~ "Risk difference",
+      "RR" ~ "Risk ratio",
+      "cRR" ~ "Complementary risk ratio",
+      "OR" ~ "Odds ratio"
+    ),
+    across(-Metric, ~ formatC(., digits = 2, format = "f"))
+  ) %>%
+  unite("95% CI", starts_with("ci."), sep = "-") %>%
+  unite("80% PI", starts_with("pi."), sep = "-") %>%
+  tt() %>%
+  format_tt(replace = "") %>%
+  theme_revealjs()
+```
+
+
+:::: {.fragment}
+
+```{r NRT-conditional-PIs}
+#| fig-width: 12
+#| fig-height: 4
+#| out-width: 100%
+
+conditional_PIs <- 
+  RE_summary %>%
+  select(Metric, Est, pi.lb, pi.ub) %>%
+  cross_join(tibble(pi_C = seq(0,0.3,0.002))) %>%
+  mutate(
+    across(
+      c(Est, pi.lb, pi.ub),
+      ~ case_match(
+        Metric,
+        "RD" ~ pi_C + .x,
+        "RR" ~ exp(log(pi_C) + log(.x)),
+        "cRR" ~ 1 - exp(log(1 - pi_C) - log(.x)),
+        "OR" ~ plogis(qlogis(pi_C) + log(.x))
+      )
+    )
+  ) %>%
+  mutate(
+    Metric = factor(Metric, levels = c("RD","cRR","RR","OR"), labels = c("Risk difference","Complementary risk ratio","Risk ratio", "Odds ratio"))
+  )
+
+ggplot(conditional_PIs) + 
+  aes(x = pi_C, y = Est, ymin = pi.lb, ymax = pi.ub, fill = Metric, color = Metric) + 
+  facet_wrap(~ Metric, nrow = 1) + 
+  geom_hline(yintercept = 0) + 
+  geom_abline(intercept = 0, slope = 1, color = "grey") + 
+  geom_line() +
+  geom_ribbon(alpha = 0.3) +
+  scale_x_continuous(limits = c(0, 0.3), breaks = seq(0,0.25,0.05), expand = expansion(0,0)) + 
+  scale_y_continuous(limits = c(0, 0.6), breaks = seq(0,0.6,0.1), expand = expansion(0,0)) + 
+  labs(
+    x = expression(pi[0]),
+    y = expression(pi[1]),
+    title = "80% Prediction intervals for abstinence probability with NRT",
+    subtitle = "Given abstinence probability under control"
+  ) + 
+  theme(legend.position = "none")
+
+```
+
+::::
+
 ## Effect metric comparison
 
+- Goal: evaluate predictions of $\hat\pi_{0i}$, $\hat\pi_{1i}$ using log-predictive density.
+
+- Conventional RE meta-analysis is a model for $f(\hat\pi_{0i}, \hat\pi_{1i})$. 
+
+- Possible auxiliary models for $\hat\pi_{0i}$ or $\hat\pi_{0i}$:
+
+    - Random effects meta-analysis/meta-regression
+    
+    - Generalized linear mixed model
+    
+    - Beta-binomial regression
+
+::::: {.columns .fragment}
+:::: {.column width="50%"}
+
+```{r NRT-control}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+
+ggplot(dat) + 
+  aes(p_C, 1 / sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_point(size = 2, color = "orange") +
+  scale_x_continuous(limits = c(0, NA), expand = expansion(0,c(0,0.01))) + 
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(hat(pi)[i]),
+    y = expression(1 / sqrt(N[i])),
+    title = "Abstinence rate in control groups"
+  ) + 
+  theme_minimal()
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+```{r NRT-control-model}
+#| fig-width: 6
+#| fig-height: 4
+#| out-width: 100%
+
+#-------------------------------------------------------------------------------
+# Model for control group risk
+
+ctrl_fit <- function(data, i = 0) {
+  id <- 1:nrow(dat)
+  mod_i <- vglm(
+    cbind(x.ctrl, n.ctrl - x.ctrl) ~ 1, 
+    family = betabinomial, 
+    data = data, 
+    subset = id != i,
+    trace = FALSE
+  )
+  coef_i <- Coef(mod_i)
+  
+  pi <- coef_i[["mu"]]
+  rho <- coef_i[["rho"]]
+  alpha <- pi * (1 - rho) / rho
+  beta <- (1 - pi) * (1 - rho) / rho
+  
+  data.frame(
+    pi = pi,
+    rho = rho,
+    alpha = alpha,
+    beta = beta
+  )
+}
+
+BB_fit <- ctrl_fit(data = dat)
+
+tibble(
+  pi_C = seq(0,0.5,0.005)
+) %>%
+  mutate(
+    d = dbeta(pi_C, shape1 = BB_fit$alpha, shape2 = BB_fit$beta)
+  ) %>%
+ggplot() + 
+  aes(x = pi_C, y = d) + 
+  geom_hline(yintercept = 0) + 
+  geom_area(alpha = 0.5, fill = "orange") +
+  scale_x_continuous(limits = c(0, 0.5), expand = expansion(0,0)) + 
+  labs(
+    x = expression(pi[0]),
+    y = expression(p(pi[0])),
+    title = "Density of true abstinence rate in control groups"
+  ) + 
+  theme_minimal()
+
+```
+
+::::
+
+:::::
+
+## Predictive model
+
+$$
+\begin{aligned}
+&\text{Auxiliary model:} \quad & \pi_{0i} &\sim Beta\left(\alpha, \ \beta\right) \\
+&\text{RE meta-analysis model:} \quad & \theta_i &\sim N\left(\mu, \ \tau^2\right) \\
+&\text{Observation model:} \quad & N_{0i} \hat\pi_{0i} &\sim Binom\left( N_{0i}, \ \pi_{0i} \right) \\
+& & N_{1i} \hat\pi_{1i} &\sim Binom\left( N_{0i}, \ g(\pi_{0i}, \theta) \right)
+\end{aligned}
+$$
+
+
+```{r NRT-calculations}
+
+#-------------------------------------------------------------------------------
+# Leave-one-out calculations
+
+
+plan(multisession)
+dat_loo <- 
+  dat %>%
+  mutate(
+    fit_ctrl = future_map_dfr(1:k, ctrl_fit, data = dat, .progress = TRUE),
+    fit_OR = future_map_dfr(1:k, effect_fit, data = dat, yi = OR, vi = V_OR, .progress = TRUE),
+    fit_RR = future_map_dfr(1:k, effect_fit, data = dat, yi = RR, vi = V_RR, .progress = TRUE),
+    fit_cRR = future_map_dfr(1:k, effect_fit, data = dat, yi = cRR, vi = V_cRR, .progress = TRUE),
+    fit_RD = future_map_dfr(1:k, effect_fit, data = dat, yi = RD, vi = V_RD, .progress = TRUE)
+  ) %>%
+  unnest(starts_with("fit_"), names_sep = "_")
+
+plan(sequential)
+
+#-------------------------------------------------------------------------------
+# LPD calculations
+
+lpd <- function(ai, n1i, ci, n2i, pi, rho, mu, tau, transf, itransf, pts_ctl = 49, pts_theta = 49, log = TRUE) {
+  
+  alpha <- pi * (1 - rho) / rho
+  beta <- (1 - pi) * (1 - rho) / rho
+  qp_0 <- gauss.quad.prob(n = pts_ctl, dist = "beta", alpha = alpha, beta = beta)
+  qp_1 <- gauss.quad.prob(n = pts_theta, dist = "normal", mu = mu, sigma = tau)
+  qp <- 
+    cross_join(
+      as.data.frame(qp_0), 
+      as.data.frame(qp_1),
+    ) %>%
+    mutate(
+      lwt = log(weights.x) + log(weights.y),
+      pi0 = nodes.x,
+      pi1 = itransf(transf(nodes.x) + nodes.y)
+    ) %>%
+    filter(0 < pi1, pi1 < 1)
+  
+  dens <- pmap_dbl(
+    list(x1 = ai, n1 = n1i, x0 = ci, n0 = n2i), 
+    \(x1, n1, x0, n0) sum(exp(dbinom(x = x0, size = n0, prob = qp$pi0, log = TRUE) + dbinom(x = x1, size = n1, prob = qp$pi1, log = TRUE) + qp$lwt))
+  )
+  
+  if (log) {
+    log(dens) - log(sum(exp(qp$lwt)))
+  } else {
+    dens / sum(exp(qp$lwt))
+  }
+  
+}
+
+dat_lpd <- 
+  dat_loo %>%
+  rowwise() %>%
+  mutate(
+    lpd_OR = lpd(
+      ai = x.nrt, n1i = n.nrt, ci = x.ctrl, n2i = n.ctrl, 
+      pi = fit_ctrl_pi, rho = fit_ctrl_rho, 
+      mu = fit_OR_mu, tau = fit_OR_tau, transf = qlogis, itransf = plogis
+    ),
+    lpd_RR = lpd(
+      ai = x.nrt, n1i = n.nrt, ci = x.ctrl, n2i = n.ctrl, 
+      pi = fit_ctrl_pi, rho = fit_ctrl_rho, 
+      mu = fit_RR_mu, tau = fit_RR_tau, transf = log, itransf = exp
+    ),
+    lpd_cRR = lpd(
+      ai = x.nrt, n1i = n.nrt, ci = x.ctrl, n2i = n.ctrl, 
+      pi = fit_ctrl_pi, rho = fit_ctrl_rho, 
+      mu = fit_cRR_mu, tau = fit_cRR_tau, transf = \(x) -log(1 - x), itransf = \(x) 1 - exp(-x)
+    ),
+    lpd_RD = lpd(
+      ai = x.nrt, n1i = n.nrt, ci = x.ctrl, n2i = n.ctrl, 
+      pi = fit_ctrl_pi, rho = fit_ctrl_rho, 
+      mu = fit_OR_mu, tau = fit_OR_tau, transf = identity, itransf = identity
+    )
+  ) %>% 
+  ungroup()
+
+dat_lpd_long <- 
+  dat_lpd %>%
+  select(study, studyid, Ni, p_C, p_T, starts_with("lpd_")) %>%
+  pivot_longer(starts_with("lpd_"), names_to = "Metric", names_prefix = "lpd_", values_to = "lpd") %>%
+  mutate(
+    Metric = factor(Metric, levels = c("RD","cRR","RR","OR"), labels = c("Risk difference", "Complementary risk ratio", "Risk ratio", "Odds ratio")),
+    Metric = fct_rev(Metric)
+  ) %>%
+  arrange(Metric, desc(lpd))
+
+lpd_summary <- 
+  dat_lpd_long %>%
+  group_by(studyid) %>%
+  mutate(
+    diff_OR = lpd - lpd[Metric == "Odds ratio"]
+  ) %>%
+  group_by(Metric) %>%
+  summarize(
+    LPD = mean(lpd),
+    SE = sd(lpd) / sqrt(k),
+    LPD_diff_OR = mean(diff_OR),
+    SE_diff = sd(diff_OR) / sqrt(k)
+  ) %>%
+  mutate(
+    across(c(LPD_diff_OR, SE_diff), ~ if_else(Metric == "Odds ratio", NA_real_, .x))
+  )
+
+```
+
+
+::: {.fragment}
+
+### Metric comparison
+
+```{r NRT-LPD-summary}
+attr(lpd_summary$LPD_diff_OR, "label") <- "Diff. vs. OR"
+attr(lpd_summary$SE_diff, "label") <- "SE"
+
+lpd_summary %>%
+  tt(colnames = "label") %>%
+  format_tt(num_fmt = "decimal", digits = 3, num_zero = TRUE) %>%
+  format_tt(replace = "") %>%
+  style_tt(j = 2:5, align = "r") %>%
+  theme_revealjs()
+```
+
+:::
+
+## Predictive discrepancies
+
+```{r NRT-discrepancies}
+
+#| fig-width: 15
+#| fig-height: 9
+#| out-width: 100%
+
+ggplot(dat_lpd_long) + 
+  aes(p_C, p_T, color = lpd, size = sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  geom_abline(intercept = 0, slope = 1, color = "grey") + 
+  geom_point(alpha = 0.7) + 
+  facet_wrap(~ Metric, ncol = 2) + 
+  scale_size_continuous(guide = "none") +
+  scale_colour_gradient2(midpoint = -10) + 
+  scale_x_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
+  scale_y_continuous(limits = c(0,NA), expand = expansion(0, 0.05)) + 
+  labs(
+    x = expression(p[0]),
+    y = expression(p[1]),
+    color = expression(LPD[i]),
+    title = "Log predictive density scores for individual studies, by effect metric"
+  )
+```
+
+
+## Discussion
+
+- Effect metric choice is a modeling assumption.
+
+- Predictive fit assessment is relevant and useful for meta-analysis.
+
+    - Log predictive density calculations should be part of meta-analysts' toolkit.
+    
+    - Will often require use of auxiliary models.
+
+::: {.fragment}
+
+- Advantages of log predictive density scoring
+
+    - Allows comparison across effect metrics and different forms of models.
+    
+    - Auxiliary model building exercise can clarify scientific context.
+    
+:::
+
+
+::: {.fragment}
+
+- Disadvantages and open questions
+
+  - Deshpande and colleagues [@Deshpande2024are] highlight discrepancies between LPD and other model evaluation metrics.
+
+  - Other predictive scoring rules that may be relevant?
+  
+  - Is the joint distribution of $\mathbf{d}_i$ the right focus?
+  
+:::
 
 ## References

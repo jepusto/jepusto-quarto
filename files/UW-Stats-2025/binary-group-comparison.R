@@ -52,7 +52,7 @@ ctrl_fit(data = dat)
 #-------------------------------------------------------------------------------
 # Meta-analysis models
 
-effect_fit <- function(data, yi, vi, i = 0) {
+effect_fit <- function(data, yi, vi, i = 0, return_mod = FALSE) {
   cl <- match.call()
   m <- match(c("yi","vi","data"), names(cl))
   rma_call <- cl[c(1L,m)]
@@ -60,6 +60,9 @@ effect_fit <- function(data, yi, vi, i = 0) {
   rma_call$subset <- id != i
   rma_call[[1]] <- quote(rma.uni)
   mod_i <- eval(rma_call, parent.frame())
+  
+  if (return_mod) return(mod_i) 
+  
   data.frame(
     mu = as.numeric(mod_i$b),
     tau = sqrt(mod_i$tau2),
@@ -67,10 +70,76 @@ effect_fit <- function(data, yi, vi, i = 0) {
   )
 }
 
-effect_fit(dat = dat, yi = RD, vi = V_RD)
-effect_fit(dat = dat, yi = RR, vi = V_RR)
-effect_fit(dat = dat, yi = cRR, vi = V_cRR)
-effect_fit(dat = dat, yi = OR, vi = V_OR)
+CI_PI <- function(mod,..., CI_level = 95, PI_level = 80) {
+  CI_res <- 
+    predict(mod, ..., level = CI_level) %>%
+    as.data.frame() %>%
+    remove_rownames() %>%
+    mutate(
+      mu = as.numeric(mod$b),
+      tau = sqrt(mod$tau2)
+    )
+  
+  PI_res <- predict(mod, ..., level = PI_level) %>%
+    as.data.frame() %>%
+    remove_rownames() %>%
+    mutate(I2 = mod$I2)
+  
+  CI_res %>%
+    select(mu, tau, Est = pred, ci.lb, ci.ub) %>%
+    bind_cols(select(PI_res, pi.lb, pi.ub, I2))
+}
+
+RE_summary <- 
+  bind_rows(
+    RD = CI_PI(effect_fit(dat = dat, yi = RD, vi = V_RD, return_mod = TRUE)),
+    RR = CI_PI(effect_fit(dat = dat, yi = RR, vi = V_RR, return_mod = TRUE)),
+    cRR = CI_PI(effect_fit(dat = dat, yi = cRR, vi = V_cRR, return_mod = TRUE)),
+    OR = CI_PI(effect_fit(dat = dat, yi = OR, vi = V_OR, return_mod = TRUE)),
+    .id = "Metric"
+  )
+
+RE_summary %>%
+  select(-mu, -tau) %>%
+  mutate(
+    across(-Metric, ~ formatC(., digits = 2, format = "f"))
+  ) %>%
+  unite("95% CI", starts_with("ci."), sep = "-") %>%
+  unite("80% PI", starts_with("pi."), sep = "-")
+
+conditional_PIs <- 
+  RE_summary %>%
+  select(Metric, mu, pi.lb, pi.ub) %>%
+  cross_join(tibble(pi_C = seq(0,0.5,0.005))) %>%
+  mutate(
+    across(
+      c(mu, pi.lb, pi.ub),
+      ~ case_match(
+        Metric,
+        "RD" ~ pi_C + .x,
+        "RR" ~ exp(log(pi_C) + .x),
+        "cRR" ~ 1 - exp(log(1 - pi_C) - .x),
+        "OR" ~ plogis(qlogis(pi_C) + .x)
+      )
+    )
+  ) %>%
+  mutate(
+    Metric = factor(Metric, levels = c("RD","RR","cRR","OR"))
+  )
+
+ggplot(conditional_PIs) + 
+  aes(x = pi_C, y = mu, ymin = pi.lb, ymax = pi.ub, fill = Metric, color = Metric) + 
+  geom_hline(yintercept = 0) + 
+  geom_line() +
+  geom_ribbon(alpha = 0.3) +
+  scale_x_continuous(limits = c(0, 0.5), expand = expansion(0,0)) + 
+  labs(
+    x = expression(pi[0]),
+    y = expression(pi[1]),
+    title = "80% Prediction intervals for abstinence probability with NRT",
+    subtitle = "Given abstinence probability under control"
+  ) + 
+  theme(legend.position = "inside", legend.position.inside = c(0.15,0.8))
 
 #-------------------------------------------------------------------------------
 # Leave-one-out calculations
