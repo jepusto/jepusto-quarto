@@ -1,0 +1,18 @@
+---
+title: What are we modeling? Using predictive fit to inform effect metric choice in meta-analysis
+author:
+- James E. Pustejovsky
+date: 2025-10-09T00:00:00
+publish_date: 2025-10-90T13:00:00
+event: Presentation at the Statistics Department, University of Wisconsin - Madison
+event_short: UW Statistics
+location: Madison, WI
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/UW-Stats-2025-What-are-we-modeling.pdf
+
+---
+
+
+

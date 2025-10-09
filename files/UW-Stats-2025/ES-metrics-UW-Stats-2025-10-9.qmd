@@ -251,7 +251,7 @@ theme_set(theme_minimal())
 
 - Use leave-one-out log-predictive density to measure predictive performance.
   $$
-  LPD = \frac{1}{k} \sum_{i=1}^{k} \log p_\mathbf{D}\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
+  LPD = \frac{1}{k} \sum_{i=1}^{k} \log p\left(\mathbf{d}_i \left| \hat\mu_{(-i)}, \hat\tau_{(-i)}, \mathbf{X}_i, N_i\right.\right)
   $$
 :::
 
@@ -1508,7 +1508,7 @@ ggplot(conditional_PIs) +
 
 - Conventional RE meta-analysis is a model for $f(\hat\pi_{0i}, \hat\pi_{1i})$. 
 
-- Possible auxiliary models for $\hat\pi_{0i}$ or $\hat\pi_{0i}$:
+- Possible auxiliary models for $\hat\pi_{0i}$ or $\hat\pi_{1i}$:
 
     - Random effects meta-analysis/meta-regression
     
@@ -1747,7 +1747,7 @@ lpd_summary %>%
 ```{r NRT-discrepancies}
 
 #| fig-width: 15
-#| fig-height: 9
+#| fig-height: 10
 #| out-width: 100%
 
 ggplot(dat_lpd_long) + 
