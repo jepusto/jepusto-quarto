@@ -31,12 +31,15 @@ author:
 - name:
     given: Sahib S.
     family: Khalsa
-date: 2025-06-04T00:00:00
+date: 2025-11-06T00:00:00
 image: interoception-vs-distress.png
 categories:
 - meta-analysis
 - dependent effect sizes
 links:
+- text: Journal
+  url: https://doi.org/10.1038/s41598-025-22661-4
+  icon: newspaper
 - icon: unlock-fill
   text: Pre-Print
   url: https://doi.org/10.21203/rs.3.rs-6792067/v1
@@ -48,11 +51,12 @@ links:
 - icon: 
   text: Data
   url: https://osf.io/3eu7c?view_only=c537e7d6de084f32a90eb12792175a2e
-preprint: true
 citation:
-  type: article
-  doi: 10.21203/rs.3.rs-6792067/v1
-  url: https://doi.org/10.21203/rs.3.rs-6792067/v1
+  type: article-journal
+  container-title: Scientific Reports
+  doi: 10.1038/s41598-025-22661-4
+  volume: 15
+  page: 38889
 ---
 
 Mindfulness meditation training may cultivate interoceptive awareness and provide therapeutic benefit when implemented within mental and physical health interventions. This pre-registered meta-analysis evaluated the impact of mindfulness interventions on self-reported interoception measures and associated relationships with psychological outcomes. Twenty-nine randomized controlled trials with 2,191 participants (77.8% female, mean age 32.8 years) were meta-analyzed using correlated and hierarchical effects models. Interventions included mindfulness-based programs ($k = 15$), body-based approaches (incorporating elements like massage, $k = 8$), and other variations ($k = 6$). Five SIMs were tested; the Multidimensional Assessment of Interoceptive Awareness was the most common (22 studies). Results showed a small-to-medium positive effect on interoception measures across all studies ($g = 0.31$, $p < 0.001$, 95% CI [0.21, 0.42]) with low-to-moderate heterogeneity ($\tau = 0.16$). Mindfulness-based programs demonstrated the largest effects ($g = 0.41$). No evidence of publication bias was found. No other moderators, such as practice dosage or clinical sample, were significant. Improvements in self-reported interoception were similar in size to improvements in self-reported mindfulness and were related to improvements in psychological distress. These meta-analytic findings provide evidence that mindfulness-based interventions lead to adaptive changes in the subjective experience of interoception, perhaps contributing to improved mental wellbeing.
