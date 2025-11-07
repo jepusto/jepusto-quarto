@@ -9,7 +9,15 @@ event_short: SRMA-SIG
 event_url: https://www.srmasig.org/seminar/
 location: Online
 links:
-- icon: file-pdf-fill
-  text: PDF
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/vfsqx_v1
+- icon: file-easel
+  text: Slides
   url: /files/PRIMED-workflow-SRMA-SIG.pdf
+- icon: youtube
+  text: Video
+  url: https://www.youtube.com/watch?v=Prx2AJe9jmE
 ---
+
+In education and other fields, meta-analyses routinely involve dependent effect size estimates and hierarchical data structures. Statistical methods for analyzing dependent effect sizes are now well developed, but there has been less attention to the initial stages of data analysis, prior to formal modeling. In this talk, I will describe a generic workflow for preliminary, exploratory analyses of meta-analytic databases, which focuses on validating the integrity of the input data and informing decisions about subsequent statistical modeling. The workflow entails creating summaries and visualizations of features of the primary studies included in the meta-analysis in order to understand the structure and distribution of the data, especially with respect to between- and within-study variation. I will illustrate the workflow using data from a previously published meta-analysis and discuss connections between preliminary analysis and subsequent statistical modeling strategies. This talk is based on joint work with Jingru Zhang and Elizabeth Tipton, with a pre-print available at https://osf.io/preprints/metaarxiv/vfsqx_v1.
