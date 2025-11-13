@@ -149,7 +149,7 @@ To see this, observe that another way to express the p-uniform\* estimator is as
 For p-uniform\*, this gives
 $$
 \begin{aligned}
-\frac{\partial \mathcal{u}}{\partial \mu} &=  \sum_{i=1}^k\left(\frac{(T_i - \mu)}{\tau^2 + \sigma_i^2} - \sum_{i=1}^k \frac{\partial B_i}{\partial \mu}\left[\frac{(1 - A_i)}{B_i} - \frac{A_i}{1 - B_i} \right] \\
-\frac{\partial \mathcal{u}}{\partial \tau^2} &=  \frac{1}{2} \sum_{i=1}^k\left(\frac{(T_i - \mu)^2 - \left(\tau^2 + \sigma_i^2\right)}{\left(\tau^2 + \sigma_i^2\right)^2}\right) - \sum_{i=1}^k \frac{\partial B_i}{\partial \tau^2}\left[\frac{(1 - A_i)}{B_i} - \frac{A_i}{1 - B_i} \right] 
+\frac{\partial \mathcal{u}}{\partial \mu} &=  \sum_{i=1}^k \frac{(T_i - \mu)}{\tau^2 + \sigma_i^2} - \sum_{i=1}^k \frac{\partial B_i}{\partial \mu}\left(\frac{1 - A_i - B_i}{B_i (1 - B_i)}\right) \\
+\frac{\partial \mathcal{u}}{\partial \tau^2} &=  \frac{1}{2} \sum_{i=1}^k\left(\frac{(T_i - \mu)^2 - \left(\tau^2 + \sigma_i^2\right)}{\left(\tau^2 + \sigma_i^2\right)^2}\right) - \sum_{i=1}^k \frac{\partial B_i}{\partial \tau^2} \left(\frac{1 - A_i - B_i}{B_i (1 - B_i)}\right) 
 \end{aligned}
-$$
+$$ {#eq-pUs-scores}
