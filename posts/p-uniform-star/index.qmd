@@ -188,6 +188,24 @@ $$
 $$
 Thus, the p-uniform\* estimator is based on unbiased estimating equations for $\mu$ and $\tau$.
 
+How different is the p-uniform\* estimator from the 3PSM maximum likelihood estimator in this case of unequal variances?
+The degree of potential discrepancy depends on how different the objective functions are. Allowing for unequal variances
+$$
+\begin{aligned}
+\mathcal{l}_P(\mu, \tau) - \mathcal{l}_U(\mu, \tau) &= k_N \log \hat\lambda - \sum_{i=1}^k \log\left(1 - (1 - \hat\lambda) \beta_i\right) \\
+& \qquad \qquad + \sum_{i=1}^k (1 - A_i) \log(\beta_i) + \sum_{i=1}^k A_i \log(1 - \beta_i) \\
+&= \sum_{i=1}^k (1 - A_i) \log \left(\hat\lambda \beta_i\right) + \sum_{i=1}^k A_i \log(1 - \beta_i) \\
+& \qquad \qquad  - \sum_{i=1}^k \log\left(1 - (1 - \hat\lambda) \beta_i\right) \\
+&= \sum_{i=1}^k (1 - A_i) \log \left(1 - \hat\pi_i\right) + \sum_{i=1}^k A_i \log(\hat\pi_i),
+\end{aligned}
+$$ {#eq-diff-SE-varying}
+where $\hat\pi_i = \frac{1 - \beta_i}{1 - (1 - \beta_i) \hat\lambda}$ is the probability of observing an affirmative result under the three-parameter selection model. The estimated selection parameter is defined by the constraint that $k_A = \sum_{i=1}^k \hat\pi_i$.
+Letting $\bar\omega_N = \frac{1}{k_N}\sum_{i=1}^k (1 - A_i)\log(1 - \hat\pi_i)$ and $\bar\omega_A = \frac{1}{k_A}\sum_{i=1}^k A_i\log(\hat\pi_i)$, @eq-diff-SE-varying can be written as
+$$
+\mathcal{l}_P(\mu, \tau) - \mathcal{l}_U(\mu, \tau) = k_N \bar\omega_A + k_A\bar\omega_A,
+$$
+with the constraint that $k_A \bar\pi_A = - k_N \bar\pi_N$, where $\bar\pi_N$ and $\bar\pi_A$ are the average probabilities among the non-affirmative and affirmative effects.
+
 van Aert and van Assen argue that p-uniform\* is advantageous because it does not entail estimation of the selection weight $\lambda$.
 However, one could also take this as a deficiency, insofar as the p-uniform\* estimator does not yield information about the strength of selection. 
 This deficiency could be remedied by borrowing the estimator of $\lambda$ from the step-function model, as $\ddot\lambda = \hat\lambda(\ddot\mu, \ddot\tau)$. 
