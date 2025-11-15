@@ -62,7 +62,7 @@ $$
 \end{aligned}
 $$ {#eq-3PSM-log-lik}
 where $k_N = \sum_{i=1}^k (1 - A_i)$ is the number of non-affirmative effect size estimates observed.
-The maximum likelihood estimators of the model parameters are the values that maximize $\mathcal{l}(\mu, \tau, \lambda)$. 
+The maximum likelihood estimators $\hat\mu$, $\hat\tau$, $\hat\lambda$ are the values that maximize $\mathcal{l}(\mu, \tau, \lambda)$. 
 
 One way to compute maximum likelihood estimators is by _profiling_ in one or more of the variables. 
 For instance, we can consider the profile log-likelihood of $\mu$ and $\tau$, which is the log-likelihood function for given values of $\mu$ and $\tau$, but maximized over $\lambda$.
@@ -74,7 +74,7 @@ The profile log-likelihood is then
 $$
 \mathcal{l}_P(\mu, \tau) = \mathcal{l}(\mu, \tau, \hat\lambda(\mu, \tau))
 $$ {#eq-profile-log-likelihood}
-and the maximum likelihood estimators of $\mu$ and $\tau$ are the values that maximize $l_P(\mu, \tau)$. 
+and the maximum likelihood estimators $\hat\mu$ and $\hat\tau$ are the values that maximize $l_P(\mu, \tau)$, with $\hat\lambda = \hat\lambda(\hat\mu, \hat\tau)$. 
 The end result is the same as maximizing the whole log-likelihood all at once---it's just that in some cases, it's easier to maximize in pieces (especially if there is a simple way to compute $\hat\lambda(\mu, \tau)$).
 
 For the three-parameter selection model, the maximum likelihood estimator of $\lambda$ can also be defined as the solution to the score equation (the derivative of $\mathcal{l}(\mu,\tau,\lambda)$ with respect to $\lambda$)
@@ -98,7 +98,9 @@ $$
 & \qquad \qquad \qquad - \sum_{i=1}^k \left[(1 - A_i) \log \beta_i +A_i \log(1 - \beta_i) \right].
 \end{aligned}
 $$ {#eq-pUs-objective}
-This objective function can be derived directly from the three-parameter selection model. 
+The p-uniform estimators $\ddot\mu$ and $\ddot\tau$ are the quantities that maximize $\mathcal{u}(\mu, \tau)$.
+
+The objective function $\mathcal{u}(\mu, \tau)$ can be derived directly from the three-parameter selection model. 
 The truncated densities are the _conditional_ densities of the effect size estimates, given their affirmative or non-affirmative status.
 Thus, $\mathcal{u}(\mu, \tau) = \sum_{i=1}^k \log d_T(t = T_i | a_i = A_i, \sigma_i)$, whereas the 3PSM log-likelihood uses the _unconditional_ density of the observed effect size estimates.
 The p-uniform\* method is essentially the maximum likelihood estimator of $\mu$ and $\tau$, conditional on $A_1,...,A_k$.
@@ -151,9 +153,44 @@ For p-uniform\*, these derivatives are
 $$
 \begin{aligned}
 \frac{\partial \mathcal{u}}{\partial \mu} &=  \sum_{i=1}^k \left[ \frac{(T_i - \mu)}{\tau^2 + \sigma_i^2} + \frac{\phi(c_i)}{\sqrt{\tau^2 + \sigma_i^2}}\left(\frac{1 - \beta_i - A_i}{\beta_i (1 - \beta_i)}\right) \right] \\
-\frac{\partial \mathcal{u}}{\partial \tau^2} &=  \frac{1}{2} \sum_{i=1}^k \left[ \left(\frac{(T_i - \mu)^2 - \left(\tau^2 + \sigma_i^2\right)}{\left(\tau^2 + \sigma_i^2\right)^2}\right) + \frac{c_i \phi(c_i)}{2 (\tau^2 + \sigma_i^2)} \left(\frac{1 - \beta_i - A_i}{\beta_i (1 - \beta_i)}\right)\right] 
+\frac{\partial \mathcal{u}}{\partial \tau^2} &=  \frac{1}{2} \sum_{i=1}^k \left[ \left(\frac{(T_i - \mu)^2 - \left(\tau^2 + \sigma_i^2\right)}{\left(\tau^2 + \sigma_i^2\right)^2}\right) + \frac{c_i \phi(c_i)}{(\tau^2 + \sigma_i^2)} \left(\frac{1 - \beta_i - A_i}{\beta_i (1 - \beta_i)}\right)\right] 
 \end{aligned}
 $$ {#eq-pUs-scores}
 where $c_i = \frac{\sigma_i \Phi^{-1}(1 - \alpha) - \mu}{\sqrt{\tau^2 + \sigma_i^2}}$.
+
+[My previous post](/posts/step-function-selection-models/) gave expressions for the mean and variance of an observed effect size estimate under the step-function selection model.
+For the case of a single-step model, these results imply that
+$$
+\begin{aligned}
+\mathbb{E}(T_i - \mu) &= \sqrt{\tau^2 + \sigma_i^2} \times \frac{(1 - \lambda) \phi(c_i)}{1 - (1 - \lambda) \beta_i} \\
+\mathbb{E}\left[(T_i - \mu)^2\right] &= \left(\tau^2 + \sigma_i^2\right) \times \left(1 + \frac{(1 - \lambda) c_i \phi(c_i)}{1 - (1 - \lambda) \beta_i}\right).
+\end{aligned}
+$$
+Furthermore, 
+$$
+\mathbb{E}(A_i) = \frac{1 - \beta_i}{1 - (1 - \lambda)\beta_i}.
+$$
+Substituting these expressions into the expectations of @eq-pUs-scores leads to
+$$
+\begin{aligned}
+\mathbb{E}\left(\frac{\partial \mathcal{u}}{\partial \mu}\right) &=  \sum_{i=1}^k \left[ \frac{\mathbb{E}(T_i - \mu)}{\tau^2 + \sigma_i^2} + \frac{\phi(c_i)}{\sqrt{\tau^2 + \sigma_i^2}}\left(\frac{1 - \beta_i - \mathbb{E}(A_i)}{\beta_i (1 - \beta_i)}\right) \right] \\
+&= \sum_{i=1}^k \frac{\phi(c_i)}{\sqrt{\tau^2 + \sigma_i^2}}\left[ \frac{1 - \lambda}{1 - (1 - \lambda) \beta_i} - \frac{1 - \lambda}{\left(1 - (1 - \lambda)\beta_i\right)} \right] \\
+&= 0
+\end{aligned}
+$$
+and 
+$$
+\begin{aligned}
+\mathbb{E}\left(\frac{\partial \mathcal{u}}{\partial \tau^2} \right) &=  \frac{1}{2} \sum_{i=1}^k \left[ \left(\frac{\mathbb{E}\left[(T_i - \mu)^2\right] - \left(\tau^2 + \sigma_i^2\right)}{\left(\tau^2 + \sigma_i^2\right)^2}\right) + \frac{c_i \phi(c_i)}{(\tau^2 + \sigma_i^2)} \left(\frac{1 - \beta_i - \mathbb{E}(A_i)}{\beta_i (1 - \beta_i)}\right)\right] \\
+&= \frac{1}{2} \sum_{i=1}^k \frac{1}{(\tau^2 + \sigma_i^2)} \left[1 + \frac{(1 - \lambda)c_i \phi(c_i) }{1 - (1 - \lambda) \beta_i} - 1 - \frac{c_i \phi(c_i) (1 - \lambda)}{\left(1 - (1 - \lambda)\beta_i\right)}\right] \\
+&= 0.
+\end{aligned}
+$$
+Thus, the p-uniform\* estimator is based on unbiased estimating equations for $\mu$ and $\tau$.
+
+van Aert and van Assen argue that p-uniform\* is advantageous because it does not entail estimation of the selection weight $\lambda$.
+However, one could also take this as a deficiency, insofar as the p-uniform\* estimator does not yield information about the strength of selection. 
+This deficiency could be remedied by borrowing the estimator of $\lambda$ from the step-function model, as $\ddot\lambda = \hat\lambda(\ddot\mu, \ddot\tau)$. 
+This estimator can be computed by solving @eq-lambda-score-equation for $\lambda$ with $\beta_i$ evaluated at $\ddot\mu$ and $\ddot\tau$. 
 
 # References
