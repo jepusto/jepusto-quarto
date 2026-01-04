@@ -15,11 +15,9 @@ about:
     href: https://scholar.google.com/citations?user=bWMRiLwAAAAJ
   - icon: github
     href: https://github.com/bethanyhamilton
-  - icon: google scholar
-    href: https://scholar.google.com/citations?user=bWMRiLwAAAAJ
-org_name: University of Texas at Austin
+org_name: Maastricht University
 org_url: ''
-role: Graduate student
+role: Post-doctoral scholar
 people-group: Alumni
 listing:
   - id: publications
@@ -45,7 +43,10 @@ listing:
 
 :::::{#about}
 
-Bethany Hamilton Bhat is a doctoral candidate in the Quantitative Methods area in the Educational Psychology Department at the University of Texas at Austin. Her research interests include meta-analysis, hierarchical linear modeling, and Bayesian inference. 
+Bethany Hamilton Bhat completed her PhD in the Quantitative Methods program at The University of Texas at Austin. 
+Her dissertation work examined the power of cluster-robust hypothesis tests in meta-regression models for dependent effect sizes. 
+She is now a post-doctoral scholar at the University of Maastricht in the Netherlands, where she works with Wolfgang Viechtbauer.
+Her research interests include meta-analysis, hierarchical linear modeling, and Bayesian inference. 
 
 ::::{.grid}
 

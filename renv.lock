@@ -9,6 +9,13 @@
     ]
   },
   "Packages": {
+    "ADGofTest": {
+      "Package": "ADGofTest",
+      "Version": "0.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "aab9c2810d1ec384e73f2d8dba6952bb"
+    },
     "AER": {
       "Package": "AER",
       "Version": "1.2-14",
@@ -2849,6 +2856,21 @@
         "utils"
       ],
       "Hash": "093688087b0bacce6ba2f661f36328e2"
+    },
+    "puniform": {
+      "Package": "puniform",
+      "Version": "0.2.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "ADGofTest",
+        "Rcpp",
+        "RcppArmadillo",
+        "metafor",
+        "numDeriv",
+        "stats"
+      ],
+      "Hash": "47993d51e8822b2b027e5b18f62c3b01"
     },
     "purrr": {
       "Package": "purrr",

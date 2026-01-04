@@ -11,13 +11,14 @@ about:
     href: https://www.dmswan.com/
   - icon: envelope
     href: mailto:dms031000@gmail.com
+  - icon: linkedin
+    href: https://www.linkedin.com/in/dmswan/
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=e-RXsc8AAAAJ
   - icon: github
     href: https://github.com/dmswan
-org_name: Abt Global
-org_url: https://www.abtglobal.com/
-role: Senior Analyst
+org_name: Freelance
+role: Methodologist and Statistical Programmer
 people-group: Alumni
 listing:
   - id: publications
@@ -43,7 +44,8 @@ listing:
 
 :::::{#about}
 
-Danny is currently a senior analyst at [Abt Global](https://www.abtglobal.com/), where he works on meta-analysis and evidence clearinghouse projects. 
+Danny is currently a freelance methodologist and statistical programmer, offering services in research design, statistical analysis, and data processing. 
+He was previously a senior analyst at [Abt Global](https://www.abtglobal.com/), where he worked on meta-analysis and evidence clearinghouse projects. 
 Prior to joining Abt, he was a research associate at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the What Works Clearinghouse and assists with revision and refinement of the WWC’s Standards and Procedures Handbooks. 
 His dissertation work involved examining the impact of response-guided designs on treatment effect estimates from single-case designs. 
 His personal research interests center on analysis and meta-analysis of single-case designs (SCDs) in the context of education. 
