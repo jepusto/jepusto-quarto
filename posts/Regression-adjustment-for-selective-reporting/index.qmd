@@ -1,6 +1,6 @@
 ---
 title: Notes on regression adjustment for selectively reported results in meta-analysis
-date: '2025-08-09'
+date: '2026-01-17'
 categories:
 - effect-size
 - distribution-theory
@@ -32,14 +32,16 @@ where $x_i$ is a predictor that is related to the precision of the effect size e
 [^fixed-sigma]: I will treat the standard errors as known quantities that are independent of the effect size estimates, even though the standard errors are actually stochastic and, for some effect size metrics, correlated with the effect size estimates. 
 
 The intuition behind this sort of estimator is that selective reporting on the basis of statistical significance tends to produce larger biases for smaller primary studies (which have larger standard errors), leading to what looks like "small-study" effects. 
-PET, PEESE, and EK adjust for the small-study effects using some form of linear regression, treating the estimate of the intercept $\alpha$ in @eq-linear-regression as the average effect size in a population of infinitely larger studies (so that their standard errors are $\sigma_i = 0$).[^small-study-effects]
+PET, PEESE, and EK adjust for the small-study effects using some form of linear regression, treating the estimate of the intercept $\alpha$ in @eq-linear-regression as the average effect size in a population of infinitely large studies (so that their standard errors are $\sigma_i = 0$).[^small-study-effects]
 The main difference between the methods is in the predictor used to extrapolate to this hypothetical population:
 
 - PET uses $x_i = \sigma_i$,
 - PEESE uses $x_i = \sigma_i^2$, and 
-- EK uses $x_i = (\sigma_i - c) \times I(\sigma_i > c)$, where $c$ is the so-called "kink" of the meta-regression, which I will return to in a bit.
+- EK uses $x_i = (\sigma_i - c) \times I(\sigma_i > c)$, where $c$ is the so-called "kink" of the meta-regression.[^kinks-with-EK]
 
 [^small-study-effects]: All of the adjustment methods will run into trouble if small study effects are the result of some mechanism other than selective reporting. For instance, if some primary study feature is systematically, positively associated with effect size and tends to be less common in larger studies, then it will act as a confounder, inducing correlation between effect size and standard error even in the absence of selective reporting. 
+
+[^kinks-with-EK]: With the EK estimator, the kink is an estimated quantity, defined by a preliminary estimator of $\alpha$ and $\hat\tau^2$. This makes is quite tricky to analyze, but I'm going to gloss over that detail entirely (at least for the remainder of this post).
 
 For now, let's work with the generic predictors $x_1,...,x_K$.
 Basic results from linear regression tell us that the intercept in a linear regression estimated by weighted least squares takes the form
@@ -165,4 +167,20 @@ $$
 $$ {#eq-alpha-expectation}
 This expression is a bit simpler than the bias under the step function model. For one, the bias depends neither on $\mu$ nor on $\tau$, and is multiplicative in the $\rho$ parameter.
 An implication is that, if you were running a simulation where the Copas model was the true data-generating process, the bias of the regression adjustment estimator should be invariant across $\mu$ and $\tau$ and should be strictly proportional to $\rho$.
-Just as with the step-function selection model, the bias will depend on how well the predictor $x_i$ approximates the functional form of the bias curve $\sigma_i \psi\left(\alpha + \frac{\beta}{\sigma_i}\right)$, which will in turn depend on the distribution of the standard errors. In other words, the regression adjustments will perform better or worse, depending on the average $\sigma_i$ and shape of the $\sigma_i$ distribution in a meta-analysis.
+Just as with the step-function selection model, the bias will depend on how well the predictor $x_i$ approximates the functional form of the bias curve $\sigma_i \psi\left(\alpha + \frac{\beta}{\sigma_i}\right)$, which will in turn depend on the distribution of the standard errors. In other words, the regression adjustments will perform better or worse, depending on the average $\sigma_i$ and shape of the $\sigma_i$ distribution across the included studies.
+
+# Why care?
+
+I've just thrown down a lot of rather ugly looking formulas, and you will surely be asking yourself why anyone should care about this mess of math.
+What are these formulas good for?
+To be honest, I worked through this stuff mostly for myself,^[Sometimes, I just have a theoretical itch that you can't help but scratch.]
+but I do think there are some useful implications that can be drawn from this.
+For one, the expressions for the bias and RMSE show how the performance of the regression adjustments depend on the model parameters, which is useful to know if you're trying to determine how you set up a simulation study involving PET or PEESE, choose which parameters to vary, or fit a meta-model to the results.
+
+Another, perhaps more pragmatic application would be to use the expressions to compare the bias or accuracy of different forms of regression adjustment.
+For a given application, should we use PET or PEESE? And should we weight by inverse sampling variances (fixed effects weights) or inverse total variances (random effects weights) or something else (like equal weighting)?
+We might be able to get some purchase on these questions by computing bias or RMSE for some hypothetical scenarios.
+Under either the step function model or the Copas model, the performance of a regression adjustment will depend on the distribution of sampling standard errors, $\sigma_1,...,\sigma_K$.
+When conducting a meta-analysis, we will know this sample distribution but won't know the true values of $\mu$, $\tau$, or the parameters of the selection process.
+Still, we could evaluate the expressions above under some plausible hypothetical scenarios and see whether one regression adjustment is consistently better than the others.
+This will take some further fleshing out, which I will leave for another day.
