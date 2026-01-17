@@ -13,13 +13,14 @@ about:
     href: mailto:megha.j456@gmail.com
   - text: "{{< fa brands bluesky >}}"
     href: https://bsky.app/profile/meghapsimatrix.bsky.social
+  - icon: linkedin
+    href: https://www.linkedin.com/in/megha-joshi-phd-64472a102/
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=D8QFfGsAAAAJ&hl=en
   - icon: github
     href: https://github.com/meghapsimatrix
-org_name: American Institutes for Research
-org_url: https://www.air.org/
-role: Quantitative Researcher
+org_name: Progressive Insurance
+role: Marketing Process Analyst Lead
 people-group: Alumni
 listing:
   - id: publications
@@ -45,7 +46,7 @@ listing:
 
 :::::{#about}
 
-Megha completed her PhD in the Quantitative Methods program at The University of Texas at Austin. Her dissertation work examined cluster wild bootstrapping to handle dependent effect sizes in meta-analyses with a small number of studies. She now works as quantitative researcher at the [American Institutes for Research](https://www.air.org/). Her research interests include causal inference, meta-analysis, and missing data analysis. 
+Megha completed her PhD in the Quantitative Methods program at The University of Texas at Austin. Her dissertation work examined cluster wild bootstrapping to handle dependent effect sizes in meta-analyses with a small number of studies. She now works as data scientist at Progressive Insurance. Her research interests include causal inference, meta-analysis, and missing data analysis. 
 
 ::::{.grid}
 

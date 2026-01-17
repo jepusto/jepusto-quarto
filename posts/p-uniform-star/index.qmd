@@ -125,7 +125,7 @@ $$
 The difference between the profile log-likelihood of the 3PSM (@eq-profile-log-likelihood) and the objective function of p-uniform\* (@eq-pUs-objective) can then be written as
 $$
 \begin{aligned}
-\mathcal{l}_P(\mu, \tau) - \mathcal{l}_U(\mu, \tau) &= k_N \log \hat\lambda - k \log\left(1 - \beta + \hat\lambda \beta\right) \\
+\mathcal{l}_P(\mu, \tau) - \mathcal{u}(\mu, \tau) &= k_N \log \hat\lambda - k \log\left(1 - \beta + \hat\lambda \beta\right) \\
 & \qquad \qquad + k_N \log(\beta) + k_A \log(1 - \beta) \\
 &= k_N \log k_N - k_N \log k_A \\
 & \qquad  + k_N \log(1 - \beta) - k_N \log(\beta) \\
@@ -192,7 +192,7 @@ How different is the p-uniform\* estimator from the 3PSM maximum likelihood esti
 The degree of potential discrepancy depends on how different the objective functions are. Allowing for unequal variances
 $$
 \begin{aligned}
-\mathcal{l}_P(\mu, \tau) - \mathcal{l}_U(\mu, \tau) &= k_N \log \hat\lambda - \sum_{i=1}^k \log\left(1 - (1 - \hat\lambda) \beta_i\right) \\
+\mathcal{l}_P(\mu, \tau) - \mathcal{u}(\mu, \tau) &= k_N \log \hat\lambda - \sum_{i=1}^k \log\left(1 - (1 - \hat\lambda) \beta_i\right) \\
 & \qquad \qquad + \sum_{i=1}^k (1 - A_i) \log(\beta_i) + \sum_{i=1}^k A_i \log(1 - \beta_i) \\
 &= \sum_{i=1}^k (1 - A_i) \log \left(\hat\lambda \beta_i\right) + \sum_{i=1}^k A_i \log(1 - \beta_i) \\
 & \qquad \qquad  - \sum_{i=1}^k \log\left(1 - (1 - \hat\lambda) \beta_i\right) \\
@@ -204,7 +204,7 @@ Letting $\bar\omega_N = \frac{1}{k_N}\sum_{i=1}^k (1 - A_i)\log(1 - \hat\pi_i)$ 
 $$
 \mathcal{l}_P(\mu, \tau) - \mathcal{l}_U(\mu, \tau) = k_N \bar\omega_A + k_A\bar\omega_A,
 $$
-with the constraint that $k_A \bar\pi_A = - k_N \bar\pi_N$, where $\bar\pi_N$ and $\bar\pi_A$ are the average probabilities among the non-affirmative and affirmative effects.
+with the constraint that $k_A (1 - \bar\pi_A) = k_N \bar\pi_N$, where $\bar\pi_N$ and $\bar\pi_A$ are the average probabilities among the non-affirmative and affirmative effects.
 
 van Aert and van Assen argue that p-uniform\* is advantageous because it does not entail estimation of the selection weight $\lambda$.
 However, one could also take this as a deficiency, insofar as the p-uniform\* estimator does not yield information about the strength of selection. 

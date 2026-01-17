@@ -19,6 +19,8 @@ about:
       href: https://orcid.org/0000-0003-0591-9465
     - text: "{{< fa brands bluesky >}}"
       href: https://bsky.app/profile/jepusto.bsky.social
+    - icon: linkedin
+      href: https://www.linkedin.com/in/james-pustejovsky-3576634/
     - text: "{{< fa brands mastodon >}}"
       href: https://fediscience.org/@jepusto
 listing:
