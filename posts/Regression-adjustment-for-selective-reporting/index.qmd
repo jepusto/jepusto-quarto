@@ -11,13 +11,12 @@ toc: true
 bibliography: "../selection-references.bib"
 csl: "../apa.csl"
 link-citations: true
-draft: true
 ---
 
 Several of the most prominent methods for investigating selective reporting bias in meta-analyis take the form of simple linear regressions, estimated by weighted least squares. 
 Methods of this form include the Precision Effect Test (PET) and Precision Effect Estimator with Standard Error (PEESE) adjustments proposed by @stanley2008metaregression and @stanley2014metaregression as well as the endogenous kink (EK) meta-regression proposed by @bom2019kinked. 
-These methods are widely used (PET and PEESE especially) and have been studied pretty extensively using Monte Carlo simulations.
-By my read, the simulation evidence is mixed---they seem to be better than regular random effects models but they are pretty crude adjustments for the bias created by selective reporting, and they don't always work very well.
+These methods are widely used (PET and PEESE especially) and have been studied pretty extensively using Monte Carlo simulations [e.g., @bramley2021examining; @carter2019correcting; @hong2021using; @mcshane2016adjusting; @moreno2009assessment; @stanley2017limitations].
+By my read, the simulation evidence is mixed: these regression adjustments seem to be less biased than regular random effects models but they are pretty crude corrections for the bias created by selective reporting, and they don't always work very well.
 In this post, I want to look at how the methods work _analytically_. I'll derive expressions for their bias and accuracy and consider how one might use these expressions to say something about the conditions under which regression adjustment might be expected to perform reasonably well. 
 
 ## Regression adjustments for publication bias
@@ -41,10 +40,10 @@ The main difference between the methods is in the predictor used to extrapolate 
 
 [^small-study-effects]: All of the adjustment methods will run into trouble if small study effects are the result of some mechanism other than selective reporting. For instance, if some primary study feature is systematically, positively associated with effect size and tends to be less common in larger studies, then it will act as a confounder, inducing correlation between effect size and standard error even in the absence of selective reporting. 
 
-[^kinks-with-EK]: With the EK estimator, the kink is an estimated quantity, defined by a preliminary estimator of $\alpha$ and $\hat\tau^2$. This makes is quite tricky to analyze, but I'm going to gloss over that detail entirely (at least for the remainder of this post).
+[^kinks-with-EK]: With the EK estimator, the kink is an estimated quantity, defined by a preliminary estimator of $\alpha$ and $\tau^2$. This makes is quite tricky to analyze, but I'm going to gloss over that detail entirely (at least for the remainder of this post).
 
 For now, let's work with the generic predictors $x_1,...,x_K$.
-Basic results from linear regression tell us that the intercept in a linear regression estimated by weighted least squares takes the form
+Basic results from linear regression tell us that the estimator of the intercept of a linear regression fitted by weighted least squares has the form
 $$
 \hat\alpha = \sum_{i=1}^K \left[ \frac{w_i}{W} - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] T_i,
 $$ {#eq-alpha-hat}
@@ -57,17 +56,17 @@ and
 $$
 \mathbb{V}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right]^2 \times \mathbb{V}\left(\left. T_i \right| \sigma_i \right).
 $$ {#eq-alpha-variance}
-If the real regression is linear in $x_i$, then $\mathbb{E}\left(\left. T_i \right| \sigma_i \right) = \alpha + \beta \ x_i$. 
+If the real regression is linear in $x_i$, then $\mathbb{E}\left(\left. T_i \right| \sigma_i \right) = \alpha + \beta \ x_i$.
 Substitute this into @eq-alpha-expectation and you'll find $\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) = \alpha$, so the regression estimator is indeed unbiased.
 But what if the real conditional expectation is not linear? 
 
 ## Data-generating processes
 
 Regression adjustment methods are a bit hard to pin down because they're not full generative models of the process by which the observed set of effect sizes arises.
-Instead, they're just different forms of approximations, which don't commit to any particular model for how selective reporting occurs.
+Instead, they're just different forms of approximations, which don't really commit to any particular model for how selective reporting occurs.
 To say anything about how well the regression adjustments work, I will need to look beyond these specific methods to other models for the selective reporting process. 
 
-@stanley2014metaregression motivated the PEESE adjustment through a Taylor series approximation to the bias of effect size estimates under a simple form of a [step-function selection model](/posts/step-function-selection-models/), a model in which the real form of the bias is nonlinear in $\sigma_i$. 
+@stanley2014metaregression motivated the PEESE adjustment through a Taylor series approximation to the bias of effect size estimates under a simple form of a [step-function selection model](/posts/step-function-selection-models/), in which the real form of the bias is nonlinear in $\sigma_i$. 
 There are a number of other models where the strength of selection depends on the statistical significance of the effect size estimate (e.g., the [beta density model](/posts/beta-density-selection-models/)), as well as models that exhibit small-study effects produced by other selection processes (e.g., the [Copas selection model](/posts/Copas-selection-models)).
 Here I'll look at a step-function model and the Copas model, mostly because these are fairly tractable to analyze.
 Both models posit that effect size estimates follow a conventional random effects model prior to being put through the selection process.
@@ -154,33 +153,33 @@ $$ {#eq-Copas-selection-probability}
 In [my previous post](/posts/Copas-selection-models/), I gave expressions for the mean and variance of observed effect size estimate conditional on $\sigma_i$. 
 The conditional expectation is
 $$
-\mathbb{E}\left(T_i | \sigma_i \right) = \mu + \rho \sigma_i \psi\left(\alpha + \frac{\beta}{\sigma_i}\right)
+\mathbb{E}\left(T_i | \sigma_i \right) = \mu + \rho \sigma_i \xi\left(\alpha + \frac{\beta}{\sigma_i}\right)
 $$ {#eq-Copas-mean}
-where $\psi(u) = \phi(u) / \Phi(u)$.
+where $\xi(u) = \phi(u) / \Phi(u)$.
 The conditional variance is
 $$
-\mathbb{V}\left(T_i | \sigma_i \right) = \tau^2 + \sigma_i^2\left(1 - \rho^2 \psi\left(\alpha + \frac{\beta}{\sigma_i}\right) \times \left[\alpha + \frac{\beta}{\sigma_i}  + \psi\left(\alpha + \frac{\beta}{\sigma_i}\right)\right]\right).
+\mathbb{V}\left(T_i | \sigma_i \right) = \tau^2 + \sigma_i^2\left(1 - \rho^2 \xi\left(\alpha + \frac{\beta}{\sigma_i}\right) \times \left[\alpha + \frac{\beta}{\sigma_i}  + \xi\left(\alpha + \frac{\beta}{\sigma_i}\right)\right]\right).
 $$ {#eq-Copas-variance}
 Substituting into @eq-alpha-expectation, the bias of a regression-adjustment estimator under the Copas selection model is
 $$
-\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) - \mu = \rho \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] \times \sigma_i \psi\left(\alpha + \frac{\beta}{\sigma_i}\right).
+\mathbb{E}\left(\left.\hat\alpha\right| \boldsymbol\sigma \right) - \mu = \rho \sum_{i=1}^K \left[\frac{w_i}{W}  - \frac{\bar{x} w_i (x_i - \bar{x})}{SS_x} \right] \times \sigma_i \xi\left(\alpha + \frac{\beta}{\sigma_i}\right).
 $$ {#eq-alpha-expectation}
 This expression is a bit simpler than the bias under the step function model. For one, the bias depends neither on $\mu$ nor on $\tau$, and is multiplicative in the $\rho$ parameter.
 An implication is that, if you were running a simulation where the Copas model was the true data-generating process, the bias of the regression adjustment estimator should be invariant across $\mu$ and $\tau$ and should be strictly proportional to $\rho$.
-Just as with the step-function selection model, the bias will depend on how well the predictor $x_i$ approximates the functional form of the bias curve $\sigma_i \psi\left(\alpha + \frac{\beta}{\sigma_i}\right)$, which will in turn depend on the distribution of the standard errors. In other words, the regression adjustments will perform better or worse, depending on the average $\sigma_i$ and shape of the $\sigma_i$ distribution across the included studies.
+Just as with the step-function selection model, the bias will depend on how well the predictor $x_i$ approximates the functional form of the bias curve $\sigma_i \xi\left(\alpha + \frac{\beta}{\sigma_i}\right)$, which will in turn depend on the distribution of the standard errors. In other words, the regression adjustments will perform better or worse, depending on the average $\sigma_i$ and shape of the $\sigma_i$ distribution across the included studies.
 
 # Why care?
 
-I've just thrown down a lot of rather ugly looking formulas, and you will surely be asking yourself why anyone should care about this mess of math.
+I've just thrown down a lot of rather ugly looking formulas, and one might well ask why anyone should care about this mess of math.
 What are these formulas good for?
-To be honest, I worked through this stuff mostly for myself,^[Sometimes, I just have a theoretical itch that you can't help but scratch.]
-but I do think there are some useful implications that can be drawn from this.
-For one, the expressions for the bias and RMSE show how the performance of the regression adjustments depend on the model parameters, which is useful to know if you're trying to determine how you set up a simulation study involving PET or PEESE, choose which parameters to vary, or fit a meta-model to the results.
+To be honest, I worked through this stuff mostly for myself,^[Sometimes, I get a theoretical itch that I just can't help but scratch.]
+but I do think there might be some useful implications to be drawn from this.
+For one, the expressions for bias and RMSE show how the performance of the regression adjustments depend on the model parameters, which is useful to know if you're trying to determine how to set up a simulation study involving PET or PEESE, choose which parameters to vary, or fit a meta-model to the results.
 
 Another, perhaps more pragmatic application would be to use the expressions to compare the bias or accuracy of different forms of regression adjustment.
 For a given application, should we use PET or PEESE? And should we weight by inverse sampling variances (fixed effects weights) or inverse total variances (random effects weights) or something else (like equal weighting)?
 We might be able to get some purchase on these questions by computing bias or RMSE for some hypothetical scenarios.
 Under either the step function model or the Copas model, the performance of a regression adjustment will depend on the distribution of sampling standard errors, $\sigma_1,...,\sigma_K$.
-When conducting a meta-analysis, we will know this sample distribution but won't know the true values of $\mu$, $\tau$, or the parameters of the selection process.
+When conducting a meta-analysis, we will know this sample distribution but we won't know the true values of $\mu$, $\tau$, or the parameters of the selection process.
 Still, we could evaluate the expressions above under some plausible hypothetical scenarios and see whether one regression adjustment is consistently better than the others.
 This will take some further fleshing out, which I will leave for another day.
