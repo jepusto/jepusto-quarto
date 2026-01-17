@@ -23,5 +23,9 @@ post_yaml <-
     )
   ) |> 
   mutate(
-    text = map(post, get_yaml_vars)
+    text = map(post, get_yaml_vars),
+    draft = map_lgl(text, \(x) "draft" %in% x)
   )
+
+post_yaml %>%
+  filter(draft)
