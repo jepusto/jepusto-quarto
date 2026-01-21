@@ -211,9 +211,9 @@ However, one could also take this as a deficiency, insofar as the p-uniform\* es
 This deficiency could be remedied by borrowing the estimator of $\lambda$ from the step-function model, as $\ddot\lambda = \hat\lambda(\ddot\mu, \ddot\tau)$. 
 This estimator can be computed by solving @eq-lambda-score-equation for $\lambda$ with $\beta_i$ evaluated at $\ddot\mu$ and $\ddot\tau$.
 
-Which unbiased estimating equation is more efficient?
+Both the 3PSM MLE and p-uniform\* are defined by unbiased estimating equations.
+The MLE of the 3PSM is presumably the most efficient possible estimating equation under the model's assumptions? 
 Does p-uniform\* have some robustness advantage?
-
-Just because it is an unbiased estimating equation does not mean that profile likelihood confidence intervals are valid.
+If not, why bother with it?
 
 # References
