@@ -1,6 +1,6 @@
 ---
 title: p-uniform* is a three-parameter selection model
-date: '2025-11-11'
+date: '2026-03-08'
 categories:
 - meta-analysis
 - selective reporting
@@ -9,33 +9,32 @@ code-fold: true
 code-tools: true
 toc: true
 bibliography: "../selection-references.bib"
-draft: true
 csl: "../apa.csl"
 ---
 
-[Robbie van Aert](http://robbievanaert.com/) and [Marcel van Assen](https://www.tilburguniversity.edu/staff/m-a-l-m-vanassen) have a new paper out on a method for estimating average effect size in meta-analyses subject to publication bias, called p-uniform\*. The method has been around for a while [the first version of their paper is from 2018, @VanAert2018correcting] but the paper is only now appearing in print.
+[Robbie van Aert](http://robbievanaert.com/) and [Marcel van Assen](https://www.tilburguniversity.edu/staff/m-a-l-m-vanassen) have a new article out on a method for estimating average effect size in meta-analyses subject to publication bias, called p-uniform\*. The method has been around for a while [the first version of their paper is from 2018, @VanAert2018correcting] and has been cited hundreds of times. The recent appearance of the peer-reviewed article prompted me to take a closer look.
+
 The authors frame the p-uniform\* method as a generalization of an earlier proposal of theirs, called p-uniform, which was limited in that it applies only to meta-analytic data where all effect size estimates are statistically significant at the conventional $\alpha = .05$ level.
 The new method improves upon p-uniform by using all of the data (including effect size estimates that are not statistically significant) and by allowing for heterogeneity in the distribution of effect size parameters from different samples.
-
-In their new paper, the authors contrast p-uniform* with the well-known three-parameter selection model (3PSM), which is a special case of the [step-function selection model](/posts/step-function-selection-models/) introduced by @hedges1992modeling.
+The authors contrast p-uniform* with the well-known three-parameter selection model (3PSM), which is a special case of the [step-function selection model](/posts/step-function-selection-models/) introduced by @hedges1992modeling.
 They note that both methods can be understood as selection models, in that they are based upon explicit assumptions about the process that determines whether an effect size estimate from a study is reported and available for meta-analysis.
 Further, they argue that the new p-uniform* method is preferable to the 3PSM because it does not involve estimation of a selection weight parameter, and thus is more parsimonious:
 
-> P-uniform* has the advantage over 3PSM that the weight in the selection model does not need to be estimated. These weights are known to be imprecisely estimated in more complex selection models than the selection model of 3PSM where multiple weights need to be estimated (Hedges & Vevea, 1996, 2005; Vevea & Woods, 2005). P-uniform\* only assumes that these weights are the same for the statistically significant and the same for the nonsignificant primary studies’ effect sizes, without requiring estimation of the weights. This makes p-uniform* a more parsimonious model than 3PSM with similar statistical properties as shown in our simulation studies [@VanAert2018correcting, p.25].
+> P-uniform* has the advantage over 3PSM that the weight in the selection model does not need to be estimated. These weights are known to be imprecisely estimated in more complex selection models than the selection model of 3PSM where multiple weights need to be estimated (Hedges & Vevea, 1996, 2005; Vevea & Woods, 2005). P-uniform\* only assumes that these weights are the same for the statistically significant and the same for the nonsignificant primary studies’ effect sizes, without requiring estimation of the weights. This makes p-uniform* a more parsimonious model than 3PSM with similar statistical properties as shown in our simulation studies [@vanAert2026correcting, p. 15].
 
 In this post, I offer a different interpretation of p-uniform\*.
-Rather than being a "more parsimonious model" than the 3PSM, I think it is useful to understand p-uniform\* as _a different estimator_ of the average effect size and heterogeneity parameters in the 3PSM.
+Rather than being a more parsimonious model than the 3PSM, I think it is useful to understand p-uniform\* as _a different estimator_ of the average effect size and heterogeneity parameters in the 3PSM.
 I will demonstrate that the maximum likelihood estimator of p-uniform\* is _exactly_ equivalent to the maximum likelihood estimator of 3PSM under the (admittedly artificial) condition that all effect sizes in the meta-analytic data have the same sampling variance. 
 Outside of this condition, the methods are not exactly equivalent but will tend to produce very similar point estimates of average effect size and between-study heterogeneity because both are based on unbiased estimating equations. 
 However, confidence intervals produced by each method will differ except when based on the same method of construction and when all effect sizes have the same sampling variance. 
 
 # Notation
 
-This discussion is going to get a little bit statistical, so buckle up, y'all. 
-Consider a meta-analysis that includes $k$ independent effect size estimates, where $T_i$ and $\sigma_i$ denote the effect size estimate and corresponding standard error from study $i = 1,...,k$.
+My discussion is necessarily going to get a bit technical.
+Consider a meta-analysis that includes $k$ independent effect size estimates, where $t_i$ and $\sigma_i$ denote the observed effect size estimate and corresponding standard error from study $i = 1,...,k$.
 Let's say that statistical significance is defined based on the level $2 \times \alpha$ (which will usually be .05, so $\alpha = .025$).
 I will assume that the effect sizes are defined so that positive effects are what would be theoretically expected, and I will call an effect size estimate _affirmative_ if it is statistically significant and in the expected direction.
-Let $A_i$ be an indicator for whether effect size estimate $i$ is affirmative, so $A_i = I\left(\frac{T_i}{\sigma_i} > \Phi^{-1}(1 - \alpha)\right)$, where $\Phi^{-1}()$ is the standard normal quantile function.
+Let $a_i$ be an indicator for whether effect size estimate $i$ is affirmative, so $a_i = I\left(\frac{t_i}{\sigma_i} > \Phi^{-1}(1 - \alpha)\right)$, where $\Phi^{-1}()$ is the standard normal quantile function.
 I will also use $\Phi()$ to denote the cumulative function and $\phi()$ to denote the density function of the standard normal distribution.
 
 # The three-parameter selection model
@@ -45,23 +44,26 @@ The three-parameter selection model makes two sets of assumptions.
 First, it is assumed that if we could observe every effect size estimate ever produced, then those effect size estimates would follow a conventional random effects model with mean $\mu$ and between-study standard deviation $\tau$.
 Second, it is assumed that the probability of observing a given estimate depends only on its sign and statistical significance. 
 Specifically, the probability of observing a non-affirmative estimate differs from the probability of observing an affirmative estimate by a factor of $\lambda > 0$. 
-If $\lambda < 1$, then there is selection in favor of affirmative (statistically significant) results, which produces upward bias in average effect size estimates from conventional meta-analytic methods. 
+If $\lambda < 1$, then there is selection in favor of affirmative (statistically significant) results, which produces upward bias in average effect size estimates from conventional meta-analytic methods.
+These assumptions are essentially identical to those of p-uniform*.[^implicit]
+
+[^implicit]: The p-uniform\* method does not explicitly define the $\lambda$, but it is implicit in the assumption that the "weights are the same for the statistically significant and the same for the nonsignificant primary studies’ effect sizes." Although the weights are constant conditional on whether the effects are affirmative, they are allowed to differ between affirmative and non-affirmative effect sizes, and $\lambda$ is the ratio of the weights for non-affirmative effects to the weights for affirmative ones. 
 
 Under these assumptions, the distribution of an observed effect size estimate is what I call a "piece-wise normal" distribution, with density
 $$
-d_T(t, a_i | \sigma_i) = \frac{ \lambda^{1 - a_i}}{1 - (1 - \lambda)\beta_i} \times \frac{1}{\sqrt{\tau^2 + \sigma_i^2}}\phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right),
+d_T(T = t_i, A = a_i | \sigma_i) = \frac{ \lambda^{1 - a_i}}{1 - (1 - \lambda)\beta_i} \times \frac{1}{\sqrt{\tau^2 + \sigma_i^2}}\phi\left(\frac{t - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right),
 $$ {#eq-observed-effect-density}
-where $a_i = I\left(\frac{t}{\sigma_i} > \Phi^{-1}(1 - \alpha)\right)$ and $\beta_i = \Phi\left(\frac{\sigma_i \Phi^{-1}(1 - \alpha) - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right)$.
+where $\beta_i = \Phi\left(\frac{\sigma_i \Phi^{-1}(1 - \alpha) - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right)$.
 Note that $\beta_i$ depends on $\mu$ and $\tau$ but not on $\lambda$.
 From the density, the log-likelihood of the 3PSM given the observed effect size estimates is 
 $$
 \begin{aligned}
-\mathcal{l}(\mu, \tau, \lambda) &= \sum_{i=1}^k \log d_T(t = T_i, a_i = A_i | \sigma_i) \\
-&= - \frac{1}{2} \sum_{i=1}^k\left(\frac{(T_i - \mu)^2}{\tau^2 + \sigma_i^2} + \log\left(\tau^2 + \sigma_i^2\right)\right) \\
+\mathcal{l}(\mu, \tau, \lambda) &= \sum_{i=1}^k \log d_T(T = t_i, A = a_i | \sigma_i) \\
+&= - \frac{1}{2} \sum_{i=1}^k\left(\frac{(t_i - \mu)^2}{\tau^2 + \sigma_i^2} + \log\left(\tau^2 + \sigma_i^2\right)\right) \\
 & \qquad \qquad \qquad + k_N \log \lambda - \sum_{i=1}^k \log\left(1 - (1 - \lambda) \beta_i\right)
 \end{aligned}
 $$ {#eq-3PSM-log-lik}
-where $k_N = \sum_{i=1}^k (1 - A_i)$ is the number of non-affirmative effect size estimates observed.
+where $k_N = \sum_{i=1}^k (1 - a_i)$ is the number of non-affirmative effect size estimates observed.
 The maximum likelihood estimators $\hat\mu$, $\hat\tau$, $\hat\lambda$ are the values that maximize $\mathcal{l}(\mu, \tau, \lambda)$. 
 
 One way to compute maximum likelihood estimators is by _profiling_ in one or more of the variables. 
@@ -81,37 +83,39 @@ For the three-parameter selection model, the maximum likelihood estimator of $\l
 $$
 k_A = \sum_{i=1}^k \frac{1 - \beta_i}{1 - (1 - \lambda) \beta_i}.
 $$ {#eq-lambda-score-equation}
-The quantity on the left is the observed number of affirmative effects, equal to $k_A = k - k_N = \sum_{i=1}^k A_i$.
+The quantity on the left is the observed number of affirmative effects, equal to $k_A = k - k_N = \sum_{i=1}^k a_i$.
 The quantity on the right is the expected number of affirmative results in the observed sample based on the three-parameter selection model.
 @eq-lambda-score-equation does not have a closed-form solution except in some simple special cases, but it can be solved readily with numerical algorithms.
 
 # p-uniform\*
 
 Now let me consider van Aert and van Assen's proposed method, p-uniform*.
-The method is an estimator of $\mu$ and $\tau$, but defined by a different objective function that involves truncated normal distributions [Equation 3 of @VanAert2018correcting].
+The method is an estimator of $\mu$ and $\tau$, but defined by a different objective function that involves truncated normal distributions [Equation 3 of @vanAert2026correcting].
 For the affirmative effects, the objective function involves the density of each effect size estimate, given that it is affirmative;
 for the non-affirmative effects, it involves the density of each effect size estimate, given that it is not affirmative.
-Taking the log of their objective function [Equation 4 of @VanAert2018correcting] gives
+Taking the log of their objective function [Equation 4 of @vanAert2026correcting] gives
 $$
 \begin{aligned}
-\mathcal{u}(\mu, \tau) &= - \frac{1}{2} \sum_{i=1}^k\left(\frac{(T_i - \mu)^2}{\tau^2 + \sigma_i^2} + \log\left(\tau^2 + \sigma_i^2\right)\right) \\
-& \qquad \qquad \qquad - \sum_{i=1}^k \left[(1 - A_i) \log \beta_i +A_i \log(1 - \beta_i) \right].
+\mathcal{u}(\mu, \tau) &= - \frac{1}{2} \sum_{i=1}^k\left(\frac{(t_i - \mu)^2}{\tau^2 + \sigma_i^2} + \log\left(\tau^2 + \sigma_i^2\right)\right) \\
+& \qquad \qquad \qquad - \sum_{i=1}^k \left[(1 - a_i) \log \beta_i + a_i \log(1 - \beta_i) \right].
 \end{aligned}
 $$ {#eq-pUs-objective}
 The p-uniform estimators $\ddot\mu$ and $\ddot\tau$ are the quantities that maximize $\mathcal{u}(\mu, \tau)$.
 
 The objective function $\mathcal{u}(\mu, \tau)$ can be derived directly from the three-parameter selection model. 
 The truncated densities are the _conditional_ densities of the effect size estimates, given their affirmative or non-affirmative status.
-Thus, $\mathcal{u}(\mu, \tau) = \sum_{i=1}^k \log d_T(t = T_i | a_i = A_i, \sigma_i)$, whereas the 3PSM log-likelihood uses the _unconditional_ density of the observed effect size estimates.
-The p-uniform\* method is essentially the maximum likelihood estimator of $\mu$ and $\tau$, conditional on $A_1,...,A_k$.
+Thus, $\mathcal{u}(\mu, \tau) = \sum_{i=1}^k \log d_T(T = t_i | A = a_i, \sigma_i)$, whereas the 3PSM log-likelihood uses the _unconditional_ density of the observed effect size estimates.
+The p-uniform\* method is essentially the maximum likelihood estimator of $\mu$ and $\tau$, conditional on whether each of the effects are affirmative (i.e., conditional on $A_1 = a_1,...,A_k = a_k$.
 Conditioning removes all of the information in the likelihood that relates to the selection parameter $\lambda$, so this parameter does not appear in $\mathcal{u}(\mu, \tau)$.
 
-One might well ask why we should use estimators that condition on $A_1,...,A_k$....
-
+Using conditional distributions for inference is warranted when the conditioning information is an ancillary statistic that carries no information about the model parameters [@Ghosh2010ancillary]. 
+However, the statistical significance of the effect size estimates are not ancillary for the average effect size and heterogeneity parameters of the 3PSM. 
+@vanAert2026correcting offer no justification for basing inferences about these parameters on the conditional distribution.
+It is not obvious to me that confidence intervals based on the conditional distribution would be valid---even asymptotically as $k$ increases (except under conditions where the p-uniform\* objective function coincides with the 3PSM log-likelihood).
 
 # Equal standard errors
 
-The simulations reported in @VanAert2018correcting are based on a data-generating process where all the effect size estimates have equal standard errors, so $\sigma_1 = \sigma_2 = \cdots = \sigma$.
+The main simulations reported in @vanAert2026correcting are based on a data-generating process where all the effect size estimates have equal standard errors, so $\sigma_1 = \sigma_2 = \cdots = \sigma$.
 This is a fairly artificial scenario that does not arise frequently in real meta-analysis, as far as I know.
 However, it is nonetheless a useful case to consider because it makes the math much easier and cleaner.
 
@@ -138,10 +142,10 @@ The difference between the objective functions of the 3PSM and p-uniform\* is a 
 Consequently, the maxima of the functions must be equal, and the profile likelihood confidence intervals for $\mu$ and $\tau$ must be identical.
 
 Several implications follow from this.
-First, the equivalence of the p-uniform\* and 3PSM estimators explains why the performance of the point estimators for $\mu$ is so similar (in terms of bias and root mean-squared error) in the simulations of @VanAert2018correcting.
+First, the equivalence of the p-uniform\* and 3PSM estimators explains why the performance of the point estimators for $\mu$ is so similar (in terms of bias and root mean-squared error) in the main simulations of @vanAert2026correcting
 Second, the equivalence of the estimators runs counter to van Aert and van Assen's argument that p-uniform\* is more parsimonious and has fewer limitations.
 If the estimators are the same, then clearly one cannot have advantages over the other.
-Third, @VanAert2018correcting reported differences between p-uniform\* and 3PSM in the performance of the confidence intervals for $\mu$ in the main simulations.
+Third, @vanAert2026correcting reported differences between p-uniform\* and 3PSM in the performance of the confidence intervals for $\mu$ in the main simulations.
 However, given the equivalence of the objective functions, differences in the behavior of the confidence intervals must be attributable to differences in how they are constructed 
 (profile likelihood confidence intervals for p-uniform\* but Wald-type confidence intervals for the 3PSM), rather than differences between the models.
 
@@ -207,13 +211,15 @@ $$
 with the constraint that $k_A (1 - \bar\pi_A) = k_N \bar\pi_N$, where $\bar\pi_N$ and $\bar\pi_A$ are the average probabilities among the non-affirmative and affirmative effects.
 
 van Aert and van Assen argue that p-uniform\* is advantageous because it does not entail estimation of the selection weight $\lambda$.
-However, one could also take this as a deficiency, insofar as the p-uniform\* estimator does not yield information about the strength of selection. 
+However, one could also take this as a deficiency, insofar as the p-uniform\* estimator does not yield information about the strength of selection---a substantively interesting parameter that quantifies the severity of publication bias. 
 This deficiency could be remedied by borrowing the estimator of $\lambda$ from the step-function model, as $\ddot\lambda = \hat\lambda(\ddot\mu, \ddot\tau)$. 
 This estimator can be computed by solving @eq-lambda-score-equation for $\lambda$ with $\beta_i$ evaluated at $\ddot\mu$ and $\ddot\tau$.
 
-Both the 3PSM MLE and p-uniform\* are defined by unbiased estimating equations.
-The MLE of the 3PSM is presumably the most efficient possible estimating equation under the model's assumptions? 
-Does p-uniform\* have some robustness advantage?
-If not, why bother with it?
+Like the 3PSM MLE, p-uniform\* can be defined by a set of unbiased estimating equations.
+Although this property is not sufficient to ensure that p-uniform\* estimator will work well, it does suggest that p-uniform\* might have biases similar to those of the 3PSM MLE.
+Furthermore, sandwich variance estimators or non-parametric bootstrapping might be useful for assessing uncertainty in model parameter estimates generated with p-uniform\* [as we examine for MLEs in @pustejovsky2025estimation].
+However, it seems unlikely that p-uniform\* would be more efficient than the MLE of the 3PSM under the model's assumptions---maximum likelihood estimation is usually pretty hard to improve upon, at least for low-dimensional problems.
+Does p-uniform\* have some robustness advantage that maximum likelihood lacks?
+In my view, there needs to be more thorough examination of the properties of p-uniform\* (be it through theoretical analysis or simulation under varied, realistic data-generating processes) before it can be recommended for conducting meta-analyses of real data.
 
 # References
