@@ -1,7 +1,7 @@
 ---
 title: Pusto's package downloads
-subtitle: June 2024 edition
-date: '2024-06-30'
+subtitle: March 2026 edition
+date: '2026-03-28'
 draft: true
 categories:
 - programming
@@ -20,7 +20,7 @@ I've since been involved with four additional R packages (`lmeInfo`, `POMADE`, `
 In short, the packages are no longer _mine_, but rather represent tools to which I've contributed. 
 I'm no less proud of the products, though. 
 
-Since it has been five years since my previous post on package downloads, I felt like it was time for an updated look. I'll follow more or less the same methodology as before, using statistics from [METACRAN](https://www.r-pkg.org/). The site makes available data on daily downloads from the RStudio mirror of CRAN, which is just one of many mirrors around the world. Although the data do not represent complete tallies of all package downloads, as far as I know, it is still the best available source of this sort of data. 
+Since it has been nearly seven years since my previous post on package downloads, I felt like it was time for an updated look. I'll follow more or less the same methodology as before, using statistics from [METACRAN](https://www.r-pkg.org/). The site makes available data on daily downloads from the RStudio mirror of CRAN, which is just one of many mirrors around the world. Although the data do not represent complete tallies of all package downloads, as far as I know, it is still the best available source of this sort of data. 
 
 # Comparison packages
 
@@ -47,7 +47,7 @@ library(cranlogs)
 library(kableExtra)
 library(plotly)
 
-to_date <- as_date("2024-06-30")
+to_date <- as_date("2026-03-27")
 file_name <- paste0("CRAN package downloads ", to_date, ".rds")
 long_file_name <- paste0("CRAN package download history ", to_date, ".rds")
 from_date <- as.character(as_date(to_date - duration(1, "year")))
@@ -126,20 +126,18 @@ comp_pkg_dat <- tribble(
   "simhelpers", "simFrame",
   "simhelpers", "simstudy",
   "simhelpers", "simulator",
-  "simhelpers", "simpr",
   "simhelpers", "simTool",
-  "simhelpers", "MonteCarlo",
-  "POMADE", "PowerUpR"
+  "POMADE", "metapower"
 )
 
 pkg_groups <- 
   comp_pkg_dat %>%
   mutate(
-    group = recode(Pusto_pkg, SingleCaseES = "scdhlm/SingleCaseES", scdhlm = "scdhlm/SingleCaseES")
+    group = case_match(Pusto_pkg, "SingleCaseES" ~ "scdhlm/SingleCaseES", "scdhlm" ~ "scdhlm/SingleCaseES", .default = Pusto_pkg)
   ) %>%
   pivot_longer(ends_with("_pkg"), names_to = "type", values_to = "package") %>%
   mutate(
-    type = recode(type, Pusto_pkg = "Pusto", Comp_pkg = "Comparison")
+    type = case_match(type, "Pusto_pkg" ~ "Pusto", "Comp_pkg" ~ "Comparison")
   ) %>%
   filter(!is.na(package)) %>%
   group_by(group, type, package) %>%
@@ -213,16 +211,17 @@ ggplotly(
 # Time trends
 
 ```{r scrape-long-history, eval = FALSE}
-long_from_date <- as.character(as_date(to_date - duration(10, units = "years"))) 
+long_from_date <- as.character(as_date(to_date - duration(11, units = "years"))) 
 long_downloads <- cran_downloads(packages = c(Pusto_pkgs, comp_pkgs), from = long_from_date)
 long_downloads <- 
   long_downloads %>%
   mutate(
     year = year(date),
     qtr = ceiling(month(date) / 3),
-    yr = year + (qtr - 1) / 4
+    mth = month(date),
+    yr = year + (mth - 1) / 12
   ) %>%
-  group_by(package, year, qtr, yr) %>%
+  group_by(package, year, qtr, mth, yr) %>%
   summarize(
     count = sum(count)
   )
@@ -230,15 +229,15 @@ long_downloads <-
 saveRDS(long_downloads, file = long_file_name)
 ```
 
-Here are the weekly download rates for each of these packages (note that the vertical scales of the graphs differ).
+Here are the monthly download rates for each of these packages (note that the vertical scales of the graphs differ).
 
 ```{r}
 #| fig-width: 10
-#| fig-height: 10
-#| fig-column: page
+#| fig-height: 16
+#| fig-column: body-outset
 
 long_downloads <- 
-  readRDS("CRAN package download history 2024-06-25.rds") %>%
+  readRDS("CRAN package download history 2026-03-27.rds") %>%
   left_join(pkg_groups, by = "package")
 
 long_downloads_select <- 
@@ -247,13 +246,17 @@ long_downloads_select <-
 
 ggplot(long_downloads_select, aes(yr, count, color = type, group = package)) + 
   geom_line() + 
-  scale_x_continuous(breaks = seq(2014, 2024, 2)) + 
+  scale_x_continuous(breaks = seq(2016, 2026, 2)) + 
   scale_color_manual(values = c(Pusto = "green", Comparison = "grey")) +
   expand_limits(y = 0) + 
   expand_limits(x = 2025) + 
-  facet_wrap(~ group, scales = "free", ncol = 2) + 
+  facet_wrap(~ group, scales = "free", ncol = 1) + 
   theme_minimal() + 
-  theme(legend.position = "none")
+  theme(legend.position = "none") + 
+  labs(
+    x = "Year",
+    y = "Monthly downloads"
+  )
 
 ```
 
