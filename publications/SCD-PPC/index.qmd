@@ -7,25 +7,28 @@ author:
 - name:
     given: James E.
     family: Pustejovsky
-date: 2025-07-14T00:00:00
+date: 2026-01-17T00:00:00
 image: Barton-Arwood-improved-model-predictions.png
 categories:
 - single-case design
 - hierarchical models
 - Bayes
 - posterior predictive checks
-preprint: true
 links:
-- icon: unlock-fill
-  text: Pre-Print
-  url: https://doi.org/10.21203/rs.3.rs-7032595/v1
+- text: Journal
+  url: https://doi.org/10.1007/s10864-025-09613-8
+  icon: newspaper
 - icon: code-slash
   text: Code
   url: https://osf.io/nhafj/?view_only=52abaf74772a4159933479bec60aa83b
-citation: 
-  type: article
-  doi: 10.21203/rs.3.rs-7032595/v1
+- icon: unlock-fill
+  text: Pre-Print
   url: https://doi.org/10.21203/rs.3.rs-7032595/v1
+citation: 
+  type: article-journal
+  container-title: Journal of Behavioral Education
+  url: https://doi.org/10.1007/s10864-025-09613-8
+  doi: 10.1007/s10864-025-09613-8
 ---
 
 Although researchers typically rely on visual analysis to draw conclusions about functional relations in single-case designs (SCDs), a growing collection of statistical methods have been proposed to augment visual assessment. With the introduction of increasingly complex statistical models, single-case researchers need techniques for evaluating their plausibility and utility. One potentially useful method for such model assessment is Bayesian posterior predictive checking (PPC), which involves simulating artificial data based on an estimated model and comparing the features of the simulated data to features of actual data. We provide a non-technical introduction to the use of PPCs for assessing the plausibility of statistical models for SCD data. We propose that PPCs should focus on data features that are of central interest in visual analysis. We demonstrate how PPCs can be represented in graphical form.  We illustrate use of PPCs by re-analyzing data from two previously conducted studies: an across-participant multiple-baseline design assessing an oral reading fluency intervention and a reversal design investigating the effects of a group contingency intervention on inappropriate verbalizations.
