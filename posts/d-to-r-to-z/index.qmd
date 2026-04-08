@@ -2,9 +2,9 @@
 title: Variance stabilization of Cohen's d
 date: '2025-07-23'
 categories:
-- effect-size
-- standardized-mean-difference
-- delta-method
+- effect size
+- standardized mean difference
+- delta method
 code-fold: true
 code-tools: true
 toc: true

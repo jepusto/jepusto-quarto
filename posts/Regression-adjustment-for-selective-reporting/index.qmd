@@ -4,7 +4,7 @@ date: '2026-01-17'
 categories:
 - effect-size
 - distribution-theory
-- selective-reporting
+- selective reporting
 code-fold: true
 code-tools: true
 toc: true
