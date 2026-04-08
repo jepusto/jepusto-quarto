@@ -7,13 +7,15 @@ about:
   template: trestles
   image-shape: round
   links:
+  - icon: globe
+    href: https://www.ewha.ac.kr/ewha/professor/info.do?mode=view&pId=0JwQAaTyz3ZtUjpr9W9duw==__;!!Mak6IKo!KjgNgifp5U3XT4aCltYkuTPwxRT6tugUbvcML_4-Za1W40Yw96A5IhJszAflnvWIDyYwcH1wGxIMmKjxVUiw1g$
   - icon: envelope
-    href: mailto:yrlee@utexas.edu
+    href: mailto:yr.lee@ewha.ac.kr
   - text: '{{< ai google-scholar >}}'
     href: https://scholar.google.com/citations?user=ajUXozoAAAAJ&hl=en&authuser=1
-org_name: Learning Science Institute at Seoul National University
-org_url: https://ls.snu.ac.kr/eng/main/
-role: Senior Researcher
+org_name: Ewha Womans University
+org_url: https://www.ewha.ac.kr/ewhaen/index.do
+role: Assistant Professor
 people-group: Alumni
 listing:
   - id: publications
@@ -39,7 +41,8 @@ listing:
 
 :::::{#about}
 
-Young Ri completed her PhD in the Quantitative Methods program at The University of Texas at Austin. She is currently a [senior researcher](https://ls.snu.ac.kr/eng/sub_people/peo_info.php?idx=172&dp=studies) at the Learning Science Institute at Seoul National University. Her research interests include Hierarchical Linear Modeling (HLM), Robust Variance Estimation methods (RVE), and meta-analysis. 
+Young Ri is currently an assistant professor in the Department of Psychology, College of Social Sciences at Ewha Womans University, specializing in psychometrics and research methodology. She received her Ph.D. in Quantitative Methodology from the Department of Educational Psychology at the University of Texas at Austin and subsequently served as a postdoctoral researcher at the Institute for Urban Education at the University of Chicago and the Institute for Learning Sciences at Seoul National University. Her major research areas include the development and application of multilevel models, including cross-classified random-effects models, and meta-analysis methodologies that synthesize evidence from the social sciences. Additionally, she studies the daily learning and mental health of adolescents using intensive longitudinal methods, such as daily journals. 
+
 
 ::::{.grid}
 

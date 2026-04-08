@@ -20,7 +20,7 @@ about:
   - icon: github
     href: https://github.com/meghapsimatrix
 org_name: Progressive Insurance
-role: Marketing Process Analyst Lead
+role: Lead Data Analyst
 people-group: Alumni
 listing:
   - id: publications

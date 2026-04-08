@@ -1,0 +1,31 @@
+---
+title: 'Addressing selective reporting bias in meta-analysis of dependent effect sizes: A tutorial in R'
+author:
+- name:
+    given: Man
+    family: Chen
+- name:
+    given: James E.
+    family: Pustejovsky
+date: 2026-04-09T00:00:00
+image: PET-PEESE-EK.png
+categories:
+- meta-analysis
+- selective reporting
+- publication bias
+- dependent effect sizes
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/psyarxiv/83v52_v1 
+- icon: code-slash
+  text: Code
+  url: https://osf.io/m8qc6/
+preprint: true
+citation:
+  type: article
+  url: https://doi.org/10.31234/osf.io/83v52_v1
+  doi: 10.31234/osf.io/83v52_v1
+---
+
+Selective reporting bias arises when findings from primary research studies are incompletely reported and where the likelihood that a result is reported depends on the magnitude or statistical significance of the effect. When applied to selectively reported data, conventional meta-analytic models can produce systematically biased parameter estimates. Various statistical methods have been proposed for dealing with selective reporting in univariate meta-analysis, where each primary study contributes a single effect size estimate. However, fewer methods have been developed for handling selective reporting and publication bias in meta-analysis with dependent effect sizes, which are a common feature of meta-analyses in psychology. In this tutorial, we provide a guide for how to investigate potential selective reporting in meta-analyses of dependent effects, focusing on diagnosis and correction of selection reporting bias. We review several recently developed methods including a regression-based adjustment technique, a step-function selection model, and a sensitivity analysis approach. We demonstrate the implementation of these methods in the R statistical environment using data from two recent meta-analyses as examples. We discuss the application and interpretation of the methods, highlighting their strengths and limitations.
