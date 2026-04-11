@@ -301,7 +301,7 @@ $$
 $$ {#eq-pi1-pi2-marginally-equated}
 When $\lambda_2 = \lambda_1$, $\pi_1 = 0$ and $\pi_2$ then maps directly to $\lambda_1$ in the same way as under the simpler, single-step model, as given in @eq-pi1-marginally-equated. 
 When $\lambda_1 = 1$, then $\pi_1 + \pi_2 = 1$ and $\pi_2 = \lambda_2 / \left[1 - (1 - \lambda_2)\mathbb{E}\left[\Phi(c_{2i})\right] \right]$, which is analogous to @eq-pi1-marginally-equated but with $\lambda_2$ in place of $\lambda_1$ and $c_{2i}$ in place of $c_{1i}$.
-Finally, as you would expect, $\lambda_2 = 0$ implies that $\pi_2 = 0$ and $\lambda_1 = \lambda_2 = 0$ implies that $\pi_1 = \pi_2 = 0$.
+Finally, as one would expect, $\lambda_2 = 0$ implies that $\pi_2 = 0$ and $\lambda_1 = \lambda_2 = 0$ implies that $\pi_1 = \pi_2 = 0$.
 
 Here is a function that computes $\left(\pi_1,\pi_2\right)$ given $\mu$, $\tau$, $\lambda_1$, $\lambda_2$, $\alpha_1$, $\alpha_2$, and a vector of $\sigma_i$ values:
 ```{r}
