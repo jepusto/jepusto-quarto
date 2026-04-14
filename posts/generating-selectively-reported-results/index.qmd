@@ -21,13 +21,13 @@ Past simulations have looked at a variety of bias-detection and bias-adjustment 
 How well the bias-adjustment methods work (and which method or methods should be used in practice) seems to depend on how the data were generated, such as the degree of heterogeneity, how large the simulated studies are, and how severe the selection bias is.
 
 Something that makes it challenging to compare findings across these past studies is that they use different procedures for simulating meta-analytic datasets. 
-Many past studies simulated datasets based on some more-or-less simple form of [step-function selection model](/posts/step-function-selection-models), such as the so-called three-parameter selection model (3PSM) that has a single step at $\alpha = .025$.
-But there are different ways to actually program this, and it's a little tricky to line them up. 
+Many past studies simulated meta-analytic datasets based on some more-or-less simple form of [step-function selection model](/posts/step-function-selection-models), such as the so-called three-parameter selection model (3PSM) that has a single step at $\alpha = .025$.
+But there are multiple different ways to actually program this data-generating model, and it's a little tricky to line them up. 
 In this post, I'll look at two such methods: one used by @mcshane2016adjusting and one by @stanley2014metaregression.
 
 ## Stochastic selection
 
-The 3PSM posits that effect size estimates are observed based on a two-step process.
+The 3PSM posits that effect size estimates are observed based on a two-stage process.
 First, estimates are generated (but potentially not observed) based on a random effects model, in which
 $$
 \left(T_i^* | \sigma_i^*\right) \sim N\left(\mu, \ \tau^2 + {\sigma_i^*}^2\right),
@@ -63,7 +63,7 @@ Now, conditional on a generated $\sigma_i^*$,
 $$
 \Pr(A_i^* = 1, O_i = 1 | \sigma_i^*) = \Pr(A_i^* = 1 | \sigma_i^*) = 1 - \Phi(c_{1i}).
 $$ {#eq-affirmative-conditional-prob-3PSM}
-Likewise, conditional on $\sigma_i$ (but not on $T_i$), 
+Likewise, conditional on $\sigma_i^*$ (but not on $T_i^*$), 
 $$
 \Pr(O_i = 1 | \sigma_i^*) = 1 - (1 - \lambda_1) \Phi(c_{1i}).
 $$ {#eq-observation-conditional-prob-3PSM}
@@ -77,9 +77,10 @@ Under the 3PSM, the conditional expected value of the observed effect size estim
 $$
 \mathbb{E}(T_i | \sigma_i) = \mu + \eta_i \times \frac{(1 - \lambda_1) \phi(c_{1i})}{1 - (1 - \lambda_1)\Phi(c_{1i})}.
 $$ {#eq-conditional-expectation-3PSM}
+I'll need this to derive the unconditional expectation, marginalizing over $\sigma_i$.
 It's perhaps a bit weird to worry about the unconditional expectation, considering that meta-analysts will typically focus on weighted averages of the effect size estimates, as in a random effects model. 
 In practice, the weights will depend on estimation of the between-study heterogeneity $\tau$, but we can gloss over this by considering random effects weights based on the true value of $\tau$. 
-Because this quantity won't actually ever be known in real life, I'll call this the oracle-weighted expectation.
+I'll call this the _oracle-weighted expectation_ because it involves the $\tau$ parameter, a quantity that won't actually ever be known with certainty in real life. 
 First, let me define
 $$
 \begin{aligned}
@@ -93,7 +94,7 @@ $$
 \begin{aligned}
 \frac{ 1}{\omega_S} \mathbb{E}\left(\left. \eta_i^{-2} T_i \right| O_i = 1\right) &= \frac{\mathbb{E}\left[\eta_i^{-2} \mathbb{E}\left(T_i | O_i = 1, \sigma_i^*\right) \Pr(O_i = 1 | \sigma_i^*) \right]}{\omega_S \times \mathbb{E}\left[\Pr(O_i = 1 | \sigma_i^*) \right]} \\
 &= \frac{\mathbb{E}\left[\eta_i^{-2} \left(\mu + \eta_i \frac{(1 - \lambda_1) \phi(c_{1i})}{1 - (1 - \lambda_1)\Phi(c_{1i})}\right) \left(1 - (1 - \lambda_1) \Phi(c_{1i})\right) \right]}{\omega_S \times \mathbb{E}\left[\Pr(O_i = 1 | \sigma_i^*) \right]} \\
-&= \mu + \left(1 - \lambda_1 \right) \times \frac{\mathbb{E}\left[\eta_i^{-1} \phi(c_{1i})\right]}{\mathbb{E}\left[\eta_i^{-2}\right] - (1 - \lambda_1) \mathbb{E}\left[\eta_i^{-2}\Phi(c_{1i})\right]}.
+&= \mu + \left(1 - \lambda_1 \right) \times \frac{\mathbb{E}\left[\eta_i^{-1} \phi(c_{1i})\right]}{ \mathbb{E}\left[\eta_i^{-2}\left(1 - (1 - \lambda_1)\Phi(c_{1i})\right)\right]}.
 \end{aligned}
 $$ {#eq-marginal-expectation-3PSM}
 I'll circle back to this expression in a bit.
@@ -101,14 +102,14 @@ I'll circle back to this expression in a bit.
 ## Mixture selection
 
 @stanley2014metaregression and @stanley2017limitations reported simulations based on a subtly different appoach to implementing the selective reporting process.
-Rather than treating the selection process as stochastic, given the p-value of the generated effect size estimate, they conceptualized the process as a mixture of two types of studies (or two types of researchers).
-One type of researcher, comprising $\pi_1$ of the population of _observed_ researchers, reports all results regardless of whether they are affirmative.
+Rather than treating the selection process as stochastic, given the p-value of the generated effect size estimate, they conceptualized the process as a mixture of two types of studies---or perhaps we could think of it as two types of researchers.
+One type of researcher, comprising $\pi_1$ of the _observed_ population of researchers, reports all results regardless of whether they are affirmative.
 The other type of researcher, comprising the remaining $1 - \pi_1$ of the observed population, only reports results that are affirmative (positive and statistically significant).
 Every meta-analytic dataset consists of $k \times \pi_1$ effect size estimates generated by the first type of researcher and $k \times (1 - \pi_1)$ effect size estimates generated by the second type.[^conditioning] Both types of researchers draw primary study sample sizes from the same distribution (i.e., researcher type is independent of $\sigma_i^*$).
 
 [^conditioning]: Note that this approach to generating data involves controlling the mixing proportion of _observed_ researchers, thereby ensuring that at least $k \times (1 - \pi_1)$ observed effects will be affirmative.
 
-In the @stanley2014metaregression simulation approach, the observed effect size estimates follow a mixture distribution in which
+In the @stanley2014metaregression approach, the observed effect size estimates follow a mixture distribution in which
 $$
 \begin{aligned}
 \Pr(T_i = t | \sigma_i) &= \pi_1 \times \frac{1}{\eta_i}\phi\left(\frac{t - \mu}{\eta_i}\right) + (1 - \pi_1) \times \frac{a_i \phi\left(\frac{t - \mu}{\eta_i}\right)}{\eta_i\left[1 - \Phi(c_{1i}) \right]} \\
@@ -130,7 +131,7 @@ $$
 &= 1 - \pi_1 \mathbb{E}\left[\Phi(c_{1i})\right].
 \end{aligned}
 $$ {#eq-affirmative-prob-mixture}
-Under the @stanley2014metaregression approach, the expected inverse variance weight is
+Also, the expected inverse variance weight is
 $$
 \begin{aligned}
 \omega_M &= \mathbb{E}(\eta_i^{-2} | O_i = 1) \\
