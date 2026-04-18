@@ -17,14 +17,14 @@ categories:
 links:
 - icon: unlock-fill
   text: Pre-Print
-  url: https://osf.io/preprints/psyarxiv/83v52_v2 
+  url: https://osf.io/preprints/psyarxiv/83v52_v3
 - icon: code-slash
   text: Code
   url: https://osf.io/m8qc6/
 preprint: true
 citation:
   type: article
-  url: https://doi.org/10.31234/osf.io/83v52_v2
+  url: https://doi.org/10.31234/osf.io/83v52_v3
   doi: 10.31234/osf.io/83v52_v1
 ---
 
