@@ -14,7 +14,7 @@ categories:
 links:
 - icon: unlock-fill
   text: Pre-Print
-  url: https://osf.io/preprints/metaarxiv/5mcs9_v1
+  url: https://osf.io/preprints/metaarxiv/5mcs9_v2
 - icon: code-slash
   text: Code
   url: https://osf.io/6ecsm
@@ -22,11 +22,11 @@ preprint: true
 citation: 
   type: article
   doi: 10.31222/osf.io/5mcs9_v1
-  url: https://osf.io/preprints/metaarxiv/5mcs9_v1
+  url: https://osf.io/preprints/metaarxiv/5mcs9_v2
 ---
 
 Van Aert and Van Assen (2026) introduced a novel method called p-uniform* for estimating average effect size in meta-analyses subject to publication bias. 
 They characterized the method as a distinct, more parsimonious model than the well-known three-parameter selection model (3PSM) of Hedges (1992). 
 I argue that p-uniform* is not a distinct model, but rather a different estimator of the average effect size and heterogeneity parameters of the 3PSM. 
 The p-uniform* estimator coincides with the maximum likelihood estimator of the 3PSM when all included effects have identical sampling variances; otherwise, the estimators differ. 
-Before p-uniform* is used in applications, its properties should be thoroughly explored in simulations under realistic data-generating processes with primary studies that vary in sample size.
+Before p-uniform* is used in applications, its theoretical rationale should be clarified and its empirical performance should be more thoroughly explored through simulations under realistic data-generating processes, especially ones involving primary studies that vary in sample size.
