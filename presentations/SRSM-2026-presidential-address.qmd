@@ -1,0 +1,15 @@
+---
+title: "Statistical methodology for social science meta-analysis: Outstanding needs and directions"
+author: 
+  - James E. Pustejovsky
+date: 2026-06-10T09:00:00
+publish_date: 2026-06-10T11:00:00
+event: Society for Research Synthesis Methodology annual meeting
+event_short: SRSM 2026
+event_url: https://srsm.org/meetings
+location: Chania, Crete, Greece
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/SRSM-2026-presidential-address.pdf
+---
