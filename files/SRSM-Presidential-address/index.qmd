@@ -1,0 +1,1350 @@
+---
+title: "Statistical methodology for social science meta-analysis: Outstanding needs and directions"
+subtitle: "Society for Research Synthesis Methodology <br>2026 Annual Meeting"
+author: 
+  - name: James E. Pustejovsky
+    affiliation: University of Wisconsin - Madison
+date: June 10, 2026
+date-format: long
+title-slide-attributes:
+  data-background-image: /images/brick-laying.jpg
+  data-background-size: cover
+  data-background-opacity: "0.5"
+  data-notes: "Thank you. I attended my first SRSM in 2011, in Ottawa Canada, when I was a grad student. Since that meeting, meta-analysis methodology has expanded and evolved quite a lot---maturing and shifting focus from core methodology to more specific, narrower issues arising in different areas of application. Fifteen years in from my introduction to SRSM, I'm feeling reflective and I thought I would use this time to highlight some trends in how meta-analysis methodology has developed over that period, to offer some critiques, and to identify some general directions that I think we need to move in. This is probably a foolhardy thing to attempt at SRSM because I will surely say some things that mischaracterize someones’ work or rub them the wrong way. It’s also a bit dangerous because I’ve also been a contributor to our field and to some of these trends, so by identifying problems with them, I’m surely also criticizing my own past work. Please feel free to point out my hypocracy during the Q&A. Finally, as my title indicates, my perspective is informed by my experience with research synthesis in the social sciences. I don’t know as much about health sciences, biology, or ecology---only that the constraints and context are sometimes quite different than in social sciences. Again, please feel free to highlight my ignorance during the Q&A."
+execute:
+  echo: false
+  message: false
+  warning: false
+format: 
+  revealjs:
+    center-title-slide: false
+    math: true
+    html-math-method: mathjax
+    reference-location: document
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    css: styles.css
+    theme: [simple, mytheme.scss]
+mermaid-format: svg # png also works
+editor: source
+from: markdown+emoji
+bibliography: "references.bib"
+csl: apa7
+---
+
+```{r setup}
+library(here)
+library(conflicted)
+library(tidyverse)
+library(flextable)
+library(tinytable)
+conflicts_prefer(dplyr::filter, .quiet = TRUE)
+conflicts_prefer(flextable::separate_header, .quiet = TRUE)
+
+options(tinytable_html_mathjax=TRUE)
+
+library(patchwork)
+library(MetBrewer)
+library(igraph)
+library(ComplexUpset)
+library(grid)
+
+library(metafor)
+library(metaselection)
+library(future)
+
+options(
+  knitr.kable.NA = '-',
+  dplyr.summarise.inform = FALSE
+)
+theme_set(theme_minimal())
+
+
+my_theme <- function(x, ...) {
+  x |> 
+    style_tt(i = 0, bold = TRUE, background = "lightsteelblue") |> 
+    style_tt(fontsize = 0.75) |> 
+    theme_html(class = "tinytable tinytable-hover tinytable-bordered", portable = TRUE)
+}
+
+options(
+  tinytable_tt_theme = my_theme,
+  tinytable_tt_digits = 2,
+  tinytable_format_num_fmt = "decimal",
+  tinytable_format_replace = "",
+  tinytable_format_num_zero = TRUE
+)
+
+
+load(file = here("data", "Narrative-Assessments-Tables-and-Figures.Rdata"))
+load(file = here("data", "Spiritual-Well-being-Tables-and-Figures.Rdata"))
+
+```
+
+
+## {background-color="black"}
+
+::: {.notes}
+
+My core concern with the direction of our field is captured quite well in a famous old paper by John Tukey, called the future of data analysis, in which he writes:
+
+> For a long time I have thought I was a statistician, interested in inferences from the particular to the general. But as I have watched mathematical statistics evolve, I have had cause to wonder and to doubt.... All in all, I have come to feel that my central interest is in data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of statistics which apply to analyzing data.
+
+Tukey was unhappy about how mathematical statistics was ignoring the perspective of the data analyst and the challenges encountered in practice. He was writing in 1962, but I share some of the same unease about social science meta-analysis methodology. We have bulked up on statistical methods and models and software, but I would argue that we’re not attending as much as we need to to the practice of meta-analytic data analysis. I want to highlight three areas of concern.
+
+:::
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+![](images/Tukey.jpg)
+::::
+
+:::: {.column width="60%"}
+_For a long time I have thought I was a statistician, interested in inferences from the particular to the general. But as I have watched mathematical statistics evolve, I have had cause to wonder and to doubt…. All in all, I have come to feel that my central interest is in data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of statistics which apply to analyzing data_ [@Tukey1962future].
+::::
+
+:::::
+
+## Trend 1: More complex models for more complex data
+
+- Hierarchical meta-analysis [@Konstantopoulos2011fixed; @VandenNoortgate2013threelevel]
+
+- Correlated-and-hierarchical effects models [@Pustejovsky2022metaanalysis]
+
+- Multivariate, multilevel meta-analysis [@McShane2018multilevel; @Sera2019extended]
+
+- Network meta-analysis [@Higgins1996borrowing; @Lu2006assessing]
+
+- Phylogenetic meta-analysis [@Lajeunesse2009metaanalysis]
+
+- Location-scale random effects models [@Viechtbauer2022location]
+
+- Robust Bayesian model-averaged meta-analysis [@Bartos2023robust; @Bartos2026robust; @Maier2023robust]
+
+
+::: {.notes}
+
+First, at least in social sciences, syntheses have been shifting towards working with more complex data and more complex models well beyond what you can estimate in a spreadsheet. We now have heirarchical models for capturing lab-group effects or investigator effects in multi-sample studies, multivariate meta-analysis, multi-level multivariate meta-analysis, network meta-analysis, phylogenetic random effects models, and robust Bayesian model-averaged meta-analyses with in-built publication bias corrections. And methodologists---many people in this room---have worked hard to make such tools readily accessible, so an analyst can test drive them quite easily. But these models also invoke much more nuanced assumptions than the basic random effects models, and I worry that those assumptions are getting lost in the weeds. 
+
+:::
+
+## {.smaller background-image="images/Draco-Malfoy.jpg" background-size="cover" background-opacity="100%"}
+
+
+:::: {.absolute width="45%" right="5%" top="5%"}
+::: {.purplebox}
+I cast the correlated-and-hierarchical effects working model with cluster-robust variance estimation, CR2 small-sample adjustment, and Satterthwaite degrees of freedom [@Pustejovsky2022metaanalysis]!
+:::
+::::
+
+::: {.notes}
+
+Now that these models are so easy to apply, I think some investigators are over-eager to use them---especially if they’re “more advanced” and fancy-looking. Some researchers treat the methods we develop as if they're magic spells that can be cast to ward off pesky reviewers rather than tools that require gauging the plausibility and consequences of assumptions involved, with respect to the domain and context of the evidence.
+
+:::
+
+## {.center .smaller background-image="images/Harry-Potter.jpg" background-size="cover" background-opacity="100%"}
+
+
+:::: {.absolute width="35%" left="0%" top="45%"}
+::: {.bluebox}
+I cast Robust Bayesian Model-Averaged Meta-Analysis with Selection Models [@Bartos2023robust]!
+:::
+::::
+
+::: {.notes}
+If you've seen the way RoBMA has been getting used recently, you might have cause to wonder whether scholars understand that it's a quite intricate Bayesian model, not just an incantation to dispel publication bias and make effects disappear.
+
+:::
+
+## Preliminary data analysis methods
+
+- Initial data analysis as a formal process [@Huebner2018contemporary; @Baillie2022ten; @Heinze2024regression; @Lusa2024initial].
+
+:::::::: {.fragment}
+
+### PReliminary Investigation of MEta-analytic Databases
+
+### [PRIMED, @Pustejovsky2026preliminary]
+
+:::::: {.callout-note icon=false}
+
+## Describe the amount of data and its dependence structure
+
+::::::
+
+:::::: {.callout-tip icon=false}
+## Explore study characteristics and potential moderators
+::::::
+
+:::::: {.callout-warning icon=false}
+## Inspect standard errors and other auxiliary data
+::::::
+
+:::::: {.callout-important icon=false}
+## Visualize the distribution of effect size estimates
+::::::
+
+::::::::
+
+::: {.notes}
+
+What to do about this? I think one step is to put more emphasis on the preliminary data analysis practices that researchers should engage with before casting---or rather, fitting---fancy models. 
+Descriptive analysis and visualization are basic but essential activities, which we need to engage in both for checking data integrity and for figuring out how to formulate a model. Recently there's been some efforts in other areas of methodology (like causal inference and longitudinal data analysis) that try to formalize and provide explicit good practices for the data-analysis one should do before fitting any models.
+
+
+My student Jingru Zhang and long-time collaborator Beth Tipton and I have tried to sketch out useful sorts of preliminary data analysis considerations for meta-analysis, focusing on syntheses involving dependent effect sizes such as when you had primary studies with multiple relevant outcome measures or multiple follow-up times. Here’s the four broad steps we propose, starting with describing the amount and dependence structure of your data, through visualizing the distribution of effect size estimates.
+
+For each step, we give examples of graphics and tables to create and look at in order to build understanding of the features of your data that can inform how you approach developing a formal model. 
+Let me offer a few examples just to give you a sense of what we're aiming for with this sort of preliminary data analysis. 
+
+:::
+
+##  {.scrollable}
+
+### Describe the amount of data and its dependence structure
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Sample size distribution
+
+```{r sample-size-dist}
+#| fig-width: 8
+#| fig-height: 3.5
+#| out-width: "100%"
+#| fig-align: center
+
+study_sample_sizes_plot_winters
+
+```
+
+::::
+
+:::: {.column width="50%"}
+
+#### Effect size estimates per sample
+
+```{r es-per-sample}
+#| fig-width: 8
+#| fig-height: 3.5
+#| out-width: "100%"
+
+es_hist_winters
+
+```
+
+::::
+
+::: {style="font-size: 0.5em;"}
+Source: @Winters2022investigating. Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis.
+:::
+
+:::::
+
+:::::: {.fragment}
+
+### Explore study characteristics and potential moderators
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+#### Follow-up times vary within and between studies
+
+```{r weeks-from-baseline}
+#| fig-width: 8
+#| fig-height: 3
+#| out-width: "100%"
+
+weeks_from_baseline_plot
+```
+
+::: {style="font-size: 0.5em;"}
+Source: @McLouth2021systematic. A systematic review and meta‐analysis of effects of psychosocial interventions on spiritual well‐being in adults with cancer.
+:::
+
+::::
+
+:::: {.column width="50%"}
+
+#### Within-study co-occurrence of assessment types
+
+```{r co-occurrence}
+
+assess_dat_cross |> 
+  mutate(
+    level = recode(level, 'macro' = "Macro", 'micro' = "Micro", 'mixed' = "Mixed"),
+    level = paste0("(", LETTERS[1:(ncol(assess_dat_cross) - 1)], ") ", level)
+  ) |> 
+  flextable() |> 
+  delete_rows(i = 1, part = "footer") |> 
+  set_header_labels(values = c("Assessment type", paste0("(", LETTERS[1:(ncol(assess_dat_cross) - 1)], ")"))) |> 
+  theme_booktabs(bold_header = TRUE) |> 
+  add_footer_lines(c(
+    "Values outside parentheses indicate the number of studies;",
+    "Values in parentheses indicate the number of samples and number of effect size estimates."
+  )) |>
+  align(j = 2:ncol(assess_dat_cross), align = "center", part = "all") |>
+  set_table_properties(
+    layout = "autofit"
+  )
+
+```
+
+::: {style="font-size: 0.5em;"}
+Source: @Winters2022investigating. Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis.
+:::
+
+::::
+
+:::::
+
+::::::
+
+:::::: {.fragment}
+### Inspect standard errors and other auxiliary data
+
+```{r weight-distribution}
+#| lightbox: true
+#| fig.width: 6.5
+#| fig.height: 10
+#| out-width: 70%
+
+SE_forest_scaled_winters
+```
+
+::: {style="font-size: 0.5em;"}
+Source: @Winters2022investigating. Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis.
+:::
+
+::::::
+:::::: {.fragment}
+
+### Visualize the distribution of effect size estimates {.scrollable}
+
+::::: {.columns}
+
+:::: {.column width="25%"}
+### Hierarchical forest plot
+
+::: {style="font-size: 0.5em;"}
+Source: @Winters2022investigating. Investigating narrative performance in children with developmental language disorder: A systematic review and meta-analysis.
+:::
+::::
+
+:::: {.column width="75%"}
+```{r hierarchical-forest}
+#| fig-width: 8
+#| fig-height: 12
+#| out-width: 100%
+
+es_forest_study +
+  theme(
+    axis.title = element_text(size = 11),  
+    axis.text = element_text(size = 11)
+  )
+```
+::::
+:::::
+::::::
+
+::: {.notes}
+
+In the first step, we suggest graphing the distribution of studies in terms of their sample sizes and the number of effect size estimates they report. Graphs like this are a good way to identify anomolies, of course, like this study that's three times larger than all the others and this study that reported effects on over forty different outcomes. 
+These two quantities are also key components of how weight will be allocated across studies, so examining their distributions provides an initial sense of how sensitive your results will be to the exact form of the model you might fit.
+
+In the second step, we suggest creating graphs and tables to describe of the distribution of study characteristics that might be used as moderators---not just overall but also how the characteristics vary within and between studies.
+This again informs how you might go about specifying a model to examining moderation, such as whether it is useful to decompose the predictor into between-study and within-study components. 
+
+The third step involves checking over your standard errors and other auxiliary quantities like reliabilities or variance ratios.
+In databases with dependent effect sizes that are standardized mean differences or correlations, one would usually expect the standard errors of effect size estimates based on the same sample to be very similar or close to identical, so examining the standard errors by study is a good way to check whether any SE calculations might be off.
+
+Then the final step involves visualizing the distribution of effect sizes. Of course we have well-established visualizations for this---forest plots---but when you're dealing with dependent effect sizes these often get to be uninterpretable. We argue that it's more useful to create forest plots that let you see the hierarchical structure----variation in effects within and between samples---especially if this aligns with the types of models you will likely use for dependent effect sizes.
+
+There’s no models and hardly any formulas in the whole workflow. It’s just basic descriptive statistics, histograms, and scatterplots. But I think this sort of guidance on how to systematically explore the data before model-fitting is needed and is something we need to be talking about on the record, so to speak. I would love to see efforts in a similar vein for other types of data structures (like NMA and IPD and phylogenetic meta) as well as to see further elaboration and adaptation of what we've proposed. 
+
+:::
+
+## Trend 2: Method Proliferation {.smaller background-image="images/toolbelt.jpg" background-position="center" background-size="50%"}
+
+::: {.notes}
+
+A second trend: the growth of the field means we now have a LOT of methods for some things, but we're not all that good at retiring ones that have outlived their utility. Take, as an example, methods for publication bias assessment. This is an area where we've had thirty-plus years of development, so we currently have a very full toolkit.
+
+:::
+
+
+
+## Many available tools for investigating selective reporting {.smaller background-image="images/toolbelt.jpg" background-position="bottom left" background-size="25%"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Tests/adjustments for funnel plot asymmetry
+    
+    - Trim-and-fill [@Duval2000nonparametric]
+    - Limit meta-analysis [@Rucker2011treatmenteffect]
+    - Egger's regression [@Egger1997bias]
+    - PET/PEESE [@Stanley2014metaregression]
+    - Skewness of standardized deviates [@Lin2018quantifying]
+    - LFK index [@FuruyaKanamori2018new]
+    - Kinked meta-regression [@Bom2019kinked]
+    - Weighted average of adequately powered studies [WAAP, @Stanley2017finding]
+    - Weighted-and-iterated least squares [WILS, @Stanley2024harnessing]
+
+:::
+
+::: {.column width="50%"}
+
+- Selection models
+
+    - Weight-function models [@Vevea1995general]
+    - Copas models [@Copas2000metaanalysis]
+    - Worst-case sensitivity analysis [@Mathur2020sensitivity]
+
+- p-value diagnostics
+
+    - Test of Excess Significance [@Ioannidis2007exploratory]
+    - $p$-curve [@Simonsohn2014pcurve]
+    - $p$-uniform [@VanAssen2015meta] 
+    - $p\text{-uniform}^*$ [@vanAert2026correcting]
+    - $Z$-curve [@Brunner2020estimating; @Bartos2022zcurve]
+
+- Model Ensembles
+
+    - Robust Bayesian Meta-Analysis [@Bartos2023robust; @Bartos2026robust; @Maier2023robust]
+:::
+
+::::
+
+::: {.notes}
+
+Here's a partial list of methods that I know of. There’s PET and PEESE and WAAP and WILS and 3PSM and kinked meta-regression, p-curve, z-curve, p-uniform, p-uniform-star, and RoBMA...the list goes on. Methods development work is surely important and useful, but what’s a poor data analyst to do? Apply _all_ the methods? Stuff them all into online supplementary materials and only emphasize the results that you like (in other words, selectively report your publication bias analysis)?
+How should a data analyst figure out what to actually do with all these tools?
+
+:::
+
+## Can simulation save us?
+
+- @Hong2021using propose that analysts should
+
+    - Identify conditions within past simulations that most closely resemble their data
+    
+    - Only use methods that perform well under those conditions
+
+::: {.fragment}
+- This would require:
+
+    - Knowledge about which features of your data are important
+    
+    - Past simulations that examined similar conditions and all relevant methods
+
+    - Method performance does not depend strongly on unknown parameters
+
+:::
+
+::: {.notes}
+Sangdon Hong and Bob Reed have a review paper from a couple of years ago where they propose that meta-analysts should use results from past simulation studies, identify the conditions within the simulations that most closely resemble their data, and then use only the methods that perform well under those conditions. That’s a fantastic way to do things, in principle. But it requires a couple of things: 1) knowing which features of your data are important for performance, 2) having access to simulation studies that have examined conditions similar to yours and have evaluated all relevant methods, and 3) that the performance of methods is fairly stable, so it doesn't depend strongly on unknown parameters.
+
+How feasible is this?
+:::
+
+## Sample size distributions
+
+#### In simulation studies on publication bias in meta-analysis of continuous outcomes
+
+```{r sample-size-distributions}
+library(invgamma)
+
+n_studies <- 1e5
+
+# Stanley (2017)
+n_Stanley <- sample(4*c(15, 35, 50, 100, 200), n_studies, replace = TRUE)
+
+# Stanley, Doucouliagos, Iaonnidis (2017)
+n_SDI <- sample(4 * c(32, 64, 125, 250, 500), n_studies, replace = TRUE)
+
+# Carter et al. (2019)
+n_Carter <- pmin(pmax(rinvgamma(n = n_studies, shape = 1.15326986, scale = 0.04622745), 5), 1905)
+
+# McShane, Bockenholt, & Hansen (2016)
+n_McShane <- runif(n = n_studies, min = 25, max = 100)
+
+# Renkewitz & Keiner (2019)
+n_RK1 <- runif(n = n_studies, min = 20, max = 30)
+n_RK2 <- runif(n = n_studies, min = 10, max = 40)
+n_RK3 <- runif(n = n_studies, min = 45, max = 55)
+n_RK4 <- runif(n = n_studies, min = 35, max = 65)
+n_RK5 <- runif(n = n_studies, min = 20, max = 80)
+
+# Pustejovsky & Rodgers (2019)
+n0 <- c(129L, 86L, 90L, 54L, 71L, 69L, 65L, 56L, 54L, 74L, 45L, 43L, 41L, 40L, 
+        41L, 41L, 56L, 39L, 37L, 35L, 57L, 38L, 26L, 38L, 38L, 37L, 37L, 42L, 
+        25L, 35L, 30L, 23L, 33L, 33L, 33L, 51L, 32L, 33L, 31L, 33L, 31L, 29L, 
+        32L, 40L, 30L, 30L, 29L, 30L, 29L, 28L, 24L, 27L, 17L, 26L, 24L, 25L, 
+        26L, 27L, 24L, 24L, 24L, 24L, 25L, 25L, 20L, 24L, 22L, 22L, 20L, 21L, 
+        21L, 20L, 20L, 20L, 20L, 20L, 19L, 19L, 19L, 19L, 18L, 18L, 18L, 18L, 
+        17L, 17L, 15L, 16L, 16L, 15L, 15L, 15L, 15L, 15L, 15L, 16L, 15L, 14L, 
+        16L, 14L, 14L, 14L, 14L, 14L, 14L, 13L, 14L, 14L, 13L, 13L, 12L, 11L, 
+        10L, 11L, 11L, 11L, 10L, 10L)
+n1 <- c(122L, 109L, 90L, 108L, 71L, 68L, 63L, 60L, 53L, 27L, 45L, 42L, 42L, 
+        40L, 38L, 38L, 22L, 38L, 40L, 41L, 19L, 38L, 50L, 38L, 37L, 36L, 36L, 
+        27L, 44L, 33L, 37L, 44L, 33L, 33L, 33L, 15L, 33L, 29L, 31L, 28L, 30L, 
+        32L, 29L, 20L, 30L, 30L, 30L, 29L, 29L, 27L, 31L, 27L, 34L, 24L, 26L, 
+        25L, 23L, 22L, 24L, 24L, 24L, 23L, 21L, 21L, 26L, 20L, 22L, 21L, 23L, 
+        21L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 19L, 19L, 18L, 18L, 18L, 18L, 
+        18L, 16L, 16L, 18L, 16L, 15L, 15L, 15L, 15L, 15L, 15L, 15L, 13L, 14L, 
+        14L, 12L, 14L, 14L, 14L, 14L, 13L, 13L, 14L, 13L, 13L, 13L, 12L, 12L, 
+        11L, 12L, 11L, 11L, 10L, 10L, 10L)
+Carter_total_n <- n0 + n1
+Carter_n <- round((n0 + n1) / 2)
+n_empirical <- function(n_vec) {
+  function(studies, n_factor = 1L) sample(n_vec * n_factor, size = studies, replace = TRUE)
+}
+n_sim <- n_empirical(Carter_n)
+
+n_PR1 <- n_sim(studies = n_studies, n_factor = 1)
+n_PR2 <- n_sim(studies = n_studies, n_factor = 2)
+n_PR3 <- n_sim(studies = n_studies, n_factor = 3)
+
+# Friese & Frankenbach (2020)
+n_FF1 <- (10 + pmin(8 * rchisq(n_studies, df = 3), 80)) / 2
+n_FF2 <- (20 + pmin(8 * rchisq(n_studies, df = 3), 80)) / 2
+n_FF3 <- (50 + pmin(8 * rchisq(n_studies, df = 3), 80)) / 2
+
+# Fernandez-Castilla et al. (2021)
+n_FC1 <- pmax(1, rnorm(n_studies, mean = 25, sd = 15))
+n_FC2 <- pmax(1, rnorm(n_studies, mean = 50, sd = 15))
+n_FC3 <- pmax(1, rnorm(n_studies, mean = 75, sd = 15))
+
+# Rodgers & Pustejovsky (2021)
+n_ES_empirical <- function(dat) {
+  function(k) dat[sample(NROW(dat), size = k, replace = TRUE),]
+}
+ss1 <- readRDS("data/sample-sizes.rds")
+n_RP <- n_ES_empirical(ss1)(n_studies) %>% pull(n)
+
+# Chen & Pustejovsky (2025)
+ss2 <- readRDS("data/empirical-sample-sizes.rds")
+n_Chen <- n_ES_empirical(ss2)(n_studies) %>% pull(n)
+
+# van Aert & Van Assen (2026)
+n_AA1 <- sample(49:51, size = n_studies, replace = TRUE)
+n_AA2 <- sample(
+  rep(c(25,50,100,150,300), times = c(10, 8, 6, 4, 2)), 
+  size = n_studies, replace = TRUE
+)
+  
+prevstudy_ss <- 
+  data.frame(
+    n_Stanley, n_SDI, n_Carter, n_McShane, 
+    n_RK1, n_RK2, n_RK3, n_RK4, n_RK5,
+    n_PR1, n_PR2, n_PR3, 
+    n_FF1, n_FF2, n_FF3,
+    n_FC1, n_FC2, n_FC3,
+    n_RP, n_Chen,
+    n_AA1, n_AA2
+  ) %>%
+  tidyr::pivot_longer(cols = everything()) %>%
+  mutate(
+    version = str_extract(name, "[1-9]"),
+    version = replace_na(version, "0"),
+    Study = case_when(
+      name == "n_McShane" ~ "McShane, Bockenholt, & Hansen (2016)",
+      name == "n_Carter" ~ "Carter et al. (2019)",
+      str_detect(name, "PR") ~ "Pustejovsky & Rodgers (2019)",
+      name == "n_Stanley" ~ "Stanley (2017)",
+      str_detect(name, "RK") ~ "Renkewitz & Keiner (2019)",
+      str_detect(name, "FF") ~ "Friese & Frankenbach (2020)",
+      str_detect(name, "FC") ~ "Fernandez-Castilla et al. (2021)",
+      name == "n_RP" ~ "Rodgers & Pustejovsky (2021)",
+      name == "n_Chen" ~ "Chen & Pustejovsky (2025)",
+      name == "n_SDI" ~ "Stanley, Doucouliagos, & Ioannidis (2017)",
+      str_detect(name, "AA") ~ "van Aert & van Assen (2026)"
+    ),
+    Year = str_extract(Study, "20[0-9]{2}") |> as.numeric(),
+    Study = fct(Study) |> fct_reorder(Year)
+  )
+
+```
+
+:::: {.r-stack}
+
+```{r sample-size-plot}
+#| fig-width: 12
+#| fig-height: 6
+#| out-width: 100%
+
+color_scale <- c("darkblue", "darkgreen","darkorchid",
+                 "deeppink", "gold","darkred")
+
+p <- 
+  ggplot(prevstudy_ss) +
+  aes(
+    x = value, 
+    color = version, 
+    fill = version
+  ) + 
+  facet_wrap(~ Study, scales = "free_y", ncol = 1, strip.position = "left")  +
+  expand_limits(x = 0) +
+  scale_x_continuous(expand = expansion(0, c(0,20))) +
+  scale_y_continuous(expand = expansion(0, c(0, NA)), breaks = NULL) +
+  scale_color_manual(values = color_scale) +
+  scale_fill_manual(values = color_scale) +
+  theme_minimal() +
+  ylab(" ") +
+  xlab("Effective sample size per group") +
+  theme(
+    legend.position = "NONE",
+    strip.text.y.left = element_text(angle = 0, hjust = 1)
+  )
+
+p + 
+  geom_density(
+    alpha = 0.3,
+    bw = 5,
+    trim = TRUE
+  )
+
+```
+
+::: {.fragment}
+```{r sample-size-zoom}
+#| fig-width: 12
+#| fig-height: 6
+#| out-width: 100%
+
+p + 
+  geom_density(
+    alpha = 0.3,
+    bw = 3,
+    trim = TRUE
+  ) + 
+  coord_cartesian(xlim = c(0,400))
+```
+
+:::
+::::
+
+::: {.notes}
+One factor that matters for the performance of publication bias adjustment methods is the distribution of primary study sample sizes. 
+My student Paulina Grekov made this very nice illustration of the distributions used in a bunch of past simulation studies, and you can see that they are really quite varied---notably, Tom Stanley's work looked at much larger sample sizes than everyone else, but even zooming in here you can see that the other studies used quite different distributions too. Only four or five of the studies varied the sample size distribution as a factor. So collectively, this area of the methods literature has examined a variety of settings but in a fairly asystematic way. It seems to me that it would be pretty hard for a meta-analyst to use this evidence base to locate settings that are most relevant to their particular application. And this is only one of several factors that might be important to consider.
+
+:::
+
+
+## What is needed?
+
+- Methodology that provides contra-indications and diagnostics for discontinuing use of a method.
+
+::: {.fragment}
+- Greater emphasis on __model fit__ assessment in real data analysis.
+:::
+
+::: {.fragment}
+- Better simulations 
+
+    - Living synthetic benchmarks [@Bartos2025living] that seperate work on specifying benchmarking conditions from work on method/guidance development.
+
+    - Calibrated simulations, specific to one application [a.k.a. plasmode simulations, @Franklin2014plasmode; @Schreck2024statistical]
+:::
+
+
+::: {.notes}
+What to do about this? Broadly, I think we need better ways of culling, consolidating, and paring down the set of methods that should be applied to a given dataset. We need methodology that provides contra-indications or instructions on how to determine whether a method is a bad idea for your data. Along with that, I think we need to start putting more emphasis on model fit assessment instead of just doing endless sensitivity analysis and multiverse analyses. There is also certainly a place for simulations, but I think we could do better by approaching simulations a bit differently than we have.
+Two useful concepts here. 
+
+One, Frantisek Bartos and friends have a recent paper describing the idea of living synthetic benchmarks. The crux here is to pull apart the way simulations are usually done so that the work of specifying data-generating processes exists separately from the work on actually developing methods or guidance for practice.
+Ideally, we could collectively establish a set of benchmarking conditions that are relevant for a particular field or area, so that results from different simulations can be aligned and directly compared. This would also have the benefits of reducing opportunity for developers to focus only on conditions that are favorable to their preferred methods, and to reduce duplication of computational efforts.
+
+Along with that, I think we also need to work more on how to do calibrated simulations, or what are sometimes called plasmode simulations, that are specific to one application. 
+Rather than relying on methodologists to do the big, comprehensive last-word study---the sim to end all sims---data analysts could conduct very targetted simulations as part of an empirical project, testing out available methods under a more limited set of scenarios that are tailored to be relevant to their data.
+Making calibrated simulations feasible to run would require coding and software development efforts, certainly, but also conceptual development to figure out how to do the calibration part so that the study provides valid and relevant findings.
+I think this is a useful way and perhaps even a necessary step on the way towards method disarmament, and I suspect that it applies to other areas of methodology besides publication bias.
+
+:::
+
+## Trend 3: Questing for robustness {.smaller}
+
+- Fixed effects weighting for robustness to publication bias [@Henmi2010confidence]
+
+    - Multiplicative heterogeneity models [@Mawdsley2017accounting; @Thompson1999explaining]
+
+    - Unrestricted weighted least squares [@Stanley2015neither]
+    
+- Robust variance estimation 
+
+    - for heteroskedasticity [@Sidik2006robust]
+    - for dependent effects [@Hedges2010robust]
+    - small-sample corrections [@Tipton2015small; @Tipton2015smallsample; @Joshi2022cluster]
+
+- Pseudo-likelihood methods for multivariate meta-analysis [@Chen2015alternative]
+
+::::: {.columns .fragment}
+
+:::: {.column width="40%"}
+
+![](images/moral-hazard.png)
+
+::::
+
+:::: {.column width="60%"}
+
+::: {.callout-caution appearance="simple" style="font-size:2em;"}
+Robust methods shift focus away from developing models that we would actually put stock in.
+:::
+::::
+:::::
+
+::: {.notes}
+Third trend: Over the past fifteen years, there has been a lot of work examining how to make meta-analytic inferences more robust to various forms of mis-specification. 
+For instance, there's a whole line of work looking at using different weighting schemes, such as fixed effects weights, to achieve robustness against publication bias. 
+There's robust variance estimation methods (also called sandwich estimators) that provide robustness against mis-specification of the variance-covariance structure of a model, which is useful when modeling dependent effect sizes where we often need to make handwaving simplifying assumptions about the correlation between effect size estimates. 
+And there's closely related pseudo-likelihood methods for multi-variate meta-analysis, where it's often difficult in practice to estimate covariance parameters. 
+All of this is important and has proved to be useful in practice, but I worry that there's a sort of moral hazard that arises from questing after robustness.
+If these methods give you insurance against model mis-specification, then focusing too much on robustness gives analysts license to not work as hard to develop good models---models that we might actually put stock in and trust to generate predictions. 
+
+:::
+
+## What is needed? 
+
+::: {.callout-tip style="font-size:1.5em;" icon=false}
+
+## Generative model
+
+A model that provides a (relatively) more extensive description of a data-generating process, defined by parameters that have a (relatively) stable interpretations across contexts.
+
+```{mermaid}
+%%| fig-width: 8
+%%| fig-height: 0.6
+%%| fig-pos: center
+
+flowchart LR
+    A(["More heuristic methods"]) <------> B(["More generative models"])
+```
+
+:::
+
+::: {.notes}
+
+I think the counter-weight to this moral hazard problem is to focus on what I would call generative models. Generative models are ones that provide a relatively more extensive description of a data-generating process and that are defined by parameters that have a stable interpretation across contexts. 
+
+It's probably more useful to think of this along a continuum, where at one end we have heuristic methods, that give us partial descriptions of a system, and toward the other end we have fully generative models that provide a complete description of a system.
+
+Let me offer a few examples that I think are illustrative of this contrast.
+
+:::
+
+## Publication bias {.scrollable}
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+```{r funnel-plot}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+set.seed(20260609)
+
+n_sampler <- function(m) {
+  data.frame(
+    n = 16 + rnbinom(m, size = 34 / 8, prob = 1/8),
+    n_ES = 1L
+  )
+}
+
+dat <- r_meta(
+  mean_smd = 0.1,
+  tau = 0.20,
+  omega = 0,
+  m = 80,
+  cor_mu = 0,
+  cor_sd = 0,
+  n_ES_sim = n_sampler,
+  censor_fun = step_fun(cut_vals = c(.025, .500), weights = c(0.4, 0.1))
+)
+
+areas <- 
+  tibble(x = c(-1,0,1.5)) %>%
+  mutate(
+    y90 = abs(x) / qnorm(.950),
+    y95 = abs(x) / qnorm(.975),
+    y99 = abs(x) / qnorm(.995)
+  )
+
+
+ggplot(dat) + 
+  theme_minimal() + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  scale_x_continuous(expand = c(0,0)) + 
+  scale_y_reverse(expand = c(0,0)) + 
+  labs(x = "", y  = "") + 
+  coord_cartesian(xlim = c(-1, 1.4), ylim = c(0,0.5)) + 
+  labs(x = "Effect size") +
+  labs(y = "Standard error") + 
+  geom_point(aes(x = d, y = sda), color = "blue") + 
+  geom_area(
+    data = areas, 
+    aes(x = x, y = y90), 
+    alpha = 0.1, fill = "purple"
+  ) + 
+  geom_area(
+    data = areas, 
+    aes(x = x, y = y95), 
+    alpha = 0.1, fill = "purple"
+  ) + 
+  geom_area(
+    data = areas, 
+    aes(x = x, y = y99), 
+    alpha = 0.1, 
+    fill = "purple"
+  ) +
+  geom_text(
+    x = -0.7, y = -0.7 / qnorm(.95), 
+    color = "black",
+    label = "p < .10",
+    hjust = "right"
+  ) +
+  geom_text(
+    x = -0.7, y = -0.7 / qnorm(.975), 
+    color = "black",
+    label = "p < .05",
+    hjust = "right"
+  ) +
+  geom_text(
+    x = -0.7, y = -0.7 / qnorm(.995), 
+    color = "black",
+    label = "p < .01",
+    hjust = "right"
+  )
+
+```
+::::
+:::: {.column width="50%"}
+
+#### Random effects model
+
+```{r RE-model}
+RE_fit <- rma.uni(
+  yi = d, sei = sd_d,
+  data = dat,
+  method = "REML"
+)
+
+RE_tau <- confint(RE_fit)
+
+RE_tidy <- 
+  data.frame(
+    Param = c("\\mu","\\tau"),
+    Est = c(as.numeric(RE_fit$beta), RE_tau$random["tau","estimate"]),
+    CI.lo = c(RE_fit$ci.lb, RE_tau$random["tau","ci.lb"]),
+    CI.hi = c(RE_fit$ci.ub, RE_tau$random["tau","ci.ub"])
+  )
+
+RE_tidy %>%
+  rename(`95% CI` = CI.lo) %>%
+  tt() %>%
+  format_tt(j = 1, math = TRUE) %>%
+  style_tt(i = 1:2, j = 2:4, align = "r") %>%
+  style_tt(i = 0, j = 3, colspan = 2, align = "c")
+
+```
+
+::::
+
+:::::
+
+::::: {.columns}
+
+:::: {.fragment .column width="50%"}
+
+#### Regression adjustment (heuristic)
+
+```{r PET}
+
+PET_fit <- rma.uni(
+  yi = d, sei = sd_d,
+  mods = ~ sda,
+  # weights = 1 / Va,
+  data = dat,
+  method = "REML"
+)
+
+PET_tau <- confint(PET_fit)
+
+PET_tidy <- 
+  data.frame(
+    Param = c("\\beta_0","\\beta_1","\\tau"),
+    Est = c(as.numeric(PET_fit$beta), PET_tau$random["tau","estimate"]),
+    CI.lo = c(PET_fit$ci.lb, PET_tau$random["tau","ci.lb"]),
+    CI.hi = c(PET_fit$ci.ub, PET_tau$random["tau","ci.ub"])
+  )
+
+PET_tidy %>%
+  rename(`95% CI` = CI.lo) %>%
+  tt() %>%
+  format_tt(j = 1, math = TRUE) %>%
+  style_tt(i = 1:3, j = 2:4, align = "r") %>%
+  style_tt(i = 0, j = 3, colspan = 2, align = "c")
+
+```
+
+::::
+
+:::: {.fragment .column width="50%"}
+
+#### Step-function selection model (generative)
+
+```{r selmodel}
+#| cache: true
+
+
+PSM_fit <- selmodel(
+  RE_fit,
+  type = "step",
+  steps = c(.025, .500)
+)
+
+PSM_tau <- confint(PSM_fit)
+
+number_generated <- function(model) {
+  vi <- model$vi
+  alpha <- c(0, model$steps)
+  mu <- as.numeric(model$X %*% model$beta)
+  tau2 <- model$tau2
+  eta_i <- sqrt(tau2 + vi)
+  lambda <- model$delta
+  H <- length(lambda)
+  
+  Phi_ci <- pnorm(sapply(alpha, \(s) (sqrt(vi) * qnorm(1 - s) - mu) / eta_i))
+  Bi <- Phi_ci[,-(H+1)] - Phi_ci[,-1]
+  Ai <- Bi %*% lambda
+  sum(1 / Ai)
+}
+
+# Percentile bootstrap confidence interval for number generated
+boot_3PSM <- function(dat, steps, N = nrow(dat)) {
+  SM_fit <- NULL
+  while (is.null(SM_fit)) {
+    i <- sample(1:N, N, replace = TRUE)
+    boot_dat <- dat[i,]
+    RE_fit <- rma.uni(yi = yi, vi = vi, data = boot_dat, method = "DL")
+    SM_fit <- possibly(quietly(selmodel))(RE_fit, type = "stepfun", steps = steps)
+  }
+  return(SM_fit$result)
+}
+
+bootstrap_number_generated <- function(model, times = 1999L, CI = TRUE) {
+  dat <- data.frame(
+    yi = model$yi,
+    vi = model$vi
+  )
+  N <- model$k
+  steps <- model$steps
+  N_gen_boots <- future.apply::future_replicate(times, {
+    SM_fit <- boot_3PSM(dat = dat, steps = steps, N = N) 
+    number_generated(SM_fit)
+  })
+
+  if (!CI) return(N_gen_boots)
+  
+  boot_pctl <- quantile(N_gen_boots, c(.025, .975))
+  data.frame(
+    est = number_generated(model),
+    ci.lb = boot_pctl[["2.5%"]],
+    ci.ub = boot_pctl[["97.5%"]]
+  )
+}
+
+# Calculate number_generated for Rabelo data
+set.seed(20260605)
+plan(multisession, workers = 10L)
+N_gen <- bootstrap_number_generated(PSM_fit, times = 1999L) - PSM_fit$k
+
+plan(sequential)
+
+PSM_tidy <- 
+  data.frame(
+    Param = c("\\mu","\\tau","\\lambda_1 \\ (p > .025)","\\lambda_2 \\  (p > .500)", "k_{missing}"),
+    Est = c(as.numeric(PSM_fit$beta), PSM_tau[[1]]$random["tau","estimate"], PSM_fit$delta[-1], N_gen$est),
+    CI.lo = c(PSM_fit$ci.lb, PSM_tau[[1]]$random["tau","ci.lb"], PSM_fit$ci.lb.delta[-1], N_gen$ci.lb),
+    CI.hi = c(PSM_fit$ci.ub, PSM_tau[[1]]$random["tau","ci.ub"], PSM_fit$ci.ub.delta[-1], N_gen$ci.ub)
+  )
+
+PSM_tidy %>%
+  rename(`95% CI` = CI.lo) %>%
+  tt() %>%
+  format_tt(j = 1, math = TRUE) %>%
+  format_tt(i = 5, j = 2:4, digits = 0, num_fmt = "decimal") %>%
+  style_tt(i=1:5, j = 2:4, align = "r") %>%
+  style_tt(i = 0, j = 3, colspan = 2, align = "c")
+
+```
+
+::::
+
+:::::
+
+::: {.notes}
+First, back to publication bias. Here's our familiar funnel plot, along with a summary random effects model indicating an average effect of 0.30 SDs and fairly substantial heterogeneity.
+
+One well-known technique for accounting for the possibility of publication bias is to use Egger's regression, or a limit meta-analysis or PET adjustment, which regresses the effect size on its standard error. In this case we get a non-significant slope coefficient and just a slight downward adjustment. This is a heuristic method. It's based on a model that we don't really believe, which is only a rough approximation to the form of regression that would actually be produced by selective reporting. 
+
+Another technique is a step-function selection model, which in this example leads to a downward adjustment and the indication that non-significant or negative results are less likely to be reported that positive and significant ones. I would call this a generative model because it is based on explicit assumptions about the process that leads some results to go missing. Are those assumptions correct? In this case yes because I simulated the data. In real life, maybe not but having explicit assumptions at least gives us something to argue about and something we can check. Because this is a more generative model, we can also use it to derive implications, such as predictions of the number of studies that would need to have gone missing to produce this body of evidence---in this example, we expect we would need on the order of 180 missing studies to produce the set of 80 observed results. That sort of prediction is not something we could ever derive from Egger's regression.
+
+:::
+
+## Meta-analysis of binary outcomes {.scrollable}
+
+```{r}
+data("dat.hartmannboyce2018", package = "metadat")
+
+HB_dat <- 
+  dat.hartmannboyce2018 %>%
+  mutate(
+    Ni = n.ctrl + n.nrt,
+    studyid = row_number(),
+    p_C = x.ctrl / n.ctrl,
+    p_T = x.nrt / n.nrt
+  ) %>%
+  escalc(measure="RR", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("RR", "V_RR")) %>%
+  escalc(measure="RR", ai=n.ctrl - x.ctrl, n1i=n.ctrl, ci=n.nrt - x.nrt, n2i=n.nrt, data = ., var.names = c("cRR", "V_cRR")) %>%
+  escalc(measure="OR", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("OR", "V_OR")) %>%
+  escalc(measure="RD", ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, data = ., var.names = c("RD", "V_RD"))
+
+```
+
+::::: {.columns}
+:::: {.fragment .column width="50%" fragment-index=1}
+
+#### Random effects model of log-odds ratios
+
+```{r NRT-funnel}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+ggplot(HB_dat) + 
+  aes(OR, 1 / sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  geom_point(size = 2, color = "purple") +
+  scale_y_reverse(expand = expansion(0, c(0.02,0))) + 
+  labs(
+    x = expression(log(OR[i])),
+    y = expression(1 / sqrt(N[i])),
+    title = "Log odds ratios for abstinence in NRT group vs. control group"
+  ) + 
+  theme_minimal()
+
+```
+
+```{r NRT-LOR}
+HB_RE <- rma.uni(
+  yi = OR, vi = V_OR,
+  data = HB_dat,
+  method = "REML"
+)
+
+HB_predict <- predict(HB_RE, level = 80)
+HB_tau <- confint(HB_RE)
+
+HB_tidy <- 
+  data.frame(
+    Param = c("\\mu_{LOR}","OR","\\tau"),
+    Est = c(as.numeric(HB_RE$beta), exp(as.numeric(HB_RE$beta)), HB_tau$random["tau","estimate"]),
+    CI.lo = c(HB_RE$ci.lb, exp(HB_RE$ci.lb), HB_tau$random["tau","ci.lb"]),
+    CI.hi = c(HB_RE$ci.ub, exp(HB_RE$ci.ub), HB_tau$random["tau","ci.ub"]),
+    PI.lo = c(HB_predict$pi.lb, exp(HB_predict$pi.lb), NA),
+    PI.hi = c(HB_predict$pi.ub, exp(HB_predict$pi.ub), NA)
+  )
+
+HB_tidy %>%
+  rename(`95% CI` = CI.lo, `80% PI` = PI.lo) %>%
+  tt() %>%
+  format_tt(j = 1, math = TRUE) %>%
+  format_tt(j = 2:6, digits = 2, num_fmt = "decimal", num_zero = TRUE, replace = TRUE) %>%
+  style_tt(i = 1:3, j = 2:6, align = "r") %>%
+  style_tt(i = 0, j = c(3,5), colspan = 2, align = "c")
+```
+
+::::
+
+:::: {.fragment .column width="50%" fragment-index=3}
+
+#### Bivariate model of arm-specific risks
+
+```{r NRT-probability-scatter}
+#| fig-width: 7
+#| fig-height: 4
+#| out-width: 100%
+
+ggplot(HB_dat) + 
+  aes(p_C, p_T, size = sqrt(Ni)) + 
+  geom_hline(yintercept = 0) + 
+  geom_vline(xintercept = 0) + 
+  geom_abline(intercept = 0, slope = 1, color = "grey") + 
+  geom_point(color = "darkblue", alpha = 0.5) + 
+  scale_x_continuous(limits = c(0,NA), expand = expansion(0, c(0,0.02))) + 
+  scale_y_continuous(limits = c(0,NA), expand = expansion(0, c(0,0.02))) + 
+  labs(
+    x = expression(p[0]),
+    y = expression(p[1]),
+    title = "Abstinence rates in NRT group vs. in control group"
+  ) + 
+  theme_minimal() + 
+  theme(legend.position = "none")
+
+```
+
+```{r NRT-bivariate}
+#| cache: true
+
+HB_long <- 
+  to.long(
+    measure = "OR",
+    ai=x.nrt, n1i=n.nrt, ci=x.ctrl, n2i=n.ctrl, 
+    data = HB_dat
+  ) %>%
+  escalc(measure = "PLO", xi = out1, mi = out2, data = .) %>%
+  mutate(
+    group = recode_values(group, "1" ~ "NRT", "2" ~ "CTRL"),
+    study_arm = paste(study, treatment, sep = "-")
+  ) %>%
+  select(-study.1)
+
+HB_bivariate <- 
+  rma.mv(
+    yi = yi, V = vi,
+    mods = ~ group,
+    random = ~ 1 + group | studyid, struct = "GEN",
+    data = HB_long
+  )
+
+HB_bivariate_PI <-
+  data.frame(
+    Est = as.numeric(HB_bivariate$beta), 
+    CI.lo = HB_bivariate$ci.lb, 
+    CI.hi = HB_bivariate$ci.ub,
+    eta = sqrt(HB_bivariate$se^2 + HB_bivariate$tau2)
+  ) %>%
+  mutate(
+    PI.lo = Est - qnorm(0.9) * eta,
+    PI.hi = Est + qnorm(0.9) * eta
+  )
+
+HB_bivariate_tidy <- 
+  data.frame(
+    Param = c("logit(p_0)","\\mu_{LOR}","OR"),
+    Est = c(HB_bivariate_PI$Est, exp(HB_bivariate_PI$Est[2])),
+    CI.lo = c(HB_bivariate_PI$CI.lo, exp(HB_bivariate_PI$CI.lo[2])),
+    CI.hi = c(HB_bivariate_PI$CI.hi, exp(HB_bivariate_PI$CI.hi[2])),
+    PI.lo = c(HB_bivariate_PI$PI.lo, exp(HB_bivariate_PI$PI.lo[2])),
+    PI.hi = c(HB_bivariate_PI$PI.hi, exp(HB_bivariate_PI$PI.hi[2])),
+    tau = c(sqrt(HB_bivariate$tau2), NA),
+    rho = c(NA, HB_bivariate$rho, NA)
+  )
+
+HB_bivariate_tidy %>%
+  rename(`95% CI` = CI.lo, `80% PI` = PI.lo, `\\tau` = tau, `\\rho` = rho) %>%
+  tt() %>%
+  format_tt(i = 0, j = 7:8, math = TRUE) %>%
+  format_tt(j = 1, math = TRUE) %>%
+  format_tt(j = 2:8, digits = 2, num_fmt = "decimal", num_zero = TRUE, replace = TRUE) %>%
+  style_tt(i = 1:3, j = 2:8, align = "r") %>%
+  style_tt(i = 0, j = c(3,5), colspan = 2, align = "c")
+```
+
+::::
+
+:::::
+
+
+::: {.fragment fragment-index=2 style="font-size: 0.9em;"}
+
+- How well this method works depends on the distribution of $\pi_{0i}$ [@Pateras2018datagenerating].
+
+:::
+
+::: {.notes}
+
+Another example. Consider the array of methods for doing meta-analysis of binary end-points.
+The most well-known of these would be to compute log odds ratios for each study, then use a random effects meta-analysis to summarize their distribution. 
+I would argue this is a somewhat heuristic method because its performance depends on features of the data that are not part of the model. 
+Pateras and colleagues have a nice paper highlighting that the performance of models like this depends on the distribution of baseline risk levels, but the baseline risk is not part of the model. 
+Alternately, we could use a bivariate model for the arm-specific risks. This model makes more assumptions, but its also let us generate more extensive predictions and examine questions about how efficacy varies with baseline risks.
+I would therefore call it more generative than the conventional random effects model.
+
+:::
+
+## Meta-analysis vs. computational modeling {.scrollable}
+
+- @Pillny2026effortbased synthesized research on __effort-based decision-making__ (EBDM) tasks to understand differences in motivation across individuals with different psychological disorders.
+
+:::: {.columns}
+
+::: {.fragment .column width="50%"}
+
+### Meta-analysis
+
+- Meta-analysis of standardized mean differences comparing diagnostic groups versus health controls on EBDM tasks:
+
+    - Dual choice paradigms
+    
+    - Effort-discounting paradigms
+    
+    - Progressive ratio paradigms
+
+:::
+
+::: {.fragment .column width="50%"}
+
+### Computational models 
+
+- Narrative review of computational models that aim to understand component processes in decision-making:
+
+    - Reward valuation
+    
+    - Effort sensitivity
+    
+    - Probability weighting
+
+:::
+
+::::
+
+::: {.fragment .redbox}
+
+> While computational modeling may provide deeper insights into
+EBDM mechanisms, its parameters cannot be directly aggregated
+in classical meta-analyses due to variations in model structures,
+parameter definitions, and task designs. Unlike standardized effect sizes used in traditional meta-analyses, computational parameters are model-dependent and often require study-specific assumptions, making direct comparisons across studies challenging or unfeasible.
+
+:::
+
+::: {.notes}
+A final example here is a conventional meta-analysis versus computational modeling. Meta-analysis as it is conventionally practiced rests on heuristics that don't necessarily serve science all that well. 
+
+Psycholigical Bulletin recently published this synthesis by Pillny and colleagues, examining research on effort-based decision making, in an effort to understand differences in motivational processes across individuals with various psychological disorders. 
+
+Their synthesis has two pieces. 
+
+One is a conventional meta-analysis of standardized mean differences, which capture differences between particular diagnostic groups and healthy controls on a variety of EBDM tasks, including dual choice, effort-discounting, and progressive ratio paradigms. 
+
+The other piece was a narrative review of computational models. These computational models take data from the EBDM tasks and relate them to a set of component processes involved in decision-making, using the constructs of reward valuation, effort sensitivity, and probability weighting. In other words, the models aim to make explicit the connections between the observed data and the phenomena of theoretical interest.
+
+Why do they do both of these pieces? They explain as follows: 
+
+> While computational modeling may provide deeper insights into
+EBDM mechanisms, its parameters cannot be directly aggregated
+in classical meta-analyses due to variations in model structures,
+parameter definitions, and task designs. Unlike standardized effect sizes used in traditional meta-analyses, computational parameters are model-dependent and often require study-specific assumptions, making direct comparisons across studies challenging or unfeasible.
+
+In this particular instance, I think these authors' approach is reasonably justified, but their characterization of meta-analysis methods was a surprise to me. Unlike standardized effect sizes! Evidently problems of commensurability can be solved just by whispering the magic words, "Cohen's d." 
+
+It seems like there's a risk here that conventional meta-analysis is just a comforting ritual that psychologists engage in---something that gives the illusion of rigor and comprehensiveness, even though it is only loosely connected to the phenomena that they're actually interested in. In this case, wouldn't the more productive thing be to figure out how the results from the computational modeling studies could be better integrated and synthesized across studies?
+
+:::
+
+
+## Aspire for more generative models
+
+- More generative models...
+
+    - Can be used for simulating data
+    
+    - Can be used to make predictions
+    
+    - Can be more thoroughly evaluated for fit / misfit
+    
+    - Can be more closely tied to scientific phenomena / substantive theory
+
+::: {.notes}
+
+I would argue that we need to ease off a bit on robustness concerns and devote more attention to relatively more generative models. Generativity brings all sorts of benefits: the possibility of simulating data based on the model, the possibility of generating predictions and implications from a model, the possibility of more thoroughly evaluating the fit or misfit of the model. And most fundamentally, generative models are what's needed to tie the statistical analysis to the phenomena of scientific or substantive interest.
+
+So I would say we need to prioritize generativity (or prioritize relatively more generative models over less generative ones) even if this means letting go of some of the conventions of existing methodology.
+
+:::
+
+## Trends and Directions
+
+::::: {.columns}
+
+:::: {.column width="45%" .purplebox}
+
+Naive use of complex models
+
+::::
+
+:::: {.column width="5%"}
+<br>
+::::
+:::: {.column width="45%" .bluebox}
+- Preliminary data analysis routines
+::::
+
+:::::
+
+::::: {.columns}
+
+:::: {.column width="45%" .purplebox}
+
+Method proliferation
+
+::::
+
+:::: {.column width="5%"}
+<br>
+::::
+
+:::: {.column width="45%" .bluebox}
+::: {style="font-size:0.75em;"}
+- Method contra-indications
+- Better / more model fit assessment
+- Living synthetic benchmarking studies
+- Calibrated simulations
+:::
+::::
+
+:::::
+
+::::: {.columns}
+
+:::: {.column width="45%" .purplebox}
+
+Questing for robustness
+
+::::
+
+:::: {.column width="5%"}
+<br>
+::::
+
+:::: {.column width="45%" .bluebox}
+- Aspire towards more generative models
+::::
+
+:::::
+
+::: {.notes}
+
+So in summary, I've identified three broad trends in social science meta-analysis methodology: 
+naive use of complex models, 
+method proliferation, 
+and questing for robustness. 
+
+I've highlighted what I think are some useful directions to remedy the shortcomings of how our methodology has developed, things like preliminary data analysis routines, living synthetic benchmarks, calibrated simulations, and aspiring towards more generative models.
+
+I recognize that this is a partial and very incomplete list (among other things, I haven't said anything about AI, nor about data integrity issues, nor individual participant data synthesis). But I think these directions are beneficial and worth pursuing, so that over the next fifteen years, we can keep our methodology solidly grounded in problems of real data analysis and the scientific questions that motivate our work.
+
+:::
+
+## References

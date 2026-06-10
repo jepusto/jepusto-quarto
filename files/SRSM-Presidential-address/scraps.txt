@@ -1,0 +1,20 @@
+For instance, the multilevel meta-analysis makes the assumption of within-study homoskedasticity, which might be reasonable if you’re dealing with a set of multi-site studies that are all close replications. But what if one half the effects are from one lab group? Network meta-analysis invokes consistency and transitivity assumptions, but how do you gauge whether those assumptions are reasonable for a given domain of application? What if the studies in your review have samples that range in age from kindergarten through high school?
+
+## Don't get 'em mixed up
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](images/cohen960.jpg)
+
+#### Jacob Cohen (Statistician)
+
+:::
+
+::: {.column width="40%"}
+![](images/Dumbledore.jpg)
+
+#### Albus Dumbledore (Wizard)
+:::
+::::
+
