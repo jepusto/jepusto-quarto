@@ -1,0 +1,26 @@
+---
+title: "Using predictive fit to inform effect metric choice in meta-analysis"
+author: 
+  - James E. Pustejovsky
+date: 2026-06-11T15:00:00
+publish_date: 2026-06-11T15:00:00
+event: Society for Research Synthesis Methodology annual meeting
+event_short: SRSM 2026
+event_url: https://srsm.org/meetings
+location: Chania, Crete, Greece
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/SRSM-2026-effect-metric-choice/
+---
+
+__Context__: The choice of effect metric on which to measure findings from different studies is a fundamental decision in meta-analysis. In many applications, multiple metrics may be considered: synthesis of binary outcomes could be conducted using odds ratios, risk ratios, or risk differences; synthesis of continuous, ratio-scale outcomes could be conducted using either standardized mean differences or log response ratios; and synthesis of internal consistency data could be conducted using Cronbach $\alpha$ values or one of several transformations. Currently, meta-analysts have few tools for making principled choices among reasonable alternative metrics.
+
+__Objectives__: I describe how to compare random effects models for different effect size metrics using leave-one-out log-predictive density (LOO-LPD) to quantify predictive fit. I demonstrate the calculations using an example drawn from a previously completed synthesis.
+
+__Methods__: The LOO-LPD for a given study is the log of the predictive density of the model, evaluated at the observed effect size estimate, with model parameters estimated based on the data excluding that study. I measure predictive fit using the total LOO-LPD across all studies in the synthesis. For effect size metrics that are monotonic transformations of one another, LOO-LPD can be computed using transformed densities. For metric comparisons that are not one-to-one transformations, LOO-LPD calculations require embedding the meta-analytic model in a larger model for auxiliary features of the
+studies.
+
+__Results__: I report LOO-LPD calculations using an example drawn from a previously completed Cochrane systematic review on the effects of nicotine replacement therapy on smoking cessation.
+
+__Conclusions__: Effect metric choice should be viewed as a modeling assumption, to be scrutinized just as any other assumption. LOO-LPD is a potentially useful tool for comparing models de`ined under different metrics.

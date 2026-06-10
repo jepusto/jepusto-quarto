@@ -1,0 +1,58 @@
+author,study,subgroup,ESID,publication,grade1,grade2,grade3,student_ability,student_language,,girl,boy,missing,black,hispanic,white,asian,native,other,missing2,ses,us,country,english,languageother,ck_measure,specificity,ck_format,ck_reliability,ck_reliability_name,ck_normed,comp_format,comp_measure,comp_reliability,comp_reliability_name,comp_normed,distal,noalignment,samplesize,ckre,compre,ckre2,compre2,corr,table
+"August et al., 2006",8,8b,1,0,2.08,,0,,0,Spanish-English bilingual students,,,,,,,,,,,,1,,1,,Background knowledge,1,4,0.54,Cronbach’s alpha,0,,Woodcock Language Proficiency Battery_Listening comprehension,,,1,1,1,521,1,,,0,0.48,
+"Hambrick & Engle, 2002",55,55,2,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,0,Multiple-choice A,0.83,Cronbach's alpha,0,1,1,181,0,0,1,1,0.2,table 4
+"Hambrick & Engle, 2002",55,55,3,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,0,Multiple-choice A,0.83,Cronbach's alpha,0,0,0,181,0,0,1,1,0.67,
+"Hambrick & Engle, 2002",55,55,4,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,0,Multiple-choice A,0.83,Cronbach's alpha,0,0,0,181,0,0,1,1,0.7,
+"Hambrick & Engle, 2002",55,55,5,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,0,Multiple-choice A,0.83,Cronbach's alpha,0,0,0,181,1,0,,1,0.24,
+"Hambrick & Engle, 2002",55,55,6,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,4,cloze A,0.86,Cronbach's alpha,0,1,1,181,0,0,1,1,0.31,
+"Hambrick & Engle, 2002",55,55,7,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,4,cloze A,0.86,Cronbach's alpha,0,0,0,181,0,0,1,1,0.72,
+"Hambrick & Engle, 2002",55,55,8,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,4,cloze A,0.86,Cronbach's alpha,0,0,0,181,0,0,1,1,0.76,
+"Hambrick & Engle, 2002",55,55,9,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,4,cloze A,0.86,Cronbach's alpha,0,0,0,181,1,0,,1,0.32,
+"Hambrick & Engle, 2002",55,55,10,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,0,Multiple-choice B,0.8,Cronbach's alpha,0,1,1,181,0,0,1,1,0.14,
+"Hambrick & Engle, 2002",55,55,11,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,0,Multiple-choice B,0.8,Cronbach's alpha,0,0,0,181,0,0,1,1,0.67,
+"Hambrick & Engle, 2002",55,55,12,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,0,Multiple-choice B,0.8,Cronbach's alpha,0,0,0,181,0,0,1,1,0.66,
+"Hambrick & Engle, 2002",55,55,13,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,0,Multiple-choice B,0.8,Cronbach's alpha,0,0,0,181,1,0,,1,0.23,
+"Hambrick & Engle, 2002",55,55,14,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,4,cloze B,0.84,Cronbach's alpha,0,1,1,181,0,0,1,1,0.23,
+"Hambrick & Engle, 2002",55,55,15,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,4,cloze B,0.84,Cronbach's alpha,0,0,0,181,0,0,1,1,0.66,
+"Hambrick & Engle, 2002",55,55,16,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,4,cloze B,0.84,Cronbach's alpha,0,0,0,181,0,0,1,1,0.67,
+"Hambrick & Engle, 2002",55,55,17,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,4,cloze B,0.84,Cronbach's alpha,0,0,0,181,1,0,,1,0.28,
+"Hambrick & Engle, 2002",55,55,18,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,0,Multiple-choice C,0.8,Cronbach's alpha,0,1,1,181,0,0,1,1,0.08,
+"Hambrick & Engle, 2002",55,55,19,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,0,Multiple-choice C,0.8,Cronbach's alpha,0,0,0,181,0,0,1,1,0.54,
+"Hambrick & Engle, 2002",55,55,20,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,0,Multiple-choice C,0.8,Cronbach's alpha,0,0,0,181,0,0,1,1,0.52,
+"Hambrick & Engle, 2002",55,55,21,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,0,Multiple-choice C,0.8,Cronbach's alpha,0,0,0,181,1,0,,1,0.29,
+"Hambrick & Engle, 2002",55,55,22,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,General information,0,3,0.82,Cronbach's alpha,0,4,cloze C,0.84,Cronbach's alpha,0,1,1,181,0,0,1,1,0.16,
+"Hambrick & Engle, 2002",55,55,23,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 1,1,0,0.93,Cronbach's alpha,0,4,cloze C,0.84,Cronbach's alpha,0,0,0,181,0,0,1,1,0.7,
+"Hambrick & Engle, 2002",55,55,24,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 2,1,2,0.97,Cronbach's alpha,0,4,cloze C,0.84,Cronbach's alpha,0,0,0,181,0,0,1,1,0.71,
+"Hambrick & Engle, 2002",55,55,25,0,13,4,2,,,,84,97,,,,,,,,,,1,,1,,Baseball knowledge test 3,1,0,0.35,Cronbach's alpha,0,4,cloze C,0.84,Cronbach's alpha,0,0,0,181,1,0,,1,0.3,
+"Ho et al., 2019",60,60,26,0,2.5,,0,,1,Chinese/Cantonese,63,54,,0,0,0,117,0,0,,3,0,China (Hong Kong),0,Cantonese/Chinese,Topic Knowledge,0,2,0.8,IRR,0,1,Inference making,0.55,IRR,0,0,0,117,0,1,1,,0.37,table 2
+"Hwang & Cabell, 2021",62,62,27,0,0,0,0,1,2,4% were ELs,323,306,,,,,,,,,0,1,,1,,Domain knowledge,0,1,0.88,internal consistency,0,1,(Test of Narrative Language)TNL_narrative,0.87,Cronbach's alpha,0,1,1,613,0,0,1,1,0.59,table 1
+"Hwang & Cabell, 2021",62,62,28,0,0,0,0,1,2,4% were ELs,323,306,,,,,,,,,0,1,,1,,Domain knowledge,0,1,0.88,internal consistency,0,1,(Test of Narrative Language)TNL_narrative,0.87,Cronbach's alpha,0,1,1,617,0,0,1,1,0.67,
+"Hwang & Cabell, 2021",62,62,29,0,0,0,0,1,2,4% were ELs,323,306,,,,,,,,,0,1,,1,,Domain knowledge,0,1,0.88,internal consistency,0,1,(Test of Narrative Language)TNL_sentence,0.87,Cronbach's alpha,0,1,1,613,0,0,1,1,0.55,
+"Hwang & Cabell, 2021",62,62,30,0,0,0,0,1,2,4% were ELs,323,306,,,,,,,,,0,1,,1,,Domain knowledge,0,1,0.88,internal consistency,0,1,(Test of Narrative Language)TNL_sentence,0.87,Cronbach's alpha,0,1,1,617,0,0,1,1,0.66,
+"Jeon, 2007",65,65,31,1,13,4,2,,0,non-native speakers of English,80,61,,0,9,0,132,0,0,,,1,,1,,Content knowledge checklist,1,4,,,0,0,L2 listening proficiency,,,0,0,0,141,,,0,0,-0.021,Table 4.11
+"Jeon, 2007",65,65,32,1,13,4,2,,0,non-native speakers of English,80,61,,0,9,0,132,0,0,,,1,,1,,Content knowledge checklist,1,4,,,0,5,listening checklist,,,0,0,0,141,,,0,0,0.183,
+"Jeon, 2007",65,65,33,1,13,4,2,,0,non-native speakers of English,80,61,,0,9,0,132,0,0,,,1,,1,,Content knowledge checklist,1,4,,,0,2,Immediate written recall-protocol,,,0,0,0,141,,,0,0,0.049,
+"Marron, 2019",85,85,34,0,5,1,0,1,1,,27,13,,0,2,37,1,0,0,,3,1,,1,,Qualitative Reading Inventory-Fifth Edition (QRI-5) concept questions,0,2,,,0,2,Test of Narrative Language (TNL) - oral retell,0.9,IRR,0,1,1,40,,0,0,1,0.33,
+"Meenan, 2015",88,88,35,1,9,,,,,,,,,,,,,,,,,1,,1,,QRI3 topic knowledge,1,1,0.81,Cronbach's alpha,0,2,QRI3 retell,0.94,Cronbach's alpha,0,0,0,502,0,0,1,1,0.17,table 1
+"Meenan, 2015",88,88,36,1,9,,,,,,,,,,,,,,,,,1,,1,,QRI3 topic knowledge,1,1,0.81,Cronbach's alpha,0,2,QRI3 retell,0.94,Cronbach's alpha,0,0,0,504,0,0,1,1,0.33,
+"Meenan, 2015",88,88,37,1,9,,,,,,,,,,,,,,,,,1,,1,,QRI3 topic knowledge,1,1,0.81,Cronbach's alpha,0,2,QRI3 retell,0.94,Cronbach's alpha,0,0,0,501,0,0,1,1,0.17,
+"Meenan, 2015",88,88,38,1,9,,,,,,,,,,,,,,,,,1,,1,,QRI3 topic knowledge,1,1,0.81,Cronbach's alpha,0,2,QRI3 retell,0.94,Cronbach's alpha,0,0,0,501,0,0,1,1,0.26,
+"Morrow et al., 2003",93,93,39,1,13,4,2,,,,5,182,,,,,,,,,,1,,1,,Domain knowledge,1,4,0.79,test-retest,0,2,Route recall,,,0,0,0,187,0,,1,0,0.51,table 5
+"Oefinger & Peverly, 2020",99,99,40,0,9.67,3,1,6,2,19 were nonnative,41,29,,23,32,8,1,1,5,,3,1,,1,,American history mneasure,0,0,1,IRR,0,1,"Listening Comprehension subtest from the Kaufman Test of Educational Achievement-Second Edition, Form A",0.99,IRR,1,1,1,70,0,0,1,1,0.66,table 4
+"Spencer et al., 2019",127,127,41,0,6,,1,1,1,,90,91,,20,,130,4,,18,9.94%,,1,,1,,Background knowledge,1,1,0.88,cronbach's alpha,0,1,Cohesive inferencing,0.61,cronbach's alpha,0,1,1,181,0,1,1,,0.134,table 2
+"Spencer et al., 2019",127,127,42,0,6,,1,1,1,,90,91,,20,,130,4,,18,9.94%,,1,,1,,Background knowledge,1,1,0.88,cronbach's alpha,0,1,Elaborative inferencing,0.64,cronbach's alpha,0,1,1,181,0,1,1,,0.087,
+"Talwar et al., 2018",131,131,43,0,10.13,4,2,4,1,,135,87,2.25%,206,9,7,,,,,,1,,1,,WJ Academic Knowledge,0,1,0.663,Cronbach's alpha,1,2,WJ story recall,0.819,Cronbach's alpha,1,1,1,222,1,0,,1,0.426,
+"Talwar et al., 2018",131,131,44,0,10.13,4,2,4,1,,135,87,2.25%,206,9,7,,,,,,1,,1,,WJ Academic Knowledge,0,1,0.663,Cronbach's alpha,1,1,WJ understanding directions,0.882,Cronbach's alpha,1,1,1,222,1,0,,1,0.451,
+"Talwar et al., 2018",131,131,45,0,10.13,4,2,4,1,,135,87,2.25%,206,9,7,,,,,,1,,1,,WJ General Information,0,1,0.73,Cronbach's alpha,1,2,WJ story recall,0.819,Cronbach's alpha,1,1,1,222,0,0,1,1,0.302,
+"Talwar et al., 2018",131,131,46,0,10.13,4,2,4,1,,135,87,2.25%,206,9,7,,,,,,1,,1,,WJ General Information,0,1,0.73,Cronbach's alpha,1,1,WJ understanding directions,0.882,Cronbach's alpha,1,1,1,222,0,0,1,1,0.371,
+"Talwar et al., 2021",131,131,47,0,13,4,2,4,1,,120,48,,129,,6,29,3,,0.60%,0,0,US & Canada,1,,WJ General Information (WJGI),0,1,0.96,internal reliability,1,1,CELF Understanding Spoken Paragraphs,0.81,internal reliability,1,1,1,168,0,0,1,1,0.59,
+"Talwar et al., 2021",131,131,48,0,13,4,2,4,1,,120,48,,129,,6,29,3,,0.60%,0,0,US & Canada,1,,WJ General Information (WJGI),0,1,0.96,internal reliability,1,1,CASL Inference,0.9,internal reliability,1,1,1,168,0,0,1,1,0.61,
+"Was & Woltz, 2007",138,138,49,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck business test,1,4,0.56,internal consistancy,0,5,true or false,0.74,internal consistancy,0,0,0,202,1,0,,1,0.34,table6
+"Was & Woltz, 2007",138,138,50,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck science test,1,4,0.54,internal consistancy,0,5,true or false,0.74,internal consistancy,0,1,1,202,1,0,,1,0.41,
+"Was & Woltz, 2007",138,138,51,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck history test,1,4,0.62,internal consistancy,0,5,true or false,0.74,internal consistancy,0,1,1,202,1,0,,1,0.36,
+"Was & Woltz, 2007",138,138,52,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck business test,1,4,0.56,internal consistancy,0,5,true or false,0.78,internal consistancy,0,1,1,202,1,0,,1,0.4,
+"Was & Woltz, 2007",138,138,53,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck science test,1,4,0.54,internal consistancy,0,5,true or false,0.78,internal consistancy,0,1,1,202,1,0,,1,0.5,
+"Was & Woltz, 2007",138,138,54,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck history test,1,4,0.62,internal consistancy,0,5,true or false,0.78,internal consistancy,0,0,0,202,1,0,,1,0.48,
+"Was & Woltz, 2007",138,138,55,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck business test,1,4,0.56,internal consistancy,0,5,true or false,0.89,internal consistancy,0,1,1,202,1,0,,1,0.4,
+"Was & Woltz, 2007",138,138,56,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck science test,1,4,0.54,internal consistancy,0,5,true or false,0.89,internal consistancy,0,0,0,202,1,0,,1,0.48,
+"Was & Woltz, 2007",138,138,57,0,13,4,2,,,,143,59,,,,,,,,,,1,,1,,ck history test,1,4,0.62,internal consistancy,0,5,true or false,0.89,internal consistancy,0,1,1,202,1,0,,1,0.38,
