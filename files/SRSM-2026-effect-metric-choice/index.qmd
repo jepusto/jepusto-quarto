@@ -939,6 +939,22 @@ lpd_summary_wide %>%
 
 :::::
 
+## Metric comparison
+
+```{r NRT-comparison-all}
+
+lpd_summary_wide %>%
+  tt(colnames = "label") %>%
+  group_tt(j = list(
+    "Normal-Binomial" = 3:6,
+    "Beta-Binomial" = 7:10
+  )) %>%
+  format_tt(num_fmt = "decimal", digits = 1, num_zero = TRUE) %>%
+  style_tt(i=1:6, j = 3:10, align = "r") %>%
+  style_tt(i = -1, bold = TRUE, background = "lightsteelblue")
+
+```
+
 
 ## Discussion
 
@@ -976,22 +992,6 @@ lpd_summary_wide %>%
 :::: {.absolute bottom="2%" width="100%" style="font-size:2.3em; font-weight: bold; color: red;"}
 You're gonna need a bigger model.
 ::::
-
-## Metric comparison
-
-```{r NRT-comparison-all}
-
-lpd_summary_wide %>%
-  tt(colnames = "label") %>%
-  group_tt(j = list(
-    "Normal-Binomial" = 3:6,
-    "Beta-Binomial" = 7:10
-  )) %>%
-  format_tt(num_fmt = "decimal", digits = 1, num_zero = TRUE) %>%
-  style_tt(i=1:6, j = 3:10, align = "r") %>%
-  style_tt(i = -1, bold = TRUE, background = "lightsteelblue")
-
-```
 
 
 ## Predictive discrepancies
