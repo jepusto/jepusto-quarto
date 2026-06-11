@@ -28,11 +28,9 @@ bibliography: "references.bib"
 ---
 
 ```{r setup}
-library(conflicted)
 library(tidyverse)
 library(tinytable)
 library(ggsci)
-conflicts_prefer(dplyr::filter, .quiet = TRUE)
 library(future)
 library(furrr)
 
