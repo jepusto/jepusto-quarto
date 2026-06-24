@@ -1,0 +1,111 @@
+---
+title: PSST-TESS
+date: '2026-06-24'
+categories:
+- meta-analysis
+- publication bias
+- selective reporting
+code-fold: true
+code-tools: true
+toc: true
+bibliography: "../selection-references.bib"
+csl: "../apa.csl"
+link-citations: true
+draft: true
+---
+
+Way back in 2007, Iaonnidis and Trikalinos proposed the Test of Excess Significance (TES).
+More recently, Stanley and Doucouliagos (2021) proposed some tweaks to TES that allow for heterogeneity and try to correct the conservatism of the original TES. 
+All of these tests are defined in terms of the number of affirmative (positive and statistically significant) effect sizes observed in a meta-analysis and the number of affirmative results one would expect to see given the average effect size and degree of heterogeneity.
+
+Consider a random effects model in which effect size parameters are normally distributed with mean $\mu$ and standard deviation $\tau$. 
+Under the random effects model and for a given study with standard error $\sigma_i$, the observed effect size estimate $T_i$ is normally distributed with mean $\mu$ and standard deviation $\sqrt{\tau^2 + \sigma_i^2}$. Letting $A_i$ be an indicator for whether $T_i$ is statistically significant based on a one-sided test at level $\alpha$, the probability that the observed effect size estimate is affirmative (i.e., the power of study $i$) is 
+$$
+\pi_i = \text{Pr}(A_i = 1 | \sigma_i) = 1 - \Phi\left(\frac{\sigma_i \Phi^{-1}(1 - \alpha) - \mu}{\sqrt{\tau^2 + \sigma_i^2}}\right),
+$$ {#eq-power}
+where $\Phi()$ and $\Phi^{-1}()$ are the standard normal cumulative distribution function and quantile function, respectively.
+
+Stanley and Doucouliagos (2021) proposed the PSST, which is pretty much the same thing as TES but allowing for heterogeneity in the effect size distribution. The PSST test statistic is
+$$
+Z_{PSST} = \frac{\bar{A} - \bar\pi}{\sqrt{\bar\pi(1 - \bar\pi) / k}},
+$$ {#eq-Z-psst}
+where $k$ is the number of observed effect sizes, $\bar{A} = \frac{1}{k} \sum_{i=1}^k A_i$ is the proportion of observed effect sizes that are affirmative, and $\bar\pi = \frac{1}{k} \sum_{i=1}^k \pi_i$ is the average power across all $k$ studies.
+The TESS test statistic is 
+$$
+Z_{TESS} = \frac{\bar{A} - \bar\pi - 0.05}{\sqrt{0.05 \times 0.95 / k}}.
+$$ {#eq-Z-tess}
+Stanley and Doucouliagos also propose that PSST and TESS should be used together, so one would reject the null of no publication bias if either PSST or TESS exceeds a one-sided standard normal critical value, $\Phi^{-1}(0.95)$.
+
+I am a bit perplexed about how PSST and TESS are derived, so I'm going to use a simple model to study them. Let's assume that $\bar{A}$ is approximately normally distributed. In the absence of publication bias, $\bar{A} \cdot\sim N\left(\bar\pi, \frac{1}{k} \bar{V}\right)$, where $\bar{V} = \frac{1}{k} \sum_{i=1}^k \pi_i(1 - \pi_i)$. It follows that $Z_{PSST}$ will exceed $\Phi^{-1}(0.95)$ if $\bar{A} - \bar\pi$ exceeds $\Phi^{-1}(0.95) \times \sqrt{\bar\pi(1 - \bar\pi) / k}$, and so the Type I error rate of the PSST will be approximately
+$$
+\text{Pr}\left(Z_{PSST} > \Phi^{-1}(0.95) \right) = 1 - \Phi\left(\Phi^{-1}(0.95) \times \sqrt{\frac{\bar\pi(1 - \bar\pi)}{\bar{V}}}\right).
+$$ {#eq-TypeI-PSST}
+
+Under the same assumptions, the Type I error rate of TESS will be approximately
+$$
+\text{Pr}\left(Z_{TESS} > \Phi^{-1}(0.95) \right) = 1 - \Phi\left(\frac{0.05}{\sqrt{\bar{V} / k}} + \Phi^{-1}(0.95) \times \sqrt{\frac{0.05 \times 0.95}{\bar{V}}}\right).
+$$ {#eq-TypeI-TESS}
+This is a more complex curve, which can exceed the nominal .05 level for some values of $\bar{V}$ and $k$. For a given value of $\bar{V}$, the Type I error rate decreases for larger $k$.
+
+For the combined PSST-TESS test, the null will be rejected if the maximum of $Z_{PSST}$ and $Z_{TESS}$ exceeds $\Phi^{-1}(0.95)$, equivalent to the condition that 
+$$
+\bar{A} - \bar\pi \geq \min \left\{\Phi^{-1}(0.95) \times \sqrt{\bar\pi(1 - \bar\pi) / k}, \ 0.05 + \Phi^{-1}(0.95) \times \sqrt{0.05 \times 0.95 / k} \right\}.
+$$
+It follows that the Type I error of the combined test is the maximum of the power of the separate tests,
+$$
+\begin{aligned}
+\text{Pr}\left(Z_{PSST} > \Phi^{-1}(0.95) \right) &= \max \left\{\text{Pr}\left(Z_{PSST} > \Phi^{-1}(0.95) \right), \ \text{Pr}\left(Z_{TESS} > \Phi^{-1}(0.95) \right) \right\} \\
+&= 1 - \min \left\{\Phi\left(\Phi^{-1}(0.95) \times \sqrt{\frac{\bar\pi(1 - \bar\pi)}{\bar{V}}}\right), \ \Phi\left(\frac{0.05}{\sqrt{\bar{V} / k}} + \Phi^{-1}(0.95) \times \sqrt{\frac{0.05 \times 0.95}{\bar{V}}}\right) \right\}.
+\end{aligned}
+$$ {#eq-TypeI-PSST-TESS}
+
+```{r}
+library(tidyverse)
+
+PSST_typeI <- function(pibar, Vbar) {
+  pnorm(
+    qnorm(0.95) * sqrt(pibar * (1 - pibar) / Vbar),
+    lower.tail = FALSE
+  )
+}
+
+TESS_typeI <- function(Vbar, k) {
+  pnorm(
+    0.05 / sqrt(Vbar / k) + qnorm(0.95) * sqrt(0.05 * 0.95 / Vbar),
+    lower.tail = FALSE
+  )
+}
+
+TypeI_error <- 
+  expand_grid(
+    pibar = seq(0.01,0.99,0.005),
+    k = seq(10,60,10)
+  ) %>%
+  mutate(
+    Vbar = pibar * (1 - pibar) * 0.9,
+    PSST = pmap_dbl(list(pibar, Vbar), PSST_typeI),
+    TESS = pmap_dbl(list(Vbar, k), TESS_typeI),
+    combined = pmax(PSST, TESS)
+  ) %>%
+  pivot_longer(
+    c(PSST, TESS, combined), 
+    names_to = "test", 
+    values_to = "error"
+  ) %>%
+  mutate(
+    test = fct(test, levels = c("PSST","TESS","combined"))
+  )
+
+ggplot(TypeI_error) + 
+  aes(pibar, error, color = factor(k)) + 
+  geom_line() + 
+  facet_wrap(~ test) + 
+  theme_minimal() + 
+  theme(legend.position = "bottom") + 
+  labs(
+    x = expression(bar(pi)),
+    y = "Type I error",
+    color = expression(k)
+  )
+
+```
