@@ -1,0 +1,100 @@
+
+
+.border {
+  border: 1px solid #dee2e6;
+}
+
+.border-thick {
+  border-width: 3px;
+}
+
+.reveal .slide-logo {
+  height: 70px !important;
+  width: 100px !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  z-index: -999 !important;
+}
+
+.reveal .slide-menu-button svg {
+    color: #C5050C !important; /* Change to your desired color */
+}
+
+.reveal .slide-menu-button:hover svg {
+    color: #C5050C; /* Change hover color */
+}
+
+.moments {
+  text-align: center;
+}
+
+form.oi-3a86ea {
+  --input-width:250px;
+  --label-width:30px;
+  text-align: center;
+}
+
+.oi-3a86ea-input > input[type="number"] {
+  max-width: 10ch;
+}
+
+.center-xy {
+  font-size: 45;
+  justify-content: center;
+  align-items: center;
+} 
+
+
+.red-callout {
+  margin: 0em 0;
+  border: 3px solid red;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  background-color: tomato;
+  padding: 0.1em; 
+}
+
+.redbox {
+  margin: 0.5em 0;
+  border: 3px solid;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0.3em;
+  border: 3px solid #7F0000;
+  background-color: #FEBFBF;
+}
+
+.greenbox {
+  margin: 0.5em 0;
+  border: 3px solid;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0.3em;
+  border: 3px solid darkgreen;
+  background-color: lightgreen;
+}
+
+.bluebox {
+  margin: 0.5em 0;
+  border: 3px solid;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0.3em;
+  border: 3px solid darkblue;
+  background-color: lightblue;
+}
+
+.purplebox {
+  margin: 0.5em 0;
+  border: 3px solid;
+  align-items: center;
+  border-radius: 15px;
+  padding: 0.3em;
+  border: 3px solid #871F78;
+  background-color: #CBC3E3;
+}
+
+.small-text {
+  font-size: 0.5em;
+}
