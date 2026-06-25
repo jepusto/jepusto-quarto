@@ -1,0 +1,41 @@
+---
+title: 'Estimating beta-function selection models in meta-analysis with dependent effects'
+author:
+- name:
+    given: Martyna
+    family: Citkowicz
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Megha
+    family: Joshi
+date: 2026-06-24T00:00:00
+image: social-identity-theory-selection-curves-1.png
+categories:
+- meta-analysis
+- dependent effect sizes
+- selective reporting
+- publication bias
+- selection model
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/metaarxiv/wjpxk_v1
+- icon: code-slash
+  text: Code
+  url: https://osf.io/xehgq/
+- icon: table
+  text: Data
+  url: https://osf.io/xehgq/
+- text: R package
+  url: https://github.com/jepusto/metaselection
+  icon: box2
+preprint: true
+citation: 
+  type: article
+  doi: 10.31222/osf.io/wjpxk_v1
+  url: https://osf.io/preprints/metaarxiv/wjpxk_v1
+---
+
+Meta-analysts seek to draw generalizable inferences by pooling findings across available studies. Such efforts are hampered by selective reporting of study findings, which distorts meta-analytic inferences when statistically significant results are reported preferentially. Many techniques are available for investigating selective reporting in meta-analyses of independent effects, but psychological meta-analyses routinely involve dependent data structures, as arise when primary studies report results for multiple outcomes. Recent methodological developments that can accommodate dependent effects have focused on step-function selection models, in which the probability of reporting depends on whether a finding's p-value falls above or below pre-specified thresholds. We propose an alternative model in which the reporting probability follows a flexible, truncated beta function, avoiding the need to specify a priori  thresholds. Estimation of the model accommodates dependent effect sizes using cluster-robust variance estimation or clustered bootstrapping. We demonstrate the proposed approach by re-analyzing a published meta-analysis. Through an extensive simulation study, we evaluate the performance of the truncated beta model versus standard meta-analytic methods and versus step-function models to assess robustness to selection function misspecification. Results show that the beta-density model yields negligible bias across diverse conditions and outperforms standard alternatives when selective reporting is present, although simpler step-function models can be more precise under mild selection. Clustered bootstrap confidence intervals provide superior coverage compared to cluster-robust variance estimation. Although conventional methods remain more precise when selection is absent, the truncated beta selection model serves as a useful tool for sensitivity analysis and estimation in larger dataset that include dependent effects.
