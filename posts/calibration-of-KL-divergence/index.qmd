@@ -1,0 +1,19 @@
+---
+title: Calibration models for Kullback-Leibler divergence
+date: '2026-07-05'
+categories:
+- distribution-theory
+- Kullback-Leibler-divergence
+code-tools: true
+draft: true
+---
+
+For some new projects, I've been thinking about model evaluation and model selection in meta-analysis. You can't get very far into the literature on this without running into Kullback-Leibler divergence, which is a metric for quantifying discrepancies between distributions (strictly speaking, it is not a "distance" metric because it's not symmetric). For two distributions $P$ and $Q$ with probability density functions $p(x)$ and $q(x)$, respectively, the KL divergence of Q from P is
+$$
+KL(P||Q) = \mathbb{E}_P\left[\log p(X) - \log q(X)\right],
+$$
+where $\mathbb{E}_P$ means that the expectation is taken with respect to $P$.
+
+KL divergence is the basis of information criteria, including the Akaike, Bayesian, Deviance, Watanabe, and LOO ICs.
+
+One of the vexing things about working with KL divergence is interpreting its magnitude. If two models differ by 4 in KL divergence, is that big and meaningful? Or trivial? 
