@@ -1,0 +1,10 @@
+
+form.oi-3a86ea {
+  --input-width:200px;
+  --label-width:30px;
+  text-align: center;
+}
+
+.oi-3a86ea-input > input[type="number"] {
+  max-width: 8ch;
+}
