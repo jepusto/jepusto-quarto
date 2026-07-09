@@ -284,3 +284,164 @@ Plot.plot({
 ## Standard Normal Calibrations
 
 The appeal of coin flips (or binomial distributions) for this sort of calibration exercise is that it they are familiar and as simple as you can get---one bit of information per flip---as far as probability models go.
+However, this isn't necessarily the most intuitive calibration model for meta-analysis.
+In a conventional random effects meta-analysis, the effect size parameters are typically assumed to be normally distributed about some average effect and with some standard deviation that measures the degree of heterogeneity in the results across studies. 
+Given that meta-analysts are accustomed to thinking about Gaussian distributions, perhaps a more natural calibration model would be one that involves the standard normal distribution.
+Here I'll treat the standard normal $N(0,1)$ distribution as the inferior prediction model and consider a variety of superior models for the unknown true distribution.
+For greater flexibility (as well as consistency with the coin flip models), I'll always write KL divergences for samples of $N$ observations, which is just $N$ times the KL divergence of a single observation.
+
+A simple starting point would be to compare two normal distributions to each other. The KL divergence of a $N(\mu,\sigma^2)$ distribution from the standard normal distribution is quite simple:
+$$
+KL_N\left(N\left(\mu,\sigma^2\right), N\left(0,1\right)\right) = \frac{N}{2}\left(\mu^2 + \sigma^2 - 1 - \log \sigma^2\right).
+$$
+Even simpler, @Goutis1998model considered a calibration model involving normal distributions with unit variance, so the KL divergence is just $N \times \mu^2 / 2$. Thus, taking $\mu = \sqrt{\frac{2\Delta}{N}}$ leads to two unit-Gaussian distributions for which $N$ samples have a divergence of $\Delta$.
+
+But why focus only on location shifts? Instead, what if the superior model had mean zero but differing variance? Then 
+$$
+KL_N\left(N\left(0,\sigma^2\right), N\left(0,1\right)\right) = \frac{N}{2}\left(\sigma^2 - 1 - \log \sigma^2\right).
+$$
+To obtain a KL divergence of $\Delta$, set $\sigma^2 = - W\left(-\exp\left[-\left(\frac{2\Delta}{N} + 1\right)\right]\right)$, where $W()$ is the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function).
+
+Neither of these calibration models seems especially salient in the meta-analysis context.
+There, it seems rather implausible that a model would be badly mis-specified in terms of the center or spread of the distribution of effects.
+I would find it more plausible that a model might be mis-specified in terms of its shape somehow---perhaps missing some skewness or kurtosis in the distribution of effects that a (Gaussian) random effects model would not capture.
+
+What if the superior model was a skew-normal distribution with mean zero, unit variance, and shape parameter $\alpha > 0$? Such a distribution can have skewness $0 < \gamma < 1$. Let $\xi$ be the location parameter and $\omega$ be the scale parameter of the skew-normal. Letting $a = \sqrt{\frac{2\alpha^2}{\pi (1 + \alpha^2)}}$, setting $\omega = (1 - a^2)^{-1/2}$ and $\xi = - \omega a$ leads to a distribution with mean zero, unit variance, and probability density function
+$$
+f_{SN}(x) = 2 \sqrt{1 - a^2} \times \phi\left(x \sqrt{1 - a^2} + a\right) \times \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right),
+$$
+where $\phi()$ is the unit normal density and $\Phi()$ is the unit normal cumulative distribution function. The KL divergence from this skew normal to the unit normal distribution is then
+$$
+\begin{aligned}
+KL_N\left(SN\left(\xi,\omega,\alpha\right), N\left(0,1\right)\right) &= \mathbb{E}_{SN}\left[\log f_{SN}(X) - \log \phi(X)\right] \\
+&= \log(2) + \frac{1}{2} \log(1 - a^2) \\
+& \qquad  + \mathbb{E}_{SN}\left[ \frac{1}{2} X^2 - \frac{1}{2}\left(X \sqrt{1 - a^2} + a\right)^2 \right. \\
+& \qquad \qquad \qquad  + \left. \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right] \\
+&= \log(2) + \frac{1}{2} \log\left(1 - a^2\right) \\
+& \qquad \qquad + \mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right].
+\end{aligned}
+$$
+The expectation in the final expression can be evaluated via numerical integration.[^skew-expectation]
+
+If mis-specification could manifest as skewness, then why not kurtosis too? 
+
+[^skew-expectation]: Specifically, 
+$$
+\begin{aligned}
+\mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right] &= \int_{\mathbb{R}} \log \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right) f_{SN}(x) dx \\
+&= 2 \sqrt{1 - a^2}\int_{\mathbb{R}} \log \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right)  \\
+& \qquad \qquad \qquad \qquad \times \phi\left(x \sqrt{1 - a^2} + a\right) \\
+& \qquad \qquad \qquad \qquad \times \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right) dx \\
+&= \frac{2}{\alpha}\int_0^1 u \log(u) \frac{\phi\left(\frac{1}{\alpha}\Phi^{-1}(u)\right)}{\phi(u)} du \\
+&= \frac{2}{\alpha}\int_0^1 u \log(u) \exp \left(-\frac{1}{2}\left[\frac{1}{\alpha^2}\Phi^{-2}(u) - u^2\right]\right) du
+\end{aligned}
+$$
+
+::::: {.grid .column-page-left}
+
+:::: {.g-col-4}
+
+```{ojs}
+//| panel: input
+//| echo: false
+
+Inputs.bind(
+  Inputs.range(
+    [1, Nmax], 
+    {step: 1, label: tex`N`}
+  ),
+  viewof N
+)
+
+
+Inputs.bind(
+  Inputs.range(
+    [0, Delta_max], 
+    {step: Delta_step, label: tex`\Delta`}
+  ),
+  viewof Delta
+)
+
+viewof scale = Inputs.range(
+  [1., 10], 
+  {value: 5, step: 0.5, label: "Scale"}
+)
+
+sigma_toprint = sigma.toFixed(3)
+tex`\sigma = ${sigma_toprint}`
+
+
+```
+::::
+
+:::: {.g-col-8 .center}
+
+
+```{ojs}
+//| echo: false
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+
+// Location-shift
+
+mu = math.sqrt(2 * Delta / N)
+
+
+// Scale-shift
+
+function KL_sigma(s) {
+  return N * (s**2 - 1 - 2 * math.log(s)) / 2;
+} 
+
+function dKL_sigma(s) {
+  return (s - 1 / s) * N;
+} 
+
+sigma = newtonRaphson(KL_sigma, dKL_sigma, Delta, 1.1, 1, 100, 1e-5, 100)
+
+
+// Compute densities
+pts2 = 201
+dat3 = Array(pts2).fill().map((element, index) => {
+  let x = - scale + index * 2 * scale / (pts2 - 1);
+  let p = norm.pdf(x);
+  let q = norm.pdf(x - mu);
+  let r = norm.pdf(x / sigma) / sigma;
+  return ({
+    x: x,
+    p: p,
+    q: q,
+    r: r
+  })
+})
+```
+
+```{ojs}
+//| echo: false
+//| label: fig-normal
+//| fig-cap: "Standard normal distribution (black line)"
+
+
+Plot.plot({
+  height: 350,
+  width: 700,
+  y: {
+    grid: false,
+    label: "Probability"
+  },
+  x: {
+    label: "X"
+  },   
+  marks: [
+    Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
+    Plot.areaY(dat3, {x: "x", y: "q", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(dat3, {x: "x", y: "q", stroke: "blue"}),
+    Plot.areaY(dat3, {x: "x", y: "r", fill: "orange", fillOpacity: 0.5}),
+    Plot.lineY(dat3, {x: "x", y: "r", stroke: "orange"})
+  ]
+})
+```
+
+::::
+:::::
+
