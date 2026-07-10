@@ -313,17 +313,15 @@ $$
 where $\phi()$ is the unit normal density and $\Phi()$ is the unit normal cumulative distribution function. The KL divergence from this skew normal to the unit normal distribution is then
 $$
 \begin{aligned}
-KL_N\left(SN\left(\xi,\omega,\alpha\right), N\left(0,1\right)\right) &= \mathbb{E}_{SN}\left[\log f_{SN}(X) - \log \phi(X)\right] \\
-&= \log(2) + \frac{1}{2} \log(1 - a^2) \\
+KL_N\left(SN\left(\xi,\omega,\alpha\right), N\left(0,1\right)\right) &= N \times \mathbb{E}_{SN}\left[\log f_{SN}(X) - \log \phi(X)\right] \\
+&= N \left[ \log(2) + \frac{1}{2} \log(1 - a^2) \right. \\
 & \qquad  + \mathbb{E}_{SN}\left[ \frac{1}{2} X^2 - \frac{1}{2}\left(X \sqrt{1 - a^2} + a\right)^2 \right. \\
-& \qquad \qquad \qquad  + \left. \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right] \\
-&= \log(2) + \frac{1}{2} \log\left(1 - a^2\right) \\
-& \qquad \qquad + \mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right].
+& \qquad \qquad \qquad  + \left.\left. \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right]\right] \\
+&= N \left[\log(2) + \frac{1}{2} \log\left(1 - a^2\right) + \mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right]\right].
 \end{aligned}
 $$
 The expectation in the final expression can be evaluated via numerical integration.[^skew-expectation]
-
-If mis-specification could manifest as skewness, then why not kurtosis too? 
+Although there's not a closed-form inverse, it's easy enough to solve numerically for $\alpha$.
 
 [^skew-expectation]: Specifically, 
 $$
@@ -336,6 +334,21 @@ $$
 &= \frac{2}{\alpha}\int_0^1 u \log(u) \exp \left(-\frac{1}{2}\left[\frac{1}{\alpha^2}\Phi^{-2}(u) - u^2\right]\right) du
 \end{aligned}
 $$
+
+
+If mis-specification could manifest as skewness, then why not kurtosis too? 
+Suppose the superior model is a Student $t$ distribution with degrees of freedom $\nu$. 
+For simplicity, I won't worry about forcing the $t$ to have unit variance. 
+The KL-divergence of the standard normal from a $t(\nu)$ distribution is
+$$
+\begin{aligned}
+KL_N\left(t(\nu), N\left(0,1\right)\right) &= \frac{N}{2}\left[\log(2\pi) + \frac{\nu}{\nu - 2} \right. \\
+& \qquad \qquad  \left. - (\nu + 1)\left(\psi\left(\frac{\nu + 1}{2}\right) - \psi\left(\frac{\nu}{2}\right)\right) \right. \\
+& \qquad \qquad \qquad  \qquad \qquad\left. - \log(\nu) - 2 \log B\left(\frac{\nu}{2}, \frac{1}{2}\right) \right],
+\end{aligned}
+$$
+where $\psi()$ is the digamma function and $B(.,.)$ is the beta function.
+For a given $\Delta$, the expression can be solved numerically for $\nu$.
 
 ::::: {.grid .column-page-left}
 
@@ -370,6 +383,9 @@ viewof scale = Inputs.range(
 sigma_toprint = sigma.toFixed(3)
 tex`\sigma = ${sigma_toprint}`
 
+nu_toprint = nu.toFixed(3)
+tex`\nu = ${nu_toprint}`
+
 
 ```
 ::::
@@ -379,8 +395,9 @@ tex`\sigma = ${sigma_toprint}`
 
 ```{ojs}
 //| echo: false
-norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
-
+normal = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-normal@umd/browser.js' )
+student = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-t@umd/browser.js' )
+trigamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-trigamma@umd/browser.js' )
 
 // Location-shift
 
@@ -400,20 +417,64 @@ function dKL_sigma(s) {
 sigma = newtonRaphson(KL_sigma, dKL_sigma, Delta, 1.1, 1, 100, 1e-5, 100)
 
 
+// Kurtosis
+
+function KL_t(v) {
+  let c1 = math.log(2 * math.pi) / 2;
+  let c2 = v / (2 * (v - 2));
+  let c3 = student.entropy(v);
+  return N * (c1 + c2 - c3);
+}
+
+function dKL_t(v) {
+  let c1 = (v - 2)**(-2);
+  let c2 = 1 / (2 * v);
+  let c3 = (trigamma((v + 1) / 2) - trigamma(v / 2)) * (v + 1) / 4;
+  return -N * (c1 + c2 + c3);
+}
+
+nu = newtonRaphson(KL_t, dKL_t, Delta, 3, 2, 100, 1e-5, 100)
+
 // Compute densities
 pts2 = 201
 dat3 = Array(pts2).fill().map((element, index) => {
   let x = - scale + index * 2 * scale / (pts2 - 1);
-  let p = norm.pdf(x);
-  let q = norm.pdf(x - mu);
-  let r = norm.pdf(x / sigma) / sigma;
+  let p = normal.pdf(x,0,1);
+  let q = normal.pdf(x, mu, 1);
+  let r = normal.pdf(x,0, sigma);
+  let t = student.pdf(x, nu);
   return ({
     x: x,
     p: p,
     q: q,
-    r: r
+    r: r,
+    t: t
   })
 })
+
+colormap = [{v:"q",c:"blue"},{v:"r",c:"orange"},{v:"t",c:"green"}]
+
+function density_plot(v, c) {
+  return Plot.plot({
+    height: 200,
+    width: 400,
+    y: {
+      grid: false,
+      axis: false
+    },
+    x: {
+      label: null
+    },
+    marks: [
+      Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
+      Plot.areaY(dat3, {x: "x", y: v, fill: c, fillOpacity: 0.5}),
+      Plot.lineY(dat3, {x: "x", y: v, stroke: c})
+    ]
+  });
+}
+
+plot_list = Object.values(colormap).map(x => density_plot(x.v, x.c))
+
 ```
 
 ```{ojs}
@@ -421,25 +482,9 @@ dat3 = Array(pts2).fill().map((element, index) => {
 //| label: fig-normal
 //| fig-cap: "Standard normal distribution (black line)"
 
-
-Plot.plot({
-  height: 350,
-  width: 700,
-  y: {
-    grid: false,
-    label: "Probability"
-  },
-  x: {
-    label: "X"
-  },   
-  marks: [
-    Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
-    Plot.areaY(dat3, {x: "x", y: "q", fill: "blue", fillOpacity: 0.5}),
-    Plot.lineY(dat3, {x: "x", y: "q", stroke: "blue"}),
-    Plot.areaY(dat3, {x: "x", y: "r", fill: "orange", fillOpacity: 0.5}),
-    Plot.lineY(dat3, {x: "x", y: "r", stroke: "orange"})
-  ]
-})
+html`<div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 5px; row-gap: 5px;">
+  ${plot_list}
+</div>`
 ```
 
 ::::
