@@ -1,6 +1,6 @@
 ---
 title: Calibration models for Kullback-Leibler divergence
-date: '2026-07-05'
+date: '2026-07-12'
 categories:
 - distribution-theory
 - Kullback-Leibler-divergence
@@ -11,18 +11,17 @@ bibliography: "../information-criteria-references.bib"
 csl: "../apa.csl"
 css: styles.css
 link-citations: true
-draft: true
 ---
 
-For some new projects, I've been thinking about model evaluation and model selection in meta-analysis. 
-You can't get very far into the literature on this without running into Kullback-Leibler divergence, which is a metric for quantifying discrepancies between distributions (strictly speaking, it is not a distance metric because it's not symmetric). 
+For a [new project](/presentations/SRSM-2026-effect-metric-choice.html), I've been thinking about model evaluation and model selection in meta-analysis. 
+You can't get very far into the literature on this without running into Kullback-Leibler divergence, which is a metric for quantifying discrepancies between distributions. 
+Among other things, KL divergence is the basis of information criteria, including the Akaike [@Akaike1973information], Bayesian [@Schwarz1978estimating], Deviance [@Spiegelhalter2002bayesian], Watanabe [@Watanabe2010asymptotic], and LOO [@Vehtari2002bayesian] information criteria.
 For two distributions $P$ and $Q$ with probability density functions $p(x)$ and $q(x)$, respectively, the KL divergence of Q from P is
 $$
 KL(P||Q) = \mathbb{E}_P\left[\log p(X) - \log q(X)\right],
 $$
 where $\mathbb{E}_P$ means that the expectation is taken with respect to $P$.
-
-KL divergence is the basis of information criteria, including the Akaike [@Akaike1973information], Bayesian [@Schwarz1978estimating], Deviance [@Spiegelhalter2002bayesian], Watanabe [@Watanabe2010asymptotic], and LOO [@Vehtari2002bayesian] information criteria.
+Note that KL-divergence is not, strictly speaking, a distance metric because it is not symmetric: $KL(P||Q) \neq KL(Q || P)$ because the expectation is taken under different distributions in each case. 
 
 One of the vexing things about working with KL divergence is interpreting its magnitude. If two models differ by 4 in KL divergence, is that big and meaningful? Or trivial? 
 How should an analyst make judgements on the basis of KL divergence, AICs, or LOOICs?
@@ -30,70 +29,32 @@ There are surely many answers to this question.
 In this post, I'll explore a technique that's been called _calibration_.
 
 Suppose we are examining two different models fitted to the same data, trying to decide which one fits better.
-The two models differ by $KL = \Delta$. 
-Calibration works by constructing an analogy to these two models, by finding simpler-to-conceptualize models that also differ by $KL = \Delta$.
+The (estimated) KL divergences of the two models differ by $\Delta$. 
+Calibration involves constructing an analogy to these two models by finding simpler-to-conceptualize models with the same KL divergence, $KL = \Delta$.
 @McCulloch1989local suggested calibrating based on the KL divergence of a Bernoulli$(\pi)$ distribution from a Bernoulli$(\frac{1}{2})$ distribution.
 @Domingue2025intermodel recently described a relative model fit index called the InterModel Vigorish, which is derived along essentially the same lines as @McCulloch1989local's calibration model.
-@Goutis1998model gave examples of calibrations based on other single-parameter distributions including the divergence of a Poisson$(\lambda)$ from a Poisson$(1)$ and divergence of a $N(\mu,1)$ from a $N(0,1)$.
+@Goutis1998model gave examples of calibrations based on other single-parameter distributions including the divergence of Poisson$(\lambda)$ from Poisson$(1)$ and divergence of $N(\mu,1)$ from $N(0,1)$.
 The diversity of potential calibration models is effectively endless, constrained only by one's imagination and computing power.
 
 ## Coin flip calibrations
 
 Here is a slight generalization of the calibration model proposed in @McCulloch1989local, where I use Binomial instead of Bernoulli distributions.
-Suppose that the true model P is Binomial$\left(N,\frac{1}{2}\right)$ but our prediction model $Q$ is $\left(N,\pi\right)$.
+Suppose that the true model $P$ is Binomial$\left(N,\frac{1}{2}\right)$ but our prediction model $Q$ is $\left(N,\pi\right)$.
 The KL divergence of the latter from the former is
 $$
-KL\left(Bin\left(N,\frac{1}{2}\right), Bin\left(N,\pi\right)\right) = N \times \left[\log\left(\frac{1}{2}\right) -\frac{1}{2} \left[\log \pi + \log(1 - \pi)\right]\right] = -\frac{K}{2} \log\left(4 \pi(1 - \pi)\right).
+\begin{aligned}
+KL\left(Bin\left(N,\frac{1}{2}\right), Bin\left(N,\pi\right)\right) &= N \times \left[\log\left(\frac{1}{2}\right) -\frac{1}{2} \left[\log \pi + \log(1 - \pi)\right]\right] \\
+&= -\frac{K}{2} \log\left(4 \pi(1 - \pi)\right).
+\end{aligned}
 $$
 Given a KL-divergence of $\Delta$, the prediction model with corresponding KL-divergence would have $\pi = \frac{1}{2}\left[1 + \sqrt{1 - \exp\left(-\frac{2\Delta}{N}\right)}\right]$. 
 
-In the interactive @fig-mcculloch, you can specify a degree of divergence $\Delta$ (along with the number of trials $K$) and see the binomial distribution with probability $\pi$ that has KL-divergence of $\Delta$ from a binomial distribution with probability $\frac{1}{2}$. 
-You can think of this as representing the divergence (or lack of fit) that corresponds to assuming you have a biased $\pi$ coin across $K$ flips, when the coin is actually fair.
+In the interactive @fig-mcculloch, you can specify a degree of divergence $\Delta$ (along with the number of trials $N$) and see the binomial distribution with probability $\pi$ that has KL-divergence of $\Delta$ from a binomial distribution with probability $\frac{1}{2}$. 
+You can think of this as representing the divergence (or lack of fit) that corresponds to assuming you have a biased $\pi$ coin across $N$ flips, when the coin is actually fair.
 
-::::: {.grid .column-page-left}
+::::: {.grid .column-page}
 
-:::: {.g-col-4}
-
-```{ojs}
-//| echo: false
-//| output: false
-Nmax = 50
-Delta_max = 20
-Delta_step = 0.1
-
-viewof N = Inputs.input(10)
-viewof Delta = Inputs.input(4)
-
-```
-
-```{ojs}
-//| panel: input
-//| echo: false
-
-Inputs.bind(
-  Inputs.range(
-    [1, Nmax], 
-    {step: 1, label: tex`N`}
-  ),
-  viewof N
-)
-
-Inputs.bind(
-  Inputs.range(
-    [0, Delta_max], 
-    {step: Delta_step, label: tex`\Delta`}
-  ),
-  viewof Delta
-)
-
-pi_toprint = pi.toFixed(3)
-tex`\pi = ${pi_toprint}`
-
-```
-
-::::
-
-:::: {.g-col-8 .center}
+:::: {.g-col-9 .center}
 
 ```{ojs}
 //| echo: false
@@ -144,20 +105,19 @@ Plot.plot({
 
 ::::
 
-:::::
+:::: {.g-col-3}
 
+```{ojs}
+//| echo: false
+//| output: false
+Nmax = 50
+Delta_max = 20
+Delta_step = 0.1
 
-For whatever reason, McCulloch's calibration model feels backwards to me---why would one predict that a coin is biased when it is actually perfectly fair? 
-The other way to set up this problem would be to imagine that you are flipping $N$ coins and that you expect the coin to be fair, but it is actually biased.
-This corresponds to finding the probability for $Q$ such that the KL divergence of $P$ from $Q(\phi)$ is equal to $\Delta$:
-$$
-KL\left(Bin\left(N,\phi\right), Bin\left(N,\frac{1}{2}\right)\right) = N \times \left[\log 2 + \phi \log \phi + (1 - \phi) \log(1 - \phi)\right].
-$$
-This is a bit harder to solve for $\phi$, but no problem to work out numerically. @fig-binomial displays the calibrated models corresponding to a given difference $\Delta$ in KL divergence, for whatever value of $K$ that you like.
+viewof N = Inputs.input(10)
+viewof Delta = Inputs.input(4)
 
-::::: {.grid .column-page-left}
-
-:::: {.g-col-4}
+```
 
 ```{ojs}
 //| panel: input
@@ -171,7 +131,6 @@ Inputs.bind(
   viewof N
 )
 
-
 Inputs.bind(
   Inputs.range(
     [0, Delta_max], 
@@ -180,13 +139,29 @@ Inputs.bind(
   viewof Delta
 )
 
-phi_toprint = phi.toFixed(3)
-tex`\phi = ${phi_toprint}`
+pi_toprint = pi.toFixed(3)
+tex`\pi = ${pi_toprint}`
 
 ```
+
 ::::
 
-:::: {.g-col-8 .center}
+
+:::::
+
+
+McCulloch's calibration model feels backwards to me---why would one predict that a coin is biased when it is actually perfectly fair? 
+The other way to set up this problem would be to imagine that you are flipping $N$ coins and that you expect the coin to be fair, but it is actually biased.
+This corresponds to finding the probability for $Q$ such that the KL divergence of $P$ from $Q(\phi)$ is equal to $\Delta$:
+$$
+KL\left(Bin\left(N,\phi\right), Bin\left(N,\frac{1}{2}\right)\right) = N \times \left[\log 2 + \phi \log \phi + (1 - \phi) \log(1 - \phi)\right].
+$$
+This is a bit harder to solve for $\phi$, but no problem to work out numerically. @fig-binomial displays the calibrated models corresponding to a given difference $\Delta$ in KL divergence, for whatever value of $N$ that you like.
+For small or moderate $N$, this calibration model is distinct from McCulloch's because of the asymmetry of KL divergence.
+
+::::: {.grid .column-page}
+
+:::: {.g-col-9 .center}
 
 ```{ojs}
 //| echo: false
@@ -208,11 +183,11 @@ function newtonRaphson(f, df, c, x0, xmin, xmax, tolerance, maxIterations) {
     }
   } else {
     while (error > tolerance && iter < maxIterations) {
-        const fx = f(x) - c;
-        const dfx = df(x);
-        const step = -fx / dfx;
+        let fx = f(x) - c;
+        let dfx = df(x);
+        let step = -fx / dfx;
         let p = 0;
-        let xNext = xmax + xmin;
+        let xNext = x + step;
         while (xNext <= xmin || xNext >= xmax) {
           xNext = x + step / 2**p;
           p++;      
@@ -279,24 +254,66 @@ Plot.plot({
 
 ::::
 
+:::: {.g-col-3}
+
+```{ojs}
+//| panel: input
+//| echo: false
+
+Inputs.bind(
+  Inputs.range(
+    [1, Nmax], 
+    {step: 1, label: tex`N`}
+  ),
+  viewof N
+)
+
+
+Inputs.bind(
+  Inputs.range(
+    [0, Delta_max], 
+    {step: Delta_step, label: tex`\Delta`}
+  ),
+  viewof Delta
+)
+
+phi_toprint = phi.toFixed(3)
+tex`\phi = ${phi_toprint}`
+
+```
+
+::::
+
+
 :::::
 
 ## Standard Normal Calibrations
 
-The appeal of coin flips (or binomial distributions) for this sort of calibration exercise is that it they are familiar and as simple as you can get---one bit of information per flip---as far as probability models go.
+The appeal of coin flips (or binomial distributions) for this sort of calibration exercise is that it they are familiar and just about as simple as you can get---one bit of information per flip---as far as probability models go.
 However, this isn't necessarily the most intuitive calibration model for meta-analysis.
 In a conventional random effects meta-analysis, the effect size parameters are typically assumed to be normally distributed about some average effect and with some standard deviation that measures the degree of heterogeneity in the results across studies. 
 Given that meta-analysts are accustomed to thinking about Gaussian distributions, perhaps a more natural calibration model would be one that involves the standard normal distribution.
 Here I'll treat the standard normal $N(0,1)$ distribution as the inferior prediction model and consider a variety of superior models for the unknown true distribution.
-For greater flexibility (as well as consistency with the coin flip models), I'll always write KL divergences for samples of $N$ observations, which is just $N$ times the KL divergence of a single observation.
+For greater flexibility (as well as consistency with the coin flip models), I'll always write KL divergences for samples of $N$ observations, which is just $N$ times the KL divergence of a single observation.[^cross-entropy]
+
+[^cross-entropy]: All of the math that follows amounts to applications of the same general derivation. For a distribution $P$,
+$$
+\begin{aligned}
+KL_N\left(P, N\left(0,1\right)\right) &= \mathbb{E}_P\left[\log p(X) - \log \phi(X)\right] \\
+&= \mathbb{E}_P\left[\log p(X) + \frac{1}{2}\log(2\pi) + \frac{1}{2} X^2\right] \\
+&= \frac{1}{2}\log(2\pi) + \frac{1}{2} \left(\left[\mathbb{E}_P (X) \right]^2 + \mathbb{V}_P(X)\right) - \mathcal{H}(P),
+\end{aligned}
+$$
+where $\mathcal{H}(P)$ is the differential entropy of the distribution $P$. Thus, the KL divergence depends only on the entropy, mean, and variance of the distribution. If $P$ is constructed to have the same mean and variance as the standard normal, then things simplify even further to $KL_N\left(P, N\left(0,1\right)\right) = \frac{1}{2}\log(2\pi) + \frac{1}{2} - \mathcal{H}(P)$.
+
 
 A simple starting point would be to compare two normal distributions to each other. The KL divergence of a $N(\mu,\sigma^2)$ distribution from the standard normal distribution is quite simple:
 $$
 KL_N\left(N\left(\mu,\sigma^2\right), N\left(0,1\right)\right) = \frac{N}{2}\left(\mu^2 + \sigma^2 - 1 - \log \sigma^2\right).
 $$
-Even simpler, @Goutis1998model considered a calibration model involving normal distributions with unit variance, so the KL divergence is just $N \times \mu^2 / 2$. Thus, taking $\mu = \sqrt{\frac{2\Delta}{N}}$ leads to two unit-Gaussian distributions for which $N$ samples have a divergence of $\Delta$.
+Even simpler, @Goutis1998model considered a calibration model involving normal distributions with unit variance, so the KL divergence is just $N \times \mu^2 / 2$. Thus, taking $\mu = \sqrt{\frac{2\Delta}{N}}$ leads to two unit-Gaussian distributions for which an $N$-sample has a divergence of $\Delta$.
 
-But why focus only on location shifts? Instead, what if the superior model had mean zero but differing variance? Then 
+But why focus only on location shifts? Instead, what if the true model $P$ had mean zero but differing variance? Then 
 $$
 KL_N\left(N\left(0,\sigma^2\right), N\left(0,1\right)\right) = \frac{N}{2}\left(\sigma^2 - 1 - \log \sigma^2\right).
 $$
@@ -306,40 +323,24 @@ Neither of these calibration models seems especially salient in the meta-analysi
 There, it seems rather implausible that a model would be badly mis-specified in terms of the center or spread of the distribution of effects.
 I would find it more plausible that a model might be mis-specified in terms of its shape somehow---perhaps missing some skewness or kurtosis in the distribution of effects that a (Gaussian) random effects model would not capture.
 
-What if the superior model was a skew-normal distribution with mean zero, unit variance, and shape parameter $\alpha > 0$? Such a distribution can have skewness $0 < \gamma < 1$. Let $\xi$ be the location parameter and $\omega$ be the scale parameter of the skew-normal. Letting $a = \sqrt{\frac{2\alpha^2}{\pi (1 + \alpha^2)}}$, setting $\omega = (1 - a^2)^{-1/2}$ and $\xi = - \omega a$ leads to a distribution with mean zero, unit variance, and probability density function
+What if the superior model was a shifted gamma distribution with shape parameter $\alpha$, scale parameter $\beta$, and shift $c$? If $X + c \sim \Gamma(\alpha, \beta)$, then setting $\beta = \sqrt{\alpha}$ and $c = -\sqrt{\alpha}$ leads to a distribution with mean zero, unit variance, skewness $2 / \sqrt{\alpha}$, and differential entropy
 $$
-f_{SN}(x) = 2 \sqrt{1 - a^2} \times \phi\left(x \sqrt{1 - a^2} + a\right) \times \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right),
+\mathcal{H}(P) = \alpha - \frac{1}{2}\log (\alpha) + \log \Gamma(\alpha) + (1 - \alpha) \psi(\alpha),
 $$
-where $\phi()$ is the unit normal density and $\Phi()$ is the unit normal cumulative distribution function. The KL divergence from this skew normal to the unit normal distribution is then
+where $\Gamma()$ is the [gamma function](https://en.wikipedia.org/wiki/Gamma_function) and  $\psi()$ is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function).
+The KL divergence of an $N$-sample from this shifted gamma distribution to the unit normal distribution is therefore
 $$
 \begin{aligned}
-KL_N\left(SN\left(\xi,\omega,\alpha\right), N\left(0,1\right)\right) &= N \times \mathbb{E}_{SN}\left[\log f_{SN}(X) - \log \phi(X)\right] \\
-&= N \left[ \log(2) + \frac{1}{2} \log(1 - a^2) \right. \\
-& \qquad  + \mathbb{E}_{SN}\left[ \frac{1}{2} X^2 - \frac{1}{2}\left(X \sqrt{1 - a^2} + a\right)^2 \right. \\
-& \qquad \qquad \qquad  + \left.\left. \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right]\right] \\
-&= N \left[\log(2) + \frac{1}{2} \log\left(1 - a^2\right) + \mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right]\right].
+KL_N\left(\Gamma\left(\alpha,\sqrt\alpha\right) + \sqrt\alpha, N\left(0,1\right)\right) &= \frac{1}{2}\log(2\pi) + \frac{1}{2} - \mathcal{H}(P) \\
+&= \frac{1}{2}\log(2\pi) + \frac{1}{2} - \alpha + \frac{1}{2}\log (\alpha) - \log \Gamma(\alpha) - (1 - \alpha) \psi(\alpha).
 \end{aligned}
 $$
-The expectation in the final expression can be evaluated via numerical integration.[^skew-expectation]
 Although there's not a closed-form inverse, it's easy enough to solve numerically for $\alpha$.
 
-[^skew-expectation]: Specifically, 
-$$
-\begin{aligned}
-\mathbb{E}_{SN}\left[ \log \Phi\left(\alpha \left(X \sqrt{1 - a^2} + a\right)\right) \right] &= \int_{\mathbb{R}} \log \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right) f_{SN}(x) dx \\
-&= 2 \sqrt{1 - a^2}\int_{\mathbb{R}} \log \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right)  \\
-& \qquad \qquad \qquad \qquad \times \phi\left(x \sqrt{1 - a^2} + a\right) \\
-& \qquad \qquad \qquad \qquad \times \Phi\left(\alpha \left(x \sqrt{1 - a^2} + a\right)\right) dx \\
-&= \frac{2}{\alpha}\int_0^1 u \log(u) \frac{\phi\left(\frac{1}{\alpha}\Phi^{-1}(u)\right)}{\phi(u)} du \\
-&= \frac{2}{\alpha}\int_0^1 u \log(u) \exp \left(-\frac{1}{2}\left[\frac{1}{\alpha^2}\Phi^{-2}(u) - u^2\right]\right) du
-\end{aligned}
-$$
-
-
 If mis-specification could manifest as skewness, then why not kurtosis too? 
-Suppose the superior model is a Student $t$ distribution with degrees of freedom $\nu$. 
+Suppose the true model is a Student $t$ distribution with degrees of freedom $\nu$. 
 For simplicity, I won't worry about forcing the $t$ to have unit variance. 
-The KL-divergence of the standard normal from a $t(\nu)$ distribution is
+For an $N$-sample, the KL-divergence of the standard normal from a $t(\nu)$ distribution is
 $$
 \begin{aligned}
 KL_N\left(t(\nu), N\left(0,1\right)\right) &= \frac{N}{2}\left[\log(2\pi) + \frac{\nu}{\nu - 2} \right. \\
@@ -347,12 +348,156 @@ KL_N\left(t(\nu), N\left(0,1\right)\right) &= \frac{N}{2}\left[\log(2\pi) + \fra
 & \qquad \qquad \qquad  \qquad \qquad\left. - \log(\nu) - 2 \log B\left(\frac{\nu}{2}, \frac{1}{2}\right) \right],
 \end{aligned}
 $$
-where $\psi()$ is the digamma function and $B(.,.)$ is the beta function.
+where $\psi()$ is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function) and $B()$ is the [beta function](https://en.wikipedia.org/wiki/Beta_function).
 For a given $\Delta$, the expression can be solved numerically for $\nu$.
 
-::::: {.grid .column-page-left}
+The interactive @fig-normal displays all four of these calibration models, where the superior distributions differ by location, scale, skew, or kurtosis, respectively.
+One thing that jumps out to me about this visualization is that the divergence from the $t(\nu)$ distribution seems much subtler than the others. 
+With this distribution, all of the action is in the tails. 
+Put differently, the KL-divergence is driven by differences in the probability assigned to rare extreme outcomes.
 
-:::: {.g-col-4}
+::::: {.grid .column-page}
+
+:::: {.g-col-9 .center}
+
+
+```{ojs}
+//| echo: false
+normal = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-normal@umd/browser.js' )
+student = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-t@umd/browser.js' )
+gamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-gamma@umd/browser.js' )
+trigamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-trigamma@umd/browser.js' )
+
+// Location-shift
+
+mu = math.sqrt(2 * Delta / N)
+
+
+// Scale-shift
+
+function KL_sigma(s) {
+  return N * (s**2 - 1 - 2 * math.log(s)) / 2;
+} 
+
+function dKL_sigma(s) {
+  return (s - 1 / s) * N;
+} 
+
+sigma = newtonRaphson(KL_sigma, dKL_sigma, Delta, 1.1, 1, 100, 1e-5, 100)
+
+// Skewness
+
+function logKL_gamma(la) {
+  let a = math.exp(la);
+  let c1 = (math.log(2 * math.pi) + 1) / 2;
+  let c2 = gamma.entropy(a, math.sqrt(a));
+  return math.log(N) + math.log(c1 - c2);
+}
+
+function dlogKL_gamma(la) {
+  let a = math.exp(la);
+  const c1 = (math.log(2 * math.pi) + 1) / 2;
+  let c2 = gamma.entropy(a, math.sqrt(a));
+  let c3 = 1 / (2 * a) - 1;
+  let c4 = (1 - a) * trigamma(a);
+  return a * (c3 - c4) / (c1 - c2);
+}
+
+log_Delta = math.log(Delta)
+log_alpha = newtonRaphson(logKL_gamma, dlogKL_gamma, log_Delta, -log_Delta, -10, 10, 1e-5, 100)
+alpha = math.exp(log_alpha)
+
+// Kurtosis
+
+function KL_t(v) {
+  let c1 = math.log(2 * math.pi) / 2;
+  let c2 = v / (2 * (v - 2));
+  let c3 = student.entropy(v);
+  return N * (c1 + c2 - c3);
+}
+
+function dKL_t(v) {
+  let c1 = (v - 2)**(-2);
+  let c2 = 1 / (2 * v);
+  let c3 = (trigamma((v + 1) / 2) - trigamma(v / 2)) * (v + 1) / 4;
+  return -N * (c1 + c2 + c3);
+}
+
+nu = newtonRaphson(KL_t, dKL_t, Delta, 3, 2, 100, 1e-5, 100)
+
+// Compute densities
+pts2 = 201
+dat3 = Array(pts2).fill().map((element, index) => {
+  let x = - scale + index * 2 * scale / (pts2 - 1);
+  let p = normal.pdf(x,0,1);
+  let q = normal.pdf(x, mu, 1);
+  let r = normal.pdf(x,0, sigma);
+  let s = gamma.pdf(x + math.sqrt(alpha), alpha, math.sqrt(alpha));
+  let t = student.pdf(x, nu);
+  return ({
+    x: x,
+    p: p,
+    q: q,
+    r: r,
+    s: s,
+    t: t
+  })
+})
+
+colormap = [{v:"q",c:"blue"},{v:"r",c:"green"},{v:"s",c:"orange"},{v:"t",c:"red"}]
+
+function density_plot(v, c) {
+  return Plot.plot({
+    height: 200,
+    width: 400,
+    y: {
+      grid: false,
+      axis: false,
+      domain: [0, 0.45]
+    },
+    x: {
+      label: null
+    },
+    marks: [
+      Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
+      Plot.areaY(dat3, {x: "x", y: v, fill: c, fillOpacity: 0.5}),
+      Plot.lineY(dat3, {x: "x", y: v, stroke: c})
+    ]
+  });
+}
+
+plot_list = Object.values(colormap).map(x => density_plot(x.v, x.c))
+
+```
+
+```{ojs}
+//| echo: false
+//| label: fig-normal
+//| fig-cap: "Standard normal distribution (black line) that diverges by $\\Delta$ from selected non-normal distributions, including $N(\\mu, 1)$ (blue density), $N(0,\\sigma^2)$ (green density), shifted $\\Gamma(\\alpha, \\sqrt{\\alpha})$ (orange density), or $t(\\nu)$ (red density)."
+
+html`<div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 5px; row-gap: 5px;">
+  ${plot_list}
+</div>`
+```
+
+::::
+
+:::: {.g-col-3}
+
+```{ojs}
+mu_toprint = mu.toFixed(3)
+D_mu = N * mu**2 / 2
+D_mu_toprint = D_mu.toFixed(3) 
+
+sigma_toprint = sigma.toFixed(3)
+D_sigma = KL_sigma(sigma).toFixed(3)
+
+alpha_toprint = alpha.toFixed(3)
+D_alpha = math.exp(logKL_gamma(log_alpha)).toFixed(3)
+
+nu_toprint = nu.toFixed(3)
+D_nu = KL_t(nu).toFixed(3)
+```
 
 ```{ojs}
 //| panel: input
@@ -380,113 +525,25 @@ viewof scale = Inputs.range(
   {value: 5, step: 0.5, label: "Scale"}
 )
 
-sigma_toprint = sigma.toFixed(3)
+
+tex`\mu = ${mu_toprint}`
+
 tex`\sigma = ${sigma_toprint}`
 
-nu_toprint = nu.toFixed(3)
+tex`\alpha = ${alpha_toprint}`
+
 tex`\nu = ${nu_toprint}`
 
 
 ```
-::::
-
-:::: {.g-col-8 .center}
-
-
-```{ojs}
-//| echo: false
-normal = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-normal@umd/browser.js' )
-student = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-t@umd/browser.js' )
-trigamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-trigamma@umd/browser.js' )
-
-// Location-shift
-
-mu = math.sqrt(2 * Delta / N)
-
-
-// Scale-shift
-
-function KL_sigma(s) {
-  return N * (s**2 - 1 - 2 * math.log(s)) / 2;
-} 
-
-function dKL_sigma(s) {
-  return (s - 1 / s) * N;
-} 
-
-sigma = newtonRaphson(KL_sigma, dKL_sigma, Delta, 1.1, 1, 100, 1e-5, 100)
-
-
-// Kurtosis
-
-function KL_t(v) {
-  let c1 = math.log(2 * math.pi) / 2;
-  let c2 = v / (2 * (v - 2));
-  let c3 = student.entropy(v);
-  return N * (c1 + c2 - c3);
-}
-
-function dKL_t(v) {
-  let c1 = (v - 2)**(-2);
-  let c2 = 1 / (2 * v);
-  let c3 = (trigamma((v + 1) / 2) - trigamma(v / 2)) * (v + 1) / 4;
-  return -N * (c1 + c2 + c3);
-}
-
-nu = newtonRaphson(KL_t, dKL_t, Delta, 3, 2, 100, 1e-5, 100)
-
-// Compute densities
-pts2 = 201
-dat3 = Array(pts2).fill().map((element, index) => {
-  let x = - scale + index * 2 * scale / (pts2 - 1);
-  let p = normal.pdf(x,0,1);
-  let q = normal.pdf(x, mu, 1);
-  let r = normal.pdf(x,0, sigma);
-  let t = student.pdf(x, nu);
-  return ({
-    x: x,
-    p: p,
-    q: q,
-    r: r,
-    t: t
-  })
-})
-
-colormap = [{v:"q",c:"blue"},{v:"r",c:"orange"},{v:"t",c:"green"}]
-
-function density_plot(v, c) {
-  return Plot.plot({
-    height: 200,
-    width: 400,
-    y: {
-      grid: false,
-      axis: false
-    },
-    x: {
-      label: null
-    },
-    marks: [
-      Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
-      Plot.areaY(dat3, {x: "x", y: v, fill: c, fillOpacity: 0.5}),
-      Plot.lineY(dat3, {x: "x", y: v, stroke: c})
-    ]
-  });
-}
-
-plot_list = Object.values(colormap).map(x => density_plot(x.v, x.c))
-
-```
-
-```{ojs}
-//| echo: false
-//| label: fig-normal
-//| fig-cap: "Standard normal distribution (black line)"
-
-html`<div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 5px; row-gap: 5px;">
-  ${plot_list}
-</div>`
-```
 
 ::::
+
 :::::
 
+How useful are these calibration models? I'm not entirely sure yet.[^comment]
+I find them appealing because they turn the very abstract concept of KL-divergence into something that can be visualized. 
+However, having to make arbitrary choices of distributions to construct the calibration model does seem a bit weird to me.
+I will just leave this up and let it marinate a bit.
+
+[^comment]: If you have thoughts on these models, please feel free to comment!
