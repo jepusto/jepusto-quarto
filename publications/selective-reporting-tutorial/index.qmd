@@ -15,6 +15,9 @@ categories:
 - publication bias
 - dependent effect sizes
 links:
+- text: Journal
+  url: https://doi.org/10.1037/met0000841
+  icon: newspaper
 - icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/psyarxiv/83v52_v3
