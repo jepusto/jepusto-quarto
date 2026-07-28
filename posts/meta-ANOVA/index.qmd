@@ -189,22 +189,27 @@ $$
 Also from standard properties of quadratic forms, 
 $$
 \begin{aligned}
-\Var\left(\widehat{SS}_q\right) &= \trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + \bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
-&= \trace\left(\bs\Omega_q \bs\Omega_q \right) + \mat{b}_q' \bs\Omega_q \mat{b}_q.
+\Var\left(\widehat{SS}_q\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + 4\bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
+&= 2\trace\left(\bs\Omega_q \bs\Omega_q \right) + 4\mat{b}_q' \bs\Omega_q \mat{b}_q.
 \end{aligned}
 $$
-A feasible estimator of $\Var(SS_q)$ can be computed by substituting the estimated effects $\bs{\hat\theta}_q$ in place of the parameter vector $\bs\theta_q$. 
+A feasible estimator of $\Var(\widehat{SS}_q)$ can be computed by substituting the estimated effects $\bs{\hat\theta}_q$ in place of the parameter vector $\bs\theta_q$. 
 
 Now, in a classical ANOVA, the sums of squares are all mutually independent because the errors are homoskedastic. 
 That is not the case here, though, and so it's possible that there is some covariance between different terms. 
 The covariance is 
 $$
 \begin{aligned}
-\Cov\left(\widehat{SS}_q, \widehat{SS}_r\right) &= \trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Sigma \right) + \bs\Upsilon'\mat{P}_q\mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Upsilon \\
-&= \trace\left(\bs\Omega_{qr} \bs\Omega_{qr}' \right) + \mat{b}_q' \bs\Omega_{qr} \mat{b}_r,
+\Cov\left(\widehat{SS}_q, \widehat{SS}_r\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Sigma \right) +4 \bs\Upsilon'\mat{P}_q\mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Upsilon \\
+&= 2\trace\left(\bs\Omega_{qr} \bs\Omega_{qr}' \right) + 4 \mat{b}_q' \bs\Omega_{qr} \mat{b}_r,
 \end{aligned}
 $$
 where $\bs\Omega_{qr} = \mat{P}_q' \bs\Sigma \mat{P}_r$.
+
+One thing that you might want to do with these results is to test whether the sum of squares for a particular component is zero (as you do with $F$ tests in classical analysis of variance). 
+So the null here is that $\bs\theta_q = \mat{0}$ for component $q$. Under this null, $\E\left(\widehat{SS}_q\right) = \trace\left(\bs\Omega_q\right)$ and $\Var\left(\widehat{SS}_q\right) = 2\trace\left(\bs\Omega_q\bs\Omega_q\right)$.
+Following a Satterthwaite approximation, let $C_q = \widehat{SS}_q / \trace\left(\bs\Omega_q\right)$ and $\nu_q = \left[\trace\left(\bs\Omega_q\right)\right]^2 / \trace\left(\bs\Omega_q\bs\Omega_q\right)$. Then under the null, an approximate reference distribution for the test statistic is $C_q \stackrel{\cdot}{\sim} \chi^2(\nu_q)$. 
+If $\bs\Omega_q$ is close to an identity matrix, then $\nu_q$ will be close to the degrees of freedom for the component. 
 
 ## Residual sum of squares
 

@@ -85,7 +85,7 @@ meta_ANOVA <- function(
   for (q in 1:Q) {
     for (r in q:Q) {
       Omega_qr <- crossprod(P_sigma_q[[q]], P_sigma_q[[r]])
-      Vmat[q,r] <- sum(Omega_qr^2) + sum(Omega_qr * tcrossprod(Pty_q[[q]], Pty_q[[r]]))
+      Vmat[q,r] <- 2 * sum(Omega_qr^2) + 4 * sum(Omega_qr * tcrossprod(Pty_q[[q]], Pty_q[[r]]))
       if (q != r) Vmat[r,q] <- Vmat[q,r] 
     }
   }
