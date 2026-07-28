@@ -2,7 +2,7 @@
 title: Calibration models for Kullback-Leibler divergence
 date: '2026-07-12'
 categories:
-- distribution-theory
+- distribution theory
 - Kullback-Leibler-divergence
 code-fold: true
 code-tools: true
