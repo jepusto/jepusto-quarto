@@ -213,6 +213,66 @@ If $\bs\Omega_q$ is close to an identity matrix, then $\nu_q$ will be close to t
 
 ## Residual sum of squares
 
+So far, I've been assuming that the ANOVA is fully saturated, meaning that every possible factor and interaction among factors is included. 
+None of the derivations require this, though, and you might well want a simpler ANOVA specification that involves fewer terms, with the remaining (unexplained) variation captured in a residual sum of squares. 
+For instance, with the @lee2024comparing simulations, we might want to see an ANOVA that drops the $b$ and $ICC$ terms entirely and excludes the three-way interaction between $a$, $H$, and $J$, as in @tbl-Lee-ANOVA-reduced.
+
+```{r}
+#| output: false
+reduced_fit <- aov(rmse ~ a + H + J + a:H + a:J + H:J, data = CCREM_res)
+summary(reduced_fit)
+```
+
+```{r}
+#| echo: false
+#| label: tbl-Lee-ANOVA-reduced
+#| tbl-cap: Reduced Analysis of Variance Table for Root Mean Squared Error of the CCREM estimator
+
+reduced_table <- 
+  summary(reduced_fit)[[1]] %>%
+  as_tibble(rownames = "term") %>%
+  select(term:`Mean Sq`)
+
+reduced_table %>%
+  tt() %>%
+  format_tt(digits = 2, num_fmt = "decimal") %>%
+  style_tt(j = 2:4, align = "r") %>%
+  theme_striped()
+
+```
+
+With this reduced specification, the adjusted sums of squares work just as before.
+The only further question is now to compute the adjustment for the residual sum of squares.
+One way to do so is to compute the full factorial ANOVA and then just sum the terms excluded from the specification (i.e., all the dropped terms go into the residual), but that seems like a lot of extra computing.
+A quicker way is to compute the _total_ sum of squares and a corresponding adjustment, and then compute the residual sum of squares and residual adjustment by subtraction.
+
+To be specific, now consider a model with $Q$ orthogonal contrast terms, but where $Q < 2^K - 1$. 
+Say there are $N = \prod_{k=1}^K m_k$ cells in the design.
+The model is then
+$$
+\mat{Y} = \mat{1}\mu + \sum_{q=1}^Q \mat{X}_q \bs\theta_q + \mat{r} + \bs\epsilon,
+$$
+where $\mat{r} = \bs\Upsilon - \mat{1}\mu - \sum_{q=1}^Q \mat{X}_q \bs\theta_q$ captures the residual variation not explained by the included terms.
+Let $\mat{V} = \mat{I} - \frac{1}{N^2}\mat{1}\mat{1}'$. 
+The total sum of squares in $\bs\Upsilon$ is then $SS_{Total} = \bs\Upsilon' \mat{V} \bs\Upsilon$ and the (estimated) total sum of squares is $\widehat{SS}_{Total} = \mat{Y}' \mat{V} \mat{Y}$. 
+Following the same results as above,
+$$
+\begin{aligned}
+\E\left(\widehat{SS}_{Total}\right) &= \trace\left(\mat{V} \bs\Sigma \right) + \bs\Upsilon'\mat{V}\bs\Upsilon \\
+&= \left(1 - \frac{1}{N^2}\right)\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right) + SS_{Total}.
+\end{aligned}
+$$
+Thus, an unbiased estimator for the total sum of squares is
+$$
+SSA_{Total} = \widehat{SS}_{Total} - \left(1 - \frac{1}{N^2}\right)\sum_{a,b,c,d,z} \sigma_{abcdz}^2.
+$$
+Furthermore, the variance of the total sum of squares is
+$$
+\begin{aligned}
+\Var\left(\widehat{SS}_{Total}\right) &= 2 \trace\left(\mat{V} \bs\Sigma \mat{V} \bs\Sigma \right) + 4 \bs\Upsilon'\mat{V} \bs\Sigma\mat{V}\bs\Upsilon \\
+&= 
+\end{aligned}
+$$
 
 ## In R
 
