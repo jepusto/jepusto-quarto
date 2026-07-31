@@ -253,24 +253,51 @@ $$
 \mat{Y} = \mat{1}\mu + \sum_{q=1}^Q \mat{X}_q \bs\theta_q + \mat{r} + \bs\epsilon,
 $$
 where $\mat{r} = \bs\Upsilon - \mat{1}\mu - \sum_{q=1}^Q \mat{X}_q \bs\theta_q$ captures the residual variation not explained by the included terms.
-Let $\mat{V} = \mat{I} - \frac{1}{N^2}\mat{1}\mat{1}'$. 
+Let $\mat{V} = \mat{I} - \frac{1}{N}\mat{1}\mat{1}'$. 
 The total sum of squares in $\bs\Upsilon$ is then $SS_{Total} = \bs\Upsilon' \mat{V} \bs\Upsilon$ and the (estimated) total sum of squares is $\widehat{SS}_{Total} = \mat{Y}' \mat{V} \mat{Y}$. 
 Following the same results as above,
 $$
 \begin{aligned}
 \E\left(\widehat{SS}_{Total}\right) &= \trace\left(\mat{V} \bs\Sigma \right) + \bs\Upsilon'\mat{V}\bs\Upsilon \\
-&= \left(1 - \frac{1}{N^2}\right)\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right) + SS_{Total}.
+&= \frac{N - 1}{N}\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right) + SS_{Total}.
 \end{aligned}
 $$
 Thus, an unbiased estimator for the total sum of squares is
 $$
-SSA_{Total} = \widehat{SS}_{Total} - \left(1 - \frac{1}{N^2}\right)\sum_{a,b,c,d,z} \sigma_{abcdz}^2.
+SSA_{Total} = \widehat{SS}_{Total} - \frac{N - 1}{N}\sum_{a,b,c,d,z} \sigma_{abcdz}^2.
 $$
 Furthermore, the variance of the total sum of squares is
 $$
 \begin{aligned}
 \Var\left(\widehat{SS}_{Total}\right) &= 2 \trace\left(\mat{V} \bs\Sigma \mat{V} \bs\Sigma \right) + 4 \bs\Upsilon'\mat{V} \bs\Sigma\mat{V}\bs\Upsilon \\
-&= 
+&= \frac{2(N - 2)}{N} \left(\sum_{a,b,c,d,z} \sigma_{abcdz}^4\right) + \left(\frac{1}{N}\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right)^2 + 4 \sum_{a,b,c,d,z} \sigma_{abcdz}^2 \left(\Upsilon_{abcdz} - \bar{\Upsilon}\right)^2,
+\end{aligned}
+$$
+where $\bar\Upsilon = \frac{1}{N}\sum_{a,b,c,d,z} \Upsilon_{abcdz}$, and the covariance of the total sum of squares with individual component sums of squares is
+$$
+\begin{aligned}
+\Cov\left(\widehat{SS}_T, \widehat{SS}_q\right) &= 2\trace\left(\mat{V}\bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + 4 \bs\Upsilon'\mat{V} \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
+&= 2\trace\left(\mat{P}_q' \bs\Sigma^2 \mat{P}_q \right) - \frac{2}{N} \mat{1}' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \mat{1} + 4 \left(\bs\Upsilon - \bar\Upsilon \mat{1}\right) \bs\Sigma \mat{P}_q \mat{b}_q.
+\end{aligned}
+$$
+The third terms in the variance and covariance formulas can be approximated by substituting $\mat{Y}$ in place of $\bs\Upsilon$.
+
+With these properties established, the residual sum of squares can be derived by subtraction:
+$$
+\widehat{SS}_{R} = \widehat{SS}_{Total} - \sum_{q=1}^Q \widehat{SS}_q \quad \text{and} \quad SSA_{R} = SSA_{Total} - \sum_{q=1}^Q SSA_q.
+$$
+The Monte Carlo error in the estimated sum of squared residuals is 
+$$
+\begin{aligned}
+\Var\left(\widehat{SS}_{R}\right) &= \Var\left(\widehat{SS}_{Total} - \sum_{q=1}^Q \widehat{SS}_q\right) \\
+&= \Var\left(\widehat{SS}_{Total}\right) + \sum_{q=1}^Q \sum_{r=1}^Q \Cov\left(\widehat{SS}_q, \widehat{SS}_r \right) - 2 \sum_{q=1}^Q \Cov\left(\widehat{SS}_T, \widehat{SS}_q\right)
+\end{aligned}
+$$
+and 
+$$
+\begin{aligned}
+\Cov\left(\widehat{SS}_R, \widehat{SS}_q\right) &= \Cov\left(\widehat{SS}_{Total} - \sum_{r=1}^Q \widehat{SS}_r, \widehat{SS}_q\right) \\
+&= \Cov\left(\widehat{SS}_{Total}, \widehat{SS}_q\right) - \sum_{r=1}^Q \Cov\left(\widehat{SS}_r, \widehat{SS}_q\right).
 \end{aligned}
 $$
 
