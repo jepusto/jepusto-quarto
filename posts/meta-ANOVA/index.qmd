@@ -1,6 +1,6 @@
 ---
 title: Meta-Analysis of Variance for Monte Carlo Simulations
-date: '2026-07-25'
+date: '2026-07-31'
 categories:
 - distribution theory
 - experimental design
@@ -11,11 +11,10 @@ toc: true
 bibliography: "../simulation.bib"
 csl: "../apa.csl"
 link-citations: true
-draft: true
 ---
 
-Monte Carlo simulation studies are the workhorse of quantitative methodology. 
-Whether you are developing new methods, trying to understand existing ones, or figuring out how to do an empirical data analysis, simulations are useful and widely used in practice.
+Monte Carlo simulation studies are a workhorse of quantitative methodology. 
+Whether you are developing new methods, trying to understand existing ones, or figuring out how to do a nuanced analysis of some empirical data, simulations are useful and widely used in practice.
 One reason that simulations are so useful for investigating methodological questions is that they provide a practical complement to theoretical analysis. Theory is, for one, hard and, for another, often limited to broad, approximate results (as $N \to \infty$) or special cases (...assume all schools have the same number of students...).
 In contrast, simulations are relatively easy to conduct (even if your math is rusty) and informative about _particular_ and _specific_ circumstances.
 Simulations are such a central, everyday part of my work that [Megha Joshi](/people/Megha-Joshi/) and I [developed an R package](/software/simhelpers/) to support coding them up, and [Luke Miratrix](https://cares.gse.harvard.edu/about-luke-miratrix) are writing [a textbook](https://jepusto.github.io/Designing-Simulations-in-R/) about how to do them.
@@ -43,7 +42,7 @@ It would be great to bring a little bit more rigor to how we use ANOVA in the co
 I'm not going to do that in one blog post, of course.
 In this post, I want to tackle one specific aspect of how to do ANOVA on simulation results: how to handle Monte Carlo error.
 For a given performance measure, ANOVA tables involve sums-of-squares of the variation in performance attributable to different factors and combinations of factors.
-Because we're dealing with simulation results, the performance measures have Monte Carlo error in them, and so sums-of-squares will be due in part to actual variation and in part to just the Monte Carlo error.
+Because we're dealing with simulation results, the performance measures have Monte Carlo error in them, and so sums-of-squares will be due in part to actual variation and in part just to the Monte Carlo error.
 It would be nice to pull those two sources apart.
 
 ## An example 
@@ -117,7 +116,7 @@ To answer this question, let me formalize the problem.
 
 Suppose we have a performance measure $\Upsilon$ (bias, RMSE, confidence interval coverage, etc.) evaluated under each condition in a full factorial design. 
 I'll assume that there are five factors in all (just as in my example), with $m_A$, $m_B$, $m_C$, $m_D$, and $m_Z$ levels, respectively. 
-For condition $abcdz$, we use simulation to compute an estimate of $\Upsilon$, denoted $y_{abcdz}$, with associated Monte Carlo error $\sigma_{abcdz}$.
+For condition $abcdz$, we use simulation to compute an estimate of $\Upsilon_{abcdz}$, denoted $y_{abcdz}$, with associated Monte Carlo error $\sigma_{abcdz}$.
 We can think of this as a simple, fixed effect meta-analysis:
 $$
 \newcommand{\Prob}{\text{Pr}}
@@ -145,10 +144,10 @@ y_{abcdz} &= \mu + \alpha_a + \beta_b + \gamma_c + \delta_d + \zeta_z & \text{(i
 & \quad \quad \quad \quad + (\alpha\beta\gamma\delta\zeta)_{abcdz} + \epsilon_{abcdz}. & \text{(5-way interactions)}
 \end{aligned}
 $$
-The sums of squares in an ANOVA are sums of the squared coefficients for a particular component.
-For instance, the sum of squares for the two-way interaction between the first two factors is 
+The target parameters in an ANOVA are sums of the squared coefficients for a particular component.
+For instance, the parameter for the two-way interaction between the first two factors is 
 $$
-SS_{\alpha\beta} = \sum_{a=1}^{m_A} \sum_{b = 1}^{m_B} \sum_{c = 1}^{m_C} \sum_{d = 1}^{m_D} \sum_{z = 1}^{m_Z} (\alpha\beta)_{ab}^2 = m_C m_D m_Z \sum_{a=1}^{m_A} \sum_{b = 1}^{m_B} (\alpha\beta)_{ab}^2.
+\Psi_{\alpha\beta} = \sum_{a=1}^{m_A} \sum_{b = 1}^{m_B} \sum_{c = 1}^{m_C} \sum_{d = 1}^{m_D} \sum_{z = 1}^{m_Z} (\alpha\beta)_{ab}^2 = m_C m_D m_Z \sum_{a=1}^{m_A} \sum_{b = 1}^{m_B} (\alpha\beta)_{ab}^2.
 $$
 In an ANOVA table like @tbl-Lee-ANOVA, the sums of squares are computed by substituting coefficient estimates in place of the parameters. 
 In using coefficient estimates to compute sums of squares, part of the variation captured will be due to Monte Carlo error.
@@ -160,56 +159,62 @@ For purposes of derivation, it's more useful to write the ANOVA model with a dif
 Let $q$ index all of the terms in the ANOVA, from first-order (main effects) through the fifth-order interactions. 
 With five factors, there are a total of $Q = `{r} sum(choose(5,1:5))`$ terms in all. 
 (More generally, there are a total of $Q = 2^K - 1$ terms in a $K$-factor design.)
-Let $\mat{X}_q$ denote the contrast matrix and $\bs\theta_q$ denote the vector of effects for term $q$, so that the full model is
+Let $\mat{X}_q$ denote the contrast matrix and $\bs\theta_q$ denote the vector of effects for term $q$, with $\mat{X}_0 = \mat{1}$ and $\theta_0 = \mu$. The full model is then
 $$
-\mat{Y} = \bs\Upsilon + \bs\epsilon = \mat{1}\mu + \sum_{q=1}^Q \mat{X}_q \bs\theta_q + \bs\epsilon,
+\mat{Y} = \bs\Upsilon + \bs\epsilon = \sum_{q=0}^Q \mat{X}_q \bs\theta_q + \bs\epsilon,
 $$
 where $\mat{Y} = \left[y_{abcdz}\right]$, $\bs\Upsilon = \left[\Upsilon_{abcdz}\right]$, and $\bs\epsilon = \left[\epsilon_{abcdz}\right]$ are the vectors of outcomes, expectations, and Monte Carlo errors, respectively.
 The error vector is normally distributed with mean zero and variance $\bs\Sigma = \bigoplus \ \sigma_{abcdz}^2$.
 
-In a full factorial design, the contrast matrices are all orthogonal. Consequently, $\mat{X}_q' \mat{X}_r = \mat{0}$ for all pairs of terms where $q \neq r$. Because of orthogonality, the estimated coefficients associated with term $q$ are just
+In a full factorial design, the contrast matrices are all orthogonal. Consequently, $\mat{X}_q' \mat{X}_r = \mat{0}$ for all pairs of terms where $q \neq r$. 
+Because of orthogonality, the target parameter for component $q$ is simply
+$$
+\Psi_q = \bs\theta_q' \mat{X}_q'\mat{X}_q \bs\theta_q.
+$$
+Also because of orthogonality, the estimated coefficients associated with term $q$ are just
 $$
 \bs{\hat\theta}_q = \left(\mat{X}_q'\mat{X}_q\right)^{-1} \mat{X}_q' \mat{Y}
 $$
-and the estimated sum of squares for term $q$ is
+and the sum of squares for term $q$ is
 $$
-\widehat{SS}_{q} = \bs{\hat\theta}_q'\mat{X}_q'\mat{X}_q\bs{\hat\theta}_q = \mat{Y}'\mat{X}_q \left(\mat{X}_q'\mat{X}_q\right)^{-1} \mat{X}_q' \mat{Y}.
+SS_{q} = \bs{\hat\theta}_q'\mat{X}_q'\mat{X}_q\bs{\hat\theta}_q = \mat{Y}'\mat{X}_q \left(\mat{X}_q'\mat{X}_q\right)^{-1} \mat{X}_q' \mat{Y}.
 $$
-For compactness, let me write $\mat{P}_q = \mat{X}_q \left(\mat{X}_q'\mat{X}_q\right)^{-1/2}$, so that $\widehat{SS}_q = \mat{Y}'\mat{P}_q \mat{P}_q' \mat{Y}$. From standard properties of quadratic forms, 
+For compactness, let me write $\mat{P}_q = \mat{X}_q \left(\mat{X}_q'\mat{X}_q\right)^{-1/2}$, so that $SS_q = \mat{Y}'\mat{P}_q \mat{P}_q' \mat{Y}$. Also let $\bs\Omega_q = \mat{P}_q' \bs\Sigma \mat{P}_q$ and $\bs\beta_q = \mat{P}_q'\bs\Upsilon = \left(\mat{X}_q' \mat{X}_q\right)^{1/2} \bs\theta_q$. From standard properties of quadratic forms, 
 $$
 \begin{aligned}
-\E\left(\widehat{SS}_q\right) &= \trace\left(\mat{P}_q \mat{P}_q'\bs\Sigma \right) + \bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Upsilon \\
-&= \trace\left(\mat{P}_q' \bs\Sigma \mat{P}_q\right) + \bs\theta_q' \mat{X}_q'\mat{X}_q \bs\theta_q.
+\E\left(SS_q\right) &= \trace\left(\mat{P}_q \mat{P}_q'\bs\Sigma \right) + \bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Upsilon \\
+&= \trace\left(\mat{P}_q' \bs\Sigma \mat{P}_q\right) + \bs\theta_q' \mat{X}_q'\mat{X}_q \bs\theta_q \\
+&= \trace\left(\bs\Omega_q\right) + \Psi_q.
 \end{aligned}
 $$
-Let $\bs\Omega_q = \mat{P}_q' \bs\Sigma \mat{P}_q$ and $\mat{b}_q = \mat{P}_q'\bs\Upsilon = \left(\mat{X}_q' \mat{X}_q\right)^{1/2} \bs\theta_q$. An unbiased estimator for the sum of squared effects attributable to term $q$ is then
+An unbiased estimator for $\Psi_q$ (the sum of squared effects attributable to term $q$) is then
 $$
-SSA_q = \widehat{SS}_q - \trace\left(\bs\Omega_q\right).
+SSA_q = SS_q - \trace\left(\bs\Omega_q\right).
 $$
 Also from standard properties of quadratic forms, 
 $$
 \begin{aligned}
-\Var\left(\widehat{SS}_q\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + 4\bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
-&= 2\trace\left(\bs\Omega_q \bs\Omega_q \right) + 4\mat{b}_q' \bs\Omega_q \mat{b}_q.
+\Var\left(SS_q\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + 4\bs\Upsilon'\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
+&= 2\trace\left(\bs\Omega_q \bs\Omega_q \right) + 4\bs\beta_q' \bs\Omega_q \bs\beta_q.
 \end{aligned}
 $$
-A feasible estimator of $\Var(\widehat{SS}_q)$ can be computed by substituting the estimated effects $\bs{\hat\theta}_q$ in place of the parameter vector $\bs\theta_q$. 
+A feasible estimator of $\Var(SS_q)$ can be computed by substituting the estimated effects $\bs{\hat\theta}_q$ in place of the parameter vector $\bs\theta_q$, or equivalently by using $\mat{b}_q = \mat{P}_q' \mat{Y}$ in place of $\bs\beta_q$.
 
 Now, in a classical ANOVA, the sums of squares are all mutually independent because the errors are homoskedastic. 
 That is not the case here, though, and so it's possible that there is some covariance between different terms. 
 The covariance is 
 $$
 \begin{aligned}
-\Cov\left(\widehat{SS}_q, \widehat{SS}_r\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Sigma \right) +4 \bs\Upsilon'\mat{P}_q\mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Upsilon \\
-&= 2\trace\left(\bs\Omega_{qr} \bs\Omega_{qr}' \right) + 4 \mat{b}_q' \bs\Omega_{qr} \mat{b}_r,
+\Cov\left(SS_q, SS_r\right) &= 2\trace\left(\mat{P}_q \mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Sigma \right) +4 \bs\Upsilon'\mat{P}_q\mat{P}_q' \bs\Sigma \mat{P}_r \mat{P}_r' \bs\Upsilon \\
+&= 2\trace\left(\bs\Omega_{qr} \bs\Omega_{qr}' \right) + 4 \bs\beta_q' \bs\Omega_{qr} \bs\beta_r,
 \end{aligned}
 $$
 where $\bs\Omega_{qr} = \mat{P}_q' \bs\Sigma \mat{P}_r$.
 
 One thing that you might want to do with these results is to test whether the sum of squares for a particular component is zero (as you do with $F$ tests in classical analysis of variance). 
-So the null here is that $\bs\theta_q = \mat{0}$ for component $q$. Under this null, $\E\left(\widehat{SS}_q\right) = \trace\left(\bs\Omega_q\right)$ and $\Var\left(\widehat{SS}_q\right) = 2\trace\left(\bs\Omega_q\bs\Omega_q\right)$.
-Following a Satterthwaite approximation, let $C_q = \widehat{SS}_q / \trace\left(\bs\Omega_q\right)$ and $\nu_q = \left[\trace\left(\bs\Omega_q\right)\right]^2 / \trace\left(\bs\Omega_q\bs\Omega_q\right)$. Then under the null, an approximate reference distribution for the test statistic is $C_q \stackrel{\cdot}{\sim} \chi^2(\nu_q)$. 
-If $\bs\Omega_q$ is close to an identity matrix, then $\nu_q$ will be close to the degrees of freedom for the component. 
+So the null here is that $\bs\theta_q = \mat{0}$ for component $q$. Under this null, $\E\left(SS_q\right) = \trace\left(\bs\Omega_q\right)$ and $\Var\left(SS_q\right) = 2\trace\left(\bs\Omega_q\bs\Omega_q\right)$.
+Following a Satterthwaite approximation, let $C_q = SS_q / \trace\left(\bs\Omega_q\right)$ and $\nu_q = \left[\trace\left(\bs\Omega_q\right)\right]^2 / \trace\left(\bs\Omega_q\bs\Omega_q\right)$. Then under the null, an approximate reference distribution for the test statistic is $C_q \stackrel{\cdot}{\sim} \chi^2(\nu_q)$. 
+If $\bs\Omega_q$ is close to a multiple of an identity matrix, then $\nu_q$ will be close to the degrees of freedom for the component. 
 
 ## Residual sum of squares
 
@@ -242,83 +247,81 @@ reduced_table %>%
 ```
 
 With this reduced specification, the adjusted sums of squares work just as before.
-The only further question is now to compute the adjustment for the residual sum of squares.
+The only further question is how to compute the adjustment for the residual sum of squares.
 One way to do so is to compute the full factorial ANOVA and then just sum the terms excluded from the specification (i.e., all the dropped terms go into the residual), but that seems like a lot of extra computing.
 A quicker way is to compute the _total_ sum of squares and a corresponding adjustment, and then compute the residual sum of squares and residual adjustment by subtraction.
 
-To be specific, now consider a model with $Q$ orthogonal contrast terms, but where $Q < 2^K - 1$. 
+To be specific, consider a model with $Q$ orthogonal contrast terms, but where $Q < 2^K - 1$. 
 Say there are $N = \prod_{k=1}^K m_k$ cells in the design.
 The model is then
 $$
-\mat{Y} = \mat{1}\mu + \sum_{q=1}^Q \mat{X}_q \bs\theta_q + \mat{r} + \bs\epsilon,
+\mat{Y} = \sum_{q=0}^Q \mat{X}_q \bs\theta_q + \mat{r} + \bs\epsilon,
 $$
-where $\mat{r} = \bs\Upsilon - \mat{1}\mu - \sum_{q=1}^Q \mat{X}_q \bs\theta_q$ captures the residual variation not explained by the included terms.
+where $\mat{r} = \bs\Upsilon - \sum_{q=0}^Q \mat{X}_q \bs\theta_q$ captures the residual variation not explained by the included terms.
 Let $\mat{V} = \mat{I} - \frac{1}{N}\mat{1}\mat{1}'$. 
-The total sum of squares in $\bs\Upsilon$ is then $SS_{Total} = \bs\Upsilon' \mat{V} \bs\Upsilon$ and the (estimated) total sum of squares is $\widehat{SS}_{Total} = \mat{Y}' \mat{V} \mat{Y}$. 
+The total variance in $\bs\Upsilon$ is then $\Psi_{Total} = \bs\Upsilon' \mat{V} \bs\Upsilon$ and the total sum of squares is $SS_{Total} = \mat{Y}' \mat{V} \mat{Y}$. 
 Following the same results as above,
 $$
 \begin{aligned}
-\E\left(\widehat{SS}_{Total}\right) &= \trace\left(\mat{V} \bs\Sigma \right) + \bs\Upsilon'\mat{V}\bs\Upsilon \\
-&= \frac{N - 1}{N}\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right) + SS_{Total}.
+\E\left(SS_{Total}\right) &= \trace\left(\mat{V} \bs\Sigma \right) + \bs\Upsilon'\mat{V}\bs\Upsilon \\
+&= \frac{N - 1}{N}\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right) + \Psi_{Total}.
 \end{aligned}
 $$
-Thus, an unbiased estimator for the total sum of squares is
+Thus, an unbiased estimator for $\Psi_{Total}$ is
 $$
-SSA_{Total} = \widehat{SS}_{Total} - \frac{N - 1}{N}\sum_{a,b,c,d,z} \sigma_{abcdz}^2.
+SSA_{Total} = SS_{Total} - \frac{N - 1}{N}\sum_{a,b,c,d,z} \sigma_{abcdz}^2.
 $$
-Furthermore, the variance of the total sum of squares is
+Having computed the total, the residual sum of squares can be derived by subtraction:
+$$
+SS_{R} = SS_{Total} - \sum_{q=1}^Q SS_q \quad \text{and} \quad SSA_{R} = SSA_{Total} - \sum_{q=1}^Q SSA_q.
+$$
+To find the Monte Carlo error in the sum of squared residuals, it's a bit easier to work directly with the contrast matrices. Let $\mat{X} = \left[\mat{X}_0 \ \mat{X}_1 \ \cdots \ \mat{X}_Q\right]$ and take the projection
+$$
+\mat{R} = \mat{I} - \mat{X}\left(\mat{X}'\mat{X}\right)^{-1} \mat{X}' = \mat{I} - \sum_{q=0}^Q \mat{P}_q\mat{P}_q'.
+$$
+The total variance in $\mat{r}$ is then $\Psi_R = \mat{r}'\mat{r} = \bs\Upsilon' \mat{R} \bs\Upsilon$, and the sum of squared residuals is $SS_R = \mat{Y}'\mat{R}\mat{Y}$. Following the same properties as above,
 $$
 \begin{aligned}
-\Var\left(\widehat{SS}_{Total}\right) &= 2 \trace\left(\mat{V} \bs\Sigma \mat{V} \bs\Sigma \right) + 4 \bs\Upsilon'\mat{V} \bs\Sigma\mat{V}\bs\Upsilon \\
-&= \frac{2(N - 2)}{N} \left(\sum_{a,b,c,d,z} \sigma_{abcdz}^4\right) + \left(\frac{1}{N}\sum_{a,b,c,d,z} \sigma_{abcdz}^2\right)^2 + 4 \sum_{a,b,c,d,z} \sigma_{abcdz}^2 \left(\Upsilon_{abcdz} - \bar{\Upsilon}\right)^2,
+\E\left(SS_{R}\right) &= \trace\left(\mat{R} \bs\Sigma\right) + \bs\Upsilon' \mat{R} \bs\Upsilon \\
+&= \sum_{a,b,c,d,z} \sigma_{abcdz}^2 - \sum_{q=0}^Q \trace \left(\mat{P}_q' \bs\Sigma \mat{P}_q \right) + \Psi_R \\
+&= \sum_{a,b,c,d,z} \sigma_{abcdz}^2 - \sum_{q=0}^Q \trace\left(\bs\Omega_q\right) + \Psi_R \\
+\Var\left(SS_{R}\right) &= 2\trace\left(\mat{R} \bs\Sigma \mat{R}\bs\Sigma \right) + 4\bs\Upsilon'\mat{R} \bs\Sigma \mat{R}_q \bs\Upsilon \\
+&= 2 \left[\trace\left(\bs\Sigma^2\right) - 2 \sum_{q=0}^Q \trace\left(\mat{P}_q'\bs\Sigma^2\mat{P}_q\right) + \sum_{q=0}^Q \sum_{r = 0}^Q \trace\left(\bs\Omega_{qr} \bs\Omega_{qr}'\right)\right] + 4 \mat{r}'\bs\Sigma \mat{r} \\
+\Cov\left(SS_R, SS_q\right) &= 2\trace\left(\mat{R} \bs\Sigma \mat{P}_q \mat{P}_q'\bs\Sigma \right) + 4\bs\Upsilon'\mat{R} \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
+&= 2 \left[\trace\left(\mat{P}_q'\bs\Sigma^2\mat{P}_q\right) - \sum_{r = 0}^Q \trace\left(\bs\Omega_{qr} \bs\Omega_{qr}'\right)\right] + 4 \mat{r} \bs\Sigma \mat{P}_q \bs\beta_q.
 \end{aligned}
 $$
-where $\bar\Upsilon = \frac{1}{N}\sum_{a,b,c,d,z} \Upsilon_{abcdz}$, and the covariance of the total sum of squares with individual component sums of squares is
-$$
-\begin{aligned}
-\Cov\left(\widehat{SS}_T, \widehat{SS}_q\right) &= 2\trace\left(\mat{V}\bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \right) + 4 \bs\Upsilon'\mat{V} \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Upsilon \\
-&= 2\trace\left(\mat{P}_q' \bs\Sigma^2 \mat{P}_q \right) - \frac{2}{N} \mat{1}' \bs\Sigma \mat{P}_q \mat{P}_q' \bs\Sigma \mat{1} + 4 \left(\bs\Upsilon - \bar\Upsilon \mat{1}\right) \bs\Sigma \mat{P}_q \mat{b}_q.
-\end{aligned}
-$$
-The third terms in the variance and covariance formulas can be approximated by substituting $\mat{Y}$ in place of $\bs\Upsilon$.
+To estimate the variance and covariances of $SS_R$, I will make use the estimated residuals, $\mat{\hat{r}} = \mat{R}\mat{Y} = \mat{Y} - \sum_{q=0}^Q \mat{P}_q \mat{b}_q$, in place of $\mat{r}$.
 
-With these properties established, the residual sum of squares can be derived by subtraction:
+Once again, it might be of interest to test whether the reduced model explains all of variation in $\bs\Upsilon$, or the null hypothesis that $\mat{r} = \mat{0}$ or $\Psi_R = 0$.
+Under this null, $\E\left(SS_R\right) = \sum_{a,b,c,d,z} \sigma_{abcdz}^2 - \sum_{q=0}^Q \trace\left(\bs\Omega_q\right)$ and the second term in $\Var(SS_R)$ drops out.
+Again following a Satterthwaite approximation, let 
 $$
-\widehat{SS}_{R} = \widehat{SS}_{Total} - \sum_{q=1}^Q \widehat{SS}_q \quad \text{and} \quad SSA_{R} = SSA_{Total} - \sum_{q=1}^Q SSA_q.
+C_R = \frac{SS_R}{\sum_{a,b,c,d,z} \sigma_{abcdz}^2 - \sum_{q=0}^Q \trace\left(\bs\Omega_q\right)}
 $$
-The Monte Carlo error in the estimated sum of squared residuals is 
+and
 $$
-\begin{aligned}
-\Var\left(\widehat{SS}_{R}\right) &= \Var\left(\widehat{SS}_{Total} - \sum_{q=1}^Q \widehat{SS}_q\right) \\
-&= \Var\left(\widehat{SS}_{Total}\right) + \sum_{q=1}^Q \sum_{r=1}^Q \Cov\left(\widehat{SS}_q, \widehat{SS}_r \right) - 2 \sum_{q=1}^Q \Cov\left(\widehat{SS}_T, \widehat{SS}_q\right)
-\end{aligned}
+\nu_R = \frac{\left(\sum_{a,b,c,d,z} \sigma_{abcdz}^2 - \sum_{q=0}^Q \trace\left(\bs\Omega_q\right)\right)^2}{\left[\trace\left(\bs\Sigma^2\right) - 2 \sum_{q=0}^Q \trace\left(\mat{P}_q'\bs\Sigma^2\mat{P}_q\right) + \sum_{q=0}^Q \sum_{r = 0}^Q \trace\left(\bs\Omega_{qr} \bs\Omega_{qr}'\right)\right]}
 $$
-and 
-$$
-\begin{aligned}
-\Cov\left(\widehat{SS}_R, \widehat{SS}_q\right) &= \Cov\left(\widehat{SS}_{Total} - \sum_{r=1}^Q \widehat{SS}_r, \widehat{SS}_q\right) \\
-&= \Cov\left(\widehat{SS}_{Total}, \widehat{SS}_q\right) - \sum_{r=1}^Q \Cov\left(\widehat{SS}_r, \widehat{SS}_q\right).
-\end{aligned}
-$$
+Then under the null, an approximate reference distribution for the test statistic is $C_R \stackrel{\cdot}{\sim} \chi^2(\nu_R)$.
+
 
 ## In R
 
 I developed a function to compute the adjusted sums of squares, along with standard errors for each component. Toggle the "Code" button below to see it.
 
 ```{r}
-#| file: meta-ANOVA.R
+#| file: meta-aov.R
 ```
 
-Here's how to apply the function to compute an adjusted ANOVA for RMSE from  @lee2024comparing:
+Here's how to apply the function to compute the adjusted ANOVA for RMSE from  @lee2024comparing, including all possible terms for a fully saturated model:
 
 ```{r}
-#| output: false
 #| code-fold: show
 
-SS_adjusted <- meta_ANOVA(
-  response = "rmse",
-  mcse = "rmse_mcse",
-  terms = c("a","b","H","J","ICC"),
+SS_adjusted_full <- meta_aov(
+  rmse ~ a * b * H * J * ICC, 
+  mcse = rmse_mcse, 
   data = CCREM_res
 )
 
@@ -343,7 +346,7 @@ The underlying data are in @tbl-Lee-SS-adjusted in the "DATA" tab.
 #| echo: false
 
 SS_long <- 
-  SS_adjusted %>% 
+  SS_adjusted_full %>% 
   select(-A, -df) %>%
   pivot_longer(c(SS, SSA), names_to = "type", values_to = "SS") %>%
   mutate(
@@ -392,9 +395,9 @@ p + coord_cartesian(xlim = c(-0.05,0.20))
 ```{r}
 #| echo: false
 #| label: tbl-Lee-SS-adjusted
-#| tbl-cap: Adjusted sums of squares for Root Mean Squared Error of the CCREM estimator
+#| tbl-cap: Adjusted sums of squares for Root Mean Squared Error of the CCREM estimator, based on a fully saturated model
 
-SS_adjusted %>%
+SS_adjusted_full %>%
   rename(`Sum Sq` = SS, Df = df, Adj = A, `Sum Sq Adj` = SSA, MCSE = SSA_mcse) %>%
   tt() %>%
   format_tt(digits = 4, num_fmt = "decimal") %>%
@@ -403,3 +406,48 @@ SS_adjusted %>%
 ```
 
 :::
+
+Here's how to apply the function to compute the adjusted ANOVA for RMSE from  @lee2024comparing, but using a greatly simplified model and computing p-values for null hypothesis tests on each component:
+
+```{r}
+#| code-fold: show
+
+SS_adjusted_reduced <- meta_aov(
+  rmse ~ a + H + J + a:H + a:J + H:J, 
+  mcse = rmse_mcse, 
+  data = CCREM_res,
+  test = TRUE
+)
+
+```
+
+@tbl-Lee-SS-adjusted-reduced reports the resulting ANOVA table, which includes the result of testing the null that the residual variation is zero. The p-value is very large, indicating that the data are consistent with the possibility that the reduced model is sufficient to explain all of the true variation in the performance measure.
+It's a bit curious that the Satterthwaite degrees of freedom (labeled as 'nu') for each of the included terms are so small, but this might be because there's substantial heteroskedasticity in the Monte Carlo error.
+
+```{r}
+#| echo: false
+#| label: tbl-Lee-SS-adjusted-reduced
+#| tbl-cap: Adjusted sums of squares for Root Mean Squared Error of the CCREM estimator, based on a reduced model
+
+SS_adjusted_reduced %>%
+  mutate(
+    pval = format.pval(pval, eps = 1e-3, nsmall = 3, justify = "right")
+  ) %>%
+  rename(`Sum Sq` = SS, Df = df, Adj = A, `Sum Sq Adj` = SSA, MCSE = SSA_mcse, `p-value` = pval) %>%
+  tt() %>%
+  format_tt(j = 3:6, digits = 4, num_fmt = "decimal", num_zero = TRUE) %>%
+  format_tt(j = 7:8, digits = 2, num_fmt = "decimal", num_zero = TRUE) %>%
+  style_tt(j = 2:9, align = "r") %>%
+  theme_striped()
+```
+
+## Remarks
+
+I have never seen this sort of analysis conducted on Monte Carlo simulation results.
+Based on this example, it strikes me as something that might be worth developing further.
+Of course, I should probably temper my enthusiasm considering how small the adjustments are relative to the magnitude of the sums of squares involved.
+In practice, it's probably fine to just focus on the magnitude of the raw sums of squares.
+But it does seem helpful to be able to gauge the magnitude of the Monte Carlo standard errors on the sums of squares. 
+And it also seems like this sort of analysis could be useful in supporting an argument that some of the factors in a design can safely be ignored (or averaged over).
+I'm going to keep playing with these ideas to see where they go.
+If you found any of this remotely interesting, or if you try out the `meta_aov()` function and find something interesting, perplexing, or confusing in the output, please feel free to reach out.

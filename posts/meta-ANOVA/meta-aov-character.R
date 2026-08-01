@@ -1,4 +1,6 @@
-meta_ANOVA <- function(
+meta_aov <- function(response, mcse, ..., data, check_balance = TRUE) UseMethod("meta_ANOVA")
+
+meta_aov.character <- function(
     response, 
     mcse, 
     terms, 
