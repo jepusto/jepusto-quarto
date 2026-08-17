@@ -11,15 +11,14 @@ about:
     href: mailto:gleb.furman@gmail.com
   - icon: linkedin
     href: https://www.linkedin.com/in/glebfu/
-org_name: Gibson Consulting Group
-org_url: https://gibsonconsult.com/who-we-are/
-role: Senior Quantitative Research Scientist
+org_name: Progressive Insurance
+role: Lead Data Analyst
 people-group: Alumni
 ---
 
 :::::{#about}
 
-Gleb did his doctoral work on causal inference at UT Austin. He is currently a senior quantitative research scientist at [Gibson Consulting Group](https://gibsonconsult.com/).
+Gleb did his doctoral work on causal inference at UT Austin. He now works as data scientist at Progressive Insurance. Prior to joining Progressive Insurance, he worked as a senior quantitative research scientist at [Gibson Consulting Group](https://gibsonconsult.com/).
 
 ::::{.grid}
 
