@@ -46,7 +46,7 @@ The KL divergence of the latter from the former is
 $$
 \begin{aligned}
 KL\left(Bin\left(N,\frac{1}{2}\right), Bin\left(N,\pi\right)\right) &= N \times \left[\log\left(\frac{1}{2}\right) -\frac{1}{2} \left[\log \pi + \log(1 - \pi)\right]\right] \\
-&= -\frac{K}{2} \log\left(4 \pi(1 - \pi)\right).
+&= -\frac{N}{2} \log\left(4 \pi(1 - \pi)\right).
 \end{aligned}
 $$
 Given a KL-divergence of $\Delta$, the prediction model with corresponding KL-divergence would have $\pi = \frac{1}{2}\left[1 + \sqrt{1 - \exp\left(-\frac{2\Delta}{N}\right)}\right]$. 
@@ -356,7 +356,7 @@ For a given $\Delta$, the expression can be solved numerically for $\nu$.
 The interactive @fig-normal displays all four of these calibration models, where the superior distributions differ by location, scale, skew, or kurtosis, respectively.
 One thing that jumps out to me about this visualization is that the divergence from the $t(\nu)$ distribution seems much subtler than the others. 
 With this distribution, all of the action is in the tails. 
-Put differently, the KL-divergence is driven by differences in the probability assigned to rare extreme outcomes.
+Put differently, the KL-divergence is driven by differences in the probability assigned to extreme outcomes.
 
 ::::: {.grid .column-page}
 
