@@ -1,0 +1,67 @@
+---
+title: Symptom worsening in mindfulness-based cognitive therapy
+author:
+- name:
+    given: Simon B.
+    family: Goldberg
+- name:
+    given: Otto
+    family: Simonsson
+- name:
+    given: Fiona C.
+    family: Warren
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Matthew J.
+    family: Hirshberg
+- name:
+    given: Shufang
+    family: Sun
+- name:
+    given: Françoise
+    family: Jermann
+- name:
+    given: Anne
+    family: Speckens
+- name:
+    given: J. Mark G.
+    family: Williams
+- name:
+    given: Tim
+    family: Dalgleish
+- name:
+    given: Jesus
+    family: Montero-Marin
+- name:
+    given: Willem
+    family: Kuyken
+date: 2026-08-20T00:00:00
+categories:
+- meta-analysis
+- mindfulness based therapy
+links:
+- text: Journal
+  url: https://doi.org/10.1001/jamanetworkopen.2026.29946
+  icon: newspaper
+citation:
+  type: article-journal
+  container-title: JAMA Network Open
+  doi: 10.1001/jamanetworkopen.2026.29946
+  volume: 9
+  issue: 8
+  page: e2629946
+---
+
+The individual participant data (IPD) meta-analysis of mindfulness-based cognitive therapy (MBCT) for the prevention of depressive relapse or recurrence described by Kuyken et al. has supported the dissemination of MBCT as a frontline treatment for depression. 
+MBCT is now recommended in multiple clinical guidelines including the National Institute for Health and Care Excellence in the UK and is widely implemented across health care systems. 
+Since this meta-analysis was published, questions have been raised regarding the safety of mindfulness-based interventions. 
+Two recent studies examined the occurrence of meditation-related harm in the context of MBCT.
+Although definitions and rates of harm differed across these studies, both documented cases defined as reflecting patient-reported harm. 
+Importantly, neither study included a control condition, making it impossible to evaluate the degree to which MBCT increased the likelihood of these experiences occurring. 
+Establishing whether MBCT increases the likelihood of poor outcomes relative to a control condition is crucial for weighing the costs relative to benefits of this treatment. 
+IPD allows evaluation of symptom worsening following treatment relative to controls, which is one indicator of treatment-related harm when examined within a randomized trial context in which causality can be inferred.
+The present study is a preregistered secondary analysis of the Kuyken et al. IPD evaluating odds of symptom worsening for MBCT vs controls.
+
+
