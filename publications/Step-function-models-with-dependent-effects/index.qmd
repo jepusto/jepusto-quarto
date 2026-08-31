@@ -29,7 +29,7 @@ links:
   text: Data
   url: https://osf.io/v25rx/
 - text: R package
-  url: https://github.com/jepusto/metaselection
+  url: https://jepusto.github.io/metaselection/
   icon: box2
 preprint: true
 citation: 
