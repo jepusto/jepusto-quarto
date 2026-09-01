@@ -10,7 +10,7 @@ format:
     slide-number: true
     chalkboard: 
       buttons: false
-    logo: ../DAGStat-2025/images/uw-logo.png
+    logo: images/uw-logo.png
     css: styles.css
     theme: [simple, mytheme.scss]
 editor: source
@@ -95,7 +95,7 @@ library(tinytable)
 
 ::: {.column width="30%"}
 
-![](monkey-scratching-head.gif)
+![](images/monkey-scratching-head.gif)
 :::
 
 ::::
@@ -799,7 +799,7 @@ ggplot() +
 
 ```
 
-## Accuracy for mean effect size $(\mu)$ {visibility="uncounted"}
+## Accuracy for mean effect size $(\mu)$
 
 ```{r}
 #| fig-width: 8
@@ -837,7 +837,7 @@ ggplot() +
 
 ```
 
-## Coverage rates of large-sample (sandwich) CIs {visibility="uncounted"}
+## Coverage rates of large-sample (sandwich) CIs
 
 ```{r}
 #| fig-width: 8
