@@ -1,0 +1,1151 @@
+---
+title: "Interactive, data-driven visualizations on static web pages"
+subtitle: "using Observable.js and Quarto"
+author: "James E. Pustejovsky" 
+date: "September 1, 2026"
+format: 
+  revealjs:
+    math: true
+    html-math-method: mathjax
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    logo: ../DAGStat-2025/images/uw-logo.png
+    css: styles.css
+    theme: [simple, mytheme.scss]
+editor: source
+---
+
+```{r}
+#| echo: false
+#| message: false
+
+library(tidyverse)
+library(tinytable)
+```
+
+## James E. Pustejovsky
+
+### ("PUHS-tea-UV-ski" or "Pusto" for short)
+
+- Full Professor in Educational Psychology, Quantitative Methods Program
+
+- PhD in Statistics (Northwestern University, 2013)
+
+- Applied statistician & methodologist
+
+    - Main research focus is __research synthesis__ and __meta-analysis__.
+
+    - Long-time R programmer (pre-tidyverse).
+    
+    - Not a web developer or software engineer.
+
+## Observable.js
+
+::::: {.columns}
+
+:::: {.column width="70%"}
+
+- JavaScript dialect designed by Mike Bostock for use with browser-based __Observable notebooks__.
+
+    - Created by Mike Bostock
+
+    - Includes intuitive plotting library
+    
+    - Includes simple interactive input library
+
+- Quarto (`.qmd`) can include Observable cells as `{ojs}`
+
+    - On static html pages
+    
+    - In `reveal.js` presentations (like this one)
+
+::: {.fragment}
+
+- Useful for
+
+  - Building intuitions about statistics
+  
+  - Teaching
+  
+  - Presenting research findings
+  
+:::
+
+::::
+
+::: {.column width="30%"}
+
+![Mike Bostock](https://avatars.githubusercontent.com/u/230541?v=4)
+:::
+
+::::
+
+## Model Fit Criteria
+
+::::: {.columns}
+
+:::: {.column width="70%"}
+
+- Widely used measures of model fit (AIC, DIC, WIC, LOOIC) are defined in terms of __*Kullback-Leibler divergence*__.
+
+    - How do you interpret differences in model fit measures?
+
+:::
+
+::: {.column width="30%"}
+
+![](monkey-scratching-head.gif)
+:::
+
+::::
+
+::: {.fragment}
+
+- Suppose we have two models fit to the same data. The models differ in fit by some amount $\Delta$.
+
+- One approach to interpreting is __calibration__
+
+    - Find two simpler-to-conceptualize models that have the same difference in KL-divergence.
+    
+:::
+
+## Coin flip calibration
+
+- Imagine you are flipping a coin $N$ times and that you expect the coin to be fair. 
+
+    - Your mental model is that the number of heads $H \sim Binom\left(N, \frac{1}{2}\right)$.
+    
+- The coin is actually biased with probability of heads $\phi$.
+
+::: {.fragment}
+$$
+\Delta = KL\left(Bin\left(N,\phi\right), Bin\left(N,\frac{1}{2}\right)\right) = N \times \left[\log 2 + \phi \log \phi + (1 - \phi) \log(1 - \phi)\right].
+$$
+:::
+
+::::: {.fragment .columns}
+
+:::: {.column width="35%"}
+
+```{ojs}
+//| echo: false
+//| output: false
+
+math = require("mathjs")
+binomial = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-binomial@umd/browser.js' )
+
+Nmax = 50
+Delta_max = 20
+Delta_step = 0.1
+
+viewof N = Inputs.input(10)
+viewof Delta = Inputs.input(0)
+
+```
+
+```{ojs}
+//| panel: input
+//| echo: false
+
+Inputs.bind(
+  Inputs.range(
+    [1, Nmax], 
+    {step: 1, label: tex`N`}
+  ),
+  viewof N
+)
+
+
+Inputs.bind(
+  Inputs.range(
+    [0, Delta_max], 
+    {step: Delta_step, label: tex`\Delta`}
+  ),
+  viewof Delta
+)
+
+phi_toprint = phi.toFixed(3)
+tex`\phi = ${phi_toprint}`
+
+```
+
+::::
+
+:::: {.column width="65%"}
+
+```{ojs}
+//| echo: false
+
+function newtonRaphson(f, df, c, x0, xmin, xmax, tolerance, maxIterations) {
+  let x = x0;
+  let iter = 0;
+  let error = Number.POSITIVE_INFINITY;
+  let fmin = f(xmin) - c;
+  let fmax = f(xmax) - c;
+  
+  if (math.sign(fmin) == math.sign(fmax)) {
+    console.warn("The function does not have a solution within the specified range.");
+    
+    if (math.abs(fmin) < math.abs(fmax)) {
+      return(xmin);
+    } else {
+      return(xmax);
+    }
+  } else {
+    while (error > tolerance && iter < maxIterations) {
+        let fx = f(x) - c;
+        let dfx = df(x);
+        let step = -fx / dfx;
+        let p = 0;
+        let xNext = x + step;
+        while (xNext <= xmin || xNext >= xmax) {
+          xNext = x + step / 2**p;
+          p++;      
+        }
+        error = Math.abs(fx);
+        x = xNext;
+        iter++;
+    }
+
+    if (iter === maxIterations) {
+        console.warn("Newton-Raphson method did not converge within the maximum number of iterations.");
+    }
+
+    return x;
+
+  }
+}
+
+function KL_binomial(phi) {
+  return N * (math.log(2) + phi * math.log(phi) + (1 - phi) * math.log(1 - phi));
+}
+
+function dKL_binomial(phi) {
+  return N * (math.log(phi) - math.log(1 - phi))
+}
+
+phi = newtonRaphson(KL_binomial, dKL_binomial, Delta, 0.75, 0.50, 0.9999, 1e-5, 100)
+
+binom_pts = N + 1
+
+dat2 = Array(binom_pts).fill().map((element, index) => {
+  let x = index;
+  let p = binomial.pmf(index, N, phi);
+  let q = binomial.pmf(index, N, 0.5);
+  return ({
+    x: x,
+    p: p,
+    q: q
+  })
+})
+```
+
+```{ojs}
+//| echo: false
+
+
+Plot.plot({
+  height: 300,
+  width: 700,
+  y: {
+    grid: false,
+    label: "Probability"
+  },
+  x: {
+    label: "Heads"
+  },   
+  marks: [
+    Plot.barY(dat2, {x: "x", y: "p", fill: "green", fillOpacity: 0.2}),
+    Plot.ruleX(dat2, {x: "x", y: "q", strokeWidth: 3}),
+    Plot.dot(dat2, {x: "x", y: "q", fill: "black", r: 5})
+  ]
+})
+```
+
+::::
+
+
+:::::
+
+## Standard normal calibrations {.smaller}
+
+```{ojs}
+mu_toprint = mu_D.toFixed(3)
+sigma_toprint = sigma_D.toFixed(3)
+alpha_toprint = alpha_D.toFixed(3)
+nu_toprint = nu_D.toFixed(3)
+```
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+```{ojs}
+//| panel: input
+//| echo: false
+
+Inputs.bind(
+  Inputs.range(
+    [1, Nmax], 
+    {step: 1, label: tex`N`}
+  ),
+  viewof N
+)
+
+
+Inputs.bind(
+  Inputs.range(
+    [0, Delta_max], 
+    {step: Delta_step, label: tex`\Delta`}
+  ),
+  viewof Delta
+)
+
+viewof scale = Inputs.range(
+  [1., 10], 
+  {value: 5, step: 0.5, label: "Scale"}
+)
+
+```
+
+:::
+
+
+::::
+
+```{ojs}
+//| echo: false
+normal = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-normal@umd/browser.js' )
+student = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-t@umd/browser.js' )
+gamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-gamma@umd/browser.js' )
+trigamma = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-trigamma@umd/browser.js' )
+
+// Location-shift
+
+mu_D = math.sqrt(2 * Delta / N)
+
+
+// Scale-shift
+
+function KL_sigma(s) {
+  return N * (s**2 - 1 - 2 * math.log(s)) / 2;
+} 
+
+function dKL_sigma(s) {
+  return (s - 1 / s) * N;
+} 
+
+sigma_D = newtonRaphson(KL_sigma, dKL_sigma, Delta, 1.1, 1, 100, 1e-5, 100)
+
+// Skewness
+
+function logKL_gamma(la) {
+  let a = math.exp(la);
+  let c1 = (math.log(2 * math.pi) + 1) / 2;
+  let c2 = gamma.entropy(a, math.sqrt(a));
+  return math.log(N) + math.log(c1 - c2);
+}
+
+function dlogKL_gamma(la) {
+  let a = math.exp(la);
+  const c1 = (math.log(2 * math.pi) + 1) / 2;
+  let c2 = gamma.entropy(a, math.sqrt(a));
+  let c3 = 1 / (2 * a) - 1;
+  let c4 = (1 - a) * trigamma(a);
+  return a * (c3 - c4) / (c1 - c2);
+}
+
+log_Delta = math.log(Delta)
+log_alpha = newtonRaphson(logKL_gamma, dlogKL_gamma, log_Delta, -log_Delta, -10, 10, 1e-5, 100)
+alpha_D = math.exp(log_alpha)
+
+// Kurtosis
+
+function KL_t(v) {
+  let c1 = math.log(2 * math.pi) / 2;
+  let c2 = v / (2 * (v - 2));
+  let c3 = student.entropy(v);
+  return N * (c1 + c2 - c3);
+}
+
+function dKL_t(v) {
+  let c1 = (v - 2)**(-2);
+  let c2 = 1 / (2 * v);
+  let c3 = (trigamma((v + 1) / 2) - trigamma(v / 2)) * (v + 1) / 4;
+  return -N * (c1 + c2 + c3);
+}
+
+nu_D = newtonRaphson(KL_t, dKL_t, Delta, 3, 2, 100, 1e-5, 100)
+
+// Compute densities
+pts2 = 201
+dat3 = Array(pts2).fill().map((element, index) => {
+  let x = - scale + index * 2 * scale / (pts2 - 1);
+  let p = normal.pdf(x,0,1);
+  let q = normal.pdf(x, mu_D, 1);
+  let r = normal.pdf(x,0, sigma_D);
+  let s = gamma.pdf(x + math.sqrt(alpha_D), alpha_D, math.sqrt(alpha_D));
+  let t = student.pdf(x, nu_D);
+  return ({
+    x: x,
+    p: p,
+    q: q,
+    r: r,
+    s: s,
+    t: t
+  })
+})
+
+colormap = [{v:"q",c:"blue"},{v:"r",c:"green"},{v:"s",c:"orange"},{v:"t",c:"red"}]
+
+function density_plot(v, c) {
+  return Plot.plot({
+    height: 200,
+    width: 400,
+    y: {
+      grid: false,
+      axis: false,
+      domain: [0, 0.45]
+    },
+    x: {
+      label: null
+    },
+    marks: [
+      Plot.lineY(dat3, {x: "x", y: "p", stroke: "black"}),
+      Plot.areaY(dat3, {x: "x", y: v, fill: c, fillOpacity: 0.5}),
+      Plot.lineY(dat3, {x: "x", y: v, stroke: c})
+    ]
+  });
+}
+
+plot_list = Object.values(colormap).map(x => density_plot(x.v, x.c))
+
+```
+
+```{ojs}
+//| echo: false
+//| fig-cap: "Standard normal distribution (black line) that diverges by $\\Delta$ from selected non-normal distributions, including $N(\\mu, 1)$ (blue density), $N(0,\\sigma^2)$ (green density), shifted $\\Gamma(\\alpha, \\sqrt{\\alpha})$ (orange density), or $t(\\nu)$ (red density)."
+
+html`<div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 5px; row-gap: 5px;">
+  ${plot_list}
+</div>`
+```
+
+## Teaching statistics {background="#43464B" .center}
+
+### An example from meta-analysis
+
+## Step-function selection models 
+
+- The data for $j = 1,...,J$ effect size estimates
+  
+    - $T_{j}, \sigma_{j} \quad$ estimate and standard error for effect size $j$
+    
+    - $p_{j} = \Phi^{-1}(-T_{j} / \sigma_{j}) \quad$ one-sided $p$-value of effect estimate $j$
+
+::: {.fragment}
+
+- Random effects model for the evidence-generating process (_before_ selective reporting):
+    $$T_{j} \sim N\left(\ \mu, \ \tau^2 + \sigma_{j}^2 \right)$$
+
+:::
+
+::: {.fragment}
+
+- $H$-step model for the selection process with steps $\alpha_1,...,\alpha_H$ (taking $\lambda_0 = 1, \alpha_0 = 0, \alpha_{H+1} = 1$):
+    $$\text{Pr}(\ T_{j} \text{ is observed} \ ) \propto \sum_{h=0}^H
+\lambda_h \times I(\alpha_{h} \leq p_{j} < \alpha_{H+1})$$
+:::
+
+## A piece-wise normal distribution {.smaller}
+
+The step-function model implies that the distribution of observed effect size estimates is piece-wise normal.
+
+```{ojs}
+norm = import('https://unpkg.com/norm-dist@3.1.0/index.js?module')
+
+eta = math.sqrt(tau**2 + sigma**2)
+H = 2
+alpha = [alpha1, alpha2]
+lambda = [1, lambda1, lambda2_ratio * lambda1]
+lambda_max = math.max(lambda)
+
+function findlambda(p, alp, lam) {
+  var m = 0;
+  while (p >= alp[m]) {
+    m += 1;
+  }
+  return lam[m];
+}
+
+function findMoments(mu, tau, sigma, alp, lam) {
+  let H = alp.length;
+  let eta = math.sqrt(tau**2 + sigma**2);
+  
+  let gamma_h = Array(H+2).fill(null).map((x,i) => {
+    if (i==0) {
+      return Infinity;
+    } else if (i==H+1) {
+      return -Infinity;
+    } else {
+      return sigma * norm.icdf(1 - alp[i-1]);
+    }
+  });
+  
+  let c_h = Array(H+2).fill(null).map((x,i) => {
+    return (gamma_h[i] - mu) / eta;
+  });
+
+  let B_h = Array(H+1).fill(null).map((x,i) => {
+    return norm.cdf(c_h[i]) - norm.cdf(c_h[i+1])
+  });
+
+  let Ai = 0;
+  for (let i = 0; i <= H; i++) {
+  	Ai += lam[i] * B_h[i];
+  }
+  
+  let psi_h = Array(H+1).fill(null).map((x,i) => {
+    return (norm.pdf(c_h[i+1]) - norm.pdf(c_h[i])) / B_h[i]
+  }); 
+
+  let psi_top = 0;
+  for (let i = 0; i <= H; i++) {
+  	psi_top += lam[i] * B_h[i] * psi_h[i];
+  }
+  
+  let psi_bar = psi_top / Ai;
+
+  let ET = mu + eta * psi_bar;
+
+  let dc_h = c_h.map((c_val) => {
+    if (math.abs(c_val) == Infinity) {
+      return 0;
+    } else {
+      return c_val * norm.pdf(c_val);
+    }
+  });
+
+  let kappa_h = Array(H+1).fill(null).map((x,i) => {
+    return (dc_h[i] - dc_h[i+1]) / B_h[i];
+  });
+
+  let kappa_top = 0;
+  for (let i = 0; i <= H; i++) {
+  	kappa_top += lam[i] * B_h[i] * kappa_h[i];
+  }
+  let kappa_bar = kappa_top / Ai;
+  let SDT = eta * math.sqrt(1 - kappa_bar - psi_bar**2);
+  
+  return ({Ai: Ai, ET: ET, SDT: SDT});
+}
+
+moments = findMoments(mu, tau, sigma, alpha, lambda)
+Ai_toprint = moments.Ai.toFixed(3)
+ET_toprint = moments.ET.toFixed(3)
+eta_toprint = eta.toFixed(3)
+SDT_toprint = moments.SDT.toFixed(3)
+
+```
+
+```{ojs}
+pts = 201
+
+density_dat = Array(pts).fill().map((element, index) => {
+  let t = mu - 3 * eta + index * eta * 6 / (pts - 1);
+  let p = 1 - norm.cdf(t / sigma);
+  let dt = norm.pdf((t - mu) / eta) / eta;
+  let lambda_val = findlambda(p, alpha, lambda);
+  return ({
+    t: t,
+    d_unselected: dt,
+    d_selected: lambda_val * dt / lambda_max
+  })
+})
+
+```
+
+::::: {.columns}
+
+:::: {.column width="30%"}
+
+```{ojs}
+//| panel: input
+
+viewof mu = Inputs.range(
+  [-2, 2], 
+  {value: 0.1, step: 0.01, label: tex`\mu`}
+)
+
+viewof tau = Inputs.range(
+  [0, 2], 
+  {value: 0.15, step: 0.01, label: tex`\tau`}
+)
+
+viewof sigma = Inputs.range(
+  [0, 1], 
+  {value: 0.25, step: 0.01, label: tex`\sigma_i`}
+)
+
+viewof alpha1 = Inputs.range(
+  [0, 1],
+  {value: 0.025, step: 0.005, label: tex`\alpha_1`}
+)
+
+viewof alpha2 = Inputs.range(
+  [0, 1],
+  {value: 0.50, step: 0.005, label: tex`\alpha_2`}
+)
+
+viewof lambda1 = Inputs.range(
+  [0, 2],
+  {value: 1, step: 0.01, label: tex`\lambda_1`}
+)
+
+viewof lambda2_ratio = Inputs.range(
+  [0, 2],
+  {value: 1, step: 0.01, label: tex`\lambda_2 / \lambda_1`}
+)
+
+```
+::::
+
+:::: {.column width="70%"}
+
+```{ojs}
+Plot.plot({
+  height: 500,
+  width: 1000,
+  y: {
+    grid: false,
+    label: "Density"
+  },
+  x: {
+    label: "Effect size estimate (Ti)"
+  },   
+  marks: [
+    Plot.ruleY([0]),
+    Plot.ruleX([0]),
+    Plot.areaY(density_dat, {x: "t", y: "d_unselected", fillOpacity: 0.3}),
+    Plot.areaY(density_dat, {x: "t", y: "d_selected", fill: "blue", fillOpacity: 0.5}),
+    Plot.lineY(density_dat, {x: "t", y: "d_selected", stroke: "blue"})
+  ]
+})
+```
+
+:::{.moments}
+
+```{ojs}
+tex`
+\begin{aligned}
+\mu &= ${mu} & \qquad \sqrt{\tau^2 + \sigma_{ij}} &= ${eta_toprint} \\
+\mathbb{E}\left(T_{ij}\right) &= ${ET_toprint}
+& \qquad \sqrt{\mathbb{V}\left(T_{ij}\right)} &= ${SDT_toprint} \\ 
+\Pr(T_{ij} \text{ is observed}) &= ${Ai_toprint}
+\end{aligned}
+`
+```
+:::
+
+::::
+
+:::::
+
+## Displaying Simulation Study Results {background="#43464B" .center}
+
+## Simulation Design {visibility="uncounted" .smaller}
+
+```{r}
+
+sim_design <- 
+  tribble(
+    ~ Parameter, ~ `Full Simulation`, ~ `Bootstrap Simulation`,
+    "Overall average effect", "0.0, 0.2, 0.4, 0.8", "0.0, 0.2, 0.4, 0.8",
+    "Between-study heterogeneity", "0.05, 0.15, 0.30, 0.45","0.05, 0.45",
+    "Within-study heterogeneity ratio", "0.0, 0.5", "0.0, 0.5", 
+    "Correlation between outcomes", "0.4, 0.8", "0.8",
+    "Selection probability", "0.02, 0.05, 0.10, 0.20, 0.50, 1.00", "0.05, 0.20, 1.00", 
+    "Number of primary studies", "15, 30, 60, 90, 120", "15, 30, 60", 
+    "Primary study sample sizes", "Typical, Small", "Typical, Small"
+  )
+
+sim_design %>%
+  tt(theme = "striped", width = c(1,1,1))
+  
+```
+
+- 2000 replications per condition
+
+- 399 bootstraps per replication
+
+```{r}
+library(tidyverse)
+
+selection_levels <- c(
+  "0.02 (Strong)" = 0.02,
+  "0.05" = 0.05,
+  "0.10" = 0.10,
+  "0.20" = 0.20,
+  "0.50" = 0.50,
+  "1.00 (None)" = 1.00
+)
+
+
+results <- 
+  readRDS("../DAGStat-2025/sim-step-function-point-estimator-results.rds") %>%
+  mutate(
+    estimator = fct(estimator, levels = c("CML","ARGL","PET","PEESE","PET/PEESE","CHE","CHE-ISCW")),
+    N_factor = fct(if_else(n_multiplier < 1, "Small", "Typical")),
+    weights = as.character(weights),
+    het_ratio = omega ^ 2 / tau ^ 2,
+    het_ratio = as.character(het_ratio),
+    scrmse = sqrt(m) * rmse, 
+    J = as.character(m),
+    J = factor(J, levels = c("15", "30", "60", "90", "120")),
+    weights = factor(
+      weights, 
+      levels = selection_levels,
+      labels = names(selection_levels)
+    ),
+    mu_fac = fct(as.character(mean_smd)),
+    tau_fac = fct(as.character(tau), levels = c("0.05","0.15","0.3","0.45","0.6")),
+    convergence = K_absolute / 2000,
+    winz_convergence = (1 - winsor_pct) * K_absolute / 2000
+  ) %>%
+  select(-cor_sd, -n_multiplier)
+
+results_CI <- 
+  readRDS("../DAGStat-2025/sim-step-function-confidence-interval-results.rds") %>%
+  mutate(
+    estimator = fct(estimator, levels = c("CML","ARGL","PET","PEESE","PET/PEESE","CHE","CHE-ISCW")),
+    N_factor = fct(if_else(n_multiplier < 1, "Small", "Typical")),
+    weights = as.character(weights),
+    het_ratio = omega ^ 2 / tau ^ 2,
+    het_ratio = as.character(het_ratio),
+    J = as.character(m),
+    J = factor(J, levels = c("15", "30", "60", "90", "120")),  # 120 and 200 not there 
+    weights = factor(
+      weights, 
+      levels = selection_levels,
+      labels = names(selection_levels)
+    ),
+    mu_fac = fct(as.character(mean_smd)),
+    tau_fac = fct(as.character(tau), levels = c("0.05","0.15","0.3","0.45","0.6")),
+    bootstrap_type = recode(bootstrap_type, .missing = "none"),
+    CI_boot_method = if_else(
+      CI_type == "large-sample",
+      "cluster-robust", 
+      paste(CI_type, " (", bootstrap_type, ")", sep = "")
+    ),
+    CI_boot_method = fct(
+      CI_boot_method,
+      levels = c("cluster-robust","percentile (multinomial)","percentile (exponential)",
+                 "biascorrected (multinomial)","biascorrected (exponential)","BCa (multinomial)","BCa (exponential)",
+                 "basic (multinomial)","basic (exponential)","student (multinomial)","student (exponential)")
+    )
+  ) %>%
+  select(-cor_sd, -n_multiplier)
+
+```
+
+```{r}
+
+mean_res <- 
+  results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) 
+
+ojs_define(dat = mean_res)
+```
+
+## Bias for mean effect size $(\mu)$ 
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = bias, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = "Bias", 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Accuracy for mean effect size $(\mu)$ {visibility="uncounted"}
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results %>%
+  filter(    
+    param == "beta",
+    estimator %in% c("CHE","PET/PEESE","CML","ARGL")
+  ) %>%
+ggplot() + 
+  aes(x = weights, y = scrmse, color = estimator, fill = estimator) +
+  geom_hline(yintercept = 0) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 3))+
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Selection probability", 
+    y = expression(sqrt(J) %*% RMSE), 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Coverage rates of large-sample (sandwich) CIs {visibility="uncounted"}
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| out-width: 100%
+
+results_CI %>%
+  filter(
+    param == "beta",
+    !is.na(coverage),
+    is.na(bootstraps) | bootstraps == 1999,
+    estimator %in% c("CML","ARGL"),
+    CI_type %in% c("large-sample"),
+  ) %>%
+  ggplot(aes(x = J, y = coverage, color = estimator, fill = estimator)) +
+  geom_boxplot(alpha = .5, coef = Inf) +
+  geom_hline(yintercept = 0.95, linetype = "dashed") +
+  coord_cartesian(ylim = c(0.7,1)) + 
+  scale_color_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") +
+  facet_grid(
+    tau ~ mean_smd, 
+    labeller = label_bquote(
+      rows = tau == .(tau),
+      cols = mu == .(mean_smd)
+    ),
+    scales = "free_y"
+  ) +
+  labs(
+    x = "Number of studies (J)", 
+    y = "Coverage rate", 
+    color = "Estimator",
+    fill = "Estimator"
+  ) + 
+  theme_bw() +
+  theme(legend.position = "top")
+
+```
+
+## Bias for mean effect size $(\mu)$
+
+
+```{ojs}
+viewof mu_bias = Inputs.input(0.0)
+viewof tau_bias = Inputs.input(0.15)
+
+bias_dat = transpose(dat).filter(function(el) {
+  return el.mean_smd == mu_bias && el.tau == tau_bias;
+})
+```
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+Inputs.bind(
+  Inputs.select(
+    [0.0,0.2,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  ),
+  viewof mu_bias
+)
+
+Inputs.bind(
+  Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.15, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  ),
+  viewof tau_bias
+)
+```
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    label: null,
+    axis: null
+  },
+  fill: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+  },
+  y: {
+    grid: true,
+    domain: [-0.1,0.4]
+  },
+  fx: {
+    padding: 0.10,
+    label: "Selection probability",
+    labelAnchor: "center"
+  },
+  width: 800,
+  height: 500,
+  color: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0.0], {stroke: "black"}),
+    Plot.boxY(bias_dat, {fx: "weights", x: "estimator", y: "bias", stroke: "estimator", fill: "estimator"})
+  ]
+})
+```
+
+:::
+::::
+
+## Accuracy for mean effect size $(\mu)$
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+Inputs.bind(
+  Inputs.select(
+    [0.0,0.2,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  ),
+  viewof mu_bias
+)
+
+Inputs.bind(
+  Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.15, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  ),
+  viewof tau_bias
+)
+
+```
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    label: null,
+    axis: null
+  },
+  fill: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+  },
+  y: {
+    grid: true,
+  },
+  fx: {
+    padding: 0.10,
+    label: "Selection probability",
+    labelAnchor: "center"
+  },
+  width: 800,
+  height: 500,
+  color: {
+    domain: ["CML","ARGL","PET/PEESE","CHE"],
+    legend: true
+  },
+  marks: [
+    Plot.ruleY([0.0], {stroke: "black"}),
+    Plot.boxY(bias_dat, {fx: "weights", x: "estimator", y: "scrmse", stroke: "estimator", fill: "estimator"})
+  ]
+})
+```
+
+
+:::
+::::
+
+## Coverage rates of 95% CIs for $\mu$
+
+```{r}
+
+CI_res <- 
+  results_CI %>%
+  filter(    
+    param == "beta",
+    !is.na(coverage),
+    is.na(bootstraps) | bootstraps == 1999,
+    bootstrap_condition == "bootstrap",
+    estimator %in% c("CML","ARGL"),
+    CI_type %in% c("large-sample","percentile"),
+    bootstrap_type %in% c("none","multinomial")
+  ) 
+
+ojs_define(CI_dat = CI_res)
+```
+
+```{ojs}
+coverage_dat = transpose(CI_dat).filter(function(el) {
+  return el.mean_smd == mu_CI && el.tau == tau_CI && estimator.includes(el.estimator);
+})
+```
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+```{ojs}
+//| panel: input
+
+viewof mu_CI = Inputs.select(
+    [0.0,0.4,0.8], 
+    {
+      value: 0.0, 
+      label: tex`\mu`,
+      width: "100px"
+    }
+  )
+
+viewof tau_CI = Inputs.select(
+    [0.05,0.15,0.30,0.45], 
+    {
+      value: 0.05, 
+      label: tex`\tau`,
+      width: "100px"
+    }
+  )
+
+viewof estimator = Inputs.select(
+    ["CML","ARGL"], 
+    {
+      value: "CML", 
+      label: "estimator",
+      width: "100px"
+    }
+  )
+
+```
+
+:::
+
+::: {.column width="80%"}
+
+```{ojs}
+Plot.plot({
+  x: {
+    axis: null
+  },
+  y: {
+    grid: true,
+    domain: [0.70,1.00]
+  },
+  fx: {
+    padding: 0.10,
+    label: "Number of studies (J)",
+    labelAnchor: "center"
+  },
+  color: {
+    legend: true
+  },
+  width: 800,
+  height: 500,
+  marks: [
+    Plot.ruleY([0.95], {stroke: "black", strokeDasharray: "5,3"}),
+    Plot.boxY(coverage_dat, {fx: "J", x: "CI_boot_method", y: "coverage", stroke: "CI_boot_method", fill: "CI_boot_method"})
+  ]
+})
+```
+
+:::
+::::
+
+## Programming tips
+
+- Use [ObservableHQ.com](https://observablehq.com/) online notebooks to template interactive graphics.
+
+- In Quarto, pass data from R to Observable with `ojs_define()`
+
+::: {.fragment}
+
+### More examples on my blog
+
+* [Calibration models for Kullback-Leibler divergence](https://jepusto.com/posts/calibration-of-KL-divergence/)
+
+* [Interactive display of simulation results with Observable.js](https://jepusto.com/posts/Displaying-simulation-results/)
+
+* [Step-function selection models for meta-analysis](https://jepusto.com/posts/step-function-selection-models/)
+
+* [Copas selection models for meta-analysis](https://jepusto.com/posts/Copas-selection-models/)
+
+* [Beta-density selection models for meta-analysis](https://jepusto.com/posts/beta-density-selection-models/)
+
+* [Distribution of the number of significant effect sizes](https://jepusto.com/posts/distribution-of-significant-effects/)
+
+:::
