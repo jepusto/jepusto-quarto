@@ -4,7 +4,7 @@ author:
 - name:
     given: James E.
     family: Pustejovsky
-date: 2026-03-09T00:00:00
+date: 2026-09-03T00:00:00
 image: fig-profile-ll-2.png
 categories:
 - meta-analysis
@@ -12,17 +12,23 @@ categories:
 - publication bias
 - selection model
 links:
+- text: Journal
+  url: https://doi.org/10.3758/s13423-026-02978-5
+  icon: newspaper
 - icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/5mcs9_v2
 - icon: code-slash
   text: Code
   url: https://osf.io/6ecsm
-preprint: true
+preprint: false
 citation: 
-  type: article
-  doi: 10.31222/osf.io/5mcs9_v1
-  url: https://osf.io/preprints/metaarxiv/5mcs9_v2
+  type: article-journal
+  container-title: Psychonomic Bulletin & Review
+  doi: 10.3758/s13423-026-02978-5
+  url: https://doi.org/10.3758/s13423-026-02978-5
+  volume: 33
+  page: 224
 ---
 
 Van Aert and Van Assen (2026) introduced a novel method called p-uniform* for estimating average effect size in meta-analyses subject to publication bias. 
