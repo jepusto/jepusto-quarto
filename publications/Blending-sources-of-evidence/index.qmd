@@ -1,0 +1,42 @@
+---
+title: 'Blending sources of evidence: Meta-analysis combining aggregated data and individual participant data from multilab replications'
+author:
+- name:
+    given: Jingru
+    family: Zhang
+- name:
+    given: James E.
+    family: Pustejovsky
+date: 2026-09-16T00:00:00
+draft: true
+categories:
+- meta-analysis
+- individual participant data
+- multilab replication
+links:
+- icon: unlock-fill
+  text: Pre-Print
+  url: https://osf.io/preprints/psyarxiv/gztv2_v1
+- icon: code-slash
+  text: Code
+  url: 
+- icon: table
+  text: Data
+  url: 
+preprint: true
+citation: 
+  type: article
+  doi: 10.31234/osf.io/gztv2_v1
+  url: https://osf.io/preprints/psyarxiv/gztv2_v1
+---
+
+Conventional meta-analyses synthesize average treatment effects from sample-level aggregated data (AD) and are limited to addressing questions of moderation only at the sample level. 
+Although associations between study-mean covariates and effect sizes need not reflect individual-level relations, individual-level moderating effects can be investigated using individual participant data (IPD). 
+Multilab replication projects have recently made large, preregistered IPD collections publicly available for effects also synthesized in conventional meta-analyses, so the two data sources could, in principle, be combined. 
+Determining whether they should be combined, however, requires judgment about their compatibility. 
+We propose four guiding questions for the preliminary evaluation of such syntheses, concerning outcome measurement, primary study sample sizes, the distribution of study features, and publication bias, and show how graphical and tabular summaries can inform each consideration. 
+We then describe meta-analytic models for combining AD and IPD from studies with continuous outcomes. 
+We review two-stage and one-stage approaches for estimating the overall effect distribution and study-level moderation, as well as for separating within-study from between-study moderation of individual characteristics, including a novel bivariate two-stage formulation that jointly synthesizes treatment and moderation effects. 
+We illustrate the framework with two examples, each pairing an AD meta-analysis with a multilab replication of the same effect. 
+In an example of moral licensing effects, the preliminary evaluation indicates that combining the sources is not warranted; in an example of social heuristics effects, synthesizing across data sources is warranted. 
+Together, the examples show that whether two sources can be combined is an empirical question best settled before modeling begins, and that the specification that follows should be tailored to the features of the data that the preliminary evaluation brings to light.
