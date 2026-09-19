@@ -2,12 +2,30 @@
 title: 'The neural correlates of consciousness: A systematic review and meta-analysis registered report on the visual awareness negativity and P3b'
 author:
 - name:
-    given:
-    family:
+    given: Brendan T.
+    family: Hutchinson
 - name:
     given: James E.
     family: Pustejovsky
-date: 2026-06-30T00:00:00
+- name:
+    given: Kavindu
+    family: Bandara
+- name:
+    given: Hugh
+    family: McGovern
+- name:
+    given: Jolene
+    family: Cox
+- name:
+    given: Alexandra
+    family: Voce
+- name:
+    given: Michael
+    family: Pitts
+- name:
+    given: Heleen A.
+    family: Slagter
+date: 2026-04-03T00:00:00
 categories:
 - meta-analysis
 - consciousness
