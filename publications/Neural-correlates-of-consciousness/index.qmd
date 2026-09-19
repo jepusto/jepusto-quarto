@@ -1,0 +1,43 @@
+---
+title: 'The neural correlates of consciousness: A systematic review and meta-analysis registered report on the visual awareness negativity and P3b'
+author:
+- name:
+    given:
+    family:
+- name:
+    given: James E.
+    family: Pustejovsky
+date: 2026-06-30T00:00:00
+categories:
+- meta-analysis
+- consciousness
+- perception
+- visual awareness negativity
+links:
+- text: Journal
+  url: https://doi.org/10.1037/bul0000521
+  icon: newspaper
+- icon: code-slash
+  text: Code
+  url: https://osf.io/7sn9x
+- icon: table
+  text: Data
+  url: https://osf.io/7sn9x
+citation:
+  type: article-journal
+  container-title: Psychological Bulletin
+  doi: 10.1037/bul0000521
+  url: https://doi.org/10.1037/bul0000521
+  volume: 152
+  issue: 5-6
+  page: 449-483
+---
+
+Isolating the neural correlates of consciousness is a paramount challenge in neuroscience. 
+In electroencephalographic research, two event-related potentials have been identified as candidate markers of visual awareness: the visual awareness negativity (VAN) and the P3b (or late positivity). 
+To rigorously evaluate their validity as neural correlates of consciousness, we conducted the first systematic review and meta-analysis of these signals, presented as a registered report.
+We assessed their necessity and sufficiency through meta-analysis of "seen" effect sizes (where consciousness was present) and "unseen" effect sizes (where consciousness was absent), while examining the influence of study quality, selective reporting, and theoretical and methodological moderators. 
+From 117 studies contributing 547 effect sizes to our seen meta-analysis (322 VAN, 225 P3b) and 89 effect sizes to our unseen meta-analysis (55 VAN, 34 P3b), we estimated a standardized mean difference for the VAN at 0.37 (95% confidence interval [0.32, 0.43]) and the P3b standardized mean difference at 0.49 (95% confidence interval [0.41, 0.57]). 
+Our findings show that the P3b is not a necessary marker for consciousness, as it is not reliably present under task-irrelevant conditions (standardized mean difference = −0.12, 95% confidence interval [−0.47, 0.23]), whereas the VAN is present even in the absence of consciousness, suggesting that it is not a sufficient marker for consciousness. 
+While study quality did not influence outcomes, selective reporting may introduce upward bias in our estimates, although this does not impact our conclusions. 
+Together, findings challenge prevailing theories of consciousness and underscore the need for refined models and methodologies in the search for neural correlates of consciousness.
