@@ -10,7 +10,7 @@ author:
 - name:
     given: Megha
     family: Joshi
-date: 2025-05-28T00:00:00
+date: 2026-09-21T00:00:00
 image: step-functions-2.png
 categories:
 - meta-analysis
@@ -19,6 +19,11 @@ categories:
 - publication bias
 - selection model
 links:
+- text: Journal
+  url: https://doi.org/10.1017/rsm.2026.10117
+  icon: newspaper
+- text: Supplementary materials
+  url: https://doi.org/10.1017/rsm.2026.10117.sm001
 - icon: unlock-fill
   text: Pre-Print
   url: https://osf.io/preprints/metaarxiv/qg5x6_v5
@@ -31,11 +36,12 @@ links:
 - text: R package
   url: https://jepusto.github.io/metaselection/
   icon: box2
-preprint: true
+preprint: false
 citation: 
-  type: article
-  doi: 10.31222/osf.io/qg5x6_v5
-  url: https://osf.io/preprints/metaarxiv/qg5x6_v5
+  type: article-journal
+  container-title: Research Synthesis Methods
+  doi: 10.1017/rsm.2026.10117
+  url: https://doi.org/10.1017/rsm.2026.10117
 ---
 
 Meta-analyses in social science fields face multiple methodological challenges arising from how primary research studies are designed and reported. One challenge is that many primary studies report multiple relevant effect size estimates, leading to a data structure with dependent observations. Another is selective reporting bias, which arises when the availability of study findings is influenced by the statistical significance of results. Although many selective reporting diagnostics and bias-correction methods have been proposed, few are suitable for meta-analyses involving dependent effect sizes. Among available methods, step-function selection models are conceptually appealing and have shown promise in previous simulations, but tend to understate uncertainty in parameter estimates if dependent effects are ignored. We study methods for estimating step-function models from data involving dependent effect sizes, focusing specifically on estimating parameters of the marginal distribution of effect sizes and accounting for dependence using cluster-robust variance estimation or bootstrap resampling. We describe two estimation strategies, demonstrate them by re-analyzing data from a previous synthesis on ego depletion effects, and evaluate their performance through an extensive simulation study under both univariate and multivariate selection processes. Simulation findings indicate that selection models provide low-bias estimates of average effect size and clustered bootstrap confidence intervals provide acceptable coverage levels for meta-analyses with at least 30 studies. Although unadjusted estimates are more efficient when selective reporting is absent or minimal, the proposed methods provide a robust and useful approach for evaluating the potential biases arising when selective reporting is present in meta-analyses with dependent effects.
