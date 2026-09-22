@@ -1,8 +1,7 @@
 ---
 title: Pusto's package downloads
-subtitle: March 2026 edition
-date: '2026-03-28'
-draft: true
+subtitle: September 2026 edition
+date: '2026-09-22'
 categories:
 - programming
 - Rstats
@@ -16,18 +15,19 @@ Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R package
 
 These days, I'm (happily) tenured at a different university, still developing some R packages, but my work has become much more collaborative. 
 Of the four R packages that I looked at in 2019, two were solo projects (`clubSandwich` and `ARPobservation`) and two were my design, with some contributions from students (`SingleCaseES` and `scdhlm`). 
-I've since been involved with four additional R packages (`lmeInfo`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
+I've since been involved with five additional R packages (`lmeInfo`, `metaselection`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
 In short, the packages are no longer _mine_, but rather represent tools to which I've contributed. 
 I'm no less proud of the products, though. 
 
-Since it has been nearly seven years since my previous post on package downloads, I felt like it was time for an updated look. I'll follow more or less the same methodology as before, using statistics from [METACRAN](https://www.r-pkg.org/). The site makes available data on daily downloads from the RStudio mirror of CRAN, which is just one of many mirrors around the world. Although the data do not represent complete tallies of all package downloads, as far as I know, it is still the best available source of this sort of data. 
+Since it has been over seven years since my previous post on package downloads, I felt like it was time for an updated look. I'll follow more or less the same methodology as before, using statistics from [METACRAN](https://www.r-pkg.org/). The site makes available data on daily downloads from the RStudio mirror of CRAN, which is just one of many mirrors around the world. Although the data do not represent complete tallies of all package downloads, as far as I know, it is still the best available source of this sort of data. 
 
 # Comparison packages
 
-The eight packages that I've developed or contributed to do a variety of things, but the dominant theme is meta-analysis and effect size calculation. Here's how I'm thinking about packages to use as points of comparison:
+The nine packages that I've developed or contributed to do a variety of things, but the dominant theme is meta-analysis and effect size calculation. Here's how I'm thinking about packages to use as points of comparison:
 
 * [POMADE](/software/POMADE/) does power calculations for meta-analysis with dependent effect sizes. Comparison package: [PowerUpR](https://cran.r-project.org/package=PowerUpR), a general power analysis package with included Shiny app.
 * [wildmeta](/software/wildmeta/) implements bootstrap tests for meta-analytic models. Comparison packages: [bayesmeta](https://cran.r-project.org/package=bayesmeta) and [metaforest](https://cran.r-project.org/package=metaforest), which both do specialized meta-analysis stuff.
+* [metaselection](/software/metaselection/) implements several estimators for meta-analytic selection models, with inference methods that handle dependent effect size estimates. This package is brand new so I will exclude it from further analysis.
 * [scdhlm](/software/scdhlm/) and [SingleCaseES](/software/SingleCaseES/) do effect size calculations for use in meta-analysis of single-case designs. Comparison package: [compute.es](https://cran.r-project.org/package=compute.es) does effect size calculations for a variety of generic effect size measures.
 * [ARPobservation](/software/ARPobservation/) provides tools for simulating behavioral observation data based on an alternating renewal process model. Comparison package: [Countr](https://cran.r-project.org/package=Countr) provides estimation routines for renewal process models.
 
@@ -45,9 +45,9 @@ library(tidyverse)
 library(lubridate)
 library(cranlogs)
 library(kableExtra)
-library(plotly)
+library(ggrepel)
 
-to_date <- as_date("2026-03-27")
+to_date <- as_date("2026-08-31")
 file_name <- paste0("CRAN package downloads ", to_date, ".rds")
 long_file_name <- paste0("CRAN package download history ", to_date, ".rds")
 from_date <- as.character(as_date(to_date - duration(1, "year")))
@@ -67,7 +67,7 @@ pkg_downloads <-
 saveRDS(pkg_downloads, file = file_name)
 ```
 
-```{r past-six}
+```{r past-year}
 pkg_downloads <- readRDS(file_name)
 
 downloaded_last_yr <- 
@@ -171,9 +171,9 @@ focal_package_downloads %>%
 
 
 ```{r}
-#| fig-column: page
-#| fig-width: 10
-#| fig-height: 6
+#| fig-width: 7
+#| fig-height: 9
+#| fig-column: body-outset
  
 title_str <- paste("Average monthly downloads of R packages from", as_date(as_date(from_date)),"through",to_date)
 
@@ -193,18 +193,32 @@ focal_downloads_graph <-
 p <- 
   ggplot(focal_downloads_graph) +
   aes(x = pkg_num, y = count) + 
-  geom_col(aes(color = type, group = package), size = 0.7) + 
+  geom_col(aes(color = type, group = package), linewidth = 0.7) + 
   geom_line(data = downloads_graph, color = "black") + 
   scale_color_manual(values = c(Pusto = "green", Comparison = "grey")) +
-  scale_y_log10(breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), labels = scales::comma) + 
+  scale_y_log10(
+    breaks = c(20, 50, 200, 500, 2000, 5000, 20000, 50000, 200000), 
+    labels = scales::comma,
+    position = "right"
+  ) + 
+  coord_flip(ylim = c(10,NA)) + 
   theme_minimal() + 
   labs(x = "", y = "Downloads (per month)", title = title_str) + 
-  theme(legend.position = "none", axis.line.x = element_blank(), axis.ticks.x = element_blank(), axis.text.x = element_blank())
+  theme(legend.position = "none", axis.line.y = element_blank(), axis.ticks.y = element_blank(), axis.text.y = element_blank())
 
-ggplotly(
-  p,
-  tooltip = c("group","color","y"),
-)
+p + 
+  geom_label_repel(
+    data = filter(focal_downloads_graph, type == "Pusto"),
+    aes(y = count, label = package),
+    color = "darkgreen",
+    nudge_y = 0.2
+  ) + 
+  geom_label_repel(
+    data = filter(focal_downloads_graph, type == "Comparison"),
+    aes(y = 20, label = package),
+    color = "darkgrey",
+    max.overlaps = 20
+  )
 
 ```
 
@@ -229,7 +243,7 @@ long_downloads <-
 saveRDS(long_downloads, file = long_file_name)
 ```
 
-Here are the monthly download rates for each of these packages (note that the vertical scales of the graphs differ).
+Here are the monthly download rates for each of these packages (note that the vertical scales of the graphs differ):
 
 ```{r}
 #| fig-width: 10
@@ -237,22 +251,35 @@ Here are the monthly download rates for each of these packages (note that the ve
 #| fig-column: body-outset
 
 long_downloads <- 
-  readRDS("CRAN package download history 2026-03-27.rds") %>%
+  readRDS(long_file_name) %>%
   left_join(pkg_groups, by = "package")
 
 long_downloads_select <- 
   long_downloads %>%
   filter(! package %in% c("sandwich","nlme","plm"))
 
-ggplot(long_downloads_select, aes(yr, count, color = type, group = package)) + 
+long_downloads_label <- 
+  long_downloads_select %>%
+  filter(year == 2026, mth == 9) %>%
+  mutate(yr = yr + 0.2)
+
+ggplot(long_downloads_select) + 
+  aes(yr, count, color = type, group = package, label = package) + 
   geom_line() + 
+  geom_text_repel(
+    data = long_downloads_label,
+    nudge_x = 0.8
+  ) + 
+  scale_color_manual(values = c(Pusto = "darkgreen", Comparison = "darkgrey")) +
   scale_x_continuous(breaks = seq(2016, 2026, 2)) + 
-  scale_color_manual(values = c(Pusto = "green", Comparison = "grey")) +
   expand_limits(y = 0) + 
   expand_limits(x = 2025) + 
   facet_wrap(~ group, scales = "free", ncol = 1) + 
   theme_minimal() + 
-  theme(legend.position = "none") + 
+  theme(
+    legend.position = "none",
+    strip.text = element_text(hjust = 0, face = "bold", size = 11)
+  ) + 
   labs(
     x = "Year",
     y = "Monthly downloads"
