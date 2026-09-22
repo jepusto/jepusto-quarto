@@ -15,7 +15,7 @@ Back in 2019, I [posted an analysis](/posts/package-downloads/) of the R package
 
 These days, I'm (happily) tenured at a different university, still developing some R packages, but my work has become much more collaborative. 
 Of the four R packages that I looked at in 2019, two were solo projects (`clubSandwich` and `ARPobservation`) and two were my design, with some contributions from students (`SingleCaseES` and `scdhlm`). 
-I've since been involved with five additional R packages (`lmeInfo`, `metaselection`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
+I've since been involved with five additional R packages (`lmeInfo`, `metaselection`, `POMADE`, `simhelpers`, and `wildmeta`)---all developed in collaboration with students or colleagues---and my packages related to single-case effect sizes have seen major contributions from student collaborators.
 In short, the packages are no longer _mine_, but rather represent tools to which I've contributed. 
 I'm no less proud of the products, though. 
 
