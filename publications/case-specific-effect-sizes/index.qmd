@@ -1,0 +1,41 @@
+---
+title: 'Using case-specific effect sizes to complement visual analysis in single-case design research'
+author:
+- name:
+    given: John
+    family: Ferron
+- name:
+    given: Megan
+    family: Kirby
+- name:
+    given: Lodi
+    family: Lipien
+- name:
+    given: James E.
+    family: Pustejovsky
+- name:
+    given: Paulina
+    family: Grekov
+- name:
+    given: Wendy
+    family: Machalicek
+- name:
+    given: Mariola
+    family: Moyaert
+date: 2026-10-15T00:00:00
+image: case-specific-effect-size-decision-flow.png
+categories:
+- single-case design
+- effect size
+links:
+- text: Journal
+  url: https://doi.org/10.1007/s40614-026-00516-1
+  icon: newspaper
+citation: 
+  type: article-journal
+  container-title: Perspectives on Behavior Science
+  url: https://doi.org/10.1007/s40614-026-00516-1
+  doi: 10.1007/s40614-026-00516-1
+---
+
+Case-specific effect sizes have been developed to supplement the visual analysis of line-graphed data in single-case design research by quantitatively summarizing intervention effectiveness. This article provides background on case-specific effect sizes and describes when they can effectively complement visual analysis. We discuss several distinct families of case-specific effect size metrics, including nonoverlap indices (e.g., nonoverlap of all pairs), standardized measures (e.g., standardized mean difference), response ratios (e.g., percentage change), and goal attainment (e.g., percent of goal obtained). Furthermore, we discuss the assumptions and limitations that hold for all families of case-specific effect sizes and the assumptions and limitations of each type of case-specific effect size. In conclusion, we provide guidance for determining when these metrics are appropriate for a single-case design study and present a decision framework to help researchers select the most suitable effect size measure(s), if any, for their data.
