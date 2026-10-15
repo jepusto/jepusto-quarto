@@ -2,8 +2,8 @@
 title: Notes on regression adjustment for selectively reported results in meta-analysis
 date: '2026-01-17'
 categories:
-- effect-size
-- distribution-theory
+- effect size
+- distribution theory
 - selective reporting
 code-fold: true
 code-tools: true

@@ -4,7 +4,7 @@ date: '2023-12-06'
 categories:
 - Bayes
 - simulation
-- distribution-theory
+- distribution theory
 - generalized linear model
 - programming
 - Rstats
