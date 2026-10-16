@@ -1,0 +1,74 @@
+---
+title: Interpreting Cohen's $\kappa$ for abstract screening
+date: '2026-10-15'
+categories:
+- inter-rater reliability
+- systematic review
+- abstract screening
+code-fold: true
+code-tools: true
+link-citations: true
+bibliography: "../agreement-references.bib"
+csl: "../apa.csl"
+citeproc: false
+filters:
+  - apa_and_amp
+draft: true
+---
+
+When conducting a systematic review, a large amount of effort is devoted to locating all the relevant empirical studies---that is, those studies that meet the review inclusion criteria. 
+Usually, this process is carried out in several stages [@Cooper2017research].
+First, candidate studies are identified through structured queries of databases of journal articles and other scholarly literature.
+Then, titles and abstracts of candidate studies are reviewed against inclusion criteria.
+Finally, the full-text reports of a subset of potentially relevant studies are examined to determine which ones should be included.
+Each stage of the screening process requires reviewers to make judgments that involve inference and interpretation.
+
+Because reviewer judgments are not perfectly reliable, it is considered best practice to have _multiple_ reviewers to examine  candidate studies and to monitor the extent to which they agree.
+When writing up a systematic review, authors will usually report reviewer agreement rates or, preferably, a Cohen's $\kappa$ measure of chance-corrected agreement [@Cohen1960coefficient].
+Values of $\kappa$ closer to one indicate stronger agreement between raters, and there's a range of rules-of-thumb about what constitutes a sufficiently high $\kappa$---maybe 0.7 or 0.8.
+I find the arbitrariness of such thresholds bothersome.
+
+In this post, I'm going to describe one way to say something a bit more satisfying about a $\kappa$ estimate by leaning on a model for how reviewers make screening decisions, which has $\kappa$ as a key parameter.
+I've been learning about this model through a project led by my colleague [Karl Rohe](https://pages.stat.wisc.edu/~karlrohe/index.html) from UW's Statistics Department.
+Versions of the model have been described by many different authors, as I'll get to below.
+I will follow the formulation in @Klauer1996structural.
+
+## A basic agreement model
+
+Let me start by laying out the model's assumptions, in a bit more general form than is strictly necessary (cuz that's just how I roll).
+Suppose we have a set of $N$ records (titles and abstracts), each record is screened independently by $A$ reviewers, and each reviewer assigns each item to one of $C$ categories. 
+In the systematic review context, we will often have $C = 2$ categories: either "not relevant" or "potentially relevant."
+The data then consist of a set of $N \times A$ categorization decisions, $r_{ia} \in \{1,...,C\}$ for $i = 1,...,N$ and $a = 1,...,A$.
+Finally, we can imagine that each record has a true but unknown category $T_i \in \{1,...,C\}$, analogous to the latent true score in classical test theory.
+
+@Klauer1996structural describe a "basic agreement model" that posits that rating $R_{ia}$ of record $i$ by reviewer $a$ is generated in one of two ways: either the reviewer will discern the true category, or they will assign a rating at random according to a guessing distribution that does not depend on the record. Let $\lambda_a$ denote the probability that reviewer $a$ discerns the true category, let $\epsilon_{1a},...,\epsilon_{Ca}$ denote their guessing distribution, and let $\tau_{1},...,\tau_C$ be the distribution of the true categories. Then the distribution of reviewer $a$'s rating, given the record's true category is
+$$
+\text{Pr}(R_{ia} = q | T_i = c) = \lambda_a I(q = c) + (1 - \lambda_a) \epsilon_{qa}.
+$$ {#eq-conditional-rating}
+If the reviewers rate each record independently, then they will agree beyond chance levels only because they both have some probability of discerning the true category. Denoting the joint distribution of ratings for reviewers $a$ and $b$ as $\pi^{ab}_{qr} = \text{Pr}(R_{ia} = q, R_{ib} = r)$, with margins $\pi^a_{q} = \text{Pr}(R_{ia} = q)$ and $\pi^b_{r} = \text{Pr}(R_{ib} = r)$, it follows that
+$$
+\begin{aligned}
+\pi^a_q &= \lambda_a \tau_q + (1 - \lambda_a) \epsilon_{aq} \\
+\pi^b_r &= \lambda_b \tau_r + (1 - \lambda_b) \epsilon_{ar} \\
+\pi^{ab}_{qr} &= \sum_{c=1}^C \tau_c \left[\lambda_a I(q = c) + (1 - \lambda_a) \epsilon_{qa}\right]\left[\lambda_b I(q = r) + (1 - \lambda_b) \epsilon_{rb}\right] \\
+ &= \lambda_a \lambda_b \tau_q I(q = r) + \lambda_a (1 - \lambda_b) \tau_q \epsilon_{rb}  + (1 - \lambda_a) \lambda_b \tau_r \epsilon_{qa} + (1 - \lambda_a)(1 - \lambda_b) \epsilon_{qa} \epsilon_{rb} \\
+ &= \pi^a_q \pi^b_r + \lambda_a \lambda_b \tau_q (1 - \tau_q) I(q = r) - \lambda_a \lambda_b \tau_q \tau_r I(q \neq r)
+\end{aligned}
+$$ {#eq-bivariate-ratings}
+
+@Klauer1996structural show that there are special cases of their basic agreement model in which Cohen's $\kappa$ reduces to a function of the discernment probabilities. 
+Now, Cohen's $\kappa$ parameter for a pair of reviewers' ratings is a function of the joint distribution:
+$$
+\kappa_{ab} = \frac{\sum_{c=1}^C \pi^{ab}_{cc} - \sum_{c=1}^C \pi^a_c \pi^b_c}{1 - \sum_{c=1}^C\pi^a_c \pi^b_c}.
+$$ {#eq-Cohen-kappa}
+Under their model, 
+$$
+\kappa_{ab} = \frac{\lambda_a \lambda_b \sum_{c=1}^C \tau_c (1 - \tau_c)}{1 - \sum_{c = 1}^C \left[\lambda_a \tau_c + (1 - \lambda_a) \epsilon_{ac}\right]\left[\lambda_b \tau_c + (1 - \lambda_b) \epsilon_{bc}\right]}.
+$$ {#eq-bam-kappa-general}
+Now  assume that raters have the same discernment probability $\lambda = \lambda_a = \lambda_b$ and that raters' guessing distributions match the distribution of the true categories (i.e., that the raters' guesses are unbiased), so $\epsilon_{ac} = \epsilon_{bc} = \tau_c$ for $c = 1,...,C$. Then @eq-bam-kappa-general reduces to 
+$$
+\kappa_{ab} = \frac{\lambda^2 \sum_{c=1}^C \tau_c (1 - \tau_c)}{1 - \sum_{c = 1}^C \tau_c^2} = \lambda^2.
+$$ {#eq-bam-kappa-unbiased}
+Thus, under these assumptions, $\kappa$ can be interpreted in terms of a rater's discernment probability.
+
+## From discernment to confusion (matrices)
