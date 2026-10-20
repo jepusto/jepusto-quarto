@@ -8,7 +8,6 @@ author:
     given: James E.
     family: Pustejovsky
 date: 2026-09-16T00:00:00
-draft: true
 categories:
 - meta-analysis
 - individual participant data
@@ -19,10 +18,10 @@ links:
   url: https://osf.io/preprints/psyarxiv/gztv2_v1
 - icon: code-slash
   text: Code
-  url: 
+  url: https://doi.org/10.23668/psycharchives.22572
 - icon: table
   text: Data
-  url: 
+  url: https://doi.org/10.23668/psycharchives.22572
 preprint: true
 citation: 
   type: article

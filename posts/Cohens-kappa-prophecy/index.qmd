@@ -19,9 +19,9 @@ Usually, this process is carried out in several stages [@Cooper2017research].
 First, candidate studies are identified through structured queries of bibliographic databases, which include records of journal articles and other scholarly literature.
 Second, titles and abstracts of candidate studies are reviewed against inclusion criteria.
 Third, the full-text reports of a subset of potentially relevant studies are examined to determine which ones should be included.
-At each stage of the screening process, reviewers need to make judgments that involve inference and interpretation.
+At each stage of the screening process, reviewers need to make judgments that involve some degree of inference and interpretation.
 
-Because reviewer judgments are not perfectly reliable, it is considered best practice to have _multiple_ reviewers to examine  candidate studies and to monitor the extent to which they agree.
+Because reviewer judgments are fallible, it is considered best practice to have _multiple_ reviewers to examine  candidate studies and to monitor the extent to which they agree.
 When writing up a systematic review, authors will usually report reviewer agreement rates or, preferably, a measure of chance-corrected agreement like Cohen's $\kappa$ [@Cohen1960coefficient].
 Values of $\kappa$ closer to one indicate stronger agreement between raters, and there's a range of rules-of-thumb about what constitutes a sufficiently high $\kappa$---maybe 0.7 or 0.8.
 I find the arbitrariness of such thresholds bothersome.
