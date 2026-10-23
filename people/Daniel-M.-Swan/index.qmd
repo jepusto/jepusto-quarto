@@ -17,8 +17,8 @@ about:
     href: https://scholar.google.com/citations?user=e-RXsc8AAAAJ
   - icon: github
     href: https://github.com/dmswan
-org_name: Freelance
-role: Methodologist and Statistical Programmer
+org_name: Quality Information Partners, Inc.
+role: Data Scientist
 people-group: Alumni
 listing:
   - id: publications
@@ -44,7 +44,7 @@ listing:
 
 :::::{#about}
 
-Danny is currently a freelance methodologist and statistical programmer, offering services in research design, statistical analysis, and data processing. 
+Danny is currently a data scientist at [Quality Information Partners, Inc.](https://www.qi-partners.com/). 
 He was previously a senior analyst at [Abt Global](https://www.abtglobal.com/), where he worked on meta-analysis and evidence clearinghouse projects. 
 Prior to joining Abt, he was a research associate at the Prevention Science Institute at University of Oregon, where he provides support for evidence reviewer training for the What Works Clearinghouse and assists with revision and refinement of the WWC’s Standards and Procedures Handbooks. 
 His dissertation work involved examining the impact of response-guided designs on treatment effect estimates from single-case designs. 
