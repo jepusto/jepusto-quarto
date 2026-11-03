@@ -13,6 +13,7 @@ website:
   open-graph: true
   page-navigation: true
   back-to-top-navigation: true
+  draft-mode: unlinked
   navbar:
     left:
       - text: CV
