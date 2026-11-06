@@ -205,17 +205,19 @@ It will be important to consider whether similar issues apply if applying the ba
 
 In practice, it would also be useful to consider more flexible models that work under weaker assumptions.
 For instance, @Klauer1996structural noted that reviewer discernment probabilities can be allowed to _differ_ if you have at least $A \geq 3$ ratings per record. 
-@Hovy2013learning expanded on this idea, applying an agreement model with heterogeneous discernment probabilities to analyze crowd-sourced classification decisions.
-The setting they consider will typically have a large number of reviewers (in total) and a larger number of ratings per item, although not every reviewer necessarily sees every item. 
-Their model also allows the guessing distribution to differ from the true class distribution and allows different reviewers to follow different guessing distributions, motivated by the notion that some reviewers are "spammers" who have very low discernment and have different button-mashing tendencies. 
+The version with heterogeneous discernment probabilities is a special case of the observer error models proposed by @Dawid1979maximum [see also @Passonneau2014benefits].
+@Hovy2013learning applied a version of the basic agreement model with heterogeneous discernment probabilities to analyze crowd-sourced classification decisions.
+The typical setting they considered is one with a large number of reviewers (in total) and a larger number of ratings per item, although not every reviewer necessarily sees every item. 
+Their model also allowed the guessing distribution to differ from the true class distribution and allowed different reviewers to follow different guessing distributions, motivated by the notion that some reviewers are "spammers" who have very low discernment and have different button-mashing tendencies. 
 
 Approaches that are very similar to the basic agreement model have appeared in a variety of different, rather disconnected literatures. 
 @GuggenmoosHolzmann1998kappalike used a model that is essentially equivalent to the one I have sketched above to interpret $\kappa$ and other agreement indices for medical diagnostic studies [see also @GuggenmoosHolzmann1996meaning].
 Like @Klauer1996structural, they noted that other agreement indices besides Cohen's $\kappa$ can be derived from different assumptions about the guessing distribution.
 They also give examples involving both inter-rater and _intra_-rater agreement studies (in the latter, the same person rates the same item multiple times).
 @Kiyomi2003multivariate extended the basic agreement model to multivariate categorical ratings, where each variate is categorized by multiple raters.
-@Paun2018comparing demonstrated how to fit a flexible version of the basic agreement model (and several other latent class models for multi-rater classification data) using the Stan probabilistic programming language, with data drawn from natural language processing applications.
-Most recently, @Moss2023measuring provided a comprehensive study of the interpretation and estimation of different agreement indices (not just Cohen's $\kappa$ but also Fleiss's version and others) defined under the basic agreement model.
+@Paun2018comparing demonstrated how to fit a flexible version of the basic agreement model (as well as the @Dawid1979maximum model and several other latent class models for multi-rater classification data) using the Stan probabilistic programming language, with data drawn from natural language processing applications.
+@Moss2023measuring provided a comprehensive study of the interpretation and estimation of different agreement indices (not just Cohen's $\kappa$ but also Fleiss's version and others) defined under the basic agreement model.
+@Han2026hierarchical proposed a generalization of the (already quite general!) @Dawid1979maximum model that allows heterogeneity in the _record_ characteristics, using formulations that look like full-on item response models.
 
 Considering that the basic agreement model has cropped up in so many different contexts (and across multiple, apparently disconnected methodological literatures), it seems worth investigating further whether it's useful for interpreting systematic review screening processes.
 The connection to Cohen's $\kappa$ is helpful pragmatically because $\kappa_{ab}$ is one of the few scraps of information commonly reported about screening processes.
