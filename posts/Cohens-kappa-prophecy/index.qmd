@@ -1,6 +1,6 @@
 ---
 title: Interpreting Cohen's $\kappa$ for abstract screening
-date: '2026-11-03'
+date: '2026-11-07'
 categories:
 - inter-rater reliability
 - systematic review
@@ -11,7 +11,6 @@ link-citations: true
 bibliography: "../agreement-references.bib"
 csl: "../apa.csl"
 lightbox: true
-draft: true
 ---
 
 When conducting a systematic review, a large amount of the effort involved goes to simply locating all the relevant empirical studies---that is, the studies that meet the review inclusion criteria. 
@@ -37,13 +36,13 @@ Let me start by laying out some modeling assumptions, in a bit more general form
 Suppose we have a set of $N$ records (titles and abstracts), each record is screened independently by $A$ reviewers, and each reviewer assigns each item to one of $C$ categories. 
 In the systematic review context, we will often have $C = 2$ categories: either "irrelevant" or "potentially relevant."
 The data then consist of a set of $N \times A$ categorizations, $y_{ia} \in \{1,...,C\}$ for $i = 1,...,N$ and $a = 1,...,A$.
-Finally, we can imagine that each record has a true but unknown category $T_i \in \{1,...,C\}$, analogous to the latent true score in classical test theory.
+Finally, we can imagine that each record has an unknown consensus category $T_i \in \{1,...,C\}$, analogous to the latent true score in classical test theory.
 
-@Klauer1996structural describe a "basic agreement model" that posits that a rating $Y_{ia}$ of record $i$ by reviewer $a$ is generated in one of two ways: either the reviewer will discern the true category based on the information provided, or they will assign a rating at random according to a guessing distribution that does not depend on any features of the record. Let $\lambda_a$ denote the probability that reviewer $a$ discerns the true category, let $\epsilon_{1a},...,\epsilon_{Ca}$ denote their guessing distribution, and let $\tau_{1},...,\tau_C$ be the distribution of the true categories. Then the distribution of reviewer $a$'s rating, given the record's true category is
+@Klauer1996structural describe a "basic agreement model" that posits that a rating $Y_{ia}$ of record $i$ by reviewer $a$ is generated in one of two ways: either the reviewer will discern the consensus category based on the information provided, or they will assign a rating at random according to a guessing distribution that does not depend on any features of the record. Let $\lambda_a$ denote the probability that reviewer $a$ discerns the consensus category, let $\epsilon_{1a},...,\epsilon_{Ca}$ denote their guessing distribution, and let $\tau_{1},...,\tau_C$ be the distribution of the consensus categories. Then the distribution of reviewer $a$'s rating, given the record's consensus category is
 $$
 \text{Pr}(Y_{ia} = q | T_i = c) = \pi^a_{q|c} = \lambda_a I(q = c) + (1 - \lambda_a) \epsilon^a_q.
 $$ {#eq-conditional-rating}
-If the reviewers rate each record independently, then they will agree beyond chance levels only because they both have some probability of discerning the true category. Denoting the joint distribution of ratings for reviewers $a$ and $b$ as $\pi^{ab}_{qr} = \text{Pr}(Y_{ia} = q, Y_{ib} = r)$, with margins $\pi^a_{q} = \text{Pr}(Y_{ia} = q)$ and $\pi^b_{r} = \text{Pr}(Y_{ib} = r)$, it follows that
+If the reviewers rate each record independently, then they will agree beyond chance levels only because they both have some probability of discerning the consensus category. Denoting the joint distribution of ratings for reviewers $a$ and $b$ as $\pi^{ab}_{qr} = \text{Pr}(Y_{ia} = q, Y_{ib} = r)$, with margins $\pi^a_{q} = \text{Pr}(Y_{ia} = q)$ and $\pi^b_{r} = \text{Pr}(Y_{ib} = r)$, it follows that
 $$
 \begin{aligned}
 \pi^a_q &= \lambda_a \tau_q + (1 - \lambda_a) \epsilon^a_q \\
@@ -62,7 +61,7 @@ Under the basic agreement model,
 $$
 \kappa_{ab} = \frac{\lambda_a \lambda_b \sum_{c=1}^C \tau_c (1 - \tau_c)}{1 - \sum_{c = 1}^C \left[\lambda_a \tau_c + (1 - \lambda_a) \epsilon_{ac}\right]\left[\lambda_b \tau_c + (1 - \lambda_b) \epsilon_{bc}\right]}.
 $$ {#eq-bam-kappa-general}
-Let's assume that raters have the same discernment probability $\lambda = \lambda_a = \lambda_b$ and that raters' guessing distributions match the distribution of the true categories (i.e., that the raters' guesses are unbiased), so $\epsilon_{ac} = \epsilon_{bc} = \tau_c$ for $c = 1,...,C$. Then @eq-bam-kappa-general reduces to 
+Let's assume that raters have the same discernment probability $\lambda = \lambda_a = \lambda_b$ and that raters' guessing distributions match the distribution of the consensus categories (i.e., that the raters' guesses are unbiased), so $\epsilon_{ac} = \epsilon_{bc} = \tau_c$ for $c = 1,...,C$. Then @eq-bam-kappa-general reduces to 
 $$
 \kappa_{ab} = \frac{\lambda^2 \sum_{c=1}^C \tau_c (1 - \tau_c)}{1 - \sum_{c = 1}^C \tau_c^2} = \lambda^2.
 $$ {#eq-bam-kappa-unbiased}
@@ -81,7 +80,7 @@ We can do this by defining some confusion matrices based on the ratings of each 
 If we have $A$ reviewers that we treat equally, then presumably the team will make a decision about whether to include a particular record based on the _number_ of reviewers who say it is potentially relevant. 
 Let $P_{iq} = \sum_{a=1}^A I\left(Y_{ia} == q\right)$ for $q = 1,...,C$. 
 Let's also assume that the reviewers all have the same discernment parameter and follow the same guessing distribution (i.e., the assumptions under which $\kappa_{ab}$ corresponds to $\lambda^2$).
-Then given the true category, the reviewer ratings are independent and identically distributed and $P_{i1},...,P_{iC}$ follows a multinomial distribution:
+Then given the consensus category, the reviewer ratings are independent and identically distributed and $P_{i1},...,P_{iC}$ follows a multinomial distribution:
 $$
 \left(\left. P_{i1},...,P_{iC} \right| T_i = c\right) \sim Multinomial\left(A, \left(\pi_{1|c},\cdots, \pi_{C|c}\right)\right).
 $$ {#eq-multinomial}
@@ -208,7 +207,7 @@ For instance, @Klauer1996structural noted that reviewer discernment probabilitie
 The version with heterogeneous discernment probabilities is a special case of the observer error models proposed by @Dawid1979maximum [see also @Passonneau2014benefits].
 @Hovy2013learning applied a version of the basic agreement model with heterogeneous discernment probabilities to analyze crowd-sourced classification decisions.
 The typical setting they considered is one with a large number of reviewers (in total) and a larger number of ratings per item, although not every reviewer necessarily sees every item. 
-Their model also allowed the guessing distribution to differ from the true class distribution and allowed different reviewers to follow different guessing distributions, motivated by the notion that some reviewers are "spammers" who have very low discernment and have different button-mashing tendencies. 
+Their model also allowed the guessing distribution to differ from the consensus class distribution and allowed different reviewers to follow different guessing distributions, motivated by the notion that some reviewers are "spammers" who have very low discernment and have different button-mashing tendencies. 
 
 Approaches that are very similar to the basic agreement model have appeared in a variety of different, rather disconnected literatures. 
 @GuggenmoosHolzmann1998kappalike used a model that is essentially equivalent to the one I have sketched above to interpret $\kappa$ and other agreement indices for medical diagnostic studies [see also @GuggenmoosHolzmann1996meaning].
