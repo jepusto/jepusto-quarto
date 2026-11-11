@@ -1,0 +1,14 @@
+---
+title: "Evidence synthesis methods for investigating variation in treatment effects: Challenges and innovations"
+author: 
+  - James E. Pustejovsky
+date: 2026-11-11T13:00:00
+publish_date: 2026-11-11T13:00:00
+event: University of Strathclyde Psychology Department Colloquium
+event_short: Strathclyde, 2026
+location: Glasgow, Scotland
+links:
+- icon: file-easel
+  text: Slides
+  url: /files/Glasgow-2026-synthesis-challenges.pdf
+---

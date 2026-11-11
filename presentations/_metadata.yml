@@ -3,9 +3,3 @@ format:
   html:
     template-partials: 
     - _templates/title-block.html
-
-author:
-  - name: 
-      given: James E.
-      family: Pustejovsky
-
